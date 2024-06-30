@@ -59,11 +59,6 @@
 <li class="toctree-l2"><a class="reference internal" href="members/create_test.html">Utility to generate test queries</a></li>
 <li class="toctree-l2"><a class="reference internal" href="members/dbt_runner.html">Utility to generate test queries</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Testing bundled workflows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a></li>
-<li class="toctree-l3"><a class="reference internal" href="pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#introduction-to-testing-and-prerequisites">Introduction to testing and prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#before-running-any-test">Before running any test</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-aqs-workflow">Testing AQS workflow</a><ul>
@@ -162,49 +157,8 @@
 </nav>
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
-<p><a class="reference internal" href="DBT.html"><span class="doc std std-doc">Database Testing Framework</span></a></p>
-</div>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#introduction">Introduction</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#running-workflows">Running Workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#testing-workflows">Testing workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#installing-python-dependencies">Installing Python dependencies</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#published-and-tested-workflows">Published and tested workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-your-own-workflows">Developing your own workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipelines.html#example-of-a-workflow">Example of a workflow</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#inputs">Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#outputs">Outputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#steps">Steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#inputs">Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#outputs">Outputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#steps">Steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#inputs">Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#outputs">Outputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#steps">Steps</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#description">Description</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#inputs">Inputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#outputs">Outputs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#steps">Steps</a></li>
-</ul>
-</li>
-</ul>
+<p><a class="reference internal" href="DBT.html"><span class="doc std std-doc">Database Testing Framework</span></a>
+<a class="reference internal" href="pipelines.html"><span class="doc std std-doc">Data Processing Pipelines</span></a></p>
 </div>
 <section id="introduction-to-testing-and-prerequisites">
 <h2><a class="toc-backref" href="#id7" role="doc-backlink">Introduction to testing and prerequisites</a><a class="headerlink" href="#introduction-to-testing-and-prerequisites" title="Permalink to this heading"></a></h2>
@@ -256,6 +210,10 @@ you will need to replace <code class="docutils literal notranslate"><span class=
 </section>
 <section id="testing-aqs-workflow">
 <h2><a class="toc-backref" href="#id9" role="doc-backlink">Testing AQS workflow</a><a class="headerlink" href="#testing-aqs-workflow" title="Permalink to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="pipeline/aqs.html"><span class="doc std std-doc">Full EPA AQS Processing Pipeline</span></a></p>
+</div>
 <section id="before-running-the-test">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">Before running the test</a><a class="headerlink" href="#before-running-the-test" title="Permalink to this heading"></a></h3>
 <p>Create a scratch directory:</p>
@@ -299,6 +257,10 @@ local host. If your PostgreSQL is running locally, you need to update your datab
 </section>
 <section id="testing-airnow-workflow">
 <h2><a class="toc-backref" href="#id13" role="doc-backlink">Testing Airnow workflow</a><a class="headerlink" href="#testing-airnow-workflow" title="Permalink to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="pipeline/airnow.html"><span class="doc std std-doc">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</span></a></p>
+</div>
 <section id="id1">
 <h3><a class="toc-backref" href="#id14" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
 <p>Create a scratch directory:</p>
@@ -344,7 +306,11 @@ cd scratch/airnow
 </section>
 <section id="testing-climate-workflow">
 <h2><a class="toc-backref" href="#id17" role="doc-backlink">Testing Climate workflow</a><a class="headerlink" href="#testing-climate-workflow" title="Permalink to this heading"></a></h2>
-<p>See also <a class="reference internal" href="Example-climate-workflow.html"><span class="doc std std-doc">Example of a workflow: aggregating a climate variable</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="Example-climate-workflow.html"><span class="doc std std-doc">Example of a workflow: aggregating a climate variable</span></a>
+<a class="reference internal" href="pipeline/gridmet.html"><span class="doc std std-doc">Pipeline to aggregate data from Climatology Lab</span></a></p>
+</div>
 <section id="id3">
 <h3><a class="toc-backref" href="#id18" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
 <p>Create a scratch directory:</p>
@@ -386,7 +352,10 @@ to automatically retry failed downloads.</p>
 </section>
 <section id="testing-exposure-workflow">
 <h2><a class="toc-backref" href="#id21" role="doc-backlink">Testing Exposure workflow</a><a class="headerlink" href="#testing-exposure-workflow" title="Permalink to this heading"></a></h2>
-<p>See also <a class="reference internal" href="Example-climate-workflow.html"><span class="doc std std-doc">Example of a workflow: aggregating a climate variable</span></a></p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="pipeline/pm25_yearly_download.html"><span class="doc std std-doc">Pipeline to aggregate data in NetCDF format over given geographies</span></a></p>
+</div>
 <section id="id5">
 <h3><a class="toc-backref" href="#id22" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
 <p>Create a scratch directory:</p>
