@@ -3,13 +3,12 @@ Utility to generate test queries
 
 ```{toctree}
 ---
-maxdepth: 4
+maxdepth: 2
 glob: true
 hidden: 
 ---
 dbt_runner.md
 getn_dbt_cwl.rst
-../DBT.md
 ```
 
 ```{contents}
