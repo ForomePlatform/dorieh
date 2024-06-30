@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testing bundled workflows &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to add data to the database" href="adding_data.html" />
+    <link rel="prev" title="Utility to generate test queries" href="members/dbt_runner.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="DBT.html">Database Testing Framework</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="members/create_test.html">Utility to generate test queries</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members/dbt_runner.html">Utility to generate test queries</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing bundled workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction-to-testing-and-prerequisites">Introduction to testing and prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#before-running-any-test">Before running any test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-aqs-workflow">Testing AQS workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#before-running-the-test">Before running the test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-local-installation">Testing local installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-aqs-workflow-with-dockerrequirement">Testing AQS workflow with DockerRequirement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-airnow-workflow">Testing Airnow workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Before running the test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Testing local installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-airnow-workflow-with-dockerrequirement">Testing Airnow workflow with DockerRequirement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-climate-workflow">Testing Climate workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Before running the test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Testing local installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-climate-workflow-with-dockerrequirement">Testing climate workflow with DockerRequirement</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-exposure-workflow">Testing Exposure workflow</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Before running the test</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Testing local installation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="DBT.html">Database Testing Framework</a></li>
+      <li class="breadcrumb-item active">Testing bundled workflows</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/TestingWorkflows.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="testing-bundled-workflows">
+<h1>Testing bundled workflows<a class="headerlink" href="#testing-bundled-workflows" title="Permalink to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction-to-testing-and-prerequisites" id="id7">Introduction to testing and prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#before-running-any-test" id="id8">Before running any test</a></p></li>
+<li><p><a class="reference internal" href="#testing-aqs-workflow" id="id9">Testing AQS workflow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#before-running-the-test" id="id10">Before running the test</a></p></li>
+<li><p><a class="reference internal" href="#testing-local-installation" id="id11">Testing local installation</a></p></li>
+<li><p><a class="reference internal" href="#testing-aqs-workflow-with-dockerrequirement" id="id12">Testing AQS workflow with DockerRequirement</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing-airnow-workflow" id="id13">Testing Airnow workflow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id1" id="id14">Before running the test</a></p></li>
+<li><p><a class="reference internal" href="#id2" id="id15">Testing local installation</a></p></li>
+<li><p><a class="reference internal" href="#testing-airnow-workflow-with-dockerrequirement" id="id16">Testing Airnow workflow with DockerRequirement</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing-climate-workflow" id="id17">Testing Climate workflow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id3" id="id18">Before running the test</a></p></li>
+<li><p><a class="reference internal" href="#id4" id="id19">Testing local installation</a></p></li>
+<li><p><a class="reference internal" href="#testing-climate-workflow-with-dockerrequirement" id="id20">Testing climate workflow with DockerRequirement</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#testing-exposure-workflow" id="id21">Testing Exposure workflow</a></p>
+<ul>
+<li><p><a class="reference internal" href="#id5" id="id22">Before running the test</a></p></li>
+<li><p><a class="reference internal" href="#id6" id="id23">Testing local installation</a></p></li>
+</ul>
+</li>
+</ul>
+</nav>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="DBT.html"><span class="doc std std-doc">Database Testing Framework</span></a></p>
+</div>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#running-workflows">Running Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#testing-workflows">Testing workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#installing-python-dependencies">Installing Python dependencies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#published-and-tested-workflows">Published and tested workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-your-own-workflows">Developing your own workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#example-of-a-workflow">Example of a workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/gridmet.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#description">Description</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#inputs">Inputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#outputs">Outputs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/pm25_yearly_download.html#steps">Steps</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<section id="introduction-to-testing-and-prerequisites">
+<h2><a class="toc-backref" href="#id7" role="doc-backlink">Introduction to testing and prerequisites</a><a class="headerlink" href="#introduction-to-testing-and-prerequisites" title="Permalink to this heading"></a></h2>
+<p>Introduction to using workflows with Dorieh can be found in
+<a class="reference internal" href="pipelines.html"><span class="doc std std-doc">Data Processing Pipelines</span></a></p>
+<p>Bundled workflows can be tested in two ways:</p>
+<ol class="arabic simple">
+<li><p>With a local installation of dorieh package</p></li>
+<li><p>Using Docker image</p></li>
+</ol>
+<p>Regardless of the option you need to install a CWL implementation. We suggest that You create a
+Python virtual environment for trying this workflow, or use an existing one.
+If you are creating a new virtual environment, run the following command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python3 -m venv $path
+source $path/bin/activate
+</pre></div>
+</div>
+<p>where $path is a path to a directory, that will be created and where the new visualiser environment will
+reside.</p>
+<p>To run the workflow you need to install a <a class="reference external" href="https://www.commonwl.org/implementations/">CWL implementation</a>.
+We suggest using <a class="reference external" href="https://toil.ucsc-cgl.org/">Toil</a>. To install Toil just run the following command
+in your Python Virtual Environment:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install &quot;toil[cwl,aws]&quot;
+</pre></div>
+</div>
+<p>If you would like to test workflows with a local installation of Dorieh, execute
+this additional command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>pip install dorieh
+</pre></div>
+</div>
+</section>
+<section id="before-running-any-test">
+<h2><a class="toc-backref" href="#id8" role="doc-backlink">Before running any test</a><a class="headerlink" href="#before-running-any-test" title="Permalink to this heading"></a></h2>
+<p>Tests write significant amount of logs, therefore we recommend running them in a temporary scratch directory.</p>
+<p>First, create a scratch directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p scratch/testxx
+cd scratch/testxx
+</pre></div>
+</div>
+<p>You will also need to create a database connection file, see
+<a class="reference internal" href="DBConnections.html"><span class="doc std std-doc">Managing database connections</span></a> for details and examples.</p>
+<p>Further we assume the following environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">dbini</span><span class="o">=</span><span class="si">${</span><span class="p">/path/to/database.ini</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">connection</span><span class="o">=</span><span class="si">${</span><span class="nv">section_name_in_database</span><span class="p">.ini</span><span class="si">}</span>
+</pre></div>
+</div>
+<p>We also assume that you are using Toil as CWL implementation. If you use a different implementation,
+you will need to replace <code class="docutils literal notranslate"><span class="pre">toil-cwl-runner</span></code> command with an appropriate alternative</p>
+</section>
+<section id="testing-aqs-workflow">
+<h2><a class="toc-backref" href="#id9" role="doc-backlink">Testing AQS workflow</a><a class="headerlink" href="#testing-aqs-workflow" title="Permalink to this heading"></a></h2>
+<section id="before-running-the-test">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">Before running the test</a><a class="headerlink" href="#before-running-the-test" title="Permalink to this heading"></a></h3>
+<p>Create a scratch directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p scratch/aqs
+cd scratch/aqs
+</pre></div>
+</div>
+<p>Export environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">dbini</span><span class="o">=</span><span class="si">${</span><span class="p">/path/to/database.ini</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">connection</span><span class="o">=</span><span class="si">${</span><span class="nv">section_name_in_database</span><span class="p">.ini</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="testing-local-installation">
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">Testing local installation</a><a class="headerlink" href="#testing-local-installation" title="Permalink to this heading"></a></h3>
+<p>If you have installed dorieh locally, run the following command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 0 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_aqs.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/aqs_test.sql \
+    --aggregation annual --parameter_code PM25 --table pm25_annual --years 2011 --years 2010    
+</pre></div>
+</div>
+</section>
+<section id="testing-aqs-workflow-with-dockerrequirement">
+<h3><a class="toc-backref" href="#id12" role="doc-backlink">Testing AQS workflow with DockerRequirement</a><a class="headerlink" href="#testing-aqs-workflow-with-dockerrequirement" title="Permalink to this heading"></a></h3>
+<p>We will use workflows from src/workflows instead of src/cwl directory.</p>
+<p>When testing with Docker, you should remember that commands are executed within
+a docker container, so <code class="docutils literal notranslate"><span class="pre">localhost</span></code> refers to a local docker container, not to your
+local host. If your PostgreSQL is running locally, you need to update your database.ini file.</p>
+<p>You might need to replace host with <code class="docutils literal notranslate"><span class="pre">host.docker.internal</span></code> or <code class="docutils literal notranslate"><span class="pre">172.17.0.1</span></code>.</p>
+<p>In the virtual environment that has Toil run the following command:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 0 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/workflows/test_aqs.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/aqs_test.sql \
+    --aggregation annual --parameter_code PM25 --table pm25_annual --years 2011 --years 2010    
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing-airnow-workflow">
+<h2><a class="toc-backref" href="#id13" role="doc-backlink">Testing Airnow workflow</a><a class="headerlink" href="#testing-airnow-workflow" title="Permalink to this heading"></a></h2>
+<section id="id1">
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id1" title="Permalink to this heading"></a></h3>
+<p>Create a scratch directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p scratch/airnow
+cd scratch/airnow
+</pre></div>
+</div>
+<p>Export environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">dbini</span><span class="o">=</span><span class="si">${</span><span class="p">/path/to/database.ini</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">connection</span><span class="o">=</span><span class="si">${</span><span class="nv">section_name_in_database</span><span class="p">.ini</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id2">
+<h3><a class="toc-backref" href="#id15" role="doc-backlink">Testing local installation</a><a class="headerlink" href="#id2" title="Permalink to this heading"></a></h3>
+<p>If you have installed dorieh locally, run the following command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 0 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_airnow.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/airnow_test.sql \
+    --parameter_code PM25 --table airnow_pm25_2022 --year 2022  \
+    --api-key 9B053C38-3C42-416E-A330-203A698CCCDA --from 2022-01-01 --to 2022-08-31
+</pre></div>
+</div>
+</section>
+<section id="testing-airnow-workflow-with-dockerrequirement">
+<h3><a class="toc-backref" href="#id16" role="doc-backlink">Testing Airnow workflow with DockerRequirement</a><a class="headerlink" href="#testing-airnow-workflow-with-dockerrequirement" title="Permalink to this heading"></a></h3>
+<p>To test without local installation of Dorieh, using workflow DockerRequirement instead, change two things:</p>
+<ol class="arabic simple">
+<li><p>Ensure that docker container can access PostgreSQL server</p></li>
+<li><p>In the URI for the workflow repalce ‘/cwl/’ with ‘/workflows/’.</p></li>
+</ol>
+<p>The command will be:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 0 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/workflows/test_airnow.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/airnow_test.sql \
+    --parameter_code PM25 --table airnow_pm25_2022 --year 2022  \
+    --api-key 9B053C38-3C42-416E-A330-203A698CCCDA --from 2022-01-01 --to 2022-08-31
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing-climate-workflow">
+<h2><a class="toc-backref" href="#id17" role="doc-backlink">Testing Climate workflow</a><a class="headerlink" href="#testing-climate-workflow" title="Permalink to this heading"></a></h2>
+<p>See also <a class="reference internal" href="Example-climate-workflow.html"><span class="doc std std-doc">Example of a workflow: aggregating a climate variable</span></a></p>
+<section id="id3">
+<h3><a class="toc-backref" href="#id18" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id3" title="Permalink to this heading"></a></h3>
+<p>Create a scratch directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p scratch/climate
+cd scratch/climate
+</pre></div>
+</div>
+<p>Export environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">dbini</span><span class="o">=</span><span class="si">${</span><span class="p">/path/to/database.ini</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">connection</span><span class="o">=</span><span class="si">${</span><span class="nv">section_name_in_database</span><span class="p">.ini</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id4">
+<h3><a class="toc-backref" href="#id19" role="doc-backlink">Testing local installation</a><a class="headerlink" href="#id4" title="Permalink to this heading"></a></h3>
+<p>There are frequent failure in downloading both datafiles and shapefiles, therefore, here we use option <code class="docutils literal notranslate"><span class="pre">--retryCount</span> <span class="pre">3</span></code>
+to automatically retry failed downloads.</p>
+<p>If you have installed dorieh locally, run the following command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_gridmet.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/county_rmax.sql \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/county_rmin.sql \
+    --dates dayOfMonth:13 --bands rmax --bands rmin --geography county
+</pre></div>
+</div>
+</section>
+<section id="testing-climate-workflow-with-dockerrequirement">
+<h3><a class="toc-backref" href="#id20" role="doc-backlink">Testing climate workflow with DockerRequirement</a><a class="headerlink" href="#testing-climate-workflow-with-dockerrequirement" title="Permalink to this heading"></a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/workflows/test_gridmet.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/county_rmax.sql \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/county_rmin.sql \
+    --dates dayOfMonth:13 --bands rmax --bands rmin --geography county
+</pre></div>
+</div>
+</section>
+</section>
+<section id="testing-exposure-workflow">
+<h2><a class="toc-backref" href="#id21" role="doc-backlink">Testing Exposure workflow</a><a class="headerlink" href="#testing-exposure-workflow" title="Permalink to this heading"></a></h2>
+<p>See also <a class="reference internal" href="Example-climate-workflow.html"><span class="doc std std-doc">Example of a workflow: aggregating a climate variable</span></a></p>
+<section id="id5">
+<h3><a class="toc-backref" href="#id22" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id5" title="Permalink to this heading"></a></h3>
+<p>Create a scratch directory:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>mkdir -p scratch/pm25
+cd scratch/pm25
+</pre></div>
+</div>
+<p>Export environment variables:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">dbini</span><span class="o">=</span><span class="si">${</span><span class="p">/path/to/database.ini</span><span class="si">}</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">connection</span><span class="o">=</span><span class="si">${</span><span class="nv">section_name_in_database</span><span class="p">.ini</span><span class="si">}</span>
+</pre></div>
+</div>
+</section>
+<section id="id6">
+<h3><a class="toc-backref" href="#id23" role="doc-backlink">Testing local installation</a><a class="headerlink" href="#id6" title="Permalink to this heading"></a></h3>
+<p>There are frequent failure in downloading both datafiles and shapefiles, therefore, here we use option <code class="docutils literal notranslate"><span class="pre">--retryCount</span> <span class="pre">2</span></code>
+to automatically retry failed downloads.</p>
+<p>If you have installed dorieh locally, run the following command</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner --reference-inputs --retryCount 2 --cleanWorkDir never --outdir outputs --workDir . \
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_pm25_yearly_download.cwl \
+    --database ${dbini} --connection_name ${connection} \
+    --test_script https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/test_cases/exposures_test_pm25_components.sql \
+    --downloads s3://nsaph-public/data/exposures/wustl/ \ 
+    --geography county --shape_file_collection tiger --table pm25_components_annual_county_mean \
+    --years 2010 --years 2011
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="members/dbt_runner.html" class="btn btn-neutral float-left" title="Utility to generate test queries" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="adding_data.html" class="btn btn-neutral float-right" title="How to add data to the database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

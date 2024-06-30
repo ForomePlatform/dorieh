@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# medicare_admissions.cwl
+
+```{literalinclude} ../../src/cwl/medicare_admissions.cwl
+:linenos:
+:language: yaml
+```
+

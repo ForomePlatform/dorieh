@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# gridmet.cwl
+
+```{literalinclude} ../../src/cwl/gridmet.cwl
+:linenos:
+:language: yaml
+```
+

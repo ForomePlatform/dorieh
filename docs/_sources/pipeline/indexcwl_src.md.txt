@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# index.cwl
+
+```{literalinclude} ../../src/cwl/index.cwl
+:linenos:
+:language: yaml
+```
+
