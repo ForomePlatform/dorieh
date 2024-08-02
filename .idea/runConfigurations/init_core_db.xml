@@ -15,7 +15,7 @@
     <option name="ADD_SOURCE_ROOTS" value="true" />
     <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
     <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/python/dorieh/platform/util/init_core_db.py" />
-    <option name="PARAMETERS" value="--db $PROJECT_DIR$/../../database.ini --connection aws-urc-port-forward" />
+    <option name="PARAMETERS" value="--db $PROJECT_DIR$/../../database.ini --connection nsaph-8432" />
     <option name="SHOW_COMMAND_LINE" value="false" />
     <option name="EMULATE_TERMINAL" value="false" />
     <option name="MODULE_MODE" value="false" />

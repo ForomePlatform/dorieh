@@ -131,9 +131,6 @@ inputs:
     doc: |
       Path to database connection file, usually database.ini. 
       This argument is ignored if `connection_name` == `None`
-    default:
-      path: database.ini
-      class: File
 
   connection_name:
     type: string
