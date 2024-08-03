@@ -5,7 +5,7 @@ with data in certain knowledge domain
 
 See 
 """
-
+import datetime
 #  Copyright (c) 2021. Harvard University
 #
 #  Developed by Research Software Engineering,
@@ -525,7 +525,8 @@ class Domain:
             self.add_column_indices(table, columns)
         self.add_multi_column_indices(table, definition)
 
-        comment = f"CREATED BY Dorieh: {get_version()}"
+        cts = str(datetime.datetime.now())
+        comment = f"CREATED BY Dorieh: {get_version()}. Created at {cts}"
         comment_sql = f"COMMENT ON {object_type} {table} IS '{comment}';"
         self.append_ddl(table, comment_sql)
 
