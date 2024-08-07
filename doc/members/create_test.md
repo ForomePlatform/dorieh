@@ -8,7 +8,7 @@ glob: true
 hidden: 
 ---
 dbt_runner.md
-getn_dbt_cwl.rst
+gen_dbt_cwl.rst
 ```
 
 ```{contents}

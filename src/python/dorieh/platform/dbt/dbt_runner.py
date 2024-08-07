@@ -115,7 +115,7 @@ class DBTRunner:
         self.run()
         if self.failures > 0:
             err = TestFailedError(f"There are {str(self.failures)} failures")
-            logging.exception("Tests FAILED", err)
+            logging.error(f"Tests FAILED: {err}")
             raise err
         logging.info("All tests succeeded")
 
