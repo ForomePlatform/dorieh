@@ -166,32 +166,70 @@ def add_html_row(cols: List[str], border: int = 1, align: str = None, tag = "td"
     return text
 
 
-def add_row(cols: List[str]) -> str:
+def add_markdown_row(cols: List[str]) -> str:
+    row = "| " + " | ".join(cols) + " |\n"
+    return row
+
+
+def add_markdown_header_row(cols: List[str]) -> str:
+    row = "| " + " | ".join(cols) + " |\n"
+    separator = "| " + " | ".join("---" for _ in cols) + " |\n"
+    return row + separator
+
+
+def hr_markdown() -> str:
+    return "---\n"
+
+
+def start_markdown_table() -> str:
+    return ""
+
+
+def end_markdown_table() -> str:
+    return ""
+
+
+def add_row(cols: List[str], format: str = 'html') -> str:
+    if format == 'markdown':
+        return add_markdown_row(cols)
     return add_html_row(cols)
 
 
-def start_invisible_row() -> str:
-    return '<tr border = "0"><td>'
-
-
-def end_invisible_row() -> str:
-    return '</td></tr>'
-
-
-def add_header_row(cols: List[str]) -> str:
+def add_header_row(cols: List[str], format: str = 'html') -> str:
+    if format == 'markdown':
+        return add_markdown_header_row(cols)
     return add_html_row(cols, tag="th")
 
 
-def start_table(border: int = 1, align: str = "left"):
+def hr(format: str = 'html') -> str:
+    if format == 'markdown':
+        return hr_markdown()
+    return "<hr/>"
+
+
+def start_table(border: int = 1, align: str = "left", format: str = 'html'):
+    if format == 'markdown':
+        return start_markdown_table()
     return f'\n<br/><TABLE border = "{border}" align = "{align}">\n'
 
 
-def end_table():
+def end_table(format: str = 'html'):
+    if format == 'markdown':
+        return end_markdown_table()
     return '\n</TABLE><br/>\n'
 
 
-def hr():
-    return "<hr/>"
+def start_invisible_row(format: str = 'html') -> str:
+    if format == 'markdown':
+        return ""
+    return '<tr border = "0"><td>'
+
+
+def end_invisible_row(format: str = 'html') -> str:
+    if format == 'markdown':
+        return "\n"
+    return '</td></tr>'
+
 
 
 
