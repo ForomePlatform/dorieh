@@ -213,6 +213,7 @@ medicare:
             type: INT
             optional: true
             source:
+               - crec
                - cur_ent
                - bene_entlmt_rsn_curr
             cast:

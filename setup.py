@@ -57,6 +57,7 @@ setup(
         'geopandas',
         'geopy',
         'GitPython',
+        'googlesearch-python',
         'graphviz>=0.14.2',
         'h5py',
         'hydra-core',

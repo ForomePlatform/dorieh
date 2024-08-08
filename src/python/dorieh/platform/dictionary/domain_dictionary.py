@@ -39,6 +39,7 @@ class DomainDict:
         self.basedir = os.path.dirname(os.path.abspath(of))
         self.options = options
         self.link = self.options.get("fmt") in ["svg"]
+        self.mode = options["mode"]
 
     def add(self, path):
         yml = as_dict(path)
@@ -66,8 +67,8 @@ class DomainDict:
         node_id = qstr(table)
         attrs = dict()
         if self.link:
-            f = os.path.join(self.basedir, "tables", t + ".html")
-            table.html(f)
+            f = os.path.join(self.basedir, "tables", t + ".md")
+            table.markdown(f)
             attrs["URL"] = qstr(os.path.join("tables", t + ".html"))
             attrs["target"] = "_blank"
         space = ''.join('\t' for _ in range(indent))
@@ -123,13 +124,90 @@ class DomainDict:
     def html(self, of: str, svg = None):
         if svg is None:
             return
-        body = f'<object data="{svg}" type="image/svg+xml"></object>'
         block = HTML.format(
             title = f"Table Lineage Diagram",
-            body = body
+            body = self.html_body(svg)
         )
         with open(of, "wt") as out:
             print(block, file=out)
+
+    @staticmethod
+    def html_body(svg):
+        body = f'<object data="{svg}" type="image/svg+xml"></object>'
+        return body
+
+    def write_markdown(self, content: str, of: str):
+        with open(of, "wt") as out:
+            print(content, file=out)
+        if self.mode == 'standalone':
+            fhtml = os.path.splitext(of)[0] + ".html"
+            os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
+
+    def link_ext(self):
+        if self.mode == 'standalone':
+            return "html"
+        return "md"
+
+    def markdown(self, of: str, svg=None):
+        if svg is None:
+            return
+
+        title = "# Table Lineage Diagram\n"
+        body = "\n"
+
+        if self.mode == 'sphinx':
+            body += "```{toctree}\n"
+            body += "---\n"
+            body += "maxdepth: 1\n"
+            body += "hidden:\n"
+            body += "---\n"
+            for t in self.tables:
+                body += f"tables/{self.tables[t].qualified_name}\n"
+            body += "```\n"
+            body += "\n\n"
+
+        # In Markdown, we can provide a link to the SVG file
+        body += self.html_body(svg)
+        self.write_markdown(f"{title}\n{body}", of)
+
+        # Write the Markdown content to a file
+
+    def table_list(self, of: str):
+        title = "# Alphabetic list of all tables\n"
+        body = "\n"
+        for t in sorted(self.tables):
+            tname = self.tables[t].qualified_name
+            body += f"1. [{tname}](tables/{tname}.{self.link_ext()})\n"
+
+        self.write_markdown(f"{title}\n{body}", of)
+
+    def column_list(self, of: str):
+        title = "# Alphabetic list of all columns in all tables\n"
+        body = "\n"
+        columns = dict()
+        for t in self.tables:
+            table = self.tables[t]
+            tname = table.qualified_name
+            for c in table.columns:
+                if c in columns:
+                    tset = columns[c]
+                else:
+                    tset = set()
+                    columns[c] = tset
+                tset.add(tname)
+
+        body +=  "|  Column | Tables                    |\n"
+        body +=  "|  ------ | ------------------------- |\n"
+        ext = self.link_ext()
+        for c in sorted(columns):
+            tset = columns[c]
+            tables = []
+            for t in sorted(tset):
+                tables.append(f"[{t}](tables/{t}/{c}.{ext})")
+            row = ' <br/>'.join(tables)
+            body += f"| {c}     | {row}\n"
+
+        self.write_markdown(f"{title}\n{body}", of)
 
     def generate_graphs(self):
         fmt = self.options.get("fmt")
@@ -140,11 +218,13 @@ class DomainDict:
             os.mkdir(tdir)
         with open(self.of, "w") as graph:
             self.to_dot(graph)
+        self.table_list("table-list.md")
+        self.column_list("column-list.md")
         if generate_image:
             os.system(f"dot -T {fmt} -O {self.of}")
             if fmt == "svg":
                 svg = os.path.basename(self.of + ".svg")
-                self.html(self.of + ".html", svg)
+                self.markdown(self.of + ".md", svg)
         if lod != LOD.none:
             n = 0
             for t in self.tables:
@@ -154,16 +234,18 @@ class DomainDict:
                 table = self.tables[t]
                 for c in table.columns:
                     column = table.columns[c]
+                    basename = os.path.join(d, c)
                     if lod == LOD.min and not column.predecessors:
+                        column.markdown(basename + ".md", svg=None)
                         continue
-                    f = os.path.join(d, c) + ".dot"
+                    f = basename + ".dot"
                     with open(f, "w") as graph:
                         table.column_lineage_to_dot(c, graph)
                     if generate_image:
-                        os.system(f"dot -T {fmt} -O '{f}'")
+                        of = f"{basename}.{fmt}"
+                        os.system(f"dot -T{fmt} -o{of} {f}")
                         if fmt == "svg":
-                            svg = os.path.basename(f + ".svg")
-                            column.html(f + ".html", svg=svg)
+                             column.markdown(basename + ".md", svg=of)
                         n += 1
                         if (n % 10) == 0:
                             print('*', end='')
@@ -196,6 +278,10 @@ def parse_args() -> Dict:
                         help="Level of details",
                         default="none",
                         choices=[s.value for s in LOD])
+    parser.add_argument("--mode",
+                        help="Documentation generation mode",
+                        default="standalone",
+                        choices=["standalone", "sphinx"])
     parser.add_argument("--output", "--of", "-o",
                         help="Path to the main output dot file",
                         default="tables.dot",
