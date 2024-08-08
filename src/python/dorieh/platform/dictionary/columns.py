@@ -17,6 +17,7 @@
 #  limitations under the License.
 #
 import os
+import textwrap
 from typing import Dict, List, Optional, Set, Callable
 
 import sqlparse
@@ -208,8 +209,10 @@ class Column(DataModelElement):
         text += "</tr>\n"
 
         if self.description and "text" in self.description:
-            value = html.escape(self.description["text"])
-            text += f'<tr><td align = "center" border = "0">{value}</td></tr>\n'
+            description = self.description["text"]
+            lines = [html.escape(line) for line in textwrap.wrap(description, width=40)]
+            value = '<br/>'.join(lines)
+            text += f'<tr><td align = "left" border = "0" cellpadding="25">{value}</td></tr>\n'
 
         if self.expression:
             for exp in self.expression:
@@ -223,9 +226,19 @@ class Column(DataModelElement):
         return text
 
     def describe_markdown(self) -> str:
-        text = f"## Overview of {self.qualified_name} \n\n"
+        t, c = os.path.splitext(self.qualified_name)
+        c = c[1:]
+        if self.mode == "standalone":
+            ext = ".html"
+        elif self.mode == "sphinx":
+            ext = ".md"
+        else:
+            ext = ""
+        tpath = os.path.join("..", t) + ext
+        text = f"## Overview of column {c} in table {t} \n\n"
         text +=  "|                               |                        |\n"
         text +=  "| ----------------------------- | ---------------------- |\n"
+        text += f"| Table                         | [{t}]({tpath})           |\n"
         text += f"| Qualified name                | {self.qualified_name}  |\n"
         text += f"| Datatype                      | {self.datatype}        |\n"
         ctype = self.describe_column_type(self)
@@ -295,14 +308,17 @@ class Column(DataModelElement):
             fhtml = os.path.splitext(of)[0] + ".html"
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
 
-    def to_dot(self, node_label = None, shape = "box"):
-        node_id = qstr(self.qualified_name)
+    def to_dot(self, node_id=None, node_label=None, attributes = None):
+        if node_id is None:
+            node_id = qstr(self.qualified_name)
         if not node_label:
             node_label = '<' + self.describe_node() + '>'
         attrs = {
             "label": node_label,
-            "shape": shape
+            "shape": "box"
         }
+        if attributes:
+            attrs.update(attributes)
         t, c = os.path.splitext(self.qualified_name)
         c = c[1:]
         cpath = os.path.join("..", t, c) + ".html"

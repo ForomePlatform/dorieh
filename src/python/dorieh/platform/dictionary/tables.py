@@ -241,9 +241,22 @@ class Table(DataModelElement):
 
         if len(links) > 5 and recursion > 0:
             node_id = column.qualified_name + "_parent"
-            text = column.to_dot(node_label=qstr(f"{len(links)} incoming links (columns)"), shape="cylinder")
+            width = 3 + math.log(len(links), 2)
+            minlen = 2
+            text = column.to_dot(
+                node_id = qstr(node_id),
+                node_label=qstr(f"{len(links)} incoming links (columns)"),
+                attributes={
+                    "shape": '"cylinder"',
+                    "fillcolor": '"yellow"',
+                    "style": '"filled"',
+                    "minlen": minlen,
+                    "width": 3,
+                    "height": 1.5
+                }
+            )
             graph.add_node(node_id, text)
-            graph.add_edge(GenericLink(node_id, column.qualified_name, len(links)))
+            graph.add_edge(GenericLink(node_id, column.qualified_name, width))
             return 
 
         if len(links) > 3:
@@ -549,7 +562,7 @@ class GenericLink:
     def to_dot(self):
         attrs = dict()
         attrs["penwidth"] = self.width
-        attrs["color"] = "blue"
+        attrs["color"] = "goldenrod"
         return f"\t{qstr(self.node1)} -> {qstr(self.node2)} [{attrs2string(attrs)}];"
 
     def __str__(self):
