@@ -13,7 +13,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/curec.svg
 :align: center
 :alt: Column medicare.qc_enrollments.curec Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/curec_svg_envelop.md
+:target: curec_svg_envelop.html
 
 Data lineage for column medicare.qc_enrollments.curec
 

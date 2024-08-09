@@ -21,7 +21,7 @@ reason
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/reason.svg
 :align: center
 :alt: Column medicare.qc_adm_union.reason Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/reason_svg_envelop.md
+:target: reason_svg_envelop.html
 
 Data lineage for column medicare.qc_adm_union.reason
 

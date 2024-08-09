@@ -5,7 +5,7 @@
 ```{figure} tables.dot.svg
 :align: center
 :alt: Table Lineage Diagram
-:target: tables.dot_svg_envelop.md
+:target: tables.dot_svg_envelop.html
 
 Diagram illustrating data flow during transformations
 

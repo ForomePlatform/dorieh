@@ -21,7 +21,7 @@ RESDAC original file name
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/file.svg
 :align: center
 :alt: Column medicare.ip.file Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/file_svg_envelop.md
+:target: file_svg_envelop.html
 
 Data lineage for column medicare.ip.file
 

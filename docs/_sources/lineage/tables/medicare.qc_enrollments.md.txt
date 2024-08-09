@@ -36,7 +36,7 @@ FROM medicare.qc_enrl_bene
 
 GROUP BY year,state,zip,fips3,orec,curec,hmo,dual,buyin,consistent_dob,consistent_dod,consistent_sex,consistent_race,fips3_is_approximated,fips3_valdiated;
 
-COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.184558';
+COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.199895';
 ```
 
 </details>
@@ -46,24 +46,24 @@ COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"ve
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [bene_hll](medicare.qc_enrollments/bene_hll.html) | computed | string |
-| [buyin](medicare.qc_enrollments/buyin.html) |  | string |
-| [consistent_dob](medicare.qc_enrollments/consistent_dob.html) |  | string |
-| [consistent_dod](medicare.qc_enrollments/consistent_dod.html) |  | string |
-| [consistent_race](medicare.qc_enrollments/consistent_race.html) |  | string |
-| [consistent_sex](medicare.qc_enrollments/consistent_sex.html) |  | string |
-| [curec](medicare.qc_enrollments/curec.html) |  | string |
-| [dual](medicare.qc_enrollments/dual.html) |  | string |
-| [fips3](medicare.qc_enrollments/fips3.html) |  | string |
-| [fips3_is_approximated](medicare.qc_enrollments/fips3_is_approximated.html) |  | string |
-| [fips3_valdiated](medicare.qc_enrollments/fips3_valdiated.html) |  | string |
-| [hmo](medicare.qc_enrollments/hmo.html) |  | string |
-| [NumDistinctBeneficaries](medicare.qc_enrollments/NumDistinctBeneficaries.html) | computed | BIGINT |
-| [NumRecords](medicare.qc_enrollments/NumRecords.html) | computed | BIGINT |
-| [orec](medicare.qc_enrollments/orec.html) |  | string |
-| [state](medicare.qc_enrollments/state.html) |  | string |
-| [state_iso](medicare.qc_enrollments/state_iso.html) | computed | CHAR(5) |
-| [year](medicare.qc_enrollments/year.html) |  | string |
-| [zip](medicare.qc_enrollments/zip.html) |  | string |
+| [bene_hll](medicare.qc_enrollments/bene_hll.md) | computed | string |
+| [buyin](medicare.qc_enrollments/buyin.md) |  | string |
+| [consistent_dob](medicare.qc_enrollments/consistent_dob.md) |  | string |
+| [consistent_dod](medicare.qc_enrollments/consistent_dod.md) |  | string |
+| [consistent_race](medicare.qc_enrollments/consistent_race.md) |  | string |
+| [consistent_sex](medicare.qc_enrollments/consistent_sex.md) |  | string |
+| [curec](medicare.qc_enrollments/curec.md) |  | string |
+| [dual](medicare.qc_enrollments/dual.md) |  | string |
+| [fips3](medicare.qc_enrollments/fips3.md) |  | string |
+| [fips3_is_approximated](medicare.qc_enrollments/fips3_is_approximated.md) |  | string |
+| [fips3_valdiated](medicare.qc_enrollments/fips3_valdiated.md) |  | string |
+| [hmo](medicare.qc_enrollments/hmo.md) |  | string |
+| [NumDistinctBeneficaries](medicare.qc_enrollments/NumDistinctBeneficaries.md) | computed | BIGINT |
+| [NumRecords](medicare.qc_enrollments/NumRecords.md) | computed | BIGINT |
+| [orec](medicare.qc_enrollments/orec.md) |  | string |
+| [state](medicare.qc_enrollments/state.md) |  | string |
+| [state_iso](medicare.qc_enrollments/state_iso.md) | computed | CHAR(5) |
+| [year](medicare.qc_enrollments/year.md) |  | string |
+| [zip](medicare.qc_enrollments/zip.md) |  | string |
 
 

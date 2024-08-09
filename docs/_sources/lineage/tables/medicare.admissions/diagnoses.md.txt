@@ -47,7 +47,7 @@ btrim(diag25)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses.svg
 :align: center
 :alt: Column medicare.admissions.diagnoses Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses_svg_envelop.md
+:target: diagnoses_svg_envelop.html
 
 Data lineage for column medicare.admissions.diagnoses
 

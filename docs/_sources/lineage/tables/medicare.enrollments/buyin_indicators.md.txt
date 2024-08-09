@@ -21,7 +21,7 @@ MAX(buyin_indicators)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/buyin_indicators.svg
 :align: center
 :alt: Column medicare.enrollments.buyin_indicators Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/buyin_indicators_svg_envelop.md
+:target: buyin_indicators_svg_envelop.html
 
 Data lineage for column medicare.enrollments.buyin_indicators
 

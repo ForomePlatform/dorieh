@@ -21,7 +21,7 @@ made by Medicare.
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/mdcr_pmt_amt.svg
 :align: center
 :alt: Column medicare.ip.mdcr_pmt_amt Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/mdcr_pmt_amt_svg_envelop.md
+:target: mdcr_pmt_amt_svg_envelop.html
 
 Data lineage for column medicare.ip.mdcr_pmt_amt
 

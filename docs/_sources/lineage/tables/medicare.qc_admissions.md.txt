@@ -25,7 +25,7 @@ FROM medicare.qc_adm_union
 
 GROUP BY year,state,zip,reason;
 
-COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.192536';
+COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.208022';
 ```
 
 </details>
@@ -35,13 +35,13 @@ COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"ver
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [bene_hll](medicare.qc_admissions/bene_hll.html) | computed | string |
-| [NumDistinctBeneficaries](medicare.qc_admissions/NumDistinctBeneficaries.html) | computed | BIGINT |
-| [NumRecords](medicare.qc_admissions/NumRecords.html) | computed | BIGINT |
-| [reason](medicare.qc_admissions/reason.html) |  | string |
-| [state](medicare.qc_admissions/state.html) |  | string |
-| [state_iso](medicare.qc_admissions/state_iso.html) | computed | CHAR(5) |
-| [year](medicare.qc_admissions/year.html) |  | string |
-| [zip](medicare.qc_admissions/zip.html) |  | string |
+| [bene_hll](medicare.qc_admissions/bene_hll.md) | computed | string |
+| [NumDistinctBeneficaries](medicare.qc_admissions/NumDistinctBeneficaries.md) | computed | BIGINT |
+| [NumRecords](medicare.qc_admissions/NumRecords.md) | computed | BIGINT |
+| [reason](medicare.qc_admissions/reason.md) |  | string |
+| [state](medicare.qc_admissions/state.md) |  | string |
+| [state_iso](medicare.qc_admissions/state_iso.md) | computed | CHAR(5) |
+| [year](medicare.qc_admissions/year.md) |  | string |
+| [zip](medicare.qc_admissions/zip.md) |  | string |
 
 

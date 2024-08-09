@@ -30,7 +30,7 @@ State Code
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/state.svg
 :align: center
 :alt: Column medicare.ip.state Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/state_svg_envelop.md
+:target: state_svg_envelop.html
 
 Data lineage for column medicare.ip.state
 

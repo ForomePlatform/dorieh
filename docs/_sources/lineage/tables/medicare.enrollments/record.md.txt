@@ -30,7 +30,7 @@ string_agg(distinct RECORD::VARCHAR, ',')
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/record.svg
 :align: center
 :alt: Column medicare.enrollments.record Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/record_svg_envelop.md
+:target: record_svg_envelop.html
 
 Data lineage for column medicare.enrollments.record
 

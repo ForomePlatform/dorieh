@@ -13,7 +13,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/consistent_dob.svg
 :align: center
 :alt: Column medicare.qc_enrollments.consistent_dob Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/consistent_dob_svg_envelop.md
+:target: consistent_dob_svg_envelop.html
 
 Data lineage for column medicare.qc_enrollments.consistent_dob
 

@@ -24,7 +24,7 @@ END
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/age_min.svg
 :align: center
 :alt: Column medicare._enrollments.age_min Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/age_min_svg_envelop.md
+:target: age_min_svg_envelop.html
 
 Data lineage for column medicare._enrollments.age_min
 

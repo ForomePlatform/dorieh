@@ -32,7 +32,7 @@ Beneficiary Race Code
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/race.svg
 :align: center
 :alt: Column medicare.ps.race Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/race_svg_envelop.md
+:target: race_svg_envelop.html
 
 Data lineage for column medicare.ps.race
 

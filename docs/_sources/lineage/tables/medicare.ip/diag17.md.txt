@@ -13,7 +13,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag17.svg
 :align: center
 :alt: Column medicare.ip.diag17 Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag17_svg_envelop.md
+:target: diag17_svg_envelop.html
 
 Data lineage for column medicare.ip.diag17
 

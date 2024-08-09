@@ -21,7 +21,7 @@ MIN(dob)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.dob Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob_svg_envelop.md
+:target: dob_svg_envelop.html
 
 Data lineage for column medicare.qc_enrl_bene.dob
 

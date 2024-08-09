@@ -21,7 +21,7 @@ MAX(hmo_cvg_count)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/hmo_cvg_count.svg
 :align: center
 :alt: Column medicare.enrollments.hmo_cvg_count Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/hmo_cvg_count_svg_envelop.md
+:target: hmo_cvg_count_svg_envelop.html
 
 Data lineage for column medicare.enrollments.hmo_cvg_count
 

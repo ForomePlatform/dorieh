@@ -21,7 +21,7 @@ GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/icd_hll.svg
 :align: center
 :alt: Column medicare.qc_adm_union.icd_hll Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/icd_hll_svg_envelop.md
+:target: icd_hll_svg_envelop.html
 
 Data lineage for column medicare.qc_adm_union.icd_hll
 

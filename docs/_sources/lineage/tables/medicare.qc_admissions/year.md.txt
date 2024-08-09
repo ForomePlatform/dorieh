@@ -22,7 +22,7 @@ Beneficiary Enrollment Reference Year
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/year.svg
 :align: center
 :alt: Column medicare.qc_admissions.year Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/year_svg_envelop.md
+:target: year_svg_envelop.html
 
 Data lineage for column medicare.qc_admissions.year
 

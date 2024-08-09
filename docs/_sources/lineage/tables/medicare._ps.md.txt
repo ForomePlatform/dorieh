@@ -30,7 +30,7 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 FROM medicare.ps
 ;
 
-COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.158885';
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.174483';
 ```
 
 </details>
@@ -40,32 +40,32 @@ COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [age](medicare._ps/age.html) | copied | INT |
-| [bene_id](medicare._ps/bene_id.html) | copied | string |
-| [buyin_cvg_count](medicare._ps/buyin_cvg_count.html) | copied | INT |
-| [buyin_indicators](medicare._ps/buyin_indicators.html) | copied | CHAR(1)[12] |
-| [curec](medicare._ps/curec.html) | copied | INT |
-| [dob](medicare._ps/dob.html) | copied | date |
-| [dod](medicare._ps/dod.html) | copied | date |
-| [dod_ndi](medicare._ps/dod_ndi.html) | copied | DATE |
-| [file](medicare._ps/file.html) | copied | string |
-| [fips2](medicare._ps/fips2.html) | copied | string |
-| [fips3](medicare._ps/fips3.html) | computed | string |
-| [fips3_is_approximated](medicare._ps/fips3_is_approximated.html) | computed | string |
-| [fips3_list](medicare._ps/fips3_list.html) | computed | string |
-| [hmo_cvg_count](medicare._ps/hmo_cvg_count.html) | copied | INT |
-| [hmo_indicators](medicare._ps/hmo_indicators.html) | copied | CHAR(1)[12] |
-| [orec](medicare._ps/orec.html) | copied | INT |
-| [race](medicare._ps/race.html) | copied | VARCHAR |
-| [race_rti](medicare._ps/race_rti.html) | copied | string |
-| [record](medicare._ps/record.html) | copied | string |
-| [sex](medicare._ps/sex.html) | copied | VARCHAR |
-| [ssa2](medicare._ps/ssa2.html) | copied | string |
-| [ssa3](medicare._ps/ssa3.html) | copied | string |
-| [state](medicare._ps/state.html) | copied | string |
-| [year](medicare._ps/year.html) | copied | string |
-| [yob](medicare._ps/yob.html) | computed | string |
-| [zip](medicare._ps/zip.html) | copied | INT |
-| [zip4](medicare._ps/zip4.html) | copied | INT |
+| [age](medicare._ps/age.md) | copied | INT |
+| [bene_id](medicare._ps/bene_id.md) | copied | string |
+| [buyin_cvg_count](medicare._ps/buyin_cvg_count.md) | copied | INT |
+| [buyin_indicators](medicare._ps/buyin_indicators.md) | copied | CHAR(1)[12] |
+| [curec](medicare._ps/curec.md) | copied | INT |
+| [dob](medicare._ps/dob.md) | copied | date |
+| [dod](medicare._ps/dod.md) | copied | date |
+| [dod_ndi](medicare._ps/dod_ndi.md) | copied | DATE |
+| [file](medicare._ps/file.md) | copied | string |
+| [fips2](medicare._ps/fips2.md) | copied | string |
+| [fips3](medicare._ps/fips3.md) | computed | string |
+| [fips3_is_approximated](medicare._ps/fips3_is_approximated.md) | computed | string |
+| [fips3_list](medicare._ps/fips3_list.md) | computed | string |
+| [hmo_cvg_count](medicare._ps/hmo_cvg_count.md) | copied | INT |
+| [hmo_indicators](medicare._ps/hmo_indicators.md) | copied | CHAR(1)[12] |
+| [orec](medicare._ps/orec.md) | copied | INT |
+| [race](medicare._ps/race.md) | copied | VARCHAR |
+| [race_rti](medicare._ps/race_rti.md) | copied | string |
+| [record](medicare._ps/record.md) | copied | string |
+| [sex](medicare._ps/sex.md) | copied | VARCHAR |
+| [ssa2](medicare._ps/ssa2.md) | copied | string |
+| [ssa3](medicare._ps/ssa3.md) | copied | string |
+| [state](medicare._ps/state.md) | copied | string |
+| [year](medicare._ps/year.md) | copied | string |
+| [yob](medicare._ps/yob.md) | computed | string |
+| [zip](medicare._ps/zip.md) | copied | INT |
+| [zip4](medicare._ps/zip4.md) | copied | INT |
 
 

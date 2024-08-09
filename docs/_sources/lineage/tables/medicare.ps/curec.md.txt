@@ -22,7 +22,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/curec.svg
 :align: center
 :alt: Column medicare.ps.curec Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/curec_svg_envelop.md
+:target: curec_svg_envelop.html
 
 Data lineage for column medicare.ps.curec
 

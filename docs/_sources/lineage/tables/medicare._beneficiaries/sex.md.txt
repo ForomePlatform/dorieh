@@ -31,7 +31,7 @@ string_agg(distinct sex, ',')
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/sex.svg
 :align: center
 :alt: Column medicare._beneficiaries.sex Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/sex_svg_envelop.md
+:target: sex_svg_envelop.html
 
 Data lineage for column medicare._beneficiaries.sex
 

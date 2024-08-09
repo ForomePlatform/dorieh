@@ -13,7 +13,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/fips3_is_approximated.svg
 :align: center
 :alt: Column medicare.qc_enrollments.fips3_is_approximated Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/fips3_is_approximated_svg_envelop.md
+:target: fips3_is_approximated_svg_envelop.html
 
 Data lineage for column medicare.qc_enrollments.fips3_is_approximated
 

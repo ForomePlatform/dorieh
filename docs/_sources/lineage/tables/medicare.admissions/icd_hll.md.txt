@@ -21,7 +21,7 @@ GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/icd_hll.svg
 :align: center
 :alt: Column medicare.admissions.icd_hll Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/icd_hll_svg_envelop.md
+:target: icd_hll_svg_envelop.html
 
 Data lineage for column medicare.admissions.icd_hll
 

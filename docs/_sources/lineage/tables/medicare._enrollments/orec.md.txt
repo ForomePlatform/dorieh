@@ -30,7 +30,7 @@ MAX(orec)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/orec.svg
 :align: center
 :alt: Column medicare._enrollments.orec Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/orec_svg_envelop.md
+:target: orec_svg_envelop.html
 
 Data lineage for column medicare._enrollments.orec
 

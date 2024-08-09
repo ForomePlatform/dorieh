@@ -25,7 +25,7 @@ END
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died.svg
 :align: center
 :alt: Column medicare._enrollments.died Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died_svg_envelop.md
+:target: died_svg_envelop.html
 
 Data lineage for column medicare._enrollments.died
 

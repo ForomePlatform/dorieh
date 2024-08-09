@@ -21,7 +21,7 @@ MAX(ssa3)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/ssa3.svg
 :align: center
 :alt: Column medicare._enrollments.ssa3 Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/ssa3_svg_envelop.md
+:target: ssa3_svg_envelop.html
 
 Data lineage for column medicare._enrollments.ssa3
 

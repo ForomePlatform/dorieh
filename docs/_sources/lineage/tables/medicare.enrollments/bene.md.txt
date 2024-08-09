@@ -30,7 +30,7 @@ GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/bene.svg
 :align: center
 :alt: Column medicare.enrollments.bene Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/bene_svg_envelop.md
+:target: bene_svg_envelop.html
 
 Data lineage for column medicare.enrollments.bene
 

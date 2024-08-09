@@ -30,7 +30,7 @@ GENERATED ALWAYS AS (MEDPAR_YR_NUM) STORED
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2012/year.svg
 :align: center
 :alt: Column cms.medpar_2012.YEAR Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2012/year_svg_envelop.md
+:target: year_svg_envelop.html
 
 Data lineage for column cms.medpar_2012.YEAR
 

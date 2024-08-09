@@ -260,7 +260,7 @@ $body$ LANGUAGE plpgsql;
 
 CREATE TRIGGER medicare_admissions_validation BEFORE INSERT ON medicare.admissions
         FOR EACH ROW EXECUTE FUNCTION medicare.validate_admissions();
-COMMENT ON table medicare.admissions IS &#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;b63015584c99e2550f9661a990c7cf3d6f1a6d88&quot;}. Created at 2024-08-08 23:03:03.183477&#39;;
+COMMENT ON table medicare.admissions IS &#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;3cb956a7ffe1cbdd448a505d309ac5203d36f999&quot;}. Created at 2024-08-09 02:04:35.198651&#39;;
 </pre></div>
 </div>
 </details>
@@ -276,143 +276,143 @@ COMMENT ON table medicare.admissions IS &#39;CREATED BY Dorieh: {&quot;version&q
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/adm_day_of_week.html"><span class="xref myst">adm_day_of_week</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/adm_day_of_week.html"><span class="std std-doc">adm_day_of_week</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>INT</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/admission_date.html"><span class="xref myst">admission_date</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/admission_date.html"><span class="std std-doc">admission_date</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>DATE</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/admission_date_raw.html"><span class="xref myst">admission_date_raw</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/admission_date_raw.html"><span class="std std-doc">admission_date_raw</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>VARCHAR</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/admission_year.html"><span class="xref myst">admission_year</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/admission_year.html"><span class="std std-doc">admission_year</span></a></p></td>
 <td><p>generated</p></td>
 <td><p>INT</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/admsn_type_cd.html"><span class="xref myst">admsn_type_cd</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/admsn_type_cd.html"><span class="std std-doc">admsn_type_cd</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>CHAR(1)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/bene.html"><span class="xref myst">bene</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/bene.html"><span class="std std-doc">bene</span></a></p></td>
 <td><p>generated</p></td>
 <td><p>HLL_HASHVAL</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/bene_blood_ddctbl_amt.html"><span class="xref myst">bene_blood_ddctbl_amt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/bene_blood_ddctbl_amt.html"><span class="std std-doc">bene_blood_ddctbl_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/bene_id.html"><span class="xref myst">bene_id</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/bene_id.html"><span class="std std-doc">bene_id</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/bene_ip_ddctbl_amt.html"><span class="xref myst">bene_ip_ddctbl_amt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/bene_ip_ddctbl_amt.html"><span class="std std-doc">bene_ip_ddctbl_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/bene_prmry_pyr_amt.html"><span class="xref myst">bene_prmry_pyr_amt</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/bene_prmry_pyr_amt.html"><span class="std std-doc">bene_prmry_pyr_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/bene_pta_coinsrnc_amt.html"><span class="xref myst">bene_pta_coinsrnc_amt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/bene_pta_coinsrnc_amt.html"><span class="std std-doc">bene_pta_coinsrnc_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/diagnoses.html"><span class="xref myst">diagnoses</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/diagnoses.html"><span class="std std-doc">diagnoses</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/discharge_date.html"><span class="xref myst">discharge_date</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/discharge_date.html"><span class="std std-doc">discharge_date</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>DATE</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/discharge_date_raw.html"><span class="xref myst">discharge_date_raw</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/discharge_date_raw.html"><span class="std std-doc">discharge_date_raw</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>VARCHAR</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/drg_outlier_pmt_amt.html"><span class="xref myst">drg_outlier_pmt_amt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/drg_outlier_pmt_amt.html"><span class="std std-doc">drg_outlier_pmt_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/drg_price_amt.html"><span class="xref myst">drg_price_amt</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/drg_price_amt.html"><span class="std std-doc">drg_price_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/dschrg_dstntn_cd.html"><span class="xref myst">dschrg_dstntn_cd</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/dschrg_dstntn_cd.html"><span class="std std-doc">dschrg_dstntn_cd</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>CHAR(2)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/dschrgcd.html"><span class="xref myst">dschrgcd</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/dschrgcd.html"><span class="std std-doc">dschrgcd</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>CHAR(1)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/file.html"><span class="xref myst">file</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/file.html"><span class="std std-doc">file</span></a></p></td>
 <td><p></p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/fips2.html"><span class="xref myst">fips2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/fips2.html"><span class="std std-doc">fips2</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/icd_hll.html"><span class="xref myst">icd_hll</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/icd_hll.html"><span class="std std-doc">icd_hll</span></a></p></td>
 <td><p>generated</p></td>
 <td><p>HLL</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/los_day_cnt.html"><span class="xref myst">los_day_cnt</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/los_day_cnt.html"><span class="std std-doc">los_day_cnt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>INT</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/mdcr_pmt_amt.html"><span class="xref myst">mdcr_pmt_amt</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/mdcr_pmt_amt.html"><span class="std std-doc">mdcr_pmt_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/pass_thru_amt.html"><span class="xref myst">pass_thru_amt</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/pass_thru_amt.html"><span class="std std-doc">pass_thru_amt</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>NUMERIC</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/pd_hll_hash.html"><span class="xref myst">pd_hll_hash</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/pd_hll_hash.html"><span class="std std-doc">pd_hll_hash</span></a></p></td>
 <td><p>generated</p></td>
 <td><p>HLL_HASHVAL</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/primary_diagnosis.html"><span class="xref myst">primary_diagnosis</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/primary_diagnosis.html"><span class="std std-doc">primary_diagnosis</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/quality.html"><span class="xref myst">quality</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/quality.html"><span class="std std-doc">quality</span></a></p></td>
 <td><p></p></td>
 <td><p>VARCHAR(12) DEFAULT ‘PASS’</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/record.html"><span class="xref myst">record</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/record.html"><span class="std std-doc">record</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/src_admsn_cd.html"><span class="xref myst">src_admsn_cd</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/src_admsn_cd.html"><span class="std std-doc">src_admsn_cd</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>CHAR(1)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/ssa2.html"><span class="xref myst">ssa2</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/ssa2.html"><span class="std std-doc">ssa2</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/state.html"><span class="xref myst">state</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/state.html"><span class="std std-doc">state</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/state_iso.html"><span class="xref myst">state_iso</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/state_iso.html"><span class="std std-doc">state_iso</span></a></p></td>
 <td><p>generated</p></td>
 <td><p>char(5)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/year.html"><span class="xref myst">year</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/year.html"><span class="std std-doc">year</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>INT</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.admissions/zip.html"><span class="xref myst">zip</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="medicare.admissions/zip.html"><span class="std std-doc">zip</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>INT</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference internal" href="#medicare.admissions/zip4.html"><span class="xref myst">zip4</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="medicare.admissions/zip4.html"><span class="std std-doc">zip4</span></a></p></td>
 <td><p>copied</p></td>
 <td><p>INT</p></td>
 </tr>

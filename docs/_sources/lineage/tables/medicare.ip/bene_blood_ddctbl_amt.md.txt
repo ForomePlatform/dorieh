@@ -19,7 +19,7 @@ The amount of money (rounded to whole dollars) identified as the beneficiary's l
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/bene_blood_ddctbl_amt.svg
 :align: center
 :alt: Column medicare.ip.bene_blood_ddctbl_amt Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/bene_blood_ddctbl_amt_svg_envelop.md
+:target: bene_blood_ddctbl_amt_svg_envelop.html
 
 Data lineage for column medicare.ip.bene_blood_ddctbl_amt
 

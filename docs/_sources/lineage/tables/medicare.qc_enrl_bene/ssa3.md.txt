@@ -21,7 +21,7 @@ MAX(ssa3)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.ssa3 Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3_svg_envelop.md
+:target: ssa3_svg_envelop.html
 
 Data lineage for column medicare.qc_enrl_bene.ssa3
 

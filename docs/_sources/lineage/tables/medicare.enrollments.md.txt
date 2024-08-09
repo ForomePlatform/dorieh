@@ -26,7 +26,7 @@ ALTER table medicare.enrollments ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS
 ALTER table medicare.enrollments ADD PRIMARY KEY (bene_id, year, state);
 ALTER table medicare.enrollments ADD CONSTRAINT enrollments_to_beneficiaries FOREIGN KEY (bene_id) REFERENCES medicare.beneficiaries (bene_id);
 
-COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.161407';
+COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.176822';
 ```
 
 </details>
@@ -36,40 +36,40 @@ COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1"
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [age](medicare.enrollments/age.html) | copied | string |
-| [age_min](medicare.enrollments/age_min.html) | copied | string |
-| [bene](medicare.enrollments/bene.html) | generated | HLL_HASHVAL |
-| [bene_id](medicare.enrollments/bene_id.html) | copied | string |
-| [buyin](medicare.enrollments/buyin.html) | generated | boolean |
-| [buyin_cvg_count](medicare.enrollments/buyin_cvg_count.html) | copied | string |
-| [buyin_indicators](medicare.enrollments/buyin_indicators.html) | copied | string |
-| [curec](medicare.enrollments/curec.html) | copied | string |
-| [died](medicare.enrollments/died.html) | copied | string |
-| [dual](medicare.enrollments/dual.html) | generated | boolean |
-| [dual_cvg_count](medicare.enrollments/dual_cvg_count.html) | copied | string |
-| [dual_indicators](medicare.enrollments/dual_indicators.html) | copied | string |
-| [file](medicare.enrollments/file.html) | copied | string |
-| [fips2](medicare.enrollments/fips2.html) | copied | string |
-| [fips3](medicare.enrollments/fips3.html) | copied | string |
-| [fips3_is_approximated](medicare.enrollments/fips3_is_approximated.html) | copied | string |
-| [fips3_valdiated](medicare.enrollments/fips3_valdiated.html) | copied | string |
-| [fips5](medicare.enrollments/fips5.html) | copied | string |
-| [hmo](medicare.enrollments/hmo.html) | generated | boolean |
-| [hmo_cvg_count](medicare.enrollments/hmo_cvg_count.html) | copied | string |
-| [hmo_indicators](medicare.enrollments/hmo_indicators.html) | copied | string |
-| [orec](medicare.enrollments/orec.html) | copied | string |
-| [record](medicare.enrollments/record.html) | copied | string |
-| [residence_counties](medicare.enrollments/residence_counties.html) | copied | string |
-| [residence_county](medicare.enrollments/residence_county.html) | copied | string |
-| [ssa2](medicare.enrollments/ssa2.html) | copied | string |
-| [ssa2_list](medicare.enrollments/ssa2_list.html) | copied | string |
-| [ssa3](medicare.enrollments/ssa3.html) | copied | string |
-| [ssa3_list](medicare.enrollments/ssa3_list.html) | copied | string |
-| [state](medicare.enrollments/state.html) | copied | string |
-| [state_count](medicare.enrollments/state_count.html) | copied | string |
-| [state_iso](medicare.enrollments/state_iso.html) | copied | char(5) |
-| [year](medicare.enrollments/year.html) | copied | string |
-| [zip](medicare.enrollments/zip.html) | copied | string |
-| [zips](medicare.enrollments/zips.html) | copied | string |
+| [age](medicare.enrollments/age.md) | copied | string |
+| [age_min](medicare.enrollments/age_min.md) | copied | string |
+| [bene](medicare.enrollments/bene.md) | generated | HLL_HASHVAL |
+| [bene_id](medicare.enrollments/bene_id.md) | copied | string |
+| [buyin](medicare.enrollments/buyin.md) | generated | boolean |
+| [buyin_cvg_count](medicare.enrollments/buyin_cvg_count.md) | copied | string |
+| [buyin_indicators](medicare.enrollments/buyin_indicators.md) | copied | string |
+| [curec](medicare.enrollments/curec.md) | copied | string |
+| [died](medicare.enrollments/died.md) | copied | string |
+| [dual](medicare.enrollments/dual.md) | generated | boolean |
+| [dual_cvg_count](medicare.enrollments/dual_cvg_count.md) | copied | string |
+| [dual_indicators](medicare.enrollments/dual_indicators.md) | copied | string |
+| [file](medicare.enrollments/file.md) | copied | string |
+| [fips2](medicare.enrollments/fips2.md) | copied | string |
+| [fips3](medicare.enrollments/fips3.md) | copied | string |
+| [fips3_is_approximated](medicare.enrollments/fips3_is_approximated.md) | copied | string |
+| [fips3_valdiated](medicare.enrollments/fips3_valdiated.md) | copied | string |
+| [fips5](medicare.enrollments/fips5.md) | copied | string |
+| [hmo](medicare.enrollments/hmo.md) | generated | boolean |
+| [hmo_cvg_count](medicare.enrollments/hmo_cvg_count.md) | copied | string |
+| [hmo_indicators](medicare.enrollments/hmo_indicators.md) | copied | string |
+| [orec](medicare.enrollments/orec.md) | copied | string |
+| [record](medicare.enrollments/record.md) | copied | string |
+| [residence_counties](medicare.enrollments/residence_counties.md) | copied | string |
+| [residence_county](medicare.enrollments/residence_county.md) | copied | string |
+| [ssa2](medicare.enrollments/ssa2.md) | copied | string |
+| [ssa2_list](medicare.enrollments/ssa2_list.md) | copied | string |
+| [ssa3](medicare.enrollments/ssa3.md) | copied | string |
+| [ssa3_list](medicare.enrollments/ssa3_list.md) | copied | string |
+| [state](medicare.enrollments/state.md) | copied | string |
+| [state_count](medicare.enrollments/state_count.md) | copied | string |
+| [state_iso](medicare.enrollments/state_iso.md) | copied | char(5) |
+| [year](medicare.enrollments/year.md) | copied | string |
+| [zip](medicare.enrollments/zip.md) | copied | string |
+| [zips](medicare.enrollments/zips.md) | copied | string |
 
 

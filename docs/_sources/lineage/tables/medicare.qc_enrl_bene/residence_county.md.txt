@@ -21,7 +21,7 @@ MAX(fips3)
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/residence_county.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.residence_county Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/residence_county_svg_envelop.md
+:target: residence_county_svg_envelop.html
 
 Data lineage for column medicare.qc_enrl_bene.residence_county
 

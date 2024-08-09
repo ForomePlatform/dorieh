@@ -22,7 +22,7 @@ Original Reason for Entitlement Code
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/orec.svg
 :align: center
 :alt: Column medicare.qc_enrollments.orec Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/orec_svg_envelop.md
+:target: orec_svg_envelop.html
 
 Data lineage for column medicare.qc_enrollments.orec
 

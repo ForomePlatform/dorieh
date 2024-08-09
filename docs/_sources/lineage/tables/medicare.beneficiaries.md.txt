@@ -20,7 +20,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.160434';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.175852';
 ```
 
 </details>
@@ -30,22 +30,22 @@ COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [all_enrollment_years](medicare.beneficiaries/all_enrollment_years.html) | copied | INT[] |
-| [bene](medicare.beneficiaries/bene.html) | generated | HLL_HASHVAL |
-| [bene_id](medicare.beneficiaries/bene_id.html) | copied | string |
-| [discrepancies](medicare.beneficiaries/discrepancies.html) | copied | string |
-| [dob](medicare.beneficiaries/dob.html) | copied | string |
-| [dob_latest](medicare.beneficiaries/dob_latest.html) | copied | string |
-| [dod](medicare.beneficiaries/dod.html) | copied | string |
-| [dod_earliest](medicare.beneficiaries/dod_earliest.html) | copied | string |
-| [first_enrollment_year](medicare.beneficiaries/first_enrollment_year.html) | copied | string |
-| [last_enrollment_year](medicare.beneficiaries/last_enrollment_year.html) | copied | string |
-| [number_of_gap_years](medicare.beneficiaries/number_of_gap_years.html) | generated | INT |
-| [orec](medicare.beneficiaries/orec.html) | copied | string |
-| [race](medicare.beneficiaries/race.html) | copied | string |
-| [race_rti](medicare.beneficiaries/race_rti.html) | copied | string |
-| [sex](medicare.beneficiaries/sex.html) | copied | string |
-| [yob](medicare.beneficiaries/yob.html) | copied | string |
-| [yob_latest](medicare.beneficiaries/yob_latest.html) | copied | string |
+| [all_enrollment_years](medicare.beneficiaries/all_enrollment_years.md) | copied | INT[] |
+| [bene](medicare.beneficiaries/bene.md) | generated | HLL_HASHVAL |
+| [bene_id](medicare.beneficiaries/bene_id.md) | copied | string |
+| [discrepancies](medicare.beneficiaries/discrepancies.md) | copied | string |
+| [dob](medicare.beneficiaries/dob.md) | copied | string |
+| [dob_latest](medicare.beneficiaries/dob_latest.md) | copied | string |
+| [dod](medicare.beneficiaries/dod.md) | copied | string |
+| [dod_earliest](medicare.beneficiaries/dod_earliest.md) | copied | string |
+| [first_enrollment_year](medicare.beneficiaries/first_enrollment_year.md) | copied | string |
+| [last_enrollment_year](medicare.beneficiaries/last_enrollment_year.md) | copied | string |
+| [number_of_gap_years](medicare.beneficiaries/number_of_gap_years.md) | generated | INT |
+| [orec](medicare.beneficiaries/orec.md) | copied | string |
+| [race](medicare.beneficiaries/race.md) | copied | string |
+| [race_rti](medicare.beneficiaries/race_rti.md) | copied | string |
+| [sex](medicare.beneficiaries/sex.md) | copied | string |
+| [yob](medicare.beneficiaries/yob.md) | copied | string |
+| [yob_latest](medicare.beneficiaries/yob_latest.md) | copied | string |
 
 

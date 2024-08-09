@@ -21,7 +21,7 @@ string_agg(distinct ssa2, ',')
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/ssa2_list.svg
 :align: center
 :alt: Column medicare.enrollments.ssa2_list Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/ssa2_list_svg_envelop.md
+:target: ssa2_list_svg_envelop.html
 
 Data lineage for column medicare.enrollments.ssa2_list
 

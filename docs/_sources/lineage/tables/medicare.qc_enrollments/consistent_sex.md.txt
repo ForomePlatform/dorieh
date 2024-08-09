@@ -13,7 +13,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/consistent_sex.svg
 :align: center
 :alt: Column medicare.qc_enrollments.consistent_sex Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/consistent_sex_svg_envelop.md
+:target: consistent_sex_svg_envelop.html
 
 Data lineage for column medicare.qc_enrollments.consistent_sex
 

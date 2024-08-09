@@ -30,7 +30,7 @@ GENERATED ALWAYS AS (BENE_ZIP) STORED
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_ab_2014/zip.svg
 :align: center
 :alt: Column cms.mbsf_ab_2014.ZIP Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_ab_2014/zip_svg_envelop.md
+:target: zip_svg_envelop.html
 
 Data lineage for column cms.mbsf_ab_2014.ZIP
 

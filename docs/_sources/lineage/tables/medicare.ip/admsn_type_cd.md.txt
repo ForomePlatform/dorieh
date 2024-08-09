@@ -22,7 +22,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/admsn_type_cd.svg
 :align: center
 :alt: Column medicare.ip.admsn_type_cd Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/admsn_type_cd_svg_envelop.md
+:target: admsn_type_cd_svg_envelop.html
 
 Data lineage for column medicare.ip.admsn_type_cd
 

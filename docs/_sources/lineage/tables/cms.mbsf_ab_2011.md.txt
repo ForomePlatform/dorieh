@@ -67,7 +67,7 @@ CREATE TABLE  cms.mbsf_ab_2011 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  mbsf_ab_2011_FILE_idx ON cms.mbsf_ab_2011 USING BTREE (FILE) ;
-COMMENT ON table cms.mbsf_ab_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:02:56.325237';
+COMMENT ON table cms.mbsf_ab_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:28.286621';
 ```
 
 </details>
@@ -77,61 +77,61 @@ COMMENT ON table cms.mbsf_ab_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "u
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [A_MO_CNT](cms.mbsf_ab_2011/A_MO_CNT.html) |  | INT |
-| [A_TRM_CD](cms.mbsf_ab_2011/A_TRM_CD.html) |  | VARCHAR(1) |
-| [AGE](cms.mbsf_ab_2011/AGE.html) |  | INT |
-| [B_MO_CNT](cms.mbsf_ab_2011/B_MO_CNT.html) |  | INT |
-| [B_TRM_CD](cms.mbsf_ab_2011/B_TRM_CD.html) |  | VARCHAR(1) |
-| [BENE_DOB](cms.mbsf_ab_2011/BENE_DOB.html) |  | DATE |
-| [BENE_ID](cms.mbsf_ab_2011/BENE_ID.html) |  | VARCHAR(15) |
-| [BENE_ZIP](cms.mbsf_ab_2011/BENE_ZIP.html) |  | VARCHAR(9) |
-| [BUYIN01](cms.mbsf_ab_2011/BUYIN01.html) |  | VARCHAR(1) |
-| [BUYIN02](cms.mbsf_ab_2011/BUYIN02.html) |  | VARCHAR(1) |
-| [BUYIN03](cms.mbsf_ab_2011/BUYIN03.html) |  | VARCHAR(1) |
-| [BUYIN04](cms.mbsf_ab_2011/BUYIN04.html) |  | VARCHAR(1) |
-| [BUYIN05](cms.mbsf_ab_2011/BUYIN05.html) |  | VARCHAR(1) |
-| [BUYIN06](cms.mbsf_ab_2011/BUYIN06.html) |  | VARCHAR(1) |
-| [BUYIN07](cms.mbsf_ab_2011/BUYIN07.html) |  | VARCHAR(1) |
-| [BUYIN08](cms.mbsf_ab_2011/BUYIN08.html) |  | VARCHAR(1) |
-| [BUYIN09](cms.mbsf_ab_2011/BUYIN09.html) |  | VARCHAR(1) |
-| [BUYIN10](cms.mbsf_ab_2011/BUYIN10.html) |  | VARCHAR(1) |
-| [BUYIN11](cms.mbsf_ab_2011/BUYIN11.html) |  | VARCHAR(1) |
-| [BUYIN12](cms.mbsf_ab_2011/BUYIN12.html) |  | VARCHAR(1) |
-| [BUYIN_MO](cms.mbsf_ab_2011/BUYIN_MO.html) |  | INT |
-| [CNTY_CD](cms.mbsf_ab_2011/CNTY_CD.html) |  | VARCHAR(3) |
-| [COVSTART](cms.mbsf_ab_2011/COVSTART.html) |  | DATE |
-| [CREC](cms.mbsf_ab_2011/CREC.html) |  | VARCHAR(1) |
-| [CRNT_BIC](cms.mbsf_ab_2011/CRNT_BIC.html) |  | VARCHAR(2) |
-| [DEATH_DT](cms.mbsf_ab_2011/DEATH_DT.html) |  | DATE |
-| [EFIVEPCT](cms.mbsf_ab_2011/EFIVEPCT.html) |  | VARCHAR(1) |
-| [ESRD_IND](cms.mbsf_ab_2011/ESRD_IND.html) |  | VARCHAR(1) |
-| [FILE](cms.mbsf_ab_2011/FILE.html) | file | VARCHAR(128) |
-| [FIVEPCT](cms.mbsf_ab_2011/FIVEPCT.html) |  | VARCHAR(1) |
-| [HMO_MO](cms.mbsf_ab_2011/HMO_MO.html) |  | INT |
-| [HMOIND01](cms.mbsf_ab_2011/HMOIND01.html) |  | VARCHAR(1) |
-| [HMOIND02](cms.mbsf_ab_2011/HMOIND02.html) |  | VARCHAR(1) |
-| [HMOIND03](cms.mbsf_ab_2011/HMOIND03.html) |  | VARCHAR(1) |
-| [HMOIND04](cms.mbsf_ab_2011/HMOIND04.html) |  | VARCHAR(1) |
-| [HMOIND05](cms.mbsf_ab_2011/HMOIND05.html) |  | VARCHAR(1) |
-| [HMOIND06](cms.mbsf_ab_2011/HMOIND06.html) |  | VARCHAR(1) |
-| [HMOIND07](cms.mbsf_ab_2011/HMOIND07.html) |  | VARCHAR(1) |
-| [HMOIND08](cms.mbsf_ab_2011/HMOIND08.html) |  | VARCHAR(1) |
-| [HMOIND09](cms.mbsf_ab_2011/HMOIND09.html) |  | VARCHAR(1) |
-| [HMOIND10](cms.mbsf_ab_2011/HMOIND10.html) |  | VARCHAR(1) |
-| [HMOIND11](cms.mbsf_ab_2011/HMOIND11.html) |  | VARCHAR(1) |
-| [HMOIND12](cms.mbsf_ab_2011/HMOIND12.html) |  | VARCHAR(1) |
-| [MS_CD](cms.mbsf_ab_2011/MS_CD.html) |  | VARCHAR(2) |
-| [NDI_DEATH_DT](cms.mbsf_ab_2011/NDI_DEATH_DT.html) |  | DATE |
-| [OREC](cms.mbsf_ab_2011/OREC.html) |  | VARCHAR(1) |
-| [RACE](cms.mbsf_ab_2011/RACE.html) |  | VARCHAR(1) |
-| [RECORD](cms.mbsf_ab_2011/RECORD.html) |  | BIGSERIAL |
-| [RFRNC_YR](cms.mbsf_ab_2011/RFRNC_YR.html) |  | INT |
-| [RTI_RACE_CD](cms.mbsf_ab_2011/RTI_RACE_CD.html) |  | VARCHAR(1) |
-| [SEX](cms.mbsf_ab_2011/SEX.html) |  | VARCHAR(1) |
-| [STATE](cms.mbsf_ab_2011/STATE.html) | generated | VARCHAR(2) |
-| [STATE_CD](cms.mbsf_ab_2011/STATE_CD.html) |  | VARCHAR(2) |
-| [V_DOD_SW](cms.mbsf_ab_2011/V_DOD_SW.html) |  | VARCHAR(1) |
-| [YEAR](cms.mbsf_ab_2011/YEAR.html) | generated | INT |
-| [ZIP](cms.mbsf_ab_2011/ZIP.html) | generated | VARCHAR(9) |
+| [A_MO_CNT](cms.mbsf_ab_2011/A_MO_CNT.md) |  | INT |
+| [A_TRM_CD](cms.mbsf_ab_2011/A_TRM_CD.md) |  | VARCHAR(1) |
+| [AGE](cms.mbsf_ab_2011/AGE.md) |  | INT |
+| [B_MO_CNT](cms.mbsf_ab_2011/B_MO_CNT.md) |  | INT |
+| [B_TRM_CD](cms.mbsf_ab_2011/B_TRM_CD.md) |  | VARCHAR(1) |
+| [BENE_DOB](cms.mbsf_ab_2011/BENE_DOB.md) |  | DATE |
+| [BENE_ID](cms.mbsf_ab_2011/BENE_ID.md) |  | VARCHAR(15) |
+| [BENE_ZIP](cms.mbsf_ab_2011/BENE_ZIP.md) |  | VARCHAR(9) |
+| [BUYIN01](cms.mbsf_ab_2011/BUYIN01.md) |  | VARCHAR(1) |
+| [BUYIN02](cms.mbsf_ab_2011/BUYIN02.md) |  | VARCHAR(1) |
+| [BUYIN03](cms.mbsf_ab_2011/BUYIN03.md) |  | VARCHAR(1) |
+| [BUYIN04](cms.mbsf_ab_2011/BUYIN04.md) |  | VARCHAR(1) |
+| [BUYIN05](cms.mbsf_ab_2011/BUYIN05.md) |  | VARCHAR(1) |
+| [BUYIN06](cms.mbsf_ab_2011/BUYIN06.md) |  | VARCHAR(1) |
+| [BUYIN07](cms.mbsf_ab_2011/BUYIN07.md) |  | VARCHAR(1) |
+| [BUYIN08](cms.mbsf_ab_2011/BUYIN08.md) |  | VARCHAR(1) |
+| [BUYIN09](cms.mbsf_ab_2011/BUYIN09.md) |  | VARCHAR(1) |
+| [BUYIN10](cms.mbsf_ab_2011/BUYIN10.md) |  | VARCHAR(1) |
+| [BUYIN11](cms.mbsf_ab_2011/BUYIN11.md) |  | VARCHAR(1) |
+| [BUYIN12](cms.mbsf_ab_2011/BUYIN12.md) |  | VARCHAR(1) |
+| [BUYIN_MO](cms.mbsf_ab_2011/BUYIN_MO.md) |  | INT |
+| [CNTY_CD](cms.mbsf_ab_2011/CNTY_CD.md) |  | VARCHAR(3) |
+| [COVSTART](cms.mbsf_ab_2011/COVSTART.md) |  | DATE |
+| [CREC](cms.mbsf_ab_2011/CREC.md) |  | VARCHAR(1) |
+| [CRNT_BIC](cms.mbsf_ab_2011/CRNT_BIC.md) |  | VARCHAR(2) |
+| [DEATH_DT](cms.mbsf_ab_2011/DEATH_DT.md) |  | DATE |
+| [EFIVEPCT](cms.mbsf_ab_2011/EFIVEPCT.md) |  | VARCHAR(1) |
+| [ESRD_IND](cms.mbsf_ab_2011/ESRD_IND.md) |  | VARCHAR(1) |
+| [FILE](cms.mbsf_ab_2011/FILE.md) | file | VARCHAR(128) |
+| [FIVEPCT](cms.mbsf_ab_2011/FIVEPCT.md) |  | VARCHAR(1) |
+| [HMO_MO](cms.mbsf_ab_2011/HMO_MO.md) |  | INT |
+| [HMOIND01](cms.mbsf_ab_2011/HMOIND01.md) |  | VARCHAR(1) |
+| [HMOIND02](cms.mbsf_ab_2011/HMOIND02.md) |  | VARCHAR(1) |
+| [HMOIND03](cms.mbsf_ab_2011/HMOIND03.md) |  | VARCHAR(1) |
+| [HMOIND04](cms.mbsf_ab_2011/HMOIND04.md) |  | VARCHAR(1) |
+| [HMOIND05](cms.mbsf_ab_2011/HMOIND05.md) |  | VARCHAR(1) |
+| [HMOIND06](cms.mbsf_ab_2011/HMOIND06.md) |  | VARCHAR(1) |
+| [HMOIND07](cms.mbsf_ab_2011/HMOIND07.md) |  | VARCHAR(1) |
+| [HMOIND08](cms.mbsf_ab_2011/HMOIND08.md) |  | VARCHAR(1) |
+| [HMOIND09](cms.mbsf_ab_2011/HMOIND09.md) |  | VARCHAR(1) |
+| [HMOIND10](cms.mbsf_ab_2011/HMOIND10.md) |  | VARCHAR(1) |
+| [HMOIND11](cms.mbsf_ab_2011/HMOIND11.md) |  | VARCHAR(1) |
+| [HMOIND12](cms.mbsf_ab_2011/HMOIND12.md) |  | VARCHAR(1) |
+| [MS_CD](cms.mbsf_ab_2011/MS_CD.md) |  | VARCHAR(2) |
+| [NDI_DEATH_DT](cms.mbsf_ab_2011/NDI_DEATH_DT.md) |  | DATE |
+| [OREC](cms.mbsf_ab_2011/OREC.md) |  | VARCHAR(1) |
+| [RACE](cms.mbsf_ab_2011/RACE.md) |  | VARCHAR(1) |
+| [RECORD](cms.mbsf_ab_2011/RECORD.md) |  | BIGSERIAL |
+| [RFRNC_YR](cms.mbsf_ab_2011/RFRNC_YR.md) |  | INT |
+| [RTI_RACE_CD](cms.mbsf_ab_2011/RTI_RACE_CD.md) |  | VARCHAR(1) |
+| [SEX](cms.mbsf_ab_2011/SEX.md) |  | VARCHAR(1) |
+| [STATE](cms.mbsf_ab_2011/STATE.md) | generated | VARCHAR(2) |
+| [STATE_CD](cms.mbsf_ab_2011/STATE_CD.md) |  | VARCHAR(2) |
+| [V_DOD_SW](cms.mbsf_ab_2011/V_DOD_SW.md) |  | VARCHAR(1) |
+| [YEAR](cms.mbsf_ab_2011/YEAR.md) | generated | INT |
+| [ZIP](cms.mbsf_ab_2011/ZIP.md) | generated | VARCHAR(9) |
 
 

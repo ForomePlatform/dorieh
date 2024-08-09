@@ -23,7 +23,7 @@
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrg_dstntn_cd.svg
 :align: center
 :alt: Column medicare.admissions.dschrg_dstntn_cd Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrg_dstntn_cd_svg_envelop.md
+:target: dschrg_dstntn_cd_svg_envelop.html
 
 Data lineage for column medicare.admissions.dschrg_dstntn_cd
 

@@ -21,7 +21,7 @@ to an outlier situation over the DRG allowance for the stay.
 ```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/drg_outlier_pmt_amt.svg
 :align: center
 :alt: Column medicare.admissions.drg_outlier_pmt_amt Lineage SVG
-:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/drg_outlier_pmt_amt_svg_envelop.md
+:target: drg_outlier_pmt_amt_svg_envelop.html
 
 Data lineage for column medicare.admissions.drg_outlier_pmt_amt
 

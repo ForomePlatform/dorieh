@@ -180,7 +180,7 @@ $body$ LANGUAGE plpgsql;
 
 CREATE TRIGGER medicare_admissions_validation BEFORE INSERT ON medicare.admissions
         FOR EACH ROW EXECUTE FUNCTION medicare.validate_admissions();
-COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.183477';
+COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.198651';
 ```
 
 </details>
@@ -190,40 +190,40 @@ COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.2.1",
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [adm_day_of_week](medicare.admissions/adm_day_of_week.html) | copied | INT |
-| [admission_date](medicare.admissions/admission_date.html) | copied | DATE |
-| [admission_date_raw](medicare.admissions/admission_date_raw.html) | copied | VARCHAR |
-| [admission_year](medicare.admissions/admission_year.html) | generated | INT |
-| [admsn_type_cd](medicare.admissions/admsn_type_cd.html) | copied | CHAR(1) |
-| [bene](medicare.admissions/bene.html) | generated | HLL_HASHVAL |
-| [bene_blood_ddctbl_amt](medicare.admissions/bene_blood_ddctbl_amt.html) | copied | NUMERIC |
-| [bene_id](medicare.admissions/bene_id.html) | copied | string |
-| [bene_ip_ddctbl_amt](medicare.admissions/bene_ip_ddctbl_amt.html) | copied | NUMERIC |
-| [bene_prmry_pyr_amt](medicare.admissions/bene_prmry_pyr_amt.html) | copied | NUMERIC |
-| [bene_pta_coinsrnc_amt](medicare.admissions/bene_pta_coinsrnc_amt.html) | copied | NUMERIC |
-| [diagnoses](medicare.admissions/diagnoses.html) | computed | string |
-| [discharge_date](medicare.admissions/discharge_date.html) | copied | DATE |
-| [discharge_date_raw](medicare.admissions/discharge_date_raw.html) | copied | VARCHAR |
-| [drg_outlier_pmt_amt](medicare.admissions/drg_outlier_pmt_amt.html) | copied | NUMERIC |
-| [drg_price_amt](medicare.admissions/drg_price_amt.html) | copied | NUMERIC |
-| [dschrg_dstntn_cd](medicare.admissions/dschrg_dstntn_cd.html) | copied | CHAR(2) |
-| [dschrgcd](medicare.admissions/dschrgcd.html) | copied | CHAR(1) |
-| [file](medicare.admissions/file.html) |  | string |
-| [fips2](medicare.admissions/fips2.html) | copied | string |
-| [icd_hll](medicare.admissions/icd_hll.html) | generated | HLL |
-| [los_day_cnt](medicare.admissions/los_day_cnt.html) | copied | INT |
-| [mdcr_pmt_amt](medicare.admissions/mdcr_pmt_amt.html) | copied | NUMERIC |
-| [pass_thru_amt](medicare.admissions/pass_thru_amt.html) | copied | NUMERIC |
-| [pd_hll_hash](medicare.admissions/pd_hll_hash.html) | generated | HLL_HASHVAL |
-| [primary_diagnosis](medicare.admissions/primary_diagnosis.html) | computed | string |
-| [quality](medicare.admissions/quality.html) |  | VARCHAR(12) DEFAULT 'PASS' |
-| [record](medicare.admissions/record.html) | copied | string |
-| [src_admsn_cd](medicare.admissions/src_admsn_cd.html) | copied | CHAR(1) |
-| [ssa2](medicare.admissions/ssa2.html) | copied | string |
-| [state](medicare.admissions/state.html) | copied | string |
-| [state_iso](medicare.admissions/state_iso.html) | generated | char(5) |
-| [year](medicare.admissions/year.html) | computed | INT |
-| [zip](medicare.admissions/zip.html) | copied | INT |
-| [zip4](medicare.admissions/zip4.html) | copied | INT |
+| [adm_day_of_week](medicare.admissions/adm_day_of_week.md) | copied | INT |
+| [admission_date](medicare.admissions/admission_date.md) | copied | DATE |
+| [admission_date_raw](medicare.admissions/admission_date_raw.md) | copied | VARCHAR |
+| [admission_year](medicare.admissions/admission_year.md) | generated | INT |
+| [admsn_type_cd](medicare.admissions/admsn_type_cd.md) | copied | CHAR(1) |
+| [bene](medicare.admissions/bene.md) | generated | HLL_HASHVAL |
+| [bene_blood_ddctbl_amt](medicare.admissions/bene_blood_ddctbl_amt.md) | copied | NUMERIC |
+| [bene_id](medicare.admissions/bene_id.md) | copied | string |
+| [bene_ip_ddctbl_amt](medicare.admissions/bene_ip_ddctbl_amt.md) | copied | NUMERIC |
+| [bene_prmry_pyr_amt](medicare.admissions/bene_prmry_pyr_amt.md) | copied | NUMERIC |
+| [bene_pta_coinsrnc_amt](medicare.admissions/bene_pta_coinsrnc_amt.md) | copied | NUMERIC |
+| [diagnoses](medicare.admissions/diagnoses.md) | computed | string |
+| [discharge_date](medicare.admissions/discharge_date.md) | copied | DATE |
+| [discharge_date_raw](medicare.admissions/discharge_date_raw.md) | copied | VARCHAR |
+| [drg_outlier_pmt_amt](medicare.admissions/drg_outlier_pmt_amt.md) | copied | NUMERIC |
+| [drg_price_amt](medicare.admissions/drg_price_amt.md) | copied | NUMERIC |
+| [dschrg_dstntn_cd](medicare.admissions/dschrg_dstntn_cd.md) | copied | CHAR(2) |
+| [dschrgcd](medicare.admissions/dschrgcd.md) | copied | CHAR(1) |
+| [file](medicare.admissions/file.md) |  | string |
+| [fips2](medicare.admissions/fips2.md) | copied | string |
+| [icd_hll](medicare.admissions/icd_hll.md) | generated | HLL |
+| [los_day_cnt](medicare.admissions/los_day_cnt.md) | copied | INT |
+| [mdcr_pmt_amt](medicare.admissions/mdcr_pmt_amt.md) | copied | NUMERIC |
+| [pass_thru_amt](medicare.admissions/pass_thru_amt.md) | copied | NUMERIC |
+| [pd_hll_hash](medicare.admissions/pd_hll_hash.md) | generated | HLL_HASHVAL |
+| [primary_diagnosis](medicare.admissions/primary_diagnosis.md) | computed | string |
+| [quality](medicare.admissions/quality.md) |  | VARCHAR(12) DEFAULT 'PASS' |
+| [record](medicare.admissions/record.md) | copied | string |
+| [src_admsn_cd](medicare.admissions/src_admsn_cd.md) | copied | CHAR(1) |
+| [ssa2](medicare.admissions/ssa2.md) | copied | string |
+| [state](medicare.admissions/state.md) | copied | string |
+| [state_iso](medicare.admissions/state_iso.md) | generated | char(5) |
+| [year](medicare.admissions/year.md) | computed | INT |
+| [zip](medicare.admissions/zip.md) | copied | INT |
+| [zip4](medicare.admissions/zip4.md) | copied | INT |
 
 

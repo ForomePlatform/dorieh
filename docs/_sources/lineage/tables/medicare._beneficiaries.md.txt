@@ -47,7 +47,7 @@ FROM medicare._ps
 WHERE bene_id IS NOT NULL
 GROUP BY bene_id;
 
-COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.159291';
+COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.174918';
 ```
 
 </details>
@@ -57,20 +57,20 @@ COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [all_enrollment_years](medicare._beneficiaries/all_enrollment_years.html) | computed | INT[] |
-| [bene_id](medicare._beneficiaries/bene_id.html) | grouping | string |
-| [discrepancies](medicare._beneficiaries/discrepancies.html) | computed | string |
-| [dob](medicare._beneficiaries/dob.html) | computed | string |
-| [dob_latest](medicare._beneficiaries/dob_latest.html) | computed | string |
-| [dod](medicare._beneficiaries/dod.html) | computed | string |
-| [dod_earliest](medicare._beneficiaries/dod_earliest.html) | computed | string |
-| [first_enrollment_year](medicare._beneficiaries/first_enrollment_year.html) | computed | string |
-| [last_enrollment_year](medicare._beneficiaries/last_enrollment_year.html) | computed | string |
-| [orec](medicare._beneficiaries/orec.html) | computed | string |
-| [race](medicare._beneficiaries/race.html) | computed | string |
-| [race_rti](medicare._beneficiaries/race_rti.html) | computed | string |
-| [sex](medicare._beneficiaries/sex.html) | computed | string |
-| [yob](medicare._beneficiaries/yob.html) | computed | string |
-| [yob_latest](medicare._beneficiaries/yob_latest.html) | computed | string |
+| [all_enrollment_years](medicare._beneficiaries/all_enrollment_years.md) | computed | INT[] |
+| [bene_id](medicare._beneficiaries/bene_id.md) | grouping | string |
+| [discrepancies](medicare._beneficiaries/discrepancies.md) | computed | string |
+| [dob](medicare._beneficiaries/dob.md) | computed | string |
+| [dob_latest](medicare._beneficiaries/dob_latest.md) | computed | string |
+| [dod](medicare._beneficiaries/dod.md) | computed | string |
+| [dod_earliest](medicare._beneficiaries/dod_earliest.md) | computed | string |
+| [first_enrollment_year](medicare._beneficiaries/first_enrollment_year.md) | computed | string |
+| [last_enrollment_year](medicare._beneficiaries/last_enrollment_year.md) | computed | string |
+| [orec](medicare._beneficiaries/orec.md) | computed | string |
+| [race](medicare._beneficiaries/race.md) | computed | string |
+| [race_rti](medicare._beneficiaries/race_rti.md) | computed | string |
+| [sex](medicare._beneficiaries/sex.md) | computed | string |
+| [yob](medicare._beneficiaries/yob.md) | computed | string |
+| [yob_latest](medicare._beneficiaries/yob_latest.md) | computed | string |
 
 
