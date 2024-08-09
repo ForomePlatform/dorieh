@@ -241,6 +241,7 @@ def create_graph_envelop(of: str, title: str, svg: str):
     content += "```\n\n"
     with open(fmd2, "wt") as out:
         print(content, file=out)
-    return fmd2
+    target = os.path.splitext(fmd2)[0] + ".html"
+    return os.path.basename(target)
 
 

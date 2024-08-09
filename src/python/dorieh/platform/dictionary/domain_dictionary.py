@@ -111,6 +111,7 @@ class DomainDict:
     def to_dot(self, out = sys.stdout):
         print("digraph {", file=out)
         print("\tnodesep = 0.5;  // even node distribution", file=out)
+        print('\tsize = "25,100";  // graph size in inches', file=out)
         self.print_top_nodes(out)
         self.print_other_nodes(out)
         for r in self.relations:
