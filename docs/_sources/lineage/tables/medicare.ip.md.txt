@@ -2,7 +2,10 @@
 
 ## Overview for medicare.ip
 
+
 ```{toctree}
+maxdepth: 1
+hidden:
 medicare.ip/adm_day_of_week.md
 medicare.ip/admission_date.md
 medicare.ip/admission_date_raw.md
@@ -56,6 +59,7 @@ medicare.ip/year.md
 medicare.ip/zip.md
 medicare.ip/zip4.md
 ```
+
 
 Inpatient Adminissions view. Combines multiple inpatient admissions
 files (aka MedPar) into a single view, transforming columns

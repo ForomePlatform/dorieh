@@ -2,7 +2,10 @@
 
 ## Overview for medicare.ps
 
+
 ```{toctree}
+maxdepth: 1
+hidden:
 medicare.ps/age.md
 medicare.ps/bene_id.md
 medicare.ps/buyin_cvg_count.md
@@ -27,6 +30,7 @@ medicare.ps/year.md
 medicare.ps/zip.md
 medicare.ps/zip4.md
 ```
+
 
 Patient Summary view. Combines multiple patient summary (aka MBSF)
 files into a single view, transforming columns to the same type

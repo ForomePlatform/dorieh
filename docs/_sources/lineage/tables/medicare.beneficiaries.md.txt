@@ -2,7 +2,10 @@
 
 ## Overview for medicare.beneficiaries
 
+
 ```{toctree}
+maxdepth: 1
+hidden:
 medicare.beneficiaries/all_enrollment_years.md
 medicare.beneficiaries/bene.md
 medicare.beneficiaries/bene_id.md
@@ -21,6 +24,7 @@ medicare.beneficiaries/sex.md
 medicare.beneficiaries/yob.md
 medicare.beneficiaries/yob_latest.md
 ```
+
 
 Cleaned up and unified Medicare beneficiaries table,
 indexed and optimized for efficient queries
@@ -41,7 +45,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.890695';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.951355';
 ```
 
 </details>

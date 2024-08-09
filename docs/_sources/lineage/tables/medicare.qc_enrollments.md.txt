@@ -2,7 +2,10 @@
 
 ## Overview for medicare.qc_enrollments
 
+
 ```{toctree}
+maxdepth: 1
+hidden:
 medicare.qc_enrollments/bene_hll.md
 medicare.qc_enrollments/buyin.md
 medicare.qc_enrollments/consistent_dob.md
@@ -23,6 +26,7 @@ medicare.qc_enrollments/state_iso.md
 medicare.qc_enrollments/year.md
 medicare.qc_enrollments/zip.md
 ```
+
 
 Aggregate data for beneficiaries and enrollments
 
@@ -59,7 +63,7 @@ FROM medicare.qc_enrl_bene
 
 GROUP BY year,state,zip,fips3,orec,curec,hmo,dual,buyin,consistent_dob,consistent_dod,consistent_sex,consistent_race,fips3_is_approximated,fips3_valdiated;
 
-COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.915540';
+COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.976628';
 ```
 
 </details>

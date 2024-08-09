@@ -2,7 +2,10 @@
 
 ## Overview for medicare.qc_admissions
 
+
 ```{toctree}
+maxdepth: 1
+hidden:
 medicare.qc_admissions/bene_hll.md
 medicare.qc_admissions/numdistinctbeneficaries.md
 medicare.qc_admissions/numrecords.md
@@ -12,6 +15,7 @@ medicare.qc_admissions/state_iso.md
 medicare.qc_admissions/year.md
 medicare.qc_admissions/zip.md
 ```
+
 
 Aggregate data for admissions, beneficiaries and enrollments
 
@@ -37,7 +41,7 @@ FROM medicare.qc_adm_union
 
 GROUP BY year,state,zip,reason;
 
-COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.923689';
+COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.984927';
 ```
 
 </details>
