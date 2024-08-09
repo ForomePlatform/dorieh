@@ -407,7 +407,7 @@ class Table(DataModelElement):
     @staticmethod
     def link_to_column(name: str, basedir: str, format: str = 'html') -> str:
         if format == 'markdown':
-            cpath = f'{basedir}/{name}.html'
+            cpath = f'{basedir}/{name}.md'
             return f"[{name}]({cpath})"
         cpath = f'{basedir}/{name}.html'
         return f'<a href="{cpath}">{name}</a>'
