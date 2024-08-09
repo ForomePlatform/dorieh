@@ -174,8 +174,8 @@ class DomainDict:
     def table_toctree(self, extra: List[str] = None) -> str:
         text = "\n```{toctree}\n"
         text += "---\n"
-        text += ":maxdepth: 1\n"
-        text += ":hidden:\n"
+        text += "maxdepth: 1\n"
+        text += "hidden:\n"
         text += "---\n"
         if extra:
             for target in extra:

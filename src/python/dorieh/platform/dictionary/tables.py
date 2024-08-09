@@ -351,8 +351,8 @@ class Table(DataModelElement):
     def columns_toctree(self) -> str:
         text = "\n```{toctree}\n"
         text += "---\n"
-        text += ":maxdepth: 1\n"
-        text += ":hidden:\n"
+        text += "maxdepth: 1\n"
+        text += "hidden:\n"
         text += "---\n"
         for c in sorted(self.columns):
             text += f"{self.qualified_name}/{c}.md\n"

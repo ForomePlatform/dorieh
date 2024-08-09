@@ -305,8 +305,8 @@ class Column(DataModelElement):
     def column_toctree(self, targets: List[str]) -> str:
         text = "\n```{toctree}\n"
         text += "---\n"
-        text += ":maxdepth: 1\n"
-        text += ":hidden:\n"
+        text += "maxdepth: 1\n"
+        text += "hidden:\n"
         text += "---\n"
         for target in targets:
             text += f"{target}\n"
