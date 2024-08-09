@@ -27,6 +27,15 @@ MAX(zip)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+zip_svg_envelop.md
+```
+
+
 ```{figure} zip.svg
 :align: center
 :alt: Column medicare.enrollments.zip Lineage SVG

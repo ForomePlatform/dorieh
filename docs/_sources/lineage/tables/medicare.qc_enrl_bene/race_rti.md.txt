@@ -19,6 +19,15 @@ string_agg(distinct race_rti, ',')
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+race_rti_svg_envelop.md
+```
+
+
 ```{figure} race_rti.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.race_rti Lineage SVG

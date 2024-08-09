@@ -18,6 +18,15 @@ MAX(fips3)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+residence_county_svg_envelop.md
+```
+
+
 ```{figure} residence_county.svg
 :align: center
 :alt: Column medicare.enrollments.residence_county Lineage SVG

@@ -18,6 +18,15 @@ public.validate_zip_fips(MAX(zip), MAX(fips2), MAX(fips3))
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+fips3_valdiated_svg_envelop.md
+```
+
+
 ```{figure} fips3_valdiated.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.fips3_valdiated Lineage SVG

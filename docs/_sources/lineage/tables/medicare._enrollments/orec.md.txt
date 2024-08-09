@@ -27,6 +27,15 @@ MAX(orec)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+orec_svg_envelop.md
+```
+
+
 ```{figure} orec.svg
 :align: center
 :alt: Column medicare._enrollments.orec Lineage SVG

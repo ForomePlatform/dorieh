@@ -19,6 +19,15 @@ Original Reason for Entitlement Code
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+orec_svg_envelop.md
+```
+
+
 ```{figure} orec.svg
 :align: center
 :alt: Column medicare.qc_enrollments.orec Lineage SVG

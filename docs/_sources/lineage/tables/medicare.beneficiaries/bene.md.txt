@@ -27,6 +27,15 @@ GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+bene_svg_envelop.md
+```
+
+
 ```{figure} bene.svg
 :align: center
 :alt: Column medicare.beneficiaries.bene Lineage SVG

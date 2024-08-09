@@ -22,6 +22,15 @@ END
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+died_svg_envelop.md
+```
+
+
 ```{figure} died.svg
 :align: center
 :alt: Column medicare._enrollments.died Lineage SVG

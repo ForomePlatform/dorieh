@@ -11,6 +11,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+primary_diagnosis_svg_envelop.md
+```
+
+
 ```{figure} primary_diagnosis.svg
 :align: center
 :alt: Column medicare.qc_adm_union.primary_diagnosis Lineage SVG

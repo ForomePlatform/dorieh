@@ -21,6 +21,15 @@ END
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+dod_earliest_svg_envelop.md
+```
+
+
 ```{figure} dod_earliest.svg
 :align: center
 :alt: Column medicare.beneficiaries.dod_earliest Lineage SVG

@@ -18,6 +18,15 @@ MAX(ssa3)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+ssa3_svg_envelop.md
+```
+
+
 ```{figure} ssa3.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.ssa3 Lineage SVG

@@ -4,8 +4,10 @@
 
 
 ```{toctree}
-maxdepth: 1
-hidden:
+---
+:maxdepth: 1
+:hidden:
+---
 medicare.qc_adm_union/adm_day_of_week.md
 medicare.qc_adm_union/admission_date.md
 medicare.qc_adm_union/admission_year.md
@@ -69,7 +71,7 @@ SELECT 'OK'::VARCHAR AS reason,
 FROM medicare.admissions
 ;
 
-COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.984796';
+COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:07.113503';
 ```
 
 </details>

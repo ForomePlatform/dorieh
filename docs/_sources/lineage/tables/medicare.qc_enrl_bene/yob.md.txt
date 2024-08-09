@@ -18,6 +18,15 @@ MIN(yob)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+yob_svg_envelop.md
+```
+
+
 ```{figure} yob.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.yob Lineage SVG

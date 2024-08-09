@@ -16,6 +16,15 @@ The amount of payment (rounded to whole dollars) made on behalf of the beneficia
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+bene_prmry_pyr_amt_svg_envelop.md
+```
+
+
 ```{figure} bene_prmry_pyr_amt.svg
 :align: center
 :alt: Column medicare.ip.bene_prmry_pyr_amt Lineage SVG

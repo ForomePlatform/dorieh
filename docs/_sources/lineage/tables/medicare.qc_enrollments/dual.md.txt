@@ -10,6 +10,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+dual_svg_envelop.md
+```
+
+
 ```{figure} dual.svg
 :align: center
 :alt: Column medicare.qc_enrollments.dual Lineage SVG

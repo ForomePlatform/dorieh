@@ -20,6 +20,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+admission_date_raw_svg_envelop.md
+```
+
+
 ```{figure} admission_date_raw.svg
 :align: center
 :alt: Column medicare.admissions.admission_date_raw Lineage SVG

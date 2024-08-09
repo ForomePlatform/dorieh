@@ -18,6 +18,15 @@ RESDAC original file name
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+file_svg_envelop.md
+```
+
+
 ```{figure} file.svg
 :align: center
 :alt: Column medicare.ip.file Lineage SVG

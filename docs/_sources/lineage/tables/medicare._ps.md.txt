@@ -4,8 +4,10 @@
 
 
 ```{toctree}
-maxdepth: 1
-hidden:
+---
+:maxdepth: 1
+:hidden:
+---
 medicare._ps/age.md
 medicare._ps/bene_id.md
 medicare._ps/buyin_cvg_count.md
@@ -65,7 +67,7 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 FROM medicare.ps
 ;
 
-COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.949914';
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:07.079609';
 ```
 
 </details>

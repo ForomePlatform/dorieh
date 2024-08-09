@@ -26,6 +26,15 @@ END AS fips3
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+fips3_svg_envelop.md
+```
+
+
 ```{figure} fips3.svg
 :align: center
 :alt: Column medicare._ps.fips3 Lineage SVG

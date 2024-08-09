@@ -24,6 +24,15 @@ Date of beneficiary death, if available
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+dod_svg_envelop.md
+```
+
+
 ```{figure} dod.svg
 :align: center
 :alt: Column medicare._ps.dod Lineage SVG

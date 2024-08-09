@@ -19,6 +19,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+dual_indicators_svg_envelop.md
+```
+
+
 ```{figure} dual_indicators.svg
 :align: center
 :alt: Column medicare.mbsf_d.dual_indicators Lineage SVG

@@ -19,6 +19,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+curec_svg_envelop.md
+```
+
+
 ```{figure} curec.svg
 :align: center
 :alt: Column medicare.ps.curec Lineage SVG

@@ -28,6 +28,15 @@ MAX(age)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+age_svg_envelop.md
+```
+
+
 ```{figure} age.svg
 :align: center
 :alt: Column medicare._enrollments.age Lineage SVG

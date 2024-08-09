@@ -18,6 +18,15 @@ MAX(ssa2)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+ssa2_svg_envelop.md
+```
+
+
 ```{figure} ssa2.svg
 :align: center
 :alt: Column medicare.enrollments.ssa2 Lineage SVG

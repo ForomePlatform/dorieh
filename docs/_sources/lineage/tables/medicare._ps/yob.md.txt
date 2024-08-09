@@ -18,6 +18,15 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+yob_svg_envelop.md
+```
+
+
 ```{figure} yob.svg
 :align: center
 :alt: Column medicare._ps.yob Lineage SVG

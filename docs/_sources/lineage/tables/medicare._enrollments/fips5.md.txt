@@ -18,6 +18,15 @@
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+fips5_svg_envelop.md
+```
+
+
 ```{figure} fips5.svg
 :align: center
 :alt: Column medicare._enrollments.fips5 Lineage SVG

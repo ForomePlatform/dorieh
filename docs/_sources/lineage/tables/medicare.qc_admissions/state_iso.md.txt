@@ -18,6 +18,15 @@ MAX(state_iso)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+state_iso_svg_envelop.md
+```
+
+
 ```{figure} state_iso.svg
 :align: center
 :alt: Column medicare.qc_admissions.state_iso Lineage SVG

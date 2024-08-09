@@ -18,6 +18,15 @@ MIN(dob)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+dob_svg_envelop.md
+```
+
+
 ```{figure} dob.svg
 :align: center
 :alt: Column medicare.beneficiaries.dob Lineage SVG

@@ -16,6 +16,15 @@ The amount of money (rounded to whole dollars) identified as the beneficiary's l
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+bene_ip_ddctbl_amt_svg_envelop.md
+```
+
+
 ```{figure} bene_ip_ddctbl_amt.svg
 :align: center
 :alt: Column medicare.ip.bene_ip_ddctbl_amt Lineage SVG

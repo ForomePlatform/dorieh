@@ -28,6 +28,15 @@ string_agg(distinct sex, ',')
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+sex_svg_envelop.md
+```
+
+
 ```{figure} sex.svg
 :align: center
 :alt: Column medicare._beneficiaries.sex Lineage SVG

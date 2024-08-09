@@ -19,6 +19,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+src_admsn_cd_svg_envelop.md
+```
+
+
 ```{figure} src_admsn_cd.svg
 :align: center
 :alt: Column medicare.admissions.src_admsn_cd Lineage SVG

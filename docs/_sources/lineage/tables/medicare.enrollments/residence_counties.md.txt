@@ -18,6 +18,15 @@ string_agg(distinct fips3_list, ',')
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+residence_counties_svg_envelop.md
+```
+
+
 ```{figure} residence_counties.svg
 :align: center
 :alt: Column medicare.enrollments.residence_counties Lineage SVG

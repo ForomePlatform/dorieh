@@ -17,6 +17,15 @@ The total of all claim pass through per diem amounts (rounded to whole dollars) 
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+pass_thru_amt_svg_envelop.md
+```
+
+
 ```{figure} pass_thru_amt.svg
 :align: center
 :alt: Column medicare.admissions.pass_thru_amt Lineage SVG

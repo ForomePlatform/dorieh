@@ -18,6 +18,15 @@ GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+icd_hll_svg_envelop.md
+```
+
+
 ```{figure} icd_hll.svg
 :align: center
 :alt: Column medicare.admissions.icd_hll Lineage SVG

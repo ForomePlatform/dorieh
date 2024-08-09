@@ -18,6 +18,15 @@ every(fips3_is_approximated)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+fips3_is_approximated_svg_envelop.md
+```
+
+
 ```{figure} fips3_is_approximated.svg
 :align: center
 :alt: Column medicare.enrollments.fips3_is_approximated Lineage SVG

@@ -18,6 +18,15 @@ MAX(fips2)
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+fips2_svg_envelop.md
+```
+
+
 ```{figure} fips2.svg
 :align: center
 :alt: Column medicare._enrollments.fips2 Lineage SVG

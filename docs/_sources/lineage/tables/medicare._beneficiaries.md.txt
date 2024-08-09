@@ -4,8 +4,10 @@
 
 
 ```{toctree}
-maxdepth: 1
-hidden:
+---
+:maxdepth: 1
+:hidden:
+---
 medicare._beneficiaries/all_enrollment_years.md
 medicare._beneficiaries/bene_id.md
 medicare._beneficiaries/discrepancies.md
@@ -70,7 +72,7 @@ FROM medicare._ps
 WHERE bene_id IS NOT NULL
 GROUP BY bene_id;
 
-COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "73f9e68488b65b804ca4708762bd83f5a2258942"}. Created at 2024-08-09 15:34:28.950391';
+COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:07.080048';
 ```
 
 </details>

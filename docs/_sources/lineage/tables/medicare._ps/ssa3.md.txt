@@ -16,6 +16,15 @@ Social Security Administration (SSA) three digit code for county
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+ssa3_svg_envelop.md
+```
+
+
 ```{figure} ssa3.svg
 :align: center
 :alt: Column medicare._ps.ssa3 Lineage SVG

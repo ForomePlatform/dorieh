@@ -27,6 +27,15 @@ GENERATED ALWAYS AS (STATE_CD) STORED
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+state_svg_envelop.md
+```
+
+
 ```{figure} state.svg
 :align: center
 :alt: Column cms.medpar_2013.STATE Lineage SVG

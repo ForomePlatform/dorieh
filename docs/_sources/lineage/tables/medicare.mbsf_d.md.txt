@@ -4,8 +4,10 @@
 
 
 ```{toctree}
-maxdepth: 1
-hidden:
+---
+:maxdepth: 1
+:hidden:
+---
 medicare.mbsf_d/bene_id.md
 medicare.mbsf_d/dual_indicators.md
 medicare.mbsf_d/dual_mo.md

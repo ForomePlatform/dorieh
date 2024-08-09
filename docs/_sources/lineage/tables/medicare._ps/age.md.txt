@@ -24,6 +24,15 @@ Age on January 1 of a given year, if provided
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+age_svg_envelop.md
+```
+
+
 ```{figure} age.svg
 :align: center
 :alt: Column medicare._ps.age Lineage SVG

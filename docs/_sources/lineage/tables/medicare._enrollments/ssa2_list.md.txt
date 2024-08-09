@@ -18,6 +18,15 @@ string_agg(distinct ssa2, ',')
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+ssa2_list_svg_envelop.md
+```
+
+
 ```{figure} ssa2_list.svg
 :align: center
 :alt: Column medicare._enrollments.ssa2_list Lineage SVG

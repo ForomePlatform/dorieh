@@ -19,6 +19,15 @@ made by Medicare.
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+mdcr_pmt_amt_svg_envelop.md
+```
+
+
 ```{figure} mdcr_pmt_amt.svg
 :align: center
 :alt: Column medicare.admissions.mdcr_pmt_amt Lineage SVG

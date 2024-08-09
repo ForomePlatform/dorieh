@@ -19,6 +19,15 @@ State Code
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+state_svg_envelop.md
+```
+
+
 ```{figure} state.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.state Lineage SVG

@@ -18,6 +18,15 @@
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+numdistinctbeneficaries_svg_envelop.md
+```
+
+
 ```{figure} numdistinctbeneficaries.svg
 :align: center
 :alt: Column medicare.qc_admissions.NumDistinctBeneficaries Lineage SVG

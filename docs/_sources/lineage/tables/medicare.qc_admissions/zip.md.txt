@@ -19,6 +19,15 @@ Zip Code of Residence
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+zip_svg_envelop.md
+```
+
+
 ```{figure} zip.svg
 :align: center
 :alt: Column medicare.qc_admissions.zip Lineage SVG

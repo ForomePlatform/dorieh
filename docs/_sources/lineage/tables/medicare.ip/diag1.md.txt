@@ -10,6 +10,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+diag1_svg_envelop.md
+```
+
+
 ```{figure} diag1.svg
 :align: center
 :alt: Column medicare.ip.diag1 Lineage SVG

@@ -29,6 +29,15 @@ Sex
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+sex_svg_envelop.md
+```
+
+
 ```{figure} sex.svg
 :align: center
 :alt: Column medicare.ps.sex Lineage SVG

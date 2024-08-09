@@ -21,6 +21,15 @@ Encrypted 723 Beneficiary ID (Unique Key)
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+bene_id_svg_envelop.md
+```
+
+
 ```{figure} bene_id.svg
 :align: center
 :alt: Column medicare.beneficiaries.bene_id Lineage SVG

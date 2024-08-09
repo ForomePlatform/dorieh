@@ -10,6 +10,15 @@
 
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+consistent_sex_svg_envelop.md
+```
+
+
 ```{figure} consistent_sex.svg
 :align: center
 :alt: Column medicare.qc_enrollments.consistent_sex Lineage SVG

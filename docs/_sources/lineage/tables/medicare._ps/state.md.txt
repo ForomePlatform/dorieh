@@ -27,6 +27,15 @@ State Code
 ```
 
 
+```{toctree}
+---
+:maxdepth: 1
+:hidden:
+---
+state_svg_envelop.md
+```
+
+
 ```{figure} state.svg
 :align: center
 :alt: Column medicare._ps.state Lineage SVG
