@@ -302,6 +302,17 @@ class Column(DataModelElement):
         with open(of, "wt") as out:
             print(block, file=out)
 
+    def column_toctree(self, targets: List[str]) -> str:
+        text = "\n```{toctree}\n"
+        text += "---\n"
+        text += ":maxdepth: 1\n"
+        text += ":hidden:\n"
+        text += "---\n"
+        for target in targets:
+            text += f"{target}\n"
+        text += "```\n\n"
+        return text
+
     def markdown(self, of: str, svg=None):
         fmt = 'markdown'
         body = self.describe(format=fmt)
@@ -312,10 +323,11 @@ class Column(DataModelElement):
             elif self.mode == RenderMode.sphinx:
                 alt = f"Column {self.qualified_name} Lineage SVG"
                 target = create_graph_envelop(of, alt, svg)
+                body += self.column_toctree([target + ".md"])
                 body += f"\n```{{figure}} {os.path.basename(svg)}\n"
                 body += ":align: center\n"
                 body += f":alt: {alt}\n"
-                body += f":target: {target}\n"
+                body += f":target: {target}.html\n"
                 body += "\n"
                 body += f"Data lineage for column {self.qualified_name}\n"
                 body += "\n"
