@@ -3,7 +3,6 @@
 ```{toctree}
 ---
 maxdepth: 1
-hidden:
 ---
 tables.dot.md
 table-list.md
