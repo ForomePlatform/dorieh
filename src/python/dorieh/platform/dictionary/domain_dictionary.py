@@ -154,29 +154,32 @@ class DomainDict:
         title = "# Table Lineage Diagram\n"
         body = "\n"
 
-        if self.mode == RenderMode.sphinx:
-            body += self.table_toctree()
-            body += "\n"
-
         if svg:
             if self.mode == RenderMode.standalone:
                 body += self.html_body(svg)
             elif self.mode == RenderMode.sphinx:
                 target = create_graph_envelop(of, "Table Lineage SVG Diagram", svg)
+                body += self.table_toctree([target + ".md"])
+                body += "\n"
                 body += f"\n```{{figure}} {svg}\n"
                 body += ":align: center\n"
                 body += ":alt: Table Lineage Diagram\n"
-                body += f":target: {target}\n"
+                body += f":target: {target}.html\n"
                 body += "\n"
                 body += "Diagram illustrating data flow during transformations\n"
                 body += "\n"
                 body += "```\n\n"
         self.write_markdown(f"{title}\n{body}", of)
 
-    def table_toctree(self) -> str:
+    def table_toctree(self, extra: List[str] = None) -> str:
         text = "\n```{toctree}\n"
-        text += "maxdepth: 1\n"
-        text += "hidden:\n"
+        text += "---\n"
+        text += ":maxdepth: 1\n"
+        text += ":hidden:\n"
+        text += "---\n"
+        if extra:
+            for target in extra:
+                text += f"{target}\n"
         for t in sorted(self.tables):
             tname = self.tables[t].qualified_name
             text += f"tables/{tname}.md\n"
