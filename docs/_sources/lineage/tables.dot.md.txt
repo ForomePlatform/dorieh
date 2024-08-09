@@ -4,7 +4,6 @@
 ```{toctree}
 ---
 maxdepth: 1
-hidden:
 ---
 tables/cms.mbsf_ab_2011
 tables/cms.mbsf_ab_2012
@@ -42,4 +41,10 @@ tables/medicare.qc_admissions
 ```
 
 
-<object data="tables.dot.svg" type="image/svg+xml"></object>
+```{figure} tables.dot.svg
+:label: Table Lineage Diagram
+:alt: Data flows between CMS Medicare tables during processing
+:align: center
+
+Data flows between CMS Medicare tables during processing
+```
