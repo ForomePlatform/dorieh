@@ -1,0 +1,21 @@
+# Column medicare.beneficiaries.yob
+
+## Overview of column yob in table medicare.beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.beneficiaries](../medicare.beneficiaries.md)           |
+| Qualified name                | medicare.beneficiaries.yob  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+
+## Expressions
+
+```sql
+MIN(yob)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/yob.svg" type="image/svg+xml"></object>

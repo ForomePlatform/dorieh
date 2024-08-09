@@ -1,0 +1,24 @@
+# Column medicare.admissions.dschrgcd
+
+## Overview of column dschrgcd in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.dschrgcd  |
+| Datatype                      | CHAR(1)        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt](https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt) |
+
+
+Code identifying status of patient as of CLM_THRU_DT
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_DSCHRG_STUS_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrgcd.svg" type="image/svg+xml"></object>

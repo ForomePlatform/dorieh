@@ -1,0 +1,30 @@
+# Column cms.mbsf_abcd_2016.YEAR
+
+## Overview of column YEAR in table cms.mbsf_abcd_2016 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [cms.mbsf_abcd_2016](../cms.mbsf_abcd_2016.md)           |
+| Qualified name                | cms.mbsf_abcd_2016.YEAR  |
+| Datatype                      | INT        |
+| Column type | generated |
+| Reference | [https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator](https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator) |
+
+
+Beneficiary Enrollment Reference Year
+
+| Key | Value |
+| --- | ----- |
+| original_type | NUM |
+| width | 4.0 |
+
+
+
+## Expressions
+
+```sql
+GENERATED ALWAYS AS (RFRNC_YR) STORED
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2016/year.svg" type="image/svg+xml"></object>

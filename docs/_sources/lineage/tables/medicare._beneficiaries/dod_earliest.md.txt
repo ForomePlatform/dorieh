@@ -1,0 +1,24 @@
+# Column medicare._beneficiaries.dod_earliest
+
+## Overview of column dod_earliest in table medicare._beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._beneficiaries](../medicare._beneficiaries.md)           |
+| Qualified name                | medicare._beneficiaries.dod_earliest  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE
+  WHEN MIN(dod) <> MAX(dod) THEN MIN(dod)
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/dod_earliest.svg" type="image/svg+xml"></object>

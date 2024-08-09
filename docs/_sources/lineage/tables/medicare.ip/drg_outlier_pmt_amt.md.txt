@@ -1,0 +1,20 @@
+# Column medicare.ip.drg_outlier_pmt_amt
+
+## Overview of column drg_outlier_pmt_amt in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.drg_outlier_pmt_amt  |
+| Datatype                      | NUMERIC        |
+| Reference | [https://resdac.org/cms-data/variables/drg-outlier-approved-payment-amount](https://resdac.org/cms-data/variables/drg-outlier-approved-payment-amount) |
+
+
+The amount of additional payment (rounded to whole dollars) approved due 
+to an outlier situation over the DRG allowance for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/drg_outlier_pmt_amt.svg" type="image/svg+xml"></object>

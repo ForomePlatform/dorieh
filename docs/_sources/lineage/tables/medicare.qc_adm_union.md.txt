@@ -1,0 +1,71 @@
+# View medicare.qc_adm_union
+
+## Overview for medicare.qc_adm_union
+Union of data from admissions table with the records
+discarded because of validation issues
+
+
+Transformed from [medicare.admissions](medicare.admissions.html)
+
+<details>
+```sql
+CREATE view medicare.qc_adm_union AS SELECT reason,
+   year,
+   state,
+   state_iso,
+   admission_year,
+   diagnoses,
+   zip,
+   admission_date,
+   discharge_date,
+   adm_day_of_week,
+   primary_diagnosis,
+   bene_id,
+   bene,
+   pd_hll_hash,
+   icd_hll
+FROM medicare_audit.admissions
+UNION ALL 
+SELECT 'OK'::VARCHAR AS reason,
+   year,
+   state,
+   state_iso,
+   admission_year,
+   diagnoses,
+   zip,
+   admission_date,
+   discharge_date,
+   adm_day_of_week,
+   primary_diagnosis,
+   bene_id,
+   bene,
+   pd_hll_hash,
+   icd_hll 
+FROM medicare.admissions
+;
+
+COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.220312';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [adm_day_of_week](medicare.qc_adm_union/adm_day_of_week.html) | copied | INT |
+| [admission_date](medicare.qc_adm_union/admission_date.html) | copied | DATE |
+| [admission_year](medicare.qc_adm_union/admission_year.html) | generated | INT |
+| [bene](medicare.qc_adm_union/bene.html) | generated | HLL_HASHVAL |
+| [bene_id](medicare.qc_adm_union/bene_id.html) | copied | string |
+| [diagnoses](medicare.qc_adm_union/diagnoses.html) | copied | string |
+| [discharge_date](medicare.qc_adm_union/discharge_date.html) | copied | DATE |
+| [icd_hll](medicare.qc_adm_union/icd_hll.html) | generated | HLL |
+| [pd_hll_hash](medicare.qc_adm_union/pd_hll_hash.html) | generated | HLL_HASHVAL |
+| [primary_diagnosis](medicare.qc_adm_union/primary_diagnosis.html) | copied | string |
+| [reason](medicare.qc_adm_union/reason.html) | computed | string |
+| [state](medicare.qc_adm_union/state.html) | copied | string |
+| [state_iso](medicare.qc_adm_union/state_iso.html) | generated | char(5) |
+| [year](medicare.qc_adm_union/year.html) | computed | INT |
+| [zip](medicare.qc_adm_union/zip.html) | copied | INT |
+
+

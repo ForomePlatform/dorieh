@@ -1,0 +1,21 @@
+# Column medicare.admissions.icd_hll
+
+## Overview of column icd_hll in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.icd_hll  |
+| Datatype                      | HLL        |
+| Column type | generated |
+
+
+
+## Expressions
+
+```sql
+GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/icd_hll.svg" type="image/svg+xml"></object>

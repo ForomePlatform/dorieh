@@ -1,0 +1,21 @@
+# Column medicare.admissions.primary_diagnosis
+
+## Overview of column primary_diagnosis in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.primary_diagnosis  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+btrim(diag1) As primary_diagnosis
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/primary_diagnosis.svg" type="image/svg+xml"></object>

@@ -1,0 +1,21 @@
+# Column medicare.qc_enrl_bene.ssa3_list
+
+## Overview of column ssa3_list in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.ssa3_list  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct ssa3, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3_list.svg" type="image/svg+xml"></object>

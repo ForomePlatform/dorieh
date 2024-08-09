@@ -1,0 +1,23 @@
+# Column medicare.ip.discharge_date
+
+## Overview of column discharge_date in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.discharge_date  |
+| Datatype                      | DATE        |
+| Column type | transformed |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| character varying | public.parse_date({column_name}) |
+| numeric | public.parse_date({column_name}) |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/discharge_date.svg" type="image/svg+xml"></object>

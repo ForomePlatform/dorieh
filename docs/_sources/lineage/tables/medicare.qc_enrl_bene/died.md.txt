@@ -1,0 +1,25 @@
+# Column medicare.qc_enrl_bene.died
+
+## Overview of column died in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.died  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE EXTRACT (YEAR from MAX(dod))
+  WHEN year THEN TRUE
+  ELSE FALSE
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/died.svg" type="image/svg+xml"></object>

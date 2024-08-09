@@ -1,0 +1,21 @@
+# Column medicare.enrollments.buyin_cvg_count
+
+## Overview of column buyin_cvg_count in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.buyin_cvg_count  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+
+## Expressions
+
+```sql
+MAX(buyin_cvg_count)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/buyin_cvg_count.svg" type="image/svg+xml"></object>

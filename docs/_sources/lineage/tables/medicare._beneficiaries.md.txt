@@ -1,0 +1,72 @@
+# View medicare._beneficiaries
+
+## Overview for medicare._beneficiaries
+internal intermediate view adding some data conversions
+
+Aggregated from [medicare._ps](medicare._ps.html) on On bene_id
+
+Primary Key: bene_id
+
+<details>
+```sql
+
+CREATE view  medicare._beneficiaries AS
+SELECT
+    bene_id,
+	MIN(dob) AS dob,
+	MIN(yob) AS yob,
+	MAX(dod) AS dod,
+	MIN(year) AS first_enrollment_year,
+	MAX(year) AS last_enrollment_year,
+	ARRAY_AGG(DISTINCT year ORDER BY year) AS all_enrollment_years,
+	string_agg(distinct race, ',') AS race,
+	string_agg(distinct race_rti, ',') AS race_rti,
+	string_agg(distinct sex, ',') AS sex,
+	MAX(orec) AS orec,
+	(
+		  COUNT(distinct (dob, race, sex)) - 1 +
+		  CASE
+		    (COUNT(DISTINCT dod) FILTER (WHERE dod is not null))
+		    WHEN 0 THEN 0
+		    ELSE COUNT(DISTINCT dod) FILTER (WHERE dod is not null) - 1
+		  END
+		) AS discrepancies,
+	CASE
+		  WHEN MAX(dob) <> MIN(dob) THEN  MAX(dob)
+		END AS dob_latest,
+	CASE
+		  WHEN MAX(yob) <> MIN(yob) THEN  MAX(yob)
+		END AS yob_latest,
+	CASE
+		  WHEN MIN(dod) <> MAX(dod) THEN MIN(dod)
+		END AS dod_earliest
+FROM medicare._ps
+
+WHERE bene_id IS NOT NULL
+GROUP BY bene_id;
+
+COMMENT ON view medicare._beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.186702';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [all_enrollment_years](medicare._beneficiaries/all_enrollment_years.html) | computed | INT[] |
+| [bene_id](medicare._beneficiaries/bene_id.html) | grouping | string |
+| [discrepancies](medicare._beneficiaries/discrepancies.html) | computed | string |
+| [dob](medicare._beneficiaries/dob.html) | computed | string |
+| [dob_latest](medicare._beneficiaries/dob_latest.html) | computed | string |
+| [dod](medicare._beneficiaries/dod.html) | computed | string |
+| [dod_earliest](medicare._beneficiaries/dod_earliest.html) | computed | string |
+| [first_enrollment_year](medicare._beneficiaries/first_enrollment_year.html) | computed | string |
+| [last_enrollment_year](medicare._beneficiaries/last_enrollment_year.html) | computed | string |
+| [orec](medicare._beneficiaries/orec.html) | computed | string |
+| [race](medicare._beneficiaries/race.html) | computed | string |
+| [race_rti](medicare._beneficiaries/race_rti.html) | computed | string |
+| [sex](medicare._beneficiaries/sex.html) | computed | string |
+| [yob](medicare._beneficiaries/yob.html) | computed | string |
+| [yob_latest](medicare._beneficiaries/yob_latest.html) | computed | string |
+
+

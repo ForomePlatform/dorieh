@@ -1,0 +1,21 @@
+# Column medicare._enrollments.hmo_cvg_count
+
+## Overview of column hmo_cvg_count in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.hmo_cvg_count  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+MAX(hmo_cvg_count)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/hmo_cvg_count.svg" type="image/svg+xml"></object>

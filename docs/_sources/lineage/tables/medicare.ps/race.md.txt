@@ -1,0 +1,32 @@
+# Column medicare.ps.race
+
+## Overview of column race in table medicare.ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ps](../medicare.ps.md)           |
+| Qualified name                | medicare.ps.race  |
+| Datatype                      | VARCHAR        |
+| Column type | transformed |
+| Reference | [https://resdac.org/cms-data/variables/beneficiary-race-code-ffs](https://resdac.org/cms-data/variables/beneficiary-race-code-ffs) |
+
+
+Beneficiary Race Code
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_RACE_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/race.svg" type="image/svg+xml"></object>

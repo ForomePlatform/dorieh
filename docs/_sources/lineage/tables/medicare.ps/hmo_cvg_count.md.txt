@@ -1,0 +1,27 @@
+# Column medicare.ps.hmo_cvg_count
+
+## Overview of column hmo_cvg_count in table medicare.ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ps](../medicare.ps.md)           |
+| Qualified name                | medicare.ps.hmo_cvg_count  |
+| Datatype                      | INT        |
+| Column type | transformed |
+| Reference | [https://requests.resdac.org/cms-data/variables/hmo-coverage-count](https://requests.resdac.org/cms-data/variables/hmo-coverage-count) |
+
+
+Number of months during a given year, the beneficiary received their Part A and Part B benefits through a managed care plan
+
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | CASE WHEN {column_name} IS NULL THEN 0 ELSE {column_name}::INT END |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/hmo_cvg_count.svg" type="image/svg+xml"></object>

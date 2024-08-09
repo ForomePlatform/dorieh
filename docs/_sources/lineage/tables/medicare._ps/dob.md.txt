@@ -1,0 +1,27 @@
+# Column medicare._ps.dob
+
+## Overview of column dob in table medicare._ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._ps](../medicare._ps.md)           |
+| Qualified name                | medicare._ps.dob  |
+| Datatype                      | date        |
+| Column type | copied |
+
+
+Date of birth
+
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| character varying | public.parse_date({column_name}) |
+| numeric | to_date(to_char({column_name}, '00000000'), 'YYYYMMDD') |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/dob.svg" type="image/svg+xml"></object>

@@ -1,0 +1,31 @@
+# Column medicare.beneficiaries.race
+
+## Overview of column race in table medicare.beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.beneficiaries](../medicare.beneficiaries.md)           |
+| Qualified name                | medicare.beneficiaries.race  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/raceethnicity-msis](https://resdac.org/cms-data/variables/raceethnicity-msis) |
+
+
+Beneficiary Race Code
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_RACE_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct race, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/race.svg" type="image/svg+xml"></object>

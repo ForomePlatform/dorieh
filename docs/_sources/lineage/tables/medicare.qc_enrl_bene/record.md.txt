@@ -1,0 +1,30 @@
+# Column medicare.qc_enrl_bene.record
+
+## Overview of column record in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.record  |
+| Datatype                      | string        |
+| Column type | computed |
+| Reference | [https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric](https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric) |
+
+
+Record number in the file
+
+| Key | Value |
+| --- | ----- |
+| original_type | BIGSERIAL |
+| width | None |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct RECORD::VARCHAR, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/record.svg" type="image/svg+xml"></object>

@@ -1,0 +1,22 @@
+# Column medicare.qc_enrl_bene.race_rti
+
+## Overview of column race_rti in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.race_rti  |
+| Datatype                      | string        |
+| Column type | computed |
+| Reference | [https://resdac.org/cms-data/variables/research-triangle-institute-rti-race-code](https://resdac.org/cms-data/variables/research-triangle-institute-rti-race-code) |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct race_rti, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/race_rti.svg" type="image/svg+xml"></object>

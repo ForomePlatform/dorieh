@@ -1,0 +1,30 @@
+# Column medicare._enrollments.zip
+
+## Overview of column zip in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.zip  |
+| Datatype                      | string        |
+| Column type | computed |
+| Reference | [https://resdac.org/cms-data/variables/zip-code-beneficiary](https://resdac.org/cms-data/variables/zip-code-beneficiary) |
+
+
+Zip Code of Residence
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 9.0 |
+
+
+
+## Expressions
+
+```sql
+MAX(zip)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/zip.svg" type="image/svg+xml"></object>

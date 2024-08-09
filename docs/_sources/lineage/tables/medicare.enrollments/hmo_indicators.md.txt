@@ -1,0 +1,21 @@
+# Column medicare.enrollments.hmo_indicators
+
+## Overview of column hmo_indicators in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.hmo_indicators  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+
+## Expressions
+
+```sql
+MAX(hmo_indicators)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/hmo_indicators.svg" type="image/svg+xml"></object>

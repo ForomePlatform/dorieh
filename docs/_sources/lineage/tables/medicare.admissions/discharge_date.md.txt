@@ -1,0 +1,23 @@
+# Column medicare.admissions.discharge_date
+
+## Overview of column discharge_date in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.discharge_date  |
+| Datatype                      | DATE        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| character varying | public.parse_date({column_name}) |
+| numeric | public.parse_date({column_name}) |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date.svg" type="image/svg+xml"></object>

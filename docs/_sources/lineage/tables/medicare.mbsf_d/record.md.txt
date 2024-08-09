@@ -1,0 +1,22 @@
+# Column medicare.mbsf_d.record
+
+## Overview of column record in table medicare.mbsf_d 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.mbsf_d](../medicare.mbsf_d.md)           |
+| Qualified name                | medicare.mbsf_d.record  |
+| Datatype                      | string        |
+| Reference | [https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric](https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric) |
+
+
+Record number in the file
+
+| Key | Value |
+| --- | ----- |
+| original_type | BIGSERIAL |
+| width | None |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.mbsf_d/record.svg" type="image/svg+xml"></object>

@@ -1,0 +1,20 @@
+# Column medicare.admissions.file
+
+## Overview of column file in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.file  |
+| Datatype                      | string        |
+
+
+RESDAC original file name
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 128 |
+
+
+

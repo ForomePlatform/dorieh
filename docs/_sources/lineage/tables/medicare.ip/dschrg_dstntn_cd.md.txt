@@ -1,0 +1,23 @@
+# Column medicare.ip.dschrg_dstntn_cd
+
+## Overview of column dschrg_dstntn_cd in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.dschrg_dstntn_cd  |
+| Datatype                      | CHAR(2)        |
+| Column type | transformed |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| numeric | TRIM(to_char({column_name}, '99')) |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/dschrg_dstntn_cd.svg" type="image/svg+xml"></object>

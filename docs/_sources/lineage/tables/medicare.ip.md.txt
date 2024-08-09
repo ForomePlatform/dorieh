@@ -1,0 +1,67 @@
+# View medicare.ip
+
+## Overview for medicare.ip
+Inpatient Adminissions view. Combines multiple inpatient admissions
+files (aka MedPar) into a single view, transforming columns
+to the same type
+
+
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [adm_day_of_week](medicare.ip/adm_day_of_week.html) | transformed | INT |
+| [admission_date](medicare.ip/admission_date.html) | transformed | DATE |
+| [admission_date_raw](medicare.ip/admission_date_raw.html) | transformed | VARCHAR |
+| [admsn_type_cd](medicare.ip/admsn_type_cd.html) | transformed | CHAR(1) |
+| [bene_blood_ddctbl_amt](medicare.ip/bene_blood_ddctbl_amt.html) |  | NUMERIC |
+| [bene_id](medicare.ip/bene_id.html) |  | string |
+| [bene_ip_ddctbl_amt](medicare.ip/bene_ip_ddctbl_amt.html) |  | NUMERIC |
+| [bene_prmry_pyr_amt](medicare.ip/bene_prmry_pyr_amt.html) |  | NUMERIC |
+| [bene_pta_coinsrnc_amt](medicare.ip/bene_pta_coinsrnc_amt.html) |  | NUMERIC |
+| [diag1](medicare.ip/diag1.html) |  | varchar |
+| [diag10](medicare.ip/diag10.html) |  | varchar |
+| [diag11](medicare.ip/diag11.html) |  | varchar |
+| [diag12](medicare.ip/diag12.html) |  | varchar |
+| [diag13](medicare.ip/diag13.html) |  | varchar |
+| [diag14](medicare.ip/diag14.html) |  | varchar |
+| [diag15](medicare.ip/diag15.html) |  | varchar |
+| [diag16](medicare.ip/diag16.html) |  | varchar |
+| [diag17](medicare.ip/diag17.html) |  | varchar |
+| [diag18](medicare.ip/diag18.html) |  | varchar |
+| [diag19](medicare.ip/diag19.html) |  | varchar |
+| [diag2](medicare.ip/diag2.html) |  | varchar |
+| [diag20](medicare.ip/diag20.html) |  | varchar |
+| [diag21](medicare.ip/diag21.html) |  | varchar |
+| [diag22](medicare.ip/diag22.html) |  | varchar |
+| [diag23](medicare.ip/diag23.html) |  | varchar |
+| [diag24](medicare.ip/diag24.html) |  | varchar |
+| [diag25](medicare.ip/diag25.html) |  | varchar |
+| [diag3](medicare.ip/diag3.html) |  | varchar |
+| [diag4](medicare.ip/diag4.html) |  | varchar |
+| [diag5](medicare.ip/diag5.html) |  | varchar |
+| [diag6](medicare.ip/diag6.html) |  | varchar |
+| [diag7](medicare.ip/diag7.html) |  | varchar |
+| [diag8](medicare.ip/diag8.html) |  | varchar |
+| [diag9](medicare.ip/diag9.html) |  | varchar |
+| [discharge_date](medicare.ip/discharge_date.html) | transformed | DATE |
+| [discharge_date_raw](medicare.ip/discharge_date_raw.html) | transformed | VARCHAR |
+| [drg_outlier_pmt_amt](medicare.ip/drg_outlier_pmt_amt.html) |  | NUMERIC |
+| [drg_price_amt](medicare.ip/drg_price_amt.html) |  | NUMERIC |
+| [dschrg_dstntn_cd](medicare.ip/dschrg_dstntn_cd.html) | transformed | CHAR(2) |
+| [dschrgcd](medicare.ip/dschrgcd.html) |  | CHAR(1) |
+| [file](medicare.ip/file.html) |  | string |
+| [fips2](medicare.ip/fips2.html) | computed | string |
+| [los_day_cnt](medicare.ip/los_day_cnt.html) | transformed | INT |
+| [mdcr_pmt_amt](medicare.ip/mdcr_pmt_amt.html) |  | NUMERIC |
+| [pass_thru_amt](medicare.ip/pass_thru_amt.html) |  | NUMERIC |
+| [record](medicare.ip/record.html) |  | string |
+| [src_admsn_cd](medicare.ip/src_admsn_cd.html) | transformed | CHAR(1) |
+| [ssa2](medicare.ip/ssa2.html) | computed | string |
+| [state](medicare.ip/state.html) | computed | string |
+| [year](medicare.ip/year.html) | computed | INT |
+| [zip](medicare.ip/zip.html) | transformed | INT |
+| [zip4](medicare.ip/zip4.html) | computed | INT |
+
+

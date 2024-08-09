@@ -1,0 +1,13 @@
+# Column medicare.qc_enrollments.hmo
+
+## Overview of column hmo in table medicare.qc_enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrollments](../medicare.qc_enrollments.md)           |
+| Qualified name                | medicare.qc_enrollments.hmo  |
+| Datatype                      | string        |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/hmo.svg" type="image/svg+xml"></object>

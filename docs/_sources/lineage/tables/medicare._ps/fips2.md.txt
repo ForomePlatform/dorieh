@@ -1,0 +1,26 @@
+# Column medicare._ps.fips2
+
+## Overview of column fips2 in table medicare._ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._ps](../medicare._ps.md)           |
+| Qualified name                | medicare._ps.fips2  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://www.census.gov/library/reference/code-lists/ansi.html#states](https://www.census.gov/library/reference/code-lists/ansi.html#states) |
+
+
+2 digit state FIPS, see https://en.wikipedia.org/wiki/Federal_Information_Processing_Standard_state_code
+
+
+
+
+## Expressions
+
+```sql
+(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = "state")
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/fips2.svg" type="image/svg+xml"></object>

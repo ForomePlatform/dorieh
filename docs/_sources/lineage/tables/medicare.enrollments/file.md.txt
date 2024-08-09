@@ -1,0 +1,28 @@
+# Column medicare.enrollments.file
+
+## Overview of column file in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.file  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+RESDAC original file name
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 128 |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct FILE, ',')
+```
+
+

@@ -1,0 +1,30 @@
+# Column medicare.admissions.bene
+
+## Overview of column bene in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.bene  |
+| Datatype                      | HLL_HASHVAL        |
+| Column type | generated |
+| Reference | [https://github.com/citusdata/postgresql-hll/blob/master/REFERENCE.md#basic-operational-functions](https://github.com/citusdata/postgresql-hll/blob/master/REFERENCE.md#basic-operational-functions) |
+
+
+HLL hash (see https://en.wikipedia.org/wiki/HyperLogLog).
+Can be used to calculate number of beneficiaries
+satisfying a certain given condition
+Use #(hll_add_agg(bene)) or hll_cardinality(hll_add_agg(bene)) aggregator
+
+
+
+
+
+## Expressions
+
+```sql
+GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/bene.svg" type="image/svg+xml"></object>

@@ -1,0 +1,24 @@
+# Column medicare.qc_enrl_bene.dod_earliest
+
+## Overview of column dod_earliest in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.dod_earliest  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE
+  WHEN MIN(dod) <> MAX(dod) THEN MIN(dod)
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dod_earliest.svg" type="image/svg+xml"></object>

@@ -1,0 +1,25 @@
+# Column medicare._enrollments.died
+
+## Overview of column died in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.died  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE EXTRACT (YEAR from MAX(dod))
+  WHEN year THEN TRUE
+  ELSE FALSE
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died.svg" type="image/svg+xml"></object>

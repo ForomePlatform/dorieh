@@ -1,0 +1,24 @@
+# Column medicare._beneficiaries.yob_latest
+
+## Overview of column yob_latest in table medicare._beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._beneficiaries](../medicare._beneficiaries.md)           |
+| Qualified name                | medicare._beneficiaries.yob_latest  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE
+  WHEN MAX(yob) <> MIN(yob) THEN  MAX(yob)
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/yob_latest.svg" type="image/svg+xml"></object>

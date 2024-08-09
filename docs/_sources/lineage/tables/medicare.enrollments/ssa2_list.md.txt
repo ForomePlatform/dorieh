@@ -1,0 +1,21 @@
+# Column medicare.enrollments.ssa2_list
+
+## Overview of column ssa2_list in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.ssa2_list  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct ssa2, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/ssa2_list.svg" type="image/svg+xml"></object>

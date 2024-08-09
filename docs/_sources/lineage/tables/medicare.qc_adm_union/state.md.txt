@@ -1,0 +1,30 @@
+# Column medicare.qc_adm_union.state
+
+## Overview of column state in table medicare.qc_adm_union 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_adm_union](../medicare.qc_adm_union.md)           |
+| Qualified name                | medicare.qc_adm_union.state  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
+
+
+State Code
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 2.0 |
+
+
+
+## Expressions
+
+```sql
+(SELECT state_id FROM public.us_states as s WHERE s.ssa2 = "state")
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/state.svg" type="image/svg+xml"></object>

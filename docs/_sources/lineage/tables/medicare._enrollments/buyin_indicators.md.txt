@@ -1,0 +1,21 @@
+# Column medicare._enrollments.buyin_indicators
+
+## Overview of column buyin_indicators in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.buyin_indicators  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+MAX(buyin_indicators)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/buyin_indicators.svg" type="image/svg+xml"></object>

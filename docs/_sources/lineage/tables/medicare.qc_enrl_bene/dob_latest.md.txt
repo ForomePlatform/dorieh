@@ -1,0 +1,24 @@
+# Column medicare.qc_enrl_bene.dob_latest
+
+## Overview of column dob_latest in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.dob_latest  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+CASE
+  WHEN MAX(dob) <> MIN(dob) THEN  MAX(dob)
+END
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob_latest.svg" type="image/svg+xml"></object>

@@ -1,0 +1,22 @@
+# Column medicare.qc_enrl_bene.state
+
+## Overview of column state in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.state  |
+| Datatype                      | string        |
+| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
+
+
+State Code
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 2.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/state.svg" type="image/svg+xml"></object>

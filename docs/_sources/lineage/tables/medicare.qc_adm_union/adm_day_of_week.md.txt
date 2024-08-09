@@ -1,0 +1,23 @@
+# Column medicare.qc_adm_union.adm_day_of_week
+
+## Overview of column adm_day_of_week in table medicare.qc_adm_union 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_adm_union](../medicare.qc_adm_union.md)           |
+| Qualified name                | medicare.qc_adm_union.adm_day_of_week  |
+| Datatype                      | INT        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| character varying | {column_name}::INT |
+| numeric | {column_name}::INT |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/adm_day_of_week.svg" type="image/svg+xml"></object>

@@ -1,0 +1,13 @@
+# Column medicare.qc_enrollments.consistent_sex
+
+## Overview of column consistent_sex in table medicare.qc_enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrollments](../medicare.qc_enrollments.md)           |
+| Qualified name                | medicare.qc_enrollments.consistent_sex  |
+| Datatype                      | string        |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/consistent_sex.svg" type="image/svg+xml"></object>

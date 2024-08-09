@@ -1,0 +1,32 @@
+# Column medicare.ps.sex
+
+## Overview of column sex in table medicare.ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ps](../medicare.ps.md)           |
+| Qualified name                | medicare.ps.sex  |
+| Datatype                      | VARCHAR        |
+| Column type | transformed |
+| Reference | [https://resdac.org/cms-data/variables/sex-beneficiary-0](https://resdac.org/cms-data/variables/sex-beneficiary-0) |
+
+
+Sex
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_SEX_IDENT_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/sex.svg" type="image/svg+xml"></object>

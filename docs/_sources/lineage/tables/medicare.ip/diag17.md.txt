@@ -1,0 +1,13 @@
+# Column medicare.ip.diag17
+
+## Overview of column diag17 in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.diag17  |
+| Datatype                      | varchar        |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag17.svg" type="image/svg+xml"></object>

@@ -1,0 +1,22 @@
+# Column medicare.qc_enrl_bene.dual_indicators
+
+## Overview of column dual_indicators in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.dual_indicators  |
+| Datatype                      | string        |
+| Column type | computed |
+| Tables, required for computation | ['medicare.mbsf_d'] |
+
+
+
+## Expressions
+
+```sql
+(SELECT MAX(dual_indicators) FROM medicare.mbsf_d AS d WHERE medicare._ps.year = d.year and medicare._ps.bene_id = d.bene_id)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dual_indicators.svg" type="image/svg+xml"></object>

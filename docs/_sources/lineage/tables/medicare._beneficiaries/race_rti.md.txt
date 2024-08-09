@@ -1,0 +1,22 @@
+# Column medicare._beneficiaries.race_rti
+
+## Overview of column race_rti in table medicare._beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._beneficiaries](../medicare._beneficiaries.md)           |
+| Qualified name                | medicare._beneficiaries.race_rti  |
+| Datatype                      | string        |
+| Column type | computed |
+| Reference | [https://resdac.org/cms-data/variables/research-triangle-institute-rti-race-code](https://resdac.org/cms-data/variables/research-triangle-institute-rti-race-code) |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct race_rti, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/race_rti.svg" type="image/svg+xml"></object>

@@ -1,0 +1,31 @@
+# Column medicare.qc_enrl_bene.sex
+
+## Overview of column sex in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.sex  |
+| Datatype                      | string        |
+| Column type | computed |
+| Reference | [https://resdac.org/sites/datadocumentation.resdac.org/files/Introduction%20to%20DE-SynPUF%20%28Slides%29.pdf](https://resdac.org/sites/datadocumentation.resdac.org/files/Introduction%20to%20DE-SynPUF%20%28Slides%29.pdf) |
+
+
+Sex
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_SEX_IDENT_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct sex, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/sex.svg" type="image/svg+xml"></object>

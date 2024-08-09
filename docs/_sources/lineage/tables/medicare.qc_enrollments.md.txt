@@ -1,0 +1,65 @@
+# Materialized view medicare.qc_enrollments
+
+## Overview for medicare.qc_enrollments
+Aggregate data for beneficiaries and enrollments
+
+
+Transformed from [medicare.qc_enrl_bene](medicare.qc_enrl_bene.html)
+
+<details>
+```sql
+
+CREATE materialized view  medicare.qc_enrollments AS
+SELECT
+    year,
+	state,
+	zip,
+	fips3,
+	orec,
+	curec,
+	hmo,
+	dual,
+	buyin,
+	consistent_dob,
+	consistent_dod,
+	consistent_sex,
+	consistent_race,
+	fips3_is_approximated,
+	fips3_valdiated,
+	MAX(state_iso) AS state_iso,
+	COUNT(*) AS NumRecords,
+	(#(hll_add_agg(bene)))::BIGINT AS NumDistinctBeneficaries,
+	hll_add_agg(bene) AS bene_hll
+FROM medicare.qc_enrl_bene
+
+GROUP BY year,state,zip,fips3,orec,curec,hmo,dual,buyin,consistent_dob,consistent_dod,consistent_sex,consistent_race,fips3_is_approximated,fips3_valdiated;
+
+COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.212236';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [bene_hll](medicare.qc_enrollments/bene_hll.html) | computed | string |
+| [buyin](medicare.qc_enrollments/buyin.html) |  | string |
+| [consistent_dob](medicare.qc_enrollments/consistent_dob.html) |  | string |
+| [consistent_dod](medicare.qc_enrollments/consistent_dod.html) |  | string |
+| [consistent_race](medicare.qc_enrollments/consistent_race.html) |  | string |
+| [consistent_sex](medicare.qc_enrollments/consistent_sex.html) |  | string |
+| [curec](medicare.qc_enrollments/curec.html) |  | string |
+| [dual](medicare.qc_enrollments/dual.html) |  | string |
+| [fips3](medicare.qc_enrollments/fips3.html) |  | string |
+| [fips3_is_approximated](medicare.qc_enrollments/fips3_is_approximated.html) |  | string |
+| [fips3_valdiated](medicare.qc_enrollments/fips3_valdiated.html) |  | string |
+| [hmo](medicare.qc_enrollments/hmo.html) |  | string |
+| [NumDistinctBeneficaries](medicare.qc_enrollments/NumDistinctBeneficaries.html) | computed | BIGINT |
+| [NumRecords](medicare.qc_enrollments/NumRecords.html) | computed | BIGINT |
+| [orec](medicare.qc_enrollments/orec.html) |  | string |
+| [state](medicare.qc_enrollments/state.html) |  | string |
+| [state_iso](medicare.qc_enrollments/state_iso.html) | computed | CHAR(5) |
+| [year](medicare.qc_enrollments/year.html) |  | string |
+| [zip](medicare.qc_enrollments/zip.html) |  | string |
+
+

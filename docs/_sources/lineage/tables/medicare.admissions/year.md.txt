@@ -1,0 +1,29 @@
+# Column medicare.admissions.year
+
+## Overview of column year in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.year  |
+| Datatype                      | INT        |
+| Column type | computed |
+| Reference | [https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator](https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator) |
+
+
+Beneficiary Enrollment Reference Year
+
+| Key | Value |
+| --- | ----- |
+| original_type | NUM |
+| width | 4.0 |
+
+
+
+## Expressions
+
+```sql
+(CASE WHEN "year"::int < 20 THEN (2000 + "year"::int) WHEN (20 < "year"::int AND "year"::int < 100) THEN (1900 + "year"::int) WHEN "year" IS NULL THEN 2000 ELSE "year"::int END)
+```
+
+

@@ -1,0 +1,22 @@
+# Column medicare.qc_enrollments.zip
+
+## Overview of column zip in table medicare.qc_enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrollments](../medicare.qc_enrollments.md)           |
+| Qualified name                | medicare.qc_enrollments.zip  |
+| Datatype                      | string        |
+| Reference | [https://resdac.org/cms-data/variables/zip-code-beneficiary](https://resdac.org/cms-data/variables/zip-code-beneficiary) |
+
+
+Zip Code of Residence
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 9.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/zip.svg" type="image/svg+xml"></object>

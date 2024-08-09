@@ -1,0 +1,30 @@
+# Column medicare.qc_enrl_bene.orec
+
+## Overview of column orec in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.orec  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+Original Reason for Entitlement Code
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_ENTLMT_RSN_ORIG |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+## Expressions
+
+```sql
+MAX(orec)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/orec.svg" type="image/svg+xml"></object>

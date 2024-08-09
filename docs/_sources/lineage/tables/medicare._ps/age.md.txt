@@ -1,0 +1,27 @@
+# Column medicare._ps.age
+
+## Overview of column age in table medicare._ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._ps](../medicare._ps.md)           |
+| Qualified name                | medicare._ps.age  |
+| Datatype                      | INT        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/age-beneficiary-end-year](https://resdac.org/cms-data/variables/age-beneficiary-end-year) |
+
+
+Age on January 1 of a given year, if provided
+
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::INT |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/age.svg" type="image/svg+xml"></object>

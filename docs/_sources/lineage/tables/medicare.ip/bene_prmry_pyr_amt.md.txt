@@ -1,0 +1,19 @@
+# Column medicare.ip.bene_prmry_pyr_amt
+
+## Overview of column bene_prmry_pyr_amt in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.bene_prmry_pyr_amt  |
+| Datatype                      | NUMERIC        |
+| Reference | [https://resdac.org/cms-data/variables/primary-payer-paid-amount](https://resdac.org/cms-data/variables/primary-payer-paid-amount) |
+
+
+The amount of payment (rounded to whole dollars) made on behalf of the beneficiary by a primary payer other than Medicare, which has been applied to the covered Medicare charges for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/bene_prmry_pyr_amt.svg" type="image/svg+xml"></object>

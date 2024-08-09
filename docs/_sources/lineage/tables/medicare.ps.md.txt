@@ -1,0 +1,37 @@
+# View medicare.ps
+
+## Overview for medicare.ps
+Patient Summary view. Combines multiple patient summary (aka MBSF)
+files into a single view, transforming columns to the same type
+
+
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [age](medicare.ps/age.html) | transformed | INT |
+| [bene_id](medicare.ps/bene_id.html) |  | string |
+| [buyin_cvg_count](medicare.ps/buyin_cvg_count.html) | transformed | INT |
+| [buyin_indicators](medicare.ps/buyin_indicators.html) | transformed | CHAR(1)[12] |
+| [curec](medicare.ps/curec.html) | transformed | INT |
+| [dob](medicare.ps/dob.html) | transformed | date |
+| [dod](medicare.ps/dod.html) | transformed | date |
+| [dod_ndi](medicare.ps/dod_ndi.html) | computed | DATE |
+| [file](medicare.ps/file.html) |  | string |
+| [fips2](medicare.ps/fips2.html) | computed | string |
+| [hmo_cvg_count](medicare.ps/hmo_cvg_count.html) | transformed | INT |
+| [hmo_indicators](medicare.ps/hmo_indicators.html) | transformed | CHAR(1)[12] |
+| [orec](medicare.ps/orec.html) | transformed | INT |
+| [race](medicare.ps/race.html) | transformed | VARCHAR |
+| [race_rti](medicare.ps/race_rti.html) | computed | string |
+| [record](medicare.ps/record.html) |  | string |
+| [sex](medicare.ps/sex.html) | transformed | VARCHAR |
+| [ssa2](medicare.ps/ssa2.html) | computed | string |
+| [ssa3](medicare.ps/ssa3.html) |  | string |
+| [state](medicare.ps/state.html) | computed | string |
+| [year](medicare.ps/year.html) | computed | string |
+| [zip](medicare.ps/zip.html) | transformed | INT |
+| [zip4](medicare.ps/zip4.html) | computed | INT |
+
+

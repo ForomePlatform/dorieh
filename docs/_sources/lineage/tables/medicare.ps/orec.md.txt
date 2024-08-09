@@ -1,0 +1,31 @@
+# Column medicare.ps.orec
+
+## Overview of column orec in table medicare.ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ps](../medicare.ps.md)           |
+| Qualified name                | medicare.ps.orec  |
+| Datatype                      | INT        |
+| Column type | transformed |
+
+
+Original Reason for Entitlement Code
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_ENTLMT_RSN_ORIG |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::INT |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/orec.svg" type="image/svg+xml"></object>

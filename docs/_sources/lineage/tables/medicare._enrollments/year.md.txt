@@ -1,0 +1,23 @@
+# Column medicare._enrollments.year
+
+## Overview of column year in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.year  |
+| Datatype                      | string        |
+| Column type | grouping |
+| Reference | [https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator](https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator) |
+
+
+Beneficiary Enrollment Reference Year
+
+| Key | Value |
+| --- | ----- |
+| original_type | NUM |
+| width | 4.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/year.svg" type="image/svg+xml"></object>

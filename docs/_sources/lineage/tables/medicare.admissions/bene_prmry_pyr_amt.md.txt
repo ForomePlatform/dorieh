@@ -1,0 +1,20 @@
+# Column medicare.admissions.bene_prmry_pyr_amt
+
+## Overview of column bene_prmry_pyr_amt in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.bene_prmry_pyr_amt  |
+| Datatype                      | NUMERIC        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/primary-payer-paid-amount](https://resdac.org/cms-data/variables/primary-payer-paid-amount) |
+
+
+The amount of payment (rounded to whole dollars) made on behalf of the beneficiary by a primary payer other than Medicare, which has been applied to the covered Medicare charges for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/bene_prmry_pyr_amt.svg" type="image/svg+xml"></object>

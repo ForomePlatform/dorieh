@@ -1,0 +1,67 @@
+# Materialized view medicare._ps
+
+## Overview for medicare._ps
+internal intermediate view adding some data conversions
+
+Transformed from [medicare.ps](medicare.ps.html)
+
+<details>
+```sql
+CREATE materialized view medicare._ps AS SELECT *,
+CASE WHEN ssa3 is NOT NULL THEN
+  CASE WHEN year > 2010 THEN
+      (SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1)
+    ELSE
+      (SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1)
+  END
+ELSE
+  (SELECT public.zip_to_fips3(year, zip))
+END AS fips3,
+CASE WHEN ssa3 is NOT NULL THEN
+    False
+  ELSE
+    (SELECT NOT public.is_zip_to_fips_exact(year, zip))
+END AS fips3_is_approximated,
+CASE WHEN year > 2010 THEN (SELECT string_agg(distinct fips3::varchar, ',') from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2)
+    ELSE (SELECT string_agg(distinct fips3::varchar, ',') from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2) END AS fips3_list,
+CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob 
+FROM medicare.ps
+;
+
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.186262';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [age](medicare._ps/age.html) | copied | INT |
+| [bene_id](medicare._ps/bene_id.html) | copied | string |
+| [buyin_cvg_count](medicare._ps/buyin_cvg_count.html) | copied | INT |
+| [buyin_indicators](medicare._ps/buyin_indicators.html) | copied | CHAR(1)[12] |
+| [curec](medicare._ps/curec.html) | copied | INT |
+| [dob](medicare._ps/dob.html) | copied | date |
+| [dod](medicare._ps/dod.html) | copied | date |
+| [dod_ndi](medicare._ps/dod_ndi.html) | copied | DATE |
+| [file](medicare._ps/file.html) | copied | string |
+| [fips2](medicare._ps/fips2.html) | copied | string |
+| [fips3](medicare._ps/fips3.html) | computed | string |
+| [fips3_is_approximated](medicare._ps/fips3_is_approximated.html) | computed | string |
+| [fips3_list](medicare._ps/fips3_list.html) | computed | string |
+| [hmo_cvg_count](medicare._ps/hmo_cvg_count.html) | copied | INT |
+| [hmo_indicators](medicare._ps/hmo_indicators.html) | copied | CHAR(1)[12] |
+| [orec](medicare._ps/orec.html) | copied | INT |
+| [race](medicare._ps/race.html) | copied | VARCHAR |
+| [race_rti](medicare._ps/race_rti.html) | copied | string |
+| [record](medicare._ps/record.html) | copied | string |
+| [sex](medicare._ps/sex.html) | copied | VARCHAR |
+| [ssa2](medicare._ps/ssa2.html) | copied | string |
+| [ssa3](medicare._ps/ssa3.html) | copied | string |
+| [state](medicare._ps/state.html) | copied | string |
+| [year](medicare._ps/year.html) | copied | string |
+| [yob](medicare._ps/yob.html) | computed | string |
+| [zip](medicare._ps/zip.html) | copied | INT |
+| [zip4](medicare._ps/zip4.html) | copied | INT |
+
+

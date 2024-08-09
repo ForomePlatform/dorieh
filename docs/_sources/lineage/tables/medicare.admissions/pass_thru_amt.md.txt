@@ -1,0 +1,20 @@
+# Column medicare.admissions.pass_thru_amt
+
+## Overview of column pass_thru_amt in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.pass_thru_amt  |
+| Datatype                      | NUMERIC        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/pass-thru-diem-amount-stay](https://resdac.org/cms-data/variables/pass-thru-diem-amount-stay) |
+
+
+The total of all claim pass through per diem amounts (rounded to whole dollars) for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/pass_thru_amt.svg" type="image/svg+xml"></object>

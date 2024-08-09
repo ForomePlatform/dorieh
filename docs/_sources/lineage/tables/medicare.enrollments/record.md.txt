@@ -1,0 +1,30 @@
+# Column medicare.enrollments.record
+
+## Overview of column record in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.record  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric](https://resdac.org/cms-data/variables/nch-near-line-record-identification-code-ric) |
+
+
+Record number in the file
+
+| Key | Value |
+| --- | ----- |
+| original_type | BIGSERIAL |
+| width | None |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct RECORD::VARCHAR, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/record.svg" type="image/svg+xml"></object>

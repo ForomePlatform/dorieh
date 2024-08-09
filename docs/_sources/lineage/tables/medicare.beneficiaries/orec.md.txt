@@ -1,0 +1,30 @@
+# Column medicare.beneficiaries.orec
+
+## Overview of column orec in table medicare.beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.beneficiaries](../medicare.beneficiaries.md)           |
+| Qualified name                | medicare.beneficiaries.orec  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+Original Reason for Entitlement Code
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_ENTLMT_RSN_ORIG |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+
+## Expressions
+
+```sql
+MAX(orec)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/orec.svg" type="image/svg+xml"></object>

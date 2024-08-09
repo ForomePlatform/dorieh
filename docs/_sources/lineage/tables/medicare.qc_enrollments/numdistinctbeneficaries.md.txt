@@ -1,0 +1,21 @@
+# Column medicare.qc_enrollments.NumDistinctBeneficaries
+
+## Overview of column NumDistinctBeneficaries in table medicare.qc_enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrollments](../medicare.qc_enrollments.md)           |
+| Qualified name                | medicare.qc_enrollments.NumDistinctBeneficaries  |
+| Datatype                      | BIGINT        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+(#(hll_add_agg(bene)))::BIGINT
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/numdistinctbeneficaries.svg" type="image/svg+xml"></object>

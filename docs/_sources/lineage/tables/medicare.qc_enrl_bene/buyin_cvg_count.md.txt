@@ -1,0 +1,21 @@
+# Column medicare.qc_enrl_bene.buyin_cvg_count
+
+## Overview of column buyin_cvg_count in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.buyin_cvg_count  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+MAX(buyin_cvg_count)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/buyin_cvg_count.svg" type="image/svg+xml"></object>

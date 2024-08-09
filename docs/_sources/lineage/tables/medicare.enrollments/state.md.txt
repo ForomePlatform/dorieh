@@ -1,0 +1,23 @@
+# Column medicare.enrollments.state
+
+## Overview of column state in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.state  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
+
+
+State Code
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 2.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/state.svg" type="image/svg+xml"></object>

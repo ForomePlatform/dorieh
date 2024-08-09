@@ -253,32 +253,70 @@
     <span class="k">return</span> <span class="n">text</span></div>
 
 
-<div class="viewcode-block" id="add_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_row">[docs]</a><span class="k">def</span> <span class="nf">add_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="add_markdown_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_markdown_row">[docs]</a><span class="k">def</span> <span class="nf">add_markdown_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; |</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">row</span></div>
+
+
+<div class="viewcode-block" id="add_markdown_header_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_markdown_header_row">[docs]</a><span class="k">def</span> <span class="nf">add_markdown_header_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">row</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; |</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="n">separator</span> <span class="o">=</span> <span class="s2">&quot;| &quot;</span> <span class="o">+</span> <span class="s2">&quot; | &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;---&quot;</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; |</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="n">row</span> <span class="o">+</span> <span class="n">separator</span></div>
+
+
+<div class="viewcode-block" id="hr_markdown"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.hr_markdown">[docs]</a><span class="k">def</span> <span class="nf">hr_markdown</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;---</span><span class="se">\n</span><span class="s2">&quot;</span></div>
+
+
+<div class="viewcode-block" id="start_markdown_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.start_markdown_table">[docs]</a><span class="k">def</span> <span class="nf">start_markdown_table</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="end_markdown_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.end_markdown_table">[docs]</a><span class="k">def</span> <span class="nf">end_markdown_table</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span></div>
+
+
+<div class="viewcode-block" id="add_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_row">[docs]</a><span class="k">def</span> <span class="nf">add_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">add_markdown_row</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">add_html_row</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="start_invisible_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.start_invisible_row">[docs]</a><span class="k">def</span> <span class="nf">start_invisible_row</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s1">&#39;&lt;tr border = &quot;0&quot;&gt;&lt;td&gt;&#39;</span></div>
-
-
-<div class="viewcode-block" id="end_invisible_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.end_invisible_row">[docs]</a><span class="k">def</span> <span class="nf">end_invisible_row</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
-    <span class="k">return</span> <span class="s1">&#39;&lt;/td&gt;&lt;/tr&gt;&#39;</span></div>
-
-
-<div class="viewcode-block" id="add_header_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_header_row">[docs]</a><span class="k">def</span> <span class="nf">add_header_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<div class="viewcode-block" id="add_header_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.add_header_row">[docs]</a><span class="k">def</span> <span class="nf">add_header_row</span><span class="p">(</span><span class="n">cols</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">add_markdown_header_row</span><span class="p">(</span><span class="n">cols</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">add_html_row</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">tag</span><span class="o">=</span><span class="s2">&quot;th&quot;</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="start_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.start_table">[docs]</a><span class="k">def</span> <span class="nf">start_table</span><span class="p">(</span><span class="n">border</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">):</span>
+<div class="viewcode-block" id="hr"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.hr">[docs]</a><span class="k">def</span> <span class="nf">hr</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">hr_markdown</span><span class="p">()</span>
+    <span class="k">return</span> <span class="s2">&quot;&lt;hr/&gt;&quot;</span></div>
+
+
+<div class="viewcode-block" id="start_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.start_table">[docs]</a><span class="k">def</span> <span class="nf">start_table</span><span class="p">(</span><span class="n">border</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">align</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;left&quot;</span><span class="p">,</span> <span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">start_markdown_table</span><span class="p">()</span>
     <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&lt;br/&gt;&lt;TABLE border = &quot;</span><span class="si">{</span><span class="n">border</span><span class="si">}</span><span class="s1">&quot; align = &quot;</span><span class="si">{</span><span class="n">align</span><span class="si">}</span><span class="s1">&quot;&gt;</span><span class="se">\n</span><span class="s1">&#39;</span></div>
 
 
-<div class="viewcode-block" id="end_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.end_table">[docs]</a><span class="k">def</span> <span class="nf">end_table</span><span class="p">():</span>
+<div class="viewcode-block" id="end_table"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.end_table">[docs]</a><span class="k">def</span> <span class="nf">end_table</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">end_markdown_table</span><span class="p">()</span>
     <span class="k">return</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&lt;/TABLE&gt;&lt;br/&gt;</span><span class="se">\n</span><span class="s1">&#39;</span></div>
 
 
-<div class="viewcode-block" id="hr"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.hr">[docs]</a><span class="k">def</span> <span class="nf">hr</span><span class="p">():</span>
-    <span class="k">return</span> <span class="s2">&quot;&lt;hr/&gt;&quot;</span></div>
+<div class="viewcode-block" id="start_invisible_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.start_invisible_row">[docs]</a><span class="k">def</span> <span class="nf">start_invisible_row</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;&lt;tr border = &quot;0&quot;&gt;&lt;td&gt;&#39;</span></div>
+
+
+<div class="viewcode-block" id="end_invisible_row"><a class="viewcode-back" href="../../../../members/element.html#dorieh.platform.dictionary.element.end_invisible_row">[docs]</a><span class="k">def</span> <span class="nf">end_invisible_row</span><span class="p">(</span><span class="nb">format</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;html&#39;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">format</span> <span class="o">==</span> <span class="s1">&#39;markdown&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+    <span class="k">return</span> <span class="s1">&#39;&lt;/td&gt;&lt;/tr&gt;&#39;</span></div>
+
 
 
 

@@ -1,0 +1,21 @@
+# Column medicare.admissions.pd_hll_hash
+
+## Overview of column pd_hll_hash in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.pd_hll_hash  |
+| Datatype                      | HLL_HASHVAL        |
+| Column type | generated |
+
+
+
+## Expressions
+
+```sql
+GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/pd_hll_hash.svg" type="image/svg+xml"></object>

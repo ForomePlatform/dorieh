@@ -1,0 +1,23 @@
+# Column medicare.ps.bene_id
+
+## Overview of column bene_id in table medicare.ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ps](../medicare.ps.md)           |
+| Qualified name                | medicare.ps.bene_id  |
+| Datatype                      | string        |
+| Reference | [https://resdac.org/cms-data/variables/ccw-beneficiary-id](https://resdac.org/cms-data/variables/ccw-beneficiary-id) |
+
+
+Encrypted 723 Beneficiary ID (Unique Key)
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_ID |
+| original_type | CHAR |
+| width | 15.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/bene_id.svg" type="image/svg+xml"></object>

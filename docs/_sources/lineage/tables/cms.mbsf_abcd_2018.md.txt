@@ -1,0 +1,401 @@
+# Table cms.mbsf_abcd_2018
+
+## Overview for cms.mbsf_abcd_2018
+Primary Key: FILE, RECORD
+
+<details>
+```sql
+CREATE TABLE  cms.mbsf_abcd_2018 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	ENRL_SRC VARCHAR(3),
+	SAMPLE_GROUP VARCHAR(2),
+	EFIVEPCT VARCHAR(1),
+	CRNT_BIC VARCHAR(2),
+	STATE_CD VARCHAR(2),
+	CNTY_CD VARCHAR(3),
+	ZIP_CD VARCHAR(5),
+	STATE_CNTY_FIPS_CD_01 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_02 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_03 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_04 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_05 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_06 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_07 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_08 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_09 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_10 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_11 VARCHAR(5),
+	STATE_CNTY_FIPS_CD_12 VARCHAR(5),
+	AGE INT,
+	BENE_DOB DATE,
+	V_DOD_SW VARCHAR(1),
+	DEATH_DT DATE,
+	SEX VARCHAR(1),
+	RACE VARCHAR(1),
+	RTI_RACE_CD VARCHAR(1),
+	COVSTART DATE,
+	OREC VARCHAR(1),
+	CREC VARCHAR(1),
+	ESRD_IND VARCHAR(1),
+	MDCR_STUS_CD_01 VARCHAR(2),
+	MDCR_STUS_CD_02 VARCHAR(2),
+	MDCR_STUS_CD_03 VARCHAR(2),
+	MDCR_STUS_CD_04 VARCHAR(2),
+	MDCR_STUS_CD_05 VARCHAR(2),
+	MDCR_STUS_CD_06 VARCHAR(2),
+	MDCR_STUS_CD_07 VARCHAR(2),
+	MDCR_STUS_CD_08 VARCHAR(2),
+	MDCR_STUS_CD_09 VARCHAR(2),
+	MDCR_STUS_CD_10 VARCHAR(2),
+	MDCR_STUS_CD_11 VARCHAR(2),
+	MDCR_STUS_CD_12 VARCHAR(2),
+	A_TRM_CD VARCHAR(1),
+	B_TRM_CD VARCHAR(1),
+	A_MO_CNT INT,
+	B_MO_CNT INT,
+	BUYIN_MO INT,
+	HMO_MO INT,
+	PTD_MO INT,
+	RDS_MO INT,
+	DUAL_MO INT,
+	BUYIN01 VARCHAR(1),
+	BUYIN02 VARCHAR(1),
+	BUYIN03 VARCHAR(1),
+	BUYIN04 VARCHAR(1),
+	BUYIN05 VARCHAR(1),
+	BUYIN06 VARCHAR(1),
+	BUYIN07 VARCHAR(1),
+	BUYIN08 VARCHAR(1),
+	BUYIN09 VARCHAR(1),
+	BUYIN10 VARCHAR(1),
+	BUYIN11 VARCHAR(1),
+	BUYIN12 VARCHAR(1),
+	HMOIND01 VARCHAR(1),
+	HMOIND02 VARCHAR(1),
+	HMOIND03 VARCHAR(1),
+	HMOIND04 VARCHAR(1),
+	HMOIND05 VARCHAR(1),
+	HMOIND06 VARCHAR(1),
+	HMOIND07 VARCHAR(1),
+	HMOIND08 VARCHAR(1),
+	HMOIND09 VARCHAR(1),
+	HMOIND10 VARCHAR(1),
+	HMOIND11 VARCHAR(1),
+	HMOIND12 VARCHAR(1),
+	PTC_CNTRCT_ID_01 VARCHAR(5),
+	PTC_CNTRCT_ID_02 VARCHAR(5),
+	PTC_CNTRCT_ID_03 VARCHAR(5),
+	PTC_CNTRCT_ID_04 VARCHAR(5),
+	PTC_CNTRCT_ID_05 VARCHAR(5),
+	PTC_CNTRCT_ID_06 VARCHAR(5),
+	PTC_CNTRCT_ID_07 VARCHAR(5),
+	PTC_CNTRCT_ID_08 VARCHAR(5),
+	PTC_CNTRCT_ID_09 VARCHAR(5),
+	PTC_CNTRCT_ID_10 VARCHAR(5),
+	PTC_CNTRCT_ID_11 VARCHAR(5),
+	PTC_CNTRCT_ID_12 VARCHAR(5),
+	PTC_PBP_ID_01 VARCHAR(3),
+	PTC_PBP_ID_02 VARCHAR(3),
+	PTC_PBP_ID_03 VARCHAR(3),
+	PTC_PBP_ID_04 VARCHAR(3),
+	PTC_PBP_ID_05 VARCHAR(3),
+	PTC_PBP_ID_06 VARCHAR(3),
+	PTC_PBP_ID_07 VARCHAR(3),
+	PTC_PBP_ID_08 VARCHAR(3),
+	PTC_PBP_ID_09 VARCHAR(3),
+	PTC_PBP_ID_10 VARCHAR(3),
+	PTC_PBP_ID_11 VARCHAR(3),
+	PTC_PBP_ID_12 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_01 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_02 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_03 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_04 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_05 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_06 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_07 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_08 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_09 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_10 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_11 VARCHAR(3),
+	PTC_PLAN_TYPE_CD_12 VARCHAR(3),
+	PTDCNTRCT01 VARCHAR(5),
+	PTDCNTRCT02 VARCHAR(5),
+	PTDCNTRCT03 VARCHAR(5),
+	PTDCNTRCT04 VARCHAR(5),
+	PTDCNTRCT05 VARCHAR(5),
+	PTDCNTRCT06 VARCHAR(5),
+	PTDCNTRCT07 VARCHAR(5),
+	PTDCNTRCT08 VARCHAR(5),
+	PTDCNTRCT09 VARCHAR(5),
+	PTDCNTRCT10 VARCHAR(5),
+	PTDCNTRCT11 VARCHAR(5),
+	PTDCNTRCT12 VARCHAR(5),
+	PTDPBPID01 VARCHAR(3),
+	PTDPBPID02 VARCHAR(3),
+	PTDPBPID03 VARCHAR(3),
+	PTDPBPID04 VARCHAR(3),
+	PTDPBPID05 VARCHAR(3),
+	PTDPBPID06 VARCHAR(3),
+	PTDPBPID07 VARCHAR(3),
+	PTDPBPID08 VARCHAR(3),
+	PTDPBPID09 VARCHAR(3),
+	PTDPBPID10 VARCHAR(3),
+	PTDPBPID11 VARCHAR(3),
+	PTDPBPID12 VARCHAR(3),
+	SGMTID01 VARCHAR(3),
+	SGMTID02 VARCHAR(3),
+	SGMTID03 VARCHAR(3),
+	SGMTID04 VARCHAR(3),
+	SGMTID05 VARCHAR(3),
+	SGMTID06 VARCHAR(3),
+	SGMTID07 VARCHAR(3),
+	SGMTID08 VARCHAR(3),
+	SGMTID09 VARCHAR(3),
+	SGMTID10 VARCHAR(3),
+	SGMTID11 VARCHAR(3),
+	SGMTID12 VARCHAR(3),
+	RDSIND01 VARCHAR(1),
+	RDSIND02 VARCHAR(1),
+	RDSIND03 VARCHAR(1),
+	RDSIND04 VARCHAR(1),
+	RDSIND05 VARCHAR(1),
+	RDSIND06 VARCHAR(1),
+	RDSIND07 VARCHAR(1),
+	RDSIND08 VARCHAR(1),
+	RDSIND09 VARCHAR(1),
+	RDSIND10 VARCHAR(1),
+	RDSIND11 VARCHAR(1),
+	RDSIND12 VARCHAR(1),
+	DUAL_01 VARCHAR(2),
+	DUAL_02 VARCHAR(2),
+	DUAL_03 VARCHAR(2),
+	DUAL_04 VARCHAR(2),
+	DUAL_05 VARCHAR(2),
+	DUAL_06 VARCHAR(2),
+	DUAL_07 VARCHAR(2),
+	DUAL_08 VARCHAR(2),
+	DUAL_09 VARCHAR(2),
+	DUAL_10 VARCHAR(2),
+	DUAL_11 VARCHAR(2),
+	DUAL_12 VARCHAR(2),
+	CSTSHR01 VARCHAR(2),
+	CSTSHR02 VARCHAR(2),
+	CSTSHR03 VARCHAR(2),
+	CSTSHR04 VARCHAR(2),
+	CSTSHR05 VARCHAR(2),
+	CSTSHR06 VARCHAR(2),
+	CSTSHR07 VARCHAR(2),
+	CSTSHR08 VARCHAR(2),
+	CSTSHR09 VARCHAR(2),
+	CSTSHR10 VARCHAR(2),
+	CSTSHR11 VARCHAR(2),
+	CSTSHR12 VARCHAR(2),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	STATE VARCHAR(2) GENERATED ALWAYS AS (STATE_CD) STORED,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	ZIP VARCHAR(5) GENERATED ALWAYS AS (ZIP_CD) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_abcd_2018_FILE_idx ON cms.mbsf_abcd_2018 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_abcd_2018 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:53.745783';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [A_MO_CNT](cms.mbsf_abcd_2018/A_MO_CNT.html) |  | INT |
+| [A_TRM_CD](cms.mbsf_abcd_2018/A_TRM_CD.html) |  | VARCHAR(1) |
+| [AGE](cms.mbsf_abcd_2018/AGE.html) |  | INT |
+| [B_MO_CNT](cms.mbsf_abcd_2018/B_MO_CNT.html) |  | INT |
+| [B_TRM_CD](cms.mbsf_abcd_2018/B_TRM_CD.html) |  | VARCHAR(1) |
+| [BENE_DOB](cms.mbsf_abcd_2018/BENE_DOB.html) |  | DATE |
+| [BENE_ID](cms.mbsf_abcd_2018/BENE_ID.html) |  | VARCHAR(15) |
+| [BUYIN01](cms.mbsf_abcd_2018/BUYIN01.html) |  | VARCHAR(1) |
+| [BUYIN02](cms.mbsf_abcd_2018/BUYIN02.html) |  | VARCHAR(1) |
+| [BUYIN03](cms.mbsf_abcd_2018/BUYIN03.html) |  | VARCHAR(1) |
+| [BUYIN04](cms.mbsf_abcd_2018/BUYIN04.html) |  | VARCHAR(1) |
+| [BUYIN05](cms.mbsf_abcd_2018/BUYIN05.html) |  | VARCHAR(1) |
+| [BUYIN06](cms.mbsf_abcd_2018/BUYIN06.html) |  | VARCHAR(1) |
+| [BUYIN07](cms.mbsf_abcd_2018/BUYIN07.html) |  | VARCHAR(1) |
+| [BUYIN08](cms.mbsf_abcd_2018/BUYIN08.html) |  | VARCHAR(1) |
+| [BUYIN09](cms.mbsf_abcd_2018/BUYIN09.html) |  | VARCHAR(1) |
+| [BUYIN10](cms.mbsf_abcd_2018/BUYIN10.html) |  | VARCHAR(1) |
+| [BUYIN11](cms.mbsf_abcd_2018/BUYIN11.html) |  | VARCHAR(1) |
+| [BUYIN12](cms.mbsf_abcd_2018/BUYIN12.html) |  | VARCHAR(1) |
+| [BUYIN_MO](cms.mbsf_abcd_2018/BUYIN_MO.html) |  | INT |
+| [CNTY_CD](cms.mbsf_abcd_2018/CNTY_CD.html) |  | VARCHAR(3) |
+| [COVSTART](cms.mbsf_abcd_2018/COVSTART.html) |  | DATE |
+| [CREC](cms.mbsf_abcd_2018/CREC.html) |  | VARCHAR(1) |
+| [CRNT_BIC](cms.mbsf_abcd_2018/CRNT_BIC.html) |  | VARCHAR(2) |
+| [CSTSHR01](cms.mbsf_abcd_2018/CSTSHR01.html) |  | VARCHAR(2) |
+| [CSTSHR02](cms.mbsf_abcd_2018/CSTSHR02.html) |  | VARCHAR(2) |
+| [CSTSHR03](cms.mbsf_abcd_2018/CSTSHR03.html) |  | VARCHAR(2) |
+| [CSTSHR04](cms.mbsf_abcd_2018/CSTSHR04.html) |  | VARCHAR(2) |
+| [CSTSHR05](cms.mbsf_abcd_2018/CSTSHR05.html) |  | VARCHAR(2) |
+| [CSTSHR06](cms.mbsf_abcd_2018/CSTSHR06.html) |  | VARCHAR(2) |
+| [CSTSHR07](cms.mbsf_abcd_2018/CSTSHR07.html) |  | VARCHAR(2) |
+| [CSTSHR08](cms.mbsf_abcd_2018/CSTSHR08.html) |  | VARCHAR(2) |
+| [CSTSHR09](cms.mbsf_abcd_2018/CSTSHR09.html) |  | VARCHAR(2) |
+| [CSTSHR10](cms.mbsf_abcd_2018/CSTSHR10.html) |  | VARCHAR(2) |
+| [CSTSHR11](cms.mbsf_abcd_2018/CSTSHR11.html) |  | VARCHAR(2) |
+| [CSTSHR12](cms.mbsf_abcd_2018/CSTSHR12.html) |  | VARCHAR(2) |
+| [DEATH_DT](cms.mbsf_abcd_2018/DEATH_DT.html) |  | DATE |
+| [DUAL_01](cms.mbsf_abcd_2018/DUAL_01.html) |  | VARCHAR(2) |
+| [DUAL_02](cms.mbsf_abcd_2018/DUAL_02.html) |  | VARCHAR(2) |
+| [DUAL_03](cms.mbsf_abcd_2018/DUAL_03.html) |  | VARCHAR(2) |
+| [DUAL_04](cms.mbsf_abcd_2018/DUAL_04.html) |  | VARCHAR(2) |
+| [DUAL_05](cms.mbsf_abcd_2018/DUAL_05.html) |  | VARCHAR(2) |
+| [DUAL_06](cms.mbsf_abcd_2018/DUAL_06.html) |  | VARCHAR(2) |
+| [DUAL_07](cms.mbsf_abcd_2018/DUAL_07.html) |  | VARCHAR(2) |
+| [DUAL_08](cms.mbsf_abcd_2018/DUAL_08.html) |  | VARCHAR(2) |
+| [DUAL_09](cms.mbsf_abcd_2018/DUAL_09.html) |  | VARCHAR(2) |
+| [DUAL_10](cms.mbsf_abcd_2018/DUAL_10.html) |  | VARCHAR(2) |
+| [DUAL_11](cms.mbsf_abcd_2018/DUAL_11.html) |  | VARCHAR(2) |
+| [DUAL_12](cms.mbsf_abcd_2018/DUAL_12.html) |  | VARCHAR(2) |
+| [DUAL_MO](cms.mbsf_abcd_2018/DUAL_MO.html) |  | INT |
+| [EFIVEPCT](cms.mbsf_abcd_2018/EFIVEPCT.html) |  | VARCHAR(1) |
+| [ENRL_SRC](cms.mbsf_abcd_2018/ENRL_SRC.html) |  | VARCHAR(3) |
+| [ESRD_IND](cms.mbsf_abcd_2018/ESRD_IND.html) |  | VARCHAR(1) |
+| [FILE](cms.mbsf_abcd_2018/FILE.html) | file | VARCHAR(128) |
+| [HMO_MO](cms.mbsf_abcd_2018/HMO_MO.html) |  | INT |
+| [HMOIND01](cms.mbsf_abcd_2018/HMOIND01.html) |  | VARCHAR(1) |
+| [HMOIND02](cms.mbsf_abcd_2018/HMOIND02.html) |  | VARCHAR(1) |
+| [HMOIND03](cms.mbsf_abcd_2018/HMOIND03.html) |  | VARCHAR(1) |
+| [HMOIND04](cms.mbsf_abcd_2018/HMOIND04.html) |  | VARCHAR(1) |
+| [HMOIND05](cms.mbsf_abcd_2018/HMOIND05.html) |  | VARCHAR(1) |
+| [HMOIND06](cms.mbsf_abcd_2018/HMOIND06.html) |  | VARCHAR(1) |
+| [HMOIND07](cms.mbsf_abcd_2018/HMOIND07.html) |  | VARCHAR(1) |
+| [HMOIND08](cms.mbsf_abcd_2018/HMOIND08.html) |  | VARCHAR(1) |
+| [HMOIND09](cms.mbsf_abcd_2018/HMOIND09.html) |  | VARCHAR(1) |
+| [HMOIND10](cms.mbsf_abcd_2018/HMOIND10.html) |  | VARCHAR(1) |
+| [HMOIND11](cms.mbsf_abcd_2018/HMOIND11.html) |  | VARCHAR(1) |
+| [HMOIND12](cms.mbsf_abcd_2018/HMOIND12.html) |  | VARCHAR(1) |
+| [MDCR_STUS_CD_01](cms.mbsf_abcd_2018/MDCR_STUS_CD_01.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_02](cms.mbsf_abcd_2018/MDCR_STUS_CD_02.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_03](cms.mbsf_abcd_2018/MDCR_STUS_CD_03.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_04](cms.mbsf_abcd_2018/MDCR_STUS_CD_04.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_05](cms.mbsf_abcd_2018/MDCR_STUS_CD_05.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_06](cms.mbsf_abcd_2018/MDCR_STUS_CD_06.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_07](cms.mbsf_abcd_2018/MDCR_STUS_CD_07.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_08](cms.mbsf_abcd_2018/MDCR_STUS_CD_08.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_09](cms.mbsf_abcd_2018/MDCR_STUS_CD_09.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_10](cms.mbsf_abcd_2018/MDCR_STUS_CD_10.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_11](cms.mbsf_abcd_2018/MDCR_STUS_CD_11.html) |  | VARCHAR(2) |
+| [MDCR_STUS_CD_12](cms.mbsf_abcd_2018/MDCR_STUS_CD_12.html) |  | VARCHAR(2) |
+| [OREC](cms.mbsf_abcd_2018/OREC.html) |  | VARCHAR(1) |
+| [PTC_CNTRCT_ID_01](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_01.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_02](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_02.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_03](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_03.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_04](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_04.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_05](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_05.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_06](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_06.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_07](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_07.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_08](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_08.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_09](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_09.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_10](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_10.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_11](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_11.html) |  | VARCHAR(5) |
+| [PTC_CNTRCT_ID_12](cms.mbsf_abcd_2018/PTC_CNTRCT_ID_12.html) |  | VARCHAR(5) |
+| [PTC_PBP_ID_01](cms.mbsf_abcd_2018/PTC_PBP_ID_01.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_02](cms.mbsf_abcd_2018/PTC_PBP_ID_02.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_03](cms.mbsf_abcd_2018/PTC_PBP_ID_03.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_04](cms.mbsf_abcd_2018/PTC_PBP_ID_04.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_05](cms.mbsf_abcd_2018/PTC_PBP_ID_05.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_06](cms.mbsf_abcd_2018/PTC_PBP_ID_06.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_07](cms.mbsf_abcd_2018/PTC_PBP_ID_07.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_08](cms.mbsf_abcd_2018/PTC_PBP_ID_08.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_09](cms.mbsf_abcd_2018/PTC_PBP_ID_09.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_10](cms.mbsf_abcd_2018/PTC_PBP_ID_10.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_11](cms.mbsf_abcd_2018/PTC_PBP_ID_11.html) |  | VARCHAR(3) |
+| [PTC_PBP_ID_12](cms.mbsf_abcd_2018/PTC_PBP_ID_12.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_01](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_01.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_02](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_02.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_03](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_03.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_04](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_04.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_05](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_05.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_06](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_06.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_07](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_07.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_08](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_08.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_09](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_09.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_10](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_10.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_11](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_11.html) |  | VARCHAR(3) |
+| [PTC_PLAN_TYPE_CD_12](cms.mbsf_abcd_2018/PTC_PLAN_TYPE_CD_12.html) |  | VARCHAR(3) |
+| [PTD_MO](cms.mbsf_abcd_2018/PTD_MO.html) |  | INT |
+| [PTDCNTRCT01](cms.mbsf_abcd_2018/PTDCNTRCT01.html) |  | VARCHAR(5) |
+| [PTDCNTRCT02](cms.mbsf_abcd_2018/PTDCNTRCT02.html) |  | VARCHAR(5) |
+| [PTDCNTRCT03](cms.mbsf_abcd_2018/PTDCNTRCT03.html) |  | VARCHAR(5) |
+| [PTDCNTRCT04](cms.mbsf_abcd_2018/PTDCNTRCT04.html) |  | VARCHAR(5) |
+| [PTDCNTRCT05](cms.mbsf_abcd_2018/PTDCNTRCT05.html) |  | VARCHAR(5) |
+| [PTDCNTRCT06](cms.mbsf_abcd_2018/PTDCNTRCT06.html) |  | VARCHAR(5) |
+| [PTDCNTRCT07](cms.mbsf_abcd_2018/PTDCNTRCT07.html) |  | VARCHAR(5) |
+| [PTDCNTRCT08](cms.mbsf_abcd_2018/PTDCNTRCT08.html) |  | VARCHAR(5) |
+| [PTDCNTRCT09](cms.mbsf_abcd_2018/PTDCNTRCT09.html) |  | VARCHAR(5) |
+| [PTDCNTRCT10](cms.mbsf_abcd_2018/PTDCNTRCT10.html) |  | VARCHAR(5) |
+| [PTDCNTRCT11](cms.mbsf_abcd_2018/PTDCNTRCT11.html) |  | VARCHAR(5) |
+| [PTDCNTRCT12](cms.mbsf_abcd_2018/PTDCNTRCT12.html) |  | VARCHAR(5) |
+| [PTDPBPID01](cms.mbsf_abcd_2018/PTDPBPID01.html) |  | VARCHAR(3) |
+| [PTDPBPID02](cms.mbsf_abcd_2018/PTDPBPID02.html) |  | VARCHAR(3) |
+| [PTDPBPID03](cms.mbsf_abcd_2018/PTDPBPID03.html) |  | VARCHAR(3) |
+| [PTDPBPID04](cms.mbsf_abcd_2018/PTDPBPID04.html) |  | VARCHAR(3) |
+| [PTDPBPID05](cms.mbsf_abcd_2018/PTDPBPID05.html) |  | VARCHAR(3) |
+| [PTDPBPID06](cms.mbsf_abcd_2018/PTDPBPID06.html) |  | VARCHAR(3) |
+| [PTDPBPID07](cms.mbsf_abcd_2018/PTDPBPID07.html) |  | VARCHAR(3) |
+| [PTDPBPID08](cms.mbsf_abcd_2018/PTDPBPID08.html) |  | VARCHAR(3) |
+| [PTDPBPID09](cms.mbsf_abcd_2018/PTDPBPID09.html) |  | VARCHAR(3) |
+| [PTDPBPID10](cms.mbsf_abcd_2018/PTDPBPID10.html) |  | VARCHAR(3) |
+| [PTDPBPID11](cms.mbsf_abcd_2018/PTDPBPID11.html) |  | VARCHAR(3) |
+| [PTDPBPID12](cms.mbsf_abcd_2018/PTDPBPID12.html) |  | VARCHAR(3) |
+| [RACE](cms.mbsf_abcd_2018/RACE.html) |  | VARCHAR(1) |
+| [RDS_MO](cms.mbsf_abcd_2018/RDS_MO.html) |  | INT |
+| [RDSIND01](cms.mbsf_abcd_2018/RDSIND01.html) |  | VARCHAR(1) |
+| [RDSIND02](cms.mbsf_abcd_2018/RDSIND02.html) |  | VARCHAR(1) |
+| [RDSIND03](cms.mbsf_abcd_2018/RDSIND03.html) |  | VARCHAR(1) |
+| [RDSIND04](cms.mbsf_abcd_2018/RDSIND04.html) |  | VARCHAR(1) |
+| [RDSIND05](cms.mbsf_abcd_2018/RDSIND05.html) |  | VARCHAR(1) |
+| [RDSIND06](cms.mbsf_abcd_2018/RDSIND06.html) |  | VARCHAR(1) |
+| [RDSIND07](cms.mbsf_abcd_2018/RDSIND07.html) |  | VARCHAR(1) |
+| [RDSIND08](cms.mbsf_abcd_2018/RDSIND08.html) |  | VARCHAR(1) |
+| [RDSIND09](cms.mbsf_abcd_2018/RDSIND09.html) |  | VARCHAR(1) |
+| [RDSIND10](cms.mbsf_abcd_2018/RDSIND10.html) |  | VARCHAR(1) |
+| [RDSIND11](cms.mbsf_abcd_2018/RDSIND11.html) |  | VARCHAR(1) |
+| [RDSIND12](cms.mbsf_abcd_2018/RDSIND12.html) |  | VARCHAR(1) |
+| [RECORD](cms.mbsf_abcd_2018/RECORD.html) |  | BIGSERIAL |
+| [RFRNC_YR](cms.mbsf_abcd_2018/RFRNC_YR.html) |  | INT |
+| [RTI_RACE_CD](cms.mbsf_abcd_2018/RTI_RACE_CD.html) |  | VARCHAR(1) |
+| [SAMPLE_GROUP](cms.mbsf_abcd_2018/SAMPLE_GROUP.html) |  | VARCHAR(2) |
+| [SEX](cms.mbsf_abcd_2018/SEX.html) |  | VARCHAR(1) |
+| [SGMTID01](cms.mbsf_abcd_2018/SGMTID01.html) |  | VARCHAR(3) |
+| [SGMTID02](cms.mbsf_abcd_2018/SGMTID02.html) |  | VARCHAR(3) |
+| [SGMTID03](cms.mbsf_abcd_2018/SGMTID03.html) |  | VARCHAR(3) |
+| [SGMTID04](cms.mbsf_abcd_2018/SGMTID04.html) |  | VARCHAR(3) |
+| [SGMTID05](cms.mbsf_abcd_2018/SGMTID05.html) |  | VARCHAR(3) |
+| [SGMTID06](cms.mbsf_abcd_2018/SGMTID06.html) |  | VARCHAR(3) |
+| [SGMTID07](cms.mbsf_abcd_2018/SGMTID07.html) |  | VARCHAR(3) |
+| [SGMTID08](cms.mbsf_abcd_2018/SGMTID08.html) |  | VARCHAR(3) |
+| [SGMTID09](cms.mbsf_abcd_2018/SGMTID09.html) |  | VARCHAR(3) |
+| [SGMTID10](cms.mbsf_abcd_2018/SGMTID10.html) |  | VARCHAR(3) |
+| [SGMTID11](cms.mbsf_abcd_2018/SGMTID11.html) |  | VARCHAR(3) |
+| [SGMTID12](cms.mbsf_abcd_2018/SGMTID12.html) |  | VARCHAR(3) |
+| [STATE](cms.mbsf_abcd_2018/STATE.html) | generated | VARCHAR(2) |
+| [STATE_CD](cms.mbsf_abcd_2018/STATE_CD.html) |  | VARCHAR(2) |
+| [STATE_CNTY_FIPS_CD_01](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_01.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_02](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_02.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_03](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_03.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_04](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_04.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_05](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_05.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_06](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_06.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_07](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_07.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_08](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_08.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_09](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_09.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_10](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_10.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_11](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_11.html) |  | VARCHAR(5) |
+| [STATE_CNTY_FIPS_CD_12](cms.mbsf_abcd_2018/STATE_CNTY_FIPS_CD_12.html) |  | VARCHAR(5) |
+| [V_DOD_SW](cms.mbsf_abcd_2018/V_DOD_SW.html) |  | VARCHAR(1) |
+| [YEAR](cms.mbsf_abcd_2018/YEAR.html) | generated | INT |
+| [ZIP](cms.mbsf_abcd_2018/ZIP.html) | generated | VARCHAR(5) |
+| [ZIP_CD](cms.mbsf_abcd_2018/ZIP_CD.html) |  | VARCHAR(5) |
+
+

@@ -1,0 +1,21 @@
+# Column medicare.mbsf_d.file
+
+## Overview of column file in table medicare.mbsf_d 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.mbsf_d](../medicare.mbsf_d.md)           |
+| Qualified name                | medicare.mbsf_d.file  |
+| Datatype                      | string        |
+
+
+RESDAC original file name
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 128 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.mbsf_d/file.svg" type="image/svg+xml"></object>

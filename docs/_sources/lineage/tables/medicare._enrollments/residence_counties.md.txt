@@ -1,0 +1,21 @@
+# Column medicare._enrollments.residence_counties
+
+## Overview of column residence_counties in table medicare._enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._enrollments](../medicare._enrollments.md)           |
+| Qualified name                | medicare._enrollments.residence_counties  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+string_agg(distinct fips3_list, ',')
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/residence_counties.svg" type="image/svg+xml"></object>

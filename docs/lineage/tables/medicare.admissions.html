@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table medicare.admissions &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Table medicare.admissions</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/lineage/tables/medicare.admissions.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-medicare-admissions">
+<h1>Table medicare.admissions<a class="headerlink" href="#table-medicare-admissions" title="Permalink to this heading"></a></h1>
+<section id="overview-for-medicare-admissions">
+<h2>Overview for medicare.admissions<a class="headerlink" href="#overview-for-medicare-admissions" title="Permalink to this heading"></a></h2>
+<p>Medicare inpatient admissions</p>
+<p>Child table of <a class="reference internal" href="#medicare.enrollments.html"><span class="xref myst">medicare.enrollments</span></a></p>
+<p>Transformed from <a class="reference internal" href="#medicare.ip.html"><span class="xref myst">medicare.ip</span></a></p>
+<p>Primary Key: bene_id, year, state, admission_date, discharge_date</p>
+<details>
+```sql
+CREATE table medicare.admissions AS SELECT bene_id,
+file,
+record,
+year,
+state,
+ssa2,
+fips2,
+zip,
+zip4,
+admission_date_raw,
+discharge_date_raw,
+admission_date,
+discharge_date,
+adm_day_of_week,
+dschrgcd,
+dschrg_dstntn_cd,
+admsn_type_cd,
+src_admsn_cd,
+btrim(diag1) As primary_diagnosis,
+array_remove(ARRAY[
+btrim(btrim(diag1)),
+btrim(diag2),
+btrim(diag3),
+btrim(diag4),
+btrim(diag5),
+btrim(diag6),
+btrim(diag7),
+btrim(diag8),
+btrim(diag9),
+btrim(diag10),
+btrim(diag11),
+btrim(diag12),
+btrim(diag13),
+btrim(diag14),
+btrim(diag15),
+btrim(diag16),
+btrim(diag17),
+btrim(diag18),
+btrim(diag19),
+btrim(diag20),
+btrim(diag21),
+btrim(diag22),
+btrim(diag23),
+btrim(diag24),
+btrim(diag25)
+], NULL) As diagnoses,
+los_day_cnt,
+drg_price_amt,
+drg_outlier_pmt_amt,
+pass_thru_amt,
+mdcr_pmt_amt,
+bene_blood_ddctbl_amt,
+bene_prmry_pyr_amt,
+bene_ip_ddctbl_amt,
+bene_pta_coinsrnc_amt 
+FROM medicare.ip
+WHERE 1 = 0;
+ALTER table medicare.admissions ADD COLUMN quality VARCHAR(12) DEFAULT 'PASS';
+ALTER table medicare.admissions ADD COLUMN admission_year INT GENERATED ALWAYS AS (EXTRACT (YEAR FROM admission_date)) STORED;
+ALTER table medicare.admissions ADD COLUMN state_iso CHAR(5) GENERATED ALWAYS AS ('US-' || state)  STORED;
+ALTER table medicare.admissions ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
+ALTER table medicare.admissions ADD COLUMN pd_hll_hash HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED;
+ALTER table medicare.admissions ADD COLUMN icd_hll HLL GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED;
+ALTER table medicare.admissions ADD PRIMARY KEY (bene_id, year, state, admission_date, discharge_date);
+ALTER table medicare.admissions ADD CONSTRAINT admissions_to_enrollments FOREIGN KEY (bene_id, year, state) REFERENCES medicare.enrollments (bene_id, year, state);
+<p>CREATE TABLE  medicare_audit.admissions (
+quality VARCHAR(12) DEFAULT ‘PASS’,
+admission_year INT GENERATED ALWAYS AS (EXTRACT (YEAR FROM admission_date)) STORED,
+diagnoses VARCHAR(12)[10],
+state_iso CHAR(5) GENERATED ALWAYS AS (‘US-’ || state)  STORED,
+bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED,
+pd_hll_hash HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED,
+icd_hll HLL GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED,
+bene_id VARCHAR,
+file VARCHAR,
+record VARCHAR,
+year INT,
+state VARCHAR,
+ssa2 VARCHAR,
+fips2 VARCHAR,
+zip INT,
+zip4 INT,
+admission_date_raw VARCHAR,
+discharge_date_raw VARCHAR,
+admission_date DATE,
+discharge_date DATE,
+adm_day_of_week INT,
+dschrgcd CHAR(1),
+dschrg_dstntn_cd CHAR(2),
+admsn_type_cd CHAR(1),
+src_admsn_cd CHAR(1),
+primary_diagnosis VARCHAR,
+los_day_cnt INT,
+drg_price_amt NUMERIC,
+drg_outlier_pmt_amt NUMERIC,
+pass_thru_amt NUMERIC,
+mdcr_pmt_amt NUMERIC,
+bene_blood_ddctbl_amt NUMERIC,
+bene_prmry_pyr_amt NUMERIC,
+bene_ip_ddctbl_amt NUMERIC,
+bene_pta_coinsrnc_amt NUMERIC,
+REASON VARCHAR(16),
+REFCTID TID,
+recorded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+CREATE INDEX  admissions_REFCTID_idx ON medicare_audit.admissions USING BTREE (REFCTID) ;</p>
+<p>CREATE OR REPLACE FUNCTION medicare.validate_admissions() RETURNS TRIGGER
+– Validate foreign key for medicare.admissions
+AS $body$
+DECLARE rctid tid;
+BEGIN
+IF (NEW.bene_id IS NULL
+OR NEW.year IS NULL
+OR NEW.state IS NULL
+OR NEW.admission_date IS NULL
+OR NEW.discharge_date IS NULL ) THEN
+INSERT INTO medicare_audit.admissions
+(quality,diagnoses,bene_id,file,record,year,state,ssa2,fips2,zip,zip4,admission_date_raw,discharge_date_raw,admission_date,discharge_date,adm_day_of_week,dschrgcd,dschrg_dstntn_cd,admsn_type_cd,src_admsn_cd,primary_diagnosis,los_day_cnt,drg_price_amt,drg_outlier_pmt_amt,pass_thru_amt,mdcr_pmt_amt,bene_blood_ddctbl_amt,bene_prmry_pyr_amt,bene_ip_ddctbl_amt,bene_pta_coinsrnc_amt, REASON)
+VALUES (NEW.quality,NEW.diagnoses,NEW.bene_id,NEW.file,NEW.record,NEW.year,NEW.state,NEW.ssa2,NEW.fips2,NEW.zip,NEW.zip4,NEW.admission_date_raw,NEW.discharge_date_raw,NEW.admission_date,NEW.discharge_date,NEW.adm_day_of_week,NEW.dschrgcd,NEW.dschrg_dstntn_cd,NEW.admsn_type_cd,NEW.src_admsn_cd,NEW.primary_diagnosis,NEW.los_day_cnt,NEW.drg_price_amt,NEW.drg_outlier_pmt_amt,NEW.pass_thru_amt,NEW.mdcr_pmt_amt,NEW.bene_blood_ddctbl_amt,NEW.bene_prmry_pyr_amt,NEW.bene_ip_ddctbl_amt,NEW.bene_pta_coinsrnc_amt, ‘PRIMARY KEY’);
+RETURN NULL;
+END IF;
+IF NOT EXISTS (
+SELECT FROM medicare.enrollments as t
+WHERE
+NEW.bene_id = t.bene_id
+AND NEW.year = t.year
+AND NEW.state = t.state
+) THEN
+INSERT INTO medicare_audit.admissions
+(quality,diagnoses,bene_id,file,record,year,state,ssa2,fips2,zip,zip4,admission_date_raw,discharge_date_raw,admission_date,discharge_date,adm_day_of_week,dschrgcd,dschrg_dstntn_cd,admsn_type_cd,src_admsn_cd,primary_diagnosis,los_day_cnt,drg_price_amt,drg_outlier_pmt_amt,pass_thru_amt,mdcr_pmt_amt,bene_blood_ddctbl_amt,bene_prmry_pyr_amt,bene_ip_ddctbl_amt,bene_pta_coinsrnc_amt, REASON)
+VALUES (NEW.quality,NEW.diagnoses,NEW.bene_id,NEW.file,NEW.record,NEW.year,NEW.state,NEW.ssa2,NEW.fips2,NEW.zip,NEW.zip4,NEW.admission_date_raw,NEW.discharge_date_raw,NEW.admission_date,NEW.discharge_date,NEW.adm_day_of_week,NEW.dschrgcd,NEW.dschrg_dstntn_cd,NEW.admsn_type_cd,NEW.src_admsn_cd,NEW.primary_diagnosis,NEW.los_day_cnt,NEW.drg_price_amt,NEW.drg_outlier_pmt_amt,NEW.pass_thru_amt,NEW.mdcr_pmt_amt,NEW.bene_blood_ddctbl_amt,NEW.bene_prmry_pyr_amt,NEW.bene_ip_ddctbl_amt,NEW.bene_pta_coinsrnc_amt, ‘FOREIGN KEY’);
+RETURN NULL;
+END IF;
+IF EXISTS (
+SELECT FROM medicare.admissions as t
+WHERE
+NEW.bene_id = t.bene_id
+AND NEW.year = t.year
+AND NEW.state = t.state
+AND NEW.admission_date = t.admission_date
+AND NEW.discharge_date = t.discharge_date
+) THEN</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        SELECT 
+            ctid 
+        FROM medicare.admissions AS t 
+        WHERE NEW.bene_id = t.bene_id
+			AND NEW.year = t.year
+			AND NEW.state = t.state
+			AND NEW.admission_date = t.admission_date
+			AND NEW.discharge_date = t.discharge_date 
+        INTO rctid;
+</pre></div>
+</div>
+<p>INSERT INTO medicare_audit.admissions
+(quality,diagnoses,bene_id,file,record,year,state,ssa2,fips2,zip,zip4,admission_date_raw,discharge_date_raw,admission_date,discharge_date,adm_day_of_week,dschrgcd,dschrg_dstntn_cd,admsn_type_cd,src_admsn_cd,primary_diagnosis,los_day_cnt,drg_price_amt,drg_outlier_pmt_amt,pass_thru_amt,mdcr_pmt_amt,bene_blood_ddctbl_amt,bene_prmry_pyr_amt,bene_ip_ddctbl_amt,bene_pta_coinsrnc_amt,REFCTID, REASON)
+VALUES (NEW.quality,NEW.diagnoses,NEW.bene_id,NEW.file,NEW.record,NEW.year,NEW.state,NEW.ssa2,NEW.fips2,NEW.zip,NEW.zip4,NEW.admission_date_raw,NEW.discharge_date_raw,NEW.admission_date,NEW.discharge_date,NEW.adm_day_of_week,NEW.dschrgcd,NEW.dschrg_dstntn_cd,NEW.admsn_type_cd,NEW.src_admsn_cd,NEW.primary_diagnosis,NEW.los_day_cnt,NEW.drg_price_amt,NEW.drg_outlier_pmt_amt,NEW.pass_thru_amt,NEW.mdcr_pmt_amt,NEW.bene_blood_ddctbl_amt,NEW.bene_prmry_pyr_amt,NEW.bene_ip_ddctbl_amt,NEW.bene_pta_coinsrnc_amt,rctid, ‘DUPLICATE’);
+RETURN NULL;
+END IF;
+RETURN NEW;
+END;</p>
+<p>$body$ LANGUAGE plpgsql;</p>
+<p>CREATE TRIGGER medicare_admissions_validation BEFORE INSERT ON medicare.admissions
+FOR EACH ROW EXECUTE FUNCTION medicare.validate_admissions();
+COMMENT ON table medicare.admissions IS ‘CREATED BY Dorieh: {“version”: “0.2.1”, “url”: “https://github.com/NSAPH-Data-Platform/dorieh”, “commit”: “ca717ed5fe5e7804013dd31c1f67df0c93cd49eb”}. Created at 2024-08-08 19:52:54.211052’;</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
+<span class="o">---</span>
+<span class="c1">## Columns:</span>
+
+<span class="o">|</span> <span class="n">Column</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Column</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Datatype</span> <span class="o">|</span>
+<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">adm_day_of_week</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">adm_day_of_week</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">admission_date</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">admission_date</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">DATE</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">admission_date_raw</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">admission_date_raw</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">VARCHAR</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">admission_year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">admission_year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">admsn_type_cd</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">admsn_type_cd</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL_HASHVAL</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene_blood_ddctbl_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene_blood_ddctbl_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene_id</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene_id</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene_ip_ddctbl_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene_ip_ddctbl_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene_prmry_pyr_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene_prmry_pyr_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">bene_pta_coinsrnc_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">bene_pta_coinsrnc_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">diagnoses</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">diagnoses</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">discharge_date</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">discharge_date</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">DATE</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">discharge_date_raw</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">discharge_date_raw</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">VARCHAR</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">drg_outlier_pmt_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">drg_outlier_pmt_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">drg_price_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">drg_price_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">dschrg_dstntn_cd</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">dschrg_dstntn_cd</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">dschrgcd</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">dschrgcd</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">file</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">fips2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">fips2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">icd_hll</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">icd_hll</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">los_day_cnt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">los_day_cnt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">mdcr_pmt_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">mdcr_pmt_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">pass_thru_amt</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">pass_thru_amt</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">NUMERIC</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">pd_hll_hash</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">pd_hll_hash</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL_HASHVAL</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">primary_diagnosis</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">primary_diagnosis</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">quality</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">quality</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="n">DEFAULT</span> <span class="s1">&#39;PASS&#39;</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">record</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">record</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">src_admsn_cd</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">src_admsn_cd</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">ssa2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">ssa2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">state</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">state</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">state_iso</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">state_iso</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">char</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="nb">zip</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="nb">zip</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+<span class="o">|</span> <span class="p">[</span><span class="n">zip4</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">admissions</span><span class="o">/</span><span class="n">zip4</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
+
+
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

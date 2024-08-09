@@ -1,0 +1,23 @@
+# Column medicare.admissions.dschrg_dstntn_cd
+
+## Overview of column dschrg_dstntn_cd in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.dschrg_dstntn_cd  |
+| Datatype                      | CHAR(2)        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| numeric | TRIM(to_char({column_name}, '99')) |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrg_dstntn_cd.svg" type="image/svg+xml"></object>

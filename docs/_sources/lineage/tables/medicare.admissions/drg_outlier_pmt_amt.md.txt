@@ -1,0 +1,21 @@
+# Column medicare.admissions.drg_outlier_pmt_amt
+
+## Overview of column drg_outlier_pmt_amt in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.drg_outlier_pmt_amt  |
+| Datatype                      | NUMERIC        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/drg-outlier-approved-payment-amount](https://resdac.org/cms-data/variables/drg-outlier-approved-payment-amount) |
+
+
+The amount of additional payment (rounded to whole dollars) approved due 
+to an outlier situation over the DRG allowance for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/drg_outlier_pmt_amt.svg" type="image/svg+xml"></object>

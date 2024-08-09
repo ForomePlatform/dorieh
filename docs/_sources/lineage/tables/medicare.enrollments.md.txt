@@ -1,0 +1,71 @@
+# Table medicare.enrollments
+
+## Overview for medicare.enrollments
+Cleaned up and unified Medicare beneficiaries enrollments table,
+by state and year. This table is indexed and optimized
+for efficient queries
+
+
+Child table of [medicare.beneficiaries](medicare.beneficiaries.html)
+
+Transformed from [medicare._enrollments](medicare._enrollments.html)
+
+Primary Key: bene_id, year, state
+
+<details>
+```sql
+CREATE table medicare.enrollments AS SELECT * 
+FROM medicare._enrollments
+;
+ALTER table medicare.enrollments ADD COLUMN hmo BOOLEAN GENERATED ALWAYS AS (CASE WHEN hmo_cvg_count IS NULL THEN NULL WHEN hmo_cvg_count > 0 THEN TRUE ELSE FALSE END) STORED;
+ALTER table medicare.enrollments ADD COLUMN buyin BOOLEAN GENERATED ALWAYS AS (CASE WHEN buyin_cvg_count IS NULL THEN NULL WHEN buyin_cvg_count > 0 THEN TRUE ELSE FALSE END) STORED;
+ALTER table medicare.enrollments ADD COLUMN dual BOOLEAN GENERATED ALWAYS AS (CASE WHEN dual_cvg_count IS NULL THEN NULL WHEN dual_cvg_count > 0 THEN TRUE ELSE FALSE END) STORED;
+ALTER table medicare.enrollments ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
+ALTER table medicare.enrollments ADD PRIMARY KEY (bene_id, year, state);
+ALTER table medicare.enrollments ADD CONSTRAINT enrollments_to_beneficiaries FOREIGN KEY (bene_id) REFERENCES medicare.beneficiaries (bene_id);
+
+COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.188616';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [age](medicare.enrollments/age.html) | copied | string |
+| [age_min](medicare.enrollments/age_min.html) | copied | string |
+| [bene](medicare.enrollments/bene.html) | generated | HLL_HASHVAL |
+| [bene_id](medicare.enrollments/bene_id.html) | copied | string |
+| [buyin](medicare.enrollments/buyin.html) | generated | boolean |
+| [buyin_cvg_count](medicare.enrollments/buyin_cvg_count.html) | copied | string |
+| [buyin_indicators](medicare.enrollments/buyin_indicators.html) | copied | string |
+| [curec](medicare.enrollments/curec.html) | copied | string |
+| [died](medicare.enrollments/died.html) | copied | string |
+| [dual](medicare.enrollments/dual.html) | generated | boolean |
+| [dual_cvg_count](medicare.enrollments/dual_cvg_count.html) | copied | string |
+| [dual_indicators](medicare.enrollments/dual_indicators.html) | copied | string |
+| [file](medicare.enrollments/file.html) | copied | string |
+| [fips2](medicare.enrollments/fips2.html) | copied | string |
+| [fips3](medicare.enrollments/fips3.html) | copied | string |
+| [fips3_is_approximated](medicare.enrollments/fips3_is_approximated.html) | copied | string |
+| [fips3_valdiated](medicare.enrollments/fips3_valdiated.html) | copied | string |
+| [fips5](medicare.enrollments/fips5.html) | copied | string |
+| [hmo](medicare.enrollments/hmo.html) | generated | boolean |
+| [hmo_cvg_count](medicare.enrollments/hmo_cvg_count.html) | copied | string |
+| [hmo_indicators](medicare.enrollments/hmo_indicators.html) | copied | string |
+| [orec](medicare.enrollments/orec.html) | copied | string |
+| [record](medicare.enrollments/record.html) | copied | string |
+| [residence_counties](medicare.enrollments/residence_counties.html) | copied | string |
+| [residence_county](medicare.enrollments/residence_county.html) | copied | string |
+| [ssa2](medicare.enrollments/ssa2.html) | copied | string |
+| [ssa2_list](medicare.enrollments/ssa2_list.html) | copied | string |
+| [ssa3](medicare.enrollments/ssa3.html) | copied | string |
+| [ssa3_list](medicare.enrollments/ssa3_list.html) | copied | string |
+| [state](medicare.enrollments/state.html) | copied | string |
+| [state_count](medicare.enrollments/state_count.html) | copied | string |
+| [state_iso](medicare.enrollments/state_iso.html) | copied | char(5) |
+| [year](medicare.enrollments/year.html) | copied | string |
+| [zip](medicare.enrollments/zip.html) | copied | string |
+| [zips](medicare.enrollments/zips.html) | copied | string |
+
+

@@ -1,0 +1,30 @@
+# Column medicare._ps.state
+
+## Overview of column state in table medicare._ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._ps](../medicare._ps.md)           |
+| Qualified name                | medicare._ps.state  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
+
+
+State Code
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 2.0 |
+
+
+
+## Expressions
+
+```sql
+(SELECT state_id FROM public.us_states as s WHERE s.ssa2 = "state")
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/state.svg" type="image/svg+xml"></object>

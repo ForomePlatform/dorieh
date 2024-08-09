@@ -1,0 +1,33 @@
+# Column medicare.qc_enrl_bene.discrepancies
+
+## Overview of column discrepancies in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.discrepancies  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+Number of possible discrepancies for the beneficiary, .i.e., records that use alternative DOB, race, ethnicity or DOD
+
+
+
+
+## Expressions
+
+```sql
+(
+  COUNT(distinct {identifiers}) - 1 +
+  CASE
+    (COUNT(DISTINCT dod) FILTER (WHERE dod is not null))
+    WHEN 0 THEN 0
+    ELSE COUNT(DISTINCT dod) FILTER (WHERE dod is not null) - 1
+  END
+)
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/discrepancies.svg" type="image/svg+xml"></object>

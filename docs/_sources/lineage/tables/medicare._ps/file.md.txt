@@ -1,0 +1,22 @@
+# Column medicare._ps.file
+
+## Overview of column file in table medicare._ps 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._ps](../medicare._ps.md)           |
+| Qualified name                | medicare._ps.file  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+RESDAC original file name
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 128 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/file.svg" type="image/svg+xml"></object>

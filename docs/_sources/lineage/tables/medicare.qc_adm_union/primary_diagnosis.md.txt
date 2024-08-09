@@ -1,0 +1,14 @@
+# Column medicare.qc_adm_union.primary_diagnosis
+
+## Overview of column primary_diagnosis in table medicare.qc_adm_union 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_adm_union](../medicare.qc_adm_union.md)           |
+| Qualified name                | medicare.qc_adm_union.primary_diagnosis  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/primary_diagnosis.svg" type="image/svg+xml"></object>

@@ -1,0 +1,47 @@
+# Table medicare.beneficiaries
+
+## Overview for medicare.beneficiaries
+Cleaned up and unified Medicare beneficiaries table,
+indexed and optimized for efficient queries
+
+
+Transformed from [medicare._beneficiaries](medicare._beneficiaries.html)
+
+Primary Key: bene_id
+
+<details>
+```sql
+CREATE table medicare.beneficiaries AS SELECT * 
+FROM medicare._beneficiaries
+;
+ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED ALWAYS AS (last_enrollment_year - first_enrollment_year + 1 - CARDINALITY(all_enrollment_years)) STORED;
+ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
+ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
+
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.187665';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [all_enrollment_years](medicare.beneficiaries/all_enrollment_years.html) | copied | INT[] |
+| [bene](medicare.beneficiaries/bene.html) | generated | HLL_HASHVAL |
+| [bene_id](medicare.beneficiaries/bene_id.html) | copied | string |
+| [discrepancies](medicare.beneficiaries/discrepancies.html) | copied | string |
+| [dob](medicare.beneficiaries/dob.html) | copied | string |
+| [dob_latest](medicare.beneficiaries/dob_latest.html) | copied | string |
+| [dod](medicare.beneficiaries/dod.html) | copied | string |
+| [dod_earliest](medicare.beneficiaries/dod_earliest.html) | copied | string |
+| [first_enrollment_year](medicare.beneficiaries/first_enrollment_year.html) | copied | string |
+| [last_enrollment_year](medicare.beneficiaries/last_enrollment_year.html) | copied | string |
+| [number_of_gap_years](medicare.beneficiaries/number_of_gap_years.html) | generated | INT |
+| [orec](medicare.beneficiaries/orec.html) | copied | string |
+| [race](medicare.beneficiaries/race.html) | copied | string |
+| [race_rti](medicare.beneficiaries/race_rti.html) | copied | string |
+| [sex](medicare.beneficiaries/sex.html) | copied | string |
+| [yob](medicare.beneficiaries/yob.html) | copied | string |
+| [yob_latest](medicare.beneficiaries/yob_latest.html) | copied | string |
+
+

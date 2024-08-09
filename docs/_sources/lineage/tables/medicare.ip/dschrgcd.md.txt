@@ -1,0 +1,23 @@
+# Column medicare.ip.dschrgcd
+
+## Overview of column dschrgcd in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.dschrgcd  |
+| Datatype                      | CHAR(1)        |
+| Reference | [https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt](https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt) |
+
+
+Code identifying status of patient as of CLM_THRU_DT
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_DSCHRG_STUS_CD |
+| original_type | CHAR |
+| width | 1.0 |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/dschrgcd.svg" type="image/svg+xml"></object>

@@ -1,0 +1,21 @@
+# Column medicare.qc_admissions.bene_hll
+
+## Overview of column bene_hll in table medicare.qc_admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_admissions](../medicare.qc_admissions.md)           |
+| Qualified name                | medicare.qc_admissions.bene_hll  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+hll_add_agg(bene)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/bene_hll.svg" type="image/svg+xml"></object>

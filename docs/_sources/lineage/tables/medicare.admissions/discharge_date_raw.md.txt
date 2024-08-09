@@ -1,0 +1,23 @@
+# Column medicare.admissions.discharge_date_raw
+
+## Overview of column discharge_date_raw in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.discharge_date_raw  |
+| Datatype                      | VARCHAR        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| numeric | TRIM(to_char({column_name}, '999999999')) |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date_raw.svg" type="image/svg+xml"></object>

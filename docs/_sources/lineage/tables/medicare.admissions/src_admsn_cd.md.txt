@@ -1,0 +1,22 @@
+# Column medicare.admissions.src_admsn_cd
+
+## Overview of column src_admsn_cd in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.src_admsn_cd  |
+| Datatype                      | CHAR(1)        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::VARCHAR |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/src_admsn_cd.svg" type="image/svg+xml"></object>

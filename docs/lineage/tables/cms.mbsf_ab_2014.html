@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table cms.mbsf_ab_2014 &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Table cms.mbsf_ab_2014</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/lineage/tables/cms.mbsf_ab_2014.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-cms-mbsf-ab-2014">
+<h1>Table cms.mbsf_ab_2014<a class="headerlink" href="#table-cms-mbsf-ab-2014" title="Permalink to this heading"></a></h1>
+<section id="overview-for-cms-mbsf-ab-2014">
+<h2>Overview for cms.mbsf_ab_2014<a class="headerlink" href="#overview-for-cms-mbsf-ab-2014" title="Permalink to this heading"></a></h2>
+<p>Primary Key: FILE, RECORD</p>
+<details>
+```sql
+CREATE TABLE  cms.mbsf_ab_2014 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	FIVEPCT VARCHAR(1),
+	EFIVEPCT VARCHAR(1),
+	COVSTART DATE,
+	CRNT_BIC VARCHAR(2),
+	STATE_CD VARCHAR(2),
+	CNTY_CD VARCHAR(3),
+	BENE_ZIP VARCHAR(9),
+	AGE INT,
+	BENE_DOB DATE,
+	V_DOD_SW VARCHAR(1),
+	DEATH_DT DATE,
+	NDI_DEATH_DT DATE,
+	SEX VARCHAR(1),
+	RACE VARCHAR(1),
+	RTI_RACE_CD VARCHAR(1),
+	OREC VARCHAR(1),
+	CREC VARCHAR(1),
+	ESRD_IND VARCHAR(1),
+	MS_CD VARCHAR(2),
+	A_TRM_CD VARCHAR(1),
+	B_TRM_CD VARCHAR(1),
+	A_MO_CNT INT,
+	B_MO_CNT INT,
+	BUYIN_MO INT,
+	HMO_MO INT,
+	BUYIN01 VARCHAR(1),
+	BUYIN02 VARCHAR(1),
+	BUYIN03 VARCHAR(1),
+	BUYIN04 VARCHAR(1),
+	BUYIN05 VARCHAR(1),
+	BUYIN06 VARCHAR(1),
+	BUYIN07 VARCHAR(1),
+	BUYIN08 VARCHAR(1),
+	BUYIN09 VARCHAR(1),
+	BUYIN10 VARCHAR(1),
+	BUYIN11 VARCHAR(1),
+	BUYIN12 VARCHAR(1),
+	HMOIND01 VARCHAR(1),
+	HMOIND02 VARCHAR(1),
+	HMOIND03 VARCHAR(1),
+	HMOIND04 VARCHAR(1),
+	HMOIND05 VARCHAR(1),
+	HMOIND06 VARCHAR(1),
+	HMOIND07 VARCHAR(1),
+	HMOIND08 VARCHAR(1),
+	HMOIND09 VARCHAR(1),
+	HMOIND10 VARCHAR(1),
+	HMOIND11 VARCHAR(1),
+	HMOIND12 VARCHAR(1),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	STATE VARCHAR(2) GENERATED ALWAYS AS (STATE_CD) STORED,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	ZIP VARCHAR(9) GENERATED ALWAYS AS (BENE_ZIP) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_ab_2014_FILE_idx ON cms.mbsf_ab_2014 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_ab_2014 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:53.735195';
+```
+</details>
+---
+## Columns:
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/A_MO_CNT.html"><span class="xref myst">A_MO_CNT</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/A_TRM_CD.html"><span class="xref myst">A_TRM_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/AGE.html"><span class="xref myst">AGE</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/B_MO_CNT.html"><span class="xref myst">B_MO_CNT</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/B_TRM_CD.html"><span class="xref myst">B_TRM_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BENE_DOB.html"><span class="xref myst">BENE_DOB</span></a></p></td>
+<td><p></p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BENE_ID.html"><span class="xref myst">BENE_ID</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(15)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BENE_ZIP.html"><span class="xref myst">BENE_ZIP</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(9)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN01.html"><span class="xref myst">BUYIN01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN02.html"><span class="xref myst">BUYIN02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN03.html"><span class="xref myst">BUYIN03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN04.html"><span class="xref myst">BUYIN04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN05.html"><span class="xref myst">BUYIN05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN06.html"><span class="xref myst">BUYIN06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN07.html"><span class="xref myst">BUYIN07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN08.html"><span class="xref myst">BUYIN08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN09.html"><span class="xref myst">BUYIN09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN10.html"><span class="xref myst">BUYIN10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN11.html"><span class="xref myst">BUYIN11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN12.html"><span class="xref myst">BUYIN12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/BUYIN_MO.html"><span class="xref myst">BUYIN_MO</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/CNTY_CD.html"><span class="xref myst">CNTY_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/COVSTART.html"><span class="xref myst">COVSTART</span></a></p></td>
+<td><p></p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/CREC.html"><span class="xref myst">CREC</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/CRNT_BIC.html"><span class="xref myst">CRNT_BIC</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/DEATH_DT.html"><span class="xref myst">DEATH_DT</span></a></p></td>
+<td><p></p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/EFIVEPCT.html"><span class="xref myst">EFIVEPCT</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/ESRD_IND.html"><span class="xref myst">ESRD_IND</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/FILE.html"><span class="xref myst">FILE</span></a></p></td>
+<td><p>file</p></td>
+<td><p>VARCHAR(128)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/FIVEPCT.html"><span class="xref myst">FIVEPCT</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMO_MO.html"><span class="xref myst">HMO_MO</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND01.html"><span class="xref myst">HMOIND01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND02.html"><span class="xref myst">HMOIND02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND03.html"><span class="xref myst">HMOIND03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND04.html"><span class="xref myst">HMOIND04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND05.html"><span class="xref myst">HMOIND05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND06.html"><span class="xref myst">HMOIND06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND07.html"><span class="xref myst">HMOIND07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND08.html"><span class="xref myst">HMOIND08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND09.html"><span class="xref myst">HMOIND09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND10.html"><span class="xref myst">HMOIND10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND11.html"><span class="xref myst">HMOIND11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/HMOIND12.html"><span class="xref myst">HMOIND12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/MS_CD.html"><span class="xref myst">MS_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/NDI_DEATH_DT.html"><span class="xref myst">NDI_DEATH_DT</span></a></p></td>
+<td><p></p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/OREC.html"><span class="xref myst">OREC</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/RACE.html"><span class="xref myst">RACE</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/RECORD.html"><span class="xref myst">RECORD</span></a></p></td>
+<td><p></p></td>
+<td><p>BIGSERIAL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/RFRNC_YR.html"><span class="xref myst">RFRNC_YR</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/RTI_RACE_CD.html"><span class="xref myst">RTI_RACE_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/SEX.html"><span class="xref myst">SEX</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/STATE.html"><span class="xref myst">STATE</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/STATE_CD.html"><span class="xref myst">STATE_CD</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/V_DOD_SW.html"><span class="xref myst">V_DOD_SW</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/YEAR.html"><span class="xref myst">YEAR</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_ab_2014/ZIP.html"><span class="xref myst">ZIP</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>VARCHAR(9)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

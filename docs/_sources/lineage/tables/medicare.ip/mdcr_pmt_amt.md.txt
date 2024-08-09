@@ -1,0 +1,21 @@
+# Column medicare.ip.mdcr_pmt_amt
+
+## Overview of column mdcr_pmt_amt in table medicare.ip 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.ip](../medicare.ip.md)           |
+| Qualified name                | medicare.ip.mdcr_pmt_amt  |
+| Datatype                      | NUMERIC        |
+| Reference | [https://resdac.org/cms-data/variables/total-medicare-payment-amount](https://resdac.org/cms-data/variables/total-medicare-payment-amount) |
+
+
+Amount of payment made from the Medicare trust fund for the services covered by the claim record.
+For hospital services, this amount does not include the claim pass-through per diem payments 
+made by Medicare.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/mdcr_pmt_amt.svg" type="image/svg+xml"></object>

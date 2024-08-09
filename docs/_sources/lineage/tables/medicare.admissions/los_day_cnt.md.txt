@@ -1,0 +1,27 @@
+# Column medicare.admissions.los_day_cnt
+
+## Overview of column los_day_cnt in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.los_day_cnt  |
+| Datatype                      | INT        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/days-beneficiarys-stay-hospitalsnf](https://resdac.org/cms-data/variables/days-beneficiarys-stay-hospitalsnf) |
+
+
+The count in days of the total length of a beneficiary's stay in a hospital
+
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| * | {column_name}::INT |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/los_day_cnt.svg" type="image/svg+xml"></object>

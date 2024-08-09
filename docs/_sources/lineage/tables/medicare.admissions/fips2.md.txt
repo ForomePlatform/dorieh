@@ -1,0 +1,21 @@
+# Column medicare.admissions.fips2
+
+## Overview of column fips2 in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.fips2  |
+| Datatype                      | string        |
+| Column type | copied |
+
+
+
+## Expressions
+
+```sql
+(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = "state")
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/fips2.svg" type="image/svg+xml"></object>

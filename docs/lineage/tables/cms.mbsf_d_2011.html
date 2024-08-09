@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table cms.mbsf_d_2011 &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Table cms.mbsf_d_2011</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/lineage/tables/cms.mbsf_d_2011.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-cms-mbsf-d-2011">
+<h1>Table cms.mbsf_d_2011<a class="headerlink" href="#table-cms-mbsf-d-2011" title="Permalink to this heading"></a></h1>
+<section id="overview-for-cms-mbsf-d-2011">
+<h2>Overview for cms.mbsf_d_2011<a class="headerlink" href="#overview-for-cms-mbsf-d-2011" title="Permalink to this heading"></a></h2>
+<p>Primary Key: FILE, RECORD</p>
+<details>
+```sql
+CREATE TABLE  cms.mbsf_d_2011 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	CRDCOVSW VARCHAR(1),
+	PLNCOVMO VARCHAR(2),
+	RDSCOVMO VARCHAR(2),
+	DUAL_MO VARCHAR(2),
+	CNTRCT01 VARCHAR(5),
+	CNTRCT02 VARCHAR(5),
+	CNTRCT03 VARCHAR(5),
+	CNTRCT04 VARCHAR(5),
+	CNTRCT05 VARCHAR(5),
+	CNTRCT06 VARCHAR(5),
+	CNTRCT07 VARCHAR(5),
+	CNTRCT08 VARCHAR(5),
+	CNTRCT09 VARCHAR(5),
+	CNTRCT10 VARCHAR(5),
+	CNTRCT11 VARCHAR(5),
+	CNTRCT12 VARCHAR(5),
+	PBPID01 VARCHAR(3),
+	PBPID02 VARCHAR(3),
+	PBPID03 VARCHAR(3),
+	PBPID04 VARCHAR(3),
+	PBPID05 VARCHAR(3),
+	PBPID06 VARCHAR(3),
+	PBPID07 VARCHAR(3),
+	PBPID08 VARCHAR(3),
+	PBPID09 VARCHAR(3),
+	PBPID10 VARCHAR(3),
+	PBPID11 VARCHAR(3),
+	PBPID12 VARCHAR(3),
+	SGMTID01 VARCHAR(3),
+	SGMTID02 VARCHAR(3),
+	SGMTID03 VARCHAR(3),
+	SGMTID04 VARCHAR(3),
+	SGMTID05 VARCHAR(3),
+	SGMTID06 VARCHAR(3),
+	SGMTID07 VARCHAR(3),
+	SGMTID08 VARCHAR(3),
+	SGMTID09 VARCHAR(3),
+	SGMTID10 VARCHAR(3),
+	SGMTID11 VARCHAR(3),
+	SGMTID12 VARCHAR(3),
+	CSTSHR01 VARCHAR(2),
+	CSTSHR02 VARCHAR(2),
+	CSTSHR03 VARCHAR(2),
+	CSTSHR04 VARCHAR(2),
+	CSTSHR05 VARCHAR(2),
+	CSTSHR06 VARCHAR(2),
+	CSTSHR07 VARCHAR(2),
+	CSTSHR08 VARCHAR(2),
+	CSTSHR09 VARCHAR(2),
+	CSTSHR10 VARCHAR(2),
+	CSTSHR11 VARCHAR(2),
+	CSTSHR12 VARCHAR(2),
+	RDSIND01 VARCHAR(1),
+	RDSIND02 VARCHAR(1),
+	RDSIND03 VARCHAR(1),
+	RDSIND04 VARCHAR(1),
+	RDSIND05 VARCHAR(1),
+	RDSIND06 VARCHAR(1),
+	RDSIND07 VARCHAR(1),
+	RDSIND08 VARCHAR(1),
+	RDSIND09 VARCHAR(1),
+	RDSIND10 VARCHAR(1),
+	RDSIND11 VARCHAR(1),
+	RDSIND12 VARCHAR(1),
+	DUAL_01 VARCHAR(2),
+	DUAL_02 VARCHAR(2),
+	DUAL_03 VARCHAR(2),
+	DUAL_04 VARCHAR(2),
+	DUAL_05 VARCHAR(2),
+	DUAL_06 VARCHAR(2),
+	DUAL_07 VARCHAR(2),
+	DUAL_08 VARCHAR(2),
+	DUAL_09 VARCHAR(2),
+	DUAL_10 VARCHAR(2),
+	DUAL_11 VARCHAR(2),
+	DUAL_12 VARCHAR(2),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_d_2011_FILE_idx ON cms.mbsf_d_2011 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_d_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:53.746782';
+```
+</details>
+---
+## Columns:
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/BENE_ID.html"><span class="xref myst">BENE_ID</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(15)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT01.html"><span class="xref myst">CNTRCT01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT02.html"><span class="xref myst">CNTRCT02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT03.html"><span class="xref myst">CNTRCT03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT04.html"><span class="xref myst">CNTRCT04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT05.html"><span class="xref myst">CNTRCT05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT06.html"><span class="xref myst">CNTRCT06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT07.html"><span class="xref myst">CNTRCT07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT08.html"><span class="xref myst">CNTRCT08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT09.html"><span class="xref myst">CNTRCT09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT10.html"><span class="xref myst">CNTRCT10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT11.html"><span class="xref myst">CNTRCT11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CNTRCT12.html"><span class="xref myst">CNTRCT12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CRDCOVSW.html"><span class="xref myst">CRDCOVSW</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR01.html"><span class="xref myst">CSTSHR01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR02.html"><span class="xref myst">CSTSHR02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR03.html"><span class="xref myst">CSTSHR03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR04.html"><span class="xref myst">CSTSHR04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR05.html"><span class="xref myst">CSTSHR05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR06.html"><span class="xref myst">CSTSHR06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR07.html"><span class="xref myst">CSTSHR07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR08.html"><span class="xref myst">CSTSHR08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR09.html"><span class="xref myst">CSTSHR09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR10.html"><span class="xref myst">CSTSHR10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR11.html"><span class="xref myst">CSTSHR11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/CSTSHR12.html"><span class="xref myst">CSTSHR12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_01.html"><span class="xref myst">DUAL_01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_02.html"><span class="xref myst">DUAL_02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_03.html"><span class="xref myst">DUAL_03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_04.html"><span class="xref myst">DUAL_04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_05.html"><span class="xref myst">DUAL_05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_06.html"><span class="xref myst">DUAL_06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_07.html"><span class="xref myst">DUAL_07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_08.html"><span class="xref myst">DUAL_08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_09.html"><span class="xref myst">DUAL_09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_10.html"><span class="xref myst">DUAL_10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_11.html"><span class="xref myst">DUAL_11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_12.html"><span class="xref myst">DUAL_12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/DUAL_MO.html"><span class="xref myst">DUAL_MO</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/FILE.html"><span class="xref myst">FILE</span></a></p></td>
+<td><p>file</p></td>
+<td><p>VARCHAR(128)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID01.html"><span class="xref myst">PBPID01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID02.html"><span class="xref myst">PBPID02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID03.html"><span class="xref myst">PBPID03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID04.html"><span class="xref myst">PBPID04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID05.html"><span class="xref myst">PBPID05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID06.html"><span class="xref myst">PBPID06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID07.html"><span class="xref myst">PBPID07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID08.html"><span class="xref myst">PBPID08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID09.html"><span class="xref myst">PBPID09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID10.html"><span class="xref myst">PBPID10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID11.html"><span class="xref myst">PBPID11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PBPID12.html"><span class="xref myst">PBPID12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/PLNCOVMO.html"><span class="xref myst">PLNCOVMO</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSCOVMO.html"><span class="xref myst">RDSCOVMO</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND01.html"><span class="xref myst">RDSIND01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND02.html"><span class="xref myst">RDSIND02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND03.html"><span class="xref myst">RDSIND03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND04.html"><span class="xref myst">RDSIND04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND05.html"><span class="xref myst">RDSIND05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND06.html"><span class="xref myst">RDSIND06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND07.html"><span class="xref myst">RDSIND07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND08.html"><span class="xref myst">RDSIND08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND09.html"><span class="xref myst">RDSIND09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND10.html"><span class="xref myst">RDSIND10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND11.html"><span class="xref myst">RDSIND11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RDSIND12.html"><span class="xref myst">RDSIND12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(1)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RECORD.html"><span class="xref myst">RECORD</span></a></p></td>
+<td><p></p></td>
+<td><p>BIGSERIAL</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/RFRNC_YR.html"><span class="xref myst">RFRNC_YR</span></a></p></td>
+<td><p></p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID01.html"><span class="xref myst">SGMTID01</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID02.html"><span class="xref myst">SGMTID02</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID03.html"><span class="xref myst">SGMTID03</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID04.html"><span class="xref myst">SGMTID04</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID05.html"><span class="xref myst">SGMTID05</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID06.html"><span class="xref myst">SGMTID06</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID07.html"><span class="xref myst">SGMTID07</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID08.html"><span class="xref myst">SGMTID08</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID09.html"><span class="xref myst">SGMTID09</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID10.html"><span class="xref myst">SGMTID10</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID11.html"><span class="xref myst">SGMTID11</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/SGMTID12.html"><span class="xref myst">SGMTID12</span></a></p></td>
+<td><p></p></td>
+<td><p>VARCHAR(3)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#cms.mbsf_d_2011/YEAR.html"><span class="xref myst">YEAR</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>INT</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

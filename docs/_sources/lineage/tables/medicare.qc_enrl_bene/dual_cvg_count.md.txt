@@ -1,0 +1,28 @@
+# Column medicare.qc_enrl_bene.dual_cvg_count
+
+## Overview of column dual_cvg_count in table medicare.qc_enrl_bene 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
+| Qualified name                | medicare.qc_enrl_bene.dual_cvg_count  |
+| Datatype                      | string        |
+| Column type | computed |
+| Tables, required for computation | ['medicare.mbsf_d'] |
+
+
+
+## Expressions
+
+```sql
+(CASE
+   WHEN EXISTS (SELECT * FROM medicare.mbsf_d AS d WHERE medicare._ps.year = d.year and medicare._ps.bene_id = d.bene_id)
+   THEN
+       COALESCE((SELECT MAX(dual_mo) FROM medicare.mbsf_d AS d WHERE medicare._ps.year = d.year and medicare._ps.bene_id = d.bene_id), 0)
+   ELSE NULL
+END)
+
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dual_cvg_count.svg" type="image/svg+xml"></object>

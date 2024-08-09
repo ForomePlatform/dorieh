@@ -1,0 +1,183 @@
+# Table cms.mbsf_d_2011
+
+## Overview for cms.mbsf_d_2011
+Primary Key: FILE, RECORD
+
+<details>
+```sql
+CREATE TABLE  cms.mbsf_d_2011 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	CRDCOVSW VARCHAR(1),
+	PLNCOVMO VARCHAR(2),
+	RDSCOVMO VARCHAR(2),
+	DUAL_MO VARCHAR(2),
+	CNTRCT01 VARCHAR(5),
+	CNTRCT02 VARCHAR(5),
+	CNTRCT03 VARCHAR(5),
+	CNTRCT04 VARCHAR(5),
+	CNTRCT05 VARCHAR(5),
+	CNTRCT06 VARCHAR(5),
+	CNTRCT07 VARCHAR(5),
+	CNTRCT08 VARCHAR(5),
+	CNTRCT09 VARCHAR(5),
+	CNTRCT10 VARCHAR(5),
+	CNTRCT11 VARCHAR(5),
+	CNTRCT12 VARCHAR(5),
+	PBPID01 VARCHAR(3),
+	PBPID02 VARCHAR(3),
+	PBPID03 VARCHAR(3),
+	PBPID04 VARCHAR(3),
+	PBPID05 VARCHAR(3),
+	PBPID06 VARCHAR(3),
+	PBPID07 VARCHAR(3),
+	PBPID08 VARCHAR(3),
+	PBPID09 VARCHAR(3),
+	PBPID10 VARCHAR(3),
+	PBPID11 VARCHAR(3),
+	PBPID12 VARCHAR(3),
+	SGMTID01 VARCHAR(3),
+	SGMTID02 VARCHAR(3),
+	SGMTID03 VARCHAR(3),
+	SGMTID04 VARCHAR(3),
+	SGMTID05 VARCHAR(3),
+	SGMTID06 VARCHAR(3),
+	SGMTID07 VARCHAR(3),
+	SGMTID08 VARCHAR(3),
+	SGMTID09 VARCHAR(3),
+	SGMTID10 VARCHAR(3),
+	SGMTID11 VARCHAR(3),
+	SGMTID12 VARCHAR(3),
+	CSTSHR01 VARCHAR(2),
+	CSTSHR02 VARCHAR(2),
+	CSTSHR03 VARCHAR(2),
+	CSTSHR04 VARCHAR(2),
+	CSTSHR05 VARCHAR(2),
+	CSTSHR06 VARCHAR(2),
+	CSTSHR07 VARCHAR(2),
+	CSTSHR08 VARCHAR(2),
+	CSTSHR09 VARCHAR(2),
+	CSTSHR10 VARCHAR(2),
+	CSTSHR11 VARCHAR(2),
+	CSTSHR12 VARCHAR(2),
+	RDSIND01 VARCHAR(1),
+	RDSIND02 VARCHAR(1),
+	RDSIND03 VARCHAR(1),
+	RDSIND04 VARCHAR(1),
+	RDSIND05 VARCHAR(1),
+	RDSIND06 VARCHAR(1),
+	RDSIND07 VARCHAR(1),
+	RDSIND08 VARCHAR(1),
+	RDSIND09 VARCHAR(1),
+	RDSIND10 VARCHAR(1),
+	RDSIND11 VARCHAR(1),
+	RDSIND12 VARCHAR(1),
+	DUAL_01 VARCHAR(2),
+	DUAL_02 VARCHAR(2),
+	DUAL_03 VARCHAR(2),
+	DUAL_04 VARCHAR(2),
+	DUAL_05 VARCHAR(2),
+	DUAL_06 VARCHAR(2),
+	DUAL_07 VARCHAR(2),
+	DUAL_08 VARCHAR(2),
+	DUAL_09 VARCHAR(2),
+	DUAL_10 VARCHAR(2),
+	DUAL_11 VARCHAR(2),
+	DUAL_12 VARCHAR(2),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_d_2011_FILE_idx ON cms.mbsf_d_2011 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_d_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:53.746782';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [BENE_ID](cms.mbsf_d_2011/BENE_ID.html) |  | VARCHAR(15) |
+| [CNTRCT01](cms.mbsf_d_2011/CNTRCT01.html) |  | VARCHAR(5) |
+| [CNTRCT02](cms.mbsf_d_2011/CNTRCT02.html) |  | VARCHAR(5) |
+| [CNTRCT03](cms.mbsf_d_2011/CNTRCT03.html) |  | VARCHAR(5) |
+| [CNTRCT04](cms.mbsf_d_2011/CNTRCT04.html) |  | VARCHAR(5) |
+| [CNTRCT05](cms.mbsf_d_2011/CNTRCT05.html) |  | VARCHAR(5) |
+| [CNTRCT06](cms.mbsf_d_2011/CNTRCT06.html) |  | VARCHAR(5) |
+| [CNTRCT07](cms.mbsf_d_2011/CNTRCT07.html) |  | VARCHAR(5) |
+| [CNTRCT08](cms.mbsf_d_2011/CNTRCT08.html) |  | VARCHAR(5) |
+| [CNTRCT09](cms.mbsf_d_2011/CNTRCT09.html) |  | VARCHAR(5) |
+| [CNTRCT10](cms.mbsf_d_2011/CNTRCT10.html) |  | VARCHAR(5) |
+| [CNTRCT11](cms.mbsf_d_2011/CNTRCT11.html) |  | VARCHAR(5) |
+| [CNTRCT12](cms.mbsf_d_2011/CNTRCT12.html) |  | VARCHAR(5) |
+| [CRDCOVSW](cms.mbsf_d_2011/CRDCOVSW.html) |  | VARCHAR(1) |
+| [CSTSHR01](cms.mbsf_d_2011/CSTSHR01.html) |  | VARCHAR(2) |
+| [CSTSHR02](cms.mbsf_d_2011/CSTSHR02.html) |  | VARCHAR(2) |
+| [CSTSHR03](cms.mbsf_d_2011/CSTSHR03.html) |  | VARCHAR(2) |
+| [CSTSHR04](cms.mbsf_d_2011/CSTSHR04.html) |  | VARCHAR(2) |
+| [CSTSHR05](cms.mbsf_d_2011/CSTSHR05.html) |  | VARCHAR(2) |
+| [CSTSHR06](cms.mbsf_d_2011/CSTSHR06.html) |  | VARCHAR(2) |
+| [CSTSHR07](cms.mbsf_d_2011/CSTSHR07.html) |  | VARCHAR(2) |
+| [CSTSHR08](cms.mbsf_d_2011/CSTSHR08.html) |  | VARCHAR(2) |
+| [CSTSHR09](cms.mbsf_d_2011/CSTSHR09.html) |  | VARCHAR(2) |
+| [CSTSHR10](cms.mbsf_d_2011/CSTSHR10.html) |  | VARCHAR(2) |
+| [CSTSHR11](cms.mbsf_d_2011/CSTSHR11.html) |  | VARCHAR(2) |
+| [CSTSHR12](cms.mbsf_d_2011/CSTSHR12.html) |  | VARCHAR(2) |
+| [DUAL_01](cms.mbsf_d_2011/DUAL_01.html) |  | VARCHAR(2) |
+| [DUAL_02](cms.mbsf_d_2011/DUAL_02.html) |  | VARCHAR(2) |
+| [DUAL_03](cms.mbsf_d_2011/DUAL_03.html) |  | VARCHAR(2) |
+| [DUAL_04](cms.mbsf_d_2011/DUAL_04.html) |  | VARCHAR(2) |
+| [DUAL_05](cms.mbsf_d_2011/DUAL_05.html) |  | VARCHAR(2) |
+| [DUAL_06](cms.mbsf_d_2011/DUAL_06.html) |  | VARCHAR(2) |
+| [DUAL_07](cms.mbsf_d_2011/DUAL_07.html) |  | VARCHAR(2) |
+| [DUAL_08](cms.mbsf_d_2011/DUAL_08.html) |  | VARCHAR(2) |
+| [DUAL_09](cms.mbsf_d_2011/DUAL_09.html) |  | VARCHAR(2) |
+| [DUAL_10](cms.mbsf_d_2011/DUAL_10.html) |  | VARCHAR(2) |
+| [DUAL_11](cms.mbsf_d_2011/DUAL_11.html) |  | VARCHAR(2) |
+| [DUAL_12](cms.mbsf_d_2011/DUAL_12.html) |  | VARCHAR(2) |
+| [DUAL_MO](cms.mbsf_d_2011/DUAL_MO.html) |  | VARCHAR(2) |
+| [FILE](cms.mbsf_d_2011/FILE.html) | file | VARCHAR(128) |
+| [PBPID01](cms.mbsf_d_2011/PBPID01.html) |  | VARCHAR(3) |
+| [PBPID02](cms.mbsf_d_2011/PBPID02.html) |  | VARCHAR(3) |
+| [PBPID03](cms.mbsf_d_2011/PBPID03.html) |  | VARCHAR(3) |
+| [PBPID04](cms.mbsf_d_2011/PBPID04.html) |  | VARCHAR(3) |
+| [PBPID05](cms.mbsf_d_2011/PBPID05.html) |  | VARCHAR(3) |
+| [PBPID06](cms.mbsf_d_2011/PBPID06.html) |  | VARCHAR(3) |
+| [PBPID07](cms.mbsf_d_2011/PBPID07.html) |  | VARCHAR(3) |
+| [PBPID08](cms.mbsf_d_2011/PBPID08.html) |  | VARCHAR(3) |
+| [PBPID09](cms.mbsf_d_2011/PBPID09.html) |  | VARCHAR(3) |
+| [PBPID10](cms.mbsf_d_2011/PBPID10.html) |  | VARCHAR(3) |
+| [PBPID11](cms.mbsf_d_2011/PBPID11.html) |  | VARCHAR(3) |
+| [PBPID12](cms.mbsf_d_2011/PBPID12.html) |  | VARCHAR(3) |
+| [PLNCOVMO](cms.mbsf_d_2011/PLNCOVMO.html) |  | VARCHAR(2) |
+| [RDSCOVMO](cms.mbsf_d_2011/RDSCOVMO.html) |  | VARCHAR(2) |
+| [RDSIND01](cms.mbsf_d_2011/RDSIND01.html) |  | VARCHAR(1) |
+| [RDSIND02](cms.mbsf_d_2011/RDSIND02.html) |  | VARCHAR(1) |
+| [RDSIND03](cms.mbsf_d_2011/RDSIND03.html) |  | VARCHAR(1) |
+| [RDSIND04](cms.mbsf_d_2011/RDSIND04.html) |  | VARCHAR(1) |
+| [RDSIND05](cms.mbsf_d_2011/RDSIND05.html) |  | VARCHAR(1) |
+| [RDSIND06](cms.mbsf_d_2011/RDSIND06.html) |  | VARCHAR(1) |
+| [RDSIND07](cms.mbsf_d_2011/RDSIND07.html) |  | VARCHAR(1) |
+| [RDSIND08](cms.mbsf_d_2011/RDSIND08.html) |  | VARCHAR(1) |
+| [RDSIND09](cms.mbsf_d_2011/RDSIND09.html) |  | VARCHAR(1) |
+| [RDSIND10](cms.mbsf_d_2011/RDSIND10.html) |  | VARCHAR(1) |
+| [RDSIND11](cms.mbsf_d_2011/RDSIND11.html) |  | VARCHAR(1) |
+| [RDSIND12](cms.mbsf_d_2011/RDSIND12.html) |  | VARCHAR(1) |
+| [RECORD](cms.mbsf_d_2011/RECORD.html) |  | BIGSERIAL |
+| [RFRNC_YR](cms.mbsf_d_2011/RFRNC_YR.html) |  | INT |
+| [SGMTID01](cms.mbsf_d_2011/SGMTID01.html) |  | VARCHAR(3) |
+| [SGMTID02](cms.mbsf_d_2011/SGMTID02.html) |  | VARCHAR(3) |
+| [SGMTID03](cms.mbsf_d_2011/SGMTID03.html) |  | VARCHAR(3) |
+| [SGMTID04](cms.mbsf_d_2011/SGMTID04.html) |  | VARCHAR(3) |
+| [SGMTID05](cms.mbsf_d_2011/SGMTID05.html) |  | VARCHAR(3) |
+| [SGMTID06](cms.mbsf_d_2011/SGMTID06.html) |  | VARCHAR(3) |
+| [SGMTID07](cms.mbsf_d_2011/SGMTID07.html) |  | VARCHAR(3) |
+| [SGMTID08](cms.mbsf_d_2011/SGMTID08.html) |  | VARCHAR(3) |
+| [SGMTID09](cms.mbsf_d_2011/SGMTID09.html) |  | VARCHAR(3) |
+| [SGMTID10](cms.mbsf_d_2011/SGMTID10.html) |  | VARCHAR(3) |
+| [SGMTID11](cms.mbsf_d_2011/SGMTID11.html) |  | VARCHAR(3) |
+| [SGMTID12](cms.mbsf_d_2011/SGMTID12.html) |  | VARCHAR(3) |
+| [YEAR](cms.mbsf_d_2011/YEAR.html) | generated | INT |
+
+

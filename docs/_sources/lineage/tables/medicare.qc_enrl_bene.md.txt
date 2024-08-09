@@ -1,0 +1,95 @@
+# View medicare.qc_enrl_bene
+
+## Overview for medicare.qc_enrl_bene
+Joined data for beneficiaries and enrollments
+
+
+Join of tables: enrollments natural join beneficiaries
+
+<details>
+```sql
+CREATE view medicare.qc_enrl_bene AS SELECT *,
+(CASE
+		  WHEN dob IS NULL THEN 'MISSING'
+		  WHEN dob_latest IS NOT NULL THEN 'AMBIGUOUS'
+		  ELSE 'CONSISTENT'
+		END) AS consistent_dob,
+(CASE
+		  WHEN dod IS NULL THEN 'NONE'
+		  WHEN dod_earliest IS NOT NULL THEN 'AMBIGUOUS'
+		  ELSE 'CONSISTENT'
+		END) AS consistent_dod,
+(CASE
+		  WHEN sex LIKE '%,%' THEN 'AMBIGUOUS'
+		  ELSE 'CONSISTENT'
+		END) AS consistent_sex,
+(CASE
+		  WHEN race LIKE '%,%' THEN 'AMBIGUOUS'
+		  ELSE 'CONSISTENT'
+		END) AS consistent_race 
+FROM medicare.enrollments natural join medicare.beneficiaries
+;
+
+COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.211974';
+```
+</details>
+---
+## Columns:
+
+| Column Name | Column Type | Datatype |
+| --- | --- | --- |
+| [age](medicare.qc_enrl_bene/age.html) | computed | string |
+| [age_min](medicare.qc_enrl_bene/age_min.html) | computed | string |
+| [all_enrollment_years](medicare.qc_enrl_bene/all_enrollment_years.html) | computed | INT[] |
+| [bene](medicare.qc_enrl_bene/bene.html) | generated | HLL_HASHVAL |
+| [bene_id](medicare.qc_enrl_bene/bene_id.html) |  | string |
+| [buyin](medicare.qc_enrl_bene/buyin.html) | generated | boolean |
+| [buyin_cvg_count](medicare.qc_enrl_bene/buyin_cvg_count.html) | computed | string |
+| [buyin_indicators](medicare.qc_enrl_bene/buyin_indicators.html) | computed | string |
+| [consistent_dob](medicare.qc_enrl_bene/consistent_dob.html) | computed | VARCHAR(12) |
+| [consistent_dod](medicare.qc_enrl_bene/consistent_dod.html) | computed | VARCHAR(12) |
+| [consistent_race](medicare.qc_enrl_bene/consistent_race.html) | computed | VARCHAR(12) |
+| [consistent_sex](medicare.qc_enrl_bene/consistent_sex.html) | computed | VARCHAR(12) |
+| [curec](medicare.qc_enrl_bene/curec.html) | computed | string |
+| [died](medicare.qc_enrl_bene/died.html) | computed | string |
+| [discrepancies](medicare.qc_enrl_bene/discrepancies.html) | computed | string |
+| [dob](medicare.qc_enrl_bene/dob.html) | computed | string |
+| [dob_latest](medicare.qc_enrl_bene/dob_latest.html) | computed | string |
+| [dod](medicare.qc_enrl_bene/dod.html) | computed | string |
+| [dod_earliest](medicare.qc_enrl_bene/dod_earliest.html) | computed | string |
+| [dual](medicare.qc_enrl_bene/dual.html) | generated | boolean |
+| [dual_cvg_count](medicare.qc_enrl_bene/dual_cvg_count.html) | computed | string |
+| [dual_indicators](medicare.qc_enrl_bene/dual_indicators.html) | computed | string |
+| [file](medicare.qc_enrl_bene/file.html) | computed | string |
+| [fips2](medicare.qc_enrl_bene/fips2.html) | computed | string |
+| [fips3](medicare.qc_enrl_bene/fips3.html) | computed | string |
+| [fips3_is_approximated](medicare.qc_enrl_bene/fips3_is_approximated.html) | computed | string |
+| [fips3_valdiated](medicare.qc_enrl_bene/fips3_valdiated.html) | computed | string |
+| [fips5](medicare.qc_enrl_bene/fips5.html) | computed | string |
+| [first_enrollment_year](medicare.qc_enrl_bene/first_enrollment_year.html) | computed | string |
+| [hmo](medicare.qc_enrl_bene/hmo.html) | generated | boolean |
+| [hmo_cvg_count](medicare.qc_enrl_bene/hmo_cvg_count.html) | computed | string |
+| [hmo_indicators](medicare.qc_enrl_bene/hmo_indicators.html) | computed | string |
+| [last_enrollment_year](medicare.qc_enrl_bene/last_enrollment_year.html) | computed | string |
+| [number_of_gap_years](medicare.qc_enrl_bene/number_of_gap_years.html) | generated | INT |
+| [orec](medicare.qc_enrl_bene/orec.html) | computed | string |
+| [race](medicare.qc_enrl_bene/race.html) | computed | string |
+| [race_rti](medicare.qc_enrl_bene/race_rti.html) | computed | string |
+| [record](medicare.qc_enrl_bene/record.html) | computed | string |
+| [residence_counties](medicare.qc_enrl_bene/residence_counties.html) | computed | string |
+| [residence_county](medicare.qc_enrl_bene/residence_county.html) | computed | string |
+| [sex](medicare.qc_enrl_bene/sex.html) | computed | string |
+| [ssa2](medicare.qc_enrl_bene/ssa2.html) | computed | string |
+| [ssa2_list](medicare.qc_enrl_bene/ssa2_list.html) | computed | string |
+| [ssa3](medicare.qc_enrl_bene/ssa3.html) | computed | string |
+| [ssa3_list](medicare.qc_enrl_bene/ssa3_list.html) | computed | string |
+| [state](medicare.qc_enrl_bene/state.html) |  | string |
+| [state_count](medicare.qc_enrl_bene/state_count.html) | computed | string |
+| [state_iso](medicare.qc_enrl_bene/state_iso.html) | computed | char(5) |
+| [year](medicare.qc_enrl_bene/year.html) |  | string |
+| [yob](medicare.qc_enrl_bene/yob.html) | computed | string |
+| [yob_latest](medicare.qc_enrl_bene/yob_latest.html) | computed | string |
+| [zip](medicare.qc_enrl_bene/zip.html) | computed | string |
+| [zips](medicare.qc_enrl_bene/zips.html) | computed | string |
+
+

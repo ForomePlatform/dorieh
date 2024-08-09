@@ -1,0 +1,23 @@
+# Column medicare.qc_adm_union.admission_date
+
+## Overview of column admission_date in table medicare.qc_adm_union 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.qc_adm_union](../medicare.qc_adm_union.md)           |
+| Qualified name                | medicare.qc_adm_union.admission_date  |
+| Datatype                      | DATE        |
+| Column type | copied |
+
+
+
+### Casts:
+
+| Original type | Cast expression      |
+| ------------- | -------------------- |
+| character varying | public.parse_date({column_name}) |
+| numeric | public.parse_date({column_name}) |
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/admission_date.svg" type="image/svg+xml"></object>

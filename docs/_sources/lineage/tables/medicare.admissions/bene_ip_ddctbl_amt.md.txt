@@ -1,0 +1,20 @@
+# Column medicare.admissions.bene_ip_ddctbl_amt
+
+## Overview of column bene_ip_ddctbl_amt in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.bene_ip_ddctbl_amt  |
+| Datatype                      | NUMERIC        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/beneficiarys-liability-deductible-stay](https://resdac.org/cms-data/variables/beneficiarys-liability-deductible-stay) |
+
+
+The amount of money (rounded to whole dollars) identified as the beneficiary's liability for the inpatient deductible for the stay.
+
+
+
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/bene_ip_ddctbl_amt.svg" type="image/svg+xml"></object>

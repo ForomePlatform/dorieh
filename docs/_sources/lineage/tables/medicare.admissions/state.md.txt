@@ -1,0 +1,30 @@
+# Column medicare.admissions.state
+
+## Overview of column state in table medicare.admissions 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.admissions](../medicare.admissions.md)           |
+| Qualified name                | medicare.admissions.state  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
+
+
+State Code
+
+| Key | Value |
+| --- | ----- |
+| original_type | CHAR |
+| width | 2.0 |
+
+
+
+## Expressions
+
+```sql
+(SELECT state_id FROM public.us_states as s WHERE s.ssa2 = "state")
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/state.svg" type="image/svg+xml"></object>

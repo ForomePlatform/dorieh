@@ -1,0 +1,31 @@
+# Column medicare.enrollments.age
+
+## Overview of column age in table medicare.enrollments 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare.enrollments](../medicare.enrollments.md)           |
+| Qualified name                | medicare.enrollments.age  |
+| Datatype                      | string        |
+| Column type | copied |
+| Reference | [https://resdac.org/cms-data/variables/age-beneficiary-end-year](https://resdac.org/cms-data/variables/age-beneficiary-end-year) |
+
+
+Age at End of Reference Year
+
+| Key | Value |
+| --- | ----- |
+| long_name | BENE_AGE_AT_END_REF_YR |
+| original_type | NUM |
+| width | 3.0 |
+
+
+
+## Expressions
+
+```sql
+MAX(age)
+```
+
+---
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/age.svg" type="image/svg+xml"></object>
