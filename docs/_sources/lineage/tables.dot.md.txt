@@ -4,8 +4,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 tables.dot_svg_envelop.md
 tables/cms.mbsf_ab_2011.md
