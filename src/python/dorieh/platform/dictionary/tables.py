@@ -28,6 +28,7 @@ import html
 import sqlparse
 
 from dorieh.platform.data_model.domain import Domain
+from dorieh.platform.dictionary import RenderMode
 from dorieh.platform.dictionary.columns import Column
 from dorieh.platform.dictionary.element import HTML, DataModelElement, Graph, fqn, qstr, \
     attrs2string, add_row, start_table, add_html_row, end_table, add_header_row, \
@@ -375,12 +376,12 @@ class Table(DataModelElement):
         sql = self.domain.ddl_by_table.get(self.qualified_name)
         sql = [l for l in sql if l != f"-- {self.qualified_name} skipped;"]
         if sql:
-            text += "<details>\n"
+            text += "\n<details>\n\n"
             text += "```sql\n"
             for line in sql:
                 text += line + '\n'
             text += "```\n"
-            text += "</details>\n"
+            text += "\n</details>\n\n"
 
         text += hr(format=fmt)
         text += "## Columns:\n\n"
@@ -433,7 +434,7 @@ class Table(DataModelElement):
         block = f"# {self.type.capitalize()} {self.qualified_name}\n\n{body}"
         with open(of, "wt") as out:
             print(block, file=out)
-        if self.mode == 'standalone':
+        if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
 

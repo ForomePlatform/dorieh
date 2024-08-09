@@ -25,6 +25,7 @@ import yaml
 from sqlparse.sql import IdentifierList, Parenthesis, Function, Identifier
 import html
 
+from dorieh.platform.dictionary import RenderMode
 from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr
 from dorieh.platform.data_model.domain import Domain
 from dorieh.platform.dictionary.resdac_crawler import get_mapping
@@ -234,9 +235,9 @@ class Column(DataModelElement):
     def describe_markdown(self) -> str:
         t, c = os.path.splitext(self.qualified_name)
         c = c[1:]
-        if self.mode == "standalone":
+        if self.mode == RenderMode.standalone:
             ext = ".html"
-        elif self.mode == "sphinx":
+        elif self.mode == RenderMode.sphinx:
             ext = ".md"
         else:
             ext = ""
@@ -310,7 +311,7 @@ class Column(DataModelElement):
         block = f"# Column {self.qualified_name}\n\n{body}"
         with open(of, "wt") as out:
             print(block, file=out)
-        if self.mode == 'standalone':
+        if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
 
