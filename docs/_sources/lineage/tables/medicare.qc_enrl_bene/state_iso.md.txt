@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-('US-' || state) 
+SELECT ('US-' || state) 
 ```
 
 

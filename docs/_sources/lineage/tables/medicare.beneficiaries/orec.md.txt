@@ -23,7 +23,7 @@ Original Reason for Entitlement Code
 ## Expressions
 
 ```sql
-MAX(orec)
+SELECT MAX(orec)
 ```
 
 

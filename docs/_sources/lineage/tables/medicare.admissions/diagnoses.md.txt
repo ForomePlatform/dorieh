@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-array_remove(ARRAY[
+SELECT array_remove(ARRAY[
 btrim(btrim(diag1)),
 btrim(diag2),
 btrim(diag3),

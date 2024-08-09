@@ -24,7 +24,7 @@ Beneficiary Race Code
 ## Expressions
 
 ```sql
-string_agg(distinct race, ',')
+SELECT string_agg(distinct race, ',')
 ```
 
 

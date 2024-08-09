@@ -15,7 +15,7 @@
 ## Expressions
 
 ```sql
-string_agg(distinct race_rti, ',')
+SELECT string_agg(distinct race_rti, ',')
 ```
 
 

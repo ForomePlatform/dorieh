@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-(MAX(fips2) || MAX(fips3))
+SELECT (MAX(fips2) || MAX(fips3))
 ```
 
 

@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-COUNT(*)
+SELECT COUNT(*)
 ```
 
 

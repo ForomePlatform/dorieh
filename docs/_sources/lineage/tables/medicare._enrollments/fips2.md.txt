@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-MAX(fips2)
+SELECT MAX(fips2)
 ```
 
 

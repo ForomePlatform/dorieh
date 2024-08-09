@@ -19,7 +19,7 @@ This variable is the date of death as reported on the Beneficiary’s death cert
 ## Expressions
 
 ```sql
-ndi_death_dt
+SELECT ndi_death_dt
 ```
 
 

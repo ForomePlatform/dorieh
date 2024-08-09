@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED
+SELECT GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED
 ```
 
 

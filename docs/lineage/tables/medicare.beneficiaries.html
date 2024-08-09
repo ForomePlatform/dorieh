@@ -53,7 +53,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="../tables.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../table-list.html">Alphabetic list of all tables</a></li>
@@ -121,7 +133,7 @@
 </div>
 <p>Cleaned up and unified Medicare beneficiaries table,
 indexed and optimized for efficient queries</p>
-<p>Transformed from <a class="reference internal" href="#medicare._beneficiaries.html"><span class="xref myst">medicare._beneficiaries</span></a></p>
+<p>Transformed from <a class="reference internal" href="medicare._beneficiaries.html"><span class="std std-doc">medicare._beneficiaries</span></a></p>
 <p>Primary Key: bene_id</p>
 <details>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span>
@@ -131,7 +143,7 @@ indexed and optimized for efficient queries</p>
 <span class="k">ALTER</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">bene</span><span class="w"> </span><span class="n">HLL_HASHVAL</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">hll_hash_text</span><span class="p">(</span><span class="n">bene_id</span><span class="p">))</span><span class="w"> </span><span class="n">STORED</span><span class="p">;</span>
 <span class="k">ALTER</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">bene_id</span><span class="p">);</span>
 
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;f9dd550bb5b21b78670112f5e72baa65f2fbe105&quot;}. Created at 2024-08-09 16:51:39.841180&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;0a20037a78bb2a1a32bffc845e5c68742da04afd&quot;}. Created at 2024-08-09 17:28:01.263684&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </details>

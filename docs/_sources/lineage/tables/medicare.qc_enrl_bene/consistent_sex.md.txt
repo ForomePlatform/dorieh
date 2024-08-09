@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-(CASE
+SELECT (CASE
   WHEN sex LIKE '%,%' THEN 'AMBIGUOUS'
   ELSE 'CONSISTENT'
 END)

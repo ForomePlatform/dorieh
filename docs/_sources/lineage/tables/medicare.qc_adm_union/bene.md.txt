@@ -23,7 +23,7 @@ Use #(hll_add_agg(bene)) or hll_cardinality(hll_add_agg(bene)) aggregator
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
+SELECT GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
 ```
 
 

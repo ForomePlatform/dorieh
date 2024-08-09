@@ -22,7 +22,7 @@ RESDAC original file name
 ## Expressions
 
 ```sql
-string_agg(distinct FILE, ',')
+SELECT string_agg(distinct FILE, ',')
 ```
 
 

@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-string_agg(distinct ssa2, ',')
+SELECT string_agg(distinct ssa2, ',')
 ```
 
 

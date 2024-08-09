@@ -53,7 +53,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="../tables.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../table-list.html">Alphabetic list of all tables</a></li>
@@ -206,7 +218,7 @@
 <span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span><span class="w"> </span><span class="n">RECORD</span><span class="p">)</span>
 <span class="p">);</span>
 <span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w">  </span><span class="n">mbsf_d_2012_FILE_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2012</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2012</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;f9dd550bb5b21b78670112f5e72baa65f2fbe105&quot;}. Created at 2024-08-09 16:51:33.195529&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2012</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;0a20037a78bb2a1a32bffc845e5c68742da04afd&quot;}. Created at 2024-08-09 17:27:54.527723&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </details>

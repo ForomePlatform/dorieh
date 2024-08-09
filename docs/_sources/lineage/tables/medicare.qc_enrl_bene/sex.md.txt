@@ -24,7 +24,7 @@ Sex
 ## Expressions
 
 ```sql
-string_agg(distinct sex, ',')
+SELECT string_agg(distinct sex, ',')
 ```
 
 

@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-every(fips3_is_approximated)
+SELECT every(fips3_is_approximated)
 ```
 
 

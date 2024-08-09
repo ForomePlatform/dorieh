@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (last_enrollment_year - first_enrollment_year + 1 - CARDINALITY(all_enrollment_years)) STORED
+SELECT GENERATED ALWAYS AS (last_enrollment_year - first_enrollment_year + 1 - CARDINALITY(all_enrollment_years)) STORED
 ```
 
 

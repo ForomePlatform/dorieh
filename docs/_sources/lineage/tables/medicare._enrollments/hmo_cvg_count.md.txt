@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-MAX(hmo_cvg_count)
+SELECT MAX(hmo_cvg_count)
 ```
 
 

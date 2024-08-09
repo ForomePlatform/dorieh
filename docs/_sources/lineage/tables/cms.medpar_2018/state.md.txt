@@ -23,7 +23,7 @@ SSA standard state code of a beneficiarys residence.
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (STATE_CD) STORED
+SELECT GENERATED ALWAYS AS (STATE_CD) STORED
 ```
 
 

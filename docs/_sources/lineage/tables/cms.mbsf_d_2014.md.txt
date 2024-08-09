@@ -183,7 +183,7 @@ CREATE TABLE  cms.mbsf_d_2014 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  mbsf_d_2014_FILE_idx ON cms.mbsf_d_2014 USING BTREE (FILE) ;
-COMMENT ON table cms.mbsf_d_2014 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:33.197594';
+COMMENT ON table cms.mbsf_d_2014 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:27:54.530128';
 ```
 
 </details>

@@ -19,7 +19,7 @@ Social Security Administration (SSA) two digit code for state
 ## Expressions
 
 ```sql
-state
+SELECT state
 ```
 
 

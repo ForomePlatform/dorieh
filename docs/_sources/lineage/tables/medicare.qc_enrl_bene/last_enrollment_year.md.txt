@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-MAX(year)
+SELECT MAX(year)
 ```
 
 

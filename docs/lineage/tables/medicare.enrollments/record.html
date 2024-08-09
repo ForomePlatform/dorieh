@@ -53,7 +53,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../../MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../../MedicareLineage.html">Data Lineage for Medicare Processing</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="../../tables.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../../table-list.html">Alphabetic list of all tables</a></li>
@@ -161,13 +173,13 @@
 </section>
 <section id="expressions">
 <h2>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading"></a></h2>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="n">string_agg</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">RECORD</span><span class="p">::</span><span class="nb">VARCHAR</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">string_agg</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">RECORD</span><span class="p">::</span><span class="nb">VARCHAR</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
 </div>
 <figure class="align-center" id="id1">
-<a class="reference external image-reference" href="record_svg_envelop.html"><img alt="Column medicare.enrollments.record Lineage SVG" src="../../../_images/record3.svg" /></a>
+<a class="reference external image-reference" href="record_svg_envelop.html"><img alt="Column medicare.enrollments.record Lineage SVG" src="../../../_images/record4.svg" /></a>
 <figcaption>
 <p><span class="caption-text">Data lineage for column medicare.enrollments.record</span><a class="headerlink" href="#id1" title="Permalink to this image"></a></p>
 </figcaption>

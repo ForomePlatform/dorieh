@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-CASE EXTRACT (YEAR from MAX(dod))
+SELECT CASE EXTRACT (YEAR from MAX(dod))
   WHEN year THEN TRUE
   ELSE FALSE
 END

@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS ('US-' || state)  STORED
+SELECT GENERATED ALWAYS AS ('US-' || state)  STORED
 ```
 
 

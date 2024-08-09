@@ -95,7 +95,7 @@ CREATE view medicare.qc_enrl_bene AS SELECT *,
 FROM medicare.enrollments natural join medicare.beneficiaries
 ;
 
-COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:39.865495';
+COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:28:01.288555';
 ```
 
 </details>

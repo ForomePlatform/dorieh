@@ -23,7 +23,7 @@ Record number in the file
 ## Expressions
 
 ```sql
-string_agg(distinct RECORD::VARCHAR, ',')
+SELECT string_agg(distinct RECORD::VARCHAR, ',')
 ```
 
 

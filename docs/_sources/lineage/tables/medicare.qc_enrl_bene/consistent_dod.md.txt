@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-(CASE
+SELECT (CASE
   WHEN dod IS NULL THEN 'NONE'
   WHEN dod_earliest IS NOT NULL THEN 'AMBIGUOUS'
   ELSE 'CONSISTENT'

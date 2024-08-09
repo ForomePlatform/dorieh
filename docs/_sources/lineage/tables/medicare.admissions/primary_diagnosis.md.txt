@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-btrim(diag1) As primary_diagnosis
+SELECT btrim(diag1) As primary_diagnosis
 ```
 
 

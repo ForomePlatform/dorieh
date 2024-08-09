@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
+SELECT CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 ```
 
 

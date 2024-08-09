@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-ARRAY_AGG(DISTINCT year ORDER BY year)
+SELECT ARRAY_AGG(DISTINCT year ORDER BY year)
 ```
 
 

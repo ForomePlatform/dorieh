@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-MAX(ssa3)
+SELECT MAX(ssa3)
 ```
 
 

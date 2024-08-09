@@ -19,7 +19,7 @@ Research Triangle Institute (RTI) Race Code
 ## Expressions
 
 ```sql
-rti_race_cd
+SELECT rti_race_cd
 ```
 
 

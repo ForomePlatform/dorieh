@@ -32,7 +32,7 @@ Cleaned up and unified Medicare beneficiaries table,
 indexed and optimized for efficient queries
 
 
-Transformed from [medicare._beneficiaries](medicare._beneficiaries.html)
+Transformed from [medicare._beneficiaries](medicare._beneficiaries.md)
 
 Primary Key: bene_id
 
@@ -47,7 +47,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:39.841180';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:28:01.263684';
 ```
 
 </details>

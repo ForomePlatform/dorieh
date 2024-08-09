@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (EXTRACT (YEAR FROM admission_date)) STORED
+SELECT GENERATED ALWAYS AS (EXTRACT (YEAR FROM admission_date)) STORED
 ```
 
 

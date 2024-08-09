@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-string_agg(distinct fips3_list, ',')
+SELECT string_agg(distinct fips3_list, ',')
 ```
 
 

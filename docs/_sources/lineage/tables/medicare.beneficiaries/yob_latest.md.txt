@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-CASE
+SELECT CASE
   WHEN MAX(yob) <> MIN(yob) THEN  MAX(yob)
 END
 

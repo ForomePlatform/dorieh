@@ -23,7 +23,7 @@ Beneficiary Enrollment Reference Year
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (RFRNC_YR) STORED
+SELECT GENERATED ALWAYS AS (RFRNC_YR) STORED
 ```
 
 

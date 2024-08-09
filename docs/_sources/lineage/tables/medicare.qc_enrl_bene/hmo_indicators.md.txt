@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-MAX(hmo_indicators)
+SELECT MAX(hmo_indicators)
 ```
 
 

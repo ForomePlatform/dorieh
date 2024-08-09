@@ -18,7 +18,7 @@ Number of possible discrepancies for the beneficiary, .i.e., records that use al
 ## Expressions
 
 ```sql
-(
+SELECT (
   COUNT(distinct {identifiers}) - 1 +
   CASE
     (COUNT(DISTINCT dod) FILTER (WHERE dod is not null))

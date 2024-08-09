@@ -24,7 +24,7 @@ Age at End of Reference Year
 ## Expressions
 
 ```sql
-MAX(age)
+SELECT MAX(age)
 ```
 
 

@@ -23,7 +23,7 @@ Zip Code of Residence
 ## Expressions
 
 ```sql
-GENERATED ALWAYS AS (BENE_ZIP) STORED
+SELECT GENERATED ALWAYS AS (BENE_ZIP) STORED
 ```
 
 

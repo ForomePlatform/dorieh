@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-CASE
+SELECT CASE
   WHEN MAX(dob) <> MIN(dob) THEN  MAX(dob)
 END
 

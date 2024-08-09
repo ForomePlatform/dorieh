@@ -23,7 +23,7 @@ Zip Code of Residence
 ## Expressions
 
 ```sql
-MAX(zip)
+SELECT MAX(zip)
 ```
 
 

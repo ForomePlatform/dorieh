@@ -14,7 +14,7 @@
 ## Expressions
 
 ```sql
-CASE
+SELECT CASE
   WHEN MIN(dod) <> MAX(dod) THEN MIN(dod)
 END
 
