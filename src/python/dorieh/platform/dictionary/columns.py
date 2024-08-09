@@ -274,6 +274,8 @@ class Column(DataModelElement):
         if self.expression:
             text += "\n## Expressions\n\n"
             for exp in self.expression:
+                if "select" not in exp.lower():
+                    exp = "SELECT " + exp
                 text += "```sql\n"
                 text += f"{exp}\n"
                 text += "```\n\n"

@@ -411,11 +411,11 @@ class Table(DataModelElement):
         text += "\n"
         return text
 
-    @staticmethod
-    def link_to_table(name: str, format: str = 'html') -> str:
+    def link_to_table(self, name: str, format: str = 'html') -> str:
+        ext = "md" if (self.mode == RenderMode.sphinx) and format == "markdown" else "html"
         if format == 'markdown':
-            return f"[{name}]({name}.html)"
-        ref = f"{name}.html"
+            return f"[{name}]({name}.{ext})"
+        ref = f"{name}.{ext}"
         return f'<a href="{ref}">{name}</a>'
 
     @staticmethod
