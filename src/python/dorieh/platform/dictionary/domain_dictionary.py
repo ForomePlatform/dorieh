@@ -25,7 +25,8 @@ import sys
 from enum import Enum
 from typing import Dict, List
 
-from dorieh.platform.dictionary.element import HTML, qstr, attrs2string
+from dorieh.platform.dictionary import RenderMode
+from dorieh.platform.dictionary.element import HTML, qstr, attrs2string, create_graph_envelop
 from dorieh.platform.dictionary.tables import Table, Relation
 from dorieh.utils.io_utils import as_dict
 from dorieh.platform.data_model.domain import Domain
@@ -39,7 +40,7 @@ class DomainDict:
         self.basedir = os.path.dirname(os.path.abspath(of))
         self.options = options
         self.link = self.options.get("fmt") in ["svg"]
-        self.mode = options["mode"]
+        self.mode = RenderMode(options["mode"])
 
     def add(self, path):
         yml = as_dict(path)
@@ -139,19 +140,16 @@ class DomainDict:
     def write_markdown(self, content: str, of: str):
         with open(of, "wt") as out:
             print(content, file=out)
-        if self.mode == 'standalone':
+        if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
 
     def link_ext(self):
-        if self.mode == 'standalone':
+        if RenderMode.standalone:
             return "html"
         return "md"
 
     def markdown(self, of: str, svg=None):
-        if svg is None:
-            return
-
         title = "# Table Lineage Diagram\n"
         body = "\n"
 
@@ -166,11 +164,21 @@ class DomainDict:
             body += "```\n"
             body += "\n\n"
 
-        # In Markdown, we can provide a link to the SVG file
-        body += self.html_body(svg)
+        if svg:
+            if self.mode == RenderMode.standalone:
+                body += self.html_body(svg)
+            elif self.mode == RenderMode.sphinx:
+                target = create_graph_envelop(of, "Table Lineage SVG Diagram", svg)
+                body += f"\n```{{figure}} {svg}\n"
+                body += ":align: center\n"
+                body += ":alt: Table Lineage Diagram\n"
+                body += f":target: {target}\n"
+                body += "\n"
+                body += "Diagram illustrating data flow during transformations\n"
+                body += "\n"
+                body += "```\n\n"
         self.write_markdown(f"{title}\n{body}", of)
 
-        # Write the Markdown content to a file
 
     def table_list(self, of: str):
         title = "# Alphabetic list of all tables\n"
@@ -280,8 +288,8 @@ def parse_args() -> Dict:
                         choices=[s.value for s in LOD])
     parser.add_argument("--mode",
                         help="Documentation generation mode",
-                        default="standalone",
-                        choices=["standalone", "sphinx"])
+                        default=RenderMode.standalone.value,
+                        choices=[s.value for s in RenderMode])
     parser.add_argument("--output", "--of", "-o",
                         help="Path to the main output dot file",
                         default="tables.dot",

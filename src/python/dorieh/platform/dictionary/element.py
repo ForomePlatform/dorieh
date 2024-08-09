@@ -19,6 +19,7 @@
 #
 #
 import math
+import os
 from typing import Dict, Optional, List
 
 HTML = """
@@ -231,6 +232,15 @@ def end_invisible_row(format: str = 'html') -> str:
     return '</td></tr>'
 
 
-
+def create_graph_envelop(of: str, title: str, svg: str):
+    pp = os.path.splitext(of)
+    fmd2 = pp[0] + "_svg_envelop" + pp[1]
+    content = f"# {title}\n\n"
+    content += "```{raw} html\n"
+    content += f":file: {svg}\n\n"
+    content += "```\n\n"
+    with open(fmd2, "wt") as out:
+        print(content, file=out)
+    return fmd2
 
 
