@@ -26,5 +26,14 @@ Original Reason for Entitlement Code
 MAX(orec)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/orec.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/orec.svg
+:align: center
+:alt: Column medicare._beneficiaries.orec Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/orec_svg_envelop.md
+
+Data lineage for column medicare._beneficiaries.orec
+
+```
+
+

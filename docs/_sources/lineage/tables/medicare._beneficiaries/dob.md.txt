@@ -17,5 +17,14 @@
 MIN(dob)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/dob.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/dob.svg
+:align: center
+:alt: Column medicare._beneficiaries.dob Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/dob_svg_envelop.md
+
+Data lineage for column medicare._beneficiaries.dob
+
+```
+
+

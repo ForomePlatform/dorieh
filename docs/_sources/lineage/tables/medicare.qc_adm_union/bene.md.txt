@@ -26,5 +26,14 @@ Use #(hll_add_agg(bene)) or hll_cardinality(hll_add_agg(bene)) aggregator
 GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/bene.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/bene.svg
+:align: center
+:alt: Column medicare.qc_adm_union.bene Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/bene_svg_envelop.md
+
+Data lineage for column medicare.qc_adm_union.bene
+
+```
+
+

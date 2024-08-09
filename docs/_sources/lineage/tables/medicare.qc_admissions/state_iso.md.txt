@@ -17,5 +17,14 @@
 MAX(state_iso)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/state_iso.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/state_iso.svg
+:align: center
+:alt: Column medicare.qc_admissions.state_iso Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/state_iso_svg_envelop.md
+
+Data lineage for column medicare.qc_admissions.state_iso
+
+```
+
+

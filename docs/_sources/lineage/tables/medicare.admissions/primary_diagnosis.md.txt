@@ -17,5 +17,14 @@
 btrim(diag1) As primary_diagnosis
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/primary_diagnosis.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/primary_diagnosis.svg
+:align: center
+:alt: Column medicare.admissions.primary_diagnosis Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/primary_diagnosis_svg_envelop.md
+
+Data lineage for column medicare.admissions.primary_diagnosis
+
+```
+
+

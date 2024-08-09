@@ -20,5 +20,14 @@ END
 
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob_latest.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob_latest.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.dob_latest Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dob_latest_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.dob_latest
+
+```
+
+

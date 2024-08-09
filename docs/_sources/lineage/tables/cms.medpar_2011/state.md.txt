@@ -26,5 +26,14 @@ SSA standard state code of a beneficiarys residence.
 GENERATED ALWAYS AS (STATE_CD) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2011/state.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2011/state.svg
+:align: center
+:alt: Column cms.medpar_2011.STATE Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2011/state_svg_envelop.md
+
+Data lineage for column cms.medpar_2011.STATE
+
+```
+
+

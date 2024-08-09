@@ -1,0 +1,8 @@
+# Column medicare.enrollments.dual_indicators Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/dual_indicators.svg
+
+```
+
+

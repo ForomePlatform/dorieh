@@ -1,0 +1,8 @@
+# Column medicare.admissions.bene_ip_ddctbl_amt Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/bene_ip_ddctbl_amt.svg
+
+```
+
+

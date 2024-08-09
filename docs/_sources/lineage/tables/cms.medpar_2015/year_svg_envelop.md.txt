@@ -1,0 +1,8 @@
+# Column cms.medpar_2015.YEAR Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2015/year.svg
+
+```
+
+

@@ -1,0 +1,8 @@
+# Column medicare.ip.bene_prmry_pyr_amt Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/bene_prmry_pyr_amt.svg
+
+```
+
+

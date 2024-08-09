@@ -26,5 +26,14 @@ State Code
 (SELECT state_id FROM public.us_states as s WHERE s.ssa2 = "state")
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/state.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/state.svg
+:align: center
+:alt: Column medicare._ps.state Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/state_svg_envelop.md
+
+Data lineage for column medicare._ps.state
+
+```
+
+

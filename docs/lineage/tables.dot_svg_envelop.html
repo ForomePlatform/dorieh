@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Table Lineage SVG Diagram &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Table Lineage SVG Diagram</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lineage/tables.dot_svg_envelop.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="table-lineage-svg-diagram">
+<h1>Table Lineage SVG Diagram<a class="headerlink" href="#table-lineage-svg-diagram" title="Permalink to this heading"></a></h1>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN"
+ "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Generated by graphviz version 10.0.1 (20240210.2158)
+ -->
+<!-- Pages: 1 -->
+<svg width="2744pt" height="825pt"
+ viewBox="0.00 0.00 2744.18 825.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 821)">
+<polygon fill="white" stroke="none" points="-4,4 -4,-821 2740.18,-821 2740.18,4 -4,4"/>
+<!-- Table cms.mbsf_ab_2011 -->
+<g id="node1" class="node">
+<title>Table cms.mbsf_ab_2011</title>
+<g id="a_node1"><a xlink:href="tables/cms.mbsf_ab_2011.html" xlink:title="Table cms.mbsf_ab_2011" target="_blank">
+<ellipse fill="none" stroke="black" cx="2379.04" cy="-799" rx="107.14" ry="18"/>
+<text text-anchor="middle" x="2379.04" y="-793.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_ab_2011</text>
+</a>
+</g>
+</g>
+<!-- view medicare.ps -->
+<g id="node22" class="node">
+<title>view medicare.ps</title>
+<g id="a_node22"><a xlink:href="tables/medicare.ps.html" xlink:title="view medicare.ps" target="_blank">
+<ellipse fill="none" stroke="black" cx="2050.04" cy="-637.5" rx="76.43" ry="18"/>
+<text text-anchor="middle" x="2050.04" y="-632.45" font-family="Times,serif" font-size="14.00">view medicare.ps</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2011&#45;&gt;view medicare.ps -->
+<g id="edge25" class="edge">
+<title>Table cms.mbsf_ab_2011&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M2353.66,-781.23C2313.77,-755.42 2233.37,-705.59 2160.04,-673.5 2144.54,-666.71 2127.29,-660.6 2111.13,-655.44"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="2112.52,-652.21 2101.93,-652.59 2110.45,-658.89 2112.52,-652.21"/>
+<text text-anchor="middle" x="2308.42" y="-720.95" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_ab_2012 -->
+<g id="node2" class="node">
+<title>Table cms.mbsf_ab_2012</title>
+<g id="a_node2"><a xlink:href="tables/cms.mbsf_ab_2012.html" xlink:title="Table cms.mbsf_ab_2012" target="_blank">
+<ellipse fill="none" stroke="black" cx="2629.04" cy="-799" rx="107.14" ry="18"/>
+<text text-anchor="middle" x="2629.04" y="-793.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_ab_2012</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2012&#45;&gt;view medicare.ps -->
+<g id="edge26" class="edge">
+<title>Table cms.mbsf_ab_2012&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M2581.08,-782.45C2502.89,-757.44 2342.82,-707.61 2205.04,-673.5 2176.49,-666.43 2144.84,-659.18 2117.62,-653.12"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="2118.53,-649.74 2108.01,-651 2117.01,-656.58 2118.53,-649.74"/>
+<text text-anchor="middle" x="2472.42" y="-720.95" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_ab_2013 -->
+<g id="node3" class="node">
+<title>Table cms.mbsf_ab_2013</title>
+<g id="a_node3"><a xlink:href="tables/cms.mbsf_ab_2013.html" xlink:title="Table cms.mbsf_ab_2013" target="_blank">
+<ellipse fill="none" stroke="black" cx="1644.04" cy="-799" rx="107.14" ry="18"/>
+<text text-anchor="middle" x="1644.04" y="-793.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_ab_2013</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2015 -->
+<g id="node5" class="node">
+<title>Table cms.mbsf_abcd_2015</title>
+<g id="a_node5"><a xlink:href="tables/cms.mbsf_abcd_2015.html" xlink:title="Table cms.mbsf_abcd_2015" target="_blank">
+<ellipse fill="none" stroke="black" cx="1912.04" cy="-726" rx="115.84" ry="18"/>
+<text text-anchor="middle" x="1912.04" y="-720.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_abcd_2015</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2013&#45;&gt;Table cms.mbsf_abcd_2015 -->
+<!-- Table cms.mbsf_abcd_2016 -->
+<g id="node6" class="node">
+<title>Table cms.mbsf_abcd_2016</title>
+<g id="a_node6"><a xlink:href="tables/cms.mbsf_abcd_2016.html" xlink:title="Table cms.mbsf_abcd_2016" target="_blank">
+<ellipse fill="none" stroke="black" cx="1376.04" cy="-726" rx="115.84" ry="18"/>
+<text text-anchor="middle" x="1376.04" y="-720.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_abcd_2016</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2013&#45;&gt;Table cms.mbsf_abcd_2016 -->
+<!-- Table cms.mbsf_abcd_2017 -->
+<g id="node7" class="node">
+<title>Table cms.mbsf_abcd_2017</title>
+<g id="a_node7"><a xlink:href="tables/cms.mbsf_abcd_2017.html" xlink:title="Table cms.mbsf_abcd_2017" target="_blank">
+<ellipse fill="none" stroke="black" cx="1108.04" cy="-726" rx="115.84" ry="18"/>
+<text text-anchor="middle" x="1108.04" y="-720.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_abcd_2017</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2013&#45;&gt;Table cms.mbsf_abcd_2017 -->
+<!-- Table cms.mbsf_abcd_2018 -->
+<g id="node8" class="node">
+<title>Table cms.mbsf_abcd_2018</title>
+<g id="a_node8"><a xlink:href="tables/cms.mbsf_abcd_2018.html" xlink:title="Table cms.mbsf_abcd_2018" target="_blank">
+<ellipse fill="none" stroke="black" cx="1644.04" cy="-726" rx="115.84" ry="18"/>
+<text text-anchor="middle" x="1644.04" y="-720.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_abcd_2018</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2013&#45;&gt;Table cms.mbsf_abcd_2018 -->
+<!-- Table cms.mbsf_ab_2013&#45;&gt;view medicare.ps -->
+<g id="edge27" class="edge">
+<title>Table cms.mbsf_ab_2013&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1750.03,-796.18C1853.71,-792.26 2002.24,-780.25 2046.04,-744 2070.96,-723.38 2070.16,-705.25 2064.04,-673.5 2063.68,-671.61 2063.22,-669.7 2062.68,-667.79"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="2066,-666.68 2059.38,-658.41 2059.4,-669 2066,-666.68"/>
+<text text-anchor="middle" x="2083.42" y="-720.95" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_ab_2014 -->
+<g id="node4" class="node">
+<title>Table cms.mbsf_ab_2014</title>
+<g id="a_node4"><a xlink:href="tables/cms.mbsf_ab_2014.html" xlink:title="Table cms.mbsf_ab_2014" target="_blank">
+<ellipse fill="none" stroke="black" cx="2129.04" cy="-799" rx="107.14" ry="18"/>
+<text text-anchor="middle" x="2129.04" y="-793.95" font-family="Times,serif" font-size="14.00">Table cms.mbsf_ab_2014</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_ab_2014&#45;&gt;view medicare.ps -->
+<g id="edge28" class="edge">
+<title>Table cms.mbsf_ab_2014&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M2135.23,-780.95C2143.68,-754.31 2154.92,-702.82 2128.04,-673.5 2122.38,-667.32 2115.43,-662.17 2108.02,-657.89"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="2109.74,-654.84 2099.24,-653.41 2106.56,-661.07 2109.74,-654.84"/>
+<text text-anchor="middle" x="2159.42" y="-720.95" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- materialized view medicare.mbsf_d -->
+<g id="node21" class="node">
+<title>materialized view medicare.mbsf_d</title>
+<g id="a_node21"><a xlink:href="tables/medicare.mbsf_d.html" xlink:title="materialized view medicare.mbsf_d" target="_blank">
+<ellipse fill="none" stroke="black" cx="1466.04" cy="-549" rx="145.01" ry="18"/>
+<text text-anchor="middle" x="1466.04" y="-543.95" font-family="Times,serif" font-size="14.00">materialized view medicare.mbsf_d</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2015&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge17" class="edge">
+<title>Table cms.mbsf_abcd_2015&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1898.65,-707.64C1879.98,-684.53 1844.02,-643.77 1805.04,-619.5 1748.14,-584.08 1676.45,-566.33 1613.67,-557.58"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1614.2,-554.12 1603.83,-556.29 1613.29,-561.06 1614.2,-554.12"/>
+<text text-anchor="middle" x="1865.42" y="-632.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2015&#45;&gt;view medicare.ps -->
+<g id="edge29" class="edge">
+<title>Table cms.mbsf_abcd_2015&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1965.93,-709.83C1979.36,-704.71 1993.28,-698.16 2005.04,-690 2014.48,-683.46 2023.2,-674.51 2030.41,-665.91"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="2033.09,-668.17 2036.52,-658.15 2027.59,-663.84 2033.09,-668.17"/>
+<text text-anchor="middle" x="2039.42" y="-676.7" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2016&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge18" class="edge">
+<title>Table cms.mbsf_abcd_2016&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1464.53,-714.13C1500.99,-704.8 1539.84,-687.5 1562.04,-655.5 1583.38,-624.75 1546.06,-593.53 1511.91,-573.12"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1514.05,-570.32 1503.64,-568.39 1510.58,-576.39 1514.05,-570.32"/>
+<text text-anchor="middle" x="1584.42" y="-632.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2016&#45;&gt;view medicare.ps -->
+<g id="edge30" class="edge">
+<title>Table cms.mbsf_abcd_2016&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1462.13,-713.62C1478.05,-711.65 1494.54,-709.69 1510.04,-708 1597.89,-698.44 1620.59,-702.61 1708.04,-690 1745.38,-684.62 1754.03,-679.34 1791.29,-673.5 1860.14,-662.72 1878.04,-665.18 1947.04,-655.5 1956.82,-654.13 1967.11,-652.57 1977.24,-650.97"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1977.63,-654.45 1986.95,-649.41 1976.52,-647.54 1977.63,-654.45"/>
+<text text-anchor="middle" x="1807.42" y="-676.7" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_d_2011 -->
+<g id="node9" class="node">
+<title>Table cms.mbsf_d_2011</title>
+<g id="a_node9"><a xlink:href="tables/cms.mbsf_d_2011.html" xlink:title="Table cms.mbsf_d_2011" target="_blank">
+<ellipse fill="none" stroke="black" cx="1441.04" cy="-637.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="1441.04" y="-632.45" font-family="Times,serif" font-size="14.00">Table cms.mbsf_d_2011</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;Table cms.mbsf_d_2011 -->
+<!-- Table cms.mbsf_d_2012 -->
+<g id="node10" class="node">
+<title>Table cms.mbsf_d_2012</title>
+<g id="a_node10"><a xlink:href="tables/cms.mbsf_d_2012.html" xlink:title="Table cms.mbsf_d_2012" target="_blank">
+<ellipse fill="none" stroke="black" cx="854.04" cy="-637.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="854.04" y="-632.45" font-family="Times,serif" font-size="14.00">Table cms.mbsf_d_2012</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;Table cms.mbsf_d_2012 -->
+<!-- Table cms.mbsf_d_2013 -->
+<g id="node11" class="node">
+<title>Table cms.mbsf_d_2013</title>
+<g id="a_node11"><a xlink:href="tables/cms.mbsf_d_2013.html" xlink:title="Table cms.mbsf_d_2013" target="_blank">
+<ellipse fill="none" stroke="black" cx="610.04" cy="-637.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="610.04" y="-632.45" font-family="Times,serif" font-size="14.00">Table cms.mbsf_d_2013</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;Table cms.mbsf_d_2013 -->
+<!-- Table cms.mbsf_d_2014 -->
+<g id="node12" class="node">
+<title>Table cms.mbsf_d_2014</title>
+<g id="a_node12"><a xlink:href="tables/cms.mbsf_d_2014.html" xlink:title="Table cms.mbsf_d_2014" target="_blank">
+<ellipse fill="none" stroke="black" cx="1096.04" cy="-637.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="1096.04" y="-632.45" font-family="Times,serif" font-size="14.00">Table cms.mbsf_d_2014</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;Table cms.mbsf_d_2014 -->
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge19" class="edge">
+<title>Table cms.mbsf_abcd_2017&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1134.07,-708.15C1168.67,-686.15 1232.11,-647.19 1289.29,-619.5 1327.52,-600.99 1372.03,-583.51 1406.82,-570.71"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1407.65,-574.14 1415.85,-567.42 1405.25,-567.56 1407.65,-574.14"/>
+<text text-anchor="middle" x="1305.42" y="-632.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2017&#45;&gt;view medicare.ps -->
+<g id="edge31" class="edge">
+<title>Table cms.mbsf_abcd_2017&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1193.76,-713.54C1209.79,-711.56 1226.42,-709.62 1242.04,-708 1431.09,-688.37 1478.73,-687.29 1668.29,-673.5 1792.11,-664.49 1823.7,-669.63 1947.04,-655.5 1957.16,-654.34 1967.79,-652.87 1978.23,-651.29"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1978.49,-654.79 1987.83,-649.78 1977.4,-647.87 1978.49,-654.79"/>
+<text text-anchor="middle" x="1684.42" y="-676.7" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2018&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge20" class="edge">
+<title>Table cms.mbsf_abcd_2018&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1742.15,-716.23C1772.89,-709.15 1795.28,-696.42 1780.04,-673.5 1737.43,-609.42 1655.88,-578.59 1586.56,-563.75"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1587.68,-560.41 1577.18,-561.85 1586.29,-567.27 1587.68,-560.41"/>
+<text text-anchor="middle" x="1780.42" y="-632.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_abcd_2018&#45;&gt;view medicare.ps -->
+<g id="edge32" class="edge">
+<title>Table cms.mbsf_abcd_2018&#45;&gt;view medicare.ps</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1718.37,-711.9C1752.73,-705.63 1794.04,-697.81 1831.04,-690 1883.57,-678.92 1942.81,-664.89 1986.43,-654.28"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1987.04,-657.73 1995.92,-651.96 1985.38,-650.93 1987.04,-657.73"/>
+<text text-anchor="middle" x="1919.42" y="-676.7" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_d_2011&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge21" class="edge">
+<title>Table cms.mbsf_d_2011&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1445.98,-619.41C1449.25,-608.11 1453.62,-593 1457.44,-579.75"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1460.77,-580.84 1460.19,-570.26 1454.05,-578.89 1460.77,-580.84"/>
+<text text-anchor="middle" x="1471.42" y="-588.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_d_2012&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge22" class="edge">
+<title>Table cms.mbsf_d_2012&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M918.27,-623.01C974.1,-611.65 1057.27,-595.6 1130.29,-585 1197.98,-575.18 1273.74,-567.04 1336.13,-561.09"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1336.19,-564.6 1345.82,-560.17 1335.53,-557.63 1336.19,-564.6"/>
+<text text-anchor="middle" x="1146.42" y="-588.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2011 -->
+<g id="node13" class="node">
+<title>Table cms.medpar_2011</title>
+<g id="a_node13"><a xlink:href="tables/cms.medpar_2011.html" xlink:title="Table cms.medpar_2011" target="_blank">
+<ellipse fill="none" stroke="black" cx="598.04" cy="-549" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="598.04" y="-543.95" font-family="Times,serif" font-size="14.00">Table cms.medpar_2011</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_d_2013&#45;&gt;Table cms.medpar_2011 -->
+<!-- Table cms.medpar_2012 -->
+<g id="node14" class="node">
+<title>Table cms.medpar_2012</title>
+<g id="a_node14"><a xlink:href="tables/cms.medpar_2012.html" xlink:title="Table cms.medpar_2012" target="_blank">
+<ellipse fill="none" stroke="black" cx="352.04" cy="-549" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="352.04" y="-543.95" font-family="Times,serif" font-size="14.00">Table cms.medpar_2012</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_d_2013&#45;&gt;Table cms.medpar_2012 -->
+<!-- Table cms.medpar_2013 -->
+<g id="node15" class="node">
+<title>Table cms.medpar_2013</title>
+<g id="a_node15"><a xlink:href="tables/cms.medpar_2013.html" xlink:title="Table cms.medpar_2013" target="_blank">
+<ellipse fill="none" stroke="black" cx="889.04" cy="-549" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="889.04" y="-543.95" font-family="Times,serif" font-size="14.00">Table cms.medpar_2013</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_d_2013&#45;&gt;Table cms.medpar_2013 -->
+<!-- Table cms.medpar_2014 -->
+<g id="node16" class="node">
+<title>Table cms.medpar_2014</title>
+<g id="a_node16"><a xlink:href="tables/cms.medpar_2014.html" xlink:title="Table cms.medpar_2014" target="_blank">
+<ellipse fill="none" stroke="black" cx="103.04" cy="-549" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="103.04" y="-543.95" font-family="Times,serif" font-size="14.00">Table cms.medpar_2014</text>
+</a>
+</g>
+</g>
+<!-- Table cms.mbsf_d_2013&#45;&gt;Table cms.medpar_2014 -->
+<!-- Table cms.mbsf_d_2013&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge23" class="edge">
+<title>Table cms.mbsf_d_2013&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M688.78,-625.56C703.49,-623.53 718.73,-621.44 733.04,-619.5 848.23,-603.88 876.67,-596.95 992.29,-585 1103.57,-573.5 1229.92,-564.36 1324.14,-558.31"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1324.15,-561.81 1333.9,-557.68 1323.7,-554.83 1324.15,-561.81"/>
+<text text-anchor="middle" x="1008.42" y="-588.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.mbsf_d_2014&#45;&gt;materialized view medicare.mbsf_d -->
+<g id="edge24" class="edge">
+<title>Table cms.mbsf_d_2014&#45;&gt;materialized view medicare.mbsf_d</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1126.73,-620.06C1149.67,-608.48 1182.14,-593.57 1212.29,-585 1251.08,-573.97 1294.24,-566.36 1333.79,-561.14"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="1334.01,-564.64 1343.49,-559.9 1333.13,-557.69 1334.01,-564.64"/>
+<text text-anchor="middle" x="1228.42" y="-588.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- view medicare.ip -->
+<g id="node23" class="node">
+<title>view medicare.ip</title>
+<g id="a_node23"><a xlink:href="tables/medicare.ip.html" xlink:title="view medicare.ip" target="_blank">
+<ellipse fill="none" stroke="black" cx="721.04" cy="-372" rx="75.41" ry="18"/>
+<text text-anchor="middle" x="721.04" y="-366.95" font-family="Times,serif" font-size="14.00">view medicare.ip</text>
+</a>
+</g>
+</g>
+<!-- Table cms.medpar_2011&#45;&gt;view medicare.ip -->
+<g id="edge33" class="edge">
+<title>Table cms.medpar_2011&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M515.29,-537.91C444.43,-527.36 350.31,-508.17 327.29,-478.5 317.49,-465.86 317.01,-454.76 327.29,-442.5 365.59,-396.86 529.57,-381.18 633.46,-375.8"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="633.6,-379.29 643.42,-375.31 633.26,-372.3 633.6,-379.29"/>
+<text text-anchor="middle" x="343.42" y="-455.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2012&#45;&gt;view medicare.ip -->
+<g id="edge34" class="edge">
+<title>Table cms.medpar_2012&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M326.67,-531.23C298.98,-510.76 261.02,-474.85 280.29,-442.5 296.79,-414.82 313.21,-417.35 344.04,-408 396.46,-392.11 540.41,-382.08 634.5,-377.01"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="634.61,-380.51 644.41,-376.48 634.24,-373.52 634.61,-380.51"/>
+<text text-anchor="middle" x="296.42" y="-455.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2015 -->
+<g id="node17" class="node">
+<title>Table cms.medpar_2015</title>
+<g id="a_node17"><a xlink:href="tables/cms.medpar_2015.html" xlink:title="Table cms.medpar_2015" target="_blank">
+<ellipse fill="none" stroke="black" cx="479.04" cy="-460.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="479.04" y="-455.45" font-family="Times,serif" font-size="14.00">Table cms.medpar_2015</text>
+</a>
+</g>
+</g>
+<!-- Table cms.medpar_2013&#45;&gt;Table cms.medpar_2015 -->
+<!-- Table cms.medpar_2016 -->
+<g id="node18" class="node">
+<title>Table cms.medpar_2016</title>
+<g id="a_node18"><a xlink:href="tables/cms.medpar_2016.html" xlink:title="Table cms.medpar_2016" target="_blank">
+<ellipse fill="none" stroke="black" cx="721.04" cy="-460.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="721.04" y="-455.45" font-family="Times,serif" font-size="14.00">Table cms.medpar_2016</text>
+</a>
+</g>
+</g>
+<!-- Table cms.medpar_2013&#45;&gt;Table cms.medpar_2016 -->
+<!-- Table cms.medpar_2017 -->
+<g id="node19" class="node">
+<title>Table cms.medpar_2017</title>
+<g id="a_node19"><a xlink:href="tables/cms.medpar_2017.html" xlink:title="Table cms.medpar_2017" target="_blank">
+<ellipse fill="none" stroke="black" cx="963.04" cy="-460.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="963.04" y="-455.45" font-family="Times,serif" font-size="14.00">Table cms.medpar_2017</text>
+</a>
+</g>
+</g>
+<!-- Table cms.medpar_2013&#45;&gt;Table cms.medpar_2017 -->
+<!-- Table cms.medpar_2018 -->
+<g id="node20" class="node">
+<title>Table cms.medpar_2018</title>
+<g id="a_node20"><a xlink:href="tables/cms.medpar_2018.html" xlink:title="Table cms.medpar_2018" target="_blank">
+<ellipse fill="none" stroke="black" cx="1205.04" cy="-460.5" rx="103.04" ry="18"/>
+<text text-anchor="middle" x="1205.04" y="-455.45" font-family="Times,serif" font-size="14.00">Table cms.medpar_2018</text>
+</a>
+</g>
+</g>
+<!-- Table cms.medpar_2013&#45;&gt;Table cms.medpar_2018 -->
+<!-- Table cms.medpar_2013&#45;&gt;view medicare.ip -->
+<g id="edge35" class="edge">
+<title>Table cms.medpar_2013&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M991.55,-546.48C1106.95,-542.35 1283.9,-527.87 1326.04,-478.5 1336.43,-466.33 1336.64,-454.49 1326.04,-442.5 1292.32,-404.35 966.71,-384.26 807.64,-376.65"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="808.27,-373.18 798.11,-376.2 807.94,-380.17 808.27,-373.18"/>
+<text text-anchor="middle" x="1349.42" y="-455.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2014&#45;&gt;view medicare.ip -->
+<g id="edge36" class="edge">
+<title>Table cms.medpar_2014&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M118.25,-530.88C147.46,-499.44 214.99,-433.38 288.04,-408 349.66,-386.6 525.68,-378.14 633.39,-374.9"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="633.25,-378.41 643.14,-374.62 633.05,-371.41 633.25,-378.41"/>
+<text text-anchor="middle" x="235.42" y="-455.45" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2015&#45;&gt;view medicare.ip -->
+<g id="edge37" class="edge">
+<title>Table cms.medpar_2015&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M522.87,-443.84C563.74,-429.23 624.78,-407.41 668.3,-391.85"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="669.28,-395.22 677.51,-388.56 666.92,-388.63 669.28,-395.22"/>
+<text text-anchor="middle" x="637.42" y="-411.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2016&#45;&gt;view medicare.ip -->
+<g id="edge38" class="edge">
+<title>Table cms.medpar_2016&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M721.04,-442.41C721.04,-431.23 721.04,-416.31 721.04,-403.17"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="724.54,-403.38 721.04,-393.38 717.54,-403.38 724.54,-403.38"/>
+<text text-anchor="middle" x="736.42" y="-411.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2017&#45;&gt;view medicare.ip -->
+<g id="edge39" class="edge">
+<title>Table cms.medpar_2017&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M919.22,-443.84C878.35,-429.23 817.31,-407.41 773.78,-391.85"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="775.17,-388.63 764.57,-388.56 772.81,-395.22 775.17,-388.63"/>
+<text text-anchor="middle" x="879.42" y="-411.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- Table cms.medpar_2018&#45;&gt;view medicare.ip -->
+<g id="edge40" class="edge">
+<title>Table cms.medpar_2018&#45;&gt;view medicare.ip</title>
+<path fill="none" stroke="chocolate" stroke-width="2" d="M1134.92,-446.97C1043.69,-430.66 885.09,-402.32 792.97,-385.86"/>
+<polygon fill="chocolate" stroke="chocolate" stroke-width="2" points="793.6,-382.41 783.14,-384.1 792.37,-389.3 793.6,-382.41"/>
+<text text-anchor="middle" x="1022.42" y="-411.2" font-family="Times,serif" font-size="14.00">union</text>
+</g>
+<!-- view medicare._enrollments -->
+<g id="node26" class="node">
+<title>view medicare._enrollments</title>
+<g id="a_node26"><a xlink:href="tables/medicare._enrollments.html" xlink:title="view medicare._enrollments" target="_blank">
+<ellipse fill="none" stroke="black" cx="1712.04" cy="-460.5" rx="116.86" ry="18"/>
+<text text-anchor="middle" x="1712.04" y="-455.45" font-family="Times,serif" font-size="14.00">view medicare._enrollments</text>
+</a>
+</g>
+</g>
+<!-- materialized view medicare.mbsf_d&#45;&gt;view medicare._enrollments -->
+<g id="edge54" class="edge">
+<title>materialized view medicare.mbsf_d&#45;&gt;view medicare._enrollments</title>
+<path fill="none" stroke="chartreuse" d="M1511.2,-531.5C1526.19,-525.84 1542.91,-519.34 1558.04,-513 1574.28,-506.2 1577.57,-502.68 1594.04,-496.5 1610.13,-490.46 1627.74,-484.77 1644.35,-479.79"/>
+<polygon fill="chartreuse" stroke="chartreuse" points="1645.03,-483.24 1653.63,-477.06 1643.05,-476.53 1645.03,-483.24"/>
+<text text-anchor="middle" x="1631.54" y="-499.7" font-family="Times,serif" font-size="14.00">custom&#45;select</text>
+</g>
+<!-- table medicare.enrollments -->
+<g id="node28" class="node">
+<title>table medicare.enrollments</title>
+<g id="a_node28"><a xlink:href="tables/medicare.enrollments.html" xlink:title="table medicare.enrollments" target="_blank">
+<ellipse fill="none" stroke="black" cx="1763.04" cy="-283.5" rx="112.26" ry="18"/>
+<text text-anchor="middle" x="1763.04" y="-278.45" font-family="Times,serif" font-size="14.00">table medicare.enrollments</text>
+</a>
+</g>
+</g>
+<!-- materialized view medicare.mbsf_d&#45;&gt;table medicare.enrollments -->
+<g id="edge55" class="edge">
+<title>materialized view medicare.mbsf_d&#45;&gt;table medicare.enrollments</title>
+<path fill="none" stroke="chartreuse" d="M1483.45,-530.88C1505.06,-509.75 1543.23,-472.89 1577.04,-442.5 1631.08,-393.94 1696.17,-339.55 1733.27,-308.92"/>
+<polygon fill="chartreuse" stroke="chartreuse" points="1735.42,-311.69 1740.91,-302.63 1730.97,-306.29 1735.42,-311.69"/>
+<text text-anchor="middle" x="1653.54" y="-411.2" font-family="Times,serif" font-size="14.00">custom&#45;select</text>
+</g>
+<!-- view medicare.qc_enrl_bene -->
+<g id="node30" class="node">
+<title>view medicare.qc_enrl_bene</title>
+<g id="a_node30"><a xlink:href="tables/medicare.qc_enrl_bene.html" xlink:title="view medicare.qc_enrl_bene" target="_blank">
+<ellipse fill="none" stroke="black" cx="2007.04" cy="-195" rx="117.89" ry="18"/>
+<text text-anchor="middle" x="2007.04" y="-189.95" font-family="Times,serif" font-size="14.00">view medicare.qc_enrl_bene</text>
+</a>
+</g>
+</g>
+<!-- materialized view medicare.mbsf_d&#45;&gt;view medicare.qc_enrl_bene -->
+<g id="edge57" class="edge">
+<title>materialized view medicare.mbsf_d&#45;&gt;view medicare.qc_enrl_bene</title>
+<path fill="none" stroke="chartreuse" d="M1466.04,-530.77C1466.04,-513.31 1466.04,-485.53 1466.04,-461.5 1466.04,-461.5 1466.04,-461.5 1466.04,-282.5 1466.04,-240.09 1728.61,-214.79 1887.9,-203.34"/>
+<polygon fill="chartreuse" stroke="chartreuse" points="1887.95,-206.85 1897.68,-202.65 1887.46,-199.87 1887.95,-206.85"/>
+<text text-anchor="middle" x="1503.54" y="-366.95" font-family="Times,serif" font-size="14.00">custom&#45;select</text>
+</g>
+<!-- materialized view medicare._ps -->
+<g id="node24" class="node">
+<title>materialized view medicare._ps</title>
+<g id="a_node24"><a xlink:href="tables/medicare._ps.html" xlink:title="materialized view medicare._ps" target="_blank">
+<ellipse fill="none" stroke="black" cx="2050.04" cy="-549" rx="129.66" ry="18"/>
+<text text-anchor="middle" x="2050.04" y="-543.95" font-family="Times,serif" font-size="14.00">materialized view medicare._ps</text>
+</a>
+</g>
+</g>
+<!-- view medicare.ps&#45;&gt;materialized view medicare._ps -->
+<g id="edge41" class="edge">
+<title>view medicare.ps&#45;&gt;materialized view medicare._ps</title>
+<path fill="none" stroke="black" d="M2050.04,-619.41C2050.04,-607.76 2050.04,-592.05 2050.04,-578.52"/>
+<polygon fill="black" stroke="black" points="2053.54,-578.86 2050.04,-568.86 2046.54,-578.86 2053.54,-578.86"/>
+<text text-anchor="middle" x="2090.17" y="-588.2" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- table medicare.admissions -->
+<g id="node29" class="node">
+<title>table medicare.admissions</title>
+<g id="a_node29"><a xlink:href="tables/medicare.admissions.html" xlink:title="table medicare.admissions" target="_blank">
+<ellipse fill="none" stroke="black" cx="1049.04" cy="-195" rx="109.7" ry="18"/>
+<text text-anchor="middle" x="1049.04" y="-189.95" font-family="Times,serif" font-size="14.00">table medicare.admissions</text>
+</a>
+</g>
+</g>
+<!-- view medicare.ip&#45;&gt;table medicare.admissions -->
+<g id="edge44" class="edge">
+<title>view medicare.ip&#45;&gt;table medicare.admissions</title>
+<path fill="none" stroke="black" d="M751.02,-355.01C809.99,-323.55 941.12,-253.58 1008.04,-217.88"/>
+<polygon fill="black" stroke="black" points="1009.31,-221.17 1016.49,-213.37 1006.02,-214.99 1009.31,-221.17"/>
+<text text-anchor="middle" x="958.17" y="-278.45" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- view medicare._beneficiaries -->
+<g id="node25" class="node">
+<title>view medicare._beneficiaries</title>
+<g id="a_node25"><a xlink:href="tables/medicare._beneficiaries.html" xlink:title="view medicare._beneficiaries" target="_blank">
+<ellipse fill="none" stroke="black" cx="2059.04" cy="-460.5" rx="119.93" ry="18"/>
+<text text-anchor="middle" x="2059.04" y="-455.45" font-family="Times,serif" font-size="14.00">view medicare._beneficiaries</text>
+</a>
+</g>
+</g>
+<!-- materialized view medicare._ps&#45;&gt;view medicare._beneficiaries -->
+<g id="edge42" class="edge">
+<title>materialized view medicare._ps&#45;&gt;view medicare._beneficiaries</title>
+<path fill="none" stroke="blue" stroke-width="5" d="M2047.44,-530.74C2046.36,-520.69 2045.73,-507.81 2047.54,-496.5 2047.66,-495.76 2047.79,-495.01 2047.94,-494.26"/>
+<polygon fill="blue" stroke="blue" stroke-width="5" points="2052.14,-495.49 2050.55,-484.69 2043.7,-493.19 2052.14,-495.49"/>
+<text text-anchor="middle" x="2128.29" y="-499.7" font-family="Times,serif" font-size="14.00">	aggregation On bene_id</text>
+</g>
+<!-- materialized view medicare._ps&#45;&gt;view medicare._enrollments -->
+<g id="edge43" class="edge">
+<title>materialized view medicare._ps&#45;&gt;view medicare._enrollments</title>
+<path fill="none" stroke="blue" stroke-width="5" d="M1926.58,-543.22C1835.5,-538.38 1724.94,-529.23 1710.29,-513 1705.77,-507.99 1704.07,-501.46 1703.91,-494.74"/>
+<polygon fill="blue" stroke="blue" stroke-width="5" points="1708.22,-495.54 1705.11,-485.07 1699.54,-494.46 1708.22,-495.54"/>
+<text text-anchor="middle" x="1822.42" y="-499.7" font-family="Times,serif" font-size="14.00">	aggregation On bene_id, year, state</text>
+</g>
+<!-- materialized view medicare._ps&#45;&gt;table medicare.enrollments -->
+<g id="edge56" class="edge">
+<title>materialized view medicare._ps&#45;&gt;table medicare.enrollments</title>
+<path fill="none" stroke="chartreuse" d="M2008.7,-531.58C1981.79,-519.55 1947.01,-501.37 1921.04,-478.5 1870.01,-433.54 1875.93,-405.97 1832.04,-354 1819,-338.55 1803.18,-322.45 1789.98,-309.64"/>
+<polygon fill="chartreuse" stroke="chartreuse" points="1792.47,-307.19 1782.83,-302.79 1787.63,-312.24 1792.47,-307.19"/>
+<text text-anchor="middle" x="1914.54" y="-411.2" font-family="Times,serif" font-size="14.00">custom&#45;select</text>
+</g>
+<!-- materialized view medicare._ps&#45;&gt;view medicare.qc_enrl_bene -->
+<g id="edge58" class="edge">
+<title>materialized view medicare._ps&#45;&gt;view medicare.qc_enrl_bene</title>
+<path fill="none" stroke="chartreuse" d="M2140.95,-535.82C2171.7,-530.18 2201.24,-522.57 2213.04,-513 2232.52,-497.22 2236.04,-486.57 2236.04,-461.5 2236.04,-461.5 2236.04,-461.5 2236.04,-282.5 2236.04,-250.61 2157.35,-226.38 2092.23,-211.8"/>
+<polygon fill="chartreuse" stroke="chartreuse" points="2093.07,-208.4 2082.56,-209.68 2091.58,-215.24 2093.07,-208.4"/>
+<text text-anchor="middle" x="2273.54" y="-366.95" font-family="Times,serif" font-size="14.00">custom&#45;select</text>
+</g>
+<!-- table medicare.beneficiaries -->
+<g id="node27" class="node">
+<title>table medicare.beneficiaries</title>
+<g id="a_node27"><a xlink:href="tables/medicare.beneficiaries.html" xlink:title="table medicare.beneficiaries" target="_blank">
+<ellipse fill="none" stroke="black" cx="2049.04" cy="-372" rx="115.33" ry="18"/>
+<text text-anchor="middle" x="2049.04" y="-366.95" font-family="Times,serif" font-size="14.00">table medicare.beneficiaries</text>
+</a>
+</g>
+</g>
+<!-- view medicare._beneficiaries&#45;&gt;table medicare.beneficiaries -->
+<g id="edge48" class="edge">
+<title>view medicare._beneficiaries&#45;&gt;table medicare.beneficiaries</title>
+<path fill="none" stroke="black" d="M2057.07,-442.41C2055.72,-430.76 2053.9,-415.05 2052.34,-401.52"/>
+<polygon fill="black" stroke="black" points="2055.85,-401.39 2051.22,-391.85 2048.9,-402.19 2055.85,-401.39"/>
+<text text-anchor="middle" x="2095.17" y="-411.2" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- view medicare._enrollments&#45;&gt;table medicare.enrollments -->
+<g id="edge46" class="edge">
+<title>view medicare._enrollments&#45;&gt;table medicare.enrollments</title>
+<path fill="none" stroke="black" d="M1717.12,-442.08C1725.94,-411.81 1744.17,-349.26 1754.82,-312.72"/>
+<polygon fill="black" stroke="black" points="1758.13,-313.88 1757.56,-303.3 1751.41,-311.92 1758.13,-313.88"/>
+<text text-anchor="middle" x="1783.17" y="-366.95" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- table medicare.beneficiaries&#45;&gt;table medicare.enrollments -->
+<g id="edge47" class="edge">
+<title>table medicare.beneficiaries&#45;&gt;table medicare.enrollments</title>
+<path fill="none" stroke="darkorchid" stroke-width="2" d="M2002.99,-355.07C1986.21,-349.19 1967.11,-342.39 1949.79,-336 1930.69,-328.95 1926.48,-325.58 1907.04,-319.5 1885.8,-312.85 1862.47,-306.7 1840.89,-301.46"/>
+<polygon fill="darkorchid" stroke="darkorchid" stroke-width="2" points="1841.89,-298.11 1831.35,-299.2 1840.27,-304.92 1841.89,-298.11"/>
+<text text-anchor="middle" x="1982.67" y="-322.7" font-family="Times,serif" font-size="14.00">parent&#45;child</text>
+</g>
+<!-- table medicare.beneficiaries&#45;&gt;view medicare.qc_enrl_bene -->
+<g id="edge50" class="edge">
+<title>table medicare.beneficiaries&#45;&gt;view medicare.qc_enrl_bene</title>
+<path fill="none" stroke="black" d="M2044.86,-353.58C2037.6,-323.31 2022.59,-260.76 2013.82,-224.22"/>
+<polygon fill="black" stroke="black" points="2017.3,-223.73 2011.56,-214.82 2010.49,-225.36 2017.3,-223.73"/>
+<text text-anchor="middle" x="2079.17" y="-278.45" font-family="Times,serif" font-size="14.00">	join natural</text>
+</g>
+<!-- table medicare.enrollments&#45;&gt;table medicare.admissions -->
+<g id="edge45" class="edge">
+<title>table medicare.enrollments&#45;&gt;table medicare.admissions</title>
+<path fill="none" stroke="darkorchid" stroke-width="2" d="M1675.49,-271.89C1541.97,-255.72 1288.24,-224.98 1148.14,-208.01"/>
+<polygon fill="darkorchid" stroke="darkorchid" stroke-width="2" points="1148.71,-204.55 1138.36,-206.82 1147.87,-211.5 1148.71,-204.55"/>
+<text text-anchor="middle" x="1502.67" y="-234.2" font-family="Times,serif" font-size="14.00">parent&#45;child</text>
+</g>
+<!-- table medicare.enrollments&#45;&gt;view medicare.qc_enrl_bene -->
+<g id="edge49" class="edge">
+<title>table medicare.enrollments&#45;&gt;view medicare.qc_enrl_bene</title>
+<path fill="none" stroke="black" d="M1807.8,-266.63C1848.13,-252.34 1907.6,-231.26 1951.06,-215.85"/>
+<polygon fill="black" stroke="black" points="1952.07,-219.2 1960.32,-212.56 1949.73,-212.61 1952.07,-219.2"/>
+<text text-anchor="middle" x="1953.17" y="-234.2" font-family="Times,serif" font-size="14.00">	join natural</text>
+</g>
+<!-- view medicare.qc_adm_union -->
+<g id="node32" class="node">
+<title>view medicare.qc_adm_union</title>
+<g id="a_node32"><a xlink:href="tables/medicare.qc_adm_union.html" xlink:title="view medicare.qc_adm_union" target="_blank">
+<ellipse fill="none" stroke="black" cx="1049.04" cy="-106.5" rx="123.52" ry="18"/>
+<text text-anchor="middle" x="1049.04" y="-101.45" font-family="Times,serif" font-size="14.00">view medicare.qc_adm_union</text>
+</a>
+</g>
+</g>
+<!-- table medicare.admissions&#45;&gt;view medicare.qc_adm_union -->
+<g id="edge52" class="edge">
+<title>table medicare.admissions&#45;&gt;view medicare.qc_adm_union</title>
+<path fill="none" stroke="black" d="M1049.04,-176.91C1049.04,-165.26 1049.04,-149.55 1049.04,-136.02"/>
+<polygon fill="black" stroke="black" points="1052.54,-136.36 1049.04,-126.36 1045.54,-136.36 1052.54,-136.36"/>
+<text text-anchor="middle" x="1089.17" y="-145.7" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- materialized view medicare.qc_enrollments -->
+<g id="node31" class="node">
+<title>materialized view medicare.qc_enrollments</title>
+<g id="a_node31"><a xlink:href="tables/medicare.qc_enrollments.html" xlink:title="materialized view medicare.qc_enrollments" target="_blank">
+<ellipse fill="none" stroke="black" cx="2007.04" cy="-106.5" rx="174.19" ry="18"/>
+<text text-anchor="middle" x="2007.04" y="-101.45" font-family="Times,serif" font-size="14.00">materialized view medicare.qc_enrollments</text>
+</a>
+</g>
+</g>
+<!-- view medicare.qc_enrl_bene&#45;&gt;materialized view medicare.qc_enrollments -->
+<g id="edge51" class="edge">
+<title>view medicare.qc_enrl_bene&#45;&gt;materialized view medicare.qc_enrollments</title>
+<path fill="none" stroke="black" d="M2007.04,-176.91C2007.04,-165.26 2007.04,-149.55 2007.04,-136.02"/>
+<polygon fill="black" stroke="black" points="2010.54,-136.36 2007.04,-126.36 2003.54,-136.36 2010.54,-136.36"/>
+<text text-anchor="middle" x="2047.17" y="-145.7" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+<!-- materialized view medicare.qc_admissions -->
+<g id="node33" class="node">
+<title>materialized view medicare.qc_admissions</title>
+<g id="a_node33"><a xlink:href="tables/medicare.qc_admissions.html" xlink:title="materialized view medicare.qc_admissions" target="_blank">
+<ellipse fill="none" stroke="black" cx="1049.04" cy="-18" rx="171.63" ry="18"/>
+<text text-anchor="middle" x="1049.04" y="-12.95" font-family="Times,serif" font-size="14.00">materialized view medicare.qc_admissions</text>
+</a>
+</g>
+</g>
+<!-- view medicare.qc_adm_union&#45;&gt;materialized view medicare.qc_admissions -->
+<g id="edge53" class="edge">
+<title>view medicare.qc_adm_union&#45;&gt;materialized view medicare.qc_admissions</title>
+<path fill="none" stroke="black" d="M1049.04,-88.41C1049.04,-76.76 1049.04,-61.05 1049.04,-47.52"/>
+<polygon fill="black" stroke="black" points="1052.54,-47.86 1049.04,-37.86 1045.54,-47.86 1052.54,-47.86"/>
+<text text-anchor="middle" x="1089.17" y="-57.2" font-family="Times,serif" font-size="14.00">transformation</text>
+</g>
+</g>
+</svg>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

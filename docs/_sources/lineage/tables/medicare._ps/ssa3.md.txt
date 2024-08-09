@@ -15,5 +15,14 @@ Social Security Administration (SSA) three digit code for county
 
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/ssa3.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/ssa3.svg
+:align: center
+:alt: Column medicare._ps.ssa3 Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/ssa3_svg_envelop.md
+
+Data lineage for column medicare._ps.ssa3
+
+```
+
+

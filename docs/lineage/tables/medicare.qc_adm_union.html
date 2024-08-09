@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
@@ -92,67 +93,119 @@
 discarded because of validation issues</p>
 <p>Transformed from <a class="reference internal" href="#medicare.admissions.html"><span class="xref myst">medicare.admissions</span></a></p>
 <details>
-```sql
-CREATE view medicare.qc_adm_union AS SELECT reason,
-   year,
-   state,
-   state_iso,
-   admission_year,
-   diagnoses,
-   zip,
-   admission_date,
-   discharge_date,
-   adm_day_of_week,
-   primary_diagnosis,
-   bene_id,
-   bene,
-   pd_hll_hash,
-   icd_hll
-FROM medicare_audit.admissions
-UNION ALL 
-SELECT 'OK'::VARCHAR AS reason,
-   year,
-   state,
-   state_iso,
-   admission_year,
-   diagnoses,
-   zip,
-   admission_date,
-   discharge_date,
-   adm_day_of_week,
-   primary_diagnosis,
-   bene_id,
-   bene,
-   pd_hll_hash,
-   icd_hll 
-FROM medicare.admissions
-;
-<p>COMMENT ON view medicare.qc_adm_union IS ‘CREATED BY Dorieh: {“version”: “0.2.1”, “url”: “https://github.com/NSAPH-Data-Platform/dorieh”, “commit”: “ca717ed5fe5e7804013dd31c1f67df0c93cd49eb”}. Created at 2024-08-08 19:52:54.220312’;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
-<span class="o">---</span>
-<span class="c1">## Columns:</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_adm_union</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span>
+<span class="w">   </span><span class="k">year</span><span class="p">,</span>
+<span class="w">   </span><span class="k">state</span><span class="p">,</span>
+<span class="w">   </span><span class="n">state_iso</span><span class="p">,</span>
+<span class="w">   </span><span class="n">admission_year</span><span class="p">,</span>
+<span class="w">   </span><span class="n">diagnoses</span><span class="p">,</span>
+<span class="w">   </span><span class="n">zip</span><span class="p">,</span>
+<span class="w">   </span><span class="n">admission_date</span><span class="p">,</span>
+<span class="w">   </span><span class="n">discharge_date</span><span class="p">,</span>
+<span class="w">   </span><span class="n">adm_day_of_week</span><span class="p">,</span>
+<span class="w">   </span><span class="n">primary_diagnosis</span><span class="p">,</span>
+<span class="w">   </span><span class="n">bene_id</span><span class="p">,</span>
+<span class="w">   </span><span class="n">bene</span><span class="p">,</span>
+<span class="w">   </span><span class="n">pd_hll_hash</span><span class="p">,</span>
+<span class="w">   </span><span class="n">icd_hll</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">medicare_audit</span><span class="p">.</span><span class="n">admissions</span>
+<span class="k">UNION</span><span class="w"> </span><span class="k">ALL</span><span class="w"> </span>
+<span class="k">SELECT</span><span class="w"> </span><span class="s1">&#39;OK&#39;</span><span class="p">::</span><span class="nb">VARCHAR</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">reason</span><span class="p">,</span>
+<span class="w">   </span><span class="k">year</span><span class="p">,</span>
+<span class="w">   </span><span class="k">state</span><span class="p">,</span>
+<span class="w">   </span><span class="n">state_iso</span><span class="p">,</span>
+<span class="w">   </span><span class="n">admission_year</span><span class="p">,</span>
+<span class="w">   </span><span class="n">diagnoses</span><span class="p">,</span>
+<span class="w">   </span><span class="n">zip</span><span class="p">,</span>
+<span class="w">   </span><span class="n">admission_date</span><span class="p">,</span>
+<span class="w">   </span><span class="n">discharge_date</span><span class="p">,</span>
+<span class="w">   </span><span class="n">adm_day_of_week</span><span class="p">,</span>
+<span class="w">   </span><span class="n">primary_diagnosis</span><span class="p">,</span>
+<span class="w">   </span><span class="n">bene_id</span><span class="p">,</span>
+<span class="w">   </span><span class="n">bene</span><span class="p">,</span>
+<span class="w">   </span><span class="n">pd_hll_hash</span><span class="p">,</span>
+<span class="w">   </span><span class="n">icd_hll</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">admissions</span>
+<span class="p">;</span>
 
-<span class="o">|</span> <span class="n">Column</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Column</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Datatype</span> <span class="o">|</span>
-<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">adm_day_of_week</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">adm_day_of_week</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">admission_date</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">admission_date</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">DATE</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">admission_year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">admission_year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">bene</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL_HASHVAL</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene_id</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">bene_id</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">diagnoses</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">diagnoses</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">discharge_date</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">discharge_date</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">DATE</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">icd_hll</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">icd_hll</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">pd_hll_hash</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">pd_hll_hash</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL_HASHVAL</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">primary_diagnosis</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">primary_diagnosis</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">reason</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">reason</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">state</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state_iso</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">state_iso</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">char</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="n">year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="nb">zip</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_adm_union</span><span class="o">/</span><span class="nb">zip</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-
-
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_adm_union</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;b63015584c99e2550f9661a990c7cf3d6f1a6d88&quot;}. Created at 2024-08-08 23:03:03.192409&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="columns">
+<h2>Columns:<a class="headerlink" href="#columns" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/adm_day_of_week.html"><span class="xref myst">adm_day_of_week</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/admission_date.html"><span class="xref myst">admission_date</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/admission_year.html"><span class="xref myst">admission_year</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/bene.html"><span class="xref myst">bene</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>HLL_HASHVAL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/bene_id.html"><span class="xref myst">bene_id</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/diagnoses.html"><span class="xref myst">diagnoses</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/discharge_date.html"><span class="xref myst">discharge_date</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/icd_hll.html"><span class="xref myst">icd_hll</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>HLL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/pd_hll_hash.html"><span class="xref myst">pd_hll_hash</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>HLL_HASHVAL</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/primary_diagnosis.html"><span class="xref myst">primary_diagnosis</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/reason.html"><span class="xref myst">reason</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/state.html"><span class="xref myst">state</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/state_iso.html"><span class="xref myst">state_iso</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>char(5)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_adm_union/year.html"><span class="xref myst">year</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_adm_union/zip.html"><span class="xref myst">zip</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

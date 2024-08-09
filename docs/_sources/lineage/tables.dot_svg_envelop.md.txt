@@ -1,0 +1,8 @@
+# Table Lineage SVG Diagram
+
+```{raw} html
+:file: tables.dot.svg
+
+```
+
+

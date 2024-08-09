@@ -9,7 +9,9 @@ Transformed from [medicare._beneficiaries](medicare._beneficiaries.html)
 
 Primary Key: bene_id
 
+
 <details>
+
 ```sql
 CREATE table medicare.beneficiaries AS SELECT * 
 FROM medicare._beneficiaries
@@ -18,9 +20,11 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "ca717ed5fe5e7804013dd31c1f67df0c93cd49eb"}. Created at 2024-08-08 19:52:54.187665';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "b63015584c99e2550f9661a990c7cf3d6f1a6d88"}. Created at 2024-08-08 23:03:03.160434';
 ```
+
 </details>
+
 ---
 ## Columns:
 

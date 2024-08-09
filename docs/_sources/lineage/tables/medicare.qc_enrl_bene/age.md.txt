@@ -27,5 +27,14 @@ Age at End of Reference Year
 MAX(age)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/age.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/age.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.age Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/age_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.age
+
+```
+
+

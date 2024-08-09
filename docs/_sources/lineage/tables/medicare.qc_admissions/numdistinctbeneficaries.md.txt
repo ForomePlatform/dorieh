@@ -17,5 +17,14 @@
 (#(hll_add_agg(bene)))::BIGINT
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/numdistinctbeneficaries.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/numdistinctbeneficaries.svg
+:align: center
+:alt: Column medicare.qc_admissions.NumDistinctBeneficaries Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/numdistinctbeneficaries_svg_envelop.md
+
+Data lineage for column medicare.qc_admissions.NumDistinctBeneficaries
+
+```
+
+

@@ -26,5 +26,14 @@ Zip code of the mailing address where the beneficiary may be contacted.
 GENERATED ALWAYS AS (BENE_ZIP) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2017/zip.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2017/zip.svg
+:align: center
+:alt: Column cms.medpar_2017.ZIP Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2017/zip_svg_envelop.md
+
+Data lineage for column cms.medpar_2017.ZIP
+
+```
+
+

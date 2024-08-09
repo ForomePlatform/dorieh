@@ -17,5 +17,14 @@
 string_agg(distinct ssa3, ',')
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3_list.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3_list.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.ssa3_list Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa3_list_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.ssa3_list
+
+```
+
+

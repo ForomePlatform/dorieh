@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
@@ -91,65 +92,153 @@
 <p>internal intermediate view adding some data conversions</p>
 <p>Transformed from <a class="reference internal" href="#medicare.ps.html"><span class="xref myst">medicare.ps</span></a></p>
 <details>
-```sql
-CREATE materialized view medicare._ps AS SELECT *,
-CASE WHEN ssa3 is NOT NULL THEN
-  CASE WHEN year > 2010 THEN
-      (SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1)
-    ELSE
-      (SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1)
-  END
-ELSE
-  (SELECT public.zip_to_fips3(year, zip))
-END AS fips3,
-CASE WHEN ssa3 is NOT NULL THEN
-    False
-  ELSE
-    (SELECT NOT public.is_zip_to_fips_exact(year, zip))
-END AS fips3_is_approximated,
-CASE WHEN year > 2010 THEN (SELECT string_agg(distinct fips3::varchar, ',') from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2)
-    ELSE (SELECT string_agg(distinct fips3::varchar, ',') from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2) END AS fips3_list,
-CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob 
-FROM medicare.ps
-;
-<p>COMMENT ON materialized view medicare._ps IS ‘CREATED BY Dorieh: {“version”: “0.2.1”, “url”: “https://github.com/NSAPH-Data-Platform/dorieh”, “commit”: “ca717ed5fe5e7804013dd31c1f67df0c93cd49eb”}. Created at 2024-08-08 19:52:54.186262’;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
-<span class="o">---</span>
-<span class="c1">## Columns:</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">_ps</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span>
+<span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ssa3</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span>
+<span class="w">  </span><span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2010</span><span class="w"> </span><span class="k">THEN</span>
+<span class="w">      </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">fips3</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">ssa</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="k">ELSE</span>
+<span class="w">      </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">fips3</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">ssa</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">2003</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">DESC</span><span class="w"> </span><span class="k">LIMIT</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">  </span><span class="k">END</span>
+<span class="k">ELSE</span>
+<span class="w">  </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_fips3</span><span class="p">(</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">zip</span><span class="p">))</span>
+<span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">fips3</span><span class="p">,</span>
+<span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">ssa3</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span>
+<span class="w">    </span><span class="k">False</span>
+<span class="w">  </span><span class="k">ELSE</span>
+<span class="w">    </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">is_zip_to_fips_exact</span><span class="p">(</span><span class="k">year</span><span class="p">,</span><span class="w"> </span><span class="n">zip</span><span class="p">))</span>
+<span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">fips3_is_approximated</span><span class="p">,</span>
+<span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="k">year</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">2010</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">string_agg</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">fips3</span><span class="p">::</span><span class="nb">varchar</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">ssa</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">fips2</span><span class="p">)</span>
+<span class="w">    </span><span class="k">ELSE</span><span class="w"> </span><span class="p">(</span><span class="k">SELECT</span><span class="w"> </span><span class="n">string_agg</span><span class="p">(</span><span class="k">distinct</span><span class="w"> </span><span class="n">fips3</span><span class="p">::</span><span class="nb">varchar</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;,&#39;</span><span class="p">)</span><span class="w"> </span><span class="k">from</span><span class="w"> </span><span class="k">public</span><span class="p">.</span><span class="n">ssa</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">ssa3</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="mi">2003</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="k">year</span><span class="w"> </span><span class="k">and</span><span class="w"> </span><span class="n">ps</span><span class="p">.</span><span class="n">fips2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">s</span><span class="p">.</span><span class="n">fips2</span><span class="p">)</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">fips3_list</span><span class="p">,</span>
+<span class="k">CASE</span><span class="w"> </span><span class="k">WHEN</span><span class="w"> </span><span class="n">age</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="k">not</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="p">(</span><span class="k">year</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">age</span><span class="p">)</span><span class="w"> </span><span class="k">ELSE</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">END</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">yob</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">ps</span>
+<span class="p">;</span>
 
-<span class="o">|</span> <span class="n">Column</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Column</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Datatype</span> <span class="o">|</span>
-<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">age</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">age</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene_id</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">bene_id</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">buyin_cvg_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">buyin_cvg_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">buyin_indicators</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">buyin_indicators</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">12</span><span class="p">]</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">curec</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">curec</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dob</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">dob</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">date</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dod</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">dod</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">date</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dod_ndi</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">dod_ndi</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">DATE</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">file</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">fips2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">fips3</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3_is_approximated</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">fips3_is_approximated</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3_list</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">fips3_list</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">hmo_cvg_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">hmo_cvg_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">hmo_indicators</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">hmo_indicators</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">12</span><span class="p">]</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">orec</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">orec</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">race</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">race</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">VARCHAR</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">race_rti</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">race_rti</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">record</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">record</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">sex</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">sex</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">VARCHAR</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">ssa2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa3</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">ssa3</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">state</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">yob</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">yob</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="nb">zip</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="nb">zip</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">zip4</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">_ps</span><span class="o">/</span><span class="n">zip4</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">copied</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-
-
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">_ps</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;b63015584c99e2550f9661a990c7cf3d6f1a6d88&quot;}. Created at 2024-08-08 23:03:03.158885&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="columns">
+<h2>Columns:<a class="headerlink" href="#columns" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/age.html"><span class="xref myst">age</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/bene_id.html"><span class="xref myst">bene_id</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/buyin_cvg_count.html"><span class="xref myst">buyin_cvg_count</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/buyin_indicators.html"><span class="xref myst">buyin_indicators</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>CHAR(1)[12]</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/curec.html"><span class="xref myst">curec</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/dob.html"><span class="xref myst">dob</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>date</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/dod.html"><span class="xref myst">dod</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>date</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/dod_ndi.html"><span class="xref myst">dod_ndi</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>DATE</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/file.html"><span class="xref myst">file</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/fips2.html"><span class="xref myst">fips2</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/fips3.html"><span class="xref myst">fips3</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/fips3_is_approximated.html"><span class="xref myst">fips3_is_approximated</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/fips3_list.html"><span class="xref myst">fips3_list</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/hmo_cvg_count.html"><span class="xref myst">hmo_cvg_count</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/hmo_indicators.html"><span class="xref myst">hmo_indicators</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>CHAR(1)[12]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/orec.html"><span class="xref myst">orec</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/race.html"><span class="xref myst">race</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>VARCHAR</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/race_rti.html"><span class="xref myst">race_rti</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/record.html"><span class="xref myst">record</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/sex.html"><span class="xref myst">sex</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>VARCHAR</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/ssa2.html"><span class="xref myst">ssa2</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/ssa3.html"><span class="xref myst">ssa3</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/state.html"><span class="xref myst">state</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/year.html"><span class="xref myst">year</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/yob.html"><span class="xref myst">yob</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare._ps/zip.html"><span class="xref myst">zip</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare._ps/zip4.html"><span class="xref myst">zip4</span></a></p></td>
+<td><p>copied</p></td>
+<td><p>INT</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

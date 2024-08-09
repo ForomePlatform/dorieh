@@ -26,5 +26,14 @@ Beneficiary Enrollment Reference Year
 GENERATED ALWAYS AS (RFRNC_YR) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/year.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/year.svg
+:align: center
+:alt: Column cms.mbsf_abcd_2015.YEAR Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/year_svg_envelop.md
+
+Data lineage for column cms.mbsf_abcd_2015.YEAR
+
+```
+
+

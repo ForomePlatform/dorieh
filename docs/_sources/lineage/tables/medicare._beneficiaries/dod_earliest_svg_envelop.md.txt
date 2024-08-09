@@ -1,0 +1,8 @@
+# Column medicare._beneficiaries.dod_earliest Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/dod_earliest.svg
+
+```
+
+

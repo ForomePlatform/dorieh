@@ -17,5 +17,14 @@
 hll_add_agg(bene)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/bene_hll.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/bene_hll.svg
+:align: center
+:alt: Column medicare.qc_enrollments.bene_hll Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/bene_hll_svg_envelop.md
+
+Data lineage for column medicare.qc_enrollments.bene_hll
+
+```
+
+

@@ -1,60 +1,14 @@
 # Table Lineage Diagram
 
 
-```{toctree}
----
-maxdepth: 1
----
-tables/cms.mbsf_ab_2011
-tables/cms.mbsf_ab_2012
-tables/cms.mbsf_ab_2013
-tables/cms.mbsf_ab_2014
-tables/cms.mbsf_abcd_2015
-tables/cms.mbsf_abcd_2016
-tables/cms.mbsf_abcd_2017
-tables/cms.mbsf_abcd_2018
-tables/cms.mbsf_d_2011
-tables/cms.mbsf_d_2012
-tables/cms.mbsf_d_2013
-tables/cms.mbsf_d_2014
-tables/cms.medpar_2011
-tables/cms.medpar_2012
-tables/cms.medpar_2013
-tables/cms.medpar_2014
-tables/cms.medpar_2015
-tables/cms.medpar_2016
-tables/cms.medpar_2017
-tables/cms.medpar_2018
-tables/medicare.mbsf_d
-tables/medicare.ps
-tables/medicare.ip
-tables/medicare._ps
-tables/medicare._beneficiaries
-tables/medicare._enrollments
-tables/medicare.beneficiaries
-tables/medicare.enrollments
-tables/medicare.admissions
-tables/medicare.qc_enrl_bene
-tables/medicare.qc_enrollments
-tables/medicare.qc_adm_union
-tables/medicare.qc_admissions
-```
 
-```{raw} html
+```{figure} tables.dot.svg
+:align: center
+:alt: Table Lineage Diagram
+:target: tables.dot_svg_envelop.md
 
-<object data="tables.dot.svg" type="image/svg+xml"></object>  
+Diagram illustrating data flow during transformations
 
 ```
 
-[//]: # (```{figure} tables.dot.svg)
 
-[//]: # (:label: Table Lineage Diagram)
-
-[//]: # (:alt: Data flows between CMS Medicare tables during processing)
-
-[//]: # (:align: center)
-
-[//]: # ()
-[//]: # (Data flows between CMS Medicare tables during processing)
-
-[//]: # (```)

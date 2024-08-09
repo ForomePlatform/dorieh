@@ -17,5 +17,14 @@
 GENERATED ALWAYS AS (hll_hash_text(primary_diagnosis)) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/pd_hll_hash.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/pd_hll_hash.svg
+:align: center
+:alt: Column medicare.admissions.pd_hll_hash Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/pd_hll_hash_svg_envelop.md
+
+Data lineage for column medicare.admissions.pd_hll_hash
+
+```
+
+

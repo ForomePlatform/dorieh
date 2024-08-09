@@ -19,5 +19,14 @@
 | numeric | public.parse_date({column_name}) |
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date.svg
+:align: center
+:alt: Column medicare.admissions.discharge_date Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date_svg_envelop.md
+
+Data lineage for column medicare.admissions.discharge_date
+
+```
+
+

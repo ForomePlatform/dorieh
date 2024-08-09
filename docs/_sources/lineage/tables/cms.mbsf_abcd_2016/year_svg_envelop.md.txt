@@ -1,0 +1,8 @@
+# Column cms.mbsf_abcd_2016.YEAR Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2016/year.svg
+
+```
+
+

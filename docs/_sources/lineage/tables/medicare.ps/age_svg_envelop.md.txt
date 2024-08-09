@@ -1,0 +1,8 @@
+# Column medicare.ps.age Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/age.svg
+
+```
+
+

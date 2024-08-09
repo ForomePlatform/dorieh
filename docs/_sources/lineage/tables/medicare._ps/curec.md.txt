@@ -18,5 +18,14 @@
 | * | {column_name}::INT |
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/curec.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/curec.svg
+:align: center
+:alt: Column medicare._ps.curec Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/curec_svg_envelop.md
+
+Data lineage for column medicare._ps.curec
+
+```
+
+

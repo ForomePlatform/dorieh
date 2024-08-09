@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
@@ -91,38 +92,70 @@
 <p>Aggregate data for admissions, beneficiaries and enrollments</p>
 <p>Transformed from <a class="reference internal" href="#medicare.qc_adm_union.html"><span class="xref myst">medicare.qc_adm_union</span></a></p>
 <details>
-```sql
-<p>CREATE materialized view  medicare.qc_admissions AS
-SELECT
-year,
-state,
-zip,
-reason,
-MAX(state_iso) AS state_iso,
-COUNT(*) AS NumRecords,
-(#(hll_add_agg(bene)))::BIGINT AS NumDistinctBeneficaries,
-hll_add_agg(bene) AS bene_hll
-FROM medicare.qc_adm_union</p>
-<p>GROUP BY year,state,zip,reason;</p>
-<p>COMMENT ON materialized view medicare.qc_admissions IS ‘CREATED BY Dorieh: {“version”: “0.2.1”, “url”: “https://github.com/NSAPH-Data-Platform/dorieh”, “commit”: “ca717ed5fe5e7804013dd31c1f67df0c93cd49eb”}. Created at 2024-08-08 19:52:54.220436’;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
-<span class="o">---</span>
-<span class="c1">## Columns:</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w">  </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_admissions</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="k">year</span><span class="p">,</span>
+<span class="w">	</span><span class="k">state</span><span class="p">,</span>
+<span class="w">	</span><span class="n">zip</span><span class="p">,</span>
+<span class="w">	</span><span class="n">reason</span><span class="p">,</span>
+<span class="w">	</span><span class="k">MAX</span><span class="p">(</span><span class="n">state_iso</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">state_iso</span><span class="p">,</span>
+<span class="w">	</span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">NumRecords</span><span class="p">,</span>
+<span class="w">	</span><span class="p">(</span><span class="o">#</span><span class="p">(</span><span class="n">hll_add_agg</span><span class="p">(</span><span class="n">bene</span><span class="p">)))::</span><span class="nb">BIGINT</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">NumDistinctBeneficaries</span><span class="p">,</span>
+<span class="w">	</span><span class="n">hll_add_agg</span><span class="p">(</span><span class="n">bene</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">bene_hll</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_adm_union</span>
 
-<span class="o">|</span> <span class="n">Column</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Column</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Datatype</span> <span class="o">|</span>
-<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene_hll</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">bene_hll</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">NumDistinctBeneficaries</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">NumDistinctBeneficaries</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">BIGINT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">NumRecords</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">NumRecords</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">BIGINT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">reason</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">reason</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">state</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state_iso</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">state_iso</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">CHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="n">year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="nb">zip</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_admissions</span><span class="o">/</span><span class="nb">zip</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">year</span><span class="p">,</span><span class="k">state</span><span class="p">,</span><span class="n">zip</span><span class="p">,</span><span class="n">reason</span><span class="p">;</span>
 
-
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_admissions</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;b63015584c99e2550f9661a990c7cf3d6f1a6d88&quot;}. Created at 2024-08-08 23:03:03.192536&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="columns">
+<h2>Columns:<a class="headerlink" href="#columns" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_admissions/bene_hll.html"><span class="xref myst">bene_hll</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_admissions/NumDistinctBeneficaries.html"><span class="xref myst">NumDistinctBeneficaries</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_admissions/NumRecords.html"><span class="xref myst">NumRecords</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>BIGINT</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_admissions/reason.html"><span class="xref myst">reason</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_admissions/state.html"><span class="xref myst">state</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_admissions/state_iso.html"><span class="xref myst">state_iso</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>CHAR(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_admissions/year.html"><span class="xref myst">year</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_admissions/zip.html"><span class="xref myst">zip</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

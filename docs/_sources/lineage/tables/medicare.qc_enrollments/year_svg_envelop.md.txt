@@ -1,0 +1,8 @@
+# Column medicare.qc_enrollments.year Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/year.svg
+
+```
+
+

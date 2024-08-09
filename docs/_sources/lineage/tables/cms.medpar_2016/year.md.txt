@@ -26,5 +26,14 @@ Year of MedPAR Record
 GENERATED ALWAYS AS (MEDPAR_YR_NUM) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2016/year.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2016/year.svg
+:align: center
+:alt: Column cms.medpar_2016.YEAR Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2016/year_svg_envelop.md
+
+Data lineage for column cms.medpar_2016.YEAR
+
+```
+
+

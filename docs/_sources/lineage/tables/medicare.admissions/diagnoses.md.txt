@@ -43,5 +43,14 @@ btrim(diag25)
 ], NULL) As diagnoses
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses.svg
+:align: center
+:alt: Column medicare.admissions.diagnoses Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses_svg_envelop.md
+
+Data lineage for column medicare.admissions.diagnoses
+
+```
+
+

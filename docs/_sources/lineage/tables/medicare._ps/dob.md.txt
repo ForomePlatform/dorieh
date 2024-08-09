@@ -23,5 +23,14 @@ Date of birth
 | numeric | to_date(to_char({column_name}, '00000000'), 'YYYYMMDD') |
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/dob.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/dob.svg
+:align: center
+:alt: Column medicare._ps.dob Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/dob_svg_envelop.md
+
+Data lineage for column medicare._ps.dob
+
+```
+
+

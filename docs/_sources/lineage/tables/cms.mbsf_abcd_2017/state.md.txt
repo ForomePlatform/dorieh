@@ -26,5 +26,14 @@ SSA State Code
 GENERATED ALWAYS AS (STATE_CD) STORED
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2017/state.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2017/state.svg
+:align: center
+:alt: Column cms.mbsf_abcd_2017.STATE Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2017/state_svg_envelop.md
+
+Data lineage for column cms.mbsf_abcd_2017.STATE
+
+```
+
+

@@ -17,5 +17,14 @@
 CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/yob.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/yob.svg
+:align: center
+:alt: Column medicare._ps.yob Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/yob_svg_envelop.md
+
+Data lineage for column medicare._ps.yob
+
+```
+
+

@@ -17,5 +17,14 @@
 string_agg(distinct zip::varchar, ',')
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/zips.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/zips.svg
+:align: center
+:alt: Column medicare._enrollments.zips Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/zips_svg_envelop.md
+
+Data lineage for column medicare._enrollments.zips
+
+```
+
+

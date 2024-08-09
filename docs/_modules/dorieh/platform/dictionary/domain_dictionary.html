@@ -50,6 +50,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
@@ -112,7 +113,8 @@
 <span class="kn">from</span> <span class="nn">enum</span> <span class="kn">import</span> <span class="n">Enum</span>
 <span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">List</span>
 
-<span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.element</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">qstr</span><span class="p">,</span> <span class="n">attrs2string</span>
+<span class="kn">from</span> <span class="nn">dorieh.platform.dictionary</span> <span class="kn">import</span> <span class="n">RenderMode</span>
+<span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.element</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">qstr</span><span class="p">,</span> <span class="n">attrs2string</span><span class="p">,</span> <span class="n">create_graph_envelop</span>
 <span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.tables</span> <span class="kn">import</span> <span class="n">Table</span><span class="p">,</span> <span class="n">Relation</span>
 <span class="kn">from</span> <span class="nn">dorieh.utils.io_utils</span> <span class="kn">import</span> <span class="n">as_dict</span>
 <span class="kn">from</span> <span class="nn">dorieh.platform.data_model.domain</span> <span class="kn">import</span> <span class="n">Domain</span>
@@ -126,7 +128,7 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">basedir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">of</span><span class="p">))</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">options</span> <span class="o">=</span> <span class="n">options</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">link</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;fmt&quot;</span><span class="p">)</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;svg&quot;</span><span class="p">]</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">options</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">=</span> <span class="n">RenderMode</span><span class="p">(</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
 
 <div class="viewcode-block" id="DomainDict.add"><a class="viewcode-back" href="../../../../members/domain_dictionary.html#dorieh.platform.dictionary.domain_dictionary.DomainDict.add">[docs]</a>    <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">path</span><span class="p">):</span>
         <span class="n">yml</span> <span class="o">=</span> <span class="n">as_dict</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
@@ -226,19 +228,16 @@
 <div class="viewcode-block" id="DomainDict.write_markdown"><a class="viewcode-back" href="../../../../members/domain_dictionary.html#dorieh.platform.dictionary.domain_dictionary.DomainDict.write_markdown">[docs]</a>    <span class="k">def</span> <span class="nf">write_markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">of</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">of</span><span class="p">,</span> <span class="s2">&quot;wt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">out</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;standalone&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">RenderMode</span><span class="o">.</span><span class="n">standalone</span><span class="p">:</span>
             <span class="n">fhtml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">of</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span>
             <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/usr/local/bin/pandoc --from markdown  --to html </span><span class="si">{</span><span class="n">of</span><span class="si">}</span><span class="s2"> &gt; </span><span class="si">{</span><span class="n">fhtml</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="DomainDict.link_ext"><a class="viewcode-back" href="../../../../members/domain_dictionary.html#dorieh.platform.dictionary.domain_dictionary.DomainDict.link_ext">[docs]</a>    <span class="k">def</span> <span class="nf">link_ext</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="s1">&#39;standalone&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">RenderMode</span><span class="o">.</span><span class="n">standalone</span><span class="p">:</span>
             <span class="k">return</span> <span class="s2">&quot;html&quot;</span>
         <span class="k">return</span> <span class="s2">&quot;md&quot;</span></div>
 
 <div class="viewcode-block" id="DomainDict.markdown"><a class="viewcode-back" href="../../../../members/domain_dictionary.html#dorieh.platform.dictionary.domain_dictionary.DomainDict.markdown">[docs]</a>    <span class="k">def</span> <span class="nf">markdown</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">of</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">svg</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="k">if</span> <span class="n">svg</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="k">return</span>
-
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;# Table Lineage Diagram</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">body</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
 
@@ -253,11 +252,21 @@
             <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;```</span><span class="se">\n</span><span class="s2">&quot;</span>
             <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span>
 
-        <span class="c1"># In Markdown, we can provide a link to the SVG file</span>
-        <span class="n">body</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">html_body</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">svg</span><span class="p">:</span>
+            <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">RenderMode</span><span class="o">.</span><span class="n">standalone</span><span class="p">:</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="bp">self</span><span class="o">.</span><span class="n">html_body</span><span class="p">(</span><span class="n">svg</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">RenderMode</span><span class="o">.</span><span class="n">sphinx</span><span class="p">:</span>
+                <span class="n">target</span> <span class="o">=</span> <span class="n">create_graph_envelop</span><span class="p">(</span><span class="n">of</span><span class="p">,</span> <span class="s2">&quot;Table Lineage SVG Diagram&quot;</span><span class="p">,</span> <span class="n">svg</span><span class="p">)</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">```</span><span class="se">{{</span><span class="s2">figure</span><span class="se">}}</span><span class="s2"> </span><span class="si">{</span><span class="n">svg</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;:align: center</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;:alt: Table Lineage Diagram</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;:target: </span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;Diagram illustrating data flow during transformations</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span>
+                <span class="n">body</span> <span class="o">+=</span> <span class="s2">&quot;```</span><span class="se">\n\n</span><span class="s2">&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">write_markdown</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">body</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">of</span><span class="p">)</span></div>
 
-        <span class="c1"># Write the Markdown content to a file</span>
 
 <div class="viewcode-block" id="DomainDict.table_list"><a class="viewcode-back" href="../../../../members/domain_dictionary.html#dorieh.platform.dictionary.domain_dictionary.DomainDict.table_list">[docs]</a>    <span class="k">def</span> <span class="nf">table_list</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">of</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;# Alphabetic list of all tables</span><span class="se">\n</span><span class="s2">&quot;</span>
@@ -367,8 +376,8 @@
                         <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">LOD</span><span class="p">])</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--mode&quot;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Documentation generation mode&quot;</span><span class="p">,</span>
-                        <span class="n">default</span><span class="o">=</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span>
-                        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="s2">&quot;sphinx&quot;</span><span class="p">])</span>
+                        <span class="n">default</span><span class="o">=</span><span class="n">RenderMode</span><span class="o">.</span><span class="n">standalone</span><span class="o">.</span><span class="n">value</span><span class="p">,</span>
+                        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">RenderMode</span><span class="p">])</span>
     <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--output&quot;</span><span class="p">,</span> <span class="s2">&quot;--of&quot;</span><span class="p">,</span> <span class="s2">&quot;-o&quot;</span><span class="p">,</span>
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Path to the main output dot file&quot;</span><span class="p">,</span>
                         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;tables.dot&quot;</span><span class="p">,</span>

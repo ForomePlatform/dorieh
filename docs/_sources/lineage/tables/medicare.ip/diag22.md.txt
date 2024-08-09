@@ -9,5 +9,14 @@
 | Datatype                      | varchar        |
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag22.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag22.svg
+:align: center
+:alt: Column medicare.ip.diag22 Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag22_svg_envelop.md
+
+Data lineage for column medicare.ip.diag22
+
+```
+
+

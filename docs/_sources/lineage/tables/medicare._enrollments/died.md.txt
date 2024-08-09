@@ -21,5 +21,14 @@ END
 
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died.svg
+:align: center
+:alt: Column medicare._enrollments.died Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/died_svg_envelop.md
+
+Data lineage for column medicare._enrollments.died
+
+```
+
+

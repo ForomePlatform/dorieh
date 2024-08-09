@@ -1,0 +1,8 @@
+# Column medicare.ip.pass_thru_amt Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/pass_thru_amt.svg
+
+```
+
+

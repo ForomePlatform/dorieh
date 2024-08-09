@@ -1,0 +1,8 @@
+# Column medicare._ps.yob Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/yob.svg
+
+```
+
+

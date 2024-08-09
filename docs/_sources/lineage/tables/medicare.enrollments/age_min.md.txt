@@ -20,5 +20,14 @@ END
 
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/age_min.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/age_min.svg
+:align: center
+:alt: Column medicare.enrollments.age_min Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/age_min_svg_envelop.md
+
+Data lineage for column medicare.enrollments.age_min
+
+```
+
+

@@ -51,6 +51,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
@@ -91,92 +92,258 @@
 <p>Joined data for beneficiaries and enrollments</p>
 <p>Join of tables: enrollments natural join beneficiaries</p>
 <details>
-```sql
-CREATE view medicare.qc_enrl_bene AS SELECT *,
-(CASE
-		  WHEN dob IS NULL THEN 'MISSING'
-		  WHEN dob_latest IS NOT NULL THEN 'AMBIGUOUS'
-		  ELSE 'CONSISTENT'
-		END) AS consistent_dob,
-(CASE
-		  WHEN dod IS NULL THEN 'NONE'
-		  WHEN dod_earliest IS NOT NULL THEN 'AMBIGUOUS'
-		  ELSE 'CONSISTENT'
-		END) AS consistent_dod,
-(CASE
-		  WHEN sex LIKE '%,%' THEN 'AMBIGUOUS'
-		  ELSE 'CONSISTENT'
-		END) AS consistent_sex,
-(CASE
-		  WHEN race LIKE '%,%' THEN 'AMBIGUOUS'
-		  ELSE 'CONSISTENT'
-		END) AS consistent_race 
-FROM medicare.enrollments natural join medicare.beneficiaries
-;
-<p>COMMENT ON view medicare.qc_enrl_bene IS ‘CREATED BY Dorieh: {“version”: “0.2.1”, “url”: “https://github.com/NSAPH-Data-Platform/dorieh”, “commit”: “ca717ed5fe5e7804013dd31c1f67df0c93cd49eb”}. Created at 2024-08-08 19:52:54.211974’;</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;/</span><span class="n">details</span><span class="o">&gt;</span>
-<span class="o">---</span>
-<span class="c1">## Columns:</span>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_enrl_bene</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="p">,</span>
+<span class="p">(</span><span class="k">CASE</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">dob</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;MISSING&#39;</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">dob_latest</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;AMBIGUOUS&#39;</span>
+<span class="w">		  </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;CONSISTENT&#39;</span>
+<span class="w">		</span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">consistent_dob</span><span class="p">,</span>
+<span class="p">(</span><span class="k">CASE</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">dod</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;NONE&#39;</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">dod_earliest</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;AMBIGUOUS&#39;</span>
+<span class="w">		  </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;CONSISTENT&#39;</span>
+<span class="w">		</span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">consistent_dod</span><span class="p">,</span>
+<span class="p">(</span><span class="k">CASE</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">sex</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%,%&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;AMBIGUOUS&#39;</span>
+<span class="w">		  </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;CONSISTENT&#39;</span>
+<span class="w">		</span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">consistent_sex</span><span class="p">,</span>
+<span class="p">(</span><span class="k">CASE</span>
+<span class="w">		  </span><span class="k">WHEN</span><span class="w"> </span><span class="n">race</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;%,%&#39;</span><span class="w"> </span><span class="k">THEN</span><span class="w"> </span><span class="s1">&#39;AMBIGUOUS&#39;</span>
+<span class="w">		  </span><span class="k">ELSE</span><span class="w"> </span><span class="s1">&#39;CONSISTENT&#39;</span>
+<span class="w">		</span><span class="k">END</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">consistent_race</span><span class="w"> </span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">enrollments</span><span class="w"> </span><span class="k">natural</span><span class="w"> </span><span class="k">join</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span>
+<span class="p">;</span>
 
-<span class="o">|</span> <span class="n">Column</span> <span class="n">Name</span> <span class="o">|</span> <span class="n">Column</span> <span class="n">Type</span> <span class="o">|</span> <span class="n">Datatype</span> <span class="o">|</span>
-<span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span> <span class="o">---</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">age</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">age</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">age_min</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">age_min</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">all_enrollment_years</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">all_enrollment_years</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">INT</span><span class="p">[]</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">bene</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">HLL_HASHVAL</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">bene_id</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">bene_id</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">buyin</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">buyin</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">boolean</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">buyin_cvg_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">buyin_cvg_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">buyin_indicators</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">buyin_indicators</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">consistent_dob</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">consistent_dob</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">consistent_dod</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">consistent_dod</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">consistent_race</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">consistent_race</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">consistent_sex</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">consistent_sex</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">VARCHAR</span><span class="p">(</span><span class="mi">12</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">curec</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">curec</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">died</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">died</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">discrepancies</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">discrepancies</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dob</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dob</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dob_latest</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dob_latest</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dod</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dod</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dod_earliest</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dod_earliest</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dual</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dual</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">boolean</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dual_cvg_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dual_cvg_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">dual_indicators</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">dual_indicators</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">file</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">file</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">fips2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">fips3</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3_is_approximated</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">fips3_is_approximated</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips3_valdiated</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">fips3_valdiated</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">fips5</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">fips5</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">first_enrollment_year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">first_enrollment_year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">hmo</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">hmo</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">boolean</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">hmo_cvg_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">hmo_cvg_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">hmo_indicators</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">hmo_indicators</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">last_enrollment_year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">last_enrollment_year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">number_of_gap_years</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">number_of_gap_years</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">generated</span> <span class="o">|</span> <span class="n">INT</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">orec</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">orec</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">race</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">race</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">race_rti</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">race_rti</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">record</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">record</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">residence_counties</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">residence_counties</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">residence_county</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">residence_county</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">sex</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">sex</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa2</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">ssa2</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa2_list</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">ssa2_list</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa3</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">ssa3</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">ssa3_list</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">ssa3_list</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">state</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state_count</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">state_count</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">state_iso</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">state_iso</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">char</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">year</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">year</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span>  <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">yob</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">yob</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">yob_latest</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">yob_latest</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="nb">zip</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="nb">zip</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-<span class="o">|</span> <span class="p">[</span><span class="n">zips</span><span class="p">](</span><span class="n">medicare</span><span class="o">.</span><span class="n">qc_enrl_bene</span><span class="o">/</span><span class="n">zips</span><span class="o">.</span><span class="n">html</span><span class="p">)</span> <span class="o">|</span> <span class="n">computed</span> <span class="o">|</span> <span class="n">string</span> <span class="o">|</span>
-
-
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">qc_enrl_bene</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;b63015584c99e2550f9661a990c7cf3d6f1a6d88&quot;}. Created at 2024-08-08 23:03:03.184323&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="columns">
+<h2>Columns:<a class="headerlink" href="#columns" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/age.html"><span class="xref myst">age</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/age_min.html"><span class="xref myst">age_min</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/all_enrollment_years.html"><span class="xref myst">all_enrollment_years</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>INT[]</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/bene.html"><span class="xref myst">bene</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>HLL_HASHVAL</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/bene_id.html"><span class="xref myst">bene_id</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/buyin.html"><span class="xref myst">buyin</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>boolean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/buyin_cvg_count.html"><span class="xref myst">buyin_cvg_count</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/buyin_indicators.html"><span class="xref myst">buyin_indicators</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/consistent_dob.html"><span class="xref myst">consistent_dob</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(12)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/consistent_dod.html"><span class="xref myst">consistent_dod</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(12)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/consistent_race.html"><span class="xref myst">consistent_race</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(12)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/consistent_sex.html"><span class="xref myst">consistent_sex</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(12)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/curec.html"><span class="xref myst">curec</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/died.html"><span class="xref myst">died</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/discrepancies.html"><span class="xref myst">discrepancies</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dob.html"><span class="xref myst">dob</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dob_latest.html"><span class="xref myst">dob_latest</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dod.html"><span class="xref myst">dod</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dod_earliest.html"><span class="xref myst">dod_earliest</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dual.html"><span class="xref myst">dual</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>boolean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dual_cvg_count.html"><span class="xref myst">dual_cvg_count</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/dual_indicators.html"><span class="xref myst">dual_indicators</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/file.html"><span class="xref myst">file</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/fips2.html"><span class="xref myst">fips2</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/fips3.html"><span class="xref myst">fips3</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/fips3_is_approximated.html"><span class="xref myst">fips3_is_approximated</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/fips3_valdiated.html"><span class="xref myst">fips3_valdiated</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/fips5.html"><span class="xref myst">fips5</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/first_enrollment_year.html"><span class="xref myst">first_enrollment_year</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/hmo.html"><span class="xref myst">hmo</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>boolean</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/hmo_cvg_count.html"><span class="xref myst">hmo_cvg_count</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/hmo_indicators.html"><span class="xref myst">hmo_indicators</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/last_enrollment_year.html"><span class="xref myst">last_enrollment_year</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/number_of_gap_years.html"><span class="xref myst">number_of_gap_years</span></a></p></td>
+<td><p>generated</p></td>
+<td><p>INT</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/orec.html"><span class="xref myst">orec</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/race.html"><span class="xref myst">race</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/race_rti.html"><span class="xref myst">race_rti</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/record.html"><span class="xref myst">record</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/residence_counties.html"><span class="xref myst">residence_counties</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/residence_county.html"><span class="xref myst">residence_county</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/sex.html"><span class="xref myst">sex</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/ssa2.html"><span class="xref myst">ssa2</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/ssa2_list.html"><span class="xref myst">ssa2_list</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/ssa3.html"><span class="xref myst">ssa3</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/ssa3_list.html"><span class="xref myst">ssa3_list</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/state.html"><span class="xref myst">state</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/state_count.html"><span class="xref myst">state_count</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/state_iso.html"><span class="xref myst">state_iso</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>char(5)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/year.html"><span class="xref myst">year</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/yob.html"><span class="xref myst">yob</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/yob_latest.html"><span class="xref myst">yob_latest</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/zip.html"><span class="xref myst">zip</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#medicare.qc_enrl_bene/zips.html"><span class="xref myst">zips</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>string</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
 

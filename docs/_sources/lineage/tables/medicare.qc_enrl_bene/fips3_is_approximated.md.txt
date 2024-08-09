@@ -17,5 +17,14 @@
 every(fips3_is_approximated)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/fips3_is_approximated.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/fips3_is_approximated.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.fips3_is_approximated Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/fips3_is_approximated_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.fips3_is_approximated
+
+```
+
+

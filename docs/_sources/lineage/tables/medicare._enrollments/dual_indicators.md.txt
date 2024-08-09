@@ -18,5 +18,14 @@
 (SELECT MAX(dual_indicators) FROM medicare.mbsf_d AS d WHERE medicare._ps.year = d.year and medicare._ps.bene_id = d.bene_id)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/dual_indicators.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/dual_indicators.svg
+:align: center
+:alt: Column medicare._enrollments.dual_indicators Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/dual_indicators_svg_envelop.md
+
+Data lineage for column medicare._enrollments.dual_indicators
+
+```
+
+

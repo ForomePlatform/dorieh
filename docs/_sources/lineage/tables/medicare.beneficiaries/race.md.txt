@@ -27,5 +27,14 @@ Beneficiary Race Code
 string_agg(distinct race, ',')
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/race.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/race.svg
+:align: center
+:alt: Column medicare.beneficiaries.race Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/race_svg_envelop.md
+
+Data lineage for column medicare.beneficiaries.race
+
+```
+
+

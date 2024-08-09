@@ -1,0 +1,8 @@
+# Column cms.mbsf_ab_2013.STATE Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_ab_2013/state.svg
+
+```
+
+

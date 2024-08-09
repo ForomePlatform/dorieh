@@ -17,5 +17,14 @@
 MAX(buyin_indicators)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/buyin_indicators.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/buyin_indicators.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.buyin_indicators Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/buyin_indicators_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.buyin_indicators
+
+```
+
+

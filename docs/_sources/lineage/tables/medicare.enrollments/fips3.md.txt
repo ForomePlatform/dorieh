@@ -17,5 +17,14 @@
 MAX(fips3)
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/fips3.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/fips3.svg
+:align: center
+:alt: Column medicare.enrollments.fips3 Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/fips3_svg_envelop.md
+
+Data lineage for column medicare.enrollments.fips3
+
+```
+
+

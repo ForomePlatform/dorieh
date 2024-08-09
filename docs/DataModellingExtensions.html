@@ -23,7 +23,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Managing database connections" href="DBConnections.html" />
+    <link rel="next" title="Examples" href="examples.html" />
     <link rel="prev" title="Data Modelling for Dorieh Data Platform" href="Datamodels.html" /> 
 </head>
 
@@ -53,12 +53,35 @@
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Extensions used for creating federated view of different years</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-multiple-sources-and-optional-columns">Combining multiple sources and optional columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exclude">Exclude</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cast">Cast</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-nsaph-data-platform">Introduction to data modelling for NSAPH Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#table">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#column">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#multi-column-indices">Multi-column indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#generation-of-the-database-schema-ddl">Generation of the database schema (DDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#indexing-policies">Indexing policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#linking-with-nomenclature">Linking with nomenclature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="guts.html">Data Platform Internals</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="platform.html">Dorieh Core Data Platform</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
 <li class="toctree-l4 current"><a class="current reference internal" href="#">Extensions used for creating federated view of different years</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l4"><a class="reference internal" href="MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Medicaid.html">Handling Medicaid data</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-nsaph-data-platform">Introduction to data modelling for NSAPH Data Platform</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
@@ -111,8 +134,6 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="guts.html">Data Platform Internals</a></li>
-          <li class="breadcrumb-item"><a href="platform.html">Dorieh Core Data Platform</a></li>
           <li class="breadcrumb-item"><a href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
       <li class="breadcrumb-item active">Extensions used for creating federated view of different years</li>
       <li class="wy-breadcrumbs-aside">
@@ -203,7 +224,7 @@ but of different types, it is possible to cast all of them to the same type.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Datamodels.html" class="btn btn-neutral float-left" title="Data Modelling for Dorieh Data Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="DBConnections.html" class="btn btn-neutral float-right" title="Managing database connections" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

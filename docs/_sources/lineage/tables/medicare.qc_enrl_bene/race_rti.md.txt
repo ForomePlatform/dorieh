@@ -18,5 +18,14 @@
 string_agg(distinct race_rti, ',')
 ```
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/race_rti.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/race_rti.svg
+:align: center
+:alt: Column medicare.qc_enrl_bene.race_rti Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/race_rti_svg_envelop.md
+
+Data lineage for column medicare.qc_enrl_bene.race_rti
+
+```
+
+

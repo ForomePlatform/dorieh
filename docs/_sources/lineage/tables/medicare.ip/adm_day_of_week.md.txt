@@ -19,5 +19,14 @@
 | numeric | {column_name}::INT |
 
 
----
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/adm_day_of_week.svg" type="image/svg+xml"></object>
+
+```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/adm_day_of_week.svg
+:align: center
+:alt: Column medicare.ip.adm_day_of_week Lineage SVG
+:target: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/adm_day_of_week_svg_envelop.md
+
+Data lineage for column medicare.ip.adm_day_of_week
+
+```
+
+
