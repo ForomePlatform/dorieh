@@ -350,7 +350,12 @@ class Table(DataModelElement):
 
     def describe_markdown(self, basedir: str = "") -> str:
         fmt = 'markdown'
-        text = f"## Overview for {self.qualified_name}\n"
+        text = f"## Overview for {self.qualified_name}\n\n"
+        if self.mode == RenderMode.sphinx:
+            text += "```{toctree}\n"
+            for c in sorted(self.columns):
+                text += f"{self.qualified_name}/{c}.md\n"
+            text += "```\n\n"
 
         if self.reference:
             text += f"*For more information see: {self.reference}*\n\n"
@@ -390,7 +395,7 @@ class Table(DataModelElement):
         for c in sorted(self.columns):
             column = self.columns[c]
             text += add_row([
-                self.link_to_column(column.name, basedir, fmt),
+                self.link_to_column(column.name.lower(), basedir, fmt),
                 self.describe_column_type(column),
                 column.datatype
             ], format=fmt)

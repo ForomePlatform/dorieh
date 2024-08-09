@@ -312,7 +312,7 @@ class Column(DataModelElement):
             elif self.mode == RenderMode.sphinx:
                 alt = f"Column {self.qualified_name} Lineage SVG"
                 target = create_graph_envelop(of, alt, svg)
-                body += f"\n```{{figure}} {svg}\n"
+                body += f"\n```{{figure}} {os.path.basename(svg)}\n"
                 body += ":align: center\n"
                 body += f":alt: {alt}\n"
                 body += f":target: {target}\n"
