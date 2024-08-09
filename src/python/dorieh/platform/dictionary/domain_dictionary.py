@@ -180,6 +180,13 @@ class DomainDict:
                 body += "```\n\n"
         self.write_markdown(f"{title}\n{body}", of)
 
+    def table_toctree(self) -> str:
+        text = "\n```{toctree}\n"
+        for t in sorted(self.tables):
+            tname = self.tables[t].qualified_name
+            text += f"{tname}.md\n"
+        text += "```\n\n"
+        return text
 
     def table_list(self, of: str):
         title = "# Alphabetic list of all tables\n"
