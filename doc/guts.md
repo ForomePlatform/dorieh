@@ -12,4 +12,3 @@ Monitoring database activity <MonitoringDB>
 ProjectLoader
 ```
 
-[](MonitoringDB)
