@@ -106,7 +106,30 @@ danger of causing OOM.</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dorieh.platform.util.executors.BlockingThreadPoolExecutor">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">BlockingThreadPoolExecutor</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">max_queue_size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">timeout</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/util/executors.html#BlockingThreadPoolExecutor"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.util.executors.BlockingThreadPoolExecutor" title="Permalink to this definition"></a></dt>
-<dd><p>Initializes a new ThreadPoolExecutor instance.</p>
+<dd><p>A ThreadPoolExecutor with a bounded queue of fixed given capacity. When
+the queue reaches its maximum capacity, it stops accepting new tasks and
+blocks until some tasks are removed from the queue for execution.</p>
+<p>This is important when a task contains a significant amount of data to be
+processed, for example, text to be parsed or ingested into a database. Reading
+files is usually much faster than processing them, and without blocking, huge files
+can lead to out of memory (OOM) errors. Using this executor implements
+parallelization without the danger of causing OOM.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.max_queue_size"></span><strong>max_queue_size</strong><a class="paramlink headerlink reference internal" href="#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.max_queue_size">¶</a> (<em>int</em>) – The maximum size of the queue.</p></li>
+<li><p><span class="target" id="dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.timeout"></span><strong>timeout</strong><a class="paramlink headerlink reference internal" href="#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.timeout">¶</a> (<em>int</em><em> or </em><em>None</em>) – The timeout for how long to wait for tasks to complete.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Example<span class="colon">:</span></dt>
+<dd class="field-even"><p></p></dd>
+</dl>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">BlockingThreadPoolExecutor</span><span class="p">(</span><span class="n">max_queue_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">max_workers</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mi">14400</span><span class="p">)</span> <span class="k">as</span> <span class="n">executor</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">data_batches</span><span class="p">:</span>
+        <span class="n">executor</span><span class="o">.</span><span class="n">submit</span><span class="p">(</span><span class="n">function_to_process_batch</span><span class="p">,</span> <span class="n">batch</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Initializes a new ThreadPoolExecutor instance.</p>
 <dl>
 <dt>Args:</dt><dd><dl class="simple">
 <dt>max_workers: The maximum number of threads that can be used to</dt><dd><p>execute the given calls.</p>

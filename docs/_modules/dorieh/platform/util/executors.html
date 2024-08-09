@@ -135,6 +135,31 @@
 
 
 <div class="viewcode-block" id="BlockingThreadPoolExecutor"><a class="viewcode-back" href="../../../../members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor">[docs]</a><span class="k">class</span> <span class="nc">BlockingThreadPoolExecutor</span><span class="p">(</span><span class="n">ThreadPoolExecutor</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    A ThreadPoolExecutor with a bounded queue of fixed given capacity. When</span>
+<span class="sd">    the queue reaches its maximum capacity, it stops accepting new tasks and</span>
+<span class="sd">    blocks until some tasks are removed from the queue for execution.</span>
+
+<span class="sd">    This is important when a task contains a significant amount of data to be</span>
+<span class="sd">    processed, for example, text to be parsed or ingested into a database. Reading</span>
+<span class="sd">    files is usually much faster than processing them, and without blocking, huge files</span>
+<span class="sd">    can lead to out of memory (OOM) errors. Using this executor implements</span>
+<span class="sd">    parallelization without the danger of causing OOM.</span>
+
+<span class="sd">    :param max_queue_size: The maximum size of the queue.</span>
+<span class="sd">    :type max_queue_size: int</span>
+<span class="sd">    :param timeout: The timeout for how long to wait for tasks to complete.</span>
+<span class="sd">    :type timeout: int or None</span>
+
+<span class="sd">    :Example:</span>
+
+<span class="sd">    .. code-block:: python</span>
+
+<span class="sd">        with BlockingThreadPoolExecutor(max_queue_size=10, max_workers=6, timeout=14400) as executor:</span>
+<span class="sd">            for batch in data_batches:</span>
+<span class="sd">                executor.submit(function_to_process_batch, batch)</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_queue_size</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">initializer</span><span class="o">=</span><span class="n">thread_initializer</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
