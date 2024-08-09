@@ -40,11 +40,21 @@ tables/medicare.qc_adm_union
 tables/medicare.qc_admissions
 ```
 
+```{raw} html
 
-```{figure} tables.dot.svg
-:label: Table Lineage Diagram
-:alt: Data flows between CMS Medicare tables during processing
-:align: center
+<object data="tables.dot.svg" type="image/svg+xml"></object>  
 
-Data flows between CMS Medicare tables during processing
 ```
+
+[//]: # (```{figure} tables.dot.svg)
+
+[//]: # (:label: Table Lineage Diagram)
+
+[//]: # (:alt: Data flows between CMS Medicare tables during processing)
+
+[//]: # (:align: center)
+
+[//]: # ()
+[//]: # (Data flows between CMS Medicare tables during processing)
+
+[//]: # (```)
