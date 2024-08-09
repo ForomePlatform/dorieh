@@ -35,9 +35,15 @@ def noop(x):
 
 
 class Column(DataModelElement):
-    column_mapping = get_mapping(False, False)
+    column_mapping = None
+
+    @classmethod
+    def init_column_mapping(cls):
+        if cls.column_mapping is None:
+            cls.column_mapping = get_mapping(False, False)
 
     def __init__(self, table_name: str, column_block: Dict, mode, describe_column_type: Callable):
+        self.init_column_mapping()
         if isinstance(column_block, dict):
             for name in column_block:
                 self.name = name

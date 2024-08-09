@@ -4,9 +4,9 @@
 ---
 maxdepth: 1
 ---
-tables.dot.md
-table-list.md
-column-list.md
+lineage/tables.dot.md
+lineage/table-list.md
+lineage/column-list.md
 ```
 
 The data lineage graphs are generated using Dorieh Data Dictionary tools.

@@ -9,7 +9,7 @@ members/mcr_sas2yaml.rst
 members/mcr_sas2db.rst
 members/fts2yaml.rst
 members/medicare_yaml.md
-MedicareLineage
+MedicareLineage.md
 Medicaid.md
 ```
 
