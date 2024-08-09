@@ -8,6 +8,8 @@ caption: Data Platform Internals
 platform
 deployment
 DBConnections
-Monitoring database activity <MonitoringDB.md> 
+Monitoring database activity <MonitoringDB>
 ProjectLoader
 ```
+
+[](MonitoringDB)
