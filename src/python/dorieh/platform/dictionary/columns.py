@@ -26,7 +26,7 @@ from sqlparse.sql import IdentifierList, Parenthesis, Function, Identifier
 import html
 
 from dorieh.platform.dictionary import RenderMode
-from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr
+from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr, create_graph_envelop
 from dorieh.platform.data_model.domain import Domain
 from dorieh.platform.dictionary.resdac_crawler import get_mapping
 
@@ -306,11 +306,23 @@ class Column(DataModelElement):
         fmt = 'markdown'
         body = self.describe(format=fmt)
         if svg:
-            body += hr(format=fmt)
-            body += f'<object data="{svg}" type="image/svg+xml"></object>'
-        block = f"# Column {self.qualified_name}\n\n{body}"
+            if self.mode == RenderMode.standalone:
+                body += hr(format=fmt)
+                body += f'<object data="{svg}" type="image/svg+xml"></object>'
+            elif self.mode == RenderMode.sphinx:
+                alt = f"Column {self.qualified_name} Lineage SVG"
+                target = create_graph_envelop(of, alt, svg)
+                body += f"\n```{{figure}} {svg}\n"
+                body += ":align: center\n"
+                body += f":alt: {alt}\n"
+                body += f":target: {target}\n"
+                body += "\n"
+                body += f"Data lineage for column {self.qualified_name}\n"
+                body += "\n"
+                body += "```\n\n"
+        content = f"# Column {self.qualified_name}\n\n{body}"
         with open(of, "wt") as out:
-            print(block, file=out)
+            print(content, file=out)
         if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")

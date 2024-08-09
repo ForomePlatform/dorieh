@@ -555,7 +555,7 @@ class ColumnLink:
 
 
 class GenericLink:
-    def __init__(self, node1, node2, width = 5):
+    def __init__(self, node1, node2, width = 5.0):
         self.node1 = node1
         self.node2 = node2
         self.width = width

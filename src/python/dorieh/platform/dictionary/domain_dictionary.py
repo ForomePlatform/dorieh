@@ -26,7 +26,7 @@ from enum import Enum
 from typing import Dict, List
 
 from dorieh.platform.dictionary import RenderMode
-from dorieh.platform.dictionary.element import HTML, qstr, attrs2string
+from dorieh.platform.dictionary.element import HTML, qstr, attrs2string, create_graph_envelop
 from dorieh.platform.dictionary.tables import Table, Relation
 from dorieh.utils.io_utils import as_dict
 from dorieh.platform.data_model.domain import Domain
@@ -168,18 +168,17 @@ class DomainDict:
             if self.mode == RenderMode.standalone:
                 body += self.html_body(svg)
             elif self.mode == RenderMode.sphinx:
-
+                target = create_graph_envelop(of, "Table Lineage SVG Diagram", svg)
                 body += f"\n```{{figure}} {svg}\n"
                 body += ":align: center\n"
                 body += ":alt: Table Lineage Diagram\n"
-                body += ":target: \n"
+                body += f":target: {target}\n"
                 body += "\n"
                 body += "Diagram illustrating data flow during transformations\n"
                 body += "\n"
                 body += "```\n\n"
         self.write_markdown(f"{title}\n{body}", of)
 
-        # Write the Markdown content to a file
 
     def table_list(self, of: str):
         title = "# Alphabetic list of all tables\n"
