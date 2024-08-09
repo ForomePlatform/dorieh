@@ -24,7 +24,7 @@ Array of indicators if the beneficiary was enrolled in HMO during a given month
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/hmo_indicators.svg
+```{figure} hmo_indicators.svg
 :align: center
 :alt: Column medicare.ps.hmo_indicators Lineage SVG
 :target: hmo_indicators_svg_envelop.html

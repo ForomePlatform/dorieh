@@ -19,7 +19,7 @@ RESDAC original file name
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/file.svg
+```{figure} file.svg
 :align: center
 :alt: Column medicare._ps.file Lineage SVG
 :target: file_svg_envelop.html

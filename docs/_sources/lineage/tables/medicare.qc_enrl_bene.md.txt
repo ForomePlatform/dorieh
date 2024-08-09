@@ -1,6 +1,63 @@
 # View medicare.qc_enrl_bene
 
 ## Overview for medicare.qc_enrl_bene
+
+```{toctree}
+medicare.qc_enrl_bene/age.md
+medicare.qc_enrl_bene/age_min.md
+medicare.qc_enrl_bene/all_enrollment_years.md
+medicare.qc_enrl_bene/bene.md
+medicare.qc_enrl_bene/bene_id.md
+medicare.qc_enrl_bene/buyin.md
+medicare.qc_enrl_bene/buyin_cvg_count.md
+medicare.qc_enrl_bene/buyin_indicators.md
+medicare.qc_enrl_bene/consistent_dob.md
+medicare.qc_enrl_bene/consistent_dod.md
+medicare.qc_enrl_bene/consistent_race.md
+medicare.qc_enrl_bene/consistent_sex.md
+medicare.qc_enrl_bene/curec.md
+medicare.qc_enrl_bene/died.md
+medicare.qc_enrl_bene/discrepancies.md
+medicare.qc_enrl_bene/dob.md
+medicare.qc_enrl_bene/dob_latest.md
+medicare.qc_enrl_bene/dod.md
+medicare.qc_enrl_bene/dod_earliest.md
+medicare.qc_enrl_bene/dual.md
+medicare.qc_enrl_bene/dual_cvg_count.md
+medicare.qc_enrl_bene/dual_indicators.md
+medicare.qc_enrl_bene/file.md
+medicare.qc_enrl_bene/fips2.md
+medicare.qc_enrl_bene/fips3.md
+medicare.qc_enrl_bene/fips3_is_approximated.md
+medicare.qc_enrl_bene/fips3_valdiated.md
+medicare.qc_enrl_bene/fips5.md
+medicare.qc_enrl_bene/first_enrollment_year.md
+medicare.qc_enrl_bene/hmo.md
+medicare.qc_enrl_bene/hmo_cvg_count.md
+medicare.qc_enrl_bene/hmo_indicators.md
+medicare.qc_enrl_bene/last_enrollment_year.md
+medicare.qc_enrl_bene/number_of_gap_years.md
+medicare.qc_enrl_bene/orec.md
+medicare.qc_enrl_bene/race.md
+medicare.qc_enrl_bene/race_rti.md
+medicare.qc_enrl_bene/record.md
+medicare.qc_enrl_bene/residence_counties.md
+medicare.qc_enrl_bene/residence_county.md
+medicare.qc_enrl_bene/sex.md
+medicare.qc_enrl_bene/ssa2.md
+medicare.qc_enrl_bene/ssa2_list.md
+medicare.qc_enrl_bene/ssa3.md
+medicare.qc_enrl_bene/ssa3_list.md
+medicare.qc_enrl_bene/state.md
+medicare.qc_enrl_bene/state_count.md
+medicare.qc_enrl_bene/state_iso.md
+medicare.qc_enrl_bene/year.md
+medicare.qc_enrl_bene/yob.md
+medicare.qc_enrl_bene/yob_latest.md
+medicare.qc_enrl_bene/zip.md
+medicare.qc_enrl_bene/zips.md
+```
+
 Joined data for beneficiaries and enrollments
 
 
@@ -32,7 +89,7 @@ CREATE view medicare.qc_enrl_bene AS SELECT *,
 FROM medicare.enrollments natural join medicare.beneficiaries
 ;
 
-COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.199644';
+COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.915273';
 ```
 
 </details>

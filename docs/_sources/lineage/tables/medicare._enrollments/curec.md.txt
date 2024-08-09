@@ -18,7 +18,7 @@ MAX(curec)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/curec.svg
+```{figure} curec.svg
 :align: center
 :alt: Column medicare._enrollments.curec Lineage SVG
 :target: curec_svg_envelop.html

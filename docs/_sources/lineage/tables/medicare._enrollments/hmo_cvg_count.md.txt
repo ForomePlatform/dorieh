@@ -18,7 +18,7 @@ MAX(hmo_cvg_count)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/hmo_cvg_count.svg
+```{figure} hmo_cvg_count.svg
 :align: center
 :alt: Column medicare._enrollments.hmo_cvg_count Lineage SVG
 :target: hmo_cvg_count_svg_envelop.html

@@ -27,7 +27,7 @@ GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/bene.svg
+```{figure} bene.svg
 :align: center
 :alt: Column medicare.qc_adm_union.bene Lineage SVG
 :target: bene_svg_envelop.html

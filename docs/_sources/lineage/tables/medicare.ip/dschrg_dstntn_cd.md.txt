@@ -20,7 +20,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/dschrg_dstntn_cd.svg
+```{figure} dschrg_dstntn_cd.svg
 :align: center
 :alt: Column medicare.ip.dschrg_dstntn_cd Lineage SVG
 :target: dschrg_dstntn_cd_svg_envelop.html

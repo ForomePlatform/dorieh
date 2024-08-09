@@ -24,7 +24,7 @@ The count in days of the total length of a beneficiary's stay in a hospital
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/los_day_cnt.svg
+```{figure} los_day_cnt.svg
 :align: center
 :alt: Column medicare.admissions.los_day_cnt Lineage SVG
 :target: los_day_cnt_svg_envelop.html

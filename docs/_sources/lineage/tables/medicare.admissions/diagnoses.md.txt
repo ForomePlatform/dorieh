@@ -44,7 +44,7 @@ btrim(diag25)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses.svg
+```{figure} diagnoses.svg
 :align: center
 :alt: Column medicare.admissions.diagnoses Lineage SVG
 :target: diagnoses_svg_envelop.html

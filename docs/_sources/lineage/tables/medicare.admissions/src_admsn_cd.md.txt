@@ -19,7 +19,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/src_admsn_cd.svg
+```{figure} src_admsn_cd.svg
 :align: center
 :alt: Column medicare.admissions.src_admsn_cd Lineage SVG
 :target: src_admsn_cd_svg_envelop.html

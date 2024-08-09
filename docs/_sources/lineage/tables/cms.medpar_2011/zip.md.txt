@@ -27,7 +27,7 @@ GENERATED ALWAYS AS (BENE_ZIP) STORED
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2011/zip.svg
+```{figure} zip.svg
 :align: center
 :alt: Column cms.medpar_2011.ZIP Lineage SVG
 :target: zip_svg_envelop.html

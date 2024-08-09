@@ -20,7 +20,7 @@ Encrypted 723 Beneficiary ID (Unique Key)
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.mbsf_d/bene_id.svg
+```{figure} bene_id.svg
 :align: center
 :alt: Column medicare.mbsf_d.bene_id Lineage SVG
 :target: bene_id_svg_envelop.html

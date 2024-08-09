@@ -1,6 +1,27 @@
 # Table medicare.beneficiaries
 
 ## Overview for medicare.beneficiaries
+
+```{toctree}
+medicare.beneficiaries/all_enrollment_years.md
+medicare.beneficiaries/bene.md
+medicare.beneficiaries/bene_id.md
+medicare.beneficiaries/discrepancies.md
+medicare.beneficiaries/dob.md
+medicare.beneficiaries/dob_latest.md
+medicare.beneficiaries/dod.md
+medicare.beneficiaries/dod_earliest.md
+medicare.beneficiaries/first_enrollment_year.md
+medicare.beneficiaries/last_enrollment_year.md
+medicare.beneficiaries/number_of_gap_years.md
+medicare.beneficiaries/orec.md
+medicare.beneficiaries/race.md
+medicare.beneficiaries/race_rti.md
+medicare.beneficiaries/sex.md
+medicare.beneficiaries/yob.md
+medicare.beneficiaries/yob_latest.md
+```
+
 Cleaned up and unified Medicare beneficiaries table,
 indexed and optimized for efficient queries
 
@@ -20,7 +41,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.175852';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.890695';
 ```
 
 </details>

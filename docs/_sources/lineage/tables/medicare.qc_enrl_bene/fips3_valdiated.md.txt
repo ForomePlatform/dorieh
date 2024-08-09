@@ -18,7 +18,7 @@ public.validate_zip_fips(MAX(zip), MAX(fips2), MAX(fips3))
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/fips3_valdiated.svg
+```{figure} fips3_valdiated.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.fips3_valdiated Lineage SVG
 :target: fips3_valdiated_svg_envelop.html

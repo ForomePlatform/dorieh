@@ -21,7 +21,7 @@ Code identifying status of patient as of CLM_THRU_DT
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrgcd.svg
+```{figure} dschrgcd.svg
 :align: center
 :alt: Column medicare.admissions.dschrgcd Lineage SVG
 :target: dschrgcd_svg_envelop.html

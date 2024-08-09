@@ -1,6 +1,45 @@
 # Table medicare.enrollments
 
 ## Overview for medicare.enrollments
+
+```{toctree}
+medicare.enrollments/age.md
+medicare.enrollments/age_min.md
+medicare.enrollments/bene.md
+medicare.enrollments/bene_id.md
+medicare.enrollments/buyin.md
+medicare.enrollments/buyin_cvg_count.md
+medicare.enrollments/buyin_indicators.md
+medicare.enrollments/curec.md
+medicare.enrollments/died.md
+medicare.enrollments/dual.md
+medicare.enrollments/dual_cvg_count.md
+medicare.enrollments/dual_indicators.md
+medicare.enrollments/file.md
+medicare.enrollments/fips2.md
+medicare.enrollments/fips3.md
+medicare.enrollments/fips3_is_approximated.md
+medicare.enrollments/fips3_valdiated.md
+medicare.enrollments/fips5.md
+medicare.enrollments/hmo.md
+medicare.enrollments/hmo_cvg_count.md
+medicare.enrollments/hmo_indicators.md
+medicare.enrollments/orec.md
+medicare.enrollments/record.md
+medicare.enrollments/residence_counties.md
+medicare.enrollments/residence_county.md
+medicare.enrollments/ssa2.md
+medicare.enrollments/ssa2_list.md
+medicare.enrollments/ssa3.md
+medicare.enrollments/ssa3_list.md
+medicare.enrollments/state.md
+medicare.enrollments/state_count.md
+medicare.enrollments/state_iso.md
+medicare.enrollments/year.md
+medicare.enrollments/zip.md
+medicare.enrollments/zips.md
+```
+
 Cleaned up and unified Medicare beneficiaries enrollments table,
 by state and year. This table is indexed and optimized
 for efficient queries
@@ -26,7 +65,7 @@ ALTER table medicare.enrollments ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS
 ALTER table medicare.enrollments ADD PRIMARY KEY (bene_id, year, state);
 ALTER table medicare.enrollments ADD CONSTRAINT enrollments_to_beneficiaries FOREIGN KEY (bene_id) REFERENCES medicare.beneficiaries (bene_id);
 
-COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.176822';
+COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.891731';
 ```
 
 </details>

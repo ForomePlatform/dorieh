@@ -18,7 +18,7 @@
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/numdistinctbeneficaries.svg
+```{figure} numdistinctbeneficaries.svg
 :align: center
 :alt: Column medicare.qc_enrollments.NumDistinctBeneficaries Lineage SVG
 :target: numdistinctbeneficaries_svg_envelop.html

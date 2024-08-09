@@ -27,7 +27,7 @@ MAX(orec)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/orec.svg
+```{figure} orec.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.orec Lineage SVG
 :target: orec_svg_envelop.html

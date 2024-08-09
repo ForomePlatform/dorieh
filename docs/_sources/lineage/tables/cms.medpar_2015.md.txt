@@ -1,6 +1,408 @@
 # Table cms.medpar_2015
 
 ## Overview for cms.medpar_2015
+
+```{toctree}
+cms.medpar_2015/acmdtns.md
+cms.medpar_2015/acrtndt.md
+cms.medpar_2015/actv_xref_ind.md
+cms.medpar_2015/ad_dgns.md
+cms.medpar_2015/admsnday.md
+cms.medpar_2015/admsndt.md
+cms.medpar_2015/admtg_dgns_vrsn_cd.md
+cms.medpar_2015/age_cnt.md
+cms.medpar_2015/amblnc.md
+cms.medpar_2015/ansthsa.md
+cms.medpar_2015/base_oprtg_drg_amt.md
+cms.medpar_2015/bene_id.md
+cms.medpar_2015/bene_zip.md
+cms.medpar_2015/bic.md
+cms.medpar_2015/bldadmin.md
+cms.medpar_2015/blddedam.md
+cms.medpar_2015/bldfrnsh.md
+cms.medpar_2015/bloodamt.md
+cms.medpar_2015/bndld_adjstmt_amt.md
+cms.medpar_2015/bndld_model_dscnt_pct.md
+cms.medpar_2015/care_imprvmt_model_1_cd.md
+cms.medpar_2015/care_imprvmt_model_2_cd.md
+cms.medpar_2015/care_imprvmt_model_3_cd.md
+cms.medpar_2015/care_imprvmt_model_4_cd.md
+cms.medpar_2015/clm_full_std_pymt_amt.md
+cms.medpar_2015/clm_ngaco_ind_1_cd.md
+cms.medpar_2015/clm_ngaco_ind_2_cd.md
+cms.medpar_2015/clm_ngaco_ind_3_cd.md
+cms.medpar_2015/clm_ngaco_ind_4_cd.md
+cms.medpar_2015/clm_ngaco_ind_5_cd.md
+cms.medpar_2015/clm_ptnt_rltnshp_cd.md
+cms.medpar_2015/clm_rp_ind_cd.md
+cms.medpar_2015/clm_rsdl_pymt_ind_cd.md
+cms.medpar_2015/clm_site_ntrl_pymt_cst_amt.md
+cms.medpar_2015/clm_site_ntrl_pymt_ipps_amt.md
+cms.medpar_2015/clm_ss_outlier_std_pymt_amt.md
+cms.medpar_2015/clm_type.md
+cms.medpar_2015/clnc_amt.md
+cms.medpar_2015/cnty_cd.md
+cms.medpar_2015/coin_amt.md
+cms.medpar_2015/coin_day.md
+cms.medpar_2015/crdc_cathrztn_amt.md
+cms.medpar_2015/crdlgy.md
+cms.medpar_2015/cred_rcvd_rplcd_dvc_sw.md
+cms.medpar_2015/crnry_cd.md
+cms.medpar_2015/crnryamt.md
+cms.medpar_2015/crnryday.md
+cms.medpar_2015/ctscansw.md
+cms.medpar_2015/cvrchrg.md
+cms.medpar_2015/cvrlvldt.md
+cms.medpar_2015/deathcd.md
+cms.medpar_2015/deathday.md
+cms.medpar_2015/deathdt.md
+cms.medpar_2015/ded_amt.md
+cms.medpar_2015/dgns_e_10_cd.md
+cms.medpar_2015/dgns_e_11_cd.md
+cms.medpar_2015/dgns_e_12_cd.md
+cms.medpar_2015/dgns_e_1_cd.md
+cms.medpar_2015/dgns_e_2_cd.md
+cms.medpar_2015/dgns_e_3_cd.md
+cms.medpar_2015/dgns_e_4_cd.md
+cms.medpar_2015/dgns_e_5_cd.md
+cms.medpar_2015/dgns_e_6_cd.md
+cms.medpar_2015/dgns_e_7_cd.md
+cms.medpar_2015/dgns_e_8_cd.md
+cms.medpar_2015/dgns_e_9_cd.md
+cms.medpar_2015/dgns_e_cd_cnt.md
+cms.medpar_2015/dgns_e_vrsn_cd.md
+cms.medpar_2015/dgns_e_vrsn_cd_1.md
+cms.medpar_2015/dgns_e_vrsn_cd_10.md
+cms.medpar_2015/dgns_e_vrsn_cd_11.md
+cms.medpar_2015/dgns_e_vrsn_cd_12.md
+cms.medpar_2015/dgns_e_vrsn_cd_2.md
+cms.medpar_2015/dgns_e_vrsn_cd_3.md
+cms.medpar_2015/dgns_e_vrsn_cd_4.md
+cms.medpar_2015/dgns_e_vrsn_cd_5.md
+cms.medpar_2015/dgns_e_vrsn_cd_6.md
+cms.medpar_2015/dgns_e_vrsn_cd_7.md
+cms.medpar_2015/dgns_e_vrsn_cd_8.md
+cms.medpar_2015/dgns_e_vrsn_cd_9.md
+cms.medpar_2015/dgns_poa.md
+cms.medpar_2015/dgns_vrsn_cd.md
+cms.medpar_2015/dgns_vrsn_cd_1.md
+cms.medpar_2015/dgns_vrsn_cd_10.md
+cms.medpar_2015/dgns_vrsn_cd_11.md
+cms.medpar_2015/dgns_vrsn_cd_12.md
+cms.medpar_2015/dgns_vrsn_cd_13.md
+cms.medpar_2015/dgns_vrsn_cd_14.md
+cms.medpar_2015/dgns_vrsn_cd_15.md
+cms.medpar_2015/dgns_vrsn_cd_16.md
+cms.medpar_2015/dgns_vrsn_cd_17.md
+cms.medpar_2015/dgns_vrsn_cd_18.md
+cms.medpar_2015/dgns_vrsn_cd_19.md
+cms.medpar_2015/dgns_vrsn_cd_2.md
+cms.medpar_2015/dgns_vrsn_cd_20.md
+cms.medpar_2015/dgns_vrsn_cd_21.md
+cms.medpar_2015/dgns_vrsn_cd_22.md
+cms.medpar_2015/dgns_vrsn_cd_23.md
+cms.medpar_2015/dgns_vrsn_cd_24.md
+cms.medpar_2015/dgns_vrsn_cd_25.md
+cms.medpar_2015/dgns_vrsn_cd_3.md
+cms.medpar_2015/dgns_vrsn_cd_4.md
+cms.medpar_2015/dgns_vrsn_cd_5.md
+cms.medpar_2015/dgns_vrsn_cd_6.md
+cms.medpar_2015/dgns_vrsn_cd_7.md
+cms.medpar_2015/dgns_vrsn_cd_8.md
+cms.medpar_2015/dgns_vrsn_cd_9.md
+cms.medpar_2015/dgnscd1.md
+cms.medpar_2015/dgnscd10.md
+cms.medpar_2015/dgnscd11.md
+cms.medpar_2015/dgnscd12.md
+cms.medpar_2015/dgnscd13.md
+cms.medpar_2015/dgnscd14.md
+cms.medpar_2015/dgnscd15.md
+cms.medpar_2015/dgnscd16.md
+cms.medpar_2015/dgnscd17.md
+cms.medpar_2015/dgnscd18.md
+cms.medpar_2015/dgnscd19.md
+cms.medpar_2015/dgnscd2.md
+cms.medpar_2015/dgnscd20.md
+cms.medpar_2015/dgnscd21.md
+cms.medpar_2015/dgnscd22.md
+cms.medpar_2015/dgnscd23.md
+cms.medpar_2015/dgnscd24.md
+cms.medpar_2015/dgnscd25.md
+cms.medpar_2015/dgnscd3.md
+cms.medpar_2015/dgnscd4.md
+cms.medpar_2015/dgnscd5.md
+cms.medpar_2015/dgnscd6.md
+cms.medpar_2015/dgnscd7.md
+cms.medpar_2015/dgnscd8.md
+cms.medpar_2015/dgnscd9.md
+cms.medpar_2015/dgnscnt.md
+cms.medpar_2015/dgnstcsw.md
+cms.medpar_2015/disp_shr.md
+cms.medpar_2015/dme_amt.md
+cms.medpar_2015/dprtmntl.md
+cms.medpar_2015/drg_cd.md
+cms.medpar_2015/drgprice.md
+cms.medpar_2015/dschrgcd.md
+cms.medpar_2015/dschrgdt.md
+cms.medpar_2015/dstntncd.md
+cms.medpar_2015/ehr_pymt_adjstmt_amt.md
+cms.medpar_2015/eq_bic.md
+cms.medpar_2015/er_amt.md
+cms.medpar_2015/esrd_cd.md
+cms.medpar_2015/esrdsetg.md
+cms.medpar_2015/esrdstg1.md
+cms.medpar_2015/esrdstg2.md
+cms.medpar_2015/esrdstg3.md
+cms.medpar_2015/esrdstg4.md
+cms.medpar_2015/esrdstg5.md
+cms.medpar_2015/exhst_dt.md
+cms.medpar_2015/faclmcnt.md
+cms.medpar_2015/ficarr.md
+cms.medpar_2015/fildtcd.md
+cms.medpar_2015/file.md
+cms.medpar_2015/finl_std_amt.md
+cms.medpar_2015/ghopdcd.md
+cms.medpar_2015/hac_pgm_rdctn_ind_sw.md
+cms.medpar_2015/hac_rdctn_pmt_amt.md
+cms.medpar_2015/hrr_adjstmt_amt.md
+cms.medpar_2015/hrr_adjstmt_pct.md
+cms.medpar_2015/hrr_prtcpnt_ind_cd.md
+cms.medpar_2015/icareamt.md
+cms.medpar_2015/icarecnt.md
+cms.medpar_2015/icuindcd.md
+cms.medpar_2015/ime_amt.md
+cms.medpar_2015/imgng_sw.md
+cms.medpar_2015/incdnt_dgnstc_srvcs_amt.md
+cms.medpar_2015/incdnt_rdlgy_amt.md
+cms.medpar_2015/infrmtl_enctr_ind_sw.md
+cms.medpar_2015/inhltamt.md
+cms.medpar_2015/intraocular_lens_amt.md
+cms.medpar_2015/intrnl_use_ssi_data.md
+cms.medpar_2015/invstgtnl_dvc_amt.md
+cms.medpar_2015/ip_low_vol_pymt_amt.md
+cms.medpar_2015/ipps_flex_pymt_7_amt.md
+cms.medpar_2015/ipsbcd.md
+cms.medpar_2015/lab_amt.md
+cms.medpar_2015/loscnt.md
+cms.medpar_2015/lrd_use.md
+cms.medpar_2015/lthtrpsy.md
+cms.medpar_2015/ma_tchng_ind_sw.md
+cms.medpar_2015/mdcl_srgcl_drsng_amt.md
+cms.medpar_2015/mdcl_srgcl_gnrl_amt.md
+cms.medpar_2015/mdcl_srgcl_misc_amt.md
+cms.medpar_2015/mdcl_srgcl_nstrl_amt.md
+cms.medpar_2015/mdcl_srgcl_pcmkr_amt.md
+cms.medpar_2015/mdcl_srgcl_strl_amt.md
+cms.medpar_2015/medpar_yr_num.md
+cms.medpar_2015/medparid.md
+cms.medpar_2015/mri_amt.md
+cms.medpar_2015/ms_cd.md
+cms.medpar_2015/new_tchnlgy_add_on_amt.md
+cms.medpar_2015/nuclr_sw.md
+cms.medpar_2015/obsrvtn_sw.md
+cms.medpar_2015/ocptlamt.md
+cms.medpar_2015/onclgysw.md
+cms.medpar_2015/oprtg_hsp_amt.md
+cms.medpar_2015/oprtg_room_amt.md
+cms.medpar_2015/opsrvc.md
+cms.medpar_2015/opsrvccd.md
+cms.medpar_2015/or_labor_dlvry_amt.md
+cms.medpar_2015/orgnamt.md
+cms.medpar_2015/orgncd.md
+cms.medpar_2015/orgnpinm.md
+cms.medpar_2015/oroomamt.md
+cms.medpar_2015/othr_implants_amt.md
+cms.medpar_2015/othr_suplies_dvc_amt.md
+cms.medpar_2015/othramt.md
+cms.medpar_2015/outlr_cd.md
+cms.medpar_2015/outlramt.md
+cms.medpar_2015/outlrday.md
+cms.medpar_2015/oxygn_take_home_amt.md
+cms.medpar_2015/pa_ind_cd.md
+cms.medpar_2015/passthru.md
+cms.medpar_2015/pgm_rdctn_ind_sw.md
+cms.medpar_2015/phrmcamt.md
+cms.medpar_2015/phrmcycd.md
+cms.medpar_2015/phythamt.md
+cms.medpar_2015/pmt_amt.md
+cms.medpar_2015/poa_dgns_10_ind_cd.md
+cms.medpar_2015/poa_dgns_11_ind_cd.md
+cms.medpar_2015/poa_dgns_12_ind_cd.md
+cms.medpar_2015/poa_dgns_13_ind_cd.md
+cms.medpar_2015/poa_dgns_14_ind_cd.md
+cms.medpar_2015/poa_dgns_15_ind_cd.md
+cms.medpar_2015/poa_dgns_16_ind_cd.md
+cms.medpar_2015/poa_dgns_17_ind_cd.md
+cms.medpar_2015/poa_dgns_18_ind_cd.md
+cms.medpar_2015/poa_dgns_19_ind_cd.md
+cms.medpar_2015/poa_dgns_1_ind_cd.md
+cms.medpar_2015/poa_dgns_20_ind_cd.md
+cms.medpar_2015/poa_dgns_21_ind_cd.md
+cms.medpar_2015/poa_dgns_22_ind_cd.md
+cms.medpar_2015/poa_dgns_23_ind_cd.md
+cms.medpar_2015/poa_dgns_24_ind_cd.md
+cms.medpar_2015/poa_dgns_25_ind_cd.md
+cms.medpar_2015/poa_dgns_2_ind_cd.md
+cms.medpar_2015/poa_dgns_3_ind_cd.md
+cms.medpar_2015/poa_dgns_4_ind_cd.md
+cms.medpar_2015/poa_dgns_5_ind_cd.md
+cms.medpar_2015/poa_dgns_6_ind_cd.md
+cms.medpar_2015/poa_dgns_7_ind_cd.md
+cms.medpar_2015/poa_dgns_8_ind_cd.md
+cms.medpar_2015/poa_dgns_9_ind_cd.md
+cms.medpar_2015/poa_dgns_cd_cnt.md
+cms.medpar_2015/poa_dgns_e_10_ind_cd.md
+cms.medpar_2015/poa_dgns_e_11_ind_cd.md
+cms.medpar_2015/poa_dgns_e_12_ind_cd.md
+cms.medpar_2015/poa_dgns_e_1_ind_cd.md
+cms.medpar_2015/poa_dgns_e_2_ind_cd.md
+cms.medpar_2015/poa_dgns_e_3_ind_cd.md
+cms.medpar_2015/poa_dgns_e_4_ind_cd.md
+cms.medpar_2015/poa_dgns_e_5_ind_cd.md
+cms.medpar_2015/poa_dgns_e_6_ind_cd.md
+cms.medpar_2015/poa_dgns_e_7_ind_cd.md
+cms.medpar_2015/poa_dgns_e_8_ind_cd.md
+cms.medpar_2015/poa_dgns_e_9_ind_cd.md
+cms.medpar_2015/poa_dgns_e_cd_cnt.md
+cms.medpar_2015/pps_cptl.md
+cms.medpar_2015/pps_ind.md
+cms.medpar_2015/pps_std_val_pymt_amt.md
+cms.medpar_2015/prcdrcd1.md
+cms.medpar_2015/prcdrcd10.md
+cms.medpar_2015/prcdrcd11.md
+cms.medpar_2015/prcdrcd12.md
+cms.medpar_2015/prcdrcd13.md
+cms.medpar_2015/prcdrcd14.md
+cms.medpar_2015/prcdrcd15.md
+cms.medpar_2015/prcdrcd16.md
+cms.medpar_2015/prcdrcd17.md
+cms.medpar_2015/prcdrcd18.md
+cms.medpar_2015/prcdrcd19.md
+cms.medpar_2015/prcdrcd2.md
+cms.medpar_2015/prcdrcd20.md
+cms.medpar_2015/prcdrcd21.md
+cms.medpar_2015/prcdrcd22.md
+cms.medpar_2015/prcdrcd23.md
+cms.medpar_2015/prcdrcd24.md
+cms.medpar_2015/prcdrcd25.md
+cms.medpar_2015/prcdrcd3.md
+cms.medpar_2015/prcdrcd4.md
+cms.medpar_2015/prcdrcd5.md
+cms.medpar_2015/prcdrcd6.md
+cms.medpar_2015/prcdrcd7.md
+cms.medpar_2015/prcdrcd8.md
+cms.medpar_2015/prcdrcd9.md
+cms.medpar_2015/prcdrcnt.md
+cms.medpar_2015/prcdrdt1.md
+cms.medpar_2015/prcdrdt10.md
+cms.medpar_2015/prcdrdt11.md
+cms.medpar_2015/prcdrdt12.md
+cms.medpar_2015/prcdrdt13.md
+cms.medpar_2015/prcdrdt14.md
+cms.medpar_2015/prcdrdt15.md
+cms.medpar_2015/prcdrdt16.md
+cms.medpar_2015/prcdrdt17.md
+cms.medpar_2015/prcdrdt18.md
+cms.medpar_2015/prcdrdt19.md
+cms.medpar_2015/prcdrdt2.md
+cms.medpar_2015/prcdrdt20.md
+cms.medpar_2015/prcdrdt21.md
+cms.medpar_2015/prcdrdt22.md
+cms.medpar_2015/prcdrdt23.md
+cms.medpar_2015/prcdrdt24.md
+cms.medpar_2015/prcdrdt25.md
+cms.medpar_2015/prcdrdt3.md
+cms.medpar_2015/prcdrdt4.md
+cms.medpar_2015/prcdrdt5.md
+cms.medpar_2015/prcdrdt6.md
+cms.medpar_2015/prcdrdt7.md
+cms.medpar_2015/prcdrdt8.md
+cms.medpar_2015/prcdrdt9.md
+cms.medpar_2015/prcdrsw.md
+cms.medpar_2015/prcdtcnt.md
+cms.medpar_2015/prod_rplcmt_lifecyc_sw.md
+cms.medpar_2015/prod_rplcmt_rcll_sw.md
+cms.medpar_2015/proffees.md
+cms.medpar_2015/prpay_cd.md
+cms.medpar_2015/prpayamt.md
+cms.medpar_2015/prsthtc_orthtc_amt.md
+cms.medpar_2015/prvdrnum.md
+cms.medpar_2015/prvtamt.md
+cms.medpar_2015/prvtday.md
+cms.medpar_2015/ptnt_add_on_pymt_amt.md
+cms.medpar_2015/qlfyfrom.md
+cms.medpar_2015/qlfythru.md
+cms.medpar_2015/race.md
+cms.medpar_2015/rc_rp_ind_cd.md
+cms.medpar_2015/rdlgy_ct_scan_amt.md
+cms.medpar_2015/rdlgy_dgnstc_amt.md
+cms.medpar_2015/rdlgy_nuclr_mdcn_amt.md
+cms.medpar_2015/rdlgy_oncology_amt.md
+cms.medpar_2015/rdlgy_othr_imgng_amt.md
+cms.medpar_2015/rdlgy_thrptc_amt.md
+cms.medpar_2015/rdlgyamt.md
+cms.medpar_2015/record.md
+cms.medpar_2015/sex.md
+cms.medpar_2015/slct_rsn_cd.md
+cms.medpar_2015/smplsize.md
+cms.medpar_2015/spch_amt.md
+cms.medpar_2015/spclunit.md
+cms.medpar_2015/sprvtamt.md
+cms.medpar_2015/sprvtday.md
+cms.medpar_2015/sqstrtn_rdctn_amt.md
+cms.medpar_2015/src_adms.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_1.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_10.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_11.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_12.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_13.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_14.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_15.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_16.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_17.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_18.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_19.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_2.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_20.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_21.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_22.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_23.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_24.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_25.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_3.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_4.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_5.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_6.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_7.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_8.md
+cms.medpar_2015/srgcl_prcdr_vrsn_cd_9.md
+cms.medpar_2015/ssicd.md
+cms.medpar_2015/ssiday.md
+cms.medpar_2015/sslssnf.md
+cms.medpar_2015/state.md
+cms.medpar_2015/state_cd.md
+cms.medpar_2015/stay_2_ind_sw.md
+cms.medpar_2015/suplyamt.md
+cms.medpar_2015/take_home_amt.md
+cms.medpar_2015/thrptcsw.md
+cms.medpar_2015/totchrg.md
+cms.medpar_2015/trnsplnt.md
+cms.medpar_2015/type_adm.md
+cms.medpar_2015/udme_amt.md
+cms.medpar_2015/uncompd_care_pymt_amt.md
+cms.medpar_2015/uniq_trkng_num.md
+cms.medpar_2015/util_day.md
+cms.medpar_2015/vbp_adjstmt_amt.md
+cms.medpar_2015/vbp_adjstmt_pct.md
+cms.medpar_2015/vbp_prtcpnt_ind_cd.md
+cms.medpar_2015/wardamt.md
+cms.medpar_2015/wardday.md
+cms.medpar_2015/wrngcd.md
+cms.medpar_2015/year.md
+cms.medpar_2015/zip.md
+```
+
 Primary Key: FILE, RECORD
 
 
@@ -409,7 +811,7 @@ CREATE TABLE  cms.medpar_2015 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  medpar_2015_FILE_idx ON cms.medpar_2015 USING BTREE (FILE) ;
-COMMENT ON table cms.medpar_2015 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:28.470618';
+COMMENT ON table cms.medpar_2015 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:39.258001';
 ```
 
 </details>
@@ -419,403 +821,403 @@ COMMENT ON table cms.medpar_2015 IS 'CREATED BY Dorieh: {"version": "0.2.1", "ur
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [ACMDTNS](cms.medpar_2015/ACMDTNS.md) |  | INT |
-| [ACRTNDT](cms.medpar_2015/ACRTNDT.md) |  | DATE |
-| [ACTV_XREF_IND](cms.medpar_2015/ACTV_XREF_IND.md) |  | VARCHAR(1) |
-| [AD_DGNS](cms.medpar_2015/AD_DGNS.md) |  | VARCHAR(7) |
-| [ADMSNDAY](cms.medpar_2015/ADMSNDAY.md) |  | VARCHAR(1) |
-| [ADMSNDT](cms.medpar_2015/ADMSNDT.md) |  | DATE |
-| [ADMTG_DGNS_VRSN_CD](cms.medpar_2015/ADMTG_DGNS_VRSN_CD.md) |  | VARCHAR(1) |
-| [AGE_CNT](cms.medpar_2015/AGE_CNT.md) |  | INT |
-| [AMBLNC](cms.medpar_2015/AMBLNC.md) |  | INT |
-| [ANSTHSA](cms.medpar_2015/ANSTHSA.md) |  | INT |
-| [BASE_OPRTG_DRG_AMT](cms.medpar_2015/BASE_OPRTG_DRG_AMT.md) |  | INT |
-| [BENE_ID](cms.medpar_2015/BENE_ID.md) |  | VARCHAR(15) |
-| [BENE_ZIP](cms.medpar_2015/BENE_ZIP.md) |  | VARCHAR(5) |
-| [BIC](cms.medpar_2015/BIC.md) |  | VARCHAR(2) |
-| [BLDADMIN](cms.medpar_2015/BLDADMIN.md) |  | INT |
-| [BLDDEDAM](cms.medpar_2015/BLDDEDAM.md) |  | INT |
-| [BLDFRNSH](cms.medpar_2015/BLDFRNSH.md) |  | INT |
-| [BLOODAMT](cms.medpar_2015/BLOODAMT.md) |  | INT |
-| [BNDLD_ADJSTMT_AMT](cms.medpar_2015/BNDLD_ADJSTMT_AMT.md) |  | INT |
-| [BNDLD_MODEL_DSCNT_PCT](cms.medpar_2015/BNDLD_MODEL_DSCNT_PCT.md) |  | NUMERIC(7,4) |
-| [CARE_IMPRVMT_MODEL_1_CD](cms.medpar_2015/CARE_IMPRVMT_MODEL_1_CD.md) |  | VARCHAR(2) |
-| [CARE_IMPRVMT_MODEL_2_CD](cms.medpar_2015/CARE_IMPRVMT_MODEL_2_CD.md) |  | VARCHAR(2) |
-| [CARE_IMPRVMT_MODEL_3_CD](cms.medpar_2015/CARE_IMPRVMT_MODEL_3_CD.md) |  | VARCHAR(2) |
-| [CARE_IMPRVMT_MODEL_4_CD](cms.medpar_2015/CARE_IMPRVMT_MODEL_4_CD.md) |  | VARCHAR(2) |
-| [CLM_FULL_STD_PYMT_AMT](cms.medpar_2015/CLM_FULL_STD_PYMT_AMT.md) |  | INT |
-| [CLM_NGACO_IND_1_CD](cms.medpar_2015/CLM_NGACO_IND_1_CD.md) |  | VARCHAR(1) |
-| [CLM_NGACO_IND_2_CD](cms.medpar_2015/CLM_NGACO_IND_2_CD.md) |  | VARCHAR(1) |
-| [CLM_NGACO_IND_3_CD](cms.medpar_2015/CLM_NGACO_IND_3_CD.md) |  | VARCHAR(1) |
-| [CLM_NGACO_IND_4_CD](cms.medpar_2015/CLM_NGACO_IND_4_CD.md) |  | VARCHAR(1) |
-| [CLM_NGACO_IND_5_CD](cms.medpar_2015/CLM_NGACO_IND_5_CD.md) |  | VARCHAR(1) |
-| [CLM_PTNT_RLTNSHP_CD](cms.medpar_2015/CLM_PTNT_RLTNSHP_CD.md) |  | VARCHAR(2) |
-| [CLM_RP_IND_CD](cms.medpar_2015/CLM_RP_IND_CD.md) |  | VARCHAR(1) |
-| [CLM_RSDL_PYMT_IND_CD](cms.medpar_2015/CLM_RSDL_PYMT_IND_CD.md) |  | VARCHAR(1) |
-| [CLM_SITE_NTRL_PYMT_CST_AMT](cms.medpar_2015/CLM_SITE_NTRL_PYMT_CST_AMT.md) |  | INT |
-| [CLM_SITE_NTRL_PYMT_IPPS_AMT](cms.medpar_2015/CLM_SITE_NTRL_PYMT_IPPS_AMT.md) |  | INT |
-| [CLM_SS_OUTLIER_STD_PYMT_AMT](cms.medpar_2015/CLM_SS_OUTLIER_STD_PYMT_AMT.md) |  | INT |
-| [CLM_TYPE](cms.medpar_2015/CLM_TYPE.md) |  | VARCHAR(2) |
-| [CLNC_AMT](cms.medpar_2015/CLNC_AMT.md) |  | INT |
-| [CNTY_CD](cms.medpar_2015/CNTY_CD.md) |  | VARCHAR(3) |
-| [COIN_AMT](cms.medpar_2015/COIN_AMT.md) |  | INT |
-| [COIN_DAY](cms.medpar_2015/COIN_DAY.md) |  | INT |
-| [CRDC_CATHRZTN_AMT](cms.medpar_2015/CRDC_CATHRZTN_AMT.md) |  | INT |
-| [CRDLGY](cms.medpar_2015/CRDLGY.md) |  | INT |
-| [CRED_RCVD_RPLCD_DVC_SW](cms.medpar_2015/CRED_RCVD_RPLCD_DVC_SW.md) |  | VARCHAR(1) |
-| [CRNRY_CD](cms.medpar_2015/CRNRY_CD.md) |  | VARCHAR(1) |
-| [CRNRYAMT](cms.medpar_2015/CRNRYAMT.md) |  | INT |
-| [CRNRYDAY](cms.medpar_2015/CRNRYDAY.md) |  | INT |
-| [CTSCANSW](cms.medpar_2015/CTSCANSW.md) |  | VARCHAR(1) |
-| [CVRCHRG](cms.medpar_2015/CVRCHRG.md) |  | INT |
-| [CVRLVLDT](cms.medpar_2015/CVRLVLDT.md) |  | DATE |
-| [DEATHCD](cms.medpar_2015/DEATHCD.md) |  | VARCHAR(1) |
-| [DEATHDAY](cms.medpar_2015/DEATHDAY.md) |  | INT |
-| [DEATHDT](cms.medpar_2015/DEATHDT.md) |  | DATE |
-| [DED_AMT](cms.medpar_2015/DED_AMT.md) |  | INT |
-| [DGNS_E_10_CD](cms.medpar_2015/DGNS_E_10_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_11_CD](cms.medpar_2015/DGNS_E_11_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_12_CD](cms.medpar_2015/DGNS_E_12_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_1_CD](cms.medpar_2015/DGNS_E_1_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_2_CD](cms.medpar_2015/DGNS_E_2_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_3_CD](cms.medpar_2015/DGNS_E_3_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_4_CD](cms.medpar_2015/DGNS_E_4_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_5_CD](cms.medpar_2015/DGNS_E_5_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_6_CD](cms.medpar_2015/DGNS_E_6_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_7_CD](cms.medpar_2015/DGNS_E_7_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_8_CD](cms.medpar_2015/DGNS_E_8_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_9_CD](cms.medpar_2015/DGNS_E_9_CD.md) |  | VARCHAR(7) |
-| [DGNS_E_CD_CNT](cms.medpar_2015/DGNS_E_CD_CNT.md) |  | INT |
-| [DGNS_E_VRSN_CD](cms.medpar_2015/DGNS_E_VRSN_CD.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_1](cms.medpar_2015/DGNS_E_VRSN_CD_1.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_10](cms.medpar_2015/DGNS_E_VRSN_CD_10.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_11](cms.medpar_2015/DGNS_E_VRSN_CD_11.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_12](cms.medpar_2015/DGNS_E_VRSN_CD_12.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_2](cms.medpar_2015/DGNS_E_VRSN_CD_2.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_3](cms.medpar_2015/DGNS_E_VRSN_CD_3.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_4](cms.medpar_2015/DGNS_E_VRSN_CD_4.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_5](cms.medpar_2015/DGNS_E_VRSN_CD_5.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_6](cms.medpar_2015/DGNS_E_VRSN_CD_6.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_7](cms.medpar_2015/DGNS_E_VRSN_CD_7.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_8](cms.medpar_2015/DGNS_E_VRSN_CD_8.md) |  | VARCHAR(1) |
-| [DGNS_E_VRSN_CD_9](cms.medpar_2015/DGNS_E_VRSN_CD_9.md) |  | VARCHAR(1) |
-| [DGNS_POA](cms.medpar_2015/DGNS_POA.md) |  | VARCHAR(10) |
-| [DGNS_VRSN_CD](cms.medpar_2015/DGNS_VRSN_CD.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_1](cms.medpar_2015/DGNS_VRSN_CD_1.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_10](cms.medpar_2015/DGNS_VRSN_CD_10.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_11](cms.medpar_2015/DGNS_VRSN_CD_11.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_12](cms.medpar_2015/DGNS_VRSN_CD_12.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_13](cms.medpar_2015/DGNS_VRSN_CD_13.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_14](cms.medpar_2015/DGNS_VRSN_CD_14.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_15](cms.medpar_2015/DGNS_VRSN_CD_15.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_16](cms.medpar_2015/DGNS_VRSN_CD_16.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_17](cms.medpar_2015/DGNS_VRSN_CD_17.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_18](cms.medpar_2015/DGNS_VRSN_CD_18.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_19](cms.medpar_2015/DGNS_VRSN_CD_19.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_2](cms.medpar_2015/DGNS_VRSN_CD_2.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_20](cms.medpar_2015/DGNS_VRSN_CD_20.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_21](cms.medpar_2015/DGNS_VRSN_CD_21.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_22](cms.medpar_2015/DGNS_VRSN_CD_22.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_23](cms.medpar_2015/DGNS_VRSN_CD_23.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_24](cms.medpar_2015/DGNS_VRSN_CD_24.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_25](cms.medpar_2015/DGNS_VRSN_CD_25.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_3](cms.medpar_2015/DGNS_VRSN_CD_3.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_4](cms.medpar_2015/DGNS_VRSN_CD_4.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_5](cms.medpar_2015/DGNS_VRSN_CD_5.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_6](cms.medpar_2015/DGNS_VRSN_CD_6.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_7](cms.medpar_2015/DGNS_VRSN_CD_7.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_8](cms.medpar_2015/DGNS_VRSN_CD_8.md) |  | VARCHAR(1) |
-| [DGNS_VRSN_CD_9](cms.medpar_2015/DGNS_VRSN_CD_9.md) |  | VARCHAR(1) |
-| [DGNSCD1](cms.medpar_2015/DGNSCD1.md) |  | VARCHAR(7) |
-| [DGNSCD10](cms.medpar_2015/DGNSCD10.md) |  | VARCHAR(7) |
-| [DGNSCD11](cms.medpar_2015/DGNSCD11.md) |  | VARCHAR(7) |
-| [DGNSCD12](cms.medpar_2015/DGNSCD12.md) |  | VARCHAR(7) |
-| [DGNSCD13](cms.medpar_2015/DGNSCD13.md) |  | VARCHAR(7) |
-| [DGNSCD14](cms.medpar_2015/DGNSCD14.md) |  | VARCHAR(7) |
-| [DGNSCD15](cms.medpar_2015/DGNSCD15.md) |  | VARCHAR(7) |
-| [DGNSCD16](cms.medpar_2015/DGNSCD16.md) |  | VARCHAR(7) |
-| [DGNSCD17](cms.medpar_2015/DGNSCD17.md) |  | VARCHAR(7) |
-| [DGNSCD18](cms.medpar_2015/DGNSCD18.md) |  | VARCHAR(7) |
-| [DGNSCD19](cms.medpar_2015/DGNSCD19.md) |  | VARCHAR(7) |
-| [DGNSCD2](cms.medpar_2015/DGNSCD2.md) |  | VARCHAR(7) |
-| [DGNSCD20](cms.medpar_2015/DGNSCD20.md) |  | VARCHAR(7) |
-| [DGNSCD21](cms.medpar_2015/DGNSCD21.md) |  | VARCHAR(7) |
-| [DGNSCD22](cms.medpar_2015/DGNSCD22.md) |  | VARCHAR(7) |
-| [DGNSCD23](cms.medpar_2015/DGNSCD23.md) |  | VARCHAR(7) |
-| [DGNSCD24](cms.medpar_2015/DGNSCD24.md) |  | VARCHAR(7) |
-| [DGNSCD25](cms.medpar_2015/DGNSCD25.md) |  | VARCHAR(7) |
-| [DGNSCD3](cms.medpar_2015/DGNSCD3.md) |  | VARCHAR(7) |
-| [DGNSCD4](cms.medpar_2015/DGNSCD4.md) |  | VARCHAR(7) |
-| [DGNSCD5](cms.medpar_2015/DGNSCD5.md) |  | VARCHAR(7) |
-| [DGNSCD6](cms.medpar_2015/DGNSCD6.md) |  | VARCHAR(7) |
-| [DGNSCD7](cms.medpar_2015/DGNSCD7.md) |  | VARCHAR(7) |
-| [DGNSCD8](cms.medpar_2015/DGNSCD8.md) |  | VARCHAR(7) |
-| [DGNSCD9](cms.medpar_2015/DGNSCD9.md) |  | VARCHAR(7) |
-| [DGNSCNT](cms.medpar_2015/DGNSCNT.md) |  | INT |
-| [DGNSTCSW](cms.medpar_2015/DGNSTCSW.md) |  | VARCHAR(1) |
-| [DISP_SHR](cms.medpar_2015/DISP_SHR.md) |  | INT |
-| [DME_AMT](cms.medpar_2015/DME_AMT.md) |  | INT |
-| [DPRTMNTL](cms.medpar_2015/DPRTMNTL.md) |  | INT |
-| [DRG_CD](cms.medpar_2015/DRG_CD.md) |  | VARCHAR(3) |
-| [DRGPRICE](cms.medpar_2015/DRGPRICE.md) |  | INT |
-| [DSCHRGCD](cms.medpar_2015/DSCHRGCD.md) |  | VARCHAR(1) |
-| [DSCHRGDT](cms.medpar_2015/DSCHRGDT.md) |  | DATE |
-| [DSTNTNCD](cms.medpar_2015/DSTNTNCD.md) |  | VARCHAR(2) |
-| [EHR_PYMT_ADJSTMT_AMT](cms.medpar_2015/EHR_PYMT_ADJSTMT_AMT.md) |  | INT |
-| [EQ_BIC](cms.medpar_2015/EQ_BIC.md) |  | VARCHAR(2) |
-| [ER_AMT](cms.medpar_2015/ER_AMT.md) |  | INT |
-| [ESRD_CD](cms.medpar_2015/ESRD_CD.md) |  | VARCHAR(2) |
-| [ESRDSETG](cms.medpar_2015/ESRDSETG.md) |  | INT |
-| [ESRDSTG1](cms.medpar_2015/ESRDSTG1.md) |  | VARCHAR(2) |
-| [ESRDSTG2](cms.medpar_2015/ESRDSTG2.md) |  | VARCHAR(2) |
-| [ESRDSTG3](cms.medpar_2015/ESRDSTG3.md) |  | VARCHAR(2) |
-| [ESRDSTG4](cms.medpar_2015/ESRDSTG4.md) |  | VARCHAR(2) |
-| [ESRDSTG5](cms.medpar_2015/ESRDSTG5.md) |  | VARCHAR(2) |
-| [EXHST_DT](cms.medpar_2015/EXHST_DT.md) |  | DATE |
-| [FACLMCNT](cms.medpar_2015/FACLMCNT.md) |  | INT |
-| [FICARR](cms.medpar_2015/FICARR.md) |  | VARCHAR(5) |
-| [FILDTCD](cms.medpar_2015/FILDTCD.md) |  | VARCHAR(1) |
-| [FILE](cms.medpar_2015/FILE.md) | file | VARCHAR(128) |
-| [FINL_STD_AMT](cms.medpar_2015/FINL_STD_AMT.md) |  | INT |
-| [GHOPDCD](cms.medpar_2015/GHOPDCD.md) |  | VARCHAR(1) |
-| [HAC_PGM_RDCTN_IND_SW](cms.medpar_2015/HAC_PGM_RDCTN_IND_SW.md) |  | VARCHAR(1) |
-| [HAC_RDCTN_PMT_AMT](cms.medpar_2015/HAC_RDCTN_PMT_AMT.md) |  | INT |
-| [HRR_ADJSTMT_AMT](cms.medpar_2015/HRR_ADJSTMT_AMT.md) |  | INT |
-| [HRR_ADJSTMT_PCT](cms.medpar_2015/HRR_ADJSTMT_PCT.md) |  | NUMERIC(8,5) |
-| [HRR_PRTCPNT_IND_CD](cms.medpar_2015/HRR_PRTCPNT_IND_CD.md) |  | VARCHAR(1) |
-| [ICAREAMT](cms.medpar_2015/ICAREAMT.md) |  | INT |
-| [ICARECNT](cms.medpar_2015/ICARECNT.md) |  | INT |
-| [ICUINDCD](cms.medpar_2015/ICUINDCD.md) |  | VARCHAR(1) |
-| [IME_AMT](cms.medpar_2015/IME_AMT.md) |  | INT |
-| [IMGNG_SW](cms.medpar_2015/IMGNG_SW.md) |  | VARCHAR(1) |
-| [INCDNT_DGNSTC_SRVCS_AMT](cms.medpar_2015/INCDNT_DGNSTC_SRVCS_AMT.md) |  | INT |
-| [INCDNT_RDLGY_AMT](cms.medpar_2015/INCDNT_RDLGY_AMT.md) |  | INT |
-| [INFRMTL_ENCTR_IND_SW](cms.medpar_2015/INFRMTL_ENCTR_IND_SW.md) |  | VARCHAR(1) |
-| [INHLTAMT](cms.medpar_2015/INHLTAMT.md) |  | INT |
-| [INTRAOCULAR_LENS_AMT](cms.medpar_2015/INTRAOCULAR_LENS_AMT.md) |  | INT |
-| [INTRNL_USE_SSI_DATA](cms.medpar_2015/INTRNL_USE_SSI_DATA.md) |  | VARCHAR(1) |
-| [INVSTGTNL_DVC_AMT](cms.medpar_2015/INVSTGTNL_DVC_AMT.md) |  | INT |
-| [IP_LOW_VOL_PYMT_AMT](cms.medpar_2015/IP_LOW_VOL_PYMT_AMT.md) |  | INT |
-| [IPPS_FLEX_PYMT_7_AMT](cms.medpar_2015/IPPS_FLEX_PYMT_7_AMT.md) |  | INT |
-| [IPSBCD](cms.medpar_2015/IPSBCD.md) |  | VARCHAR(3) |
-| [LAB_AMT](cms.medpar_2015/LAB_AMT.md) |  | INT |
-| [LOSCNT](cms.medpar_2015/LOSCNT.md) |  | INT |
-| [LRD_USE](cms.medpar_2015/LRD_USE.md) |  | INT |
-| [LTHTRPSY](cms.medpar_2015/LTHTRPSY.md) |  | INT |
-| [MA_TCHNG_IND_SW](cms.medpar_2015/MA_TCHNG_IND_SW.md) |  | VARCHAR(1) |
-| [MDCL_SRGCL_DRSNG_AMT](cms.medpar_2015/MDCL_SRGCL_DRSNG_AMT.md) |  | INT |
-| [MDCL_SRGCL_GNRL_AMT](cms.medpar_2015/MDCL_SRGCL_GNRL_AMT.md) |  | INT |
-| [MDCL_SRGCL_MISC_AMT](cms.medpar_2015/MDCL_SRGCL_MISC_AMT.md) |  | INT |
-| [MDCL_SRGCL_NSTRL_AMT](cms.medpar_2015/MDCL_SRGCL_NSTRL_AMT.md) |  | INT |
-| [MDCL_SRGCL_PCMKR_AMT](cms.medpar_2015/MDCL_SRGCL_PCMKR_AMT.md) |  | INT |
-| [MDCL_SRGCL_STRL_AMT](cms.medpar_2015/MDCL_SRGCL_STRL_AMT.md) |  | INT |
-| [MEDPAR_YR_NUM](cms.medpar_2015/MEDPAR_YR_NUM.md) |  | VARCHAR(4) |
-| [MEDPARID](cms.medpar_2015/MEDPARID.md) |  | VARCHAR(15) |
-| [MRI_AMT](cms.medpar_2015/MRI_AMT.md) |  | INT |
-| [MS_CD](cms.medpar_2015/MS_CD.md) |  | VARCHAR(2) |
-| [NEW_TCHNLGY_ADD_ON_AMT](cms.medpar_2015/NEW_TCHNLGY_ADD_ON_AMT.md) |  | INT |
-| [NUCLR_SW](cms.medpar_2015/NUCLR_SW.md) |  | VARCHAR(1) |
-| [OBSRVTN_SW](cms.medpar_2015/OBSRVTN_SW.md) |  | VARCHAR(1) |
-| [OCPTLAMT](cms.medpar_2015/OCPTLAMT.md) |  | INT |
-| [ONCLGYSW](cms.medpar_2015/ONCLGYSW.md) |  | VARCHAR(1) |
-| [OPRTG_HSP_AMT](cms.medpar_2015/OPRTG_HSP_AMT.md) |  | INT |
-| [OPRTG_ROOM_AMT](cms.medpar_2015/OPRTG_ROOM_AMT.md) |  | INT |
-| [OPSRVC](cms.medpar_2015/OPSRVC.md) |  | INT |
-| [OPSRVCCD](cms.medpar_2015/OPSRVCCD.md) |  | VARCHAR(1) |
-| [OR_LABOR_DLVRY_AMT](cms.medpar_2015/OR_LABOR_DLVRY_AMT.md) |  | INT |
-| [ORGNAMT](cms.medpar_2015/ORGNAMT.md) |  | INT |
-| [ORGNCD](cms.medpar_2015/ORGNCD.md) |  | VARCHAR(2) |
-| [ORGNPINM](cms.medpar_2015/ORGNPINM.md) |  | VARCHAR(10) |
-| [OROOMAMT](cms.medpar_2015/OROOMAMT.md) |  | INT |
-| [OTHR_IMPLANTS_AMT](cms.medpar_2015/OTHR_IMPLANTS_AMT.md) |  | INT |
-| [OTHR_SUPLIES_DVC_AMT](cms.medpar_2015/OTHR_SUPLIES_DVC_AMT.md) |  | INT |
-| [OTHRAMT](cms.medpar_2015/OTHRAMT.md) |  | INT |
-| [OUTLR_CD](cms.medpar_2015/OUTLR_CD.md) |  | VARCHAR(1) |
-| [OUTLRAMT](cms.medpar_2015/OUTLRAMT.md) |  | INT |
-| [OUTLRDAY](cms.medpar_2015/OUTLRDAY.md) |  | INT |
-| [OXYGN_TAKE_HOME_AMT](cms.medpar_2015/OXYGN_TAKE_HOME_AMT.md) |  | INT |
-| [PA_IND_CD](cms.medpar_2015/PA_IND_CD.md) |  | VARCHAR(4) |
-| [PASSTHRU](cms.medpar_2015/PASSTHRU.md) |  | INT |
-| [PGM_RDCTN_IND_SW](cms.medpar_2015/PGM_RDCTN_IND_SW.md) |  | VARCHAR(1) |
-| [PHRMCAMT](cms.medpar_2015/PHRMCAMT.md) |  | INT |
-| [PHRMCYCD](cms.medpar_2015/PHRMCYCD.md) |  | VARCHAR(1) |
-| [PHYTHAMT](cms.medpar_2015/PHYTHAMT.md) |  | INT |
-| [PMT_AMT](cms.medpar_2015/PMT_AMT.md) |  | INT |
-| [POA_DGNS_10_IND_CD](cms.medpar_2015/POA_DGNS_10_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_11_IND_CD](cms.medpar_2015/POA_DGNS_11_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_12_IND_CD](cms.medpar_2015/POA_DGNS_12_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_13_IND_CD](cms.medpar_2015/POA_DGNS_13_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_14_IND_CD](cms.medpar_2015/POA_DGNS_14_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_15_IND_CD](cms.medpar_2015/POA_DGNS_15_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_16_IND_CD](cms.medpar_2015/POA_DGNS_16_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_17_IND_CD](cms.medpar_2015/POA_DGNS_17_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_18_IND_CD](cms.medpar_2015/POA_DGNS_18_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_19_IND_CD](cms.medpar_2015/POA_DGNS_19_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_1_IND_CD](cms.medpar_2015/POA_DGNS_1_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_20_IND_CD](cms.medpar_2015/POA_DGNS_20_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_21_IND_CD](cms.medpar_2015/POA_DGNS_21_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_22_IND_CD](cms.medpar_2015/POA_DGNS_22_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_23_IND_CD](cms.medpar_2015/POA_DGNS_23_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_24_IND_CD](cms.medpar_2015/POA_DGNS_24_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_25_IND_CD](cms.medpar_2015/POA_DGNS_25_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_2_IND_CD](cms.medpar_2015/POA_DGNS_2_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_3_IND_CD](cms.medpar_2015/POA_DGNS_3_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_4_IND_CD](cms.medpar_2015/POA_DGNS_4_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_5_IND_CD](cms.medpar_2015/POA_DGNS_5_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_6_IND_CD](cms.medpar_2015/POA_DGNS_6_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_7_IND_CD](cms.medpar_2015/POA_DGNS_7_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_8_IND_CD](cms.medpar_2015/POA_DGNS_8_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_9_IND_CD](cms.medpar_2015/POA_DGNS_9_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_CD_CNT](cms.medpar_2015/POA_DGNS_CD_CNT.md) |  | INT |
-| [POA_DGNS_E_10_IND_CD](cms.medpar_2015/POA_DGNS_E_10_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_11_IND_CD](cms.medpar_2015/POA_DGNS_E_11_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_12_IND_CD](cms.medpar_2015/POA_DGNS_E_12_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_1_IND_CD](cms.medpar_2015/POA_DGNS_E_1_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_2_IND_CD](cms.medpar_2015/POA_DGNS_E_2_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_3_IND_CD](cms.medpar_2015/POA_DGNS_E_3_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_4_IND_CD](cms.medpar_2015/POA_DGNS_E_4_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_5_IND_CD](cms.medpar_2015/POA_DGNS_E_5_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_6_IND_CD](cms.medpar_2015/POA_DGNS_E_6_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_7_IND_CD](cms.medpar_2015/POA_DGNS_E_7_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_8_IND_CD](cms.medpar_2015/POA_DGNS_E_8_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_9_IND_CD](cms.medpar_2015/POA_DGNS_E_9_IND_CD.md) |  | VARCHAR(1) |
-| [POA_DGNS_E_CD_CNT](cms.medpar_2015/POA_DGNS_E_CD_CNT.md) |  | INT |
-| [PPS_CPTL](cms.medpar_2015/PPS_CPTL.md) |  | INT |
-| [PPS_IND](cms.medpar_2015/PPS_IND.md) |  | VARCHAR(1) |
-| [PPS_STD_VAL_PYMT_AMT](cms.medpar_2015/PPS_STD_VAL_PYMT_AMT.md) |  | INT |
-| [PRCDRCD1](cms.medpar_2015/PRCDRCD1.md) |  | VARCHAR(7) |
-| [PRCDRCD10](cms.medpar_2015/PRCDRCD10.md) |  | VARCHAR(7) |
-| [PRCDRCD11](cms.medpar_2015/PRCDRCD11.md) |  | VARCHAR(7) |
-| [PRCDRCD12](cms.medpar_2015/PRCDRCD12.md) |  | VARCHAR(7) |
-| [PRCDRCD13](cms.medpar_2015/PRCDRCD13.md) |  | VARCHAR(7) |
-| [PRCDRCD14](cms.medpar_2015/PRCDRCD14.md) |  | VARCHAR(7) |
-| [PRCDRCD15](cms.medpar_2015/PRCDRCD15.md) |  | VARCHAR(7) |
-| [PRCDRCD16](cms.medpar_2015/PRCDRCD16.md) |  | VARCHAR(7) |
-| [PRCDRCD17](cms.medpar_2015/PRCDRCD17.md) |  | VARCHAR(7) |
-| [PRCDRCD18](cms.medpar_2015/PRCDRCD18.md) |  | VARCHAR(7) |
-| [PRCDRCD19](cms.medpar_2015/PRCDRCD19.md) |  | VARCHAR(7) |
-| [PRCDRCD2](cms.medpar_2015/PRCDRCD2.md) |  | VARCHAR(7) |
-| [PRCDRCD20](cms.medpar_2015/PRCDRCD20.md) |  | VARCHAR(7) |
-| [PRCDRCD21](cms.medpar_2015/PRCDRCD21.md) |  | VARCHAR(7) |
-| [PRCDRCD22](cms.medpar_2015/PRCDRCD22.md) |  | VARCHAR(7) |
-| [PRCDRCD23](cms.medpar_2015/PRCDRCD23.md) |  | VARCHAR(7) |
-| [PRCDRCD24](cms.medpar_2015/PRCDRCD24.md) |  | VARCHAR(7) |
-| [PRCDRCD25](cms.medpar_2015/PRCDRCD25.md) |  | VARCHAR(7) |
-| [PRCDRCD3](cms.medpar_2015/PRCDRCD3.md) |  | VARCHAR(7) |
-| [PRCDRCD4](cms.medpar_2015/PRCDRCD4.md) |  | VARCHAR(7) |
-| [PRCDRCD5](cms.medpar_2015/PRCDRCD5.md) |  | VARCHAR(7) |
-| [PRCDRCD6](cms.medpar_2015/PRCDRCD6.md) |  | VARCHAR(7) |
-| [PRCDRCD7](cms.medpar_2015/PRCDRCD7.md) |  | VARCHAR(7) |
-| [PRCDRCD8](cms.medpar_2015/PRCDRCD8.md) |  | VARCHAR(7) |
-| [PRCDRCD9](cms.medpar_2015/PRCDRCD9.md) |  | VARCHAR(7) |
-| [PRCDRCNT](cms.medpar_2015/PRCDRCNT.md) |  | INT |
-| [PRCDRDT1](cms.medpar_2015/PRCDRDT1.md) |  | DATE |
-| [PRCDRDT10](cms.medpar_2015/PRCDRDT10.md) |  | DATE |
-| [PRCDRDT11](cms.medpar_2015/PRCDRDT11.md) |  | DATE |
-| [PRCDRDT12](cms.medpar_2015/PRCDRDT12.md) |  | DATE |
-| [PRCDRDT13](cms.medpar_2015/PRCDRDT13.md) |  | DATE |
-| [PRCDRDT14](cms.medpar_2015/PRCDRDT14.md) |  | DATE |
-| [PRCDRDT15](cms.medpar_2015/PRCDRDT15.md) |  | DATE |
-| [PRCDRDT16](cms.medpar_2015/PRCDRDT16.md) |  | DATE |
-| [PRCDRDT17](cms.medpar_2015/PRCDRDT17.md) |  | DATE |
-| [PRCDRDT18](cms.medpar_2015/PRCDRDT18.md) |  | DATE |
-| [PRCDRDT19](cms.medpar_2015/PRCDRDT19.md) |  | DATE |
-| [PRCDRDT2](cms.medpar_2015/PRCDRDT2.md) |  | DATE |
-| [PRCDRDT20](cms.medpar_2015/PRCDRDT20.md) |  | DATE |
-| [PRCDRDT21](cms.medpar_2015/PRCDRDT21.md) |  | DATE |
-| [PRCDRDT22](cms.medpar_2015/PRCDRDT22.md) |  | DATE |
-| [PRCDRDT23](cms.medpar_2015/PRCDRDT23.md) |  | DATE |
-| [PRCDRDT24](cms.medpar_2015/PRCDRDT24.md) |  | DATE |
-| [PRCDRDT25](cms.medpar_2015/PRCDRDT25.md) |  | DATE |
-| [PRCDRDT3](cms.medpar_2015/PRCDRDT3.md) |  | DATE |
-| [PRCDRDT4](cms.medpar_2015/PRCDRDT4.md) |  | DATE |
-| [PRCDRDT5](cms.medpar_2015/PRCDRDT5.md) |  | DATE |
-| [PRCDRDT6](cms.medpar_2015/PRCDRDT6.md) |  | DATE |
-| [PRCDRDT7](cms.medpar_2015/PRCDRDT7.md) |  | DATE |
-| [PRCDRDT8](cms.medpar_2015/PRCDRDT8.md) |  | DATE |
-| [PRCDRDT9](cms.medpar_2015/PRCDRDT9.md) |  | DATE |
-| [PRCDRSW](cms.medpar_2015/PRCDRSW.md) |  | VARCHAR(1) |
-| [PRCDTCNT](cms.medpar_2015/PRCDTCNT.md) |  | INT |
-| [PROD_RPLCMT_LIFECYC_SW](cms.medpar_2015/PROD_RPLCMT_LIFECYC_SW.md) |  | VARCHAR(1) |
-| [PROD_RPLCMT_RCLL_SW](cms.medpar_2015/PROD_RPLCMT_RCLL_SW.md) |  | VARCHAR(1) |
-| [PROFFEES](cms.medpar_2015/PROFFEES.md) |  | INT |
-| [PRPAY_CD](cms.medpar_2015/PRPAY_CD.md) |  | VARCHAR(1) |
-| [PRPAYAMT](cms.medpar_2015/PRPAYAMT.md) |  | INT |
-| [PRSTHTC_ORTHTC_AMT](cms.medpar_2015/PRSTHTC_ORTHTC_AMT.md) |  | INT |
-| [PRVDRNUM](cms.medpar_2015/PRVDRNUM.md) |  | VARCHAR(10) |
-| [PRVTAMT](cms.medpar_2015/PRVTAMT.md) |  | INT |
-| [PRVTDAY](cms.medpar_2015/PRVTDAY.md) |  | INT |
-| [PTNT_ADD_ON_PYMT_AMT](cms.medpar_2015/PTNT_ADD_ON_PYMT_AMT.md) |  | INT |
-| [QLFYFROM](cms.medpar_2015/QLFYFROM.md) |  | DATE |
-| [QLFYTHRU](cms.medpar_2015/QLFYTHRU.md) |  | DATE |
-| [RACE](cms.medpar_2015/RACE.md) |  | VARCHAR(1) |
-| [RC_RP_IND_CD](cms.medpar_2015/RC_RP_IND_CD.md) |  | VARCHAR(1) |
-| [RDLGY_CT_SCAN_AMT](cms.medpar_2015/RDLGY_CT_SCAN_AMT.md) |  | INT |
-| [RDLGY_DGNSTC_AMT](cms.medpar_2015/RDLGY_DGNSTC_AMT.md) |  | INT |
-| [RDLGY_NUCLR_MDCN_AMT](cms.medpar_2015/RDLGY_NUCLR_MDCN_AMT.md) |  | INT |
-| [RDLGY_ONCOLOGY_AMT](cms.medpar_2015/RDLGY_ONCOLOGY_AMT.md) |  | INT |
-| [RDLGY_OTHR_IMGNG_AMT](cms.medpar_2015/RDLGY_OTHR_IMGNG_AMT.md) |  | INT |
-| [RDLGY_THRPTC_AMT](cms.medpar_2015/RDLGY_THRPTC_AMT.md) |  | INT |
-| [RDLGYAMT](cms.medpar_2015/RDLGYAMT.md) |  | INT |
-| [RECORD](cms.medpar_2015/RECORD.md) |  | BIGSERIAL |
-| [SEX](cms.medpar_2015/SEX.md) |  | VARCHAR(1) |
-| [SLCT_RSN_CD](cms.medpar_2015/SLCT_RSN_CD.md) |  | VARCHAR(1) |
-| [SMPLSIZE](cms.medpar_2015/SMPLSIZE.md) |  | VARCHAR(1) |
-| [SPCH_AMT](cms.medpar_2015/SPCH_AMT.md) |  | INT |
-| [SPCLUNIT](cms.medpar_2015/SPCLUNIT.md) |  | VARCHAR(1) |
-| [SPRVTAMT](cms.medpar_2015/SPRVTAMT.md) |  | INT |
-| [SPRVTDAY](cms.medpar_2015/SPRVTDAY.md) |  | INT |
-| [SQSTRTN_RDCTN_AMT](cms.medpar_2015/SQSTRTN_RDCTN_AMT.md) |  | INT |
-| [SRC_ADMS](cms.medpar_2015/SRC_ADMS.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_1](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_1.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_10](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_10.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_11](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_11.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_12](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_12.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_13](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_13.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_14](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_14.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_15](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_15.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_16](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_16.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_17](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_17.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_18](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_18.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_19](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_19.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_2](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_2.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_20](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_20.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_21](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_21.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_22](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_22.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_23](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_23.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_24](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_24.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_25](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_25.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_3](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_3.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_4](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_4.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_5](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_5.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_6](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_6.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_7](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_7.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_8](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_8.md) |  | VARCHAR(1) |
-| [SRGCL_PRCDR_VRSN_CD_9](cms.medpar_2015/SRGCL_PRCDR_VRSN_CD_9.md) |  | VARCHAR(1) |
-| [SSICD](cms.medpar_2015/SSICD.md) |  | VARCHAR(1) |
-| [SSIDAY](cms.medpar_2015/SSIDAY.md) |  | INT |
-| [SSLSSNF](cms.medpar_2015/SSLSSNF.md) |  | VARCHAR(1) |
-| [STATE](cms.medpar_2015/STATE.md) | generated | VARCHAR(2) |
-| [STATE_CD](cms.medpar_2015/STATE_CD.md) |  | VARCHAR(2) |
-| [STAY_2_IND_SW](cms.medpar_2015/STAY_2_IND_SW.md) |  | VARCHAR(1) |
-| [SUPLYAMT](cms.medpar_2015/SUPLYAMT.md) |  | INT |
-| [TAKE_HOME_AMT](cms.medpar_2015/TAKE_HOME_AMT.md) |  | INT |
-| [THRPTCSW](cms.medpar_2015/THRPTCSW.md) |  | VARCHAR(1) |
-| [TOTCHRG](cms.medpar_2015/TOTCHRG.md) |  | INT |
-| [TRNSPLNT](cms.medpar_2015/TRNSPLNT.md) |  | VARCHAR(1) |
-| [TYPE_ADM](cms.medpar_2015/TYPE_ADM.md) |  | VARCHAR(1) |
-| [UDME_AMT](cms.medpar_2015/UDME_AMT.md) |  | INT |
-| [UNCOMPD_CARE_PYMT_AMT](cms.medpar_2015/UNCOMPD_CARE_PYMT_AMT.md) |  | INT |
-| [UNIQ_TRKNG_NUM](cms.medpar_2015/UNIQ_TRKNG_NUM.md) |  | VARCHAR(14) |
-| [UTIL_DAY](cms.medpar_2015/UTIL_DAY.md) |  | INT |
-| [VBP_ADJSTMT_AMT](cms.medpar_2015/VBP_ADJSTMT_AMT.md) |  | INT |
-| [VBP_ADJSTMT_PCT](cms.medpar_2015/VBP_ADJSTMT_PCT.md) |  | NUMERIC(15,12) |
-| [VBP_PRTCPNT_IND_CD](cms.medpar_2015/VBP_PRTCPNT_IND_CD.md) |  | VARCHAR(1) |
-| [WARDAMT](cms.medpar_2015/WARDAMT.md) |  | INT |
-| [WARDDAY](cms.medpar_2015/WARDDAY.md) |  | INT |
-| [WRNGCD](cms.medpar_2015/WRNGCD.md) |  | VARCHAR(18) |
-| [YEAR](cms.medpar_2015/YEAR.md) | generated | VARCHAR(4) |
-| [ZIP](cms.medpar_2015/ZIP.md) | generated | VARCHAR(5) |
+| [acmdtns](cms.medpar_2015/acmdtns.md) |  | INT |
+| [acrtndt](cms.medpar_2015/acrtndt.md) |  | DATE |
+| [actv_xref_ind](cms.medpar_2015/actv_xref_ind.md) |  | VARCHAR(1) |
+| [ad_dgns](cms.medpar_2015/ad_dgns.md) |  | VARCHAR(7) |
+| [admsnday](cms.medpar_2015/admsnday.md) |  | VARCHAR(1) |
+| [admsndt](cms.medpar_2015/admsndt.md) |  | DATE |
+| [admtg_dgns_vrsn_cd](cms.medpar_2015/admtg_dgns_vrsn_cd.md) |  | VARCHAR(1) |
+| [age_cnt](cms.medpar_2015/age_cnt.md) |  | INT |
+| [amblnc](cms.medpar_2015/amblnc.md) |  | INT |
+| [ansthsa](cms.medpar_2015/ansthsa.md) |  | INT |
+| [base_oprtg_drg_amt](cms.medpar_2015/base_oprtg_drg_amt.md) |  | INT |
+| [bene_id](cms.medpar_2015/bene_id.md) |  | VARCHAR(15) |
+| [bene_zip](cms.medpar_2015/bene_zip.md) |  | VARCHAR(5) |
+| [bic](cms.medpar_2015/bic.md) |  | VARCHAR(2) |
+| [bldadmin](cms.medpar_2015/bldadmin.md) |  | INT |
+| [blddedam](cms.medpar_2015/blddedam.md) |  | INT |
+| [bldfrnsh](cms.medpar_2015/bldfrnsh.md) |  | INT |
+| [bloodamt](cms.medpar_2015/bloodamt.md) |  | INT |
+| [bndld_adjstmt_amt](cms.medpar_2015/bndld_adjstmt_amt.md) |  | INT |
+| [bndld_model_dscnt_pct](cms.medpar_2015/bndld_model_dscnt_pct.md) |  | NUMERIC(7,4) |
+| [care_imprvmt_model_1_cd](cms.medpar_2015/care_imprvmt_model_1_cd.md) |  | VARCHAR(2) |
+| [care_imprvmt_model_2_cd](cms.medpar_2015/care_imprvmt_model_2_cd.md) |  | VARCHAR(2) |
+| [care_imprvmt_model_3_cd](cms.medpar_2015/care_imprvmt_model_3_cd.md) |  | VARCHAR(2) |
+| [care_imprvmt_model_4_cd](cms.medpar_2015/care_imprvmt_model_4_cd.md) |  | VARCHAR(2) |
+| [clm_full_std_pymt_amt](cms.medpar_2015/clm_full_std_pymt_amt.md) |  | INT |
+| [clm_ngaco_ind_1_cd](cms.medpar_2015/clm_ngaco_ind_1_cd.md) |  | VARCHAR(1) |
+| [clm_ngaco_ind_2_cd](cms.medpar_2015/clm_ngaco_ind_2_cd.md) |  | VARCHAR(1) |
+| [clm_ngaco_ind_3_cd](cms.medpar_2015/clm_ngaco_ind_3_cd.md) |  | VARCHAR(1) |
+| [clm_ngaco_ind_4_cd](cms.medpar_2015/clm_ngaco_ind_4_cd.md) |  | VARCHAR(1) |
+| [clm_ngaco_ind_5_cd](cms.medpar_2015/clm_ngaco_ind_5_cd.md) |  | VARCHAR(1) |
+| [clm_ptnt_rltnshp_cd](cms.medpar_2015/clm_ptnt_rltnshp_cd.md) |  | VARCHAR(2) |
+| [clm_rp_ind_cd](cms.medpar_2015/clm_rp_ind_cd.md) |  | VARCHAR(1) |
+| [clm_rsdl_pymt_ind_cd](cms.medpar_2015/clm_rsdl_pymt_ind_cd.md) |  | VARCHAR(1) |
+| [clm_site_ntrl_pymt_cst_amt](cms.medpar_2015/clm_site_ntrl_pymt_cst_amt.md) |  | INT |
+| [clm_site_ntrl_pymt_ipps_amt](cms.medpar_2015/clm_site_ntrl_pymt_ipps_amt.md) |  | INT |
+| [clm_ss_outlier_std_pymt_amt](cms.medpar_2015/clm_ss_outlier_std_pymt_amt.md) |  | INT |
+| [clm_type](cms.medpar_2015/clm_type.md) |  | VARCHAR(2) |
+| [clnc_amt](cms.medpar_2015/clnc_amt.md) |  | INT |
+| [cnty_cd](cms.medpar_2015/cnty_cd.md) |  | VARCHAR(3) |
+| [coin_amt](cms.medpar_2015/coin_amt.md) |  | INT |
+| [coin_day](cms.medpar_2015/coin_day.md) |  | INT |
+| [crdc_cathrztn_amt](cms.medpar_2015/crdc_cathrztn_amt.md) |  | INT |
+| [crdlgy](cms.medpar_2015/crdlgy.md) |  | INT |
+| [cred_rcvd_rplcd_dvc_sw](cms.medpar_2015/cred_rcvd_rplcd_dvc_sw.md) |  | VARCHAR(1) |
+| [crnry_cd](cms.medpar_2015/crnry_cd.md) |  | VARCHAR(1) |
+| [crnryamt](cms.medpar_2015/crnryamt.md) |  | INT |
+| [crnryday](cms.medpar_2015/crnryday.md) |  | INT |
+| [ctscansw](cms.medpar_2015/ctscansw.md) |  | VARCHAR(1) |
+| [cvrchrg](cms.medpar_2015/cvrchrg.md) |  | INT |
+| [cvrlvldt](cms.medpar_2015/cvrlvldt.md) |  | DATE |
+| [deathcd](cms.medpar_2015/deathcd.md) |  | VARCHAR(1) |
+| [deathday](cms.medpar_2015/deathday.md) |  | INT |
+| [deathdt](cms.medpar_2015/deathdt.md) |  | DATE |
+| [ded_amt](cms.medpar_2015/ded_amt.md) |  | INT |
+| [dgns_e_10_cd](cms.medpar_2015/dgns_e_10_cd.md) |  | VARCHAR(7) |
+| [dgns_e_11_cd](cms.medpar_2015/dgns_e_11_cd.md) |  | VARCHAR(7) |
+| [dgns_e_12_cd](cms.medpar_2015/dgns_e_12_cd.md) |  | VARCHAR(7) |
+| [dgns_e_1_cd](cms.medpar_2015/dgns_e_1_cd.md) |  | VARCHAR(7) |
+| [dgns_e_2_cd](cms.medpar_2015/dgns_e_2_cd.md) |  | VARCHAR(7) |
+| [dgns_e_3_cd](cms.medpar_2015/dgns_e_3_cd.md) |  | VARCHAR(7) |
+| [dgns_e_4_cd](cms.medpar_2015/dgns_e_4_cd.md) |  | VARCHAR(7) |
+| [dgns_e_5_cd](cms.medpar_2015/dgns_e_5_cd.md) |  | VARCHAR(7) |
+| [dgns_e_6_cd](cms.medpar_2015/dgns_e_6_cd.md) |  | VARCHAR(7) |
+| [dgns_e_7_cd](cms.medpar_2015/dgns_e_7_cd.md) |  | VARCHAR(7) |
+| [dgns_e_8_cd](cms.medpar_2015/dgns_e_8_cd.md) |  | VARCHAR(7) |
+| [dgns_e_9_cd](cms.medpar_2015/dgns_e_9_cd.md) |  | VARCHAR(7) |
+| [dgns_e_cd_cnt](cms.medpar_2015/dgns_e_cd_cnt.md) |  | INT |
+| [dgns_e_vrsn_cd](cms.medpar_2015/dgns_e_vrsn_cd.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_1](cms.medpar_2015/dgns_e_vrsn_cd_1.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_10](cms.medpar_2015/dgns_e_vrsn_cd_10.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_11](cms.medpar_2015/dgns_e_vrsn_cd_11.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_12](cms.medpar_2015/dgns_e_vrsn_cd_12.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_2](cms.medpar_2015/dgns_e_vrsn_cd_2.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_3](cms.medpar_2015/dgns_e_vrsn_cd_3.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_4](cms.medpar_2015/dgns_e_vrsn_cd_4.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_5](cms.medpar_2015/dgns_e_vrsn_cd_5.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_6](cms.medpar_2015/dgns_e_vrsn_cd_6.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_7](cms.medpar_2015/dgns_e_vrsn_cd_7.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_8](cms.medpar_2015/dgns_e_vrsn_cd_8.md) |  | VARCHAR(1) |
+| [dgns_e_vrsn_cd_9](cms.medpar_2015/dgns_e_vrsn_cd_9.md) |  | VARCHAR(1) |
+| [dgns_poa](cms.medpar_2015/dgns_poa.md) |  | VARCHAR(10) |
+| [dgns_vrsn_cd](cms.medpar_2015/dgns_vrsn_cd.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_1](cms.medpar_2015/dgns_vrsn_cd_1.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_10](cms.medpar_2015/dgns_vrsn_cd_10.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_11](cms.medpar_2015/dgns_vrsn_cd_11.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_12](cms.medpar_2015/dgns_vrsn_cd_12.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_13](cms.medpar_2015/dgns_vrsn_cd_13.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_14](cms.medpar_2015/dgns_vrsn_cd_14.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_15](cms.medpar_2015/dgns_vrsn_cd_15.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_16](cms.medpar_2015/dgns_vrsn_cd_16.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_17](cms.medpar_2015/dgns_vrsn_cd_17.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_18](cms.medpar_2015/dgns_vrsn_cd_18.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_19](cms.medpar_2015/dgns_vrsn_cd_19.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_2](cms.medpar_2015/dgns_vrsn_cd_2.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_20](cms.medpar_2015/dgns_vrsn_cd_20.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_21](cms.medpar_2015/dgns_vrsn_cd_21.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_22](cms.medpar_2015/dgns_vrsn_cd_22.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_23](cms.medpar_2015/dgns_vrsn_cd_23.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_24](cms.medpar_2015/dgns_vrsn_cd_24.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_25](cms.medpar_2015/dgns_vrsn_cd_25.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_3](cms.medpar_2015/dgns_vrsn_cd_3.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_4](cms.medpar_2015/dgns_vrsn_cd_4.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_5](cms.medpar_2015/dgns_vrsn_cd_5.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_6](cms.medpar_2015/dgns_vrsn_cd_6.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_7](cms.medpar_2015/dgns_vrsn_cd_7.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_8](cms.medpar_2015/dgns_vrsn_cd_8.md) |  | VARCHAR(1) |
+| [dgns_vrsn_cd_9](cms.medpar_2015/dgns_vrsn_cd_9.md) |  | VARCHAR(1) |
+| [dgnscd1](cms.medpar_2015/dgnscd1.md) |  | VARCHAR(7) |
+| [dgnscd10](cms.medpar_2015/dgnscd10.md) |  | VARCHAR(7) |
+| [dgnscd11](cms.medpar_2015/dgnscd11.md) |  | VARCHAR(7) |
+| [dgnscd12](cms.medpar_2015/dgnscd12.md) |  | VARCHAR(7) |
+| [dgnscd13](cms.medpar_2015/dgnscd13.md) |  | VARCHAR(7) |
+| [dgnscd14](cms.medpar_2015/dgnscd14.md) |  | VARCHAR(7) |
+| [dgnscd15](cms.medpar_2015/dgnscd15.md) |  | VARCHAR(7) |
+| [dgnscd16](cms.medpar_2015/dgnscd16.md) |  | VARCHAR(7) |
+| [dgnscd17](cms.medpar_2015/dgnscd17.md) |  | VARCHAR(7) |
+| [dgnscd18](cms.medpar_2015/dgnscd18.md) |  | VARCHAR(7) |
+| [dgnscd19](cms.medpar_2015/dgnscd19.md) |  | VARCHAR(7) |
+| [dgnscd2](cms.medpar_2015/dgnscd2.md) |  | VARCHAR(7) |
+| [dgnscd20](cms.medpar_2015/dgnscd20.md) |  | VARCHAR(7) |
+| [dgnscd21](cms.medpar_2015/dgnscd21.md) |  | VARCHAR(7) |
+| [dgnscd22](cms.medpar_2015/dgnscd22.md) |  | VARCHAR(7) |
+| [dgnscd23](cms.medpar_2015/dgnscd23.md) |  | VARCHAR(7) |
+| [dgnscd24](cms.medpar_2015/dgnscd24.md) |  | VARCHAR(7) |
+| [dgnscd25](cms.medpar_2015/dgnscd25.md) |  | VARCHAR(7) |
+| [dgnscd3](cms.medpar_2015/dgnscd3.md) |  | VARCHAR(7) |
+| [dgnscd4](cms.medpar_2015/dgnscd4.md) |  | VARCHAR(7) |
+| [dgnscd5](cms.medpar_2015/dgnscd5.md) |  | VARCHAR(7) |
+| [dgnscd6](cms.medpar_2015/dgnscd6.md) |  | VARCHAR(7) |
+| [dgnscd7](cms.medpar_2015/dgnscd7.md) |  | VARCHAR(7) |
+| [dgnscd8](cms.medpar_2015/dgnscd8.md) |  | VARCHAR(7) |
+| [dgnscd9](cms.medpar_2015/dgnscd9.md) |  | VARCHAR(7) |
+| [dgnscnt](cms.medpar_2015/dgnscnt.md) |  | INT |
+| [dgnstcsw](cms.medpar_2015/dgnstcsw.md) |  | VARCHAR(1) |
+| [disp_shr](cms.medpar_2015/disp_shr.md) |  | INT |
+| [dme_amt](cms.medpar_2015/dme_amt.md) |  | INT |
+| [dprtmntl](cms.medpar_2015/dprtmntl.md) |  | INT |
+| [drg_cd](cms.medpar_2015/drg_cd.md) |  | VARCHAR(3) |
+| [drgprice](cms.medpar_2015/drgprice.md) |  | INT |
+| [dschrgcd](cms.medpar_2015/dschrgcd.md) |  | VARCHAR(1) |
+| [dschrgdt](cms.medpar_2015/dschrgdt.md) |  | DATE |
+| [dstntncd](cms.medpar_2015/dstntncd.md) |  | VARCHAR(2) |
+| [ehr_pymt_adjstmt_amt](cms.medpar_2015/ehr_pymt_adjstmt_amt.md) |  | INT |
+| [eq_bic](cms.medpar_2015/eq_bic.md) |  | VARCHAR(2) |
+| [er_amt](cms.medpar_2015/er_amt.md) |  | INT |
+| [esrd_cd](cms.medpar_2015/esrd_cd.md) |  | VARCHAR(2) |
+| [esrdsetg](cms.medpar_2015/esrdsetg.md) |  | INT |
+| [esrdstg1](cms.medpar_2015/esrdstg1.md) |  | VARCHAR(2) |
+| [esrdstg2](cms.medpar_2015/esrdstg2.md) |  | VARCHAR(2) |
+| [esrdstg3](cms.medpar_2015/esrdstg3.md) |  | VARCHAR(2) |
+| [esrdstg4](cms.medpar_2015/esrdstg4.md) |  | VARCHAR(2) |
+| [esrdstg5](cms.medpar_2015/esrdstg5.md) |  | VARCHAR(2) |
+| [exhst_dt](cms.medpar_2015/exhst_dt.md) |  | DATE |
+| [faclmcnt](cms.medpar_2015/faclmcnt.md) |  | INT |
+| [ficarr](cms.medpar_2015/ficarr.md) |  | VARCHAR(5) |
+| [fildtcd](cms.medpar_2015/fildtcd.md) |  | VARCHAR(1) |
+| [file](cms.medpar_2015/file.md) | file | VARCHAR(128) |
+| [finl_std_amt](cms.medpar_2015/finl_std_amt.md) |  | INT |
+| [ghopdcd](cms.medpar_2015/ghopdcd.md) |  | VARCHAR(1) |
+| [hac_pgm_rdctn_ind_sw](cms.medpar_2015/hac_pgm_rdctn_ind_sw.md) |  | VARCHAR(1) |
+| [hac_rdctn_pmt_amt](cms.medpar_2015/hac_rdctn_pmt_amt.md) |  | INT |
+| [hrr_adjstmt_amt](cms.medpar_2015/hrr_adjstmt_amt.md) |  | INT |
+| [hrr_adjstmt_pct](cms.medpar_2015/hrr_adjstmt_pct.md) |  | NUMERIC(8,5) |
+| [hrr_prtcpnt_ind_cd](cms.medpar_2015/hrr_prtcpnt_ind_cd.md) |  | VARCHAR(1) |
+| [icareamt](cms.medpar_2015/icareamt.md) |  | INT |
+| [icarecnt](cms.medpar_2015/icarecnt.md) |  | INT |
+| [icuindcd](cms.medpar_2015/icuindcd.md) |  | VARCHAR(1) |
+| [ime_amt](cms.medpar_2015/ime_amt.md) |  | INT |
+| [imgng_sw](cms.medpar_2015/imgng_sw.md) |  | VARCHAR(1) |
+| [incdnt_dgnstc_srvcs_amt](cms.medpar_2015/incdnt_dgnstc_srvcs_amt.md) |  | INT |
+| [incdnt_rdlgy_amt](cms.medpar_2015/incdnt_rdlgy_amt.md) |  | INT |
+| [infrmtl_enctr_ind_sw](cms.medpar_2015/infrmtl_enctr_ind_sw.md) |  | VARCHAR(1) |
+| [inhltamt](cms.medpar_2015/inhltamt.md) |  | INT |
+| [intraocular_lens_amt](cms.medpar_2015/intraocular_lens_amt.md) |  | INT |
+| [intrnl_use_ssi_data](cms.medpar_2015/intrnl_use_ssi_data.md) |  | VARCHAR(1) |
+| [invstgtnl_dvc_amt](cms.medpar_2015/invstgtnl_dvc_amt.md) |  | INT |
+| [ip_low_vol_pymt_amt](cms.medpar_2015/ip_low_vol_pymt_amt.md) |  | INT |
+| [ipps_flex_pymt_7_amt](cms.medpar_2015/ipps_flex_pymt_7_amt.md) |  | INT |
+| [ipsbcd](cms.medpar_2015/ipsbcd.md) |  | VARCHAR(3) |
+| [lab_amt](cms.medpar_2015/lab_amt.md) |  | INT |
+| [loscnt](cms.medpar_2015/loscnt.md) |  | INT |
+| [lrd_use](cms.medpar_2015/lrd_use.md) |  | INT |
+| [lthtrpsy](cms.medpar_2015/lthtrpsy.md) |  | INT |
+| [ma_tchng_ind_sw](cms.medpar_2015/ma_tchng_ind_sw.md) |  | VARCHAR(1) |
+| [mdcl_srgcl_drsng_amt](cms.medpar_2015/mdcl_srgcl_drsng_amt.md) |  | INT |
+| [mdcl_srgcl_gnrl_amt](cms.medpar_2015/mdcl_srgcl_gnrl_amt.md) |  | INT |
+| [mdcl_srgcl_misc_amt](cms.medpar_2015/mdcl_srgcl_misc_amt.md) |  | INT |
+| [mdcl_srgcl_nstrl_amt](cms.medpar_2015/mdcl_srgcl_nstrl_amt.md) |  | INT |
+| [mdcl_srgcl_pcmkr_amt](cms.medpar_2015/mdcl_srgcl_pcmkr_amt.md) |  | INT |
+| [mdcl_srgcl_strl_amt](cms.medpar_2015/mdcl_srgcl_strl_amt.md) |  | INT |
+| [medpar_yr_num](cms.medpar_2015/medpar_yr_num.md) |  | VARCHAR(4) |
+| [medparid](cms.medpar_2015/medparid.md) |  | VARCHAR(15) |
+| [mri_amt](cms.medpar_2015/mri_amt.md) |  | INT |
+| [ms_cd](cms.medpar_2015/ms_cd.md) |  | VARCHAR(2) |
+| [new_tchnlgy_add_on_amt](cms.medpar_2015/new_tchnlgy_add_on_amt.md) |  | INT |
+| [nuclr_sw](cms.medpar_2015/nuclr_sw.md) |  | VARCHAR(1) |
+| [obsrvtn_sw](cms.medpar_2015/obsrvtn_sw.md) |  | VARCHAR(1) |
+| [ocptlamt](cms.medpar_2015/ocptlamt.md) |  | INT |
+| [onclgysw](cms.medpar_2015/onclgysw.md) |  | VARCHAR(1) |
+| [oprtg_hsp_amt](cms.medpar_2015/oprtg_hsp_amt.md) |  | INT |
+| [oprtg_room_amt](cms.medpar_2015/oprtg_room_amt.md) |  | INT |
+| [opsrvc](cms.medpar_2015/opsrvc.md) |  | INT |
+| [opsrvccd](cms.medpar_2015/opsrvccd.md) |  | VARCHAR(1) |
+| [or_labor_dlvry_amt](cms.medpar_2015/or_labor_dlvry_amt.md) |  | INT |
+| [orgnamt](cms.medpar_2015/orgnamt.md) |  | INT |
+| [orgncd](cms.medpar_2015/orgncd.md) |  | VARCHAR(2) |
+| [orgnpinm](cms.medpar_2015/orgnpinm.md) |  | VARCHAR(10) |
+| [oroomamt](cms.medpar_2015/oroomamt.md) |  | INT |
+| [othr_implants_amt](cms.medpar_2015/othr_implants_amt.md) |  | INT |
+| [othr_suplies_dvc_amt](cms.medpar_2015/othr_suplies_dvc_amt.md) |  | INT |
+| [othramt](cms.medpar_2015/othramt.md) |  | INT |
+| [outlr_cd](cms.medpar_2015/outlr_cd.md) |  | VARCHAR(1) |
+| [outlramt](cms.medpar_2015/outlramt.md) |  | INT |
+| [outlrday](cms.medpar_2015/outlrday.md) |  | INT |
+| [oxygn_take_home_amt](cms.medpar_2015/oxygn_take_home_amt.md) |  | INT |
+| [pa_ind_cd](cms.medpar_2015/pa_ind_cd.md) |  | VARCHAR(4) |
+| [passthru](cms.medpar_2015/passthru.md) |  | INT |
+| [pgm_rdctn_ind_sw](cms.medpar_2015/pgm_rdctn_ind_sw.md) |  | VARCHAR(1) |
+| [phrmcamt](cms.medpar_2015/phrmcamt.md) |  | INT |
+| [phrmcycd](cms.medpar_2015/phrmcycd.md) |  | VARCHAR(1) |
+| [phythamt](cms.medpar_2015/phythamt.md) |  | INT |
+| [pmt_amt](cms.medpar_2015/pmt_amt.md) |  | INT |
+| [poa_dgns_10_ind_cd](cms.medpar_2015/poa_dgns_10_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_11_ind_cd](cms.medpar_2015/poa_dgns_11_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_12_ind_cd](cms.medpar_2015/poa_dgns_12_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_13_ind_cd](cms.medpar_2015/poa_dgns_13_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_14_ind_cd](cms.medpar_2015/poa_dgns_14_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_15_ind_cd](cms.medpar_2015/poa_dgns_15_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_16_ind_cd](cms.medpar_2015/poa_dgns_16_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_17_ind_cd](cms.medpar_2015/poa_dgns_17_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_18_ind_cd](cms.medpar_2015/poa_dgns_18_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_19_ind_cd](cms.medpar_2015/poa_dgns_19_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_1_ind_cd](cms.medpar_2015/poa_dgns_1_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_20_ind_cd](cms.medpar_2015/poa_dgns_20_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_21_ind_cd](cms.medpar_2015/poa_dgns_21_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_22_ind_cd](cms.medpar_2015/poa_dgns_22_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_23_ind_cd](cms.medpar_2015/poa_dgns_23_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_24_ind_cd](cms.medpar_2015/poa_dgns_24_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_25_ind_cd](cms.medpar_2015/poa_dgns_25_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_2_ind_cd](cms.medpar_2015/poa_dgns_2_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_3_ind_cd](cms.medpar_2015/poa_dgns_3_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_4_ind_cd](cms.medpar_2015/poa_dgns_4_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_5_ind_cd](cms.medpar_2015/poa_dgns_5_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_6_ind_cd](cms.medpar_2015/poa_dgns_6_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_7_ind_cd](cms.medpar_2015/poa_dgns_7_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_8_ind_cd](cms.medpar_2015/poa_dgns_8_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_9_ind_cd](cms.medpar_2015/poa_dgns_9_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_cd_cnt](cms.medpar_2015/poa_dgns_cd_cnt.md) |  | INT |
+| [poa_dgns_e_10_ind_cd](cms.medpar_2015/poa_dgns_e_10_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_11_ind_cd](cms.medpar_2015/poa_dgns_e_11_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_12_ind_cd](cms.medpar_2015/poa_dgns_e_12_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_1_ind_cd](cms.medpar_2015/poa_dgns_e_1_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_2_ind_cd](cms.medpar_2015/poa_dgns_e_2_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_3_ind_cd](cms.medpar_2015/poa_dgns_e_3_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_4_ind_cd](cms.medpar_2015/poa_dgns_e_4_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_5_ind_cd](cms.medpar_2015/poa_dgns_e_5_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_6_ind_cd](cms.medpar_2015/poa_dgns_e_6_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_7_ind_cd](cms.medpar_2015/poa_dgns_e_7_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_8_ind_cd](cms.medpar_2015/poa_dgns_e_8_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_9_ind_cd](cms.medpar_2015/poa_dgns_e_9_ind_cd.md) |  | VARCHAR(1) |
+| [poa_dgns_e_cd_cnt](cms.medpar_2015/poa_dgns_e_cd_cnt.md) |  | INT |
+| [pps_cptl](cms.medpar_2015/pps_cptl.md) |  | INT |
+| [pps_ind](cms.medpar_2015/pps_ind.md) |  | VARCHAR(1) |
+| [pps_std_val_pymt_amt](cms.medpar_2015/pps_std_val_pymt_amt.md) |  | INT |
+| [prcdrcd1](cms.medpar_2015/prcdrcd1.md) |  | VARCHAR(7) |
+| [prcdrcd10](cms.medpar_2015/prcdrcd10.md) |  | VARCHAR(7) |
+| [prcdrcd11](cms.medpar_2015/prcdrcd11.md) |  | VARCHAR(7) |
+| [prcdrcd12](cms.medpar_2015/prcdrcd12.md) |  | VARCHAR(7) |
+| [prcdrcd13](cms.medpar_2015/prcdrcd13.md) |  | VARCHAR(7) |
+| [prcdrcd14](cms.medpar_2015/prcdrcd14.md) |  | VARCHAR(7) |
+| [prcdrcd15](cms.medpar_2015/prcdrcd15.md) |  | VARCHAR(7) |
+| [prcdrcd16](cms.medpar_2015/prcdrcd16.md) |  | VARCHAR(7) |
+| [prcdrcd17](cms.medpar_2015/prcdrcd17.md) |  | VARCHAR(7) |
+| [prcdrcd18](cms.medpar_2015/prcdrcd18.md) |  | VARCHAR(7) |
+| [prcdrcd19](cms.medpar_2015/prcdrcd19.md) |  | VARCHAR(7) |
+| [prcdrcd2](cms.medpar_2015/prcdrcd2.md) |  | VARCHAR(7) |
+| [prcdrcd20](cms.medpar_2015/prcdrcd20.md) |  | VARCHAR(7) |
+| [prcdrcd21](cms.medpar_2015/prcdrcd21.md) |  | VARCHAR(7) |
+| [prcdrcd22](cms.medpar_2015/prcdrcd22.md) |  | VARCHAR(7) |
+| [prcdrcd23](cms.medpar_2015/prcdrcd23.md) |  | VARCHAR(7) |
+| [prcdrcd24](cms.medpar_2015/prcdrcd24.md) |  | VARCHAR(7) |
+| [prcdrcd25](cms.medpar_2015/prcdrcd25.md) |  | VARCHAR(7) |
+| [prcdrcd3](cms.medpar_2015/prcdrcd3.md) |  | VARCHAR(7) |
+| [prcdrcd4](cms.medpar_2015/prcdrcd4.md) |  | VARCHAR(7) |
+| [prcdrcd5](cms.medpar_2015/prcdrcd5.md) |  | VARCHAR(7) |
+| [prcdrcd6](cms.medpar_2015/prcdrcd6.md) |  | VARCHAR(7) |
+| [prcdrcd7](cms.medpar_2015/prcdrcd7.md) |  | VARCHAR(7) |
+| [prcdrcd8](cms.medpar_2015/prcdrcd8.md) |  | VARCHAR(7) |
+| [prcdrcd9](cms.medpar_2015/prcdrcd9.md) |  | VARCHAR(7) |
+| [prcdrcnt](cms.medpar_2015/prcdrcnt.md) |  | INT |
+| [prcdrdt1](cms.medpar_2015/prcdrdt1.md) |  | DATE |
+| [prcdrdt10](cms.medpar_2015/prcdrdt10.md) |  | DATE |
+| [prcdrdt11](cms.medpar_2015/prcdrdt11.md) |  | DATE |
+| [prcdrdt12](cms.medpar_2015/prcdrdt12.md) |  | DATE |
+| [prcdrdt13](cms.medpar_2015/prcdrdt13.md) |  | DATE |
+| [prcdrdt14](cms.medpar_2015/prcdrdt14.md) |  | DATE |
+| [prcdrdt15](cms.medpar_2015/prcdrdt15.md) |  | DATE |
+| [prcdrdt16](cms.medpar_2015/prcdrdt16.md) |  | DATE |
+| [prcdrdt17](cms.medpar_2015/prcdrdt17.md) |  | DATE |
+| [prcdrdt18](cms.medpar_2015/prcdrdt18.md) |  | DATE |
+| [prcdrdt19](cms.medpar_2015/prcdrdt19.md) |  | DATE |
+| [prcdrdt2](cms.medpar_2015/prcdrdt2.md) |  | DATE |
+| [prcdrdt20](cms.medpar_2015/prcdrdt20.md) |  | DATE |
+| [prcdrdt21](cms.medpar_2015/prcdrdt21.md) |  | DATE |
+| [prcdrdt22](cms.medpar_2015/prcdrdt22.md) |  | DATE |
+| [prcdrdt23](cms.medpar_2015/prcdrdt23.md) |  | DATE |
+| [prcdrdt24](cms.medpar_2015/prcdrdt24.md) |  | DATE |
+| [prcdrdt25](cms.medpar_2015/prcdrdt25.md) |  | DATE |
+| [prcdrdt3](cms.medpar_2015/prcdrdt3.md) |  | DATE |
+| [prcdrdt4](cms.medpar_2015/prcdrdt4.md) |  | DATE |
+| [prcdrdt5](cms.medpar_2015/prcdrdt5.md) |  | DATE |
+| [prcdrdt6](cms.medpar_2015/prcdrdt6.md) |  | DATE |
+| [prcdrdt7](cms.medpar_2015/prcdrdt7.md) |  | DATE |
+| [prcdrdt8](cms.medpar_2015/prcdrdt8.md) |  | DATE |
+| [prcdrdt9](cms.medpar_2015/prcdrdt9.md) |  | DATE |
+| [prcdrsw](cms.medpar_2015/prcdrsw.md) |  | VARCHAR(1) |
+| [prcdtcnt](cms.medpar_2015/prcdtcnt.md) |  | INT |
+| [prod_rplcmt_lifecyc_sw](cms.medpar_2015/prod_rplcmt_lifecyc_sw.md) |  | VARCHAR(1) |
+| [prod_rplcmt_rcll_sw](cms.medpar_2015/prod_rplcmt_rcll_sw.md) |  | VARCHAR(1) |
+| [proffees](cms.medpar_2015/proffees.md) |  | INT |
+| [prpay_cd](cms.medpar_2015/prpay_cd.md) |  | VARCHAR(1) |
+| [prpayamt](cms.medpar_2015/prpayamt.md) |  | INT |
+| [prsthtc_orthtc_amt](cms.medpar_2015/prsthtc_orthtc_amt.md) |  | INT |
+| [prvdrnum](cms.medpar_2015/prvdrnum.md) |  | VARCHAR(10) |
+| [prvtamt](cms.medpar_2015/prvtamt.md) |  | INT |
+| [prvtday](cms.medpar_2015/prvtday.md) |  | INT |
+| [ptnt_add_on_pymt_amt](cms.medpar_2015/ptnt_add_on_pymt_amt.md) |  | INT |
+| [qlfyfrom](cms.medpar_2015/qlfyfrom.md) |  | DATE |
+| [qlfythru](cms.medpar_2015/qlfythru.md) |  | DATE |
+| [race](cms.medpar_2015/race.md) |  | VARCHAR(1) |
+| [rc_rp_ind_cd](cms.medpar_2015/rc_rp_ind_cd.md) |  | VARCHAR(1) |
+| [rdlgy_ct_scan_amt](cms.medpar_2015/rdlgy_ct_scan_amt.md) |  | INT |
+| [rdlgy_dgnstc_amt](cms.medpar_2015/rdlgy_dgnstc_amt.md) |  | INT |
+| [rdlgy_nuclr_mdcn_amt](cms.medpar_2015/rdlgy_nuclr_mdcn_amt.md) |  | INT |
+| [rdlgy_oncology_amt](cms.medpar_2015/rdlgy_oncology_amt.md) |  | INT |
+| [rdlgy_othr_imgng_amt](cms.medpar_2015/rdlgy_othr_imgng_amt.md) |  | INT |
+| [rdlgy_thrptc_amt](cms.medpar_2015/rdlgy_thrptc_amt.md) |  | INT |
+| [rdlgyamt](cms.medpar_2015/rdlgyamt.md) |  | INT |
+| [record](cms.medpar_2015/record.md) |  | BIGSERIAL |
+| [sex](cms.medpar_2015/sex.md) |  | VARCHAR(1) |
+| [slct_rsn_cd](cms.medpar_2015/slct_rsn_cd.md) |  | VARCHAR(1) |
+| [smplsize](cms.medpar_2015/smplsize.md) |  | VARCHAR(1) |
+| [spch_amt](cms.medpar_2015/spch_amt.md) |  | INT |
+| [spclunit](cms.medpar_2015/spclunit.md) |  | VARCHAR(1) |
+| [sprvtamt](cms.medpar_2015/sprvtamt.md) |  | INT |
+| [sprvtday](cms.medpar_2015/sprvtday.md) |  | INT |
+| [sqstrtn_rdctn_amt](cms.medpar_2015/sqstrtn_rdctn_amt.md) |  | INT |
+| [src_adms](cms.medpar_2015/src_adms.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd](cms.medpar_2015/srgcl_prcdr_vrsn_cd.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_1](cms.medpar_2015/srgcl_prcdr_vrsn_cd_1.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_10](cms.medpar_2015/srgcl_prcdr_vrsn_cd_10.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_11](cms.medpar_2015/srgcl_prcdr_vrsn_cd_11.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_12](cms.medpar_2015/srgcl_prcdr_vrsn_cd_12.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_13](cms.medpar_2015/srgcl_prcdr_vrsn_cd_13.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_14](cms.medpar_2015/srgcl_prcdr_vrsn_cd_14.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_15](cms.medpar_2015/srgcl_prcdr_vrsn_cd_15.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_16](cms.medpar_2015/srgcl_prcdr_vrsn_cd_16.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_17](cms.medpar_2015/srgcl_prcdr_vrsn_cd_17.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_18](cms.medpar_2015/srgcl_prcdr_vrsn_cd_18.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_19](cms.medpar_2015/srgcl_prcdr_vrsn_cd_19.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_2](cms.medpar_2015/srgcl_prcdr_vrsn_cd_2.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_20](cms.medpar_2015/srgcl_prcdr_vrsn_cd_20.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_21](cms.medpar_2015/srgcl_prcdr_vrsn_cd_21.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_22](cms.medpar_2015/srgcl_prcdr_vrsn_cd_22.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_23](cms.medpar_2015/srgcl_prcdr_vrsn_cd_23.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_24](cms.medpar_2015/srgcl_prcdr_vrsn_cd_24.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_25](cms.medpar_2015/srgcl_prcdr_vrsn_cd_25.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_3](cms.medpar_2015/srgcl_prcdr_vrsn_cd_3.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_4](cms.medpar_2015/srgcl_prcdr_vrsn_cd_4.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_5](cms.medpar_2015/srgcl_prcdr_vrsn_cd_5.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_6](cms.medpar_2015/srgcl_prcdr_vrsn_cd_6.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_7](cms.medpar_2015/srgcl_prcdr_vrsn_cd_7.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_8](cms.medpar_2015/srgcl_prcdr_vrsn_cd_8.md) |  | VARCHAR(1) |
+| [srgcl_prcdr_vrsn_cd_9](cms.medpar_2015/srgcl_prcdr_vrsn_cd_9.md) |  | VARCHAR(1) |
+| [ssicd](cms.medpar_2015/ssicd.md) |  | VARCHAR(1) |
+| [ssiday](cms.medpar_2015/ssiday.md) |  | INT |
+| [sslssnf](cms.medpar_2015/sslssnf.md) |  | VARCHAR(1) |
+| [state](cms.medpar_2015/state.md) | generated | VARCHAR(2) |
+| [state_cd](cms.medpar_2015/state_cd.md) |  | VARCHAR(2) |
+| [stay_2_ind_sw](cms.medpar_2015/stay_2_ind_sw.md) |  | VARCHAR(1) |
+| [suplyamt](cms.medpar_2015/suplyamt.md) |  | INT |
+| [take_home_amt](cms.medpar_2015/take_home_amt.md) |  | INT |
+| [thrptcsw](cms.medpar_2015/thrptcsw.md) |  | VARCHAR(1) |
+| [totchrg](cms.medpar_2015/totchrg.md) |  | INT |
+| [trnsplnt](cms.medpar_2015/trnsplnt.md) |  | VARCHAR(1) |
+| [type_adm](cms.medpar_2015/type_adm.md) |  | VARCHAR(1) |
+| [udme_amt](cms.medpar_2015/udme_amt.md) |  | INT |
+| [uncompd_care_pymt_amt](cms.medpar_2015/uncompd_care_pymt_amt.md) |  | INT |
+| [uniq_trkng_num](cms.medpar_2015/uniq_trkng_num.md) |  | VARCHAR(14) |
+| [util_day](cms.medpar_2015/util_day.md) |  | INT |
+| [vbp_adjstmt_amt](cms.medpar_2015/vbp_adjstmt_amt.md) |  | INT |
+| [vbp_adjstmt_pct](cms.medpar_2015/vbp_adjstmt_pct.md) |  | NUMERIC(15,12) |
+| [vbp_prtcpnt_ind_cd](cms.medpar_2015/vbp_prtcpnt_ind_cd.md) |  | VARCHAR(1) |
+| [wardamt](cms.medpar_2015/wardamt.md) |  | INT |
+| [wardday](cms.medpar_2015/wardday.md) |  | INT |
+| [wrngcd](cms.medpar_2015/wrngcd.md) |  | VARCHAR(18) |
+| [year](cms.medpar_2015/year.md) | generated | VARCHAR(4) |
+| [zip](cms.medpar_2015/zip.md) | generated | VARCHAR(5) |
 
 

@@ -19,7 +19,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/curec.svg
+```{figure} curec.svg
 :align: center
 :alt: Column medicare.ps.curec Lineage SVG
 :target: curec_svg_envelop.html

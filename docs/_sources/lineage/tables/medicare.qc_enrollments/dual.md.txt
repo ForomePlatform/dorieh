@@ -10,7 +10,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/dual.svg
+```{figure} dual.svg
 :align: center
 :alt: Column medicare.qc_enrollments.dual Lineage SVG
 :target: dual_svg_envelop.html

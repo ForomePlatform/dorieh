@@ -10,7 +10,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag8.svg
+```{figure} diag8.svg
 :align: center
 :alt: Column medicare.ip.diag8 Lineage SVG
 :target: diag8_svg_envelop.html

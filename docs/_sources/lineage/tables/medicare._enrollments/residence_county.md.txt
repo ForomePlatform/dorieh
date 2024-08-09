@@ -18,7 +18,7 @@ MAX(fips3)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/residence_county.svg
+```{figure} residence_county.svg
 :align: center
 :alt: Column medicare._enrollments.residence_county Lineage SVG
 :target: residence_county_svg_envelop.html

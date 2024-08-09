@@ -17,7 +17,7 @@ to an outlier situation over the DRG allowance for the stay.
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/drg_outlier_pmt_amt.svg
+```{figure} drg_outlier_pmt_amt.svg
 :align: center
 :alt: Column medicare.ip.drg_outlier_pmt_amt Lineage SVG
 :target: drg_outlier_pmt_amt_svg_envelop.html

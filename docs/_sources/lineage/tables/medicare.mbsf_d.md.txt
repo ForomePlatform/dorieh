@@ -1,6 +1,16 @@
 # Materialized view medicare.mbsf_d
 
 ## Overview for medicare.mbsf_d
+
+```{toctree}
+medicare.mbsf_d/bene_id.md
+medicare.mbsf_d/dual_indicators.md
+medicare.mbsf_d/dual_mo.md
+medicare.mbsf_d/file.md
+medicare.mbsf_d/record.md
+medicare.mbsf_d/year.md
+```
+
 Data from mbsf_d* files that is used to create beneficiary and
 enrollment tables
 

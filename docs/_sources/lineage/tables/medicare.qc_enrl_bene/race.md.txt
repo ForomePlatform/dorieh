@@ -28,7 +28,7 @@ string_agg(distinct race, ',')
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/race.svg
+```{figure} race.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.race Lineage SVG
 :target: race_svg_envelop.html

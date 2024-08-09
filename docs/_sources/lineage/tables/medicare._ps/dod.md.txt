@@ -24,7 +24,7 @@ Date of beneficiary death, if available
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/dod.svg
+```{figure} dod.svg
 :align: center
 :alt: Column medicare._ps.dod Lineage SVG
 :target: dod_svg_envelop.html

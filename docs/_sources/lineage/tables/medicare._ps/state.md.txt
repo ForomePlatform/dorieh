@@ -27,7 +27,7 @@ State Code
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/state.svg
+```{figure} state.svg
 :align: center
 :alt: Column medicare._ps.state Lineage SVG
 :target: state_svg_envelop.html

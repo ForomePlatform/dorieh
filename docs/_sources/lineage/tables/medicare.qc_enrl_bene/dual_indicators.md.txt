@@ -19,7 +19,7 @@
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dual_indicators.svg
+```{figure} dual_indicators.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.dual_indicators Lineage SVG
 :target: dual_indicators_svg_envelop.html

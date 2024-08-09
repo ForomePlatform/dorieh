@@ -1,6 +1,45 @@
 # Table medicare.admissions
 
 ## Overview for medicare.admissions
+
+```{toctree}
+medicare.admissions/adm_day_of_week.md
+medicare.admissions/admission_date.md
+medicare.admissions/admission_date_raw.md
+medicare.admissions/admission_year.md
+medicare.admissions/admsn_type_cd.md
+medicare.admissions/bene.md
+medicare.admissions/bene_blood_ddctbl_amt.md
+medicare.admissions/bene_id.md
+medicare.admissions/bene_ip_ddctbl_amt.md
+medicare.admissions/bene_prmry_pyr_amt.md
+medicare.admissions/bene_pta_coinsrnc_amt.md
+medicare.admissions/diagnoses.md
+medicare.admissions/discharge_date.md
+medicare.admissions/discharge_date_raw.md
+medicare.admissions/drg_outlier_pmt_amt.md
+medicare.admissions/drg_price_amt.md
+medicare.admissions/dschrg_dstntn_cd.md
+medicare.admissions/dschrgcd.md
+medicare.admissions/file.md
+medicare.admissions/fips2.md
+medicare.admissions/icd_hll.md
+medicare.admissions/los_day_cnt.md
+medicare.admissions/mdcr_pmt_amt.md
+medicare.admissions/pass_thru_amt.md
+medicare.admissions/pd_hll_hash.md
+medicare.admissions/primary_diagnosis.md
+medicare.admissions/quality.md
+medicare.admissions/record.md
+medicare.admissions/src_admsn_cd.md
+medicare.admissions/ssa2.md
+medicare.admissions/state.md
+medicare.admissions/state_iso.md
+medicare.admissions/year.md
+medicare.admissions/zip.md
+medicare.admissions/zip4.md
+```
+
 Medicare inpatient admissions
 
 
@@ -180,7 +219,7 @@ $body$ LANGUAGE plpgsql;
 
 CREATE TRIGGER medicare_admissions_validation BEFORE INSERT ON medicare.admissions
         FOR EACH ROW EXECUTE FUNCTION medicare.validate_admissions();
-COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.198651';
+COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.914267';
 ```
 
 </details>

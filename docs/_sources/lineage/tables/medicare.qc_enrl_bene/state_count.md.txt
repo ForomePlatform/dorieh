@@ -26,7 +26,7 @@
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/state_count.svg
+```{figure} state_count.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.state_count Lineage SVG
 :target: state_count_svg_envelop.html

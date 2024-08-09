@@ -21,7 +21,7 @@ END
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dod_earliest.svg
+```{figure} dod_earliest.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.dod_earliest Lineage SVG
 :target: dod_earliest_svg_envelop.html

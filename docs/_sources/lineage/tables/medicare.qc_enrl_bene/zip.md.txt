@@ -27,7 +27,7 @@ MAX(zip)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/zip.svg
+```{figure} zip.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.zip Lineage SVG
 :target: zip_svg_envelop.html

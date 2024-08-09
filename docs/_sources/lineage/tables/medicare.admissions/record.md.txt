@@ -20,7 +20,7 @@ Record number in the file
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/record.svg
+```{figure} record.svg
 :align: center
 :alt: Column medicare.admissions.record Lineage SVG
 :target: record_svg_envelop.html

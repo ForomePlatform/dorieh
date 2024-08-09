@@ -18,7 +18,7 @@ MAX(dod)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/dod.svg
+```{figure} dod.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.dod Lineage SVG
 :target: dod_svg_envelop.html

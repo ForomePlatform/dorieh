@@ -16,7 +16,7 @@ The amount of money (rounded to whole dollars) identified as the beneficiary's l
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/bene_pta_coinsrnc_amt.svg
+```{figure} bene_pta_coinsrnc_amt.svg
 :align: center
 :alt: Column medicare.ip.bene_pta_coinsrnc_amt Lineage SVG
 :target: bene_pta_coinsrnc_amt_svg_envelop.html

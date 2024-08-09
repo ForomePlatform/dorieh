@@ -1,6 +1,37 @@
 # Materialized view medicare._ps
 
 ## Overview for medicare._ps
+
+```{toctree}
+medicare._ps/age.md
+medicare._ps/bene_id.md
+medicare._ps/buyin_cvg_count.md
+medicare._ps/buyin_indicators.md
+medicare._ps/curec.md
+medicare._ps/dob.md
+medicare._ps/dod.md
+medicare._ps/dod_ndi.md
+medicare._ps/file.md
+medicare._ps/fips2.md
+medicare._ps/fips3.md
+medicare._ps/fips3_is_approximated.md
+medicare._ps/fips3_list.md
+medicare._ps/hmo_cvg_count.md
+medicare._ps/hmo_indicators.md
+medicare._ps/orec.md
+medicare._ps/race.md
+medicare._ps/race_rti.md
+medicare._ps/record.md
+medicare._ps/sex.md
+medicare._ps/ssa2.md
+medicare._ps/ssa3.md
+medicare._ps/state.md
+medicare._ps/year.md
+medicare._ps/yob.md
+medicare._ps/zip.md
+medicare._ps/zip4.md
+```
+
 internal intermediate view adding some data conversions
 
 Transformed from [medicare.ps](medicare.ps.html)
@@ -30,7 +61,7 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 FROM medicare.ps
 ;
 
-COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.174483';
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.889294';
 ```
 
 </details>

@@ -30,7 +30,7 @@ Number of possible discrepancies for the beneficiary, .i.e., records that use al
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/discrepancies.svg
+```{figure} discrepancies.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.discrepancies Lineage SVG
 :target: discrepancies_svg_envelop.html

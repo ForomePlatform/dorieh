@@ -18,7 +18,7 @@ reason
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/reason.svg
+```{figure} reason.svg
 :align: center
 :alt: Column medicare.qc_adm_union.reason Lineage SVG
 :target: reason_svg_envelop.html

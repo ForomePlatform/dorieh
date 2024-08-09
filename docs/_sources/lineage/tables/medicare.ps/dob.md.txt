@@ -24,7 +24,7 @@ Date of birth
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ps/dob.svg
+```{figure} dob.svg
 :align: center
 :alt: Column medicare.ps.dob Lineage SVG
 :target: dob_svg_envelop.html

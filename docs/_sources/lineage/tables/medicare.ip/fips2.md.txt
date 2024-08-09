@@ -18,7 +18,7 @@
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/fips2.svg
+```{figure} fips2.svg
 :align: center
 :alt: Column medicare.ip.fips2 Lineage SVG
 :target: fips2_svg_envelop.html

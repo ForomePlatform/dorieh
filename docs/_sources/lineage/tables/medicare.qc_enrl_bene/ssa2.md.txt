@@ -18,7 +18,7 @@ MAX(ssa2)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/ssa2.svg
+```{figure} ssa2.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.ssa2 Lineage SVG
 :target: ssa2_svg_envelop.html

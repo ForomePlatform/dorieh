@@ -27,7 +27,7 @@ string_agg(distinct RECORD::VARCHAR, ',')
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/record.svg
+```{figure} record.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.record Lineage SVG
 :target: record_svg_envelop.html

@@ -18,7 +18,7 @@ string_agg(distinct zip::varchar, ',')
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/zips.svg
+```{figure} zips.svg
 :align: center
 :alt: Column medicare.enrollments.zips Lineage SVG
 :target: zips_svg_envelop.html

@@ -1,6 +1,62 @@
 # View medicare.ip
 
 ## Overview for medicare.ip
+
+```{toctree}
+medicare.ip/adm_day_of_week.md
+medicare.ip/admission_date.md
+medicare.ip/admission_date_raw.md
+medicare.ip/admsn_type_cd.md
+medicare.ip/bene_blood_ddctbl_amt.md
+medicare.ip/bene_id.md
+medicare.ip/bene_ip_ddctbl_amt.md
+medicare.ip/bene_prmry_pyr_amt.md
+medicare.ip/bene_pta_coinsrnc_amt.md
+medicare.ip/diag1.md
+medicare.ip/diag10.md
+medicare.ip/diag11.md
+medicare.ip/diag12.md
+medicare.ip/diag13.md
+medicare.ip/diag14.md
+medicare.ip/diag15.md
+medicare.ip/diag16.md
+medicare.ip/diag17.md
+medicare.ip/diag18.md
+medicare.ip/diag19.md
+medicare.ip/diag2.md
+medicare.ip/diag20.md
+medicare.ip/diag21.md
+medicare.ip/diag22.md
+medicare.ip/diag23.md
+medicare.ip/diag24.md
+medicare.ip/diag25.md
+medicare.ip/diag3.md
+medicare.ip/diag4.md
+medicare.ip/diag5.md
+medicare.ip/diag6.md
+medicare.ip/diag7.md
+medicare.ip/diag8.md
+medicare.ip/diag9.md
+medicare.ip/discharge_date.md
+medicare.ip/discharge_date_raw.md
+medicare.ip/drg_outlier_pmt_amt.md
+medicare.ip/drg_price_amt.md
+medicare.ip/dschrg_dstntn_cd.md
+medicare.ip/dschrgcd.md
+medicare.ip/file.md
+medicare.ip/fips2.md
+medicare.ip/los_day_cnt.md
+medicare.ip/mdcr_pmt_amt.md
+medicare.ip/pass_thru_amt.md
+medicare.ip/record.md
+medicare.ip/src_admsn_cd.md
+medicare.ip/ssa2.md
+medicare.ip/state.md
+medicare.ip/year.md
+medicare.ip/zip.md
+medicare.ip/zip4.md
+```
+
 Inpatient Adminissions view. Combines multiple inpatient admissions
 files (aka MedPar) into a single view, transforming columns
 to the same type

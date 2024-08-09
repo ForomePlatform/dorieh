@@ -24,7 +24,7 @@ Age on January 1 of a given year, if provided
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/age.svg
+```{figure} age.svg
 :align: center
 :alt: Column medicare._ps.age Lineage SVG
 :target: age_svg_envelop.html

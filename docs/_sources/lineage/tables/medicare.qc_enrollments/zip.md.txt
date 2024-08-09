@@ -19,7 +19,7 @@ Zip Code of Residence
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrollments/zip.svg
+```{figure} zip.svg
 :align: center
 :alt: Column medicare.qc_enrollments.zip Lineage SVG
 :target: zip_svg_envelop.html

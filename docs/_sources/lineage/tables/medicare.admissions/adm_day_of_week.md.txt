@@ -20,7 +20,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/adm_day_of_week.svg
+```{figure} adm_day_of_week.svg
 :align: center
 :alt: Column medicare.admissions.adm_day_of_week Lineage SVG
 :target: adm_day_of_week_svg_envelop.html

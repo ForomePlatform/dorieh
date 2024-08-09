@@ -20,7 +20,7 @@ Beneficiary Enrollment Reference Year
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/year.svg
+```{figure} year.svg
 :align: center
 :alt: Column medicare.enrollments.year Lineage SVG
 :target: year_svg_envelop.html

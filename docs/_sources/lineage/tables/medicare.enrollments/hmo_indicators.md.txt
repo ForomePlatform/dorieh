@@ -18,7 +18,7 @@ MAX(hmo_indicators)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/hmo_indicators.svg
+```{figure} hmo_indicators.svg
 :align: center
 :alt: Column medicare.enrollments.hmo_indicators Lineage SVG
 :target: hmo_indicators_svg_envelop.html

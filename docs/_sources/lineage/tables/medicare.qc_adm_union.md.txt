@@ -1,6 +1,25 @@
 # View medicare.qc_adm_union
 
 ## Overview for medicare.qc_adm_union
+
+```{toctree}
+medicare.qc_adm_union/adm_day_of_week.md
+medicare.qc_adm_union/admission_date.md
+medicare.qc_adm_union/admission_year.md
+medicare.qc_adm_union/bene.md
+medicare.qc_adm_union/bene_id.md
+medicare.qc_adm_union/diagnoses.md
+medicare.qc_adm_union/discharge_date.md
+medicare.qc_adm_union/icd_hll.md
+medicare.qc_adm_union/pd_hll_hash.md
+medicare.qc_adm_union/primary_diagnosis.md
+medicare.qc_adm_union/reason.md
+medicare.qc_adm_union/state.md
+medicare.qc_adm_union/state_iso.md
+medicare.qc_adm_union/year.md
+medicare.qc_adm_union/zip.md
+```
+
 Union of data from admissions table with the records
 discarded because of validation issues
 
@@ -46,7 +65,7 @@ SELECT 'OK'::VARCHAR AS reason,
 FROM medicare.admissions
 ;
 
-COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "3cb956a7ffe1cbdd448a505d309ac5203d36f999"}. Created at 2024-08-09 02:04:35.207889';
+COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "7d31082a5ea4435b28e65e6389ad684fba0d2fa9"}. Created at 2024-08-09 12:55:45.923567';
 ```
 
 </details>

@@ -18,7 +18,7 @@ MAX(fips3)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/fips3.svg
+```{figure} fips3.svg
 :align: center
 :alt: Column medicare.qc_enrl_bene.fips3 Lineage SVG
 :target: fips3_svg_envelop.html

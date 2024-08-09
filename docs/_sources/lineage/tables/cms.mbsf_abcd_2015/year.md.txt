@@ -27,7 +27,7 @@ GENERATED ALWAYS AS (RFRNC_YR) STORED
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/year.svg
+```{figure} year.svg
 :align: center
 :alt: Column cms.mbsf_abcd_2015.YEAR Lineage SVG
 :target: year_svg_envelop.html

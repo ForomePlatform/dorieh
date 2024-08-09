@@ -28,7 +28,7 @@ MAX(age)
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/age.svg
+```{figure} age.svg
 :align: center
 :alt: Column medicare._enrollments.age Lineage SVG
 :target: age_svg_envelop.html

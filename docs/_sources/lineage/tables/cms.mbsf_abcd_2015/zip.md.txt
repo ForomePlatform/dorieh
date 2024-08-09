@@ -27,7 +27,7 @@ GENERATED ALWAYS AS (ZIP_CD) STORED
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/zip.svg
+```{figure} zip.svg
 :align: center
 :alt: Column cms.mbsf_abcd_2015.ZIP Lineage SVG
 :target: zip_svg_envelop.html

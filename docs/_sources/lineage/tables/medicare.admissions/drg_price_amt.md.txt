@@ -19,7 +19,7 @@ were involved (rounded to whole dollars).
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/drg_price_amt.svg
+```{figure} drg_price_amt.svg
 :align: center
 :alt: Column medicare.admissions.drg_price_amt Lineage SVG
 :target: drg_price_amt_svg_envelop.html

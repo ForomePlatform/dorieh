@@ -28,7 +28,7 @@ Original Reason for Entitlement Code
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/orec.svg
+```{figure} orec.svg
 :align: center
 :alt: Column medicare._ps.orec Lineage SVG
 :target: orec_svg_envelop.html

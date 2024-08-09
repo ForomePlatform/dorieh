@@ -10,7 +10,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_admissions/reason.svg
+```{figure} reason.svg
 :align: center
 :alt: Column medicare.qc_admissions.reason Lineage SVG
 :target: reason_svg_envelop.html

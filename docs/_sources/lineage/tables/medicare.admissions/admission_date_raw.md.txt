@@ -20,7 +20,7 @@
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/admission_date_raw.svg
+```{figure} admission_date_raw.svg
 :align: center
 :alt: Column medicare.admissions.admission_date_raw Lineage SVG
 :target: admission_date_raw_svg_envelop.html

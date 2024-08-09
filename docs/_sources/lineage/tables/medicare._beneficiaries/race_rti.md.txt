@@ -19,7 +19,7 @@ string_agg(distinct race_rti, ',')
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/race_rti.svg
+```{figure} race_rti.svg
 :align: center
 :alt: Column medicare._beneficiaries.race_rti Lineage SVG
 :target: race_rti_svg_envelop.html

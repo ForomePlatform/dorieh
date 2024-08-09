@@ -19,7 +19,7 @@ CASE WHEN year > 2010 THEN (SELECT string_agg(distinct fips3::varchar, ',') from
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._ps/fips3_list.svg
+```{figure} fips3_list.svg
 :align: center
 :alt: Column medicare._ps.fips3_list Lineage SVG
 :target: fips3_list_svg_envelop.html

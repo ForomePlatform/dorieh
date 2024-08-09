@@ -27,7 +27,7 @@ GENERATED ALWAYS AS (MEDPAR_YR_NUM) STORED
 ```
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.medpar_2017/year.svg
+```{figure} year.svg
 :align: center
 :alt: Column cms.medpar_2017.YEAR Lineage SVG
 :target: year_svg_envelop.html

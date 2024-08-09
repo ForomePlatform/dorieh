@@ -1,6 +1,33 @@
 # View medicare.ps
 
 ## Overview for medicare.ps
+
+```{toctree}
+medicare.ps/age.md
+medicare.ps/bene_id.md
+medicare.ps/buyin_cvg_count.md
+medicare.ps/buyin_indicators.md
+medicare.ps/curec.md
+medicare.ps/dob.md
+medicare.ps/dod.md
+medicare.ps/dod_ndi.md
+medicare.ps/file.md
+medicare.ps/fips2.md
+medicare.ps/hmo_cvg_count.md
+medicare.ps/hmo_indicators.md
+medicare.ps/orec.md
+medicare.ps/race.md
+medicare.ps/race_rti.md
+medicare.ps/record.md
+medicare.ps/sex.md
+medicare.ps/ssa2.md
+medicare.ps/ssa3.md
+medicare.ps/state.md
+medicare.ps/year.md
+medicare.ps/zip.md
+medicare.ps/zip4.md
+```
+
 Patient Summary view. Combines multiple patient summary (aka MBSF)
 files into a single view, transforming columns to the same type
 

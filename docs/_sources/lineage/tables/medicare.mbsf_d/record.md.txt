@@ -19,7 +19,7 @@ Record number in the file
 
 
 
-```{figure} /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.mbsf_d/record.svg
+```{figure} record.svg
 :align: center
 :alt: Column medicare.mbsf_d.record Lineage SVG
 :target: record_svg_envelop.html
