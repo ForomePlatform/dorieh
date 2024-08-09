@@ -26,8 +26,8 @@ Number of months during a given year, the beneficiary received their Part A and 
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 hmo_cvg_count_svg_envelop.md
 ```

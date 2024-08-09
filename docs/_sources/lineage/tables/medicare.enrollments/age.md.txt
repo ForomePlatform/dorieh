@@ -30,8 +30,8 @@ MAX(age)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 age_svg_envelop.md
 ```

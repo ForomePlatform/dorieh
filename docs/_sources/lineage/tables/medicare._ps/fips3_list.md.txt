@@ -21,8 +21,8 @@ CASE WHEN year > 2010 THEN (SELECT string_agg(distinct fips3::varchar, ',') from
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 fips3_list_svg_envelop.md
 ```

@@ -20,8 +20,8 @@ made by Medicare.
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 mdcr_pmt_amt_svg_envelop.md
 ```

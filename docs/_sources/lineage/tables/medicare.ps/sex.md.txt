@@ -31,8 +31,8 @@ Sex
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 sex_svg_envelop.md
 ```

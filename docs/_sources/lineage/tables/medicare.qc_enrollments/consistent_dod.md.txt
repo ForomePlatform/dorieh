@@ -12,8 +12,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 consistent_dod_svg_envelop.md
 ```

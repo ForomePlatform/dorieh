@@ -12,8 +12,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 diag21_svg_envelop.md
 ```

@@ -13,8 +13,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 primary_diagnosis_svg_envelop.md
 ```

@@ -21,8 +21,8 @@ string_agg(distinct race_rti, ',')
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 race_rti_svg_envelop.md
 ```

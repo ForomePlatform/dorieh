@@ -20,8 +20,8 @@ GENERATED ALWAYS AS (hll_arr_agg(diagnoses)) STORED
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 icd_hll_svg_envelop.md
 ```

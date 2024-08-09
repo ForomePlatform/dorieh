@@ -19,8 +19,8 @@ to an outlier situation over the DRG allowance for the stay.
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 drg_outlier_pmt_amt_svg_envelop.md
 ```

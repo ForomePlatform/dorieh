@@ -5,8 +5,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 cms.mbsf_d_2011/bene_id.md
 cms.mbsf_d_2011/cntrct01.md
@@ -183,7 +183,7 @@ CREATE TABLE  cms.mbsf_d_2011 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  mbsf_d_2011_FILE_idx ON cms.mbsf_d_2011 USING BTREE (FILE) ;
-COMMENT ON table cms.mbsf_d_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:00.384610';
+COMMENT ON table cms.mbsf_d_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:33.194435';
 ```
 
 </details>

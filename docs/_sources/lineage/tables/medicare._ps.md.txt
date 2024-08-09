@@ -5,8 +5,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 medicare._ps/age.md
 medicare._ps/bene_id.md
@@ -67,7 +67,7 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 FROM medicare.ps
 ;
 
-COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:07.079609';
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:39.839804';
 ```
 
 </details>

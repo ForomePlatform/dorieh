@@ -46,8 +46,8 @@ btrim(diag25)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 diagnoses_svg_envelop.md
 ```

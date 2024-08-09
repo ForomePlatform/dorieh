@@ -23,8 +23,8 @@ END
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 age_min_svg_envelop.md
 ```

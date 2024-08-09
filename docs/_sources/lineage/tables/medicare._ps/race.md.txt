@@ -31,8 +31,8 @@ Beneficiary Race Code
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 race_svg_envelop.md
 ```

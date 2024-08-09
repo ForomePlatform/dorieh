@@ -30,8 +30,8 @@ can pay those premiums for certain dual eligibles; this action is called
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 buyin_indicators_svg_envelop.md
 ```

@@ -24,8 +24,8 @@ END AS fips3_is_approximated
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 fips3_is_approximated_svg_envelop.md
 ```

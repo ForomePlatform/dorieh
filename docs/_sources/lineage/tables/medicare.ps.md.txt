@@ -5,8 +5,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 medicare.ps/age.md
 medicare.ps/bene_id.md

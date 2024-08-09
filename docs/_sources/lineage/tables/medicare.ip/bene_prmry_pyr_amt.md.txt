@@ -18,8 +18,8 @@ The amount of payment (rounded to whole dollars) made on behalf of the beneficia
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 bene_prmry_pyr_amt_svg_envelop.md
 ```

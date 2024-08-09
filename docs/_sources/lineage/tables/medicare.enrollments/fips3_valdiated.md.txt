@@ -20,8 +20,8 @@ public.validate_zip_fips(MAX(zip), MAX(fips2), MAX(fips3))
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 fips3_valdiated_svg_envelop.md
 ```

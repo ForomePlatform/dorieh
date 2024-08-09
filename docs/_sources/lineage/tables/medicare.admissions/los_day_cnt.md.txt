@@ -26,8 +26,8 @@ The count in days of the total length of a beneficiary's stay in a hospital
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 los_day_cnt_svg_envelop.md
 ```

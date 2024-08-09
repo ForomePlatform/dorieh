@@ -20,8 +20,8 @@ string_agg(distinct fips3_list, ',')
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 residence_counties_svg_envelop.md
 ```

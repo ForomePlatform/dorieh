@@ -28,8 +28,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 state_count_svg_envelop.md
 ```

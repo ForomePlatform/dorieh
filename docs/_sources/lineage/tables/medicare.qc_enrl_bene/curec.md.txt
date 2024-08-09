@@ -20,8 +20,8 @@ MAX(curec)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 curec_svg_envelop.md
 ```

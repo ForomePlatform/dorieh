@@ -32,8 +32,8 @@ Number of possible discrepancies for the beneficiary, .i.e., records that use al
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 discrepancies_svg_envelop.md
 ```

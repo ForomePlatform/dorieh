@@ -393,8 +393,8 @@
 <div class="viewcode-block" id="Column.column_toctree"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.Column.column_toctree">[docs]</a>    <span class="k">def</span> <span class="nf">column_toctree</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">targets</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
         <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">```</span><span class="si">{toctree}</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;---</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;:maxdepth: 1</span><span class="se">\n</span><span class="s2">&quot;</span>
-        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;:hidden:</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;maxdepth: 1</span><span class="se">\n</span><span class="s2">&quot;</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;hidden:</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="n">text</span> <span class="o">+=</span> <span class="s2">&quot;---</span><span class="se">\n</span><span class="s2">&quot;</span>
         <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">targets</span><span class="p">:</span>
             <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">target</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>

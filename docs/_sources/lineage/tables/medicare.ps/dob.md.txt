@@ -26,8 +26,8 @@ Date of birth
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 dob_svg_envelop.md
 ```

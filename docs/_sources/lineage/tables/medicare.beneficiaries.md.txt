@@ -5,8 +5,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 medicare.beneficiaries/all_enrollment_years.md
 medicare.beneficiaries/bene.md
@@ -47,7 +47,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bcdbe18470dbc6b29167570d2e3addb90a1495fe"}. Created at 2024-08-09 16:14:07.080995';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "f9dd550bb5b21b78670112f5e72baa65f2fbe105"}. Created at 2024-08-09 16:51:39.841180';
 ```
 
 </details>

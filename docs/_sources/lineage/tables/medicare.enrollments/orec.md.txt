@@ -29,8 +29,8 @@ MAX(orec)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 orec_svg_envelop.md
 ```

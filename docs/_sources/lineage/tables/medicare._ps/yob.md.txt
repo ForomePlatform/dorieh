@@ -20,8 +20,8 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 yob_svg_envelop.md
 ```

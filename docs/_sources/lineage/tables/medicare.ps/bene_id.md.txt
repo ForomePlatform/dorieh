@@ -22,8 +22,8 @@ Encrypted 723 Beneficiary ID (Unique Key)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 bene_id_svg_envelop.md
 ```

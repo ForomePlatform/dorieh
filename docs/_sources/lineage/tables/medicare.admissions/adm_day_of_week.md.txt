@@ -22,8 +22,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 adm_day_of_week_svg_envelop.md
 ```

@@ -22,8 +22,8 @@ Code identifying status of patient as of CLM_THRU_DT
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 dschrgcd_svg_envelop.md
 ```

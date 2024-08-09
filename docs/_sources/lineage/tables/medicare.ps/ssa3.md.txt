@@ -17,8 +17,8 @@ Social Security Administration (SSA) three digit code for county
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 ssa3_svg_envelop.md
 ```

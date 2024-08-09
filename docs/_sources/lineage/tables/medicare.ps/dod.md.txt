@@ -26,8 +26,8 @@ Date of beneficiary death, if available
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 dod_svg_envelop.md
 ```

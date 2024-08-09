@@ -20,8 +20,8 @@ MAX(buyin_cvg_count)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 buyin_cvg_count_svg_envelop.md
 ```

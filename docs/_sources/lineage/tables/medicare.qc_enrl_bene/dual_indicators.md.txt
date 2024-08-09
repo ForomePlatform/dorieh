@@ -21,8 +21,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 dual_indicators_svg_envelop.md
 ```

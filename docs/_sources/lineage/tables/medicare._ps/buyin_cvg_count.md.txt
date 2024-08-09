@@ -26,8 +26,8 @@ Number of months during a given year, during the year when the beneficiary premi
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 buyin_cvg_count_svg_envelop.md
 ```

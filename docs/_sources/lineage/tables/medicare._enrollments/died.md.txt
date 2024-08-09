@@ -24,8 +24,8 @@ END
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 died_svg_envelop.md
 ```

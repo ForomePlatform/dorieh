@@ -22,8 +22,8 @@ Record number in the file
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 record_svg_envelop.md
 ```

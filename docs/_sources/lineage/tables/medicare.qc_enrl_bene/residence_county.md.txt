@@ -20,8 +20,8 @@ MAX(fips3)
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 residence_county_svg_envelop.md
 ```

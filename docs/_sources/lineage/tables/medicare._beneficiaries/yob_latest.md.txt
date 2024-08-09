@@ -23,8 +23,8 @@ END
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 yob_latest_svg_envelop.md
 ```

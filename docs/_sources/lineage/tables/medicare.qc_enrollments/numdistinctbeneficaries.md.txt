@@ -20,8 +20,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 numdistinctbeneficaries_svg_envelop.md
 ```

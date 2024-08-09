@@ -29,8 +29,8 @@ GENERATED ALWAYS AS (ZIP_CD) STORED
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 zip_svg_envelop.md
 ```

@@ -29,8 +29,8 @@ GENERATED ALWAYS AS (RFRNC_YR) STORED
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 year_svg_envelop.md
 ```

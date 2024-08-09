@@ -21,8 +21,8 @@
 
 ```{toctree}
 ---
-:maxdepth: 1
-:hidden:
+maxdepth: 1
+hidden:
 ---
 admsn_type_cd_svg_envelop.md
 ```
