@@ -348,14 +348,21 @@ class Table(DataModelElement):
         text += end_table(format=fmt)
         return text
 
+    def columns_toctree(self) -> str:
+        text = "\n```{toctree}\n"
+        text += "maxdepth: 1\n"
+        text += "hidden:\n"
+        for c in sorted(self.columns):
+            text += f"{self.qualified_name}/{c}.md\n"
+        text += "```\n\n"
+        return text
+
     def describe_markdown(self, basedir: str = "") -> str:
         fmt = 'markdown'
         text = f"## Overview for {self.qualified_name}\n\n"
         if self.mode == RenderMode.sphinx:
-            text += "```{toctree}\n"
-            for c in sorted(self.columns):
-                text += f"{self.qualified_name}/{c}.md\n"
-            text += "```\n\n"
+            text += self.columns_toctree()
+            text += "\n"
 
         if self.reference:
             text += f"*For more information see: {self.reference}*\n\n"

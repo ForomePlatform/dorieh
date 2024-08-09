@@ -146,7 +146,7 @@ class DomainDict:
             os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
 
     def link_ext(self):
-        if RenderMode.standalone:
+        if self.mode == RenderMode.standalone:
             return "html"
         return "md"
 
@@ -154,16 +154,9 @@ class DomainDict:
         title = "# Table Lineage Diagram\n"
         body = "\n"
 
-        if self.mode == 'sphinx':
-            body += "```{toctree}\n"
-            body += "---\n"
-            body += "maxdepth: 1\n"
-            body += "hidden:\n"
-            body += "---\n"
-            for t in self.tables:
-                body += f"tables/{self.tables[t].qualified_name}\n"
-            body += "```\n"
-            body += "\n\n"
+        if self.mode == RenderMode.sphinx:
+            body += self.table_toctree()
+            body += "\n"
 
         if svg:
             if self.mode == RenderMode.standalone:
@@ -182,9 +175,11 @@ class DomainDict:
 
     def table_toctree(self) -> str:
         text = "\n```{toctree}\n"
+        text += "maxdepth: 1\n"
+        text += "hidden:\n"
         for t in sorted(self.tables):
             tname = self.tables[t].qualified_name
-            text += f"{tname}.md\n"
+            text += f"tables/{tname}.md\n"
         text += "```\n\n"
         return text
 
