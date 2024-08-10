@@ -11,7 +11,7 @@ random records from DAT files.
 
 Please note, that if the destination to be used with Medicare
 ingestion pipeline, the full path to resulting FTS and DAT files must include
-a directory named with the year, e.g. my_data/medicare/2018/*.fts
+a directory named with the year, e.g. my_data/medicare/2018/\*.fts
 """
 
 

@@ -47,7 +47,7 @@ fi
 
 
 pip install -r doc-requirements.txt
-pip install .
+pip install ".[FST]"
 pip uninstall -y markupsafe
 pip install markupsafe==2.0.1
 
