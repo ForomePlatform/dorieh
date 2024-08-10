@@ -32,11 +32,11 @@ import pandas as pd
 import dorieh.utils.qc as qc
 import dorieh.utils.interpolation  as interpolation
 
-from .data import *
-from .exceptions import CensusException
-from .tigerweb import get_area
-from .census_info import census_years
-from .query import get_census_data, _clean_acs_vars
+from dorieh.census.data import *
+from dorieh.census.exceptions import CensusException
+from dorieh.census.tigerweb import get_area
+from dorieh.census.census_info import census_years
+from dorieh.census.query import get_census_data, _clean_acs_vars
 
 class DataPlan:
     """

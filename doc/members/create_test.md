@@ -18,7 +18,7 @@ local:
 ```
 
 Generates SQL script that can be used with [dbt_runner](dbt_runner). 
-These scripts are used by [](gen_dbt_cwl).
+These scripts are used by [](gen_dbt_cwl.rst).
 
 
 Usage
