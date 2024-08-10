@@ -119,11 +119,11 @@
 <span class="kn">import</span> <span class="nn">dorieh.utils.qc</span> <span class="k">as</span> <span class="nn">qc</span>
 <span class="kn">import</span> <span class="nn">dorieh.utils.interpolation</span>  <span class="k">as</span> <span class="nn">interpolation</span>
 
-<span class="kn">from</span> <span class="nn">.data</span> <span class="kn">import</span> <span class="o">*</span>
-<span class="kn">from</span> <span class="nn">.exceptions</span> <span class="kn">import</span> <span class="n">CensusException</span>
-<span class="kn">from</span> <span class="nn">.tigerweb</span> <span class="kn">import</span> <span class="n">get_area</span>
-<span class="kn">from</span> <span class="nn">.census_info</span> <span class="kn">import</span> <span class="n">census_years</span>
-<span class="kn">from</span> <span class="nn">.query</span> <span class="kn">import</span> <span class="n">get_census_data</span><span class="p">,</span> <span class="n">_clean_acs_vars</span>
+<span class="kn">from</span> <span class="nn">dorieh.census.data</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="kn">from</span> <span class="nn">dorieh.census.exceptions</span> <span class="kn">import</span> <span class="n">CensusException</span>
+<span class="kn">from</span> <span class="nn">dorieh.census.tigerweb</span> <span class="kn">import</span> <span class="n">get_area</span>
+<span class="kn">from</span> <span class="nn">dorieh.census.census_info</span> <span class="kn">import</span> <span class="n">census_years</span>
+<span class="kn">from</span> <span class="nn">dorieh.census.query</span> <span class="kn">import</span> <span class="n">get_census_data</span><span class="p">,</span> <span class="n">_clean_acs_vars</span>
 
 <div class="viewcode-block" id="DataPlan"><a class="viewcode-back" href="../../../members/assemble_data.html#dorieh.census.assemble_data.DataPlan">[docs]</a><span class="k">class</span> <span class="nc">DataPlan</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
