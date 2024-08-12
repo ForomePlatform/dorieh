@@ -15,7 +15,7 @@ diagrams at the tables levels and at column levels for every column.
 
 The output of the tool is described below.
 
-(domain-dictionary-output=)                                      
+(domain-dictionary-output)=                                      
 ### Output structure of Domain Dictionary tool
 
 * Main table-level data lineage diagram showing the order of the
