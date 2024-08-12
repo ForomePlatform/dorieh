@@ -8,7 +8,9 @@ maxdepth: 4
 hidden: 
 ---
 DataModellingExtensions
+members/domain_dictionary
 Medicare
+MedicareLineage
 Medicaid
 ```
 
@@ -19,7 +21,7 @@ local:
 ---
 ```
 
-## Introduction to data modelling for NSAPH Data Platform
+## Introduction to data modelling for Dorieh Data Platform
 
 Data models consist of database tables, relations between them
 (e.g. foreign keys), indices and conventions that govern things
@@ -38,6 +40,7 @@ following domains
 * EPA
 * Census
 * Climate (gridMET data)
+* Exposure (Air pollution data)
 
 Extended functionality for data transformations is provided by
 [Data Modelling Extensions](DataModellingExtensions) that are used by 

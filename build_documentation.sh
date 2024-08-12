@@ -47,7 +47,7 @@ fi
 
 
 pip install -r doc-requirements.txt
-pip install .
+pip install ".[FST]"
 pip uninstall -y markupsafe
 pip install markupsafe==2.0.1
 
@@ -73,7 +73,7 @@ copy_section README.md doc/home.md readme
 cp docker/README.md doc/docker_readme.md
 
 # build documentation
-sphinx-build doc docs || exit
+sphinx-build -j auto doc docs || exit
 touch docs/.nojekyll
 
 echo "Build finished"

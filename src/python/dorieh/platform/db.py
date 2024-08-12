@@ -31,15 +31,20 @@ import json
 
 import logging
 import socket
-import paramiko
+import warnings
 import psycopg2
 import os
-import sshtunnel
 from configparser import ConfigParser
 import boto3
 from botocore.exceptions import ClientError
 
 from deprecated.sphinx import deprecated
+
+from cryptography.utils import CryptographyDeprecationWarning
+with warnings.catch_warnings():
+    warnings.simplefilter(action="ignore", category=CryptographyDeprecationWarning)
+    import paramiko
+    import sshtunnel
 
 from dorieh.platform import app_name
 

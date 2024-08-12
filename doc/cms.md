@@ -11,6 +11,7 @@ hidden:
 ---
 Medicaid.md
 Medicare.md
+MedicareLineage.md
 QueringMedicaid.md
 ```
 

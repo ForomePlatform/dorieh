@@ -10,6 +10,7 @@ What is Data Platform <rationale>
 domains
 pipelines
 Python Packages <packages>
+Datamodels
 examples
 guts
 DBT
