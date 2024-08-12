@@ -8,7 +8,7 @@ hidden:
 ---
 members/create_test
 members/dbt_runner
-members/gen_dbt_cwl.rst
+members/gen_dbt_cwl
 TestingWorkflows.md
 guts.md
 ```

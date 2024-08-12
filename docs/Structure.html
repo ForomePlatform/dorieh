@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>&lt;no title&gt; &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">&lt;no title&gt;</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Structure.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <ul>
+<li><p>Introduction</p></li>
+<li><p>What functionality the Data Platform provides?
+– Data management
+– Data Ingestion
+– Data manipulation
+– Reporting and Data Export
+– Reproducible data manipulation workflows
+– Building feature stores for ML, statistical computations and AI
+– Testing of data manipulation workflows</p></li>
+<li><p>Data Platform Pillars
+– Data Ingestion tools and libraries</p>
+<blockquote>
+<div><p>— Automatic introspection and ingestion
+— Explicit data schema definitions in YaML files
+— Importing data schema from third party tools (SAS)
+— Automatic introspection + manual editing</p>
+</div></blockquote>
+<p>– Runtime execution environment
+– Data architecture tools and wokflow definition language
+– Data dictionary and data lineage tools</p>
+</li>
+<li><p>Data Domains
+– Domain specific tooling for the following knowledge domains:</p>
+<blockquote>
+<div><p>— Health (CMS: Medicare and Medicaid)
+— Climate
+— Exposure (Air pollution)
+— EPA data
+— Demographics</p>
+</div></blockquote>
+</li>
+<li><p>Python packages and libraries</p></li>
+<li><p>Examples</p></li>
+<li><p>Terms and acronyms</p></li>
+<li><p>Building and executing containerized apps</p></li>
+</ul>
+<hr class="docutils" />
+<p>Match Files to Sections:</p>
+<p>### Introduction</p>
+<p>#### Files:
+- <cite>home.md</cite>
+- <cite>introduction.md</cite>
+- <cite>rationale.md</cite></p>
+<p>### What functionality the Data Platform provides?</p>
+<p>#### Files:
+- <cite>functionality/data_management.md</cite>
+- <cite>functionality/data_ingestion.md</cite>
+- <cite>functionality/data_manipulation.md</cite>
+- <cite>functionality/reporting_data_export.md</cite>
+- <cite>functionality/reproducible_workflows.md</cite>
+- <cite>functionality/feature_stores.md</cite>
+- <cite>functionality/workflow_testing.md</cite></p>
+<p>### Data Platform Pillars</p>
+<p>#### Files:
+- <cite>pillars/data_ingestion_tools.md</cite>
+- <cite>pillars/runtime_execution.md</cite>
+- <cite>pillars/data_architecture.md</cite>
+- <cite>pillars/data_dictionary_lineage.md</cite></p>
+<p>### Data Ingestion tools and libraries</p>
+<p>#### Files:
+- <cite>pillars/ingestion/automatic_introspection.md</cite>
+- <cite>pillars/ingestion/explicit_schema_definitions.md</cite>
+- <cite>pillars/ingestion/importing_schemas.md</cite>
+- <cite>pillars/ingestion/introspection_manual_editing.md</cite></p>
+<p>### Data Domains</p>
+<p>#### Files:
+- <cite>domains/cms.md</cite>
+- <cite>domains/climate.md</cite>
+- <cite>domains/exposure.md</cite>
+- <cite>domains/epa_data.md</cite>
+- <cite>domains/demographics.md</cite></p>
+<p>### CMS (Health) Domain</p>
+<p>#### Files:
+- <cite>cms.md</cite>
+- <cite>Medicaid.md</cite>
+- <cite>Medicare.md</cite>
+- <cite>MedicareLineage.md</cite>
+- <cite>QueringMedicaid.md</cite></p>
+<p>### Python Packages and Libraries</p>
+<p>#### Files:
+- <cite>CoreLibrary.md</cite>
+- <cite>CMSLibrary.md</cite>
+- <cite>cwl_tools.md</cite>
+- <cite>DataLoader.md</cite>
+- <cite>docutils.md</cite></p>
+<p>### Examples</p>
+<p>#### Files:
+- <cite>examples.md</cite>
+- <cite>Example-climate-workflow.md</cite>
+- <cite>example_request_yaml.md</cite></p>
+<p>### Terms and Acronyms</p>
+<p>#### Files:
+- <cite>terms_acronyms.md</cite>
+- <cite>glossary.md</cite></p>
+<p>### Building and Executing Containerized Apps</p>
+<p>#### Files:
+- <cite>docker_readme.md</cite>
+- <cite>deployment.md</cite>
+- <cite>Dockerfile.amd64.md</cite>
+- <cite>Dockerfile.arm64.md</cite></p>
+<p>### Platform Internals</p>
+<p>#### Files:
+- <cite>platform.md</cite>
+- <cite>MonitoringDB.md</cite>
+- <cite>ProjectLoader.md</cite>
+- <cite>DBConnections.md</cite>
+- <cite>core_prj_struct.md</cite></p>
+<p>### Supplementary Documents</p>
+<p>#### Files:
+- <cite>DBT.md</cite>
+- <cite>fts.md</cite>
+- <cite>pipelines.md</cite>
+- <cite>AppPipelineGenerator.md</cite>
+- <cite>TerritorialCodes.md</cite>
+- <cite>TestingWorkflows.md</cite></p>
+<p>### General Documentation Indices</p>
+<p>#### Files:
+- <cite>index.md</cite></p>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
