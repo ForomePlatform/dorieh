@@ -215,7 +215,7 @@
 <span class="n">NOT_FOUND</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="get_mapping"><a class="viewcode-back" href="../../../../members/resdac_crawler.html#dorieh.platform.dictionary.resdac_crawler.get_mapping">[docs]</a><span class="k">def</span> <span class="nf">get_mapping</span><span class="p">(</span><span class="n">search</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ColumnInfo</span><span class="p">]:</span>
+<div class="viewcode-block" id="get_resdac_mapping"><a class="viewcode-back" href="../../../../members/resdac_crawler.html#dorieh.platform.dictionary.resdac_crawler.get_resdac_mapping">[docs]</a><span class="k">def</span> <span class="nf">get_resdac_mapping</span><span class="p">(</span><span class="n">search</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">update</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ColumnInfo</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Parse Model YaML file and create a mapping between column names and column metadata.</span>
 <span class="sd">    Optionally, search Google for a URL to ResDac description for a column.</span>
@@ -298,7 +298,7 @@
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
     <span class="n">GOOGLE_API_KEY</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
     <span class="n">CSE_ID</span> <span class="o">=</span> <span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-    <span class="n">get_mapping</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+    <span class="n">get_resdac_mapping</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
 </pre></div>
 
            </div>

@@ -9,15 +9,6 @@
 | Datatype                      | string        |
 
 
-Original Reason for Entitlement Code
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_ENTLMT_RSN_ORIG |
-| original_type | CHAR |
-| width | 1.0 |
-
-
 
 ```{toctree}
 ---

@@ -8,7 +8,6 @@
 | Qualified name                | medicare.ps.zip  |
 | Datatype                      | INT        |
 | Column type | transformed |
-| Reference | [https://resdac.org/cms-data/variables/zip-code-beneficiary](https://resdac.org/cms-data/variables/zip-code-beneficiary) |
 
 
 US Postal ZIP code, the first 5 digits of it

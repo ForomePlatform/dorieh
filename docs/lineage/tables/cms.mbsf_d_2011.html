@@ -53,11 +53,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="../tables.dot.html">Table Lineage Diagram</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../medicare.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../table-list.html">Alphabetic list of all tables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../column-list.html">Alphabetic list of all columns in all tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../QueringMedicaid.html">Querying Medicaid Data</a></li>
@@ -101,8 +114,8 @@
           <li class="breadcrumb-item"><a href="../../domains.html">Data Domains</a></li>
           <li class="breadcrumb-item"><a href="../../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
           <li class="breadcrumb-item"><a href="../../Medicare.html">Medicare Files Handling</a></li>
-          <li class="breadcrumb-item"><a href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
-          <li class="breadcrumb-item"><a href="../tables.dot.html">Table Lineage Diagram</a></li>
+          <li class="breadcrumb-item"><a href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+          <li class="breadcrumb-item"><a href="../medicare.dot.html">Table Lineage Diagram</a></li>
       <li class="breadcrumb-item active">Table cms.mbsf_d_2011</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/lineage/tables/cms.mbsf_d_2011.md.txt" rel="nofollow"> View page source</a>
@@ -121,94 +134,95 @@
 </div>
 <p>Primary Key: FILE, RECORD</p>
 <details>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2011</span><span class="w"> </span><span class="p">(</span>
-<span class="w">	</span><span class="n">BENE_ID</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RFRNC_YR</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">CRDCOVSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PLNCOVMO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSCOVMO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_MO</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTRCT12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">PBPID12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">SGMTID12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CSTSHR12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RDSIND12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DUAL_12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">FILE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RECORD</span><span class="w"> </span><span class="n">BIGSERIAL</span><span class="p">,</span>
-<span class="w">	</span><span class="k">YEAR</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">RFRNC_YR</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
-<span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span><span class="w"> </span><span class="n">RECORD</span><span class="p">)</span>
-<span class="p">);</span>
-<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w">  </span><span class="n">mbsf_d_2011_FILE_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2011</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_d_2011</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;0a20037a78bb2a1a32bffc845e5c68742da04afd&quot;}. Created at 2024-08-09 17:27:54.526342&#39;</span><span class="p">;</span>
-</pre></div>
-</div>
+<summary>SQL/DDL Statement</summary>
+```sql
+CREATE TABLE  cms.mbsf_d_2011 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	CRDCOVSW VARCHAR(1),
+	PLNCOVMO VARCHAR(2),
+	RDSCOVMO VARCHAR(2),
+	DUAL_MO VARCHAR(2),
+	CNTRCT01 VARCHAR(5),
+	CNTRCT02 VARCHAR(5),
+	CNTRCT03 VARCHAR(5),
+	CNTRCT04 VARCHAR(5),
+	CNTRCT05 VARCHAR(5),
+	CNTRCT06 VARCHAR(5),
+	CNTRCT07 VARCHAR(5),
+	CNTRCT08 VARCHAR(5),
+	CNTRCT09 VARCHAR(5),
+	CNTRCT10 VARCHAR(5),
+	CNTRCT11 VARCHAR(5),
+	CNTRCT12 VARCHAR(5),
+	PBPID01 VARCHAR(3),
+	PBPID02 VARCHAR(3),
+	PBPID03 VARCHAR(3),
+	PBPID04 VARCHAR(3),
+	PBPID05 VARCHAR(3),
+	PBPID06 VARCHAR(3),
+	PBPID07 VARCHAR(3),
+	PBPID08 VARCHAR(3),
+	PBPID09 VARCHAR(3),
+	PBPID10 VARCHAR(3),
+	PBPID11 VARCHAR(3),
+	PBPID12 VARCHAR(3),
+	SGMTID01 VARCHAR(3),
+	SGMTID02 VARCHAR(3),
+	SGMTID03 VARCHAR(3),
+	SGMTID04 VARCHAR(3),
+	SGMTID05 VARCHAR(3),
+	SGMTID06 VARCHAR(3),
+	SGMTID07 VARCHAR(3),
+	SGMTID08 VARCHAR(3),
+	SGMTID09 VARCHAR(3),
+	SGMTID10 VARCHAR(3),
+	SGMTID11 VARCHAR(3),
+	SGMTID12 VARCHAR(3),
+	CSTSHR01 VARCHAR(2),
+	CSTSHR02 VARCHAR(2),
+	CSTSHR03 VARCHAR(2),
+	CSTSHR04 VARCHAR(2),
+	CSTSHR05 VARCHAR(2),
+	CSTSHR06 VARCHAR(2),
+	CSTSHR07 VARCHAR(2),
+	CSTSHR08 VARCHAR(2),
+	CSTSHR09 VARCHAR(2),
+	CSTSHR10 VARCHAR(2),
+	CSTSHR11 VARCHAR(2),
+	CSTSHR12 VARCHAR(2),
+	RDSIND01 VARCHAR(1),
+	RDSIND02 VARCHAR(1),
+	RDSIND03 VARCHAR(1),
+	RDSIND04 VARCHAR(1),
+	RDSIND05 VARCHAR(1),
+	RDSIND06 VARCHAR(1),
+	RDSIND07 VARCHAR(1),
+	RDSIND08 VARCHAR(1),
+	RDSIND09 VARCHAR(1),
+	RDSIND10 VARCHAR(1),
+	RDSIND11 VARCHAR(1),
+	RDSIND12 VARCHAR(1),
+	DUAL_01 VARCHAR(2),
+	DUAL_02 VARCHAR(2),
+	DUAL_03 VARCHAR(2),
+	DUAL_04 VARCHAR(2),
+	DUAL_05 VARCHAR(2),
+	DUAL_06 VARCHAR(2),
+	DUAL_07 VARCHAR(2),
+	DUAL_08 VARCHAR(2),
+	DUAL_09 VARCHAR(2),
+	DUAL_10 VARCHAR(2),
+	DUAL_11 VARCHAR(2),
+	DUAL_12 VARCHAR(2),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_d_2011_FILE_idx ON cms.mbsf_d_2011 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_d_2011 IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.095741';
+```
 </details>
 </section>
 <hr class="docutils" />

@@ -8,15 +8,6 @@
 | Qualified name                | medicare.ip.zip  |
 | Datatype                      | INT        |
 | Column type | transformed |
-| Reference | [https://resdac.org/cms-data/variables/zip-code-beneficiary](https://resdac.org/cms-data/variables/zip-code-beneficiary) |
-
-
-Zip Code of Residence
-
-| Key | Value |
-| --- | ----- |
-| original_type | CHAR |
-| width | 9.0 |
 
 
 

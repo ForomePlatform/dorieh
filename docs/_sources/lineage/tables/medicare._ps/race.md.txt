@@ -11,15 +11,6 @@
 | Reference | [https://resdac.org/cms-data/variables/beneficiary-race-code-ffs](https://resdac.org/cms-data/variables/beneficiary-race-code-ffs) |
 
 
-Beneficiary Race Code
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_RACE_CD |
-| original_type | CHAR |
-| width | 1.0 |
-
-
 
 ### Casts:
 

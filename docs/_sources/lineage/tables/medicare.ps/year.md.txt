@@ -8,15 +8,6 @@
 | Qualified name                | medicare.ps.year  |
 | Datatype                      | string        |
 | Column type | computed |
-| Reference | [https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator](https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator) |
-
-
-Beneficiary Enrollment Reference Year
-
-| Key | Value |
-| --- | ----- |
-| original_type | NUM |
-| width | 4.0 |
 
 
 

@@ -8,7 +8,6 @@
 | Qualified name                | medicare.ps.age  |
 | Datatype                      | INT        |
 | Column type | transformed |
-| Reference | [https://resdac.org/cms-data/variables/age-beneficiary-end-year](https://resdac.org/cms-data/variables/age-beneficiary-end-year) |
 
 
 Age on January 1 of a given year, if provided

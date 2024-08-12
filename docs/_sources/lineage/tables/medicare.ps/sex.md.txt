@@ -11,15 +11,6 @@
 | Reference | [https://resdac.org/cms-data/variables/sex-beneficiary-0](https://resdac.org/cms-data/variables/sex-beneficiary-0) |
 
 
-Sex
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_SEX_IDENT_CD |
-| original_type | CHAR |
-| width | 1.0 |
-
-
 
 ### Casts:
 

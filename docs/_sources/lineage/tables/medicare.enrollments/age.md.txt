@@ -8,16 +8,6 @@
 | Qualified name                | medicare.enrollments.age  |
 | Datatype                      | string        |
 | Column type | copied |
-| Reference | [https://resdac.org/cms-data/variables/age-beneficiary-end-year](https://resdac.org/cms-data/variables/age-beneficiary-end-year) |
-
-
-Age at End of Reference Year
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_AGE_AT_END_REF_YR |
-| original_type | NUM |
-| width | 3.0 |
 
 
 

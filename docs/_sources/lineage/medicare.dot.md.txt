@@ -7,7 +7,7 @@
 maxdepth: 1
 hidden:
 ---
-tables.dot_svg_envelop.md
+medicare.dot_svg_envelop.md
 tables/cms.mbsf_ab_2011.md
 tables/cms.mbsf_ab_2012.md
 tables/cms.mbsf_ab_2013.md
@@ -45,10 +45,10 @@ tables/medicare.qc_enrollments.md
 
 
 
-```{figure} tables.dot.svg
+```{figure} medicare.dot.svg
 :align: center
 :alt: Table Lineage Diagram
-:target: tables.dot_svg_envelop.html
+:target: medicare.dot_svg_envelop.html
 
 Diagram illustrating data flow during transformations
 

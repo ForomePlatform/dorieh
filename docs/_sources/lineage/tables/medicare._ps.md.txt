@@ -45,6 +45,7 @@ Transformed from [medicare.ps](medicare.ps.md)
 
 <details>
 
+<summary>SQL/DDL Statement</summary>
 ```sql
 CREATE materialized view medicare._ps AS SELECT *,
 CASE WHEN ssa3 is NOT NULL THEN
@@ -67,7 +68,7 @@ CASE WHEN age is not NULL THEN (year - age) ELSE NULL END as yob
 FROM medicare.ps
 ;
 
-COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:28:01.262320';
+COMMENT ON materialized view medicare._ps IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.523005';
 ```
 
 </details>

@@ -7,15 +7,6 @@
 | Table                         | [medicare.qc_admissions](../medicare.qc_admissions.md)           |
 | Qualified name                | medicare.qc_admissions.state  |
 | Datatype                      | string        |
-| Reference | [https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code](https://resdac.org/cms-data/variables/state-code-beneficiary-ssa-code) |
-
-
-State Code
-
-| Key | Value |
-| --- | ----- |
-| original_type | CHAR |
-| width | 2.0 |
 
 
 

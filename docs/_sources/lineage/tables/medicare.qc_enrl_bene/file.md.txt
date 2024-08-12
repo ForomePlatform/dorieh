@@ -10,14 +10,6 @@
 | Column type | computed |
 
 
-RESDAC original file name
-
-| Key | Value |
-| --- | ----- |
-| original_type | CHAR |
-| width | 128 |
-
-
 
 ## Expressions
 

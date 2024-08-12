@@ -38,6 +38,7 @@ Transformed from [medicare.qc_enrl_bene](medicare.qc_enrl_bene.md)
 
 <details>
 
+<summary>SQL/DDL Statement</summary>
 ```sql
 
 CREATE materialized view  medicare.qc_enrollments AS
@@ -65,7 +66,7 @@ FROM medicare.qc_enrl_bene
 
 GROUP BY year,state,zip,fips3,orec,curec,hmo,dual,buyin,consistent_dob,consistent_dod,consistent_sex,consistent_race,fips3_is_approximated,fips3_valdiated;
 
-COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:28:01.288824';
+COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.548971';
 ```
 
 </details>

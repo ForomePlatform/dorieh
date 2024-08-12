@@ -116,7 +116,7 @@
 <span class="kn">from</span> <span class="nn">dorieh.platform.dictionary</span> <span class="kn">import</span> <span class="n">RenderMode</span>
 <span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.element</span> <span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">DataModelElement</span><span class="p">,</span> <span class="n">qstr</span><span class="p">,</span> <span class="n">attrs2string</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="n">create_graph_envelop</span>
 <span class="kn">from</span> <span class="nn">dorieh.platform.data_model.domain</span> <span class="kn">import</span> <span class="n">Domain</span>
-<span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.resdac_crawler</span> <span class="kn">import</span> <span class="n">get_mapping</span>
+<span class="kn">from</span> <span class="nn">dorieh.platform.dictionary.resdac_crawler</span> <span class="kn">import</span> <span class="n">get_resdac_mapping</span>
 
 
 <div class="viewcode-block" id="noop"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.noop">[docs]</a><span class="k">def</span> <span class="nf">noop</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -126,13 +126,7 @@
 <div class="viewcode-block" id="Column"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.Column">[docs]</a><span class="k">class</span> <span class="nc">Column</span><span class="p">(</span><span class="n">DataModelElement</span><span class="p">):</span>
     <span class="n">column_mapping</span> <span class="o">=</span> <span class="kc">None</span>
 
-<div class="viewcode-block" id="Column.init_column_mapping"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.Column.init_column_mapping">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">init_column_mapping</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
-        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">column_mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="bp">cls</span><span class="o">.</span><span class="n">column_mapping</span> <span class="o">=</span> <span class="n">get_mapping</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_block</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">describe_column_type</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">init_column_mapping</span><span class="p">()</span>
         <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">column_block</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">column_block</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="n">name</span>
@@ -179,15 +173,18 @@
             <span class="k">if</span> <span class="s2">&quot;cast&quot;</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">:</span>
                 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">[</span><span class="s2">&quot;cast&quot;</span><span class="p">]:</span>
                     <span class="bp">self</span><span class="o">.</span><span class="n">casts</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">block</span><span class="p">[</span><span class="s2">&quot;cast&quot;</span><span class="p">][</span><span class="n">t</span><span class="p">]</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_in_mapping</span><span class="p">():</span>
             <span class="n">descr</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">description</span>
             <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">descr</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="n">descr</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">description</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="n">descr</span><span class="p">}</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span><span class="p">:</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_in_mapping</span><span class="p">():</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">reference</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span><span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span><span class="o">.</span><span class="n">url</span>
         <span class="k">return</span>
+
+<div class="viewcode-block" id="Column.is_in_mapping"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.Column.is_in_mapping">[docs]</a>    <span class="k">def</span> <span class="nf">is_in_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">column_mapping</span></div>
 
 <div class="viewcode-block" id="Column.is_transformed"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.Column.is_transformed">[docs]</a>    <span class="k">def</span> <span class="nf">is_transformed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">expression</span> <span class="ow">or</span> <span class="bp">self</span><span class="o">.</span><span class="n">casts</span></div>
@@ -487,37 +484,15 @@
         <span class="k">return</span> <span class="nb">repr</span></div>
 
 
-<span class="n">c1</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">age_min:</span>
-<span class="s2">    source: |</span>
-<span class="s2">      CASE</span>
-<span class="s2">        WHEN MIN(age) &lt;&gt; MAX(age) THEN MIN(age)</span>
-<span class="s2">      END</span>
-<span class="s2">&quot;&quot;&quot;</span>
+<div class="viewcode-block" id="CMSColumn"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.CMSColumn">[docs]</a><span class="k">class</span> <span class="nc">CMSColumn</span><span class="p">(</span><span class="n">Column</span><span class="p">):</span>
+<div class="viewcode-block" id="CMSColumn.init_column_mapping"><a class="viewcode-back" href="../../../../members/columns.html#dorieh.platform.dictionary.columns.CMSColumn.init_column_mapping">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">init_column_mapping</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="k">if</span> <span class="bp">cls</span><span class="o">.</span><span class="n">column_mapping</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="bp">cls</span><span class="o">.</span><span class="n">column_mapping</span> <span class="o">=</span> <span class="n">get_resdac_mapping</span><span class="p">(</span><span class="kc">False</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span></div>
 
-<span class="n">c2</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">fips3_valdiated:</span>
-<span class="s2">    source: public.validate_zip_fips(MAX(zip), MAX(fips2), MAX(fips3))</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">c3</span><span class="o">=</span><span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">ssa2_list:</span>
-<span class="s2">    source: &quot;string_agg(distinct ssa2, &#39;,&#39;)&quot;</span>
-<span class="s2">&quot;&quot;&quot;</span>
-
-<span class="n">c4</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
-<span class="s2">fips5:</span>
-<span class="s2">    source: &quot;(MAX(fips2) || MAX(fips3))&quot;</span>
-
-<span class="s2">&quot;&quot;&quot;</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="p">[</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">c3</span><span class="p">,</span> <span class="n">c4</span><span class="p">]:</span>
-        <span class="n">a</span> <span class="o">=</span> <span class="n">yaml</span><span class="o">.</span><span class="n">safe_load</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
-        <span class="n">column</span> <span class="o">=</span> <span class="n">Column</span><span class="p">(</span><span class="s2">&quot;xxx&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">column_type</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">column</span><span class="p">)</span>
-
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table_name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">column_block</span><span class="p">:</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">describe_column_type</span><span class="p">:</span> <span class="n">Callable</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">table_name</span><span class="p">,</span> <span class="n">column_block</span><span class="p">,</span> <span class="n">mode</span><span class="p">,</span> <span class="n">describe_column_type</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">init_column_mapping</span><span class="p">()</span></div>
 
 </pre></div>
 

@@ -7,16 +7,6 @@
 | Table                         | [medicare.ip](../medicare.ip.md)           |
 | Qualified name                | medicare.ip.dschrgcd  |
 | Datatype                      | CHAR(1)        |
-| Reference | [https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt](https://resdac.org/cms-data/variables/code-identifying-status-patient-clmthrudt) |
-
-
-Code identifying status of patient as of CLM_THRU_DT
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_DSCHRG_STUS_CD |
-| original_type | CHAR |
-| width | 1.0 |
 
 
 

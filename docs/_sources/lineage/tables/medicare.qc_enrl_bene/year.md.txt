@@ -7,15 +7,6 @@
 | Table                         | [medicare.qc_enrl_bene](../medicare.qc_enrl_bene.md)           |
 | Qualified name                | medicare.qc_enrl_bene.year  |
 | Datatype                      | string        |
-| Reference | [https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator](https://resdac.org/cms-data/variables/mbsf-cc-30/alzheimers-disease-end-year-indicator) |
-
-
-Beneficiary Enrollment Reference Year
-
-| Key | Value |
-| --- | ----- |
-| original_type | NUM |
-| width | 4.0 |
 
 
 

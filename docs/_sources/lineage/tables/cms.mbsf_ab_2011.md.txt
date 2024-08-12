@@ -72,6 +72,7 @@ Primary Key: FILE, RECORD
 
 <details>
 
+<summary>SQL/DDL Statement</summary>
 ```sql
 CREATE TABLE  cms.mbsf_ab_2011 (
 	BENE_ID VARCHAR(15),
@@ -133,7 +134,7 @@ CREATE TABLE  cms.mbsf_ab_2011 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  mbsf_ab_2011_FILE_idx ON cms.mbsf_ab_2011 USING BTREE (FILE) ;
-COMMENT ON table cms.mbsf_ab_2011 IS 'CREATED BY Dorieh: {"version": "0.2.1", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "0a20037a78bb2a1a32bffc845e5c68742da04afd"}. Created at 2024-08-09 17:27:54.367160';
+COMMENT ON table cms.mbsf_ab_2011 IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:55.967810';
 ```
 
 </details>

@@ -53,11 +53,24 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a><ul class="current">
-<li class="toctree-l4 current"><a class="reference internal" href="../tables.dot.html">Table Lineage Diagram</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../medicare.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../table-list.html">Alphabetic list of all tables</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../column-list.html">Alphabetic list of all columns in all tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../../QueringMedicaid.html">Querying Medicaid Data</a></li>
@@ -101,8 +114,8 @@
           <li class="breadcrumb-item"><a href="../../domains.html">Data Domains</a></li>
           <li class="breadcrumb-item"><a href="../../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
           <li class="breadcrumb-item"><a href="../../Medicare.html">Medicare Files Handling</a></li>
-          <li class="breadcrumb-item"><a href="../../MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
-          <li class="breadcrumb-item"><a href="../tables.dot.html">Table Lineage Diagram</a></li>
+          <li class="breadcrumb-item"><a href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+          <li class="breadcrumb-item"><a href="../medicare.dot.html">Table Lineage Diagram</a></li>
       <li class="breadcrumb-item active">Table cms.mbsf_ab_2013</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/lineage/tables/cms.mbsf_ab_2013.md.txt" rel="nofollow"> View page source</a>
@@ -121,69 +134,70 @@
 </div>
 <p>Primary Key: FILE, RECORD</p>
 <details>
-<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_ab_2013</span><span class="w"> </span><span class="p">(</span>
-<span class="w">	</span><span class="n">BENE_ID</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RFRNC_YR</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">FIVEPCT</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">EFIVEPCT</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">COVSTART</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
-<span class="w">	</span><span class="n">CRNT_BIC</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">STATE_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CNTY_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BENE_ZIP</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span>
-<span class="w">	</span><span class="n">AGE</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">BENE_DOB</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
-<span class="w">	</span><span class="n">V_DOD_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">DEATH_DT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
-<span class="w">	</span><span class="n">NDI_DEATH_DT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
-<span class="w">	</span><span class="n">SEX</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RACE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RTI_RACE_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">OREC</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">CREC</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">ESRD_IND</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">MS_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
-<span class="w">	</span><span class="n">A_TRM_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">B_TRM_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">A_MO_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">B_MO_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">BUYIN_MO</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">HMO_MO</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
-<span class="w">	</span><span class="n">BUYIN01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">BUYIN12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND01</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND02</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND03</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND04</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND05</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND06</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND07</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND08</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND09</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">HMOIND12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
-<span class="w">	</span><span class="n">FILE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
-<span class="w">	</span><span class="n">RECORD</span><span class="w"> </span><span class="n">BIGSERIAL</span><span class="p">,</span>
-<span class="w">	</span><span class="k">STATE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">STATE_CD</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
-<span class="w">	</span><span class="k">YEAR</span><span class="w"> </span><span class="nb">INT</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">RFRNC_YR</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
-<span class="w">	</span><span class="n">ZIP</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">BENE_ZIP</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
-<span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span><span class="w"> </span><span class="n">RECORD</span><span class="p">)</span>
-<span class="p">);</span>
-<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w">  </span><span class="n">mbsf_ab_2013_FILE_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_ab_2013</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">mbsf_ab_2013</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.1&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;0a20037a78bb2a1a32bffc845e5c68742da04afd&quot;}. Created at 2024-08-09 17:27:54.513228&#39;</span><span class="p">;</span>
-</pre></div>
-</div>
+<summary>SQL/DDL Statement</summary>
+```sql
+CREATE TABLE  cms.mbsf_ab_2013 (
+	BENE_ID VARCHAR(15),
+	RFRNC_YR INT,
+	FIVEPCT VARCHAR(1),
+	EFIVEPCT VARCHAR(1),
+	COVSTART DATE,
+	CRNT_BIC VARCHAR(2),
+	STATE_CD VARCHAR(2),
+	CNTY_CD VARCHAR(3),
+	BENE_ZIP VARCHAR(9),
+	AGE INT,
+	BENE_DOB DATE,
+	V_DOD_SW VARCHAR(1),
+	DEATH_DT DATE,
+	NDI_DEATH_DT DATE,
+	SEX VARCHAR(1),
+	RACE VARCHAR(1),
+	RTI_RACE_CD VARCHAR(1),
+	OREC VARCHAR(1),
+	CREC VARCHAR(1),
+	ESRD_IND VARCHAR(1),
+	MS_CD VARCHAR(2),
+	A_TRM_CD VARCHAR(1),
+	B_TRM_CD VARCHAR(1),
+	A_MO_CNT INT,
+	B_MO_CNT INT,
+	BUYIN_MO INT,
+	HMO_MO INT,
+	BUYIN01 VARCHAR(1),
+	BUYIN02 VARCHAR(1),
+	BUYIN03 VARCHAR(1),
+	BUYIN04 VARCHAR(1),
+	BUYIN05 VARCHAR(1),
+	BUYIN06 VARCHAR(1),
+	BUYIN07 VARCHAR(1),
+	BUYIN08 VARCHAR(1),
+	BUYIN09 VARCHAR(1),
+	BUYIN10 VARCHAR(1),
+	BUYIN11 VARCHAR(1),
+	BUYIN12 VARCHAR(1),
+	HMOIND01 VARCHAR(1),
+	HMOIND02 VARCHAR(1),
+	HMOIND03 VARCHAR(1),
+	HMOIND04 VARCHAR(1),
+	HMOIND05 VARCHAR(1),
+	HMOIND06 VARCHAR(1),
+	HMOIND07 VARCHAR(1),
+	HMOIND08 VARCHAR(1),
+	HMOIND09 VARCHAR(1),
+	HMOIND10 VARCHAR(1),
+	HMOIND11 VARCHAR(1),
+	HMOIND12 VARCHAR(1),
+	FILE VARCHAR(128),
+	RECORD BIGSERIAL,
+	STATE VARCHAR(2) GENERATED ALWAYS AS (STATE_CD) STORED,
+	YEAR INT GENERATED ALWAYS AS (RFRNC_YR) STORED,
+	ZIP VARCHAR(9) GENERATED ALWAYS AS (BENE_ZIP) STORED,
+	PRIMARY KEY (FILE, RECORD)
+);
+CREATE INDEX  mbsf_ab_2013_FILE_idx ON cms.mbsf_ab_2013 USING BTREE (FILE) ;
+COMMENT ON table cms.mbsf_ab_2013 IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.082810';
+```
 </details>
 </section>
 <hr class="docutils" />

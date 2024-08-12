@@ -11,15 +11,6 @@
 | Reference | [https://resdac.org/cms-data/variables/raceethnicity-msis](https://resdac.org/cms-data/variables/raceethnicity-msis) |
 
 
-Beneficiary Race Code
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_RACE_CD |
-| original_type | CHAR |
-| width | 1.0 |
-
-
 
 ## Expressions
 

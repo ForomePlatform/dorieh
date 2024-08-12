@@ -8,16 +8,6 @@
 | Qualified name                | medicare.admissions.bene_id  |
 | Datatype                      | string        |
 | Column type | copied |
-| Reference | [https://resdac.org/cms-data/variables/ccw-beneficiary-id](https://resdac.org/cms-data/variables/ccw-beneficiary-id) |
-
-
-Encrypted 723 Beneficiary ID (Unique Key)
-
-| Key | Value |
-| --- | ----- |
-| long_name | BENE_ID |
-| original_type | CHAR |
-| width | 15.0 |
 
 
 

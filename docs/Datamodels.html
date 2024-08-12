@@ -55,10 +55,11 @@
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Data Modelling for Dorieh Data Platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="DataModellingExtensions.html">Extensions used for creating federated view of different years</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Medicare.html">Medicare Files Handling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data Lineage for Medicare Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#introduction-to-data-modelling-for-nsaph-data-platform">Introduction to data modelling for NSAPH Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#domain">Domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#table">Table</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#create-statement">Create statement</a></li>
@@ -126,7 +127,7 @@
 </div>
 <nav class="contents local" id="contents">
 <ul class="simple">
-<li><p><a class="reference internal" href="#introduction-to-data-modelling-for-nsaph-data-platform" id="id1">Introduction to data modelling for NSAPH Data Platform</a></p></li>
+<li><p><a class="reference internal" href="#introduction-to-data-modelling-for-dorieh-data-platform" id="id1">Introduction to data modelling for Dorieh Data Platform</a></p></li>
 <li><p><a class="reference internal" href="#domain" id="id2">Domain</a></p></li>
 <li><p><a class="reference internal" href="#table" id="id3">Table</a></p>
 <ul>
@@ -157,8 +158,8 @@
 <li><p><a class="reference internal" href="#ingesting-data" id="id20">Ingesting data</a></p></li>
 </ul>
 </nav>
-<section id="introduction-to-data-modelling-for-nsaph-data-platform">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Introduction to data modelling for NSAPH Data Platform</a><a class="headerlink" href="#introduction-to-data-modelling-for-nsaph-data-platform" title="Permalink to this heading"></a></h2>
+<section id="introduction-to-data-modelling-for-dorieh-data-platform">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Introduction to data modelling for Dorieh Data Platform</a><a class="headerlink" href="#introduction-to-data-modelling-for-dorieh-data-platform" title="Permalink to this heading"></a></h2>
 <p>Data models consist of database tables, relations between them
 (e.g. foreign keys), indices and conventions that govern things
 like namings and roles of specific columns.</p>
@@ -174,6 +175,7 @@ following domains</p>
 <li><p>EPA</p></li>
 <li><p>Census</p></li>
 <li><p>Climate (gridMET data)</p></li>
+<li><p>Exposure (Air pollution data)</p></li>
 </ul>
 <p>Extended functionality for data transformations is provided by
 <a class="reference internal" href="DataModellingExtensions.html"><span class="doc std std-doc">Data Modelling Extensions</span></a> that are used by

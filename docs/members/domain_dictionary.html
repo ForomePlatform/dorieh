@@ -4,7 +4,7 @@
   <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The domain_dictionary Module &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>The Data Dictionary Generation tool &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
@@ -22,7 +22,9 @@
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Querying Medicaid Data" href="../QueringMedicaid.html" />
+    <link rel="prev" title="Alphabetic list of all columns in all tables" href="../lineage/column-list.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -45,10 +47,44 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../home.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../domains.html">Data Domains</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../domains.html">Data Domains</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../cms.html">Health</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3 current"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../lineage/medicare.dot.html">Table Lineage Diagram</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lineage/table-list.html">Alphabetic list of all tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../lineage/column-list.html">Alphabetic list of all columns in all tables</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">The Data Dictionary Generation tool</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cms.html#project-structure">Project Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cms.html#documentation-indices">Documentation Indices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../climate.html">Climate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../epa.html">Environmental Protection Agency (EPA) data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../census.html">Demographics</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
@@ -75,9 +111,13 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">The domain_dictionary Module</li>
+          <li class="breadcrumb-item"><a href="../domains.html">Data Domains</a></li>
+          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
+          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare Files Handling</a></li>
+          <li class="breadcrumb-item"><a href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+      <li class="breadcrumb-item active">The Data Dictionary Generation tool</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/members/domain_dictionary.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/members/domain_dictionary.md.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -85,125 +125,140 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="module-dorieh.platform.dictionary.domain_dictionary">
-<span id="the-domain-dictionary-module"></span><h1>The domain_dictionary Module<a class="headerlink" href="#module-dorieh.platform.dictionary.domain_dictionary" title="Permalink to this heading"></a></h1>
-<dl class="py class">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">DomainDict</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">options</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Dict</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict" title="Permalink to this definition"></a></dt>
-<dd><dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.add">
-<span class="sig-name descname"><span class="pre">add</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.add"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.add" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+  <section id="the-data-dictionary-generation-tool">
+<h1>The Data Dictionary Generation tool<a class="headerlink" href="#the-data-dictionary-generation-tool" title="Permalink to this heading"></a></h1>
+<section id="generating-data-dictionary">
+<h2>Generating data dictionary<a class="headerlink" href="#generating-data-dictionary" title="Permalink to this heading"></a></h2>
+<p>In Dorieh, one can define a data model, including tables
+(or views and materialized views), columns, indices and
+relations between tables (foreign keys) using
+<a class="reference internal" href="../Datamodels.html"><span class="std std-doc">Dorieh DSL</span></a>. The DSL also describes
+how the original incoming data should be transformed to
+create the eventual data structure.</p>
+<p>The Data dictionary tool generates documentation for the data
+elements (such as tables and columns) in the data model and data lineage
+diagrams at the tables levels and at column levels for every column.</p>
+<p>The output of the tool is described below.</p>
+<p>(domain-dictionary-output=)</p>
+<section id="output-structure-of-domain-dictionary-tool">
+<h3>Output structure of Domain Dictionary tool<a class="headerlink" href="#output-structure-of-domain-dictionary-tool" title="Permalink to this heading"></a></h3>
+<ul class="simple">
+<li><p>Main table-level data lineage diagram showing the order of the
+data processing and the dependencies between tables.</p></li>
+<li><p>If the diagram is generated using SVG format, then every table
+is clickable, linked to a file with the table description.</p></li>
+<li><p>Table description file includes verbal description, SQL or DDL
+used to create the table and the list of all columns in the table.
+Each column is linked to another file with detailed description
+for this column.</p></li>
+<li><p>Each column description file contains a description of the column
+and a lineage diagram for teh column showing what columns in which tables
+have been used to compute the value of this column. The SVG
+diagram is clickable and every element is linked to the description
+file for the column.</p></li>
+<li><p>File, containing alphabetical list of all columns with the tables in which
+every column is present. During transformation process columns are
+transferred from one table to another, hence a column usually is present in
+multiple tables.</p></li>
+</ul>
+<p>The tool first generates Markdown files that can be subsequently converted to HTML.</p>
+<p>There are two modes for Markdown generation:</p>
+<ul class="simple">
+<li><p>Standalone mode, when Pandoc is used to generate HTML</p></li>
+<li><p>Sphix mode designed to produce files that will be included in the SPhinx generated documentation</p></li>
+</ul>
+</section>
+</section>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Permalink to this heading"></a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">dorieh</span><span class="o">.</span><span class="n">platform</span><span class="o">.</span><span class="n">dictionary</span><span class="o">.</span><span class="n">domain_dictionary</span> 
+    <span class="p">[</span><span class="o">-</span><span class="n">h</span><span class="p">]</span> <span class="p">[</span><span class="o">--</span><span class="n">fmt</span> <span class="p">{</span><span class="n">none</span><span class="p">,</span><span class="n">png</span><span class="p">,</span><span class="n">gif</span><span class="p">,</span><span class="n">ps2</span><span class="p">,</span><span class="n">svg</span><span class="p">,</span><span class="n">cmapx</span><span class="p">,</span><span class="n">jpeg</span><span class="p">}]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">lod</span> <span class="p">{</span><span class="n">full</span><span class="p">,</span><span class="n">none</span><span class="p">,</span><span class="nb">min</span><span class="p">}]</span>
+    <span class="p">[</span><span class="o">--</span><span class="n">mode</span> <span class="p">{</span><span class="n">standalone</span><span class="p">,</span><span class="n">sphinx</span><span class="p">}]</span> <span class="p">[</span><span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">]</span>
+    <span class="n">yaml</span> <span class="p">[</span><span class="n">yaml</span> <span class="o">...</span><span class="p">]</span>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.list">
-<span class="sig-name descname"><span class="pre">list</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.list" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="n">Positional</span> <span class="n">arguments</span><span class="p">:</span>
+  <span class="n">yaml</span>                  <span class="n">Paths</span> <span class="n">to</span> <span class="n">YaML</span> <span class="n">files</span> <span class="k">with</span> <span class="n">domain</span> <span class="n">definitions</span>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.is_top">
-<span class="sig-name descname"><span class="pre">is_top</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.is_top"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.is_top" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<span class="n">Options</span><span class="p">:</span>
+  <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>            <span class="n">show</span> <span class="n">this</span> <span class="n">help</span> <span class="n">message</span> <span class="ow">and</span> <span class="n">exit</span>
+  <span class="o">--</span><span class="n">fmt</span> <span class="p">{</span><span class="n">none</span><span class="p">,</span><span class="n">png</span><span class="p">,</span><span class="n">gif</span><span class="p">,</span><span class="n">ps2</span><span class="p">,</span><span class="n">svg</span><span class="p">,</span><span class="n">cmapx</span><span class="p">,</span><span class="n">jpeg</span><span class="p">},</span> <span class="o">-</span><span class="n">f</span> <span class="p">{</span><span class="n">none</span><span class="p">,</span><span class="n">png</span><span class="p">,</span><span class="n">gif</span><span class="p">,</span><span class="n">ps2</span><span class="p">,</span><span class="n">svg</span><span class="p">,</span><span class="n">cmapx</span><span class="p">,</span><span class="n">jpeg</span><span class="p">}</span>
+                        <span class="n">Format</span> <span class="n">of</span> <span class="n">generated</span> <span class="n">image</span><span class="p">,</span> <span class="k">if</span> <span class="s1">&#39;none&#39;</span><span class="p">,</span> <span class="n">then</span> <span class="n">no</span> <span class="n">image</span> <span class="ow">is</span>
+                        <span class="n">generated</span>
+  <span class="o">--</span><span class="n">lod</span> <span class="p">{</span><span class="n">full</span><span class="p">,</span><span class="n">none</span><span class="p">,</span><span class="nb">min</span><span class="p">}</span>
+                        <span class="n">Level</span> <span class="n">of</span> <span class="n">details</span>
+  <span class="o">--</span><span class="n">mode</span> <span class="p">{</span><span class="n">standalone</span><span class="p">,</span><span class="n">sphinx</span><span class="p">}</span>
+                        <span class="n">Documentation</span> <span class="n">generation</span> <span class="n">mode</span>
+  <span class="o">--</span><span class="n">output</span> <span class="n">OUTPUT</span><span class="p">,</span> <span class="o">--</span><span class="n">of</span> <span class="n">OUTPUT</span><span class="p">,</span> <span class="o">-</span><span class="n">o</span> <span class="n">OUTPUT</span>
+                        <span class="n">Path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">main</span> <span class="n">output</span> <span class="n">file</span> <span class="k">with</span> 
+                        <span class="n">Table</span><span class="o">-</span><span class="n">level</span> <span class="n">data</span> <span class="n">lineage</span> <span class="n">diagram</span>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.print_node">
-<span class="sig-name descname"><span class="pre">print_node</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">indent</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.print_node"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.print_node" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
 
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.print_top_nodes">
-<span class="sig-name descname"><span class="pre">print_top_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.print_top_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.print_top_nodes" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.print_other_nodes">
-<span class="sig-name descname"><span class="pre">print_other_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.print_other_nodes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.print_other_nodes" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.to_dot">
-<span class="sig-name descname"><span class="pre">to_dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">out=&lt;_io.TextIOWrapper</span> <span class="pre">name='&lt;stdout&gt;'</span> <span class="pre">mode='w'</span> <span class="pre">encoding='utf-8'&gt;</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.to_dot"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.to_dot" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.html">
-<span class="sig-name descname"><span class="pre">html</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.html"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.html" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.html_body">
-<em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">html_body</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">svg</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.html_body"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.html_body" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.write_markdown">
-<span class="sig-name descname"><span class="pre">write_markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">content</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.write_markdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.write_markdown" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.link_ext">
-<span class="sig-name descname"><span class="pre">link_ext</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.link_ext"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.link_ext" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.markdown">
-<span class="sig-name descname"><span class="pre">markdown</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">svg</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.markdown"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.markdown" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.table_toctree">
-<span class="sig-name descname"><span class="pre">table_toctree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">extra</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><span class="pre">List</span><span class="p"><span class="pre">[</span></span><span class="pre">str</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.table_toctree"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.table_toctree" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.table_list">
-<span class="sig-name descname"><span class="pre">table_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.table_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.table_list" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.column_list">
-<span class="sig-name descname"><span class="pre">column_list</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">of</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.column_list"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.column_list" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.DomainDict.generate_graphs">
-<span class="sig-name descname"><span class="pre">generate_graphs</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#DomainDict.generate_graphs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.DomainDict.generate_graphs" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py class">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.LOD">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">LOD</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">value</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#LOD"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.LOD" title="Permalink to this definition"></a></dt>
-<dd><p>An enumeration.</p>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.LOD.full">
-<span class="sig-name descname"><span class="pre">full</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'full'</span></em><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.LOD.full" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.LOD.none">
-<span class="sig-name descname"><span class="pre">none</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'none'</span></em><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.LOD.none" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.LOD.min">
-<span class="sig-name descname"><span class="pre">min</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'min'</span></em><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.LOD.min" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="py function">
-<dt class="sig sig-object py" id="dorieh.platform.dictionary.domain_dictionary.parse_args">
-<span class="sig-name descname"><span class="pre">parse_args</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">Dict</span></span></span><a class="reference internal" href="../_modules/dorieh/platform/dictionary/domain_dictionary.html#parse_args"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dictionary.domain_dictionary.parse_args" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
-
+</pre></div>
+</div>
+</section>
+<section id="details">
+<h2>Details<a class="headerlink" href="#details" title="Permalink to this heading"></a></h2>
+<p>.. py:module:: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:class:: DomainDict(of: str, options: ~typing.Dict)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.add(path)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.list()
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.is_top(t: str)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.print_node(out, t: str, indent: int)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.print_top_nodes(out)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.print_other_nodes(out)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.to_dot(out=&lt;_io.TextIOWrapper name=’<stdout>’ mode=’w’ encoding=’utf-8’&gt;)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.html(of: str, svg=None)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.html_body(svg)
+:module: dorieh.platform.dictionary.domain_dictionary
+:staticmethod:</p>
+<p>.. py:method:: DomainDict.write_markdown(content: str, of: str)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.link_ext()
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.markdown(of: str, svg=None)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.table_toctree(extra: ~typing.Optional[~typing.List[str]] = None) -&gt; str
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.table_list(of: str)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.column_list(of: str)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:method:: DomainDict.generate_graphs()
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>.. py:class:: LOD(value)
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+<p>Level of details to include in the generated pages</p>
+<p>.. py:attribute:: LOD.full
+:module: dorieh.platform.dictionary.domain_dictionary
+:value: ‘full’</p>
+<p>.. py:attribute:: LOD.none
+:module: dorieh.platform.dictionary.domain_dictionary
+:value: ‘none’</p>
+<p>.. py:attribute:: LOD.min
+:module: dorieh.platform.dictionary.domain_dictionary
+:value: ‘min’</p>
+<p>.. py:function:: parse_args() -&gt; ~typing.Dict
+:module: dorieh.platform.dictionary.domain_dictionary</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../lineage/column-list.html" class="btn btn-neutral float-left" title="Alphabetic list of all columns in all tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../QueringMedicaid.html" class="btn btn-neutral float-right" title="Querying Medicaid Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

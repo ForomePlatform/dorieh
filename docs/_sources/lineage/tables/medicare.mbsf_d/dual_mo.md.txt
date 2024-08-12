@@ -8,16 +8,6 @@
 | Qualified name                | medicare.mbsf_d.dual_mo  |
 | Datatype                      | INT        |
 | Column type | transformed |
-| Reference | [https://resdac.org/cms-data/variables/months-dual-eligibility](https://resdac.org/cms-data/variables/months-dual-eligibility) |
-
-
-Medicaid Dual Eligible Months
-
-| Key | Value |
-| --- | ----- |
-| long_name | DUAL_ELGBL_MONS |
-| original_type | NUM |
-| width | 3.0 |
 
 
 

@@ -9,14 +9,6 @@
 | Datatype                      | string        |
 
 
-RESDAC original file name
-
-| Key | Value |
-| --- | ----- |
-| original_type | CHAR |
-| width | 128 |
-
-
 
 ```{toctree}
 ---
