@@ -1,0 +1,140 @@
+
+- Introduction
+- What functionality the Data Platform provides?
+  -- Data management
+  -- Data Ingestion
+  -- Data manipulation
+  -- Reporting and Data Export
+  -- Reproducible data manipulation workflows
+  -- Building feature stores for ML, statistical computations and AI
+  -- Testing of data manipulation workflows
+- Data Platform Pillars
+  -- Data Ingestion tools and libraries
+    --- Automatic introspection and ingestion
+    --- Explicit data schema definitions in YaML files
+    --- Importing data schema from third party tools (SAS)
+    --- Automatic introspection + manual editing
+  -- Runtime execution environment
+  -- Data architecture tools and wokflow definition language
+  -- Data dictionary and data lineage tools
+- Data Domains
+  -- Domain specific tooling for the following knowledge domains:
+    --- Health (CMS: Medicare and Medicaid)
+    --- Climate
+    --- Exposure (Air pollution)
+    --- EPA data
+    --- Demographics
+- Python packages and libraries
+- Examples
+- Terms and acronyms
+- Building and executing containerized apps
+
+==================================
+
+Match Files to Sections:
+
+### Introduction
+
+#### Files:
+- `home.md`
+- `introduction.md`
+- `rationale.md`
+
+### What functionality the Data Platform provides?
+
+#### Files:
+- `functionality/data_management.md`
+- `functionality/data_ingestion.md`
+- `functionality/data_manipulation.md`
+- `functionality/reporting_data_export.md`
+- `functionality/reproducible_workflows.md`
+- `functionality/feature_stores.md`
+- `functionality/workflow_testing.md`
+
+### Data Platform Pillars
+
+#### Files:
+- `pillars/data_ingestion_tools.md`
+- `pillars/runtime_execution.md`
+- `pillars/data_architecture.md`
+- `pillars/data_dictionary_lineage.md`
+
+### Data Ingestion tools and libraries
+
+#### Files:
+- `pillars/ingestion/automatic_introspection.md`
+- `pillars/ingestion/explicit_schema_definitions.md`
+- `pillars/ingestion/importing_schemas.md`
+- `pillars/ingestion/introspection_manual_editing.md`
+
+### Data Domains
+
+#### Files:
+- `domains/cms.md`
+- `domains/climate.md`
+- `domains/exposure.md`
+- `domains/epa_data.md`
+- `domains/demographics.md`
+
+### CMS (Health) Domain
+
+#### Files:
+- `cms.md`
+- `Medicaid.md`
+- `Medicare.md`
+- `MedicareLineage.md`
+- `QueringMedicaid.md`
+
+### Python Packages and Libraries
+
+#### Files:
+- `CoreLibrary.md`
+- `CMSLibrary.md`
+- `cwl_tools.md`
+- `DataLoader.md`
+- `docutils.md`
+
+### Examples
+
+#### Files:
+- `examples.md`
+- `Example-climate-workflow.md`
+- `example_request_yaml.md`
+
+### Terms and Acronyms
+
+#### Files:
+- `terms_acronyms.md`
+- `glossary.md`
+
+### Building and Executing Containerized Apps
+
+#### Files:
+- `docker_readme.md`
+- `deployment.md`
+- `Dockerfile.amd64.md`
+- `Dockerfile.arm64.md`
+
+### Platform Internals
+
+#### Files:
+- `platform.md`
+- `MonitoringDB.md`
+- `ProjectLoader.md`
+- `DBConnections.md`
+- `core_prj_struct.md`
+
+### Supplementary Documents
+
+#### Files:
+- `DBT.md`
+- `fts.md`
+- `pipelines.md`
+- `AppPipelineGenerator.md`
+- `TerritorialCodes.md`
+- `TestingWorkflows.md`
+
+### General Documentation Indices
+
+#### Files:
+- `index.md`
