@@ -270,6 +270,10 @@ class DomainDict:
 
 
 class LOD(Enum):
+    """
+    Level of details to include in the generated pages
+    """
+
     full = "full"
     none = "none"
     min = "min"
@@ -283,7 +287,7 @@ def parse_args() -> Dict:
                         help="Paths to YaML files with domain definitions",
                         nargs='+')
     parser.add_argument("--fmt", "-f",
-                        help="Format to generate image, if 'none', "
+                        help="Format of generated image, if 'none', "
                              "then no image is generated",
                         default="none",
                         choices=["none","png","gif","ps2","svg","cmapx","jpeg"],
@@ -297,7 +301,7 @@ def parse_args() -> Dict:
                         default=RenderMode.standalone.value,
                         choices=[s.value for s in RenderMode])
     parser.add_argument("--output", "--of", "-o",
-                        help="Path to the main output dot file",
+                        help="with Table-level data lineage diagram",
                         default="tables.dot",
                         required=False)
     args = parser.parse_args()
