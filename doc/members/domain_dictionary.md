@@ -13,7 +13,10 @@ The Data dictionary tool generates documentation for the data
 elements (such as tables and columns) in the data model and data lineage
 diagrams at the tables levels and at column levels for every column.
 
-The output of the tool is:
+The output of the tool is described below.
+
+(domain-dictionary-output=)                                      
+### Output structure of Domain Dictionary tool
 
 * Main table-level data lineage diagram showing the order of the
   data processing and the dependencies between tables.
