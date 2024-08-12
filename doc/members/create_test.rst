@@ -3,7 +3,7 @@ Utility to generate test queries
 
 .. toctree::
    :maxdepth: 2
-   :glob: true
+   :glob:
    :hidden:
 
    dbt_runner
