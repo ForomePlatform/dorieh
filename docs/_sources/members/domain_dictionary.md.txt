@@ -22,7 +22,7 @@ The output of the tool is described below.
   data processing and the dependencies between tables.
 * If the diagram is generated using SVG format, then every table
   is clickable, linked to a file with the table description.
-* Table description file includes verbal description, SQL or DDL
+* Every table description file includes verbal description, SQL or DDL
   used to create the table and the list of all columns in the table.
   Each column is linked to another file with detailed description
   for this column.
@@ -31,8 +31,9 @@ The output of the tool is described below.
   have been used to compute the value of this column. The SVG
   diagram is clickable and every element is linked to the description
   file for the column.
-* File, containing alphabetical list of all columns with the tables in which 
-  every column is present. During transformation process columns are 
+* File, containing alphabetical list of all columns in all tables. 
+  For every column a list of tables in which the column is present
+  is displayed. During transformation process columns are 
   transferred from one table to another, hence a column usually is present in 
   multiple tables.
   

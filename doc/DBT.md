@@ -6,8 +6,8 @@ maxdepth: 4
 glob: true
 hidden: 
 ---
-members/create_test.md
-members/dbt_runner.md
+members/create_test
+members/dbt_runner
 members/gen_dbt_cwl.rst
 TestingWorkflows.md
 guts.md
