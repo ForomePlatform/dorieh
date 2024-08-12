@@ -53,7 +53,19 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../../cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../../Medicare.html">Medicare Files Handling</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicaid.html">Handling Medicaid data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
 <li class="toctree-l3 current"><a class="reference internal" href="../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="../medicare.dot.html">Table Lineage Diagram</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../table-list.html">Alphabetic list of all tables</a></li>
@@ -123,411 +135,411 @@
 <p>Primary Key: FILE, RECORD</p>
 <details>
 <summary>SQL/DDL Statement</summary>
-```sql
-CREATE TABLE  cms.medpar_2015 (
-	BENE_ID VARCHAR(15),
-	MEDPARID VARCHAR(15),
-	MEDPAR_YR_NUM VARCHAR(4),
-	CLM_TYPE VARCHAR(2),
-	BIC VARCHAR(2),
-	EQ_BIC VARCHAR(2),
-	AGE_CNT INT,
-	SEX VARCHAR(1),
-	RACE VARCHAR(1),
-	MS_CD VARCHAR(2),
-	STATE_CD VARCHAR(2),
-	CNTY_CD VARCHAR(3),
-	BENE_ZIP VARCHAR(5),
-	DSCHRGCD VARCHAR(1),
-	FICARR VARCHAR(5),
-	WRNGCD VARCHAR(18),
-	GHOPDCD VARCHAR(1),
-	PPS_IND VARCHAR(1),
-	ORGNPINM VARCHAR(10),
-	PRVDRNUM VARCHAR(10),
-	SPCLUNIT VARCHAR(1),
-	SSLSSNF VARCHAR(1),
-	ACTV_XREF_IND VARCHAR(1),
-	SLCT_RSN_CD VARCHAR(1),
-	FACLMCNT INT,
-	ACRTNDT DATE,
-	EXHST_DT DATE,
-	QLFYFROM DATE,
-	QLFYTHRU DATE,
-	SRC_ADMS VARCHAR(1),
-	TYPE_ADM VARCHAR(1),
-	ADMSNDAY VARCHAR(1),
-	ADMSNDT DATE,
-	DSCHRGDT DATE,
-	DSTNTNCD VARCHAR(2),
-	CVRLVLDT DATE,
-	DEATHDT DATE,
-	DEATHCD VARCHAR(1),
-	DEATHDAY INT,
-	SSICD VARCHAR(1),
-	SSIDAY INT,
-	INTRNL_USE_SSI_DATA VARCHAR(1),
-	IPSBCD VARCHAR(3),
-	FILDTCD VARCHAR(1),
-	SMPLSIZE VARCHAR(1),
-	LOSCNT INT,
-	OUTLRDAY INT,
-	UTIL_DAY INT,
-	COIN_DAY INT,
-	LRD_USE INT,
-	COIN_AMT INT,
-	DED_AMT INT,
-	BLDDEDAM INT,
-	PRPAY_CD VARCHAR(1),
-	PRPAYAMT INT,
-	DRG_CD VARCHAR(3),
-	OUTLR_CD VARCHAR(1),
-	OUTLRAMT INT,
-	DRGPRICE INT,
-	DISP_SHR INT,
-	IME_AMT INT,
-	PASSTHRU INT,
-	PPS_CPTL INT,
-	IP_LOW_VOL_PYMT_AMT INT,
-	TOTCHRG INT,
-	CVRCHRG INT,
-	PMT_AMT INT,
-	ACMDTNS INT,
-	DPRTMNTL INT,
-	PRVTDAY INT,
-	SPRVTDAY INT,
-	WARDDAY INT,
-	ICARECNT INT,
-	CRNRYDAY INT,
-	PRVTAMT INT,
-	SPRVTAMT INT,
-	WARDAMT INT,
-	ICAREAMT INT,
-	CRNRYAMT INT,
-	OTHRAMT INT,
-	PHRMCAMT INT,
-	SUPLYAMT INT,
-	DME_AMT INT,
-	UDME_AMT INT,
-	PHYTHAMT INT,
-	OCPTLAMT INT,
-	SPCH_AMT INT,
-	INHLTAMT INT,
-	BLOODAMT INT,
-	BLDADMIN INT,
-	BLDFRNSH INT,
-	OROOMAMT INT,
-	LTHTRPSY INT,
-	CRDLGY INT,
-	ANSTHSA INT,
-	LAB_AMT INT,
-	RDLGYAMT INT,
-	MRI_AMT INT,
-	OPSRVC INT,
-	ER_AMT INT,
-	AMBLNC INT,
-	PROFFEES INT,
-	ORGNAMT INT,
-	ESRDSETG INT,
-	CLNC_AMT INT,
-	ICUINDCD VARCHAR(1),
-	CRNRY_CD VARCHAR(1),
-	PHRMCYCD VARCHAR(1),
-	TRNSPLNT VARCHAR(1),
-	ONCLGYSW VARCHAR(1),
-	DGNSTCSW VARCHAR(1),
-	THRPTCSW VARCHAR(1),
-	NUCLR_SW VARCHAR(1),
-	CTSCANSW VARCHAR(1),
-	IMGNG_SW VARCHAR(1),
-	OPSRVCCD VARCHAR(1),
-	ORGNCD VARCHAR(2),
-	ESRD_CD VARCHAR(2),
-	ESRDSTG1 VARCHAR(2),
-	ESRDSTG2 VARCHAR(2),
-	ESRDSTG3 VARCHAR(2),
-	ESRDSTG4 VARCHAR(2),
-	ESRDSTG5 VARCHAR(2),
-	AD_DGNS VARCHAR(7),
-	ADMTG_DGNS_VRSN_CD VARCHAR(1),
-	DGNSCNT INT,
-	DGNS_VRSN_CD VARCHAR(1),
-	DGNS_VRSN_CD_1 VARCHAR(1),
-	DGNS_VRSN_CD_2 VARCHAR(1),
-	DGNS_VRSN_CD_3 VARCHAR(1),
-	DGNS_VRSN_CD_4 VARCHAR(1),
-	DGNS_VRSN_CD_5 VARCHAR(1),
-	DGNS_VRSN_CD_6 VARCHAR(1),
-	DGNS_VRSN_CD_7 VARCHAR(1),
-	DGNS_VRSN_CD_8 VARCHAR(1),
-	DGNS_VRSN_CD_9 VARCHAR(1),
-	DGNS_VRSN_CD_10 VARCHAR(1),
-	DGNS_VRSN_CD_11 VARCHAR(1),
-	DGNS_VRSN_CD_12 VARCHAR(1),
-	DGNS_VRSN_CD_13 VARCHAR(1),
-	DGNS_VRSN_CD_14 VARCHAR(1),
-	DGNS_VRSN_CD_15 VARCHAR(1),
-	DGNS_VRSN_CD_16 VARCHAR(1),
-	DGNS_VRSN_CD_17 VARCHAR(1),
-	DGNS_VRSN_CD_18 VARCHAR(1),
-	DGNS_VRSN_CD_19 VARCHAR(1),
-	DGNS_VRSN_CD_20 VARCHAR(1),
-	DGNS_VRSN_CD_21 VARCHAR(1),
-	DGNS_VRSN_CD_22 VARCHAR(1),
-	DGNS_VRSN_CD_23 VARCHAR(1),
-	DGNS_VRSN_CD_24 VARCHAR(1),
-	DGNS_VRSN_CD_25 VARCHAR(1),
-	DGNSCD1 VARCHAR(7),
-	DGNSCD2 VARCHAR(7),
-	DGNSCD3 VARCHAR(7),
-	DGNSCD4 VARCHAR(7),
-	DGNSCD5 VARCHAR(7),
-	DGNSCD6 VARCHAR(7),
-	DGNSCD7 VARCHAR(7),
-	DGNSCD8 VARCHAR(7),
-	DGNSCD9 VARCHAR(7),
-	DGNSCD10 VARCHAR(7),
-	DGNSCD11 VARCHAR(7),
-	DGNSCD12 VARCHAR(7),
-	DGNSCD13 VARCHAR(7),
-	DGNSCD14 VARCHAR(7),
-	DGNSCD15 VARCHAR(7),
-	DGNSCD16 VARCHAR(7),
-	DGNSCD17 VARCHAR(7),
-	DGNSCD18 VARCHAR(7),
-	DGNSCD19 VARCHAR(7),
-	DGNSCD20 VARCHAR(7),
-	DGNSCD21 VARCHAR(7),
-	DGNSCD22 VARCHAR(7),
-	DGNSCD23 VARCHAR(7),
-	DGNSCD24 VARCHAR(7),
-	DGNSCD25 VARCHAR(7),
-	DGNS_POA VARCHAR(10),
-	POA_DGNS_CD_CNT INT,
-	POA_DGNS_1_IND_CD VARCHAR(1),
-	POA_DGNS_2_IND_CD VARCHAR(1),
-	POA_DGNS_3_IND_CD VARCHAR(1),
-	POA_DGNS_4_IND_CD VARCHAR(1),
-	POA_DGNS_5_IND_CD VARCHAR(1),
-	POA_DGNS_6_IND_CD VARCHAR(1),
-	POA_DGNS_7_IND_CD VARCHAR(1),
-	POA_DGNS_8_IND_CD VARCHAR(1),
-	POA_DGNS_9_IND_CD VARCHAR(1),
-	POA_DGNS_10_IND_CD VARCHAR(1),
-	POA_DGNS_11_IND_CD VARCHAR(1),
-	POA_DGNS_12_IND_CD VARCHAR(1),
-	POA_DGNS_13_IND_CD VARCHAR(1),
-	POA_DGNS_14_IND_CD VARCHAR(1),
-	POA_DGNS_15_IND_CD VARCHAR(1),
-	POA_DGNS_16_IND_CD VARCHAR(1),
-	POA_DGNS_17_IND_CD VARCHAR(1),
-	POA_DGNS_18_IND_CD VARCHAR(1),
-	POA_DGNS_19_IND_CD VARCHAR(1),
-	POA_DGNS_20_IND_CD VARCHAR(1),
-	POA_DGNS_21_IND_CD VARCHAR(1),
-	POA_DGNS_22_IND_CD VARCHAR(1),
-	POA_DGNS_23_IND_CD VARCHAR(1),
-	POA_DGNS_24_IND_CD VARCHAR(1),
-	POA_DGNS_25_IND_CD VARCHAR(1),
-	DGNS_E_CD_CNT INT,
-	DGNS_E_VRSN_CD VARCHAR(1),
-	DGNS_E_VRSN_CD_1 VARCHAR(1),
-	DGNS_E_VRSN_CD_2 VARCHAR(1),
-	DGNS_E_VRSN_CD_3 VARCHAR(1),
-	DGNS_E_VRSN_CD_4 VARCHAR(1),
-	DGNS_E_VRSN_CD_5 VARCHAR(1),
-	DGNS_E_VRSN_CD_6 VARCHAR(1),
-	DGNS_E_VRSN_CD_7 VARCHAR(1),
-	DGNS_E_VRSN_CD_8 VARCHAR(1),
-	DGNS_E_VRSN_CD_9 VARCHAR(1),
-	DGNS_E_VRSN_CD_10 VARCHAR(1),
-	DGNS_E_VRSN_CD_11 VARCHAR(1),
-	DGNS_E_VRSN_CD_12 VARCHAR(1),
-	DGNS_E_1_CD VARCHAR(7),
-	DGNS_E_2_CD VARCHAR(7),
-	DGNS_E_3_CD VARCHAR(7),
-	DGNS_E_4_CD VARCHAR(7),
-	DGNS_E_5_CD VARCHAR(7),
-	DGNS_E_6_CD VARCHAR(7),
-	DGNS_E_7_CD VARCHAR(7),
-	DGNS_E_8_CD VARCHAR(7),
-	DGNS_E_9_CD VARCHAR(7),
-	DGNS_E_10_CD VARCHAR(7),
-	DGNS_E_11_CD VARCHAR(7),
-	DGNS_E_12_CD VARCHAR(7),
-	POA_DGNS_E_CD_CNT INT,
-	POA_DGNS_E_1_IND_CD VARCHAR(1),
-	POA_DGNS_E_2_IND_CD VARCHAR(1),
-	POA_DGNS_E_3_IND_CD VARCHAR(1),
-	POA_DGNS_E_4_IND_CD VARCHAR(1),
-	POA_DGNS_E_5_IND_CD VARCHAR(1),
-	POA_DGNS_E_6_IND_CD VARCHAR(1),
-	POA_DGNS_E_7_IND_CD VARCHAR(1),
-	POA_DGNS_E_8_IND_CD VARCHAR(1),
-	POA_DGNS_E_9_IND_CD VARCHAR(1),
-	POA_DGNS_E_10_IND_CD VARCHAR(1),
-	POA_DGNS_E_11_IND_CD VARCHAR(1),
-	POA_DGNS_E_12_IND_CD VARCHAR(1),
-	PRCDRSW VARCHAR(1),
-	PRCDRCNT INT,
-	SRGCL_PRCDR_VRSN_CD VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_1 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_2 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_3 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_4 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_5 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_6 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_7 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_8 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_9 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_10 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_11 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_12 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_13 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_14 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_15 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_16 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_17 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_18 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_19 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_20 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_21 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_22 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_23 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_24 VARCHAR(1),
-	SRGCL_PRCDR_VRSN_CD_25 VARCHAR(1),
-	PRCDRCD1 VARCHAR(7),
-	PRCDRCD2 VARCHAR(7),
-	PRCDRCD3 VARCHAR(7),
-	PRCDRCD4 VARCHAR(7),
-	PRCDRCD5 VARCHAR(7),
-	PRCDRCD6 VARCHAR(7),
-	PRCDRCD7 VARCHAR(7),
-	PRCDRCD8 VARCHAR(7),
-	PRCDRCD9 VARCHAR(7),
-	PRCDRCD10 VARCHAR(7),
-	PRCDRCD11 VARCHAR(7),
-	PRCDRCD12 VARCHAR(7),
-	PRCDRCD13 VARCHAR(7),
-	PRCDRCD14 VARCHAR(7),
-	PRCDRCD15 VARCHAR(7),
-	PRCDRCD16 VARCHAR(7),
-	PRCDRCD17 VARCHAR(7),
-	PRCDRCD18 VARCHAR(7),
-	PRCDRCD19 VARCHAR(7),
-	PRCDRCD20 VARCHAR(7),
-	PRCDRCD21 VARCHAR(7),
-	PRCDRCD22 VARCHAR(7),
-	PRCDRCD23 VARCHAR(7),
-	PRCDRCD24 VARCHAR(7),
-	PRCDRCD25 VARCHAR(7),
-	PRCDTCNT INT,
-	PRCDRDT1 DATE,
-	PRCDRDT2 DATE,
-	PRCDRDT3 DATE,
-	PRCDRDT4 DATE,
-	PRCDRDT5 DATE,
-	PRCDRDT6 DATE,
-	PRCDRDT7 DATE,
-	PRCDRDT8 DATE,
-	PRCDRDT9 DATE,
-	PRCDRDT10 DATE,
-	PRCDRDT11 DATE,
-	PRCDRDT12 DATE,
-	PRCDRDT13 DATE,
-	PRCDRDT14 DATE,
-	PRCDRDT15 DATE,
-	PRCDRDT16 DATE,
-	PRCDRDT17 DATE,
-	PRCDRDT18 DATE,
-	PRCDRDT19 DATE,
-	PRCDRDT20 DATE,
-	PRCDRDT21 DATE,
-	PRCDRDT22 DATE,
-	PRCDRDT23 DATE,
-	PRCDRDT24 DATE,
-	PRCDRDT25 DATE,
-	CLM_PTNT_RLTNSHP_CD VARCHAR(2),
-	CARE_IMPRVMT_MODEL_1_CD VARCHAR(2),
-	CARE_IMPRVMT_MODEL_2_CD VARCHAR(2),
-	CARE_IMPRVMT_MODEL_3_CD VARCHAR(2),
-	CARE_IMPRVMT_MODEL_4_CD VARCHAR(2),
-	VBP_PRTCPNT_IND_CD VARCHAR(1),
-	HRR_PRTCPNT_IND_CD VARCHAR(1),
-	BNDLD_MODEL_DSCNT_PCT NUMERIC(7,4),
-	VBP_ADJSTMT_PCT NUMERIC(15,12),
-	HRR_ADJSTMT_PCT NUMERIC(8,5),
-	INFRMTL_ENCTR_IND_SW VARCHAR(1),
-	MA_TCHNG_IND_SW VARCHAR(1),
-	PROD_RPLCMT_LIFECYC_SW VARCHAR(1),
-	PROD_RPLCMT_RCLL_SW VARCHAR(1),
-	CRED_RCVD_RPLCD_DVC_SW VARCHAR(1),
-	OBSRVTN_SW VARCHAR(1),
-	NEW_TCHNLGY_ADD_ON_AMT INT,
-	BASE_OPRTG_DRG_AMT INT,
-	OPRTG_HSP_AMT INT,
-	MDCL_SRGCL_GNRL_AMT INT,
-	MDCL_SRGCL_NSTRL_AMT INT,
-	MDCL_SRGCL_STRL_AMT INT,
-	TAKE_HOME_AMT INT,
-	PRSTHTC_ORTHTC_AMT INT,
-	MDCL_SRGCL_PCMKR_AMT INT,
-	INTRAOCULAR_LENS_AMT INT,
-	OXYGN_TAKE_HOME_AMT INT,
-	OTHR_IMPLANTS_AMT INT,
-	OTHR_SUPLIES_DVC_AMT INT,
-	INCDNT_RDLGY_AMT INT,
-	INCDNT_DGNSTC_SRVCS_AMT INT,
-	MDCL_SRGCL_DRSNG_AMT INT,
-	INVSTGTNL_DVC_AMT INT,
-	MDCL_SRGCL_MISC_AMT INT,
-	RDLGY_ONCOLOGY_AMT INT,
-	RDLGY_DGNSTC_AMT INT,
-	RDLGY_THRPTC_AMT INT,
-	RDLGY_NUCLR_MDCN_AMT INT,
-	RDLGY_CT_SCAN_AMT INT,
-	RDLGY_OTHR_IMGNG_AMT INT,
-	OPRTG_ROOM_AMT INT,
-	OR_LABOR_DLVRY_AMT INT,
-	CRDC_CATHRZTN_AMT INT,
-	SQSTRTN_RDCTN_AMT INT,
-	UNCOMPD_CARE_PYMT_AMT INT,
-	BNDLD_ADJSTMT_AMT INT,
-	VBP_ADJSTMT_AMT INT,
-	HRR_ADJSTMT_AMT INT,
-	EHR_PYMT_ADJSTMT_AMT INT,
-	PPS_STD_VAL_PYMT_AMT INT,
-	FINL_STD_AMT INT,
-	HAC_RDCTN_PMT_AMT INT,
-	IPPS_FLEX_PYMT_7_AMT INT,
-	PTNT_ADD_ON_PYMT_AMT INT,
-	HAC_PGM_RDCTN_IND_SW VARCHAR(1),
-	PGM_RDCTN_IND_SW VARCHAR(1),
-	PA_IND_CD VARCHAR(4),
-	UNIQ_TRKNG_NUM VARCHAR(14),
-	STAY_2_IND_SW VARCHAR(1),
-	CLM_SITE_NTRL_PYMT_CST_AMT INT,
-	CLM_SITE_NTRL_PYMT_IPPS_AMT INT,
-	CLM_FULL_STD_PYMT_AMT INT,
-	CLM_SS_OUTLIER_STD_PYMT_AMT INT,
-	CLM_NGACO_IND_1_CD VARCHAR(1),
-	CLM_NGACO_IND_2_CD VARCHAR(1),
-	CLM_NGACO_IND_3_CD VARCHAR(1),
-	CLM_NGACO_IND_4_CD VARCHAR(1),
-	CLM_NGACO_IND_5_CD VARCHAR(1),
-	CLM_RSDL_PYMT_IND_CD VARCHAR(1),
-	CLM_RP_IND_CD VARCHAR(1),
-	RC_RP_IND_CD VARCHAR(1),
-	FILE VARCHAR(128),
-	RECORD BIGSERIAL,
-	STATE VARCHAR(2) GENERATED ALWAYS AS (STATE_CD) STORED,
-	YEAR VARCHAR(4) GENERATED ALWAYS AS (MEDPAR_YR_NUM) STORED,
-	ZIP VARCHAR(5) GENERATED ALWAYS AS (BENE_ZIP) STORED,
-	PRIMARY KEY (FILE, RECORD)
-);
-CREATE INDEX  medpar_2015_FILE_idx ON cms.medpar_2015 USING BTREE (FILE) ;
-COMMENT ON table cms.medpar_2015 IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.126193';
-```
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w">  </span><span class="n">cms</span><span class="p">.</span><span class="n">medpar_2015</span><span class="w"> </span><span class="p">(</span>
+<span class="w">	</span><span class="n">BENE_ID</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="w">	</span><span class="n">MEDPARID</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">15</span><span class="p">),</span>
+<span class="w">	</span><span class="n">MEDPAR_YR_NUM</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_TYPE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">BIC</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">EQ_BIC</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">AGE_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SEX</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">RACE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">MS_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">STATE_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CNTY_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">	</span><span class="n">BENE_ZIP</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DSCHRGCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">FICARR</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">	</span><span class="n">WRNGCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">18</span><span class="p">),</span>
+<span class="w">	</span><span class="n">GHOPDCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PPS_IND</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ORGNPINM</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRVDRNUM</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SPCLUNIT</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SSLSSNF</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ACTV_XREF_IND</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SLCT_RSN_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">FACLMCNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ACRTNDT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">EXHST_DT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">QLFYFROM</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">QLFYTHRU</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SRC_ADMS</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">TYPE_ADM</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ADMSNDAY</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ADMSNDT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DSCHRGDT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DSTNTNCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CVRLVLDT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DEATHDT</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DEATHCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DEATHDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SSICD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SSIDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INTRNL_USE_SSI_DATA</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">IPSBCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">	</span><span class="n">FILDTCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SMPLSIZE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">LOSCNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OUTLRDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">UTIL_DAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">COIN_DAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">LRD_USE</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">COIN_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DED_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BLDDEDAM</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRPAY_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRPAYAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DRG_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+<span class="w">	</span><span class="n">OUTLR_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">OUTLRAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DRGPRICE</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DISP_SHR</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">IME_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PASSTHRU</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PPS_CPTL</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">IP_LOW_VOL_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">TOTCHRG</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CVRCHRG</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ACMDTNS</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DPRTMNTL</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRVTDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SPRVTDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">WARDDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ICARECNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CRNRYDAY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRVTAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SPRVTAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">WARDAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ICAREAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CRNRYAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OTHRAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PHRMCAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SUPLYAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DME_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">UDME_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PHYTHAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OCPTLAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SPCH_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INHLTAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BLOODAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BLDADMIN</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BLDFRNSH</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OROOMAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">LTHTRPSY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CRDLGY</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ANSTHSA</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">LAB_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGYAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MRI_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OPSRVC</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ER_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">AMBLNC</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PROFFEES</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ORGNAMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ESRDSETG</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLNC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ICUINDCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CRNRY_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PHRMCYCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">TRNSPLNT</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ONCLGYSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSTCSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">THRPTCSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">NUCLR_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CTSCANSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">IMGNG_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">OPSRVCCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ORGNCD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRD_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRDSTG1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRDSTG2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRDSTG3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRDSTG4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ESRDSTG5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">AD_DGNS</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">ADMTG_DGNS_VRSN_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_6</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_7</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_8</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_9</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_13</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_14</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_15</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_16</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_17</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_18</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_19</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_20</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_21</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_22</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_23</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_24</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_VRSN_CD_25</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD6</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD7</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD8</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD9</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD13</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD14</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD15</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD16</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD17</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD18</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD19</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD20</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD21</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD22</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD23</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD24</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNSCD25</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_POA</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_CD_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">POA_DGNS_1_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_2_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_3_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_4_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_5_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_6_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_7_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_8_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_9_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_10_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_11_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_12_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_13_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_14_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_15_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_16_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_17_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_18_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_19_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_20_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_21_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_22_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_23_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_24_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_25_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_CD_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_6</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_7</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_8</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_9</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_VRSN_CD_12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_1_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_2_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_3_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_4_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_5_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_6_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_7_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_8_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_9_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_10_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_11_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">DGNS_E_12_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_CD_CNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_1_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_2_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_3_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_4_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_5_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_6_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_7_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_8_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_9_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_10_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_11_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">POA_DGNS_E_12_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRSW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_6</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_7</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_8</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_9</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_13</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_14</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_15</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_16</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_17</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_18</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_19</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_20</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_21</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_22</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_23</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_24</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">SRGCL_PRCDR_VRSN_CD_25</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD1</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD2</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD3</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD4</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD5</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD6</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD7</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD8</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD9</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD10</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD11</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD12</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD13</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD14</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD15</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD16</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD17</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD18</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD19</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD20</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD21</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD22</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD23</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD24</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDRCD25</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">7</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PRCDTCNT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT1</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT2</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT3</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT4</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT5</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT6</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT7</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT8</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT9</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT10</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT11</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT12</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT13</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT14</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT15</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT16</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT17</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT18</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT19</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT20</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT21</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT22</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT23</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT24</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRCDRDT25</span><span class="w"> </span><span class="nb">DATE</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLM_PTNT_RLTNSHP_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CARE_IMPRVMT_MODEL_1_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CARE_IMPRVMT_MODEL_2_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CARE_IMPRVMT_MODEL_3_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CARE_IMPRVMT_MODEL_4_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span>
+<span class="w">	</span><span class="n">VBP_PRTCPNT_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">HRR_PRTCPNT_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">BNDLD_MODEL_DSCNT_PCT</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">7</span><span class="p">,</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">	</span><span class="n">VBP_ADJSTMT_PCT</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">12</span><span class="p">),</span>
+<span class="w">	</span><span class="n">HRR_ADJSTMT_PCT</span><span class="w"> </span><span class="nb">NUMERIC</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">5</span><span class="p">),</span>
+<span class="w">	</span><span class="n">INFRMTL_ENCTR_IND_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">MA_TCHNG_IND_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PROD_RPLCMT_LIFECYC_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PROD_RPLCMT_RCLL_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CRED_RCVD_RPLCD_DVC_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">OBSRVTN_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">NEW_TCHNLGY_ADD_ON_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BASE_OPRTG_DRG_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OPRTG_HSP_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_GNRL_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_NSTRL_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_STRL_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">TAKE_HOME_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PRSTHTC_ORTHTC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_PCMKR_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INTRAOCULAR_LENS_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OXYGN_TAKE_HOME_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OTHR_IMPLANTS_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OTHR_SUPLIES_DVC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INCDNT_RDLGY_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INCDNT_DGNSTC_SRVCS_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_DRSNG_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">INVSTGTNL_DVC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">MDCL_SRGCL_MISC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_ONCOLOGY_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_DGNSTC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_THRPTC_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_NUCLR_MDCN_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_CT_SCAN_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">RDLGY_OTHR_IMGNG_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OPRTG_ROOM_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">OR_LABOR_DLVRY_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CRDC_CATHRZTN_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">SQSTRTN_RDCTN_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">UNCOMPD_CARE_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">BNDLD_ADJSTMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">VBP_ADJSTMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">HRR_ADJSTMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">EHR_PYMT_ADJSTMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PPS_STD_VAL_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">FINL_STD_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">HAC_RDCTN_PMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">IPPS_FLEX_PYMT_7_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">PTNT_ADD_ON_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">HAC_PGM_RDCTN_IND_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PGM_RDCTN_IND_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">PA_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">4</span><span class="p">),</span>
+<span class="w">	</span><span class="n">UNIQ_TRKNG_NUM</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">14</span><span class="p">),</span>
+<span class="w">	</span><span class="n">STAY_2_IND_SW</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_SITE_NTRL_PYMT_CST_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLM_SITE_NTRL_PYMT_IPPS_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLM_FULL_STD_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLM_SS_OUTLIER_STD_PYMT_AMT</span><span class="w"> </span><span class="nb">INT</span><span class="p">,</span>
+<span class="w">	</span><span class="n">CLM_NGACO_IND_1_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_NGACO_IND_2_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_NGACO_IND_3_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_NGACO_IND_4_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_NGACO_IND_5_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_RSDL_PYMT_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">CLM_RP_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">RC_RP_IND_CD</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span>
+<span class="w">	</span><span class="n">FILE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span>
+<span class="w">	</span><span class="n">RECORD</span><span class="w"> </span><span class="n">BIGSERIAL</span><span class="p">,</span>
+<span class="w">	</span><span class="k">STATE</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">STATE_CD</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
+<span class="w">	</span><span class="k">YEAR</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">MEDPAR_YR_NUM</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
+<span class="w">	</span><span class="n">ZIP</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">BENE_ZIP</span><span class="p">)</span><span class="w"> </span><span class="n">STORED</span><span class="p">,</span>
+<span class="w">	</span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">,</span><span class="w"> </span><span class="n">RECORD</span><span class="p">)</span>
+<span class="p">);</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">INDEX</span><span class="w">  </span><span class="n">medpar_2015_FILE_idx</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">medpar_2015</span><span class="w"> </span><span class="k">USING</span><span class="w"> </span><span class="n">BTREE</span><span class="w"> </span><span class="p">(</span><span class="n">FILE</span><span class="p">)</span><span class="w"> </span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">cms</span><span class="p">.</span><span class="n">medpar_2015</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.2.3&quot;, &quot;url&quot;: &quot;https://github.com/NSAPH-Data-Platform/dorieh&quot;, &quot;commit&quot;: &quot;bf4644403297aaf478f6a42717508dde55da409a&quot;}. Created at 2024-08-12 13:31:09.366380&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
 </details>
 </section>
 <hr class="docutils" />

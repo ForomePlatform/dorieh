@@ -391,7 +391,7 @@ class Table(DataModelElement):
         sql = [l for l in sql if l != f"-- {self.qualified_name} skipped;"]
         if sql:
             text += "\n<details>\n\n"
-            text += "<summary>SQL/DDL Statement</summary>\n"
+            text += "<summary>SQL/DDL Statement</summary>\n\n"
             text += "```sql\n"
             for line in sql:
                 text += line + '\n'

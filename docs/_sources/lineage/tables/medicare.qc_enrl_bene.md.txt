@@ -73,6 +73,7 @@ Join of tables: enrollments natural join beneficiaries
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 CREATE view medicare.qc_enrl_bene AS SELECT *,
 (CASE
@@ -96,7 +97,7 @@ CREATE view medicare.qc_enrl_bene AS SELECT *,
 FROM medicare.enrollments natural join medicare.beneficiaries
 ;
 
-COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.548685';
+COMMENT ON view medicare.qc_enrl_bene IS 'CREATED BY Dorieh: {"version": "0.2.3", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bf4644403297aaf478f6a42717508dde55da409a"}. Created at 2024-08-12 13:31:09.791600';
 ```
 
 </details>

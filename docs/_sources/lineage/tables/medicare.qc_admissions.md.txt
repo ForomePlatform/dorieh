@@ -28,6 +28,7 @@ Transformed from [medicare.qc_adm_union](medicare.qc_adm_union.md)
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 
 CREATE materialized view  medicare.qc_admissions AS
@@ -44,7 +45,7 @@ FROM medicare.qc_adm_union
 
 GROUP BY year,state,zip,reason;
 
-COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.557071';
+COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.2.3", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bf4644403297aaf478f6a42717508dde55da409a"}. Created at 2024-08-12 13:31:09.799867';
 ```
 
 </details>

@@ -426,6 +426,7 @@ Primary Key: FILE, RECORD
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 CREATE TABLE  cms.medpar_2017 (
 	BENE_ID VARCHAR(15),
@@ -840,7 +841,7 @@ CREATE TABLE  cms.medpar_2017 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  medpar_2017_FILE_idx ON cms.medpar_2017 USING BTREE (FILE) ;
-COMMENT ON table cms.medpar_2017 IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.137519';
+COMMENT ON table cms.medpar_2017 IS 'CREATED BY Dorieh: {"version": "0.2.3", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bf4644403297aaf478f6a42717508dde55da409a"}. Created at 2024-08-12 13:31:09.377745';
 ```
 
 </details>

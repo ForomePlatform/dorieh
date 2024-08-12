@@ -36,6 +36,7 @@ Transformed from [medicare.admissions](medicare.admissions.md)
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 CREATE view medicare.qc_adm_union AS SELECT reason,
    year,
@@ -72,7 +73,7 @@ SELECT 'OK'::VARCHAR AS reason,
 FROM medicare.admissions
 ;
 
-COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": null, "url": null, "commit": "4844fe2af590def06336e2ccc497554784e8ca3b"}. Created at 2024-08-10 13:24:56.556931';
+COMMENT ON view medicare.qc_adm_union IS 'CREATED BY Dorieh: {"version": "0.2.3", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": "bf4644403297aaf478f6a42717508dde55da409a"}. Created at 2024-08-12 13:31:09.799737';
 ```
 
 </details>
