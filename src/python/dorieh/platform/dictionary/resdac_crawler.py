@@ -127,7 +127,7 @@ def extract_prefix_for_month(input_string):
 NOT_FOUND = set()
 
 
-def get_mapping(search = False, update = False) -> Dict[str, ColumnInfo]:
+def get_resdac_mapping(search = False, update = False) -> Dict[str, ColumnInfo]:
     """
     Parse Model YaML file and create a mapping between column names and column metadata.
     Optionally, search Google for a URL to ResDac description for a column.
@@ -210,4 +210,4 @@ def get_mapping(search = False, update = False) -> Dict[str, ColumnInfo]:
 if __name__ == '__main__':
     GOOGLE_API_KEY = sys.argv[1]
     CSE_ID = sys.argv[2]
-    get_mapping(True, True)
+    get_resdac_mapping(True, True)

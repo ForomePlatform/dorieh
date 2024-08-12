@@ -391,6 +391,7 @@ class Table(DataModelElement):
         sql = [l for l in sql if l != f"-- {self.qualified_name} skipped;"]
         if sql:
             text += "\n<details>\n\n"
+            text += "<summary>SQL/DDL Statement</summary>\n"
             text += "```sql\n"
             for line in sql:
                 text += line + '\n'
@@ -418,10 +419,10 @@ class Table(DataModelElement):
         ref = f"{name}.{ext}"
         return f'<a href="{ref}">{name}</a>'
 
-    @staticmethod
-    def link_to_column(name: str, basedir: str, format: str = 'html') -> str:
+    def link_to_column(self, name: str, basedir: str, format: str = 'html') -> str:
+        ext = "md" if (self.mode == RenderMode.sphinx) and format == "markdown" else "html"
         if format == 'markdown':
-            cpath = f'{basedir}/{name}.md'
+            cpath = f'{basedir}/{name}.{ext}'
             return f"[{name}]({cpath})"
         cpath = f'{basedir}/{name}.html'
         return f'<a href="{cpath}">{name}</a>'

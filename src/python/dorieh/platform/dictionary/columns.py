@@ -28,7 +28,7 @@ import html
 from dorieh.platform.dictionary import RenderMode
 from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr, create_graph_envelop
 from dorieh.platform.data_model.domain import Domain
-from dorieh.platform.dictionary.resdac_crawler import get_mapping
+from dorieh.platform.dictionary.resdac_crawler import get_resdac_mapping
 
 
 def noop(x):
@@ -38,13 +38,7 @@ def noop(x):
 class Column(DataModelElement):
     column_mapping = None
 
-    @classmethod
-    def init_column_mapping(cls):
-        if cls.column_mapping is None:
-            cls.column_mapping = get_mapping(False, False)
-
     def __init__(self, table_name: str, column_block: Dict, mode, describe_column_type: Callable):
-        self.init_column_mapping()
         if isinstance(column_block, dict):
             for name in column_block:
                 self.name = name
@@ -91,15 +85,18 @@ class Column(DataModelElement):
             if "cast" in self.block:
                 for t in self.block["cast"]:
                     self.casts[t] = self.block["cast"][t]
-        if self.description is None and self.name.lower() in self.column_mapping:
+        if self.description is None and self.is_in_mapping():
             descr = self.column_mapping[self.name.lower()].description
             if isinstance(descr, dict):
                 self.description = descr
             else:
                 self.description = {"text": descr}
-        if self.reference is None and self.name.lower() in self.column_mapping:
+        if self.reference is None and self.is_in_mapping():
             self.reference = self.column_mapping[self.name.lower()].url
         return
+
+    def is_in_mapping(self):
+        return self.column_mapping is not None and self.name.lower() in self.column_mapping
 
     def is_transformed(self):
         return self.expression or self.casts
@@ -399,35 +396,13 @@ class Column(DataModelElement):
         return repr
 
 
-c1 = """
-age_min:
-    source: |
-      CASE
-        WHEN MIN(age) <> MAX(age) THEN MIN(age)
-      END
-"""
+class CMSColumn(Column):
+    @classmethod
+    def init_column_mapping(cls):
+        if cls.column_mapping is None:
+            cls.column_mapping = get_resdac_mapping(False, False)
 
-c2 = """
-fips3_valdiated:
-    source: public.validate_zip_fips(MAX(zip), MAX(fips2), MAX(fips3))
-"""
-
-c3="""
-ssa2_list:
-    source: "string_agg(distinct ssa2, ',')"
-"""
-
-c4 = """
-fips5:
-    source: "(MAX(fips2) || MAX(fips3))"
-
-"""
-
-
-if __name__ == '__main__':
-    for c in [c1, c2, c3, c4]:
-        a = yaml.safe_load(c)
-        column = Column("xxx", a, "standalone", lambda x: x.column_type)
-        print(column)
-
+    def __init__(self, table_name: str, column_block: Dict, mode, describe_column_type: Callable):
+        super().__init__(table_name, column_block, mode, describe_column_type)
+        self.init_column_mapping()
 

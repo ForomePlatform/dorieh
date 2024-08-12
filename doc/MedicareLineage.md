@@ -4,7 +4,7 @@
 ---
 maxdepth: 1
 ---
-lineage/tables.dot.md
+lineage/medicare.dot.md
 lineage/table-list.md
 lineage/column-list.md
 ```
