@@ -32,6 +32,8 @@ def execute(args):
     with Connection(args.db, args.connection) as cnxn:
         with cnxn.cursor() as cursor:
             cursor.execute(sql)
+            for row in cursor:
+                print(row)
         cnxn.commit()
 
 
