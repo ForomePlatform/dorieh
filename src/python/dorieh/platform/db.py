@@ -90,7 +90,8 @@ class Connection:
                     else:
                         name = xx[1]
             data = json.loads(cls.get_aws_secret(region, name))
-            print(data)
+            if os.getenv("DORIEH_DEBUG") in ["1", "True", "true", "TRUE"]:
+                print(data)
             del parameters["secret"]
             for key in ["password", "database"]:
                 if key in data:
