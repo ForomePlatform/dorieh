@@ -32,8 +32,11 @@ def execute(args):
     with Connection(args.db, args.connection) as cnxn:
         with cnxn.cursor() as cursor:
             cursor.execute(sql)
-            for row in cursor:
-                print(row)
+            if cursor.pgresult_ptr is not None:
+                for row in cursor:
+                    print(row)
+            else:
+                print("No results")
         cnxn.commit()
 
 
