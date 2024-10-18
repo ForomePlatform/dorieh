@@ -47,6 +47,7 @@ from pyarrow.dataset import Scanner
 
 from dorieh.platform import init_logging
 from dorieh.platform.db import Connection
+from dorieh.platform.util.export_args import parse_args
 from dorieh.platform.util.query_builder import QueryBuilder
 from dorieh.utils.profile_utils import qmem
 from dorieh.utils.io_utils import sizeof_fmt
@@ -90,7 +91,7 @@ class PgPqBase(ABC):
             s[0]: s[1] for s in schema
         }
         self.schema = pa.schema(schema)
-        logging.info("Metdata and schema has been set up")
+        logging.info("Metadata and schema has been set up")
 
     @staticmethod
     def type_pg2pq(vtype: str):
@@ -98,6 +99,8 @@ class PgPqBase(ABC):
             pa_type = pa.int32()
         elif vtype.startswith("int"):
             pa_type = pa.int64()
+        elif vtype.startswith("bool"):
+            pa_type = pa.bool_()
         elif vtype in ["str", "varchar", "text"]:
             pa_type = pa.string()
         elif vtype.startswith("float") or vtype in ["numeric"]:
@@ -106,8 +109,10 @@ class PgPqBase(ABC):
             pa_type = pa.date32()
         elif vtype in ["time"]:
             pa_type = pa.date64()
-        elif vtype in ["timestamp"]:
+        elif vtype in ["timestamp", "timestamptz"]:
             pa_type = pa.timestamp('ns')
+        elif vtype in ["_varchar"]:
+            pa_type = pa.list_(pa.string())
         else:
             pa_type = pa.string()
         return pa_type
@@ -141,8 +146,8 @@ class PgPqBase(ABC):
     def set_partitioning(self, columns: List[str]):
         types = []
         for c in columns:
-            self.partition_columns.append(c)
-            pa_type = self.column_types[c]
+            self.partition_columns.append(QueryBuilder.unquote(c))
+            pa_type = self.column_types.get(c, self.column_types.get(QueryBuilder.unquote(c)))
             types.append(pa_type)
         self.cur_partition = {
             p: None for p in self.partition_columns
@@ -159,46 +164,9 @@ class PgPqBase(ABC):
         pass
 
     @classmethod
-    def run(cls):
-        parser = ArgumentParser (description="Import/Export resources")
-        parser.add_argument("--sql", "-s",
-                            help="SQL Query or a path to a file containing SQL query",
-                            required=False)
-        parser.add_argument("--schema",
-                            help="Export all columns for all tables in the given schema",
-                            required=False)
-        parser.add_argument("--table", "-t",
-                            help="Export all columns a given table (fully qualified name required)",
-                            required=False)
-        parser.add_argument("--partition", "-p",
-                            help="Columns to be used for partitioning",
-                            nargs='+',
-                            required=False)
-        parser.add_argument("--output", "--destination", "-o",
-                            help="Path to a directory, where the files will be exported",
-                            required=True)
-        parser.add_argument("--db",
-                            help="Path to a database connection parameters file",
-                            default="database.ini",
-                            required=True)
-        parser.add_argument("--connection", "-c",
-                            help="Section in the database connection parameters file",
-                            default="nsaph2",
-                            required=True)
-        parser.add_argument("--batch_size", "-b",
-                            help="The size of a single batch",
-                            default=2000,
-                            type=int,
-                            required=False)
-        parser.add_argument("--hard",
-                            help="Hard partitioning: execute separate SQL statement for each partition",
-                            action='store_true'
-                            )
-
-        arguments = parser.parse_args()
-        if arguments.sql and (arguments.table or arguments.schema):
-            raise ValueError("Only one type of argument is accepted: sql, schema or table")
-
+    def run(cls, arguments = None):
+        if arguments is None:
+            arguments = parse_args()
         if arguments.sql:
             if os.path.isfile(arguments.sql):
                 with open(arguments.sql) as inp:
@@ -206,8 +174,6 @@ class PgPqBase(ABC):
             else:
                 sql = arguments.sql
             cls.export_sql(arguments, sql)
-        elif arguments.table and arguments.schema:
-            raise ValueError("Only one type of argument is accepted: sql, schema or table")
         elif arguments.table:
             cls.export_table(arguments, arguments.table)
         elif arguments.schema:

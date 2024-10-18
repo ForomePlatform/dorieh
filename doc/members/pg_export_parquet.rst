@@ -16,7 +16,8 @@ Usage
 
 .. code-block::
 
-    pg_export_parquet.py [-h] [--sql SQL] [--schema SCHEMA] [--table TABLE]
+    python -u -m dorieh.platform.util.pg_export_parquet
+                            [-h] [--sql SQL] [--schema SCHEMA] [--table TABLE]
                             [--partition PARTITION [PARTITION ...]] --output
                             OUTPUT --db DB --connection CONNECTION
                             [--batch_size BATCH_SIZE] [--hard]
