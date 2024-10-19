@@ -97,6 +97,9 @@ steps:
       - index_err
       - vacuum_log
       - vacuum_err
+      - export_data
+      - export_log
+      - export_err
 
   verify:
     run: run_test.cwl
@@ -183,10 +186,10 @@ outputs:
 
   execute_export_data:
     type: ['File', 'Directory']
-    outputSource: execute/data
+    outputSource: execute/export_data
   execute_export_log:
     type: File
-    outputSource: execute/log
-  execute_export_errors:
+    outputSource: execute/export_log
+  execute_export_err:
     type: File
-    outputSource: execute/errors
+    outputSource: execute/export_err

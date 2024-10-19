@@ -292,6 +292,8 @@ steps:
     in:
       database: database
       connection_name: connection_name
+      format:
+        valueFrom: "parquet"
       domain: domain
       table:
         valueFrom: $(inputs.domain + '.' + inputs.geography + '_' + inputs.band)
@@ -436,6 +438,6 @@ outputs:
   export_log:
     type: File
     outputSource: export/log
-  export_errors:
+  export_err:
     type: File
     outputSource: export/errors
