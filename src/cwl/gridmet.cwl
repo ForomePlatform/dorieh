@@ -287,6 +287,25 @@ steps:
       - vacuum_log
       - vacuum_err
 
+  export:
+    run: export.cwl
+    in:
+      database: database
+      connection_name: connection_name
+      domain: domain
+      table:
+        valueFrom: $(inputs.domain + '.' + inputs.geography + '_' + inputs.band)
+      parition:
+        valueFrom: "year"
+      output:
+        valueFrom: $('export/' + inputs.domain + '/' + inputs.geography + '_' + inputs.band)
+    out:
+      - data
+      - log
+      - errors
+
+
+
 outputs:
   initdb_log:
     type: File?
@@ -410,3 +429,13 @@ outputs:
         type: array
         items: [File]
     outputSource: process/vacuum_err
+
+  export_data:
+    type: ['File', 'Directory']
+    outputSource: export/data
+  export_log:
+    type: File
+    outputSource: export/log
+  export_errors:
+    type: File
+    outputSource: export/errors

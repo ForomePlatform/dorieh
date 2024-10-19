@@ -180,3 +180,13 @@ outputs:
   verify_errors:
     type: File
     outputSource: verify/errors
+
+  execute_export_data:
+    type: ['File', 'Directory']
+    outputSource: execute/data
+  execute_export_log:
+    type: File
+    outputSource: execute/log
+  execute_export_errors:
+    type: File
+    outputSource: execute/errors

@@ -110,7 +110,7 @@ class PgPqBase(ABC):
         elif vtype in ["time"]:
             pa_type = pa.date64()
         elif vtype in ["timestamp", "timestamptz"]:
-            pa_type = pa.timestamp('ns')
+            pa_type = pa.timestamp('ms')       ## Spark does not support 'ns'
         elif vtype in ["_varchar"]:
             pa_type = pa.list_(pa.string())
         else:

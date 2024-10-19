@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.2.6",
+    version="0.2.8",
     url='https://github.com/NSAPH-Data-Platform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',
@@ -114,6 +114,9 @@ setup(
     extras_require = {
         "FST": [
             'rpy2',
+        ],
+        "spark": [
+            'pyspark'
         ]
     },
     classifiers=[
