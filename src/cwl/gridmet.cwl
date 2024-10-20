@@ -302,8 +302,8 @@ steps:
       band: bands
       table:
         valueFrom: $(inputs.domain + '.' + inputs.geography + '_' + inputs.band)
-      parition:
-        valueFrom: "year"
+      partition:
+        valueFrom: $(["year"])
       output:
         valueFrom: $('export/' + inputs.domain + '/' + inputs.geography + '_' + inputs.band)
     out:
