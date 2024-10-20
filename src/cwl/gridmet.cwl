@@ -289,12 +289,17 @@ steps:
 
   export:
     run: export.cwl
+    scatter:
+      - band
     in:
+      depends_on: process/vacuum_log
       database: database
       connection_name: connection_name
       format:
         valueFrom: "parquet"
       domain: domain
+      geography: geography
+      band: bands
       table:
         valueFrom: $(inputs.domain + '.' + inputs.geography + '_' + inputs.band)
       parition:
@@ -433,11 +438,13 @@ outputs:
     outputSource: process/vacuum_err
 
   export_data:
-    type: ['File', 'Directory']
+    type:
+      type: array
+      items:  ['File', 'Directory']
     outputSource: export/data
   export_log:
-    type: File
+    type: File[]
     outputSource: export/log
   export_err:
-    type: File
+    type: File[]
     outputSource: export/errors

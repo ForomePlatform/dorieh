@@ -185,11 +185,13 @@ outputs:
     outputSource: verify/errors
 
   execute_export_data:
-    type: ['File', 'Directory']
+    type:
+      type: array
+      items:  ['File', 'Directory']
     outputSource: execute/export_data
   execute_export_log:
-    type: File
+    type: File[]
     outputSource: execute/export_log
   execute_export_err:
-    type: File
+    type: File[]
     outputSource: execute/export_err
