@@ -24,27 +24,13 @@ from typing import List, Dict
 
 from pyspark.sql import SparkSession
 
+from dorieh.platform.util.spsql import read_parquet
+
+
 def group_by_counts(path_to_parquet: str, group_by: List[str]) -> Dict[str,int]:
     spark = SparkSession.builder.appName("GroupByCountsQuery").getOrCreate()
     try:
-        reader = spark.read.option("mergeSchema", "true")
-        if os.path.isdir(path_to_parquet):
-            content = os.listdir(path_to_parquet)
-            partitioned = False
-            is_parquet = False
-            for f in content:
-                if os.path.isdir(f) and '=' in f:
-                    partitioned = True
-                    break
-                if f.endswith('.parquet'):
-                    is_parquet = False
-                    break
-            if partitioned:
-                reader = reader.option("basePath", path_to_parquet)
-                path_to_parquet = os.path.join(path_to_parquet, '*', '*')
-            elif is_parquet:
-                path_to_parquet = os.path.join(path_to_parquet, '*.parquet')
-        df = reader.parquet(path_to_parquet)
+        df = read_parquet(spark, path_to_parquet)
         result_df = df.groupBy(group_by).count()
         result_list = result_df.orderBy(group_by).collect()
 

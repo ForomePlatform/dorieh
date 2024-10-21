@@ -1,6 +1,6 @@
 """
 Utility to execute SQL statement or statements taken from
-command line arguments
+command line arguments in an instance of PostgreSQL
 """
 
 #  Copyright (c) 2022. Harvard University
