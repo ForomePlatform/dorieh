@@ -51,14 +51,23 @@ def read_parquet(spark: SparkSession, location: str) -> DataFrame:
     return reader.parquet(path_to_parquet)
 
 
-def execute(args):
-    sql = ' '.join(args.sql)
-    print("Executing: " + sql)
-    xmx = os.environ.get("xmx")
+def start_session():
     session_builder = SparkSession.builder.appName("Dorieh SparkSQL")
+    xmx = os.environ.get("xmx")
     if xmx:
         session_builder = session_builder.config("spark.driver.memory", xmx)
-    spark = session_builder.getOrCreate()
+    cores = os.environ.get("xcores")
+    if cores:
+        session_builder = session_builder.master(f"local[{cores}]")
+    session = session_builder.getOrCreate()
+    print(session.sparkContext.getConf().getAll())
+    return session
+
+
+def execute(args):
+    spark = start_session()
+    sql = ' '.join(args.sql)
+    print("Executing: " + sql)
     try:
         df = read_parquet(spark, args.location)
         if args.table:
