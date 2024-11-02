@@ -38,6 +38,7 @@ from typing import Dict, Callable, Optional, List, Tuple
 
 import pyarrow as pa
 import pyarrow.dataset as ds
+import pyarrow.parquet as pq
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import connection
 from contextlib import contextmanager
@@ -81,6 +82,7 @@ class PgPqBase(ABC):
         self.schema: Optional[pa.Schema] = None
         self.max_mem = 0
         self.max_pa_mem = 0
+        self.flavor = "spark"
         return
 
     def setup_schema(self):
@@ -110,7 +112,7 @@ class PgPqBase(ABC):
         elif vtype in ["time"]:
             pa_type = pa.date64()
         elif vtype in ["timestamp", "timestamptz"]:
-            pa_type = pa.timestamp('ms')       ## Spark does not support 'ns'
+            pa_type = pa.timestamp('ns')       ## Spark does not support 'ns'
         elif vtype in ["_varchar"]:
             pa_type = pa.list_(pa.string())
         else:
@@ -246,12 +248,36 @@ class PgPqSingleQuery(PgPqBase):
     def export(self):
         self.count = 0
         logging.info("Starting export.")
+        parquet_format = ds.ParquetFileFormat()
+        if self.flavor == "spark":
+            write_options = parquet_format.make_write_options(
+                parquet_flavor='spark',
+                compression='SNAPPY',
+                use_dictionary=True,
+                coerce_timestamps='ms',
+                write_statistics=True
+            )
+            parquet_options = {
+                "compression": "SNAPPY",
+                "use_dictionary": True,
+                "coerce_timestamps": "ms",
+                "flavor": "spark",
+                "write_statistics": True
+            }
+        else:
+            write_options = parquet_format.make_write_options(
+                use_dictionary=True,
+                coerce_timestamps='ns',
+                write_statistics=True
+            )
+
         scanner = Scanner.from_batches(source=self.batches(), schema = self.schema)
         ds.write_dataset(
             data=scanner,
             base_dir=self.destination,
             partitioning=self.parquet_partitioning,
             format="parquet",
+            file_options=write_options,
             existing_data_behavior=self.mode
         )
         logging.info(f"The data has been exported. Total records: {self.count}. "
