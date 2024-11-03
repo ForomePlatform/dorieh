@@ -23,6 +23,8 @@ command line arguments over Parquet file(s) using Spark
 #
 import os
 from argparse import ArgumentParser
+from typing import Dict
+
 from pyspark.sql import SparkSession, DataFrame
 
 
@@ -51,8 +53,12 @@ def read_parquet(spark: SparkSession, location: str) -> DataFrame:
     return reader.parquet(path_to_parquet)
 
 
-def start_session():
-    session_builder = SparkSession.builder.appName("Dorieh SparkSQL")
+def start_session(options: Dict = None):
+    session_builder = SparkSession.builder.appName("Dorieh SparkSQL") \
+        .config("spark.sql.parquet.filterPushdown", "true")
+    if options:
+        for option in options:
+            session_builder.config(option, options[option])
     xmx = os.environ.get("xmx")
     if xmx:
         session_builder = session_builder.config("spark.driver.memory", xmx)
