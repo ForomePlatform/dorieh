@@ -79,7 +79,9 @@ table beneficiaries {
   }
   
   aggregate {
-    last_enrollment_year = MAX(year)
+    first_enrollment_year = MIN(year)
+    last_enrollment_year = MAX (year)
+    all_enrollment_years = "ARRAY_AGG(DISTINCT year ORDER BY year)"
   }
 }
 

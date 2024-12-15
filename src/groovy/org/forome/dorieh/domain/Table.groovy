@@ -114,6 +114,30 @@ class Table extends Base
         }
     }
 
+    public def aggregate (Closure closure)
+    {
+        closure.delegate = new Object () {
+            private String lastValue
+
+            void setProperty(String name, def value) {
+                value = value ?: lastValue
+                columns << new Column(name).tap {
+                    addSourceColumn(value?.toString() ?: '')
+                }
+            }
+
+            def methodMissing(String name, def args) {
+                lastValue = "${name}(${formatArgs(args)})"
+            }
+
+            private String formatArgs(def args) {
+                args instanceof Object[] ? args.grep().join(', ') : args.toString()
+            }
+        }
+        closure.resolveStrategy = Closure.DELEGATE_FIRST
+        closure.call ()
+    }
+
     public void record (String... args)
     {
         for (String arg: args) {
