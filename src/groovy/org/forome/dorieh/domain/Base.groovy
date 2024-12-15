@@ -15,7 +15,6 @@ class Base
 {
   protected Object currentContext = null
 
-
   protected static String addWithIndent(String body, int indent, String block)
   {
     String prefix = "  " * indent

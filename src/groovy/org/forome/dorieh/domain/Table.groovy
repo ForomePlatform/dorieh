@@ -30,18 +30,45 @@ package org.forome.dorieh.domain
 
 class Table extends Base
 {
+    enum TableTransformationType {
+        union,
+        aggregation,
+        copy
+    }
     static final public DEFAULT_TYPE = "VARCHAR"
     String name
     String description
-    String type // Could be view, table, etc.
+    String type = "table" // Could be view, table, etc.
     List<String> from
+    List<String> groupBy
     List<Column> columns = []
+
+    private String currentColumn = null
+    private String pickedAggr = null
+
+    private TableTransformationType transformType
 
     def methodMissing(String name, Object args)
     {
         Object arg0 = args == null ? null : args [0]
         if (currentContext != null) {
             switch (currentContext) {
+                case "columns_reconcile":
+                    if (arg0 instanceof Closure) {
+                        Closure closure = arg0
+                        closure.owner = this
+                        this.@currentColumn = name.toLowerCase ()
+                        try {
+                            closure.call ()
+                        } finally {
+                            this.@currentColumn = null
+                        }
+                    } else {
+                        throw new IllegalArgumentException(
+                           "Reconciliation strategy is invalid for $name"
+                        )
+                    }
+                    return
                 case "columns":
                     if (arg0 instanceof String) {
                         column (name, arg0)
@@ -65,15 +92,60 @@ class Table extends Base
         println "Table methodMissing called with name: $name and args: $args"
     }
 
+    public Table pick(String... args)
+    {
+        String arg  = args[0]
+        Column column = new Column(currentColumn)
+        String aggr = arg.toUpperCase()
+        column.addSourceColumn ("$aggr($currentColumn)")
+        columns << column
+        this.@pickedAggr = aggr
+        if (args.length == 1) {
+            return this
+        }
+
+        if (args[1].toLowerCase () != "over" || args.length != 3) {
+            throw new IllegalArgumentException("Supported format: pick $arg over 'another aggregation'")
+        }
+        over (args[2])
+        return this
+    }
+
+    public void over (String... args)
+    {
+        String arg = args[0]
+        String aggr = pickedAggr
+        try {
+            String alt = arg.toUpperCase ()
+            String sql = """
+            CASE
+                WHEN $alt($currentColumn) <> $aggr($currentColumn) THEN $alt($currentColumn) 
+            END
+            """
+            String cname = "${currentColumn}_$arg"
+            Column column = new Column (cname)
+            column.addSourceColumn (sql)
+            columns << column
+        } finally {
+            this.pickedAggr = null
+        }
+    }
+
+    public void record (String... args)
+    {
+        for (String arg: args) {
+            String postfix = arg.split (" ")[0]
+            String cname = "${currentColumn}_$postfix"
+            Column column = new Column (cname)
+            String aggr = arg.toUpperCase ()
+            column.addSourceColumn ("$aggr($currentColumn)")
+            columns << column
+        }
+    }
+
     public void of (args)
     {
-        if (currentContext != null) {
-            switch (currentContext) {
-                case "union":
-                    unionOf (args)
-                    return
-            }
-        } else {
+        if (currentContext == null) {
             currentContext = args
             return
         }
@@ -114,6 +186,7 @@ class Table extends Base
 
     public void union (args)
     {
+        transformType = TableTransformationType.union
         def arg0 = arg0 (args)
         if (arg0 instanceof Closure) {
             from((Closure)arg0)
@@ -126,6 +199,7 @@ class Table extends Base
 
     public void aggregation (args)
     {
+        transformType = TableTransformationType.aggregation
         def arg0 = arg0 (args)
         if (arg0 instanceof Closure) {
             from((Closure)arg0)
@@ -136,9 +210,15 @@ class Table extends Base
         }
     }
 
-    public void on(args)
+    public void on(String... args)
     {
-        column (args)
+        if (transformType != TableTransformationType.aggregation) {
+            throw new IllegalStateException("Keyword 'on' is only supported for aggregation")
+        }
+        for (String arg: args) {
+            column (arg)
+        }
+        groupBy = args.grep ()
     }
 
     def column(String name, String type, Map<String, Object> attributes = [:]) {
@@ -158,6 +238,9 @@ class Table extends Base
     public void setProperty(String name, Object value)
     {
         switch (name) {
+            case "currentContext":
+                super.setProperty(name, value)
+                return
             case "columns":
                 currentContext = "columns"
                 return
@@ -171,9 +254,20 @@ class Table extends Base
                 break
             default:
                 super.setProperty(name, value)
-
         }
 
+    }
+
+    public void reconcile (Closure closure)
+    {
+        this.@currentContext = "columns_reconcile"
+        closure.delegate = this
+        closure.resolveStrategy = Closure.DELEGATE_FIRST
+        try {
+            closure.call ()
+        }  finally {
+            this.@currentContext = null
+        }
     }
 
     public Object getProperty (String name)
@@ -204,6 +298,9 @@ class Table extends Base
             else if (!from.isEmpty ()) {
                 body = addElement (body, "from", from [0], indent)
             }
+        }
+        if (groupBy != null) {
+            body = addList (body, "group by", groupBy, indent)
         }
         List<String> columnNames = new ArrayList<>()
         for (Column column: columns) {

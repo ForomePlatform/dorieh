@@ -78,6 +78,14 @@ class Column extends Base
             }
     }
 
+    public void addSourceColumn(String sql)
+    {
+        if (sourceColumns == null) {
+            sourceColumns = new ArrayList<>()
+        }
+        sourceColumns.add (sql)
+    }
+
     public void setProperty (String name, Object value)
     {
         switch (name)
@@ -156,7 +164,14 @@ class Column extends Base
         String header = "${prefix}- ${name}"
         if (transformation) {
             if (description) {
-                description += "; " + transformation
+                if (
+                        (description.length () + transformation.length () < 120)
+                        && (description.indexOf('\n') < 0)
+                ) {
+                    description = description.trim ()
+                    description += "; "
+                }
+                description +=  transformation
             } else {
                 description = transformation
             }
@@ -164,11 +179,21 @@ class Column extends Base
         if (
             source || sourceColumns || optional || description || reference
             || parameters || requires
+            || type
         ) {
             String body = header + ":\n"
             indent++
             if (description) {
                 body = addElement (body, "description", description, indent)
+            }
+            if (type) {
+                body = addElement (body, "type", type, indent)
+            }
+            if (reference) {
+                body = addElement (body, "reference", reference, indent)
+            }
+            if (requires) {
+                body = addList (body, "requires", requires, indent)
             }
             if (sourceColumns) {
                 if (sourceColumns.size () > 1) {
@@ -177,17 +202,13 @@ class Column extends Base
                     body = addElement (body, "source", sourceColumns[0], indent)
                 }
                 if (source && source.containsKey ("sql")) {
-                    String code = source['sql']
-                    body = addElement (body, "cast", "", indent)
-                    indent++
-                    body = addElement (body, "*", code, indent)
-                    indent--
+                    body = addElement (body, "source", source["sql"].toString (), indent)
                 }
             } else if (source) {
                 body = addElement (body, "source", "", indent)
                 indent++
                 for (String key: source.keySet ()) {
-                    body = addElement (body, key, source[key], indent)
+                    body = addElement (body, key, source[key].toString (), indent)
                 }
                 indent--
             }
@@ -199,7 +220,9 @@ class Column extends Base
                 }
                 indent--
             }
-            return body
+            // Remove empty lines:
+            def lines = body.lines ().grep { it.trim() }
+            return String.join ("\n", lines)
         }  else {
             return header
         }

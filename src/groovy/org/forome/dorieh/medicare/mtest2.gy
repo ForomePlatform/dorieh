@@ -67,16 +67,17 @@ table ps {
 table beneficiaries {
   aggregation of ( "ps" )
   on (bene_id)
-  reconsile {
+  reconcile {
     dob {
-      pick "max"
-      record ("min", "count")
+      pick "max" over "min"
+      record "count distinct"
     }
     dod {
-      pick "min"
-      record ("max", "count")
+      pick "min" over "max"
+      record ("count distinct")
     }
   }
+  
   aggregate {
     last_enrollment_year = MAX(year)
   }
