@@ -44,7 +44,6 @@ class Table extends Base
     List<Column> columns = []
 
     private String currentColumn = null
-    private String pickedAggr = null
 
     private TableTransformationType transformType
 
@@ -92,42 +91,26 @@ class Table extends Base
         println "Table methodMissing called with name: $name and args: $args"
     }
 
-    public Table pick(String... args)
+    public def pick(String... args)
     {
         String arg  = args[0]
         Column column = new Column(currentColumn)
         String aggr = arg.toUpperCase()
         column.addSourceColumn ("$aggr($currentColumn)")
         columns << column
-        this.@pickedAggr = aggr
-        if (args.length == 1) {
-            return this
-        }
-
-        if (args[1].toLowerCase () != "over" || args.length != 3) {
-            throw new IllegalArgumentException("Supported format: pick $arg over 'another aggregation'")
-        }
-        over (args[2])
-        return this
-    }
-
-    public void over (String... args)
-    {
-        String arg = args[0]
-        String aggr = pickedAggr
-        try {
-            String alt = arg.toUpperCase ()
-            String sql = """
-            CASE
-                WHEN $alt($currentColumn) <> $aggr($currentColumn) THEN $alt($currentColumn) 
-            END
-            """
-            String cname = "${currentColumn}_$arg"
-            Column column = new Column (cname)
-            column.addSourceColumn (sql)
-            columns << column
-        } finally {
-            this.pickedAggr = null
+        return new Object() {
+            def over(String... overArgs) {
+                String alt = overArgs[0].toUpperCase()
+                String sql = """
+                CASE
+                    WHEN ${alt}($currentColumn) <> ${aggr}($currentColumn) THEN ${alt}($currentColumn) 
+                END
+                """
+                String cname = "${currentColumn}_$arg"
+                Column overColumn = new Column(cname)
+                overColumn.addSourceColumn(sql)
+                columns << overColumn
+            }
         }
     }
 
