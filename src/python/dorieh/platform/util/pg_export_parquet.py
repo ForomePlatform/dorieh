@@ -38,6 +38,7 @@ from typing import Dict, Callable, Optional, List, Tuple
 
 import pyarrow as pa
 import pyarrow.dataset as ds
+from markdown.extensions.smarty import closeClass
 from psycopg2.extras import RealDictCursor
 from psycopg2.extensions import connection
 from contextlib import contextmanager
@@ -93,8 +94,8 @@ class PgPqBase(ABC):
         self.schema = pa.schema(schema)
         logging.info("Metadata and schema has been set up")
 
-    @staticmethod
-    def type_pg2pq(vtype: str):
+    @classmethod
+    def type_pg2pq(cls, vtype: str):
         if vtype in ['int2', 'int4', 'int8']:
             pa_type = pa.int32()
         elif vtype.startswith("int"):
@@ -111,8 +112,9 @@ class PgPqBase(ABC):
             pa_type = pa.date64()
         elif vtype in ["timestamp", "timestamptz"]:
             pa_type = pa.timestamp('ms')       ## Spark does not support 'ns'
-        elif vtype in ["_varchar"]:
-            pa_type = pa.list_(pa.string())
+        elif vtype.startswith('_'):  # List
+            velemtype = cls.type_pg2pq(vtype[1:])
+            pa_type = pa.list_(velemtype)
         else:
             pa_type = pa.string()
         return pa_type

@@ -3,7 +3,7 @@ Utility to execute SQL statement or statements taken from
 command line arguments over Parquet file(s) using Spark
 """
 
-#  Copyright (c) 2022. Harvard University
+#  Copyright (c) 2024-2025. Harvard University
 #
 #  Developed by Research Software Engineering,
 #  Faculty of Arts and Sciences, Research Computing (FAS RC)
@@ -82,7 +82,7 @@ def execute(args):
 
 
 def parse_args():
-    parser = ArgumentParser (description="Init database resources")
+    parser = ArgumentParser (description="Tool to query Spark SQL Warehouse and/or Parquet files")
     parser.add_argument("--location", "-l", "-p",
                         help="URI or path to file(s) or directory containing data (e.g., in Parquet format). "
                              + "Wildcards are supported",
