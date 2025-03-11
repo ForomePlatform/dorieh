@@ -165,11 +165,28 @@ class PgPqBase(ABC):
     def export(self):
         pass
 
+    def dryrun(self):
+        n = 10
+        sql = self.sql 
+        with result_set(self.connection, sql, "c12345", self.batch_size) as rs:
+            rs_iterator = iter(rs)
+            while True:
+                try:
+                    row = next(rs_iterator)  # Get the next item from the iterator
+                    if n > 0:
+                        print(row)
+                    n -= 1
+                except StopIteration:
+                    break
+                except Exception as e:
+                    print(f"An error occurred: {e}")
+                    raise 
+
     @classmethod
     def run(cls, arguments = None):
         if arguments is None:
             arguments = parse_args()
-        if arguments.sql:
+        if not arguments.table and arguments.sql:
             if os.path.isfile(arguments.sql):
                 with open(arguments.sql) as inp:
                     sql = '\n'.join([line for line in inp])
@@ -193,8 +210,12 @@ class PgPqBase(ABC):
                 instance = PgPqSingleQuery(db, sql, arguments.output, mode="error")
                 if arguments.partition:
                     instance.set_partitioning(arguments.partition)
+            if not arguments.dryrun:
+                instance.export()
+            else:
+                instance.dryrun()
 
-            instance.export()
+
 
     @classmethod
     def export_table(cls, arguments, table: str):
@@ -202,6 +223,8 @@ class PgPqBase(ABC):
         with Connection(arguments.db, arguments.connection) as cnxn:
             query_builder = QueryBuilder(cnxn).add_table(table)
             sql = query_builder.query()
+        if arguments.sql:
+            sql += f"\n{arguments.sql}"
         cls.export_sql(arguments, sql)
         logging.info("Exporting: " + table + " DONE")
 
@@ -284,11 +307,14 @@ class PgPqSingleQuery(PgPqBase):
     def batches(self):
         with result_set(self.connection, self.sql, self.cursor_name, self.batch_size) as rs:
             data = []
-            for row in rs:
-                if len(data) >= self.batch_size:
-                    yield self.batch(data)
-                    data.clear()
-                data.append(self.transform(row))
+            try:
+                for row in rs:
+                    if len(data) >= self.batch_size:
+                        yield self.batch(data)
+                        data.clear()
+                    data.append(self.transform(row))
+            except:
+                raise 
             yield self.batch(data)
 
 
@@ -373,6 +399,8 @@ class PgPqPartitionedQuery(PgPqBase):
                      + f"Max memory used: {sizeof_fmt(self.max_mem)}; "
                      + f"Max PyArrow memory: {sizeof_fmt(self.max_pa_mem)}")
         return 
+
+
 
 
 if __name__ == '__main__':
