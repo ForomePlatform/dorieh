@@ -52,7 +52,10 @@ def read_parquet(spark: SparkSession, location: str) -> DataFrame:
 
 
 def start_session():
-    session_builder = SparkSession.builder.appName("Dorieh SparkSQL")
+    session_builder = SparkSession.builder.appName("Dorieh SparkSQL") \
+        .config("spark.driver.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED") \
+        .config("spark.executor.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED")
+
     xmx = os.environ.get("xmx")
     if xmx:
         session_builder = session_builder.config("spark.driver.memory", xmx)
