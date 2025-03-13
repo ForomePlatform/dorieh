@@ -384,7 +384,10 @@ class PgPqPartitionedQuery(PgPqBase):
             where = " AND ".join(
                 f"{self.qualify_column(self.sql, column, i1)}={partition[column]}" for column in partition
             )
-            sql = self.sql + "\nWHERE " + where
+            if index_of(self.sql, "where") > -1:
+                sql = self.sql + "\nAND " + where
+            else:
+                sql = self.sql + "\nWHERE " + where
             executor = PgPqSingleQuery(self.connection, sql, self.destination, "delete_matching", self.schema)
             executor.parquet_partitioning = self.parquet_partitioning
             logging.info(f"Fetching partition: " + where)
