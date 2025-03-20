@@ -31,6 +31,7 @@ import json
 
 import logging
 import socket
+import sys
 import warnings
 import psycopg2
 import os
@@ -79,14 +80,18 @@ class Connection:
             pp = parameters["secret"].split(':')
             region = cls.aws_default_region
             name = cls.aws_default_secret_name
-            for x in pp:
+            for i, x in enumerate(pp):
                 xx = x.split('=')
                 if xx[0] == "region":
                     region = xx[1]
                 elif xx[0] == "name":
-                    name = xx[1]
+                    if xx[1] == 'arn':
+                        name = xx[1] + ':' + ':'.join(pp[i+1:])
+                    else:
+                        name = xx[1]
             data = json.loads(cls.get_aws_secret(region, name))
-            print(data)
+            if os.getenv("DORIEH_DEBUG") in ["1", "True", "true", "TRUE"]:
+                print(data)
             del parameters["secret"]
             for key in ["password", "database"]:
                 if key in data:
@@ -239,8 +244,8 @@ class Connection:
         return self.connect()
 
 
-def test_connection ():
-    with Connection() as conn:
+def test_connection (filename, section):
+    with Connection(filename=filename, section=section) as conn:
         cur = conn.cursor()
 
         logging.info('PostgreSQL database version:')
@@ -289,6 +294,6 @@ class ResultSetDeprecated:
 
 
 if __name__ == '__main__':
-    test_connection()
+    test_connection(sys.argv[1], sys.argv[2])
 
 

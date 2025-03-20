@@ -148,6 +148,25 @@ steps:
       connection_name: connection_name
     out: [log, errors]
 
+  export:
+    run: export.cwl
+    in:
+      database: database
+      connection_name: connection_name
+      format:
+        valueFrom: "parquet"
+      table_base_name: table
+      table:
+        valueFrom: $('epa.' + inputs.table_base_name)
+      partition:
+        valueFrom: $(["year"])
+      output:
+        valueFrom: $('export/' + inputs.table_base_name)
+    out:
+      - data
+      - log
+      - errors
+
 
 outputs:
   initdb_log:
@@ -186,3 +205,13 @@ outputs:
   vacuum_err:
     type: File
     outputSource: vacuum/errors
+
+  export_data:
+    type: ['File', 'Directory']
+    outputSource: export/data
+  export_log:
+    type: File
+    outputSource: export/log
+  export_err:
+    type: File
+    outputSource: export/errors

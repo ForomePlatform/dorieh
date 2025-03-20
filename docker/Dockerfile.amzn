@@ -22,7 +22,7 @@
 FROM public.ecr.aws/amazonlinux/amazonlinux:latest
 USER root
 RUN yum -y check-update
-RUN yum -y install python-pip git
+RUN yum -y install python-pip git nodejs npm
 RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN pip install setuptools  wheel
 
