@@ -67,19 +67,21 @@ def start_session():
     return session
 
 
-def execute(args):
+def execute(spark: SparkSession, location: str, sql: str, table: str = None) -> DataFrame:
+    if table is None:
+        table = "parquet_table"
+    df = read_parquet(spark, location)
+    df.createOrReplaceTempView(table)
+    return spark.sql(sql)
+
+
+def execute_and_show(args):
     spark = start_session()
     sql = ' '.join(args.sql)
     print("Executing: " + sql)
     try:
-        df = read_parquet(spark, args.location)
-        if args.table:
-            table = args.table
-        else:
-            table = "parquet_table"
-        df.createOrReplaceTempView(table)
-        result_df = spark.sql(sql)
-        result_df.show()
+        result_df = execute(spark, args.location, sql, args.table)
+        result_df.show(n=args.n, truncate=False)
     finally:
         spark.stop()
 
@@ -92,6 +94,8 @@ def parse_args():
                         required=True)
     parser.add_argument("--table", "-t",
                         help="Optional table name")
+    parser.add_argument("--n", type=int, default=20,
+                        help="Number of rows to output, defaults to 20")
     parser.add_argument(dest="sql",
                         nargs='+',
                         help="SQL statement(s)")
@@ -101,5 +105,5 @@ def parse_args():
 
 if __name__ == '__main__':
     arguments = parse_args()
-    execute(arguments)
+    execute_and_show(arguments)
 
