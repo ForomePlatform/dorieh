@@ -23,6 +23,8 @@ command line arguments over Parquet file(s) using Spark
 #
 import os
 from argparse import ArgumentParser
+from typing import Dict
+
 from pyspark.sql import SparkSession, DataFrame
 
 
@@ -51,17 +53,26 @@ def read_parquet(spark: SparkSession, location: str) -> DataFrame:
     return reader.parquet(path_to_parquet)
 
 
-def start_session():
-    session_builder = SparkSession.builder.appName("Dorieh SparkSQL") \
+def start_session(app_name = None, xmx: str = None, hive = False, config: Dict = None):
+    if app_name is None:
+        app_name = "Dorieh SparkSQL"
+    session_builder = SparkSession.builder.appName(app_name) \
         .config("spark.driver.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED") \
         .config("spark.executor.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED")
 
-    xmx = os.environ.get("xmx")
+    if xmx is None:
+        xmx = os.environ.get("xmx")
     if xmx:
-        session_builder = session_builder.config("spark.driver.memory", xmx)
+        session_builder = session_builder.config("spark.driver.memory", xmx).config("spark.executor.memory", xmx)
     cores = os.environ.get("xcores")
     if cores:
         session_builder = session_builder.master(f"local[{cores}]")
+    if hive:
+        session_builder = session_builder.enableHiveSupport()
+    if config:
+        for key in config:
+            session_builder = session_builder.config(key, config[key])
+
     session = session_builder.getOrCreate()
     print(session.sparkContext.getConf().getAll())
     return session
