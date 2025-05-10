@@ -109,7 +109,9 @@ new columns are being added and column names are sometimes changed.
 To add insult to injury, for years prior to 2011 (1999-2010) we do not 
 have original files, but preprocessed files with patient summary 
 (called denominators) and admissions. They are in SAS 7BDAT format,
-however columns are also different for different years.
+however columns are also different for different years. Please
+refer to [Files for 1999 to 2010](#files-for-1999-to-2010-) section
+for details.
 
 ### Storing raw data in the Database
 
@@ -139,23 +141,61 @@ When a table has no natural primary key (admission tables) we add a record
 number column. This column ha sno meaning but allows to trace a record to the 
 original data.
 
-
-
 ### Files for 1999 to 2010 
 
-These files are in SAS7BDAT format. They have been stored on RCE
-in two directories:
+Between 1999 and 2010, original Medicare ResDAC raw datasets are not available 
+to NSAPH. Instead, only partially preprocessed files provided by external 
+collaborators are available. These have been stored historically on RCE in two
+separate directories:
 
-* denominator
-* inpatient
+* denominator/
+* inpatient/
 
-One file per year. SAS7BDAT format contains metadata with column 
-names and types. We use this metadata to generate appropriate database schema.
+Each directory contains one file per year. These files use the SAS7BDAT
+format, which is a binary data format native to
+SAS analytics software. Each file embeds metadata about its schema 
+(i.e., field names, types, order), but column names
+and formats still vary from year to year.
 
-See the code for handling these files:
+To handle this variation:
 
-* [Metadata and data model](members/mcr_sas2yaml.rst)
-* [Ingesting data](members/mcr_sas2db.rst)
+* Each file is individually introspected using the SAS Introspector. 
+* A YAML schema is automatically generated and stored in a central
+  registry.
+* This schema is then used to create the appropriate database table for
+  ingestion.
+
+For more details on implementation:
+
+* See the [SAS Inrospector](members/mcr_sas2yaml.rst)  for how
+metadata is extracted. 
+* See the class [SAS Data Laoder](members/mcr_sas2db.rst) for how
+these files are ingested into the database.
+
+Because of schema variability:
+
+* Special heuristics are used to detect core fields like beneficiary ID (
+  bene_id), year, zip code, and state code, based
+  on a list of possible alternative names.
+* Missing expected columns (e.g., year) are sometimes generated using
+  information inferred from directory or file naming.
+
+Each resulting table includes:
+
+* A standardized structure with additional generated columns (e.g., record
+  ID, file name).
+* Uniform field naming conventions to support unioning across years.
+* Consistent indexing to support later join operations with downstream
+  tables (e.g., beneficiaries and admissions).
+
+> ⚠ Note: Because of the variability and limited provenance of these
+files, this step is distinct from the ResDAC
+ingestion workflow and is not based on FTS metadata.
+
+📚 Related References:
+
+:doc: members/mcr_sas2yaml for introspection logic
+:doc: members/mcr_sas2db for database file loading
 
 ### Files for Years 2011 and later
 
@@ -165,7 +205,7 @@ Summary (FTS) file. Unfortunately these files are intended for reading by
 a human and is difficult to parse automatically. A 
 [partial parser](members/fts2yaml.rst) that
 relies on a known file type is implemented in Python. The information 
-extarcted by the parser is used to:
+extracted by the parser is used to:
 
 * Generate data model (database schema)
 * Generate metadata for the FWF Reader

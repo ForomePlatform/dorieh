@@ -126,6 +126,7 @@
 
 <span class="kn">import</span> <span class="nn">pyarrow</span> <span class="k">as</span> <span class="nn">pa</span>
 <span class="kn">import</span> <span class="nn">pyarrow.dataset</span> <span class="k">as</span> <span class="nn">ds</span>
+<span class="kn">from</span> <span class="nn">markdown.extensions.smarty</span> <span class="kn">import</span> <span class="n">closeClass</span>
 <span class="kn">from</span> <span class="nn">psycopg2.extras</span> <span class="kn">import</span> <span class="n">RealDictCursor</span>
 <span class="kn">from</span> <span class="nn">psycopg2.extensions</span> <span class="kn">import</span> <span class="n">connection</span>
 <span class="kn">from</span> <span class="nn">contextlib</span> <span class="kn">import</span> <span class="n">contextmanager</span>
@@ -181,8 +182,8 @@
         <span class="bp">self</span><span class="o">.</span><span class="n">schema</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">schema</span><span class="p">(</span><span class="n">schema</span><span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Metadata and schema has been set up&quot;</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="PgPqBase.type_pg2pq"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqBase.type_pg2pq">[docs]</a>    <span class="nd">@staticmethod</span>
-    <span class="k">def</span> <span class="nf">type_pg2pq</span><span class="p">(</span><span class="n">vtype</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<div class="viewcode-block" id="PgPqBase.type_pg2pq"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqBase.type_pg2pq">[docs]</a>    <span class="nd">@classmethod</span>
+    <span class="k">def</span> <span class="nf">type_pg2pq</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">vtype</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">vtype</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;int2&#39;</span><span class="p">,</span> <span class="s1">&#39;int4&#39;</span><span class="p">,</span> <span class="s1">&#39;int8&#39;</span><span class="p">]:</span>
             <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">int32</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">vtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;int&quot;</span><span class="p">):</span>
@@ -199,8 +200,9 @@
             <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">date64</span><span class="p">()</span>
         <span class="k">elif</span> <span class="n">vtype</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;timestamp&quot;</span><span class="p">,</span> <span class="s2">&quot;timestamptz&quot;</span><span class="p">]:</span>
             <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">timestamp</span><span class="p">(</span><span class="s1">&#39;ms&#39;</span><span class="p">)</span>       <span class="c1">## Spark does not support &#39;ns&#39;</span>
-        <span class="k">elif</span> <span class="n">vtype</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;_varchar&quot;</span><span class="p">]:</span>
-            <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">list_</span><span class="p">(</span><span class="n">pa</span><span class="o">.</span><span class="n">string</span><span class="p">())</span>
+        <span class="k">elif</span> <span class="n">vtype</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;_&#39;</span><span class="p">):</span>  <span class="c1"># List</span>
+            <span class="n">velemtype</span> <span class="o">=</span> <span class="bp">cls</span><span class="o">.</span><span class="n">type_pg2pq</span><span class="p">(</span><span class="n">vtype</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+            <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">list_</span><span class="p">(</span><span class="n">velemtype</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="n">pa_type</span> <span class="o">=</span> <span class="n">pa</span><span class="o">.</span><span class="n">string</span><span class="p">()</span>
         <span class="k">return</span> <span class="n">pa_type</span></div>
@@ -251,11 +253,28 @@
     <span class="k">def</span> <span class="nf">export</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span></div>
 
+<div class="viewcode-block" id="PgPqBase.dryrun"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqBase.dryrun">[docs]</a>    <span class="k">def</span> <span class="nf">dryrun</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="n">sql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> 
+        <span class="k">with</span> <span class="n">result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="s2">&quot;c12345&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span> <span class="k">as</span> <span class="n">rs</span><span class="p">:</span>
+            <span class="n">rs_iterator</span> <span class="o">=</span> <span class="nb">iter</span><span class="p">(</span><span class="n">rs</span><span class="p">)</span>
+            <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+                <span class="k">try</span><span class="p">:</span>
+                    <span class="n">row</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">rs_iterator</span><span class="p">)</span>  <span class="c1"># Get the next item from the iterator</span>
+                    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+                    <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+                <span class="k">except</span> <span class="ne">StopIteration</span><span class="p">:</span>
+                    <span class="k">break</span>
+                <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;An error occurred: </span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+                    <span class="k">raise</span> </div>
+
 <div class="viewcode-block" id="PgPqBase.run"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqBase.run">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">arguments</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">arguments</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">arguments</span> <span class="o">=</span> <span class="n">parse_args</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="p">:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">arguments</span><span class="o">.</span><span class="n">table</span> <span class="ow">and</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="p">):</span>
                 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="p">)</span> <span class="k">as</span> <span class="n">inp</span><span class="p">:</span>
                     <span class="n">sql</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">line</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">inp</span><span class="p">])</span>
@@ -279,8 +298,12 @@
                 <span class="n">instance</span> <span class="o">=</span> <span class="n">PgPqSingleQuery</span><span class="p">(</span><span class="n">db</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="n">arguments</span><span class="o">.</span><span class="n">output</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;error&quot;</span><span class="p">)</span>
                 <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">partition</span><span class="p">:</span>
                     <span class="n">instance</span><span class="o">.</span><span class="n">set_partitioning</span><span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">partition</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">arguments</span><span class="o">.</span><span class="n">dryrun</span><span class="p">:</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">export</span><span class="p">()</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">instance</span><span class="o">.</span><span class="n">dryrun</span><span class="p">()</span></div>
 
-            <span class="n">instance</span><span class="o">.</span><span class="n">export</span><span class="p">()</span></div>
+
 
 <div class="viewcode-block" id="PgPqBase.export_table"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqBase.export_table">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">export_table</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">arguments</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
@@ -288,6 +311,8 @@
         <span class="k">with</span> <span class="n">Connection</span><span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">db</span><span class="p">,</span> <span class="n">arguments</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span> <span class="k">as</span> <span class="n">cnxn</span><span class="p">:</span>
             <span class="n">query_builder</span> <span class="o">=</span> <span class="n">QueryBuilder</span><span class="p">(</span><span class="n">cnxn</span><span class="p">)</span><span class="o">.</span><span class="n">add_table</span><span class="p">(</span><span class="n">table</span><span class="p">)</span>
             <span class="n">sql</span> <span class="o">=</span> <span class="n">query_builder</span><span class="o">.</span><span class="n">query</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="p">:</span>
+            <span class="n">sql</span> <span class="o">+=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">arguments</span><span class="o">.</span><span class="n">sql</span><span class="si">}</span><span class="s2">&quot;</span>
         <span class="bp">cls</span><span class="o">.</span><span class="n">export_sql</span><span class="p">(</span><span class="n">arguments</span><span class="p">,</span> <span class="n">sql</span><span class="p">)</span>
         <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Exporting: &quot;</span> <span class="o">+</span> <span class="n">table</span> <span class="o">+</span> <span class="s2">&quot; DONE&quot;</span><span class="p">)</span></div>
 
@@ -370,11 +395,14 @@
 <div class="viewcode-block" id="PgPqSingleQuery.batches"><a class="viewcode-back" href="../../../../members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqSingleQuery.batches">[docs]</a>    <span class="k">def</span> <span class="nf">batches</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">with</span> <span class="n">result_set</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">cursor_name</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">)</span> <span class="k">as</span> <span class="n">rs</span><span class="p">:</span>
             <span class="n">data</span> <span class="o">=</span> <span class="p">[]</span>
-            <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
-                <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
-                    <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
-                    <span class="n">data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-                <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">rs</span><span class="p">:</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch_size</span><span class="p">:</span>
+                        <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+                        <span class="n">data</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+                    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="k">raise</span> 
             <span class="k">yield</span> <span class="bp">self</span><span class="o">.</span><span class="n">batch</span><span class="p">(</span><span class="n">data</span><span class="p">)</span></div></div>
 
 
@@ -444,7 +472,10 @@
             <span class="n">where</span> <span class="o">=</span> <span class="s2">&quot; AND &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
                 <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">qualify_column</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sql</span><span class="p">,</span><span class="w"> </span><span class="n">column</span><span class="p">,</span><span class="w"> </span><span class="n">i1</span><span class="p">)</span><span class="si">}</span><span class="s2">=</span><span class="si">{</span><span class="n">partition</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">partition</span>
             <span class="p">)</span>
-            <span class="n">sql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">WHERE &quot;</span> <span class="o">+</span> <span class="n">where</span>
+            <span class="k">if</span> <span class="n">index_of</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">sql</span><span class="p">,</span> <span class="s2">&quot;where&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">-</span><span class="mi">1</span><span class="p">:</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">AND &quot;</span> <span class="o">+</span> <span class="n">where</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">sql</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">sql</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">WHERE &quot;</span> <span class="o">+</span> <span class="n">where</span>
             <span class="n">executor</span> <span class="o">=</span> <span class="n">PgPqSingleQuery</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">connection</span><span class="p">,</span> <span class="n">sql</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">destination</span><span class="p">,</span> <span class="s2">&quot;delete_matching&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">schema</span><span class="p">)</span>
             <span class="n">executor</span><span class="o">.</span><span class="n">parquet_partitioning</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parquet_partitioning</span>
             <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Fetching partition: &quot;</span> <span class="o">+</span> <span class="n">where</span><span class="p">)</span>
@@ -459,6 +490,8 @@
                      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Max memory used: </span><span class="si">{</span><span class="n">sizeof_fmt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_mem</span><span class="p">)</span><span class="si">}</span><span class="s2">; &quot;</span>
                      <span class="o">+</span> <span class="sa">f</span><span class="s2">&quot;Max PyArrow memory: </span><span class="si">{</span><span class="n">sizeof_fmt</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">max_pa_mem</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">return</span> </div></div>
+
+
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>

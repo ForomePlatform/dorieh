@@ -105,10 +105,18 @@
 <span class="c1">#</span>
 
 <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">Introspector that looks for all SAS 7BDAT files in a given path</span>
-<span class="sd">matching a given pattern, reads metadata and generates data model</span>
-<span class="sd">for each file in YAML format. the data model is written to the common</span>
-<span class="sd">registry.</span>
+<span class="sd">This module defines an introspector for SAS 7BDAT files related to Medicare data.</span>
+
+<span class="sd">The SASIntrospector class crawls a directory for SAS files matching a pattern,</span>
+<span class="sd">extracts metadata (column info), and generates data model definitions in YAML format.</span>
+<span class="sd">These models are written to a centralized registry.</span>
+
+<span class="sd">Typical use case: building data models from Medicare SAS files (e.g., 1999–2010).</span>
+
+<span class="sd">See Also:</span>
+<span class="sd">- :class:.SASIntrospector (this class)</span>
+<span class="sd">- :class:dorieh.platform.loader.introspector.Introspector</span>
+<span class="sd">- :class:dorieh.cms.tools.mcr_registry.MedicareRegistry</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="kn">import</span> <span class="nn">logging</span>
@@ -127,14 +135,32 @@
 
 <div class="viewcode-block" id="SASIntrospector"><a class="viewcode-back" href="../../../../members/mcr_sas2yaml.html#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector">[docs]</a><span class="k">class</span> <span class="nc">SASIntrospector</span><span class="p">(</span><span class="n">MedicareSAS</span><span class="p">,</span> <span class="n">MedicareRegistry</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Introspector that looks for all SAS 7BDAT files in a given path</span>
-<span class="sd">    matching a given pattern, reads metadata and generates data model</span>
-<span class="sd">    for each file in YAML format. the data model is written to the common</span>
-<span class="sd">    registry.</span>
+<span class="sd">    This class traverses a file path looking for SAS .sas7bdat files,</span>
+<span class="sd">    extracts their schema using :class:`~dorieh.platform.loader.introspector.Introspector`,</span>
+<span class="sd">    and creates a structured data model serialized to a YAML registry.</span>
+
+<span class="sd">    In addition to field-level metadata, this introspector:</span>
+<span class="sd">    - Attempts to identify common fields such as bene_id, state, zip, and year</span>
+<span class="sd">    - Automatically generates a year column if missing</span>
+<span class="sd">    - Marks special fields as indexed</span>
+<span class="sd">    - Adds virtual key fields for file and record identifiers</span>
+
+<span class="sd">    Inherits from:</span>
+<span class="sd">        MedicareSAS: For file traversal and handling utilities</span>
+<span class="sd">        MedicareRegistry: For interacting with the data model YAML registry</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="SASIntrospector.process"><a class="viewcode-back" href="../../../../members/mcr_sas2yaml.html#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector.process">[docs]</a>    <span class="nd">@classmethod</span>
-    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">registry_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">process</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">registry_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Entry point that initializes and runs the introspector.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            registry_path (str): Path to output YAML registry file.</span>
+<span class="sd">            pattern (str): Glob-like pattern to match .sas7bdat files.</span>
+<span class="sd">            root_dir (str): Root directory to start searching. Default is current directory.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="n">introspector</span> <span class="o">=</span> <span class="n">SASIntrospector</span><span class="p">(</span><span class="n">registry_path</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">)</span>
         <span class="n">introspector</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">pattern</span><span class="p">)</span>
         <span class="n">introspector</span><span class="o">.</span><span class="n">save</span><span class="p">()</span>
@@ -142,11 +168,30 @@
         <span class="k">return</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes the SASIntrospector with the given registry path and SAS root directory.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            registry_path (str): Path to the YAML registry file.</span>
+<span class="sd">            root_dir (str): Base directory for SAS 7BDAT files.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">MedicareSAS</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">root_dir</span><span class="p">)</span>
         <span class="n">MedicareRegistry</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">registry_path</span><span class="p">)</span>
 
 <div class="viewcode-block" id="SASIntrospector.matches"><a class="viewcode-back" href="../../../../members/mcr_sas2yaml.html#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector.matches">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">matches</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">candidates</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Determines whether a string matches any string or wildcard pattern in candidates.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            s (str): String to match.</span>
+<span class="sd">            candidates (List[str]): List of exact names or patterns (may include *).</span>
+
+<span class="sd">        Returns:</span>
+<span class="sd">            bool: True if s matches any candidate.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
         <span class="k">if</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">True</span>
         <span class="n">patterns</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">,</span> <span class="s1">&#39;.*&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">candidates</span> <span class="k">if</span> <span class="s1">&#39;*&#39;</span> <span class="ow">in</span> <span class="n">c</span><span class="p">]</span>
@@ -156,6 +201,16 @@
         <span class="k">return</span> <span class="kc">False</span></div>
 
 <div class="viewcode-block" id="SASIntrospector.handle"><a class="viewcode-back" href="../../../../members/mcr_sas2yaml.html#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector.handle">[docs]</a>    <span class="k">def</span> <span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_type</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles metadata extraction for a single .sas7bdat file.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            table (str): Target table name to use in the registry.</span>
+<span class="sd">            file_path (str): File path to the SAS data file.</span>
+<span class="sd">            file_type (str): Type of file (e.g., &#39;denominator&#39;).</span>
+<span class="sd">            year (int): Associated year of data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="k">if</span> <span class="n">file_type</span> <span class="o">==</span> <span class="s2">&quot;denominator&quot;</span><span class="p">:</span>
             <span class="n">index_all</span> <span class="o">=</span> <span class="kc">True</span>
         <span class="k">else</span><span class="p">:</span>
@@ -165,6 +220,25 @@
 
 <div class="viewcode-block" id="SASIntrospector.add_sas_table"><a class="viewcode-back" href="../../../../members/mcr_sas2yaml.html#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector.add_sas_table">[docs]</a>    <span class="k">def</span> <span class="nf">add_sas_table</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">table</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">file_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">index_all</span><span class="p">:</span> <span class="nb">bool</span><span class="p">,</span>
                       <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Extracts schema from a SAS file and registers columns into the YAML registry.</span>
+
+<span class="sd">        - Uses introspection to extract columns and attach metadata.</span>
+<span class="sd">        - Detects and indexes key columns (e.g., bene_id, state, year).</span>
+<span class="sd">        - Auto-generates a &#39;year&#39; column if missing using a virtual GENERATED column.</span>
+<span class="sd">        - Indexes all columns if index_all is True (e.g., for denominator files).</span>
+<span class="sd">        - Adds FILE and RECORD fields to simulate full uniqueness using a compound PK.</span>
+
+<span class="sd">        Args:</span>
+<span class="sd">            table (str): Name of the table in the registry.</span>
+<span class="sd">            file_path (str): Path to the SAS file.</span>
+<span class="sd">            index_all (bool): Whether all fields should be indexed.</span>
+<span class="sd">            year (int): Year to use when generating missing year columns.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">            ValueError: If duplicate key fields are detected or mandatory fields are missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">introspector</span> <span class="o">=</span> <span class="n">Introspector</span><span class="p">(</span><span class="n">file_path</span><span class="p">)</span>
         <span class="n">introspector</span><span class="o">.</span><span class="n">introspect</span><span class="p">()</span>
         <span class="n">introspector</span><span class="o">.</span><span class="n">append_file_column</span><span class="p">()</span>

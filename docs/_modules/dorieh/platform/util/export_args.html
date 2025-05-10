@@ -107,6 +107,7 @@
 <span class="c1">#</span>
 <span class="c1">#</span>
 <span class="kn">from</span> <span class="nn">argparse</span> <span class="kn">import</span> <span class="n">ArgumentParser</span><span class="p">,</span> <span class="n">Namespace</span>
+<span class="kn">import</span> <span class="nn">logging</span>
 
 
 <span class="n">FORMATS</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;parquet&quot;</span><span class="p">,</span> <span class="s2">&quot;json&quot;</span><span class="p">,</span> <span class="s2">&quot;jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;jsonlines&quot;</span><span class="p">,</span> <span class="s2">&quot;csv&quot;</span><span class="p">,</span> <span class="s2">&quot;hdf5&quot;</span><span class="p">]</span>
@@ -152,10 +153,21 @@
                         <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Hard partitioning: execute separate SQL statement for each partition&quot;</span><span class="p">,</span>
                         <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span>
                         <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--compatibility&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Make output compatible with specified framework&quot;</span><span class="p">,</span>
+                        <span class="n">required</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                        <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;spark&quot;</span><span class="p">]</span>
+                        <span class="p">)</span>
+    <span class="n">parser</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--dryrun&quot;</span><span class="p">,</span>
+                        <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not perform actual export, just print SQL Query or do a dry run&quot;</span><span class="p">,</span>
+                        <span class="n">action</span><span class="o">=</span><span class="s1">&#39;store_true&#39;</span>
+                        <span class="p">)</span>
 
     <span class="n">arguments</span> <span class="o">=</span> <span class="n">parser</span><span class="o">.</span><span class="n">parse_args</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span> <span class="ow">and</span> <span class="p">(</span><span class="n">arguments</span><span class="o">.</span><span class="n">table</span> <span class="ow">or</span> <span class="n">arguments</span><span class="o">.</span><span class="n">schema</span><span class="p">):</span>
-        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only one type of argument is accepted: sql, schema or table&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span> <span class="ow">and</span> <span class="n">arguments</span><span class="o">.</span><span class="n">table</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="s2">&quot;Both table and sql are provided. SQL will be appended to the Table query.&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">arguments</span><span class="o">.</span><span class="n">sql</span> <span class="ow">and</span> <span class="n">arguments</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only one type of argument is accepted: sql or schema&quot;</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">arguments</span><span class="o">.</span><span class="n">table</span> <span class="ow">and</span> <span class="n">arguments</span><span class="o">.</span><span class="n">schema</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Only one type of argument is accepted: sql, schema or table&quot;</span><span class="p">)</span>
 

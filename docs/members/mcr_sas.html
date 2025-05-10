@@ -87,29 +87,82 @@
              
   <section id="module-dorieh.cms.tools.mcr_sas">
 <span id="the-mcr-sas-module"></span><h1>The mcr_sas Module<a class="headerlink" href="#module-dorieh.cms.tools.mcr_sas" title="Permalink to this heading"></a></h1>
-<p>Abstract class to look for and process Medicare files from 1999 to 2010</p>
-<p>These files are semi-processed files. For each year we have a denominator
-(or patient summary, or enrollment) file and an inpatient admissions file.</p>
-<p>Files are in SAS 7BDAT format.</p>
+<p>Abstract base class for processing semi-structured Medicare SAS files (1999–2010).</p>
+<p>This class provides common traversal and filename-parsing logic to identify and
+process Medicare data files stored in the SAS 7BDAT format.</p>
+<p>These files are partially preprocessed and typically include:</p>
+<p>Denominator (patient/enrollment) files
+Inpatient admissions files
+Subclasses must implement the abstract handle() method to specify file handling logic.</p>
+<p>Typical usage:
+- :class:~dorieh.cms.tools.sas_loader.SASLoader for data ingestion
+- :class:~dorieh.cms.tools.sas_introspector.SASIntrospector for metadata extraction</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_sas.MedicareSAS">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MedicareSAS</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">root_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'.'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_sas.html#MedicareSAS"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_sas.MedicareSAS" title="Permalink to this definition"></a></dt>
-<dd><p>Abstract class to look for and process Medicare files from 1999 to 2010
-in SAS 7BDAT format</p>
+<dd><p>Abstract base class for locating and processing Medicare SAS 7BDAT files
+in a specified directory</p>
+<p>This class handles:
+- Recursively locating SAS files matching given patterns
+- Determining file type and year from directory structure
+- Invoking subclass-defined logic for each discovered file</p>
+<dl class="simple">
+<dt>Subclasses must implement:</dt><dd><ul class="simple">
+<li><p>handle(table, file_path, file_type, year): method to process each file.</p></li>
+</ul>
+</dd>
+<dt>Attributes:</dt><dd><p>root_dir (str or List[str]): Directory or list of directories containing data files.</p>
+</dd>
+</dl>
+<p>Initialize the MedicareSAS base class.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>root_dir (str or List[str]): Root directory (or directories) containing SAS files.</dt><dd><p>This can be a single directory as a string or a list of directories.</p>
+</dd>
+</dl>
+</dd>
+</dl>
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_sas.MedicareSAS.traverse">
 <span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_sas.html#MedicareSAS.traverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_sas.MedicareSAS.traverse" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Search for SAS files that match a glob-style pattern and process them.</p>
+<p>Uses recursive glob search from the root_dir(s), filtering by .sas7bdat extension,
+and passes matching files to self.handle_sas_file().</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pattern (str): File search pattern (e.g., “[1-2]*/<em>/</em>.sas7bdat”).</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_sas.MedicareSAS.handle_sas_file">
 <span class="sig-name descname"><span class="pre">handle_sas_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">f</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_sas.html#MedicareSAS.handle_sas_file"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_sas.MedicareSAS.handle_sas_file" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Analyze the SAS file path to extract file type and year,
+then delegate the processing to subclass-defined handle() method.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>f (str): Full path to the .sas7bdat file.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If file path does not contain a recognizable year or type.</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_sas.MedicareSAS.handle">
 <em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">table</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">file_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">year</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_sas.html#MedicareSAS.handle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_sas.MedicareSAS.handle" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Abstract method to handle a single SAS 7BDAT file.</p>
+<p>This must be implemented by any subclass of MedicareSAS, and
+should define how a given SAS dataset is processed.</p>
+<p>Concrete classes override it to either generata database schema
+or perform data loading</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>table (str): Name of the table or logical target in the system.
+file_path (str): Full file path to the SAS file.
+file_type (str): Subtype or directory name used to classify the file (e.g., “inpatient”, “denominator”).
+year (int): Parsed year value inferred from directory name.</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

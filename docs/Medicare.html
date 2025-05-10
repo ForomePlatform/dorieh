@@ -266,7 +266,9 @@ new columns are being added and column names are sometimes changed.</p>
 <p>To add insult to injury, for years prior to 2011 (1999-2010) we do not
 have original files, but preprocessed files with patient summary
 (called denominators) and admissions. They are in SAS 7BDAT format,
-however columns are also different for different years.</p>
+however columns are also different for different years. Please
+refer to <a class="reference internal" href="#files-for-1999-to-2010-"><span class="xref myst">Files for 1999 to 2010</span></a> section
+for details.</p>
 </section>
 <section id="storing-raw-data-in-the-database">
 <h3><a class="toc-backref" href="#id8" role="doc-backlink">Storing raw data in the Database</a><a class="headerlink" href="#storing-raw-data-in-the-database" title="Permalink to this heading"></a></h3>
@@ -301,19 +303,58 @@ original data.</p>
 </section>
 <section id="files-for-1999-to-2010">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">Files for 1999 to 2010</a><a class="headerlink" href="#files-for-1999-to-2010" title="Permalink to this heading"></a></h3>
-<p>These files are in SAS7BDAT format. They have been stored on RCE
-in two directories:</p>
+<p>Between 1999 and 2010, original Medicare ResDAC raw datasets are not available
+to NSAPH. Instead, only partially preprocessed files provided by external
+collaborators are available. These have been stored historically on RCE in two
+separate directories:</p>
 <ul class="simple">
-<li><p>denominator</p></li>
-<li><p>inpatient</p></li>
+<li><p>denominator/</p></li>
+<li><p>inpatient/</p></li>
 </ul>
-<p>One file per year. SAS7BDAT format contains metadata with column
-names and types. We use this metadata to generate appropriate database schema.</p>
-<p>See the code for handling these files:</p>
+<p>Each directory contains one file per year. These files use the SAS7BDAT
+format, which is a binary data format native to
+SAS analytics software. Each file embeds metadata about its schema
+(i.e., field names, types, order), but column names
+and formats still vary from year to year.</p>
+<p>To handle this variation:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="members/mcr_sas2yaml.html"><span class="std std-doc">Metadata and data model</span></a></p></li>
-<li><p><a class="reference internal" href="members/mcr_sas2db.html"><span class="std std-doc">Ingesting data</span></a></p></li>
+<li><p>Each file is individually introspected using the SAS Introspector.</p></li>
+<li><p>A YAML schema is automatically generated and stored in a central
+registry.</p></li>
+<li><p>This schema is then used to create the appropriate database table for
+ingestion.</p></li>
 </ul>
+<p>For more details on implementation:</p>
+<ul class="simple">
+<li><p>See the <a class="reference internal" href="members/mcr_sas2yaml.html"><span class="std std-doc">SAS Inrospector</span></a>  for how
+metadata is extracted.</p></li>
+<li><p>See the class <a class="reference internal" href="members/mcr_sas2db.html"><span class="std std-doc">SAS Data Laoder</span></a> for how
+these files are ingested into the database.</p></li>
+</ul>
+<p>Because of schema variability:</p>
+<ul class="simple">
+<li><p>Special heuristics are used to detect core fields like beneficiary ID (
+bene_id), year, zip code, and state code, based
+on a list of possible alternative names.</p></li>
+<li><p>Missing expected columns (e.g., year) are sometimes generated using
+information inferred from directory or file naming.</p></li>
+</ul>
+<p>Each resulting table includes:</p>
+<ul class="simple">
+<li><p>A standardized structure with additional generated columns (e.g., record
+ID, file name).</p></li>
+<li><p>Uniform field naming conventions to support unioning across years.</p></li>
+<li><p>Consistent indexing to support later join operations with downstream
+tables (e.g., beneficiaries and admissions).</p></li>
+</ul>
+<blockquote>
+<div><p>⚠ Note: Because of the variability and limited provenance of these
+files, this step is distinct from the ResDAC
+ingestion workflow and is not based on FTS metadata.</p>
+</div></blockquote>
+<p>📚 Related References:</p>
+<p>:doc: members/mcr_sas2yaml for introspection logic
+:doc: members/mcr_sas2db for database file loading</p>
 </section>
 <section id="files-for-years-2011-and-later">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">Files for Years 2011 and later</a><a class="headerlink" href="#files-for-years-2011-and-later" title="Permalink to this heading"></a></h3>
@@ -323,7 +364,7 @@ Summary (FTS) file. Unfortunately these files are intended for reading by
 a human and is difficult to parse automatically. A
 <a class="reference internal" href="members/fts2yaml.html"><span class="std std-doc">partial parser</span></a> that
 relies on a known file type is implemented in Python. The information
-extarcted by the parser is used to:</p>
+extracted by the parser is used to:</p>
 <ul class="simple">
 <li><p>Generate data model (database schema)</p></li>
 <li><p>Generate metadata for the FWF Reader</p></li>

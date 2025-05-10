@@ -8,12 +8,12 @@
  viewBox="0.00 0.00 328.50 152.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 148)">
 <polygon fill="white" stroke="none" points="-4,4 -4,-148 324.5,-148 324.5,4 -4,4"/>
-<!-- cms.medpar_2016.STATE -->
+<!-- cms.medpar_2017.STATE -->
 <g id="node1" class="node">
-<title>cms.medpar_2016.STATE</title>
-<g id="a_node1"><a xlink:href="../cms.medpar_2016/STATE.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<title>cms.medpar_2017.STATE</title>
+<g id="a_node1"><a xlink:href="../cms.medpar_2017/STATE.html" xlink:title="&lt;TABLE&gt;" target="_blank">
 <polygon fill="none" stroke="black" points="320.5,-144 0,-144 0,0 320.5,0 320.5,-144"/>
-<text text-anchor="start" x="83.75" y="-122.7" font-family="Times,serif" font-weight="bold" font-size="14.00">cms.medpar_2016.STATE</text>
+<text text-anchor="start" x="83.75" y="-122.7" font-family="Times,serif" font-weight="bold" font-size="14.00">cms.medpar_2017.STATE</text>
 <text text-anchor="start" x="36" y="-76.2" font-family="Times,serif" font-size="14.00">SSA standard state code of a</text>
 <text text-anchor="start" x="51.75" y="-59.7" font-family="Times,serif" font-size="14.00">beneficiarys residence.</text>
 <polygon fill="none" stroke="black" points="11,-7 11,-29.5 309.5,-29.5 309.5,-7 11,-7"/>
