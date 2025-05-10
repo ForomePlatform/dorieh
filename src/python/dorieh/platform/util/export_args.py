@@ -19,6 +19,7 @@
 #
 #
 from argparse import ArgumentParser, Namespace
+import logging
 
 
 FORMATS = ["parquet", "json", "jsonl", "jsonlines", "csv", "hdf5"]
@@ -64,10 +65,21 @@ def parse_args() -> Namespace:
                         help="Hard partitioning: execute separate SQL statement for each partition",
                         action='store_true'
                         )
+    parser.add_argument("--compatibility",
+                        help="Make output compatible with specified framework",
+                        required=False,
+                        choices=["spark"]
+                        )
+    parser.add_argument("--dryrun",
+                        help="Do not perform actual export, just print SQL Query or do a dry run",
+                        action='store_true'
+                        )
 
     arguments = parser.parse_args()
-    if arguments.sql and (arguments.table or arguments.schema):
-        raise ValueError("Only one type of argument is accepted: sql, schema or table")
+    if arguments.sql and arguments.table:
+        logging.warning("Both table and sql are provided. SQL will be appended to the Table query.")
+    if arguments.sql and arguments.schema:
+        raise ValueError("Only one type of argument is accepted: sql or schema")
     elif arguments.table and arguments.schema:
         raise ValueError("Only one type of argument is accepted: sql, schema or table")
 
