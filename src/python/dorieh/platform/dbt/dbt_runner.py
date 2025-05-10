@@ -27,6 +27,7 @@ tool.
 import logging
 import os.path
 from typing import List
+from abc import abstractmethod, ABC
 
 from dorieh.platform import init_logging
 from dorieh.platform.db import Connection
@@ -36,7 +37,8 @@ from dorieh.platform.dbt.dbt_config import DBTConfig
 class TestFailedError(Exception):
     pass
 
-class DBTRunner:
+
+class DBTRunner(ABC):
     def __init__(self, context: DBTConfig = None):
         if not context:
             context = DBTConfig(None, __doc__).instantiate()
@@ -55,52 +57,43 @@ class DBTRunner:
         self.successes = 0
         self.failures = 0
 
-    def run(self):
-        with Connection(self.context.db, self.context.connection) as cnxn:
-            for script_file in self.scripts:
-                with open(script_file) as script:
-                    self.run_script(script, cnxn)
+    def analyze_results(self, columns: List, rows: List):
+        pi = columns.index("passed")
+        n = len(columns)
+        lengths = [0 for _ in range(n)]
+        passes = 0
+        failures = 0
+        test_cases = []
+        for row in rows:
+            values = [row[i] for i in range(n)]
+            if row[pi]:
+                passes += 1
+                values[pi] = "passed"
+            else:
+                failures += 1
+                values[pi] = "failed"
+            for i in range(n):
+                if len(values[i]) > lengths[i]:
+                    lengths[i] = len(str(values[i]))
+            test_cases.append(values)
+        lengths = [l + 1 for l in lengths]
+        logging.info(self.report_row(columns, lengths))
+        for row in test_cases:
+            s = self.report_row(row, lengths)
+            if row[pi] == "passed":
+                logging.info(s)
+            elif row[pi] == "failed":
+                logging.error(s)
+            else:
+                logging.warning(s)
+        logging.info("Passed: {:d}; Failed: {:d}".format(passes, failures))
+        self.runs      += len(test_cases)
+        self.successes += passes
+        self.failures  += failures
 
-    def run_script(self, script, cnxn):
-        lines = [line for line in script]
-        query = ''.join(lines)
-        with cnxn.cursor() as cursor:
-            cursor.execute(query)
-            columns = [desc[0] for desc in cursor.description]
-            pi = columns.index("passed")
-            n = len(columns)
-            rows = [row for row in cursor]
-            lengths = [0 for _ in range(n)]
-            passes = 0
-            failures = 0
-            test_cases = []
-            for row in rows:
-                values = [row[i] for i in range(n)]
-                if row[pi]:
-                    passes += 1
-                    values[pi] = "passed"
-                else:
-                    failures += 1
-                    values[pi] = "failed"
-                for i in range(n):
-                    if len(values[i]) > lengths[i]:
-                        lengths[i] = len(str(values[i]))
-                test_cases.append(values)
-            lengths = [l + 1 for l in lengths]
-            logging.info(self.report_row(columns, lengths))
-            for row in test_cases:
-                s = self.report_row(row, lengths)
-                if row[pi] == "passed":
-                    logging.info(s)
-                elif row[pi] == "failed":
-                    logging.error(s)
-                else:
-                    logging.warning(s)
-            logging.info("Passed: {:d}; Failed: {:d}".format(passes, failures))
-            self.runs      += len(test_cases)
-            self.successes += passes
-            self.failures  += failures
-        return
+    @abstractmethod
+    def run(self):
+        pass
 
     @classmethod
     def report_row(cls, row: List, lengths: List[int]) -> str:
@@ -119,7 +112,29 @@ class DBTRunner:
             raise err
         logging.info("All tests succeeded")
 
+    @classmethod
+    def form_query(cls, script_file) -> str:
+        with open(script_file) as script:
+            lines = [line for line in script]
+            query = ''.join(lines)
+        return query
+
+
+class PGDBTRunner(DBTRunner):
+    def run(self):
+        with Connection(self.context.db, self.context.connection) as cnxn:
+            for script_file in self.scripts:
+                self.run_script(self.form_query(script_file), cnxn)
+
+    def run_script(self, query, cnxn):
+        with cnxn.cursor() as cursor:
+            cursor.execute(query)
+            columns = [desc[0] for desc in cursor.description]
+            rows = [row for row in cursor]
+            self.analyze_results(columns, rows)
+        return
+
 
 if __name__ == '__main__':
-    runner = DBTRunner()
+    runner = PGDBTRunner()
     runner.test()
