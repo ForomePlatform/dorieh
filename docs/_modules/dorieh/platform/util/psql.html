@@ -88,7 +88,7 @@
   <h1>Source code for dorieh.platform.util.psql</h1><div class="highlight"><pre>
 <span></span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">Utility to execute SQL statement or statements taken from</span>
-<span class="sd">command line arguments</span>
+<span class="sd">command line arguments in an instance of PostgreSQL</span>
 <span class="sd">&quot;&quot;&quot;</span>
 
 <span class="c1">#  Copyright (c) 2022. Harvard University</span>
@@ -120,6 +120,11 @@
     <span class="k">with</span> <span class="n">Connection</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">db</span><span class="p">,</span> <span class="n">args</span><span class="o">.</span><span class="n">connection</span><span class="p">)</span> <span class="k">as</span> <span class="n">cnxn</span><span class="p">:</span>
         <span class="k">with</span> <span class="n">cnxn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span> <span class="k">as</span> <span class="n">cursor</span><span class="p">:</span>
             <span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">sql</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">cursor</span><span class="o">.</span><span class="n">pgresult_ptr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">cursor</span><span class="p">:</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No results&quot;</span><span class="p">)</span>
         <span class="n">cnxn</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span></div>
 
 

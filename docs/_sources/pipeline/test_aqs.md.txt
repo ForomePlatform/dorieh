@@ -45,6 +45,9 @@ local:
 | execute_vacuum_err     | File |             | 
 | verify_log             | File |             | 
 | verify_errors          | File |             | 
+| execute_export_data    | ['File', 'Directory'] |             | 
+| execute_export_log     | File |             | 
+| execute_export_err     | File |             | 
 
 ## Steps
 

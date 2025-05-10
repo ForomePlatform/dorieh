@@ -188,13 +188,13 @@ tool.</p>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.run">
-<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.run" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.analyze_results">
+<span class="sig-name descname"><span class="pre">analyze_results</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">columns</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rows</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">List</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.analyze_results"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.analyze_results" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
-<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.run_script">
-<span class="sig-name descname"><span class="pre">run_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnxn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.run_script"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.run_script" title="Permalink to this definition"></a></dt>
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.run">
+<em class="property"><span class="pre">abstract</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.run" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -205,6 +205,26 @@ tool.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.test">
 <span class="sig-name descname"><span class="pre">test</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.test"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.test" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.DBTRunner.form_query">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">form_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">script_file</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">str</span></span></span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#DBTRunner.form_query"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.DBTRunner.form_query" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.PGDBTRunner">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">PGDBTRunner</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Optional</span><span class="p"><span class="pre">[</span></span><a class="reference internal" href="dbt_config.html#dorieh.platform.dbt.dbt_config.DBTConfig" title="dorieh.platform.dbt.dbt_config.DBTConfig"><span class="pre">DBTConfig</span></a><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#PGDBTRunner"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.PGDBTRunner" title="Permalink to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.PGDBTRunner.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#PGDBTRunner.run"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.PGDBTRunner.run" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.dbt.dbt_runner.PGDBTRunner.run_script">
+<span class="sig-name descname"><span class="pre">run_script</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">cnxn</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/dbt/dbt_runner.html#PGDBTRunner.run_script"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.dbt.dbt_runner.PGDBTRunner.run_script" title="Permalink to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

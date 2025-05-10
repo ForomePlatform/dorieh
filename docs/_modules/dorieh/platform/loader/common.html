@@ -137,7 +137,16 @@
         <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;connection_name&quot;</span><span class="p">],</span>
         <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;Section in the database connection parameters file&quot;</span><span class="p">,</span>
         <span class="nb">type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span>
-        <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;nsaph2&quot;</span><span class="p">,</span>
+        <span class="n">default</span> <span class="o">=</span> <span class="s2">&quot;dorieh&quot;</span><span class="p">,</span>
+        <span class="n">cardinality</span> <span class="o">=</span> <span class="n">Cardinality</span><span class="o">.</span><span class="n">single</span>
+    <span class="p">)</span>
+
+    <span class="n">_location</span> <span class="o">=</span> <span class="n">Argument</span><span class="p">(</span>
+        <span class="s2">&quot;location&quot;</span><span class="p">,</span>
+        <span class="n">aliases</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;path&quot;</span><span class="p">,</span> <span class="s2">&quot;p&quot;</span><span class="p">,</span> <span class="s2">&quot;l&quot;</span><span class="p">],</span>
+        <span class="n">help</span> <span class="o">=</span> <span class="s2">&quot;URI or path to file(s) or directory containing data (e.g., in Parquet format). Wildcards are supported&quot;</span><span class="p">,</span>
+        <span class="n">required</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+        <span class="nb">type</span> <span class="o">=</span> <span class="nb">str</span><span class="p">,</span>
         <span class="n">cardinality</span> <span class="o">=</span> <span class="n">Cardinality</span><span class="o">.</span><span class="n">single</span>
     <span class="p">)</span>
 
@@ -164,6 +173,9 @@
 
         <span class="bp">self</span><span class="o">.</span><span class="n">connection</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Section in the database connection parameters file &#39;&#39;&#39;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">location</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39; URI or path to file(s) or directory containing data (e.g., in Parquet format). Wildcards are supported &#39;&#39;&#39;</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">verbose</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="w">        </span><span class="sd">&#39;&#39;&#39; Generate verbose output &#39;&#39;&#39;</span>

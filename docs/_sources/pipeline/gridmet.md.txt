@@ -72,28 +72,31 @@ with similar options:
 
 ## Outputs
 
-| Name            | Type  | Description | 
-|:----------------|:------|:------------|
-| initdb_log      | File  |             | 
-| initdb_err      | File  |             | 
-| init_schema_log | File  |             | 
-| init_schema_err | File  |             | 
-| registry        | File  |             | 
-| registry_log    | File  |             | 
-| registry_err    | File  |             | 
-| data            | array |             | 
-| download_log    | array |             | 
-| download_err    | array |             | 
-| process_log     | array |             | 
-| process_err     | array |             | 
-| ingest_log      | array |             | 
-| ingest_err      | array |             | 
-| reset_log       | array |             | 
-| reset_err       | array |             | 
-| index_log       | array |             | 
-| index_err       | array |             | 
-| vacuum_log      | array |             | 
-| vacuum_err      | array |             | 
+| Name            | Type   | Description | 
+|:----------------|:-------|:------------|
+| initdb_log      | File   |             | 
+| initdb_err      | File   |             | 
+| init_schema_log | File   |             | 
+| init_schema_err | File   |             | 
+| registry        | File   |             | 
+| registry_log    | File   |             | 
+| registry_err    | File   |             | 
+| data            | array  |             | 
+| download_log    | array  |             | 
+| download_err    | array  |             | 
+| process_log     | array  |             | 
+| process_err     | array  |             | 
+| ingest_log      | array  |             | 
+| ingest_err      | array  |             | 
+| reset_log       | array  |             | 
+| reset_err       | array  |             | 
+| index_log       | array  |             | 
+| index_err       | array  |             | 
+| vacuum_log      | array  |             | 
+| vacuum_err      | array  |             | 
+| export_data     | array  |             | 
+| export_log      | File[] |             | 
+| export_err      | File[] |             | 
 
 ## Steps
 
@@ -104,4 +107,5 @@ with similar options:
 | make_registry  | [build_gridmet_model.cwl](build_gridmet_model.md) | Writes down YAML file with the database model              | 
 | init_tables    | [sub-workflow](gridmet_1.md)                      | creates or recreates database tables, one for each band    | 
 | process        | [gridmet_one_file.cwl](gridmet_one_file.md)       | Downloads raw data and aggregates it over shapes and time  | 
+| export         | [export.cwl](export.md)                           |                                                            | 
 

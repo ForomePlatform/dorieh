@@ -113,12 +113,14 @@
 <span class="linenos">24</span><span class="l l-Scalar l-Scalar-Plain">RUN mkdir /opt/local/</span>
 <span class="linenos">25</span><span class="l l-Scalar l-Scalar-Plain">COPY requirements.txt /opt/local/</span>
 <span class="linenos">26</span><span class="l l-Scalar l-Scalar-Plain">ENV DEBIAN_FRONTEND=noninteractive</span>
-<span class="linenos">27</span><span class="l l-Scalar l-Scalar-Plain">RUN add-apt-repository ppa:deadsnakes/ppa</span>
-<span class="linenos">28</span><span class="l l-Scalar l-Scalar-Plain">RUN apt update &amp;&amp; apt install -y postgresql-client nodejs npm  g++ gdal-bin libgdal-dev libgeos-dev</span>
-<span class="linenos">29</span><span class="l l-Scalar l-Scalar-Plain">RUN apt install -y r-base r-base-dev</span>
-<span class="linenos">30</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install --upgrade pip</span>
-<span class="linenos">31</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install -r  /opt/local/requirements.txt</span>
-<span class="linenos">32</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install cwlref-runner</span>
+<span class="linenos">27</span><span class="l l-Scalar l-Scalar-Plain">RUN rm /etc/apt/sources.list.d/mesos.list</span><span class="w">  </span><span class="c1"># Repository has expired GPG key</span>
+<span class="linenos">28</span><span class="l l-Scalar l-Scalar-Plain">RUN add-apt-repository ppa:deadsnakes/ppa</span>
+<span class="linenos">29</span><span class="l l-Scalar l-Scalar-Plain">RUN apt update</span><span class="w">  </span>
+<span class="linenos">30</span><span class="l l-Scalar l-Scalar-Plain">RUN apt install -y postgresql-client nodejs npm  g++ gdal-bin libgdal-dev libgeos-dev</span>
+<span class="linenos">31</span><span class="l l-Scalar l-Scalar-Plain">RUN apt install -y r-base r-base-dev</span>
+<span class="linenos">32</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install --upgrade pip</span>
+<span class="linenos">33</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install -r  /opt/local/requirements.txt</span>
+<span class="linenos">34</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install cwlref-runner</span>
 </pre></div>
 </div>
 </section>

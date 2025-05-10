@@ -33,30 +33,33 @@ local:
 
 ## Outputs
 
-| Name                    | Type  | Description | 
-|:------------------------|:------|:------------|
-| execute_initdb_log      | File  |             | 
-| execute_initdb_err      | File  |             | 
-| execute_init_schema_log | File  |             | 
-| execute_init_schema_err | File  |             | 
-| execute_registry        | File  |             | 
-| execute_registry_log    | File  |             | 
-| execute_registry_err    | File  |             | 
-| execute_data            | array |             | 
-| execute_download_log    | array |             | 
-| execute_download_err    | array |             | 
-| execute_process_log     | array |             | 
-| execute_process_err     | array |             | 
-| execute_ingest_log      | array |             | 
-| execute_ingest_err      | array |             | 
-| execute_reset_log       | array |             | 
-| execute_reset_err       | array |             | 
-| execute_index_log       | array |             | 
-| execute_index_err       | array |             | 
-| execute_vacuum_log      | array |             | 
-| execute_vacuum_err      | array |             | 
-| verify_log              | File  |             | 
-| verify_errors           | File  |             | 
+| Name                    | Type   | Description | 
+|:------------------------|:-------|:------------|
+| execute_initdb_log      | File   |             | 
+| execute_initdb_err      | File   |             | 
+| execute_init_schema_log | File   |             | 
+| execute_init_schema_err | File   |             | 
+| execute_registry        | File   |             | 
+| execute_registry_log    | File   |             | 
+| execute_registry_err    | File   |             | 
+| execute_data            | array  |             | 
+| execute_download_log    | array  |             | 
+| execute_download_err    | array  |             | 
+| execute_process_log     | array  |             | 
+| execute_process_err     | array  |             | 
+| execute_ingest_log      | array  |             | 
+| execute_ingest_err      | array  |             | 
+| execute_reset_log       | array  |             | 
+| execute_reset_err       | array  |             | 
+| execute_index_log       | array  |             | 
+| execute_index_err       | array  |             | 
+| execute_vacuum_log      | array  |             | 
+| execute_vacuum_err      | array  |             | 
+| verify_log              | File   |             | 
+| verify_errors           | File   |             | 
+| execute_export_data     | array  |             | 
+| execute_export_log      | File[] |             | 
+| execute_export_err      | File[] |             | 
 
 ## Steps
 
