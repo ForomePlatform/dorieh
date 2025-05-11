@@ -28,6 +28,7 @@ Typical use case: building data models from Medicare SAS files (e.g., 1999–201
 
 See Also:
 - :class:`.SASIntrospector` (this class)
+- :class:`.MedicareSAS` (superclass)
 - :class:`~dorieh.platform.loader.introspector.Introspector`
 - :class:`~dorieh.cms.tools.mcr_registry.MedicareRegistry`
 """
@@ -99,7 +100,7 @@ class SASIntrospector(MedicareSAS, MedicareRegistry):
 
         Args:
             s (str): String to match.
-            candidates (List[str]): List of exact names or patterns (may include *).
+            candidates (List[str]): List of exact names or patterns (may include `*`).
 
         Returns:
             bool: True if s matches any candidate.
