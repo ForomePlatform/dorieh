@@ -1,4 +1,4 @@
-# Handling Medicaid data
+# Medicaid: Building a Data Warehouse from ResDac Files
 
 ```{toctree}
 ---
