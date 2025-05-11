@@ -50,51 +50,48 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="cms.html">Health</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Handling Medicaid data</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="pipeline/parse_fts.html">FTS Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="members/create_schema_config.html">The create_schema_config Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="members/medicaid_yaml.html">Medicaid.yaml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pipeline/ingest.html">Universal uploader of the tabular data to the database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="pipeline/medicaid.html">Full Medicaid Processing Pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#introduction">Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#importing-raw-data">Importing raw data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#processing-data">Processing data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-model">Data Model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#pipeline">Pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sample-user-request">Sample user request:</a></li>
-</ul>
-</li>
-<li class="toctree-l3 current"><a class="reference internal" href="Medicare.html">Medicare Files Handling</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
-<li class="toctree-l4"><a class="reference internal" href="members/medicare_yaml.html">Medicare.yaml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Handling Medicaid data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicare.html#processing-pipeline">Processing pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cms.html#project-structure">Project Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cms.html#documentation-indices">Documentation Indices</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="epa.html">Environmental Protection Agency (EPA) data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="census.html">Demographics</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DataModellingExtensions.html">Extensions used for creating federated view of different years</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html">Medicare Files Handling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Handling Medicaid data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/parse_fts.html">FTS Parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/create_schema_config.html">The create_schema_config Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/medicaid_yaml.html">Medicaid.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/ingest.html">Universal uploader of the tabular data to the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/medicaid.html">Full Medicaid Processing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#importing-raw-data">Importing raw data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#parsing-fts-files-to-generate-schema">Parsing FTS files to generate schema</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-data">Processing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-model">Data Model</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#beneficiaries">Beneficiaries</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enrollments">Enrollments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#eligibility">Eligibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#inpatient-admissions">Inpatient Admissions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pipeline">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sample-user-request">Sample user request:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#table">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#column">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#multi-column-indices">Multi-column indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#generation-of-the-database-schema-ddl">Generation of the database schema (DDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#indexing-policies">Indexing policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#linking-with-nomenclature">Linking with nomenclature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
