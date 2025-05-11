@@ -198,6 +198,20 @@ ingestion workflow and is not based on FTS metadata.
 :doc: members/mcr_sas2yaml for introspection logic
 :doc: members/mcr_sas2db for database file loading
 
+```{mermaid}
+graph TD;
+    A[SAS 7BDAT File] --> B[Inspect schema using SAS Introspector]
+    B --> C[Generate YAML metadata]
+    C --> D[Update main metadata registry: used for combining tables for all years]
+    C --> L[Generate DDL]
+    C --> E[Configure SAS Data Loader]
+    E --> F[Create SQL table]
+    L --> F
+    F --> I[Ingest data]
+    A --> I
+    I --> G[Add synthetic keys and indexes]
+```
+
 ### Files for Years 2011 and later
 
 #### Metadata Extraction
@@ -266,27 +280,16 @@ The MedicareLoader module orchestrates the end-to-end process, including:
 * Triggering the appropriate file loader
 * Writing data to the database
 
-```graphviz
-    digraph ingestion_flow {
-    parse_fts  [label="Parse FTS using fts2yaml"];
-    export_yaml [label="Export YAML"];
-    lookup_dat [label="Identify data file (.dat or .csv.gz)"];
-    choose_loader [label="Select Loader\n(MedicareDataLoader / DataLoader)"];
-    load_data [label="Load to DB"];
-    index [label="Build Index"];
-    vacuum [label="VACUUM"];
-    
-           parse_fts -> export_yaml -> lookup_dat -> choose_loader -> load_data -> index -> vacuum;
-    }
-``` 
 
 ```{mermaid}
 graph TD;
-    A[.fts file] --> B[YAML schema via fts2yaml]
+    A[SAS FTS file] --> B[YAML schema via fts2yaml]
     B --> C[Extract layout for fixed-width reader]
-    C --> D[Run MedicareLoader]
-    D --> E[Pick MedicareDataLoader or generic DataLoader]
-    E --> F[Load data to SQL table]
+    B --> E[Generate DDL]
+    S[SAS DAT FILE] --> D 
+    C --> D[Run MedicareLoader calling MedicareDataLoader]
+    E --> D
+    D --> F[Load data to SQL table]
     F --> G[Apply indexing and VACUUM]
 ```
 
