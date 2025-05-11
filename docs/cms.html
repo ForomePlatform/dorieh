@@ -24,7 +24,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Medicare: Building a Data Warehouse from ResDac Files" href="Medicare.html" />
+    <link rel="next" title="Health Data in Dorieh (Medicare and Medicaid)" href="health_data_overview.html" />
     <link rel="prev" title="Data Domains" href="domains.html" /> 
 </head>
 
@@ -53,21 +53,11 @@
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Health</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#project-structure">Project Structure</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#cwl">CWL</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#python">Python</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#data-model-for-health-data">Data Model for health data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sql">SQL</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#documentation-indices">Documentation Indices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a></li>
@@ -115,148 +105,138 @@
              
   <section id="dorieh-cms-package-manipulating-resdac-health-data">
 <h1>Dorieh CMS Package (manipulating ResDac Health Data)<a class="headerlink" href="#dorieh-cms-package-manipulating-resdac-health-data" title="Permalink to this heading"></a></h1>
-<p><strong>Pipelines to process CMS data: Medicaid and Medicare</strong></p>
-<nav class="contents local" id="contents">
-<ul class="simple">
-<li><p><a class="reference internal" href="#overview-of-health-data-medicare-and-medicaid" id="id1">Overview of health data (Medicare and Medicaid)</a></p></li>
-<li><p><a class="reference internal" href="#project-structure" id="id2">Project Structure</a></p>
-<ul>
-<li><p><a class="reference internal" href="#cwl" id="id3">CWL</a></p></li>
-<li><p><a class="reference internal" href="#python" id="id4">Python</a></p></li>
-<li><p><a class="reference internal" href="#data-model-for-health-data" id="id5">Data Model for health data</a></p></li>
-<li><p><a class="reference internal" href="#sql" id="id6">SQL</a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#documentation-indices" id="id7">Documentation Indices</a></p></li>
-</ul>
-</nav>
-<section id="overview-of-health-data-medicare-and-medicaid">
-<h2><a class="toc-backref" href="#id1" role="doc-backlink">Overview of health data (Medicare and Medicaid)</a><a class="headerlink" href="#overview-of-health-data-medicare-and-medicaid" title="Permalink to this heading"></a></h2>
-<p>We use health data provided by
-<a class="reference external" href="https://www.cms.gov/">Centers for Medicare &amp; Medicaid Services (CMS)</a></p>
-<p>Data processing pipelines included in this package
-create a data warehouse with health data (Medicare and Medicaid).
-They perform ingestion of raw data into the database, data
-cleansing and deduplication , when possible, data quality analysis
-and optimization of the tables for efficient queries.</p>
-<p>Please see the following documents for details:</p>
-<ul class="simple">
-<li><p>Data model and processing of <a class="reference internal" href="Medicaid.html"><span class="std std-doc">Medicaid</span></a> data</p></li>
-<li><p>Data model and processing of <a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare</span></a> data</p></li>
-<li><p>Tips on <a class="reference internal" href="QueringMedicaid.html"><span class="std std-doc">querying of Medicaid data</span></a></p></li>
-</ul>
-<p>Medicare processing now includes a
-<a class="reference internal" href="Medicare.html#creating-qc-tables"><span class="std std-ref">pipeline to automatically create QC Tables</span></a>.
-These tables are used by Apache Superset dashboard that visualizes QC results.</p>
+<p>Dorieh CMS package provides a number of standalone
+command line (CLI) utilities to handle health data
+provided by ResDac and modules that are used in
+ETL pipelines that build Health Data Warehouse
+and Feature Store.</p>
 <div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Health Data Processing</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="health_data_overview.html#overview-of-health-data-processing">Overview of Health Data Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="health_data_overview.html#project-structure">Project Structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html#cwl-workflows">CWL Workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html#python-utilities">Python Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html#data-model-for-health-data">Data Model for health data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="health_data_overview.html#medicare-tables">Medicare Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="health_data_overview.html#medicaid-tables">Medicaid Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html#sql-utilities">SQL Utilities</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="health_data_overview.html#stored-procedures">Stored Procedures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="health_data_overview.html#date-parsing-functions">Date Parsing Functions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="health_data_overview.html#documentation-indices">Documentation Indices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html#processing-pipeline">Processing pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#medicare-pipeline-steps">Medicare Pipeline Steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#ingestion-of-raw-data">Ingestion of raw data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#processing-data-in-the-database">Processing Data in the Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#medicare-pipeline-references">Medicare Pipeline References</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html#ingesting-raw-files">Ingesting Raw Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#overview-of-ingesting-raw-medicare-files">Overview of Ingesting Raw Medicare Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#storing-raw-data-in-the-database">Storing raw data in the Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#files-for-1999-to-2010">Files for 1999 to 2010</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#files-for-years-2011-and-later">Files for Years 2011 and later</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#metadata-extraction">Metadata Extraction</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#ingestion-process">Ingestion process</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#directory-layout-expectation">Directory Layout Expectation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#eventual-database-schema">Eventual database schema</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#cwl-workflows">CWL workflows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-federated-patient-summary">Creating Federated Patient Summary</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#first-step-initial-in-database-data-conditioning">First step: Initial in-database data conditioning</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#second-step-mapping-to-county-fips-codes">Second step: Mapping to county FIPS codes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-beneficiaries-table">Creating Beneficiaries table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-enrollments-table">Creating Enrollments table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-overview">Enrollments overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-primary-key-unique-identifier">Enrollments Primary key (unique identifier)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-data-cleansing">Enrollments data cleansing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-columns-definitions">Enrollments columns definitions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-federated-admissions-view">Creating Federated Admissions view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-inpatient-admissions-table">Creating Inpatient Admissions table</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html#creating-qc-tables">Creating QC Tables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#medicare-qc-approach">Medicare QC approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#enrollments-qc-table">Enrollments QC Table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-qc-table-definition">Enrollments QC Table Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-qc-table-dimensions">Enrollments QC Table Dimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-qc-table-measures">Enrollments QC Table Measures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#admissions-qc-table">Admissions QC Table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#admissions-qc-table-definition">Admissions QC Table Definition</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#admissions-qc-table-dimensions">Admissions QC Table Dimensions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#admissions-qc-table-measures">Admissions QC Table Measures</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lineage/medicare.dot.html">Table Lineage Diagram</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lineage/table-list.html">Alphabetic list of all tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lineage/column-list.html">Alphabetic list of all columns in all tables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#generating-data-dictionary">Generating data dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#domain-dictionary-output">Domain Dictionary Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#module-dorieh.platform.dictionary.domain_dictionary">Details</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#importing-raw-data">Importing raw data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#parsing-fts-files-to-generate-schema">Parsing FTS files to generate schema</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#processing-data">Processing data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#data-model">Data Model</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#beneficiaries">Beneficiaries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicaid.html#bene-id-column">BENE_ID column</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Medicaid.html#deduplication-and-data-cleansing">Deduplication and data cleansing</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#enrollments">Enrollments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#eligibility">Eligibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#inpatient-admissions">Inpatient Admissions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#pipeline">Pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html#sample-user-request">Sample user request:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html#querying-diagnoses">Querying diagnoses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html#listing-patients">Listing patients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html#problem-no-wildcarding">Problem: no wildcarding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html#calculating-numbers">Calculating numbers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 </div>
-</section>
-<section id="project-structure">
-<h2><a class="toc-backref" href="#id2" role="doc-backlink">Project Structure</a><a class="headerlink" href="#project-structure" title="Permalink to this heading"></a></h2>
-<p>Top level directories are:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- doc
-- src
-</pre></div>
-</div>
-<p>Doc directory contains documentation.</p>
-<p>Src directory contains software source code. The directories under sources are:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- cwl
-- python
-</pre></div>
-</div>
-<section id="cwl">
-<h3><a class="toc-backref" href="#id3" role="doc-backlink">CWL</a><a class="headerlink" href="#cwl" title="Permalink to this heading"></a></h3>
-<p>CWL folder contains reusable workflows, packaged as tools
-that can and should be used by
-all Dorieh pipelines.</p>
-<p>Each processing step of CMS data is packaged as a
-standalone tool that can be run individually.
-Each tool is individually documented.
-The tools are combined into a workflow represented by
-<a class="reference internal" href="pipeline/medicaid.html"><span class="doc std std-doc">medicaid.cwl</span></a>
-and
-<a class="reference internal" href="pipeline/medicare.html"><span class="doc std std-doc">medicare.cwl</span></a> files.</p>
-</section>
-<section id="python">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Python</a><a class="headerlink" href="#python" title="Permalink to this heading"></a></h3>
-<p>Python packages and modules are described in the
-<a class="reference internal" href="CMSLibrary.html"><span class="std std-doc">Python Package Description</span></a> document.</p>
-<p>Included are utilities to:</p>
-<ul class="simple">
-<li><p>Parse FTS format and generate database schema</p></li>
-</ul>
-</section>
-<section id="data-model-for-health-data">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">Data Model for health data</a><a class="headerlink" href="#data-model-for-health-data" title="Permalink to this heading"></a></h3>
-<p>The data model in YAML format is used to generate database schema and
-processing code to ingest data into the database. Read more about
-the modeling in the<br />
-<a class="reference internal" href="Datamodels.html"><span class="std std-doc">Data Modeling</span></a>.</p>
-<p>The model for raw data is automatically generated by parsing FTS
-files or analyzing SAS data.</p>
-<p>The following models are defined here:</p>
-<ul class="simple">
-<li><p><a class="reference internal" href="members/medicaid_yaml.html"><span class="std std-doc">Medicaid processed data</span></a>. See also <a class="reference internal" href="Medicaid.html"><span class="std std-doc">Medicaid: Building a Data Warehouse from ResDac Files</span></a></p>
-<ul>
-<li><p>Tables</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.beneficiaries</span></code> <a class="reference internal" href="Medicaid.html#beneficiaries"><span class="std std-ref">details</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.enrollments</span></code> <a class="reference internal" href="Medicaid.html#enrollments"><span class="std std-ref">details</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.eligibility</span></code> <a class="reference internal" href="Medicaid.html#eligibility"><span class="std std-ref">details</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.admissions</span></code> <a class="reference internal" href="Medicaid.html#inpatient-admissions"><span class="std std-ref">details</span></a></p></li>
-</ul>
-</li>
-<li><p>SQL Views, used internally for data processing</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.monthly</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicaid._eligibility</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="members/medicare_yaml.html"><span class="std std-doc">Medicare processed data</span></a>. See also <a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a></p>
-<ul>
-<li><p>Tables</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare.beneficiaries</span></code> <a class="reference internal" href="Medicare.html#creating-beneficiaries-table"><span class="std std-ref">details</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare.enrollments</span></code> <a class="reference internal" href="Medicare.html#creating-enrollments-table"><span class="std std-ref">details</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare.admissions</span></code> <a class="reference internal" href="Medicare.html#creating-inpatient-admissions-table"><span class="std std-ref">details</span></a></p></li>
-</ul>
-</li>
-<li><p>SQL Views, used internally for data processing</p>
-<ul>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare.ps</span></code> <a class="reference internal" href="Medicare.html#creating-federated-patient-summary"><span class="std std-ref">Combined raw data for patient summaries</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare.</span></code>   <a class="reference internal" href="Medicare.html#creating-federated-admissions-view"><span class="std std-ref">Combined raw data for inpatient admissions</span></a></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare._ps</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare._beneficiaries</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">medicare._enrollments</span></code></p></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</section>
-<section id="sql">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">SQL</a><a class="headerlink" href="#sql" title="Permalink to this heading"></a></h3>
-<p>File <a class="reference internal" href="members/procedures.html"><span class="std std-doc">procedures</span></a>
-addresses the problem that creating
-<a class="reference internal" href="Medicaid.html#eligibility"><span class="std std-ref">Medicaid eligibility table</span></a>
-in a single transaction requires too much time and memory.
-The stored procedures in this file split populating this table
-with data either by beneficiary or by year and state. Splitting by beneficiary
-(i.e. using one database transaction per beneficiary) works best.</p>
-<p>File <a class="reference internal" href="members/functions.html"><span class="std std-doc">functions</span></a> contain helper functions
-to parse dates in non-standard formats that are encountered in
-raw medicare files that we have.</p>
-</section>
-</section>
-<section id="documentation-indices">
-<span id="cms-indices-and-tables"></span><h2><a class="toc-backref" href="#id7" role="doc-backlink">Documentation Indices</a><a class="headerlink" href="#documentation-indices" title="Permalink to this heading"></a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
-<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
-</ul>
-</section>
 </section>
 
 
@@ -264,7 +244,7 @@ raw medicare files that we have.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="domains.html" class="btn btn-neutral float-left" title="Data Domains" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="Medicare.html" class="btn btn-neutral float-right" title="Medicare: Building a Data Warehouse from ResDac Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="health_data_overview.html" class="btn btn-neutral float-right" title="Health Data in Dorieh (Medicare and Medicaid)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

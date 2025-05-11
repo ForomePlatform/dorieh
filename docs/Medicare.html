@@ -33,7 +33,7 @@ window.addEventListener("load", () => mermaid.run());
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="The mcr_sas2yaml Module" href="members/mcr_sas2yaml.html" />
-    <link rel="prev" title="Dorieh CMS Package (manipulating ResDac Health Data)" href="cms.html" /> 
+    <link rel="prev" title="Health Data in Dorieh (Medicare and Medicaid)" href="health_data_overview.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -59,28 +59,64 @@ window.addEventListener("load", () => mermaid.run());
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="cms.html">Health</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">Medicare: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="cms.html#project-structure">Project Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cms.html#documentation-indices">Documentation Indices</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a></li>
-<li class="toctree-l2"><a class="reference internal" href="exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="epa.html">Environmental Protection Agency (EPA) data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="census.html">Demographics</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="DataModellingExtensions.html">Extensions used for creating federated view of different years</a></li>
+<li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Medicare: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#processing-pipeline">Processing pipeline</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medicare-pipeline-steps">Medicare Pipeline Steps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ingestion-of-raw-data">Ingestion of raw data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#processing-data-in-the-database">Processing Data in the Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#medicare-pipeline-references">Medicare Pipeline References</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#ingesting-raw-files">Ingesting Raw Files</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-ingesting-raw-medicare-files">Overview of Ingesting Raw Medicare Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#storing-raw-data-in-the-database">Storing raw data in the Database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-for-1999-to-2010">Files for 1999 to 2010</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-for-years-2011-and-later">Files for Years 2011 and later</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-raw-files-into-a-single-view">Combining raw files into a single view</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eventual-database-schema">Eventual database schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cwl-workflows">CWL workflows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-federated-patient-summary">Creating Federated Patient Summary</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-beneficiaries-table">Creating Beneficiaries table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-enrollments-table">Creating Enrollments table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-federated-admissions-view">Creating Federated Admissions view</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-inpatient-admissions-table">Creating Inpatient Admissions table</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-qc-tables">Creating QC Tables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#medicare-qc-approach">Medicare QC approach</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enrollments-qc-table">Enrollments QC Table</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#admissions-qc-table">Admissions QC Table</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#table">Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#column">Column</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#multi-column-indices">Multi-column indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#generation-of-the-database-schema-ddl">Generation of the database schema (DDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#indexing-policies">Indexing policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#linking-with-nomenclature">Linking with nomenclature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
@@ -364,7 +400,19 @@ ingestion workflow and is not based on FTS metadata.</p>
 <p>📚 Related References:</p>
 <p>:doc: members/mcr_sas2yaml for introspection logic
 :doc: members/mcr_sas2db for database file loading</p>
-</section>
+<pre  class="mermaid">
+        graph TD;
+    A[SAS 7BDAT File] --&gt; B[Inspect schema using SAS Introspector]
+    B --&gt; C[Generate YAML metadata]
+    C --&gt; D[Update main metadata registry: used for combining tables for all years]
+    C --&gt; L[Generate DDL]
+    C --&gt; E[Configure SAS Data Loader]
+    E --&gt; F[Create SQL table]
+    L --&gt; F
+    F --&gt; I[Ingest data]
+    A --&gt; I
+    I --&gt; G[Add synthetic keys and indexes]
+    </pre></section>
 <section id="files-for-years-2011-and-later">
 <h3><a class="toc-backref" href="#id11" role="doc-backlink">Files for Years 2011 and later</a><a class="headerlink" href="#files-for-years-2011-and-later" title="Permalink to this heading"></a></h3>
 <section id="metadata-extraction">
@@ -442,26 +490,15 @@ to parse FWF records row-by-row</p></li>
 <li><p>Triggering the appropriate file loader</p></li>
 <li><p>Writing data to the database</p></li>
 </ul>
-<div class="highlight-graphviz notranslate"><div class="highlight"><pre><span></span><span class="w">    </span><span class="k">digraph</span><span class="w"> </span><span class="nt">ingestion_flow</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">parse_fts</span><span class="w">  </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Parse FTS using fts2yaml&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">export_yaml</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Export YAML&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">lookup_dat</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Identify data file (.dat or .csv.gz)&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">choose_loader</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Select Loader\n(MedicareDataLoader / DataLoader)&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">load_data</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Load to DB&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">index</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;Build Index&quot;</span><span class="p">];</span>
-<span class="w">    </span><span class="nt">vacuum</span><span class="w"> </span><span class="p">[</span><span class="na">label</span><span class="p">=</span><span class="s2">&quot;VACUUM&quot;</span><span class="p">];</span>
-<span class="w">    </span>
-<span class="w">           </span><span class="nt">parse_fts</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">export_yaml</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">lookup_dat</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">choose_loader</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">load_data</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">index</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="nt">vacuum</span><span class="p">;</span>
-<span class="w">    </span><span class="p">}</span>
-</pre></div>
-</div>
 <pre  class="mermaid">
         graph TD;
-    A[.fts file] --&gt; B[YAML schema via fts2yaml]
+    A[SAS FTS file] --&gt; B[YAML schema via fts2yaml]
     B --&gt; C[Extract layout for fixed-width reader]
-    C --&gt; D[Run MedicareLoader]
-    D --&gt; E[Pick MedicareDataLoader or generic DataLoader]
-    E --&gt; F[Load data to SQL table]
+    B --&gt; E[Generate DDL]
+    S[SAS DAT FILE] --&gt; D 
+    C --&gt; D[Run MedicareLoader calling MedicareDataLoader]
+    E --&gt; D
+    D --&gt; F[Load data to SQL table]
     F --&gt; G[Apply indexing and VACUUM]
     </pre></section>
 <section id="directory-layout-expectation">
@@ -1016,7 +1053,7 @@ admission recorded more than once)</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="cms.html" class="btn btn-neutral float-left" title="Dorieh CMS Package (manipulating ResDac Health Data)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="health_data_overview.html" class="btn btn-neutral float-left" title="Health Data in Dorieh (Medicare and Medicaid)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="members/mcr_sas2yaml.html" class="btn btn-neutral float-right" title="The mcr_sas2yaml Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

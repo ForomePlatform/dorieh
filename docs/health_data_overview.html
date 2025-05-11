@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Health Data in Dorieh (Medicare and Medicaid) &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Medicare: Building a Data Warehouse from ResDac Files" href="Medicare.html" />
+    <link rel="prev" title="Dorieh CMS Package (manipulating ResDac Health Data)" href="cms.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="cms.html">Health</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Health Data in Dorieh (Medicare and Medicaid)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview-of-health-data-processing">Overview of Health Data Processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#project-structure">Project Structure</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#documentation-indices">Documentation Indices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epa.html">Environmental Protection Agency (EPA) data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Demographics</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="domains.html">Data Domains</a></li>
+          <li class="breadcrumb-item"><a href="cms.html">Dorieh CMS Package (manipulating ResDac Health Data)</a></li>
+      <li class="breadcrumb-item active">Health Data in Dorieh (Medicare and Medicaid)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/health_data_overview.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="health-data-in-dorieh-medicare-and-medicaid">
+<h1>Health Data in Dorieh (Medicare and Medicaid)<a class="headerlink" href="#health-data-in-dorieh-medicare-and-medicaid" title="Permalink to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#overview-of-health-data-processing" id="id1">Overview of Health Data Processing</a></p></li>
+<li><p><a class="reference internal" href="#project-structure" id="id2">Project Structure</a></p>
+<ul>
+<li><p><a class="reference internal" href="#cwl-workflows" id="id3">CWL Workflows</a></p></li>
+<li><p><a class="reference internal" href="#python-utilities" id="id4">Python Utilities</a></p></li>
+<li><p><a class="reference internal" href="#data-model-for-health-data" id="id5">Data Model for health data</a></p>
+<ul>
+<li><p><a class="reference internal" href="#medicare-tables" id="id6">Medicare Tables</a></p></li>
+<li><p><a class="reference internal" href="#medicaid-tables" id="id7">Medicaid Tables</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#sql-utilities" id="id8">SQL Utilities</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stored-procedures" id="id9">Stored Procedures</a></p></li>
+<li><p><a class="reference internal" href="#date-parsing-functions" id="id10">Date Parsing Functions</a></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#documentation-indices" id="id11">Documentation Indices</a></p></li>
+</ul>
+</nav>
+<section id="overview-of-health-data-processing">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Overview of Health Data Processing</a><a class="headerlink" href="#overview-of-health-data-processing" title="Permalink to this heading"></a></h2>
+<p>Dorieh includes Data processing pipelines to
+ingest and process health datasets provided by the
+<a class="reference external" href="https://www.cms.gov/">Centers for Medicare &amp; Medicaid Services (CMS)</a> via
+<a class="reference external" href="https://resdac.org/">ResDac</a>.</p>
+<p>These pipelines build a data warehouse from ResDAC-delivered
+raw data files (both Medicare and Medicaid), preparing the data
+for analysis and visualization. The data warehouse can
+be used as Feature Store for building ML/AI models.</p>
+<p>The workflow performs:</p>
+<ul class="simple">
+<li><p>Ingestion of raw fixed-width and SAS-based files into a relational database</p></li>
+<li><p>Data cleansing and deduplication (where possible)</p></li>
+<li><p>Creation of standardized and federated tables</p></li>
+<li><p>Computation of quality metrics (QC)</p></li>
+<li><p>Optimization for efficient querying</p></li>
+</ul>
+<p>For more details, refer to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare</span></a> processing workflow and data model (schema)</p></li>
+<li><p><a class="reference internal" href="Medicaid.html"><span class="std std-doc">Medicaid</span></a> processing workflow and data model (schema)</p></li>
+<li><p>Tips on <a class="reference internal" href="QueringMedicaid.html"><span class="std std-doc">querying of Medicaid data</span></a></p></li>
+</ul>
+<p>Medicare processing workflow includes a
+<a class="reference internal" href="Medicare.html#creating-qc-tables"><span class="std std-ref">pipeline to automatically generate Quality COntrol (QC) Tables</span></a>.</p>
+<p>These tables can be visualized in the included Apache Superset dashboard.</p>
+</section>
+<section id="project-structure">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Project Structure</a><a class="headerlink" href="#project-structure" title="Permalink to this heading"></a></h2>
+<p>Top level directories at the repository root are:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>- doc
+- src
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">doc/</span></code> directory contains this documentation.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">src/</span></code> directory contains source code, organized as follows:</p>
+<ul>
+<li><p>cwl</p></li>
+<li><p>python</p></li>
+</ul>
+</li>
+</ul>
+<section id="cwl-workflows">
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">CWL Workflows</a><a class="headerlink" href="#cwl-workflows" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">cwl/</span></code> folder contains reusable Common Workflow Language (CWL)
+tools and workflows. Each CMS data processing step (
+e.g. ingest, combine, transform) is implemented as a modular CWL tool.</p>
+<p>CWL tools are documented individually
+Tools are combined into full workflows, such as:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="pipeline/medicare.html"><span class="doc std std-doc">Medicare Pipeline</span></a> files.</p></li>
+<li><p><a class="reference internal" href="pipeline/medicaid.html"><span class="doc std std-doc">Medicaid Pipeline</span></a></p></li>
+</ul>
+</section>
+<section id="python-utilities">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Python Utilities</a><a class="headerlink" href="#python-utilities" title="Permalink to this heading"></a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">python/</span></code> directory provides CLI tools and
+reusable modules, documented in:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="CMSLibrary.html"><span class="std std-doc">CMS Python Package Overview</span></a>.</p></li>
+</ul>
+<p>These include:</p>
+<ul class="simple">
+<li><p>Parsing fixed-width data layouts from FTS files</p></li>
+<li><p>Working with SAS7BDAT files</p></li>
+<li><p>Generating dynamic schemas (YAML models)</p></li>
+<li><p>Data loading and validation</p></li>
+<li><p>PostgreSQL utilities (indexing, vacuuming)</p></li>
+</ul>
+</section>
+<section id="data-model-for-health-data">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">Data Model for health data</a><a class="headerlink" href="#data-model-for-health-data" title="Permalink to this heading"></a></h3>
+<p>We define a YAML-based data model (schema) to describe each
+processing table.</p>
+<p>This model is used to:</p>
+<ul class="simple">
+<li><p>Automatically generate SQL DDL statements</p></li>
+<li><p>Control how data is read from files and loaded into the database</p></li>
+<li><p>Standardize naming conventions, indexing, and transformations</p></li>
+</ul>
+<p>Schemas are:</p>
+<ul class="simple">
+<li><p>Automatically generated via FTS parsing (for 2011+ ResDAC files)</p></li>
+<li><p>Programmatically introspected from SAS7BDAT files (for 1999–2010 Medicare data)</p></li>
+</ul>
+<section id="medicare-tables">
+<h4><a class="toc-backref" href="#id6" role="doc-backlink">Medicare Tables</a><a class="headerlink" href="#medicare-tables" title="Permalink to this heading"></a></h4>
+<p>See also:</p>
+<ul class="simple">
+<li><p>📄 <a class="reference internal" href="members/medicare_yaml.html"><span class="std std-doc">Medicare Data Model (YAML)</span></a></p></li>
+<li><p>🔗 <a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare pipeline documentation</span></a></p></li>
+</ul>
+<p>Main Tables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare.beneficiaries</span></code> <a class="reference internal" href="Medicare.html#creating-beneficiaries-table"><span class="std std-ref">details</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare.enrollments</span></code> <a class="reference internal" href="Medicare.html#creating-enrollments-table"><span class="std std-ref">details</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare.admissions</span></code> <a class="reference internal" href="Medicare.html#creating-inpatient-admissions-table"><span class="std std-ref">details</span></a></p></li>
+</ul>
+<p>Federated / intermediate SQL Views:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare.ps</span></code> <a class="reference internal" href="Medicare.html#creating-federated-patient-summary"><span class="std std-ref">Union of raw data for patient summaries</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare.ip</span></code> <a class="reference internal" href="Medicare.html#creating-federated-admissions-view"><span class="std std-ref">Union of raw data for inpatient admissions</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare._ps</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare._beneficiaries</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicare._enrollments</span></code></p></li>
+</ul>
+</section>
+<section id="medicaid-tables">
+<h4><a class="toc-backref" href="#id7" role="doc-backlink">Medicaid Tables</a><a class="headerlink" href="#medicaid-tables" title="Permalink to this heading"></a></h4>
+<p>See also:</p>
+<ul class="simple">
+<li><p>📄 <a class="reference internal" href="members/medicaid_yaml.html"><span class="std std-doc">Medicaid Data Model (YAML)</span></a></p></li>
+<li><p>🔗 <a class="reference internal" href="Medicaid.html"><span class="std std-doc">Medicaid processing steps</span></a></p></li>
+</ul>
+<p>Tables:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.beneficiaries</span></code> <a class="reference internal" href="Medicaid.html#beneficiaries"><span class="std std-ref">details</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.enrollments</span></code> <a class="reference internal" href="Medicaid.html#enrollments"><span class="std std-ref">details</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.eligibility</span></code> <a class="reference internal" href="Medicaid.html#eligibility"><span class="std std-ref">details</span></a></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.admissions</span></code> <a class="reference internal" href="Medicaid.html#inpatient-admissions"><span class="std std-ref">details</span></a></p></li>
+</ul>
+<p>Federated / intermediate SQL Views:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid.monthly</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">medicaid._eligibility</span></code></p></li>
+</ul>
+</section>
+</section>
+<section id="sql-utilities">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">SQL Utilities</a><a class="headerlink" href="#sql-utilities" title="Permalink to this heading"></a></h3>
+<section id="stored-procedures">
+<h4><a class="toc-backref" href="#id9" role="doc-backlink">Stored Procedures</a><a class="headerlink" href="#stored-procedures" title="Permalink to this heading"></a></h4>
+<p>📄 <a class="reference internal" href="members/procedures.html"><span class="std std-doc">Procedures</span></a>
+help scale population of large tables like
+<a class="reference internal" href="Medicaid.html#eligibility"><span class="std std-ref">eligibility</span></a>,
+by batching inserts by beneficiary, or by year and state.
+This avoids resource exhaustion in large transactions.</p>
+</section>
+<section id="date-parsing-functions">
+<h4><a class="toc-backref" href="#id10" role="doc-backlink">Date Parsing Functions</a><a class="headerlink" href="#date-parsing-functions" title="Permalink to this heading"></a></h4>
+<p>📄 <a class="reference internal" href="members/functions.html"><span class="std std-doc">Custom SQL functions</span></a> to parse
+non-standard date formats
+commonly found in legacy Medicare files and ResDAC data.</p>
+</section>
+</section>
+</section>
+<section id="documentation-indices">
+<span id="cms-indices-and-tables"></span><h2><a class="toc-backref" href="#id11" role="doc-backlink">Documentation Indices</a><a class="headerlink" href="#documentation-indices" title="Permalink to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="cms.html" class="btn btn-neutral float-left" title="Dorieh CMS Package (manipulating ResDac Health Data)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="Medicare.html" class="btn btn-neutral float-right" title="Medicare: Building a Data Warehouse from ResDac Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
