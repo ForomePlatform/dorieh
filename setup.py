@@ -100,6 +100,7 @@ setup(
         'sphinx',
         'sphinx_paramlinks',
         'sphinx_rtd_theme',
+        'sphinxcontrib-mermaid',
         'sqlparse',
         "tqdm",
         'typing-extensions',
