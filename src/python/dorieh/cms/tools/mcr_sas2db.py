@@ -28,7 +28,7 @@ files.
 It is used to ingest Medicare data for 1999 to 2010 years.
 
 See also:
-- :class:.SASIntrospector for introspection and schema analysis of SAS files.
+- :class:`.SASIntrospector` for introspection and schema analysis of SAS files.
 """
 
 import copy
@@ -72,7 +72,7 @@ class SASLoader(MedicareSAS):
         and invoking the loading process.
 
         This method overrides the abstract method from the parent class
-        :class:`MedicareSAS`.
+        :class:`.MedicareSAS`.
 
         For each input file, it creates an instance of
         :class:`~dorieh.platform.loader.data_loader.DataLoader`

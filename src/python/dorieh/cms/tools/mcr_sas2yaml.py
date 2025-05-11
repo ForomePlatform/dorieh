@@ -27,9 +27,9 @@ These models are written to a centralized registry.
 Typical use case: building data models from Medicare SAS files (e.g., 1999–2010).
 
 See Also:
-- :class:.SASIntrospector (this class)
-- :class:dorieh.platform.loader.introspector.Introspector
-- :class:dorieh.cms.tools.mcr_registry.MedicareRegistry
+- :class:`.SASIntrospector` (this class)
+- :class:`~dorieh.platform.loader.introspector.Introspector`
+- :class:`~dorieh.cms.tools.mcr_registry.MedicareRegistry`
 """
 
 import logging
