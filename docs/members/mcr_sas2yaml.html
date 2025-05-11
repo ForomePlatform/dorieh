@@ -7,6 +7,7 @@
   <title>The mcr_sas2yaml Module &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css" />
 
@@ -24,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The mcr_sas2db Module" href="mcr_sas2db.html" />
-    <link rel="prev" title="Medicare Files Handling" href="../Medicare.html" /> 
+    <link rel="prev" title="Medicare: Building a Data Warehouse from ResDac Files" href="../Medicare.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,23 +53,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../cms.html">Health</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../Medicare.html">Medicare Files Handling</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">The mcr_sas2yaml Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="mcr_sas2db.html">The mcr_sas2db Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
-<li class="toctree-l4"><a class="reference internal" href="medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
 <li class="toctree-l4"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#processing-pipeline">Processing pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#project-structure">Project Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#documentation-indices">Documentation Indices</a></li>
 </ul>
@@ -106,8 +97,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../domains.html">Data Domains</a></li>
-          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
-          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare Files Handling</a></li>
+          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating ResDac Health Data)</a></li>
+          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
       <li class="breadcrumb-item active">The mcr_sas2yaml Module</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/members/mcr_sas2yaml.rst.txt" rel="nofollow"> View page source</a>
@@ -127,6 +118,7 @@ These models are written to a centralized registry.</p>
 <p>Typical use case: building data models from Medicare SAS files (e.g., 1999–2010).</p>
 <p>See Also:
 - <a class="reference internal" href="#dorieh.cms.tools.mcr_sas2yaml.SASIntrospector" title="dorieh.cms.tools.mcr_sas2yaml.SASIntrospector"><code class="xref py py-class docutils literal notranslate"><span class="pre">SASIntrospector</span></code></a> (this class)
+- <a class="reference internal" href="mcr_sas.html#dorieh.cms.tools.mcr_sas.MedicareSAS" title="dorieh.cms.tools.mcr_sas.MedicareSAS"><code class="xref py py-class docutils literal notranslate"><span class="pre">MedicareSAS</span></code></a> (superclass)
 - <a class="reference internal" href="introspector.html#dorieh.platform.loader.introspector.Introspector" title="dorieh.platform.loader.introspector.Introspector"><code class="xref py py-class docutils literal notranslate"><span class="pre">Introspector</span></code></a>
 - <a class="reference internal" href="mcr_registry.html#dorieh.cms.tools.mcr_registry.MedicareRegistry" title="dorieh.cms.tools.mcr_registry.MedicareRegistry"><code class="xref py py-class docutils literal notranslate"><span class="pre">MedicareRegistry</span></code></a></p>
 <dl class="py class">
@@ -169,7 +161,7 @@ root_dir (str): Root directory to start searching. Default is current directory.
 <dd><p>Determines whether a string matches any string or wildcard pattern in candidates.</p>
 <dl class="simple">
 <dt>Args:</dt><dd><p>s (str): String to match.
-candidates (List[str]): List of exact names or patterns (may include <a href="#id1"><span class="problematic" id="id2">*</span></a>).</p>
+candidates (List[str]): List of exact names or patterns (may include <cite>*</cite>).</p>
 </dd>
 <dt>Returns:</dt><dd><p>bool: True if s matches any candidate.</p>
 </dd>
@@ -219,7 +211,7 @@ year (int): Year to use when generating missing year columns.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Medicare.html" class="btn btn-neutral float-left" title="Medicare Files Handling" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Medicare.html" class="btn btn-neutral float-left" title="Medicare: Building a Data Warehouse from ResDac Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="mcr_sas2db.html" class="btn btn-neutral float-right" title="The mcr_sas2db Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -7,6 +7,7 @@
   <title>FTS Parser &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css" />
 
@@ -24,7 +25,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="The create_schema_config Module" href="../members/create_schema_config.html" />
-    <link rel="prev" title="Handling Medicaid data" href="../Medicaid.html" /> 
+    <link rel="prev" title="Medicaid: Building a Data Warehouse from ResDac Files" href="../Medicaid.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,24 +53,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../cms.html">Health</a><ul class="current">
-<li class="toctree-l3 current"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">FTS Parser</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../members/create_schema_config.html">The create_schema_config Module</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../members/medicaid_yaml.html">Medicaid.yaml</a></li>
-<li class="toctree-l4"><a class="reference internal" href="ingest.html">Universal uploader of the tabular data to the database</a></li>
-<li class="toctree-l4"><a class="reference internal" href="medicaid.html">Full Medicaid Processing Pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#introduction">Introduction</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#importing-raw-data">Importing raw data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#processing-data">Processing data</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#data-model">Data Model</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#pipeline">Pipeline</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html#sample-user-request">Sample user request:</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../Medicare.html">Medicare Files Handling</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#project-structure">Project Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#documentation-indices">Documentation Indices</a></li>
 </ul>
@@ -107,8 +97,9 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../domains.html">Data Domains</a></li>
-          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
-          <li class="breadcrumb-item"><a href="../Medicaid.html">Handling Medicaid data</a></li>
+          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating ResDac Health Data)</a></li>
+          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+          <li class="breadcrumb-item"><a href="../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
       <li class="breadcrumb-item active">FTS Parser</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/pipeline/parse_fts.md.txt" rel="nofollow"> View page source</a>
@@ -196,7 +187,7 @@ are compatible.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../Medicaid.html" class="btn btn-neutral float-left" title="Handling Medicaid data" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../Medicaid.html" class="btn btn-neutral float-left" title="Medicaid: Building a Data Warehouse from ResDac Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="../members/create_schema_config.html" class="btn btn-neutral float-right" title="The create_schema_config Module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -6,6 +6,7 @@
   <title>dorieh.cms.mcr_data_loader &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css" />
 
@@ -19,6 +20,14 @@
         <script src="../../../_static/underscore.js"></script>
         <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" /> 
@@ -115,12 +124,42 @@
 
 <div class="viewcode-block" id="MedicareDataLoader"><a class="viewcode-back" href="../../../members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader">[docs]</a><span class="k">class</span> <span class="nc">MedicareDataLoader</span><span class="p">(</span><span class="n">DataLoader</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Subclass of generic Data Loader aware of the raw Medicare CMS</span>
-<span class="sd">    data structure. Matches FTS and DAT files.</span>
+<span class="sd">    MedicareDataLoader is a specialized subclass of :class:`~dorieh.platform.loader.data_loader.DataLoader`</span>
+<span class="sd">    that handles ingestion of raw Medicare CMS files accompanied by FTS (File Transfer Summary) metadata.</span>
+
+<span class="sd">    This loader is designed to read data using file specifications included in FTS files provided by ResDAC.</span>
+<span class="sd">    It supports fixed-width (.dat) raw data files where metadata is embedded in a parallel .fts file.</span>
+
+<span class="sd">    Functional Responsibilities:</span>
+<span class="sd">    - Resolves (*.fts) File Transfer Summary files to their corresponding data (*.dat) files</span>
+<span class="sd">    - Parses FTS files using :class:`~dorieh.cms.fts2yaml.MedicareFTS`</span>
+<span class="sd">    - Creates an :class:`~dorieh.utils.fwf.FWFReader` for reading fixed-width data using inferred column schema</span>
+<span class="sd">    - Integrates with the context-configurable data loading pipeline via :class:`~dorieh.platform.loader.data_loader.DataLoader`</span>
+
+<span class="sd">    Attributes:</span>
+<span class="sd">        context (LoaderConfig): Configuration object carrying paths and settings for ingestion.</span>
+
+<span class="sd">    Example Usage:</span>
+<span class="sd">        loader = MedicareDataLoader(context)</span>
+<span class="sd">        loader.run()</span>
+
+<span class="sd">    See Also:</span>
+<span class="sd">        - :class:`~dorieh.cms.fts2yaml.MedicareFTS`</span>
+<span class="sd">        - :class:`~dorieh.utils.fwf.FWFReader`</span>
+<span class="sd">        - :class:`~dorieh.platform.loader.data_loader.DataLoader`</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="MedicareDataLoader.dat4fts"><a class="viewcode-back" href="../../../members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">dat4fts</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">fts_path</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">         Given a path to an FTS metadata file, finds all matching .dat data files.</span>
+
+<span class="sd">         The .dat files are expected to match the FTS filename prefix.</span>
+
+<span class="sd">        :param fts_path:  Path to a .fts metadata file.</span>
+<span class="sd">        :return:  List[str]: List of full paths to .dat files that correspond to the FTS file.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">f</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fts_path</span><span class="p">)</span>
         <span class="k">assert</span> <span class="n">ext</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;.fts&#39;</span>
         <span class="n">data_files</span> <span class="o">=</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">*.dat&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
@@ -128,6 +167,24 @@
 
 <div class="viewcode-block" id="MedicareDataLoader.open"><a class="viewcode-back" href="../../../members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.open">[docs]</a>    <span class="nd">@classmethod</span>
     <span class="k">def</span> <span class="nf">open</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">dat_path</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">FWFReader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Opens a fixed-width reader for a Medicare file using both the FTS (metadata)</span>
+<span class="sd">        and .dat (data) input files.</span>
+
+<span class="sd">        Given either a .fts or .dat path (or the base file name), this method builds</span>
+<span class="sd">        the appropriate pairing of FTS and DAT files, parses the metadata, and returns</span>
+<span class="sd">        a FWFReader for iterating over the structured data rows.</span>
+
+<span class="sd">        :param name:  Path to either the .fts or .dat file, or a base file path without extension.</span>
+<span class="sd">        :param dat_path:  If provided, explicitly sets .dat file path to use.</span>
+<span class="sd">        :return: A reader instance for parsing the structured fixed-width file.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">        AssertionError: If provided file has an invalid or unsupported extension.</span>
+<span class="sd">        ValueError: If file type cannot be determined from file name.</span>
+<span class="sd"> </span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">f</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">name</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">dat_path</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
             <span class="k">assert</span> <span class="n">ext</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;.fts&#39;</span>
@@ -147,9 +204,25 @@
         <span class="k">return</span> <span class="n">FWFReader</span><span class="p">(</span><span class="n">fts</span><span class="o">.</span><span class="n">to_fwf_meta</span><span class="p">(</span><span class="n">dat_path</span><span class="p">))</span></div>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">context</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes a MedicareDataLoader with the given context.</span>
+
+<span class="sd">        :param context: A configuration object used by the data loading pipeline.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
 <div class="viewcode-block" id="MedicareDataLoader.get_files"><a class="viewcode-back" href="../../../members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.get_files">[docs]</a>    <span class="k">def</span> <span class="nf">get_files</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">List</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Any</span><span class="p">,</span> <span class="n">Callable</span><span class="p">]]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Resolves all FTS-to-DAT file pairs from the configured context data path,</span>
+<span class="sd">        and returns a list of reader objects paired with file-open functions.</span>
+
+<span class="sd">        This function provides the loading pipeline with all reader instances needed</span>
+<span class="sd">        to load fixed-width Medicare data records.</span>
+
+<span class="sd">        :return:  A list of reader/open-function pairs for streaming data.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
         <span class="n">objects</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">fts_path</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
             <span class="n">dat_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">dat4fts</span><span class="p">(</span><span class="n">fts_path</span><span class="p">)</span>

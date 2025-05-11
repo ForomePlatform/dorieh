@@ -7,6 +7,7 @@
   <title>The Data Dictionary Generation tool &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css" />
 
@@ -23,7 +24,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Querying Medicaid Data" href="../QueringMedicaid.html" />
+    <link rel="next" title="Medicaid: Building a Data Warehouse from ResDac Files" href="../Medicaid.html" />
     <link rel="prev" title="Alphabetic list of all columns in all tables" href="../lineage/column-list.html" /> 
 </head>
 
@@ -52,17 +53,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../cms.html">Health</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../Medicaid.html">Handling Medicaid data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Medicare.html">Medicare Files Handling</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="../lineage/medicare.dot.html">Table Lineage Diagram</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../lineage/table-list.html">Alphabetic list of all tables</a></li>
-<li class="toctree-l4"><a class="reference internal" href="../lineage/column-list.html">Alphabetic list of all columns in all tables</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">The Data Dictionary Generation tool</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../QueringMedicaid.html">Querying Medicaid Data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../cms.html#overview-of-health-data-medicare-and-medicaid">Overview of health data (Medicare and Medicaid)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#project-structure">Project Structure</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cms.html#documentation-indices">Documentation Indices</a></li>
 </ul>
@@ -100,8 +97,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../domains.html">Data Domains</a></li>
-          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating with Health Data)</a></li>
-          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare Files Handling</a></li>
+          <li class="breadcrumb-item"><a href="../cms.html">Dorieh CMS Package (manipulating ResDac Health Data)</a></li>
+          <li class="breadcrumb-item"><a href="../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
           <li class="breadcrumb-item"><a href="../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
       <li class="breadcrumb-item active">The Data Dictionary Generation tool</li>
       <li class="wy-breadcrumbs-aside">
@@ -344,7 +341,7 @@ multiple tables.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="../lineage/column-list.html" class="btn btn-neutral float-left" title="Alphabetic list of all columns in all tables" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../QueringMedicaid.html" class="btn btn-neutral float-right" title="Querying Medicaid Data" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../Medicaid.html" class="btn btn-neutral float-right" title="Medicaid: Building a Data Warehouse from ResDac Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

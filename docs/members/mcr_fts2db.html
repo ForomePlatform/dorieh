@@ -7,6 +7,7 @@
   <title>The mcr_fts2db Module &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css" />
 
@@ -87,23 +88,50 @@
              
   <section id="module-dorieh.cms.tools.mcr_fts2db">
 <span id="the-mcr-fts2db-module"></span><h1>The mcr_fts2db Module<a class="headerlink" href="#module-dorieh.cms.tools.mcr_fts2db" title="Permalink to this heading"></a></h1>
-<p>Command line utility to load raw Medicare data into the database.</p>
-<p>Used for 2011 and later years. Looks for FTS files, parses them to generate
-database model and extract
-metadata required to read DAT files. Then loads data into the database.</p>
-<p>This module looks for FTS files, parses them, then looks for corresponding
-DAT files. It copies FTS files to destination directory and selects a few
-random records from DAT files.</p>
-<p>Please note, that if the destination to be used with Medicare
-ingestion pipeline, the full path to resulting FTS and DAT files must include
-a directory named with the year, e.g. my_data/medicare/2018/*.fts</p>
+<p>Raw Data Loader for Medicare files provided by ResDac.
+NSAPH Medicare pipeline uses this module for years 2011 and later.</p>
+<p>This module defines a command-line utility to ingest raw Medicare data
+delivered in File Transfer Summary (FTS) and fixed-width data (DAT) format,
+as provided by ResDAC for years 2011 and later.</p>
+<p>Overview:</p>
+<p>Searches recursively for all FTS (<a href="#id1"><span class="problematic" id="id2">*</span></a>.fts) files under specified input path(s)
+Parses each FTS file using the :class:~dorieh.cms.fts2yaml.MedicareFTS parser
+Determines the appropriate database schema and metadata for the associated <a href="#id3"><span class="problematic" id="id4">*</span></a>.dat or <a href="#id5"><span class="problematic" id="id6">*</span></a>.csv.gz file
+Loads data into the database using :class:~dorieh.cms.mcr_data_loader.MedicareDataLoader
+for .dat files or a generic :class:~dorieh.platform.loader.data_loader.DataLoader for CSV files
+Applies indexing and VACUUM optimization after insertion</p>
+<p>Usage Notes:</p>
+<p>This loader requires that data be organized into year-based subfolders. For example: my_data/medicare/2018/<a href="#id7"><span class="problematic" id="id8">*</span></a>.fts
+The name of the parent directory of the FTS file must be a 4-digit year (e.g., 2011, 2018).
+This requirement applies to both the data and FTS file location to establish table naming conventions correctly.
+Key Components:</p>
+<p>:class:MedicareLoader — orchestrates ingestion logic
+:class:~dorieh.cms.mcr_data_loader.MedicareDataLoader — fixed-width reader-based data loader
+:class:~dorieh.platform.loader.data_loader.DataLoader — generic CSV reader-based loader</p>
+<p>See also:</p>
+<p>:doc:members/fts2yaml — for metadata extraction from FTS
+:doc:members/mcr_data_loader — for Medicare file reading
+:doc:members/medicare_yaml — for generated schema definition</p>
 <dl class="py class">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader">
 <em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">MedicareLoader</span></span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader" title="Permalink to this definition"></a></dt>
-<dd><p>Medicare Loader for original medicare data received from Resdac. Used
-for 2011 and later years.</p>
-<p>Looks for FTS files, parses them to generate database model and extract
-metadata required to read DAT files. Then loads data into the database.</p>
+<dd><p>High-level loader for raw Medicare data files provided by ResDac, using FTS and DAT.</p>
+<p>The loader walks the input directory to locate all <a href="#id9"><span class="problematic" id="id10">*</span></a>.fts (File Transfer Summary) files,
+and for each one:</p>
+<ul class="simple">
+<li><p>Parses its metadata and adds to the schema registry (YAML)</p></li>
+<li><p>Identifies corresponding <a href="#id11"><span class="problematic" id="id12">*</span></a>.dat or <a href="#id13"><span class="problematic" id="id14">*</span></a>.csv.gz data files</p></li>
+<li><dl class="simple">
+<dt>Uses <a class="reference internal" href="mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader" title="dorieh.cms.mcr_data_loader.MedicareDataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">MedicareDataLoader</span></code></a> to load FWF files</dt><dd><p>or <a class="reference internal" href="data_loader.html#dorieh.platform.loader.data_loader.DataLoader" title="dorieh.platform.loader.data_loader.DataLoader"><code class="xref py py-class docutils literal notranslate"><span class="pre">DataLoader</span></code></a> for CSV files</p>
+</dd>
+</dl>
+</li>
+<li><p>Applies schema-specific indexing and vacuum optimization</p></li>
+</ul>
+<p>This loader is compatible with ETL processing of Medicare data for 2011 and later.</p>
+<p>Initializes MedicareLoader object with default CMS domain context.</p>
+<p>Sets the input pattern and prepares the LoaderConfig context, including
+root directory, flags like incremental/sloppy, and path normalization.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.process">
 <em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">process</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.process"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.process" title="Permalink to this definition"></a></dt>
@@ -112,27 +140,77 @@ metadata required to read DAT files. Then loads data into the database.</p>
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse">
 <span class="sig-name descname"><span class="pre">traverse</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pattern</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.traverse"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Searches directories recursively using the given pattern to find all FTS files.
+For each matching file, initiates schema inference and data ingestion via handle().</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse.params.pattern"></span><strong>pattern</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse.params.pattern">¶</a> – pattern (str): Glob pattern to match files (e.g., “<a href="#id15"><span class="problematic" id="id16">**</span></a>/<a href="#id17"><span class="problematic" id="id18">*</span></a>.fts”)</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p></p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle_empty">
 <span class="sig-name descname"><span class="pre">handle_empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.handle_empty"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle_empty" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Handles the case where no FTS files are found.</p>
+<p>Creates an empty registry file (if not already present) and logs a message.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle">
 <span class="sig-name descname"><span class="pre">handle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fts_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.handle"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Loads a Medicare FTS/DAT or FTS/CSV pair into the database.</p>
+<ul class="simple">
+<li><p>Extracts the year based on the immediate parent directory of the FTS file</p></li>
+<li><p>Determines the file type from FTS file name</p></li>
+<li><p>Updates the schema registry</p></li>
+<li><p>Dispatches to the appropriate loader (.dat or .csv.gz)</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle.params.fts_path"></span><strong>fts_path</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle.params.fts_path">¶</a> – Full path to an FTS metadata file.</p>
+</dd>
+</dl>
+<p>Raises:
+ValueError: If year could not be inferred or data file is missing.</p>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loader_for_csv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig" title="dorieh.platform.loader.loader_config.LoaderConfig"><span class="pre">LoaderConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">data_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="data_loader.html#dorieh.platform.loader.data_loader.DataLoader" title="dorieh.platform.loader.data_loader.DataLoader"><span class="pre">DataLoader</span></a></span></span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.loader_for_csv"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Creates a generic DataLoader for a delimited CSV (usually .csv.gz) file.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.context"></span><strong>context</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.context">¶</a> – Configuration object with metadata and paths</p></li>
+<li><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.data_path"></span><strong>data_path</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.data_path">¶</a> – Path to the input CSV file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Configured loader for tab-delimited CSV</p>
+</dd>
+</dl>
+</dd></dl>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf">
 <em class="property"><span class="pre">static</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">loader_for_fwf</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">context</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig" title="dorieh.platform.loader.loader_config.LoaderConfig"><span class="pre">LoaderConfig</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fts_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="data_loader.html#dorieh.platform.loader.data_loader.DataLoader" title="dorieh.platform.loader.data_loader.DataLoader"><span class="pre">DataLoader</span></a></span></span><a class="reference internal" href="../_modules/dorieh/cms/tools/mcr_fts2db.html#MedicareLoader.loader_for_fwf"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf" title="Permalink to this definition"></a></dt>
-<dd></dd></dl>
+<dd><p>Creates a MedicareDataLoader instance for a FTS/DAT file pair.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.context"></span><strong>context</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.context">¶</a> – Configuration object with metadata and paths</p></li>
+<li><p><span class="target" id="dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.fts_path"></span><strong>fts_path</strong><a class="paramlink headerlink reference internal" href="#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.fts_path">¶</a> – Path to the associated FTS metadata file</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>Loader ready to ingest fixed-width records</p>
+</dd>
+</dl>
+</dd></dl>
 
 </dd></dl>
 

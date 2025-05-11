@@ -6,6 +6,7 @@
   <title>dorieh.cms.tools.mcr_sas2yaml &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css" />
 
@@ -19,6 +20,14 @@
         <script src="../../../../_static/underscore.js"></script>
         <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../../_static/doctools.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script src="../../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../../genindex.html" />
     <link rel="search" title="Search" href="../../../../search.html" /> 
@@ -115,6 +124,7 @@
 
 <span class="sd">See Also:</span>
 <span class="sd">- :class:`.SASIntrospector` (this class)</span>
+<span class="sd">- :class:`.MedicareSAS` (superclass)</span>
 <span class="sd">- :class:`~dorieh.platform.loader.introspector.Introspector`</span>
 <span class="sd">- :class:`~dorieh.cms.tools.mcr_registry.MedicareRegistry`</span>
 <span class="sd">&quot;&quot;&quot;</span>
@@ -186,7 +196,7 @@
 
 <span class="sd">        Args:</span>
 <span class="sd">            s (str): String to match.</span>
-<span class="sd">            candidates (List[str]): List of exact names or patterns (may include *).</span>
+<span class="sd">            candidates (List[str]): List of exact names or patterns (may include `*`).</span>
 
 <span class="sd">        Returns:</span>
 <span class="sd">            bool: True if s matches any candidate.</span>

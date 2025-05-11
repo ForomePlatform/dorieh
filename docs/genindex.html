@@ -6,6 +6,7 @@
   <title>Index &mdash; Dorieh Data Platform 0.0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css" />
 
@@ -19,6 +20,14 @@
         <script src="_static/underscore.js"></script>
         <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="_static/doctools.js"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+        <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+        <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+        <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+        <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" /> 
@@ -628,8 +637,6 @@
 </li>
       <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.compute_abs_values.params.components">components (dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.compute_abs_values parameter)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.compress">compress (AirNowContext attribute)</a>
 
       <ul>
@@ -642,6 +649,8 @@
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.compress">(GridMETContext attribute)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/aggregator.html#dorieh.rasters.aggregator.Aggregator.compute">compute() (Aggregator method)</a>
 
       <ul>
@@ -686,9 +695,15 @@
 </li>
       <li><a href="members/context.html#dorieh.utils.context.Context">Context (class in dorieh.utils.context)</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Context">[1]</a>
 </li>
-      <li><a href="members/aqs.html#dorieh.epa.aqs.AQS.params.context">context (dorieh.epa.aqs.AQS parameter)</a>
+      <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.params.context">context (dorieh.cms.mcr_data_loader.MedicareDataLoader parameter)</a>
 
       <ul>
+        <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.context">(dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv parameter)</a>
+</li>
+        <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.context">(dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf parameter)</a>
+</li>
+        <li><a href="members/aqs.html#dorieh.epa.aqs.AQS.params.context">(dorieh.epa.aqs.AQS parameter)</a>
+</li>
         <li><a href="members/project_loader.html#dorieh.platform.loader.project_loader.ProjectLoader.params.context">(dorieh.platform.loader.project_loader.ProjectLoader parameter)</a>
 </li>
         <li><a href="members/wustl_file_processor.html#dorieh.rasters.file_processors.wustl_file_processor.WUSTLFile.params.context">(dorieh.rasters.file_processors.wustl_file_processor.WUSTLFile parameter)</a>
@@ -856,6 +871,8 @@
 </li>
       <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts">dat4fts() (MedicareDataLoader class method)</a>
 </li>
+      <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.open.params.dat_path">dat_path (dorieh.cms.mcr_data_loader.MedicareDataLoader.open parameter)</a>
+</li>
       <li><a href="members/mcr_create_test_data.html#dorieh.cms.tools.mcr_create_test_data.FTSTuple.dat_path">dat_path() (FTSTuple method)</a>
 </li>
       <li><a href="members/mcr_file.html#dorieh.cms.tools.mcr_file.MedicareFile.read_record.params.data">data (dorieh.cms.tools.mcr_file.MedicareFile.read_record parameter)</a>
@@ -871,7 +888,11 @@
       <li><a href="members/config.html#dorieh.rasters.config.OutputType.data_dictionary">data_dictionary (OutputType attribute)</a>
 </li>
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.CMSFTS.to_fwf_meta.params.data_path">data_path (dorieh.cms.fts2yaml.CMSFTS.to_fwf_meta parameter)</a>
+
+      <ul>
+        <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv.params.data_path">(dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv parameter)</a>
 </li>
+      </ul></li>
       <li><a href="members/tester.html#dorieh.utils.qc.tester.Condition.data_type">data_type (Condition attribute)</a>
 </li>
       <li><a href="members/app_run_generator.html#dorieh.platform.apprunner.app_run_generator.Inputs.database">database (Inputs attribute)</a>
@@ -2290,14 +2311,14 @@
         <li><a href="members/vacuum.html#dorieh.platform.loader.vacuum.find_name">(in module dorieh.platform.loader.vacuum)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/task.html#dorieh.rasters.task.GridmetTask.find_shape_file">find_shape_file() (GridmetTask class method)</a>, <a href="rasters_task.html#dorieh.rasters.task.GridmetTask.find_shape_file">[1]</a>
 
       <ul>
         <li><a href="members/gridmet_tools.html#dorieh.rasters.gridmet_tools.find_shape_file">(in module dorieh.rasters.gridmet_tools)</a>, <a href="rasters_tools.html#dorieh.rasters.gridmet_tools.find_shape_file">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/query.html#dorieh.platform.requests.query.find_tables">find_tables() (in module dorieh.platform.requests.query)</a>
 </li>
       <li><a href="members/cwl_generator.html#dorieh.platform.util.cwl_generator.CWLGenerator.find_tool">find_tool() (CWLGenerator static method)</a>
@@ -2342,6 +2363,14 @@
 </li>
       <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader">FSTReader (class in dorieh.utils.pyfst)</a>
 </li>
+      <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts.params.fts_path">fts_path (dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts parameter)</a>
+
+      <ul>
+        <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle.params.fts_path">(dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle parameter)</a>
+</li>
+        <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf.params.fts_path">(dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf parameter)</a>
+</li>
+      </ul></li>
       <li><a href="members/mcr_create_test_data.html#dorieh.cms.tools.mcr_create_test_data.FTSTuple.fts_path">fts_path() (FTSTuple method)</a>
 </li>
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.FTSColumn">FTSColumn (class in dorieh.cms.fts2yaml)</a>
@@ -3581,9 +3610,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/io_utils.html#dorieh.utils.io_utils.SpecialValues.NA">NA (SpecialValues attribute)</a>
 </li>
-      <li><a href="members/platform.html#dorieh.platform.init_logging.params.name">name (dorieh.platform.init_logging parameter)</a>
+      <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.open.params.name">name (dorieh.cms.mcr_data_loader.MedicareDataLoader.open parameter)</a>
 
       <ul>
+        <li><a href="members/platform.html#dorieh.platform.init_logging.params.name">(dorieh.platform.init_logging parameter)</a>
+</li>
         <li><a href="members/airnow_ds_def.html#dorieh.utils.context.Argument.params.name">(dorieh.utils.context.Argument parameter)</a>, <a href="members/aqs_ds_def.html#dorieh.utils.context.Argument.params.name">[1]</a>, <a href="members/context.html#dorieh.utils.context.Argument.params.name">[2]</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Argument.params.name">[3]</a>
 </li>
         <li><a href="members/aqs_tools.html#dorieh.utils.io_utils.is_readme.params.name">(dorieh.utils.io_utils.is_readme parameter)</a>, <a href="members/io_utils.html#dorieh.utils.io_utils.is_readme.params.name">[1]</a>
@@ -3613,10 +3644,10 @@
 </li>
       <li><a href="members/aggregator.html#dorieh.rasters.aggregator.NetCDFAggregator">NetCDFAggregator (class in dorieh.rasters.aggregator)</a>
 </li>
-      <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset">NetCDFDataset (class in dorieh.rasters.netCDF_components_consolidator)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset">NetCDFDataset (class in dorieh.rasters.netCDF_components_consolidator)</a>
+</li>
       <li><a href="members/netCDF_file_processor.html#dorieh.rasters.netCDF_file_processor.NetCDFFile">NetCDFFile (class in dorieh.rasters.netCDF_file_processor)</a>
 </li>
       <li><a href="members/loader_config.html#dorieh.platform.loader.loader_config.DataLoaderAction.new">new() (DataLoaderAction class method)</a>
@@ -3847,8 +3878,12 @@
       </ul></li>
       <li><a href="members/hdf5_export.html#dorieh.platform.requests.hdf5_export.export.params.path_to_user_request">path_to_user_request (dorieh.platform.requests.hdf5_export.export parameter)</a>
 </li>
-      <li><a href="members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig.pattern">pattern (LoaderConfig attribute)</a>
+      <li><a href="members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse.params.pattern">pattern (dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse parameter)</a>
+
+      <ul>
+        <li><a href="members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig.pattern">(LoaderConfig attribute)</a>
 </li>
+      </ul></li>
       <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.pct_var">pct_var() (NetCDFDataset class method)</a>
 </li>
       <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.percentages">percentages (NetCDFDataset attribute)</a>
