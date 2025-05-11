@@ -1,19 +1,7 @@
-# Dorieh CMS Package (manipulating with Health Data)
+# Dorieh CMS Package (manipulating ResDac Health Data)
 
 **Pipelines to process CMS data: Medicaid and Medicare**
 
-
-```{toctree}
----
-maxdepth: 4
-glob: true
-hidden: 
----
-Medicaid.md
-Medicare.md
-MedicareLineage.md
-QueringMedicaid.md
-```
 
 ```{contents}
 ---
@@ -42,6 +30,19 @@ Please see the following documents for details:
 Medicare processing now includes a 
 [pipeline to automatically create QC Tables](Medicare.md#creating-qc-tables).
 These tables are used by Apache Superset dashboard that visualizes QC results. 
+
+```{toctree}
+---
+maxdepth: 4
+glob: true
+hidden: 
+---
+Medicare.md
+MedicareLineage.md
+Medicaid.md
+QueringMedicaid.md
+```
+
 
 ## Project Structure
 

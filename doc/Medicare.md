@@ -1,4 +1,4 @@
-# Medicare Files Handling
+# Medicare: Building a Data Warehouse from ResDac Files
 
 ```{toctree}
 ---
@@ -200,16 +200,118 @@ ingestion workflow and is not based on FTS metadata.
 
 ### Files for Years 2011 and later
 
+#### Metadata Extraction
+                      
 These files are original files from ResDac. They come in Fixed Width Format
-(FWF). For each file the structure is described in File Transfer 
-Summary (FTS) file. Unfortunately these files are intended for reading by 
-a human and is difficult to parse automatically. A 
-[partial parser](members/fts2yaml.rst) that
-relies on a known file type is implemented in Python. The information 
-extracted by the parser is used to:
+(FWF) typically using the .dat extension. Each data file 
+delivered by ResDAC is accompanied 
+by a plain-text metadata file known as a File Transfer Summary (FTS), 
+which describes the structure of the corresponding data file—including:
 
-* Generate data model (database schema)
-* Generate metadata for the FWF Reader
+* Column names
+* Data types (e.g., NUM, CHAR, DATE)
+* Column widths and formats
+* Record and file length metadata
+
+These FTS files are designed primarily for human readability 
+and are not machine-friendly. To address this, 
+the Dorieh includes a partial FTS parser:
+
+👉 [fts2yaml module](members/fts2yaml.rst)
+
+This parser performs the following:
+
+* Extracts structured metadata directly from .fts files
+* Converts it to a standardized YAML-based data model. 
+  * The YaML model describes table and column definitions.
+  * The YaML model includes types, column widths, descriptions,
+    and indexing hints
+* Supports both Medicare and Medicaid FTS formats
+
+Once the YAML schema is generated, it is used for:
+
+* Generating SQL DDL scripts to create staging tables
+* Feeding column layout metadata to the FWF reader (FWFReader)
+* Automatically identifying and indexing key fields such as:
+  * BENE_ID (Beneficiary ID)
+  * YEAR
+  * STATE
+  * ZIP
+  
+##### Supported File Types
+
+The parser supports:
+
+* Medicare files: identified based on prefixes like mbsf_abcd_XXXX.fts
+* Medicaid files: using filenames like maxdata_ps_STATE_YEAR.fts
+
+#### Ingestion process
+
+Once metadata extraction is complete, raw data ingestion 
+takes place using:
+
+* [MedicareDataLoader](members/mcr_data_loader) 
+   to parse FWF records row-by-row
+* [MedicareLoader](members/mcr_fts2db) to coordinate:
+  * FTS parsing
+  * Schema registration
+  * Loader selection (DAT or CSV)
+  * Data loading, indexing, and optimization (VACUUM)
+
+The MedicareLoader module orchestrates the end-to-end process, including:
+
+* Scanning input directories recursively for *.fts files
+* Parsing each FTS file to generate a schema
+* Locating the corresponding *.dat (or *.csv.gz) files
+* Triggering the appropriate file loader
+* Writing data to the database
+
+```graphviz
+    digraph ingestion_flow {
+    parse_fts  [label="Parse FTS using fts2yaml"];
+    export_yaml [label="Export YAML"];
+    lookup_dat [label="Identify data file (.dat or .csv.gz)"];
+    choose_loader [label="Select Loader\n(MedicareDataLoader / DataLoader)"];
+    load_data [label="Load to DB"];
+    index [label="Build Index"];
+    vacuum [label="VACUUM"];
+    
+           parse_fts -> export_yaml -> lookup_dat -> choose_loader -> load_data -> index -> vacuum;
+    }
+``` 
+
+```{mermaid}
+graph TD;
+    A[.fts file] --> B[YAML schema via fts2yaml]
+    B --> C[Extract layout for fixed-width reader]
+    C --> D[Run MedicareLoader]
+    D --> E[Pick MedicareDataLoader or generic DataLoader]
+    E --> F[Load data to SQL table]
+    F --> G[Apply indexing and VACUUM]
+```
+
+#### Directory Layout Expectation
+
+To function correctly with the NSAPH ingestion pipeline, 
+the directory layout for ResDAC raw files must follow this structure:
+```
+project_root/
+└── medicare/
+    └── 2018/
+        ├── mbsf_abcd_2018.fts
+        ├── mbsf_abcd_2018.dat
+        └── medpar_2018.fts
+```
+
+Specifically:
+
+* Each year must have its own directory
+* Table names are inferred from FTS file name and containing year
+* The FTS filename must match the .dat or .csv.gz data file (just differing in extension)
+
+💡 For a full example of metadata schema outputs, see:
+
+[Generated Medicare data model](members/medicare_yaml)                 
 
 ## Combining raw files into a single view
 

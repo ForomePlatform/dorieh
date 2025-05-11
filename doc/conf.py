@@ -44,6 +44,8 @@ extensions = [
     'sphinx.ext.viewcode',
     'sphinx_paramlinks',
     'sphinx.ext.autosectionlabel',
+    'sphinx.ext.graphviz',
+    'sphinxcontrib.mermaid',
     'myst_parser',
 ]
 myst_heading_anchors = 5
