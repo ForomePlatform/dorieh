@@ -110,7 +110,7 @@ To add insult to injury, for years prior to 2011 (1999-2010) we do not
 have original files, but preprocessed files with patient summary 
 (called denominators) and admissions. They are in SAS 7BDAT format,
 however columns are also different for different years. Please
-refer to [Files for 1999 to 2010](#files-for-1999-to-2010-) section
+refer to [Files for 1999 to 2010](#files-for-1999-to-2010) section
 for details.
 
 ### Storing raw data in the Database
@@ -141,6 +141,7 @@ When a table has no natural primary key (admission tables) we add a record
 number column. This column ha sno meaning but allows to trace a record to the 
 original data.
 
+(files-for-1999-to-2010)=
 ### Files for 1999 to 2010 
 
 Between 1999 and 2010, original Medicare ResDAC raw datasets are not available 
