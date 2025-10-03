@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.3.3",
+    version="0.4.0",
     url='https://github.com/NSAPH-Data-Platform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',
@@ -47,6 +47,7 @@ setup(
         "dorieh.workflows": ["*.cwl"],
         "dorieh.gis": ["data/*.csv"]
     },
+    python_requires='>=3.12',
     install_requires=[
         'argcomplete>=1.12.1',
         'boto3',
@@ -77,7 +78,6 @@ setup(
         'pyarrow',
         'psutil>=5.7.2',
         'psycopg2-binary>=2.8.6',
-        'pygeos',
         'PyGithub',
         'pyresourcepool',
         'pyshp',
@@ -93,7 +93,7 @@ setup(
         'sas7bdat',
         'schema-salad>=7.0.20200811075006',
         'setproctitle>=1.1.10',
-        "shapely",
+        "shapely>=2.1.2",
         'shellescape>=3.4.1',
         'six>=1.15.0',
         'sortedcontainers',
