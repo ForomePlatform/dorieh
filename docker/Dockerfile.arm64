@@ -27,7 +27,6 @@ RUN ln -s /usr/bin/python3 /usr/bin/python
 RUN pip install --upgrade pip setuptools wheel --break-system-packages -ignore-installed
 
 WORKDIR /opt/local/
-COPY requirements-amzn.txt requirements.txt
+COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt --break-system-packages
-RUN pip install --upgrade fiona==1.10.0b3 --break-system-packages
 
