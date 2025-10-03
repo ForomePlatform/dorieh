@@ -21,12 +21,17 @@
 FROM ubuntu:24.04
 
 RUN apt-get update && apt-get install -y \
-    postgresql-client nodejs npm g++ gdal-bin libgdal-dev libgeos-dev python3-pip git
+    postgresql-client nodejs npm g++ \
+    gdal-bin libgdal-dev libgeos-dev \
+    python3-pip python3-dev git \
+    r-base r-base-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
-RUN pip install --upgrade pip setuptools wheel --break-system-packages -ignore-installed
+
+# Only run this if you know you need newer versions
+RUN pip install --upgrade pip setuptools wheel --break-system-packages --ignore-installed
 
 WORKDIR /opt/local/
 COPY requirements.txt requirements.txt
 RUN pip install -r requirements.txt --break-system-packages
-

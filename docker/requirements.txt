@@ -1,3 +1,3 @@
 toil[aws,cwl]
 cwlref-runner
-dorieh[spark,FST]
+dorieh[spark,FST]>=0.4.0
