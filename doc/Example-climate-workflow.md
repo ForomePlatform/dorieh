@@ -75,7 +75,7 @@ There is one required argument to the workflow - the date for which we will be a
 Then you can run the following command:
 
     toil-cwl-runner --retryCount 1 --cleanWorkDir never --outdir tmmx --workDir . \
-    https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/examples/climate-example.cwl \ 
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/no-db/climate-example.cwl \ 
     --date 2020-10-03
 
 (Replace the date with any date you fancy)
@@ -131,7 +131,7 @@ hints:
 You can now run the workflow with the same command:
 
     toil-cwl-runner --retryCount 1 --cleanWorkDir never --outdir tmmx --workDir . \
-    https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/examples/climate-example.cwl \ 
+    https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/no-db/climate-example.cwl \ 
     --date 2020-10-03
 
 even without having dorieh package installed in you Python virtual environment.
@@ -142,7 +142,7 @@ You can also use a Docker container more like a virtual machine. Start it by exe
 
     docker start forome/dorieh 
 
-command and just run teh commands inside the container, using 
+command and just run the commands inside the container, using 
 
     docker exec -it forome/dorieh ${commands}
 

@@ -1,0 +1,116 @@
+CMS CCW Extract File Summary
+
+Researcher: 012345678 - XXXXXXXXX
+
+Request #: 999999 - Statistical Models for Estimating Health Impact
+
+File Description: MBSF PART D ELIGIBILITY COMPONENTS SEGMENT
+
+Actual File Name: mbsf_d_cmpnts_resXXXXXXXX_reqXXXXXXXX_2014.dat
+
+Date Extracted: 01JAN99
+
+Format: Fixed Column ASCII
+
+Columns in File: 78
+
+Exact File Quantity (Rows): 1000000,867,603
+
+Exact File Record Length (Bytes in Variable Block): 218
+
+Exact File Size in Bytes with 512 Blocksize: 1000000,454,005,057
+
+SAS v8.x or Greater Compatible Read-In Program: mbsf_d_cmpnts_read_v8.sas
+
+SAS v6.x or Greater Compatible Read-In Program: mbsf_d_cmpnts_read_v6.sas
+
+Help: cmsdata@gdit.com, 1-888-888-8888
+
+Standard Layout Attached with Data Formatting:
+
+Note: After 12/20/2010, no short names will be created for new variables.  Old short names will remain unchanged.
+
+     Field                            Field                            Field         Fld.
+Fld. Long                             Short                            Generic Start Len.  Field
+No.  Name                             Name                             Format  Col.  w.d   Description
+---- -------------------------------- -------------------------------- ------- ----- ----- --------------------------------------------------------------------------------
+   1 BENE_ID                          BENE_ID                          CHAR        1    15 Encrypted 723 Beneficiary ID (Unique Key)
+   2 BENE_ENROLLMT_REF_YR             RFRNC_YR                         NUM        16     4 Beneficiary Enrollment Reference Year
+   3 CRDTBL_CVRG_SW                   CRDCOVSW                         CHAR       20     1 Creditable Coverage Switch
+   4 PLAN_CVRG_MOS_NUM                PLNCOVMO                         CHAR       21     2 Plan Coverage Months Number
+   5 RDS_CVRG_MOS_NUM                 RDSCOVMO                         CHAR       23     2 Retiree Drug Subsidy Coverage Months Number
+   6 DUAL_ELGBL_MOS_NUM               DUAL_MO                          CHAR       25     2 Dual Eligible Months Number
+   7 PTD_CNTRCT_ID_01                 CNTRCT01                         CHAR       27     5 Jan. Contract ID
+   8 PTD_CNTRCT_ID_02                 CNTRCT02                         CHAR       32     5 Feb. Contract ID
+   9 PTD_CNTRCT_ID_03                 CNTRCT03                         CHAR       37     5 Mar. Contract ID
+  10 PTD_CNTRCT_ID_04                 CNTRCT04                         CHAR       42     5 Apr. Contract ID
+  11 PTD_CNTRCT_ID_05                 CNTRCT05                         CHAR       47     5 May Contract ID
+  12 PTD_CNTRCT_ID_06                 CNTRCT06                         CHAR       52     5 Jun. Contract ID
+  13 PTD_CNTRCT_ID_07                 CNTRCT07                         CHAR       57     5 Jul. Contract ID
+  14 PTD_CNTRCT_ID_08                 CNTRCT08                         CHAR       62     5 Aug. Contract ID
+  15 PTD_CNTRCT_ID_09                 CNTRCT09                         CHAR       67     5 Sep. Contract ID
+  16 PTD_CNTRCT_ID_10                 CNTRCT10                         CHAR       72     5 Oct. Contract ID
+  17 PTD_CNTRCT_ID_11                 CNTRCT11                         CHAR       77     5 Nov. Contract ID
+  18 PTD_CNTRCT_ID_12                 CNTRCT12                         CHAR       82     5 Dec. Contract ID
+  19 PTD_PBP_ID_01                    PBPID01                          CHAR       87     3 Jan. Plan Benefit Package ID
+  20 PTD_PBP_ID_02                    PBPID02                          CHAR       90     3 Feb. Plan Benefit Package ID
+  21 PTD_PBP_ID_03                    PBPID03                          CHAR       93     3 Mar. Plan Benefit Package ID
+  22 PTD_PBP_ID_04                    PBPID04                          CHAR       96     3 Apr. Plan Benefit Package ID
+  23 PTD_PBP_ID_05                    PBPID05                          CHAR       99     3 May Plan Benefit Package ID
+  24 PTD_PBP_ID_06                    PBPID06                          CHAR      102     3 Jun. Plan Benefit Package ID
+  25 PTD_PBP_ID_07                    PBPID07                          CHAR      105     3 Jul. Plan Benefit Package ID
+  26 PTD_PBP_ID_08                    PBPID08                          CHAR      108     3 Aug. Plan Benefit Package ID
+  27 PTD_PBP_ID_09                    PBPID09                          CHAR      111     3 Sep. Plan Benefit Package ID
+  28 PTD_PBP_ID_10                    PBPID10                          CHAR      114     3 Oct. Plan Benefit Package ID
+  29 PTD_PBP_ID_11                    PBPID11                          CHAR      117     3 Nov. Plan Benefit Package ID
+  30 PTD_PBP_ID_12                    PBPID12                          CHAR      120     3 Dec. Plan Benefit Package ID
+  31 PTD_SGMT_ID_01                   SGMTID01                         CHAR      123     3 Jan. Segment ID
+  32 PTD_SGMT_ID_02                   SGMTID02                         CHAR      126     3 Feb. Segment ID
+  33 PTD_SGMT_ID_03                   SGMTID03                         CHAR      129     3 Mar. Segment ID
+  34 PTD_SGMT_ID_04                   SGMTID04                         CHAR      132     3 Apr. Segment ID
+  35 PTD_SGMT_ID_05                   SGMTID05                         CHAR      135     3 May Segment ID
+  36 PTD_SGMT_ID_06                   SGMTID06                         CHAR      138     3 Jun. Segment ID
+  37 PTD_SGMT_ID_07                   SGMTID07                         CHAR      141     3 Jul. Segment ID
+  38 PTD_SGMT_ID_08                   SGMTID08                         CHAR      144     3 Aug. Segment ID
+  39 PTD_SGMT_ID_09                   SGMTID09                         CHAR      147     3 Sep. Segment ID
+  40 PTD_SGMT_ID_10                   SGMTID10                         CHAR      150     3 Oct. Segment ID
+  41 PTD_SGMT_ID_11                   SGMTID11                         CHAR      153     3 Nov. Segment ID
+  42 PTD_SGMT_ID_12                   SGMTID12                         CHAR      156     3 Dec. Segment ID
+  43 CST_SHR_GRP_CD_01                CSTSHR01                         CHAR      159     2 Jan. Cost Share Group Code
+  44 CST_SHR_GRP_CD_02                CSTSHR02                         CHAR      161     2 Feb. Cost Share Group Code
+  45 CST_SHR_GRP_CD_03                CSTSHR03                         CHAR      163     2 Mar. Cost Share Group Code
+  46 CST_SHR_GRP_CD_04                CSTSHR04                         CHAR      165     2 Apr. Cost Share Group Code
+  47 CST_SHR_GRP_CD_05                CSTSHR05                         CHAR      167     2 May Cost Share Group Code
+  48 CST_SHR_GRP_CD_06                CSTSHR06                         CHAR      169     2 Jun. Cost Share Group Code
+  49 CST_SHR_GRP_CD_07                CSTSHR07                         CHAR      171     2 Jul. Cost Share Group Code
+  50 CST_SHR_GRP_CD_08                CSTSHR08                         CHAR      173     2 Aug. Cost Share Group Code
+  51 CST_SHR_GRP_CD_09                CSTSHR09                         CHAR      175     2 Sep. Cost Share Group Code
+  52 CST_SHR_GRP_CD_10                CSTSHR10                         CHAR      177     2 Oct. Cost Share Group Code
+  53 CST_SHR_GRP_CD_11                CSTSHR11                         CHAR      179     2 Nov. Cost Share Group Code
+  54 CST_SHR_GRP_CD_12                CSTSHR12                         CHAR      181     2 Dec. Cost Share Group Code
+  55 RDS_IND_01                       RDSIND01                         CHAR      183     1 Jan. RDS Code - Retiree Drug Subsidy Code
+  56 RDS_IND_02                       RDSIND02                         CHAR      184     1 Feb. RDS Code - Retiree Drug Subsidy Code
+  57 RDS_IND_03                       RDSIND03                         CHAR      185     1 Mar. RDS Code - Retiree Drug Subsidy Code
+  58 RDS_IND_04                       RDSIND04                         CHAR      186     1 Apr. RDS Code - Retiree Drug Subsidy Code
+  59 RDS_IND_05                       RDSIND05                         CHAR      187     1 May RDS Code - Retiree Drug Subsidy Code
+  60 RDS_IND_06                       RDSIND06                         CHAR      188     1 Jun. RDS Code - Retiree Drug Subsidy Code
+  61 RDS_IND_07                       RDSIND07                         CHAR      189     1 Jul. RDS Code - Retiree Drug Subsidy Code
+  62 RDS_IND_08                       RDSIND08                         CHAR      190     1 Aug. RDS Code - Retiree Drug Subsidy Code
+  63 RDS_IND_09                       RDSIND09                         CHAR      191     1 Sep. RDS Code - Retiree Drug Subsidy Code
+  64 RDS_IND_10                       RDSIND10                         CHAR      192     1 Oct. RDS Code - Retiree Drug Subsidy Code
+  65 RDS_IND_11                       RDSIND11                         CHAR      193     1 Nov. RDS Code - Retiree Drug Subsidy Code
+  66 RDS_IND_12                       RDSIND12                         CHAR      194     1 Dec. RDS Code - Retiree Drug Subsidy Code
+  67 DUAL_STUS_CD_01                  DUAL_01                          CHAR      195     2 Jan. Dual Status Code
+  68 DUAL_STUS_CD_02                  DUAL_02                          CHAR      197     2 Feb. Dual Status Code
+  69 DUAL_STUS_CD_03                  DUAL_03                          CHAR      199     2 Mar. Dual Status Code
+  70 DUAL_STUS_CD_04                  DUAL_04                          CHAR      201     2 Apr. Dual Status Code
+  71 DUAL_STUS_CD_05                  DUAL_05                          CHAR      203     2 May Dual Status Code
+  72 DUAL_STUS_CD_06                  DUAL_06                          CHAR      205     2 Jun. Dual Status Code
+  73 DUAL_STUS_CD_07                  DUAL_07                          CHAR      207     2 Jul. Dual Status Code
+  74 DUAL_STUS_CD_08                  DUAL_08                          CHAR      209     2 Aug. Dual Status Code
+  75 DUAL_STUS_CD_09                  DUAL_09                          CHAR      211     2 Sep. Dual Status Code
+  76 DUAL_STUS_CD_10                  DUAL_10                          CHAR      213     2 Oct. Dual Status Code
+  77 DUAL_STUS_CD_11                  DUAL_11                          CHAR      215     2 Nov. Dual Status Code
+  78 DUAL_STUS_CD_12                  DUAL_12                          CHAR      217     2 Dec. Dual Status Code
+
+- End of Document

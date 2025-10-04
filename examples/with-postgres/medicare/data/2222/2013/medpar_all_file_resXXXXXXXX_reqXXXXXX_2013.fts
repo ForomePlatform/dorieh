@@ -1,0 +1,410 @@
+CMS CCW Extract File Summary
+
+Researcher: 012345678 - XXXXXXXXX
+
+Request #: 999999 - Statistical Models For Estimating Health Impact
+
+File Description: MEDPAR ALL FILE
+
+Actual File Name: medpar_all_file_resXXXXXXXX_reqXXXXXXXX_2013.dat
+
+Date Extracted: 01JAN99
+
+Format: Fixed Column ASCII
+
+Columns in File: 370
+
+Exact File Quantity (Rows): 1000000,502,990
+
+Exact File Record Length (Bytes in Variable Block): 1887
+
+Exact File Size in Bytes with 512 Blocksize: 1000000,157,645,120
+
+SAS v8.x or Greater Compatible Read-In Program: medpar_all_file_read_v8.sas
+
+SAS v6.x or Greater Compatible Read-In Program: medpar_all_file_read_v6.sas
+
+Help: cmsdata@gdit.com, 1-888-888-8888
+
+Standard Layout Attached with Data Formatting:
+
+Note: After 12/20/2010, no short names will be created for new variables.  Old short names will remain unchanged.
+
+     Field                            Field                            Field         Fld.
+Fld. Long                             Short                            Generic Start Len. Field
+No.  Name                             Name                             Format  Col.  w.d  Description
+---- -------------------------------- -------------------------------- ------- ----- ---- --------------------------------------------------------------------
+   1 BENE_ID                          BENE_ID                          CHAR        1   15 Encrypted 723 Beneficiary ID
+   2 MEDPAR_ID                        MEDPARID                         CHAR       16   15 Unique Key for CCW MedPAR Table
+   3 MEDPAR_YR_NUM                    MEDPAR_YR_NUM                    CHAR       31    4 Year of MedPAR Record
+   4 NCH_CLM_TYPE_CD                  CLM_TYPE                         CHAR       35    2 NCH Claim Type Code
+   5 BENE_IDENT_CD                    BIC                              CHAR       37    2 BIC reported on first claim included in stay
+   6 EQTBL_BIC_CD                     EQ_BIC                           CHAR       39    2 Equated BIC
+   7 BENE_AGE_CNT                     AGE_CNT                          NUM        41    4 Age as of Date of Admission.
+   8 BENE_SEX_CD                      SEX                              CHAR       45    1 Sex of Beneficiary
+   9 BENE_RACE_CD                     RACE                             CHAR       46    1 Race of Beneficiary
+  10 BENE_MDCR_STUS_CD                MS_CD                            CHAR       47    2 Reason for entitlement to Medicare benefits as of CLM_THRU_DT
+  11 BENE_RSDNC_SSA_STATE_CD          STATE_CD                         CHAR       49    2 SSA standard state code of a beneficiarys residence.
+  12 BENE_RSDNC_SSA_CNTY_CD           CNTY_CD                          CHAR       51    3 SSA standard county code of a beneficiarys residence.
+  13 BENE_MLG_CNTCT_ZIP_CD            BENE_ZIP                         CHAR       54    5 Zip code of the mailing address where the beneficiary may be contacted.
+  14 BENE_DSCHRG_STUS_CD              DSCHRGCD                         CHAR       59    1 Code identifying status of patient as of CLM_THRU_DT
+  15 FICARR_IDENT_NUM                 FICARR                           CHAR       60    5 Intermediary processor identification
+  16 WRNG_IND_CD                      WRNGCD                           CHAR       65   18 Warn ind spcfyng dtld billing info obtnd frm clms analyzd for stay prcss
+  17 GHO_PD_CD                        GHOPDCD                          CHAR       83    1 Code indicating whether or not GHO has paid provider for claim(s)
+  18 PPS_IND_CD                       PPS_IND                          CHAR       84    1 Code indicating whether or not facility is being paid under PPS
+  19 ORG_NPI_NUM                      ORGNPINM                         CHAR       85   10 Organization NPI Number
+  20 PRVDR_NUM                        PRVDRNUM                         CHAR       95   10 MEDPAR Provider Number
+  21 PRVDR_NUM_SPCL_UNIT_CD           SPCLUNIT                         CHAR      105    1 Special num system code for hosp units that are PPS/SNF SB dsgntn excl.
+  22 SS_LS_SNF_IND_CD                 SSLSSNF                          CHAR      106    1 Code indicating whether stay is short stay, long stay, or SNF
+  23 ACTV_XREF_IND                    ACTV_XREF_IND                    CHAR      107    1 Active Cross-Refference Indicator
+  24 SLCT_RSN_CD                      SLCT_RSN_CD                      CHAR      108    1 Specifies whether this record is a case or control record.
+  25 STAY_FINL_ACTN_CLM_CNT           FACLMCNT                         NUM       109    5 Claims (final action) included in stay
+  26 LTST_CLM_ACRTN_DT                ACRTNDT                          DATE      114    8 Date latest claim incl in stay accreted to bene mstr rec at the CWF host
+  27 BENE_MDCR_BNFT_EXHST_DT          EXHST_DT                         DATE      122    8 Last date beneficiary had Medicare coverage
+  28 SNF_QUALN_FROM_DT                QLFYFROM                         DATE      130    8 Beginning date of beneficiarys qualifying stay
+  29 SNF_QUALN_THRU_DT                QLFYTHRU                         DATE      138    8 Ending date of beneficiarys qualifying stay
+  30 SRC_IP_ADMSN_CD                  SRC_ADMS                         CHAR      146    1 Admssn to an Inp facility or, for newborn admssn, type of delivery code
+  31 IP_ADMSN_TYPE_CD                 TYPE_ADM                         CHAR      147    1 Type and priority of benes admission to facility for Inp hosp stay code
+  32 ADMSN_DAY_CD                     ADMSNDAY                         CHAR      148    1 Code indicating day of week beneficiary was admitted to facility.
+  33 ADMSN_DT                         ADMSNDT                          DATE      149    8 Date beneficiary admitted for Inpatient care or date care started
+  34 DSCHRG_DT                        DSCHRGDT                         DATE      157    8 Date beneficiary was discharged or died
+  35 DSCHRG_DSTNTN_CD                 DSTNTNCD                         CHAR      165    2 Destination upon discharge from facility code
+  36 CVRD_LVL_CARE_THRU_DT            CVRLVLDT                         DATE      167    8 Date covered level of care ended in a SNF
+  37 BENE_DEATH_DT                    DEATHDT                          DATE      175    8 Date beneficiary died
+  38 BENE_DEATH_DT_VRFY_CD            DEATHCD                          CHAR      183    1 Death Date Verification Code
+  39 ADMSN_DEATH_DAY_CNT              DEATHDAY                         NUM       184    7 Days from date admitted to facility to date of death
+  40 INTRNL_USE_SSI_IND_CD            SSICD                            CHAR      191    1 MEDPAR Internal Use SSI Indicator Code
+  41 INTRNL_USE_SSI_DAY_CNT           SSIDAY                           NUM       192    7 MEDPAR Internal Use SSI Day Count
+  42 INTRNL_USE_SSI_DATA              INTRNL_USE_SSI_DATA              CHAR      199    1 Internal Use SSI Data
+  43 INTRNL_USE_IPSB_CD               IPSBCD                           CHAR      200    3 For internal Use Only. IPSB Code
+  44 INTRNL_USE_FIL_DT_CD             FILDTCD                          CHAR      203    1 For internal use only.  Fiscal year/calendar year segments.
+  45 INTRNL_USE_SMPL_SIZE_CD          SMPLSIZE                         CHAR      204    1 For internal use.  MEDPAR sample size.
+  46 LOS_DAY_CNT                      LOSCNT                           NUM       205    7 Days of beneficiarys stay in a hospital/SNF
+  47 OUTLIER_DAY_CNT                  OUTLRDAY                         NUM       212    5 Days paid as outliers (either day or cost) under PPS beyond DRG threshld
+  48 UTLZTN_DAY_CNT                   UTIL_DAY                         NUM       217    7 Covered days of care chargeable to Medicare utilization for stay
+  49 TOT_COINSRNC_DAY_CNT             COIN_DAY                         NUM       224    5 MEDPAR Beneficiary Total Coinsurance Day Count
+  50 BENE_LRD_USE_CNT                 LRD_USE                          NUM       229    5 Lifetime reserve days (LRD) used by beneficiary for stay
+  51 BENE_PTA_COINSRNC_AMT            COIN_AMT                         NUM       234   10 Beneficiarys liability for part A coinsurance for stay ($)
+  52 BENE_IP_DDCTBL_AMT               DED_AMT                          NUM       244   10 Beneficiarys liability for stay ($)
+  53 BENE_BLOOD_DDCTBL_AMT            BLDDEDAM                         NUM       254   10 Beneficiarys liability for blood deductible for stay ($)
+  54 BENE_PRMRY_PYR_CD                PRPAY_CD                         CHAR      264    1 Primary payer responsibility code
+  55 BENE_PRMRY_PYR_AMT               PRPAYAMT                         NUM       265   10 Primry payer other than Medicare for covered Medicare chrgs for stay ($)
+  56 DRG_CD                           DRG_CD                           CHAR      275    3 DRG Code
+  57 DRG_OUTLIER_STAY_CD              OUTLR_CD                         CHAR      278    1 Cost or Day Outlier code
+  58 DRG_OUTLIER_PMT_AMT              OUTLRAMT                         NUM       279   10 Addtnl approved due to outlier situation over DRG allowance for stay ($)
+  59 DRG_PRICE_AMT                    DRGPRICE                         NUM       289   10 Wld hv bn pd if no dedctbls,coinsrnc,prmry payrs,otlrs were invlvd ($)
+  60 IP_DSPRPRTNT_SHR_AMT             DISP_SHR                         NUM       299   10 Over the DRG amount for disproportionate share hospital for stay ($)
+  61 IME_AMT                          IME_AMT                          NUM       309   10 Additional payment made to teaching hospitals for IME for stay ($)
+  62 PASS_THRU_AMT                    PASSTHRU                         NUM       319   10 Total of all claim pass thru for stay ($)
+  63 TOT_PPS_CPTL_AMT                 PPS_CPTL                         NUM       329   10 Total payable for capital PPS ($)
+  64 IP_LOW_VOL_PYMT_AMT              IP_LOW_VOL_PYMT_AMT              NUM       339   10 Inpatient Low Volume Payment Amount.
+  65 TOT_CHRG_AMT                     TOTCHRG                          NUM       349   10 Total all charges for all srvcs provided to beneficiary for stay ($)
+  66 TOT_CVR_CHRG_AMT                 CVRCHRG                          NUM       359   10 Portion of total charges covered by Medicare for stay ($)
+  67 MDCR_PMT_AMT                     PMT_AMT                          NUM       369   10 Amt of payment from Medicare trust fund for srvcs covered by claim ($)
+  68 ACMDTNS_TOT_CHRG_AMT             ACMDTNS                          NUM       379   10 Total charge for all accommodations related to beneficiarys stay ($)
+  69 DPRTMNTL_TOT_CHRG_AMT            DPRTMNTL                         NUM       389   10 Total charge for all ancillary depts related to beneficiarys stay ($)
+  70 PRVT_ROOM_DAY_CNT                PRVTDAY                          NUM       399    5 Private room days used by beneficiary for stay
+  71 SEMIPRVT_ROOM_DAY_CNT            SPRVTDAY                         NUM       404    5 Semi-private room days used by beneficiary for stay
+  72 WARD_DAY_CNT                     WARDDAY                          NUM       409    5 Ward days used by beneficiary for stay
+  73 INTNSV_CARE_DAY_CNT              ICARECNT                         NUM       414    5 Intensive care days used by beneficiary for stay
+  74 CRNRY_CARE_DAY_CNT               CRNRYDAY                         NUM       419    5 Coronary care days used by beneficiary for stay
+  75 PRVT_ROOM_CHRG_AMT               PRVTAMT                          NUM       424   10 Private room accommodations related to beneficiarys stay ($)
+  76 SEMIPRVT_ROOM_CHRG_AMT           SPRVTAMT                         NUM       434   10 Semi-private room accommodations related to beneficiarys stay ($)
+  77 WARD_CHRG_AMT                    WARDAMT                          NUM       444   10 Ward accommodations related to beneficiarys stay ($)
+  78 INTNSV_CARE_CHRG_AMT             ICAREAMT                         NUM       454   10 Intensive care accommodations related to beneficiarys stay ($)
+  79 CRNRY_CARE_CHRG_AMT              CRNRYAMT                         NUM       464   10 Coronary care accommodations related to beneficiarys stay ($)
+  80 OTHR_SRVC_CHRG_AMT               OTHRAMT                          NUM       474   10 Other services related to beneficiarys stay ($)
+  81 PHRMCY_CHRG_AMT                  PHRMCAMT                         NUM       484   10 Pharmaceutical costs related to beneficiarys stay ($)
+  82 MDCL_SUPLY_CHRG_AMT              SUPLYAMT                         NUM       494   10 Medical/surgical supplies related to beneficiarys stay ($)
+  83 DME_CHRG_AMT                     DME_AMT                          NUM       504   10 DME related to beneficiarys stay ($)
+  84 USED_DME_CHRG_AMT                UDME_AMT                         NUM       514   10 Used DME related to beneficiarys stay ($)
+  85 PHYS_THRPY_CHRG_AMT              PHYTHAMT                         NUM       524   10 Physical therapy services provided during beneficiarys stay ($)
+  86 OCPTNL_THRPY_CHRG_AMT            OCPTLAMT                         NUM       534   10 Occupational therapy services provided during beneficiarys stay ($)
+  87 SPCH_PTHLGY_CHRG_AMT             SPCH_AMT                         NUM       544   10 Speech pathology services provided during beneficiarys stay ($)
+  88 INHLTN_THRPY_CHRG_AMT            INHLTAMT                         NUM       554   10 Inhalation therapy services provided during beneficiarys stay ($)
+  89 BLOOD_CHRG_AMT                   BLOODAMT                         NUM       564   10 Blood provided during beneficiarys stay ($)
+  90 BLOOD_ADMIN_CHRG_AMT             BLDADMIN                         NUM       574   10 Blood storage and processing related to beneficiarys stay ($)
+  91 BLOOD_PT_FRNSH_QTY               BLDFRNSH                         NUM       584    5 Quantity of blood (whole pints) furnished to beneficiary during stay
+  92 OPRTG_ROOM_CHRG_AMT              OROOMAMT                         NUM       589   10 OR, recovery rm, and labor rm delivery used by bene during stay ($)
+  93 LTHTRPSY_CHRG_AMT                LTHTRPSY                         NUM       599   10 Lithotripsy services provided during beneficiarys stay ($)
+  94 CRDLGY_CHRG_AMT                  CRDLGY                           NUM       609   10 Cardiology services and ECG(s) provided during beneficiarys stay ($)
+  95 ANSTHSA_CHRG_AMT                 ANSTHSA                          NUM       619   10 Anesthesia services provided during beneficiarys stay ($)
+  96 LAB_CHRG_AMT                     LAB_AMT                          NUM       629   10 Laboratory costs related to beneficiarys stay ($)
+  97 RDLGY_CHRG_AMT                   RDLGYAMT                         NUM       639   10 Radiology costs (excluding MRI) related to a beneficiarys stay ($)
+  98 MRI_CHRG_AMT                     MRI_AMT                          NUM       649   10 MRI services provided during beneficiarys stay ($)
+  99 OP_SRVC_CHRG_AMT                 OPSRVC                           NUM       659   10 Outpatient services provided during beneficiarys stay ($)
+ 100 ER_CHRG_AMT                      ER_AMT                           NUM       669   10 Emergency room services provided during beneficiarys stay ($)
+ 101 AMBLNC_CHRG_AMT                  AMBLNC                           NUM       679   10 Ambulance services related to beneficiarys stay ($)
+ 102 PROFNL_FEES_CHRG_AMT             PROFFEES                         NUM       689   10 Professional fees related to beneficiarys stay ($)
+ 103 ORGN_ACQSTN_CHRG_AMT             ORGNAMT                          NUM       699   10 Organ acquisition or oth donor bank srvcs related to benes stay ($)
+ 104 ESRD_REV_SETG_CHRG_AMT           ESRDSETG                         NUM       709   10 ESRD services related to beneficiarys stay ($)
+ 105 CLNC_VISIT_CHRG_AMT              CLNC_AMT                         NUM       719   10 Clinic visits related to beneficiarys stay ($)
+ 106 ICU_IND_CD                       ICUINDCD                         CHAR      729    1 ICU type code
+ 107 CRNRY_CARE_IND_CD                CRNRY_CD                         CHAR      730    1 Coronary care unit type code
+ 108 PHRMCY_IND_CD                    PHRMCYCD                         CHAR      731    1 Drugs type code
+ 109 TRNSPLNT_IND_CD                  TRNSPLNT                         CHAR      732    1 Organ transplant code
+ 110 RDLGY_ONCLGY_IND_SW              ONCLGYSW                         CHAR      733    1 Radiology oncology services indicator
+ 111 RDLGY_DGNSTC_IND_SW              DGNSTCSW                         CHAR      734    1 Radiology diagnostic services indicator
+ 112 RDLGY_THRPTC_IND_SW              THRPTCSW                         CHAR      735    1 Radiology therapeutic services indicator
+ 113 RDLGY_NUCLR_MDCN_IND_SW          NUCLR_SW                         CHAR      736    1 Radiology nuclear medicine services indicator
+ 114 RDLGY_CT_SCAN_IND_SW             CTSCANSW                         CHAR      737    1 Radiology computed tomographic (CT) scan services indicator
+ 115 RDLGY_OTHR_IMGNG_IND_SW          IMGNG_SW                         CHAR      738    1 Radiology other imaging services indicator
+ 116 OP_SRVC_IND_CD                   OPSRVCCD                         CHAR      739    1 Outpatient services/ambulatory surgical care code
+ 117 ORGN_ACQSTN_IND_CD               ORGNCD                           CHAR      740    2 Organ acquisition type code
+ 118 ESRD_COND_CD                     ESRD_CD                          CHAR      742    2 ESRD condition code
+ 119 ESRD_SETG_IND_1_CD               ESRDSTG1                         CHAR      744    2 Dialysis type code I
+ 120 ESRD_SETG_IND_2_CD               ESRDSTG2                         CHAR      746    2 Dialysis type code II
+ 121 ESRD_SETG_IND_3_CD               ESRDSTG3                         CHAR      748    2 Dialysis type code III
+ 122 ESRD_SETG_IND_4_CD               ESRDSTG4                         CHAR      750    2 Dialysis type code IV
+ 123 ESRD_SETG_IND_5_CD               ESRDSTG5                         CHAR      752    2 Dialysis type code V
+ 124 ADMTG_DGNS_CD                    AD_DGNS                          CHAR      754    7 Initial diagnosis at time of admission
+ 125 ADMTG_DGNS_VRSN_CD               ADMTG_DGNS_VRSN_CD               CHAR      761    1 MEDPAR Admitting Diagnosis Version Code
+ 126 DGNS_CD_CNT                      DGNSCNT                          NUM       762    3 Diagnosis codes included in stay
+ 127 DGNS_VRSN_CD                     DGNS_VRSN_CD                     CHAR      765    1 Version Code - Indicate if diagnosis code is ICD-9 or ICD-10 (Earlier Ve
+ 128 DGNS_VRSN_CD_1                   DGNS_VRSN_CD_1                   CHAR      766    1 Version Code 01 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 129 DGNS_VRSN_CD_2                   DGNS_VRSN_CD_2                   CHAR      767    1 Version Code 02 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 130 DGNS_VRSN_CD_3                   DGNS_VRSN_CD_3                   CHAR      768    1 Version Code 03 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 131 DGNS_VRSN_CD_4                   DGNS_VRSN_CD_4                   CHAR      769    1 Version Code 04 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 132 DGNS_VRSN_CD_5                   DGNS_VRSN_CD_5                   CHAR      770    1 Version Code 05 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 133 DGNS_VRSN_CD_6                   DGNS_VRSN_CD_6                   CHAR      771    1 Version Code 06 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 134 DGNS_VRSN_CD_7                   DGNS_VRSN_CD_7                   CHAR      772    1 Version Code 07 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 135 DGNS_VRSN_CD_8                   DGNS_VRSN_CD_8                   CHAR      773    1 Version Code 08 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 136 DGNS_VRSN_CD_9                   DGNS_VRSN_CD_9                   CHAR      774    1 Version Code 09 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 137 DGNS_VRSN_CD_10                  DGNS_VRSN_CD_10                  CHAR      775    1 Version Code 10 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 138 DGNS_VRSN_CD_11                  DGNS_VRSN_CD_11                  CHAR      776    1 Version Code 11 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 139 DGNS_VRSN_CD_12                  DGNS_VRSN_CD_12                  CHAR      777    1 Version Code 12 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 140 DGNS_VRSN_CD_13                  DGNS_VRSN_CD_13                  CHAR      778    1 Version Code 13 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 141 DGNS_VRSN_CD_14                  DGNS_VRSN_CD_14                  CHAR      779    1 Version Code 14 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 142 DGNS_VRSN_CD_15                  DGNS_VRSN_CD_15                  CHAR      780    1 Version Code 15 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 143 DGNS_VRSN_CD_16                  DGNS_VRSN_CD_16                  CHAR      781    1 Version Code 16 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 144 DGNS_VRSN_CD_17                  DGNS_VRSN_CD_17                  CHAR      782    1 Version Code 17 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 145 DGNS_VRSN_CD_18                  DGNS_VRSN_CD_18                  CHAR      783    1 Version Code 18 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 146 DGNS_VRSN_CD_19                  DGNS_VRSN_CD_19                  CHAR      784    1 Version Code 19 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 147 DGNS_VRSN_CD_20                  DGNS_VRSN_CD_20                  CHAR      785    1 Version Code 20 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 148 DGNS_VRSN_CD_21                  DGNS_VRSN_CD_21                  CHAR      786    1 Version Code 21 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 149 DGNS_VRSN_CD_22                  DGNS_VRSN_CD_22                  CHAR      787    1 Version Code 22 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 150 DGNS_VRSN_CD_23                  DGNS_VRSN_CD_23                  CHAR      788    1 Version Code 23 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 151 DGNS_VRSN_CD_24                  DGNS_VRSN_CD_24                  CHAR      789    1 Version Code 24 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 152 DGNS_VRSN_CD_25                  DGNS_VRSN_CD_25                  CHAR      790    1 Version Code 25 - Indicate if diagnosis code is ICD-9 or ICD-10.
+ 153 DGNS_1_CD                        DGNSCD1                          CHAR      791    7 Primary ICD-9-CM code
+ 154 DGNS_2_CD                        DGNSCD2                          CHAR      798    7 ICD-9-CM Diagnosis code II
+ 155 DGNS_3_CD                        DGNSCD3                          CHAR      805    7 ICD-9-CM Diagnosis code III
+ 156 DGNS_4_CD                        DGNSCD4                          CHAR      812    7 ICD-9-CM Diagnosis code IV
+ 157 DGNS_5_CD                        DGNSCD5                          CHAR      819    7 ICD-9-CM Diagnosis code V
+ 158 DGNS_6_CD                        DGNSCD6                          CHAR      826    7 ICD-9-CM Diagnosis code VI
+ 159 DGNS_7_CD                        DGNSCD7                          CHAR      833    7 ICD-9-CM Diagnosis code VII
+ 160 DGNS_8_CD                        DGNSCD8                          CHAR      840    7 ICD-9-CM Diagnosis code VIII
+ 161 DGNS_9_CD                        DGNSCD9                          CHAR      847    7 ICD-9-CM Diagnosis code IX
+ 162 DGNS_10_CD                       DGNSCD10                         CHAR      854    7 ICD-9-CM Diagnosis code X
+ 163 DGNS_11_CD                       DGNSCD11                         CHAR      861    7 ICD-9-CM Diagnosis code XI
+ 164 DGNS_12_CD                       DGNSCD12                         CHAR      868    7 ICD-9-CM Diagnosis code XII
+ 165 DGNS_13_CD                       DGNSCD13                         CHAR      875    7 ICD-9-CM Diagnosis code XIII
+ 166 DGNS_14_CD                       DGNSCD14                         CHAR      882    7 ICD-9-CM Diagnosis code XIV
+ 167 DGNS_15_CD                       DGNSCD15                         CHAR      889    7 ICD-9-CM Diagnosis code XV
+ 168 DGNS_16_CD                       DGNSCD16                         CHAR      896    7 ICD-9-CM Diagnosis code XVI
+ 169 DGNS_17_CD                       DGNSCD17                         CHAR      903    7 ICD-9-CM Diagnosis code XVII
+ 170 DGNS_18_CD                       DGNSCD18                         CHAR      910    7 ICD-9-CM Diagnosis code XVIII
+ 171 DGNS_19_CD                       DGNSCD19                         CHAR      917    7 ICD-9-CM Diagnosis code XIX
+ 172 DGNS_20_CD                       DGNSCD20                         CHAR      924    7 ICD-9-CM Diagnosis code XX
+ 173 DGNS_21_CD                       DGNSCD21                         CHAR      931    7 ICD-9-CM Diagnosis code XXI
+ 174 DGNS_22_CD                       DGNSCD22                         CHAR      938    7 ICD-9-CM Diagnosis code XXII
+ 175 DGNS_23_CD                       DGNSCD23                         CHAR      945    7 ICD-9-CM Diagnosis code XXIII
+ 176 DGNS_24_CD                       DGNSCD24                         CHAR      952    7 ICD-9-CM Diagnosis code XXIV
+ 177 DGNS_25_CD                       DGNSCD25                         CHAR      959    7 ICD-9-CM Diagnosis code XXV
+ 178 DGNS_POA_CD                      DGNS_POA                         CHAR      966   10 Diagnosis Code POA Array
+ 179 POA_DGNS_CD_CNT                  POA_DGNS_CD_CNT                  NUM       976    3 MEDPAR Claim Present on Admission Diagnosis Code Count
+ 180 POA_DGNS_1_IND_CD                POA_DGNS_1_IND_CD                CHAR      979    1 Diagnosis Present on Admission Indicator 1
+ 181 POA_DGNS_2_IND_CD                POA_DGNS_2_IND_CD                CHAR      980    1 Diagnosis Present on Admission Indicator 2
+ 182 POA_DGNS_3_IND_CD                POA_DGNS_3_IND_CD                CHAR      981    1 Diagnosis Present on Admission Indicator 3
+ 183 POA_DGNS_4_IND_CD                POA_DGNS_4_IND_CD                CHAR      982    1 Diagnosis Present on Admission Indicator 4
+ 184 POA_DGNS_5_IND_CD                POA_DGNS_5_IND_CD                CHAR      983    1 Diagnosis Present on Admission Indicator 5
+ 185 POA_DGNS_6_IND_CD                POA_DGNS_6_IND_CD                CHAR      984    1 Diagnosis Present on Admission Indicator 6
+ 186 POA_DGNS_7_IND_CD                POA_DGNS_7_IND_CD                CHAR      985    1 Diagnosis Present on Admission Indicator 7
+ 187 POA_DGNS_8_IND_CD                POA_DGNS_8_IND_CD                CHAR      986    1 Diagnosis Present on Admission Indicator 8
+ 188 POA_DGNS_9_IND_CD                POA_DGNS_9_IND_CD                CHAR      987    1 Diagnosis Present on Admission Indicator 9
+ 189 POA_DGNS_10_IND_CD               POA_DGNS_10_IND_CD               CHAR      988    1 Diagnosis Present on Admission Indicator 10
+ 190 POA_DGNS_11_IND_CD               POA_DGNS_11_IND_CD               CHAR      989    1 Diagnosis Present on Admission Indicator 11
+ 191 POA_DGNS_12_IND_CD               POA_DGNS_12_IND_CD               CHAR      990    1 Diagnosis Present on Admission Indicator 12
+ 192 POA_DGNS_13_IND_CD               POA_DGNS_13_IND_CD               CHAR      991    1 Diagnosis Present on Admission Indicator 13
+ 193 POA_DGNS_14_IND_CD               POA_DGNS_14_IND_CD               CHAR      992    1 Diagnosis Present on Admission Indicator 14
+ 194 POA_DGNS_15_IND_CD               POA_DGNS_15_IND_CD               CHAR      993    1 Diagnosis Present on Admission Indicator 15
+ 195 POA_DGNS_16_IND_CD               POA_DGNS_16_IND_CD               CHAR      994    1 Diagnosis Present on Admission Indicator 16
+ 196 POA_DGNS_17_IND_CD               POA_DGNS_17_IND_CD               CHAR      995    1 Diagnosis Present on Admission Indicator 17
+ 197 POA_DGNS_18_IND_CD               POA_DGNS_18_IND_CD               CHAR      996    1 Diagnosis Present on Admission Indicator 18
+ 198 POA_DGNS_19_IND_CD               POA_DGNS_19_IND_CD               CHAR      997    1 Diagnosis Present on Admission Indicator 19
+ 199 POA_DGNS_20_IND_CD               POA_DGNS_20_IND_CD               CHAR      998    1 Diagnosis Present on Admission Indicator 20
+ 200 POA_DGNS_21_IND_CD               POA_DGNS_21_IND_CD               CHAR      999    1 Diagnosis Present on Admission Indicator 21
+ 201 POA_DGNS_22_IND_CD               POA_DGNS_22_IND_CD               CHAR     1000    1 Diagnosis Present on Admission Indicator 22
+ 202 POA_DGNS_23_IND_CD               POA_DGNS_23_IND_CD               CHAR     1001    1 Diagnosis Present on Admission Indicator 23
+ 203 POA_DGNS_24_IND_CD               POA_DGNS_24_IND_CD               CHAR     1002    1 Diagnosis Present on Admission Indicator 24
+ 204 POA_DGNS_25_IND_CD               POA_DGNS_25_IND_CD               CHAR     1003    1 Diagnosis Present on Admission Indicator 25
+ 205 DGNS_E_CD_CNT                    DGNS_E_CD_CNT                    NUM      1004    3 MEDPAR Diagnosis E Code Count
+ 206 DGNS_E_VRSN_CD                   DGNS_E_VRSN_CD                   CHAR     1007    1 MEDPAR Diagnosis E Version Code (Earlier Version)
+ 207 DGNS_E_VRSN_CD_1                 DGNS_E_VRSN_CD_1                 CHAR     1008    1 MEDPAR Diagnosis E Version Code 01
+ 208 DGNS_E_VRSN_CD_2                 DGNS_E_VRSN_CD_2                 CHAR     1009    1 MEDPAR Diagnosis E Version Code 02
+ 209 DGNS_E_VRSN_CD_3                 DGNS_E_VRSN_CD_3                 CHAR     1010    1 MEDPAR Diagnosis E Version Code 03
+ 210 DGNS_E_VRSN_CD_4                 DGNS_E_VRSN_CD_4                 CHAR     1011    1 MEDPAR Diagnosis E Version Code 04
+ 211 DGNS_E_VRSN_CD_5                 DGNS_E_VRSN_CD_5                 CHAR     1012    1 MEDPAR Diagnosis E Version Code 05
+ 212 DGNS_E_VRSN_CD_6                 DGNS_E_VRSN_CD_6                 CHAR     1013    1 MEDPAR Diagnosis E Version Code 06
+ 213 DGNS_E_VRSN_CD_7                 DGNS_E_VRSN_CD_7                 CHAR     1014    1 MEDPAR Diagnosis E Version Code 07
+ 214 DGNS_E_VRSN_CD_8                 DGNS_E_VRSN_CD_8                 CHAR     1015    1 MEDPAR Diagnosis E Version Code 08
+ 215 DGNS_E_VRSN_CD_9                 DGNS_E_VRSN_CD_9                 CHAR     1016    1 MEDPAR Diagnosis E Version Code 09
+ 216 DGNS_E_VRSN_CD_10                DGNS_E_VRSN_CD_10                CHAR     1017    1 MEDPAR Diagnosis E Version Code 10
+ 217 DGNS_E_VRSN_CD_11                DGNS_E_VRSN_CD_11                CHAR     1018    1 MEDPAR Diagnosis E Version Code 11
+ 218 DGNS_E_VRSN_CD_12                DGNS_E_VRSN_CD_12                CHAR     1019    1 MEDPAR Diagnosis E Version Code 12
+ 219 DGNS_E_1_CD                      DGNS_E_1_CD                      CHAR     1020    7 E Diagnosis Code  1 - Extrnl cause of injury, poisoning, or oth adverse
+ 220 DGNS_E_2_CD                      DGNS_E_2_CD                      CHAR     1027    7 E Diagnosis Code  2 - Extrnl cause of injury, poisoning, or oth adverse
+ 221 DGNS_E_3_CD                      DGNS_E_3_CD                      CHAR     1034    7 E Diagnosis Code  3 - Extrnl cause of injury, poisoning, or oth adverse
+ 222 DGNS_E_4_CD                      DGNS_E_4_CD                      CHAR     1041    7 E Diagnosis Code  4 - Extrnl cause of injury, poisoning, or oth adverse
+ 223 DGNS_E_5_CD                      DGNS_E_5_CD                      CHAR     1048    7 E Diagnosis Code  5 - Extrnl cause of injury, poisoning, or oth adverse
+ 224 DGNS_E_6_CD                      DGNS_E_6_CD                      CHAR     1055    7 E Diagnosis Code  6 - Extrnl cause of injury, poisoning, or oth adverse
+ 225 DGNS_E_7_CD                      DGNS_E_7_CD                      CHAR     1062    7 E Diagnosis Code  7 - Extrnl cause of injury, poisoning, or oth adverse
+ 226 DGNS_E_8_CD                      DGNS_E_8_CD                      CHAR     1069    7 E Diagnosis Code  8 - Extrnl cause of injury, poisoning, or oth adverse
+ 227 DGNS_E_9_CD                      DGNS_E_9_CD                      CHAR     1076    7 E Diagnosis Code  9 - Extrnl cause of injury, poisoning, or oth adverse
+ 228 DGNS_E_10_CD                     DGNS_E_10_CD                     CHAR     1083    7 E Diagnosis Code  10 - Extrnl cause of injury, poisoning, or oth adverse
+ 229 DGNS_E_11_CD                     DGNS_E_11_CD                     CHAR     1090    7 E Diagnosis Code  11 - Extrnl cause of injury, poisoning, or oth adverse
+ 230 DGNS_E_12_CD                     DGNS_E_12_CD                     CHAR     1097    7 E Diagnosis Code  12 - Extrnl cause of injury, poisoning, or oth adverse
+ 231 POA_DGNS_E_CD_CNT                POA_DGNS_E_CD_CNT                NUM      1104    3 MEDPAR Claim Present on Admission Diagnosis E Code Count
+ 232 POA_DGNS_E_1_IND_CD              POA_DGNS_E_1_IND_CD              CHAR     1107    1 Diagnosis E Code Present on Admission Indicator 1
+ 233 POA_DGNS_E_2_IND_CD              POA_DGNS_E_2_IND_CD              CHAR     1108    1 Diagnosis E Code Present on Admission Indicator 2
+ 234 POA_DGNS_E_3_IND_CD              POA_DGNS_E_3_IND_CD              CHAR     1109    1 Diagnosis E Code Present on Admission Indicator 3
+ 235 POA_DGNS_E_4_IND_CD              POA_DGNS_E_4_IND_CD              CHAR     1110    1 Diagnosis E Code Present on Admission Indicator 4
+ 236 POA_DGNS_E_5_IND_CD              POA_DGNS_E_5_IND_CD              CHAR     1111    1 Diagnosis E Code Present on Admission Indicator 5
+ 237 POA_DGNS_E_6_IND_CD              POA_DGNS_E_6_IND_CD              CHAR     1112    1 Diagnosis E Code Present on Admission Indicator 6
+ 238 POA_DGNS_E_7_IND_CD              POA_DGNS_E_7_IND_CD              CHAR     1113    1 Diagnosis E Code Present on Admission Indicator 7
+ 239 POA_DGNS_E_8_IND_CD              POA_DGNS_E_8_IND_CD              CHAR     1114    1 Diagnosis E Code Present on Admission Indicator 8
+ 240 POA_DGNS_E_9_IND_CD              POA_DGNS_E_9_IND_CD              CHAR     1115    1 Diagnosis E Code Present on Admission Indicator 9
+ 241 POA_DGNS_E_10_IND_CD             POA_DGNS_E_10_IND_CD             CHAR     1116    1 Diagnosis E Code Present on Admission Indicator 10
+ 242 POA_DGNS_E_11_IND_CD             POA_DGNS_E_11_IND_CD             CHAR     1117    1 Diagnosis E Code Present on Admission Indicator 11
+ 243 POA_DGNS_E_12_IND_CD             POA_DGNS_E_12_IND_CD             CHAR     1118    1 Diagnosis E Code Present on Admission Indicator 12
+ 244 SRGCL_PRCDR_IND_SW               PRCDRSW                          CHAR     1119    1 Surgical procedures indicator
+ 245 SRGCL_PRCDR_CD_CNT               PRCDRCNT                         NUM      1120    3 Surgical procedure codes included in stay
+ 246 SRGCL_PRCDR_VRSN_CD              SRGCL_PRCDR_VRSN_CD              CHAR     1123    1 MEDPAR Surgical Procedure Version Code  (Earlier Version)
+ 247 SRGCL_PRCDR_VRSN_CD_1            SRGCL_PRCDR_VRSN_CD_1            CHAR     1124    1 MEDPAR Surgical Procedure Version Code 01
+ 248 SRGCL_PRCDR_VRSN_CD_2            SRGCL_PRCDR_VRSN_CD_2            CHAR     1125    1 MEDPAR Surgical Procedure Version Code 02
+ 249 SRGCL_PRCDR_VRSN_CD_3            SRGCL_PRCDR_VRSN_CD_3            CHAR     1126    1 MEDPAR Surgical Procedure Version Code 03
+ 250 SRGCL_PRCDR_VRSN_CD_4            SRGCL_PRCDR_VRSN_CD_4            CHAR     1127    1 MEDPAR Surgical Procedure Version Code 04
+ 251 SRGCL_PRCDR_VRSN_CD_5            SRGCL_PRCDR_VRSN_CD_5            CHAR     1128    1 MEDPAR Surgical Procedure Version Code 05
+ 252 SRGCL_PRCDR_VRSN_CD_6            SRGCL_PRCDR_VRSN_CD_6            CHAR     1129    1 MEDPAR Surgical Procedure Version Code 06
+ 253 SRGCL_PRCDR_VRSN_CD_7            SRGCL_PRCDR_VRSN_CD_7            CHAR     1130    1 MEDPAR Surgical Procedure Version Code 07
+ 254 SRGCL_PRCDR_VRSN_CD_8            SRGCL_PRCDR_VRSN_CD_8            CHAR     1131    1 MEDPAR Surgical Procedure Version Code 08
+ 255 SRGCL_PRCDR_VRSN_CD_9            SRGCL_PRCDR_VRSN_CD_9            CHAR     1132    1 MEDPAR Surgical Procedure Version Code 09
+ 256 SRGCL_PRCDR_VRSN_CD_10           SRGCL_PRCDR_VRSN_CD_10           CHAR     1133    1 MEDPAR Surgical Procedure Version Code 10
+ 257 SRGCL_PRCDR_VRSN_CD_11           SRGCL_PRCDR_VRSN_CD_11           CHAR     1134    1 MEDPAR Surgical Procedure Version Code 11
+ 258 SRGCL_PRCDR_VRSN_CD_12           SRGCL_PRCDR_VRSN_CD_12           CHAR     1135    1 MEDPAR Surgical Procedure Version Code 12
+ 259 SRGCL_PRCDR_VRSN_CD_13           SRGCL_PRCDR_VRSN_CD_13           CHAR     1136    1 MEDPAR Surgical Procedure Version Code 13
+ 260 SRGCL_PRCDR_VRSN_CD_14           SRGCL_PRCDR_VRSN_CD_14           CHAR     1137    1 MEDPAR Surgical Procedure Version Code 14
+ 261 SRGCL_PRCDR_VRSN_CD_15           SRGCL_PRCDR_VRSN_CD_15           CHAR     1138    1 MEDPAR Surgical Procedure Version Code 15
+ 262 SRGCL_PRCDR_VRSN_CD_16           SRGCL_PRCDR_VRSN_CD_16           CHAR     1139    1 MEDPAR Surgical Procedure Version Code 16
+ 263 SRGCL_PRCDR_VRSN_CD_17           SRGCL_PRCDR_VRSN_CD_17           CHAR     1140    1 MEDPAR Surgical Procedure Version Code 17
+ 264 SRGCL_PRCDR_VRSN_CD_18           SRGCL_PRCDR_VRSN_CD_18           CHAR     1141    1 MEDPAR Surgical Procedure Version Code 18
+ 265 SRGCL_PRCDR_VRSN_CD_19           SRGCL_PRCDR_VRSN_CD_19           CHAR     1142    1 MEDPAR Surgical Procedure Version Code 19
+ 266 SRGCL_PRCDR_VRSN_CD_20           SRGCL_PRCDR_VRSN_CD_20           CHAR     1143    1 MEDPAR Surgical Procedure Version Code 20
+ 267 SRGCL_PRCDR_VRSN_CD_21           SRGCL_PRCDR_VRSN_CD_21           CHAR     1144    1 MEDPAR Surgical Procedure Version Code 21
+ 268 SRGCL_PRCDR_VRSN_CD_22           SRGCL_PRCDR_VRSN_CD_22           CHAR     1145    1 MEDPAR Surgical Procedure Version Code 22
+ 269 SRGCL_PRCDR_VRSN_CD_23           SRGCL_PRCDR_VRSN_CD_23           CHAR     1146    1 MEDPAR Surgical Procedure Version Code 23
+ 270 SRGCL_PRCDR_VRSN_CD_24           SRGCL_PRCDR_VRSN_CD_24           CHAR     1147    1 MEDPAR Surgical Procedure Version Code 24
+ 271 SRGCL_PRCDR_VRSN_CD_25           SRGCL_PRCDR_VRSN_CD_25           CHAR     1148    1 MEDPAR Surgical Procedure Version Code 25
+ 272 SRGCL_PRCDR_1_CD                 PRCDRCD1                         CHAR     1149    7 Principal Procedure code
+ 273 SRGCL_PRCDR_2_CD                 PRCDRCD2                         CHAR     1156    7 Procedure Code II
+ 274 SRGCL_PRCDR_3_CD                 PRCDRCD3                         CHAR     1163    7 Procedure Code III
+ 275 SRGCL_PRCDR_4_CD                 PRCDRCD4                         CHAR     1170    7 Procedure Code IV
+ 276 SRGCL_PRCDR_5_CD                 PRCDRCD5                         CHAR     1177    7 Procedure Code V
+ 277 SRGCL_PRCDR_6_CD                 PRCDRCD6                         CHAR     1184    7 Procedure Code VI
+ 278 SRGCL_PRCDR_7_CD                 PRCDRCD7                         CHAR     1191    7 Procedure Code VII
+ 279 SRGCL_PRCDR_8_CD                 PRCDRCD8                         CHAR     1198    7 Procedure Code VIII
+ 280 SRGCL_PRCDR_9_CD                 PRCDRCD9                         CHAR     1205    7 Procedure Code IX
+ 281 SRGCL_PRCDR_10_CD                PRCDRCD10                        CHAR     1212    7 Procedure Code X
+ 282 SRGCL_PRCDR_11_CD                PRCDRCD11                        CHAR     1219    7 Procedure Code XI
+ 283 SRGCL_PRCDR_12_CD                PRCDRCD12                        CHAR     1226    7 Procedure Code XII
+ 284 SRGCL_PRCDR_13_CD                PRCDRCD13                        CHAR     1233    7 Procedure Code XIII
+ 285 SRGCL_PRCDR_14_CD                PRCDRCD14                        CHAR     1240    7 Procedure Code XIV
+ 286 SRGCL_PRCDR_15_CD                PRCDRCD15                        CHAR     1247    7 Procedure Code XV
+ 287 SRGCL_PRCDR_16_CD                PRCDRCD16                        CHAR     1254    7 Procedure Code XVI
+ 288 SRGCL_PRCDR_17_CD                PRCDRCD17                        CHAR     1261    7 Procedure Code XVII
+ 289 SRGCL_PRCDR_18_CD                PRCDRCD18                        CHAR     1268    7 Procedure Code XVIII
+ 290 SRGCL_PRCDR_19_CD                PRCDRCD19                        CHAR     1275    7 Procedure Code XIX
+ 291 SRGCL_PRCDR_20_CD                PRCDRCD20                        CHAR     1282    7 Procedure Code XX
+ 292 SRGCL_PRCDR_21_CD                PRCDRCD21                        CHAR     1289    7 Procedure Code XXI
+ 293 SRGCL_PRCDR_22_CD                PRCDRCD22                        CHAR     1296    7 Procedure Code XXII
+ 294 SRGCL_PRCDR_23_CD                PRCDRCD23                        CHAR     1303    7 Procedure Code XXIII
+ 295 SRGCL_PRCDR_24_CD                PRCDRCD24                        CHAR     1310    7 Procedure Code XXIV
+ 296 SRGCL_PRCDR_25_CD                PRCDRCD25                        CHAR     1317    7 Procedure Code XXV
+ 297 SRGCL_PRCDR_DT_CNT               PRCDTCNT                         NUM      1324    3 Dates associated with surgical procedures included in stay
+ 298 SRGCL_PRCDR_PRFRM_1_DT           PRCDRDT1                         DATE     1327    8 Principal Procedure Date
+ 299 SRGCL_PRCDR_PRFRM_2_DT           PRCDRDT2                         DATE     1335    8 Procedure Date II
+ 300 SRGCL_PRCDR_PRFRM_3_DT           PRCDRDT3                         DATE     1343    8 Procedure Date III
+ 301 SRGCL_PRCDR_PRFRM_4_DT           PRCDRDT4                         DATE     1351    8 Procedure Date IV
+ 302 SRGCL_PRCDR_PRFRM_5_DT           PRCDRDT5                         DATE     1359    8 Procedure Date V
+ 303 SRGCL_PRCDR_PRFRM_6_DT           PRCDRDT6                         DATE     1367    8 Procedure Date VI
+ 304 SRGCL_PRCDR_PRFRM_7_DT           PRCDRDT7                         DATE     1375    8 Procedure Date VII
+ 305 SRGCL_PRCDR_PRFRM_8_DT           PRCDRDT8                         DATE     1383    8 Procedure Date VIII
+ 306 SRGCL_PRCDR_PRFRM_9_DT           PRCDRDT9                         DATE     1391    8 Procedure Date IX
+ 307 SRGCL_PRCDR_PRFRM_10_DT          PRCDRDT10                        DATE     1399    8 Procedure Date X
+ 308 SRGCL_PRCDR_PRFRM_11_DT          PRCDRDT11                        DATE     1407    8 Procedure Date XI
+ 309 SRGCL_PRCDR_PRFRM_12_DT          PRCDRDT12                        DATE     1415    8 Procedure Date XII
+ 310 SRGCL_PRCDR_PRFRM_13_DT          PRCDRDT13                        DATE     1423    8 Procedure Date XIII
+ 311 SRGCL_PRCDR_PRFRM_14_DT          PRCDRDT14                        DATE     1431    8 Procedure Date XIV
+ 312 SRGCL_PRCDR_PRFRM_15_DT          PRCDRDT15                        DATE     1439    8 Procedure Date XV
+ 313 SRGCL_PRCDR_PRFRM_16_DT          PRCDRDT16                        DATE     1447    8 Procedure Date XVI
+ 314 SRGCL_PRCDR_PRFRM_17_DT          PRCDRDT17                        DATE     1455    8 Procedure Date XVII
+ 315 SRGCL_PRCDR_PRFRM_18_DT          PRCDRDT18                        DATE     1463    8 Procedure Date XVIII
+ 316 SRGCL_PRCDR_PRFRM_19_DT          PRCDRDT19                        DATE     1471    8 Procedure Date XIX
+ 317 SRGCL_PRCDR_PRFRM_20_DT          PRCDRDT20                        DATE     1479    8 Procedure Date XX
+ 318 SRGCL_PRCDR_PRFRM_21_DT          PRCDRDT21                        DATE     1487    8 Procedure Date XXI
+ 319 SRGCL_PRCDR_PRFRM_22_DT          PRCDRDT22                        DATE     1495    8 Procedure Date XXII
+ 320 SRGCL_PRCDR_PRFRM_23_DT          PRCDRDT23                        DATE     1503    8 Procedure Date XXIII
+ 321 SRGCL_PRCDR_PRFRM_24_DT          PRCDRDT24                        DATE     1511    8 Procedure Date XXIV
+ 322 SRGCL_PRCDR_PRFRM_25_DT          PRCDRDT25                        DATE     1519    8 Procedure Date XXV
+ 323 CLM_PTNT_RLTNSHP_CD              CLM_PTNT_RLTNSHP_CD              CHAR     1527    2 Claim Patient Relationship Code
+ 324 CARE_IMPRVMT_MODEL_1_CD          CARE_IMPRVMT_MODEL_1_CD          CHAR     1529    2 Care Improvement Model 1 Code
+ 325 CARE_IMPRVMT_MODEL_2_CD          CARE_IMPRVMT_MODEL_2_CD          CHAR     1531    2 Care Improvement Model 2 Code
+ 326 CARE_IMPRVMT_MODEL_3_CD          CARE_IMPRVMT_MODEL_3_CD          CHAR     1533    2 Care Improvement Model 3 Code
+ 327 CARE_IMPRVMT_MODEL_4_CD          CARE_IMPRVMT_MODEL_4_CD          CHAR     1535    2 Care Improvement Model 4 Code
+ 328 VBP_PRTCPNT_IND_CD               VBP_PRTCPNT_IND_CD               CHAR     1537    1 VBP Participant Indicator Code
+ 329 HRR_PRTCPNT_IND_CD               HRR_PRTCPNT_IND_CD               CHAR     1538    1 HRR Participant Indicator Code
+ 330 BNDLD_MODEL_DSCNT_PCT            BNDLD_MODEL_DSCNT_PCT            NUM      1539 4.2  Bundled Model Discount Percent
+ 331 VBP_ADJSTMT_PCT                  VBP_ADJSTMT_PCT                  NUM      1543 13.1 VBP Adjustment Percent
+ 332 HRR_ADJSTMT_PCT                  HRR_ADJSTMT_PCT                  NUM      1556 6.4  HRR Adjustment Percent
+ 333 INFRMTL_ENCTR_IND_SW             INFRMTL_ENCTR_IND_SW             CHAR     1562    1 Informational Encounter Indicator Switch
+ 334 MA_TCHNG_IND_SW                  MA_TCHNG_IND_SW                  CHAR     1563    1 MA Teaching Indicator Switch
+ 335 PROD_RPLCMT_LIFECYC_SW           PROD_RPLCMT_LIFECYC_SW           CHAR     1564    1 Prod Replacement Lifecycle Switch
+ 336 PROD_RPLCMT_RCLL_SW              PROD_RPLCMT_RCLL_SW              CHAR     1565    1 Prod Replacement Recall Switch
+ 337 CRED_RCVD_RPLCD_DVC_SW           CRED_RCVD_RPLCD_DVC_SW           CHAR     1566    1 Credit Received Replaced Device Switch
+ 338 OBSRVTN_SW                       OBSRVTN_SW                       CHAR     1567    1 Observation Switch
+ 339 NEW_TCHNLGY_ADD_ON_AMT           NEW_TCHNLGY_ADD_ON_AMT           NUM      1568   10 New Technology Add-On Amount
+ 340 BASE_OPRTG_DRG_AMT               BASE_OPRTG_DRG_AMT               NUM      1578   10 Base Operating DRG Amount
+ 341 OPRTG_HSP_AMT                    OPRTG_HSP_AMT                    NUM      1588   10 Operating Hospital Amount
+ 342 MDCL_SRGCL_GNRL_AMT              MDCL_SRGCL_GNRL_AMT              NUM      1598   10 Medical/Surgical General Amount
+ 343 MDCL_SRGCL_NSTRL_AMT             MDCL_SRGCL_NSTRL_AMT             NUM      1608   10 Medical/Surgical Non-Sterile Amount
+ 344 MDCL_SRGCL_STRL_AMT              MDCL_SRGCL_STRL_AMT              NUM      1618   10 Medical/Surgical Sterile Amount
+ 345 TAKE_HOME_AMT                    TAKE_HOME_AMT                    NUM      1628   10 Take Home Amount
+ 346 PRSTHTC_ORTHTC_AMT               PRSTHTC_ORTHTC_AMT               NUM      1638   10 Prosthetic Orthotic Amount
+ 347 MDCL_SRGCL_PCMKR_AMT             MDCL_SRGCL_PCMKR_AMT             NUM      1648   10 Medical/Surgical Pacemaker Amount
+ 348 INTRAOCULAR_LENS_AMT             INTRAOCULAR_LENS_AMT             NUM      1658   10 Intraocular Lens Amount
+ 349 OXYGN_TAKE_HOME_AMT              OXYGN_TAKE_HOME_AMT              NUM      1668   10 Oxygen Take Home Amount
+ 350 OTHR_IMPLANTS_AMT                OTHR_IMPLANTS_AMT                NUM      1678   10 Other Implants Amount
+ 351 OTHR_SUPLIES_DVC_AMT             OTHR_SUPLIES_DVC_AMT             NUM      1688   10 Other Supplies Device Amount
+ 352 INCDNT_RDLGY_AMT                 INCDNT_RDLGY_AMT                 NUM      1698   10 Incident Radiology Amount
+ 353 INCDNT_DGNSTC_SRVCS_AMT          INCDNT_DGNSTC_SRVCS_AMT          NUM      1708   10 Incident Diagnostic Services Amount
+ 354 MDCL_SRGCL_DRSNG_AMT             MDCL_SRGCL_DRSNG_AMT             NUM      1718   10 Medical/Surgical Dressing Amount
+ 355 INVSTGTNL_DVC_AMT                INVSTGTNL_DVC_AMT                NUM      1728   10 Investigational Device Amount
+ 356 MDCL_SRGCL_MISC_AMT              MDCL_SRGCL_MISC_AMT              NUM      1738   10 Medical/Surgical Miscellaneous Amount
+ 357 RDLGY_ONCOLOGY_AMT               RDLGY_ONCOLOGY_AMT               NUM      1748   10 Radiology/Oncology Amount
+ 358 RDLGY_DGNSTC_AMT                 RDLGY_DGNSTC_AMT                 NUM      1758   10 Radiology Diagnostic Amount
+ 359 RDLGY_THRPTC_AMT                 RDLGY_THRPTC_AMT                 NUM      1768   10 Radiology Therapeutic Amount
+ 360 RDLGY_NUCLR_MDCN_AMT             RDLGY_NUCLR_MDCN_AMT             NUM      1778   10 Radiology Nuclear Medicine Amount
+ 361 RDLGY_CT_SCAN_AMT                RDLGY_CT_SCAN_AMT                NUM      1788   10 Radiology CT Scan Amount
+ 362 RDLGY_OTHR_IMGNG_AMT             RDLGY_OTHR_IMGNG_AMT             NUM      1798   10 Radiology Other Imaging Amount
+ 363 OPRTG_ROOM_AMT                   OPRTG_ROOM_AMT                   NUM      1808   10 Operating Room Amount
+ 364 OR_LABOR_DLVRY_AMT               OR_LABOR_DLVRY_AMT               NUM      1818   10 O/R Labor Delivery Amount
+ 365 CRDC_CATHRZTN_AMT                CRDC_CATHRZTN_AMT                NUM      1828   10 Cardiac Catheterization Amount
+ 366 SQSTRTN_RDCTN_AMT                SQSTRTN_RDCTN_AMT                NUM      1838   10 Sequestration Reduction Amount
+ 367 UNCOMPD_CARE_PYMT_AMT            UNCOMPD_CARE_PYMT_AMT            NUM      1848   10 Uncompensated Care Payment Amount
+ 368 BNDLD_ADJSTMT_AMT                BNDLD_ADJSTMT_AMT                NUM      1858   10 Bundled Adjustment Amount
+ 369 VBP_ADJSTMT_AMT                  VBP_ADJSTMT_AMT                  NUM      1868   10 Hospital Value Based Purchasing (VBP) Amount
+ 370 HRR_ADJSTMT_AMT                  HRR_ADJSTMT_AMT                  NUM      1878   10 Hospital Readmission Reduction (HRR) Adjustment Amount
+
+Note: All DATE fields are written out in CCYYMMDD format.
+
+- End of Document
