@@ -2,7 +2,7 @@
 
 services:
   postgres:
-    container_name: dorieh-postgres
+    # container_name: dorieh-postgres
     build:
       context: .
     environment:
