@@ -4,7 +4,7 @@ services:
   postgres:
     container_name: dorieh-postgres
     build:
-      context: ./pg-hll
+      context: .
     environment:
       POSTGRES_DB: dorieh
       POSTGRES_USER: dorieh

@@ -20,4 +20,6 @@ file system):
 ```shell
 cd $workdir
 git clone https://github.com/ForomePlatform/dorieh.git 
+cd docker/pg-hll/
+
 ```
