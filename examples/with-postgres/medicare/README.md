@@ -1,6 +1,7 @@
 # Running Sample Medicare Processing Workflow
 
-See [](../../README.md) and [](../README.md) for prerequisites.
+See [General Setup](../../README.md) and [Database Setup](../README.md) for 
+prerequisites.
 
 
 ```shell
