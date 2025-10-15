@@ -8,68 +8,73 @@ local:
 
 ## Introduction
 
-For the majority of computational studies, their data acquisition workflow can
-be represented as a data processing pipeline. A data processing pipeline
-consists of steps, each step being either a script, a binary executable, or a
-specific data transformation within a data warehouse. Some steps are dependent
-on the results of other steps. Therefore, every workflow can be represented as a
-directed acyclic graph (DAG), where steps are the nodes of the graph and
-dependencies are its edges. Pipeline topologies are complex as they provide for
-massive parallelization and multiple dependencies. When pipeline logic is
-expressed in a procedural programming language, the result is a very convoluted
-program that is economically ineffective to maintain. Fortunately, alternatives
-to procedural languages have been proposed and are widely used.
+Most computational studies acquire and process data using a data
+processing pipeline. Such pipelines are composed of multiple steps,
+where each step may be a script, binary executable, or a specific data
+transformation. These steps often depend on the completion and outcome
+of previous steps, so the entire workflow can be naturally represented
+as a **Directed Acyclic Graph (DAG)**: nodes represent workflow steps,
+and
+edges indicate their dependencies.
 
-To the full extent both repeatability and reproducibility of data processing
-pipelines is addressed by special descriptive domain specific languages (DSL).
-Three such languages have been developed by different communities that work
-primarily in bioinformatics. The most widely adopted is 
-[Common Workflow Language (CWL)](https://www.commonwl.org/), 
-the most popular in terms of studies that use it, the number of
-published workflows and the number of runtime platforms supporting execution of
-the workflows defined in CWL. The pipelines we publish here are all written
-in CWL.
+This DAG-based representation allows for complex pipeline topologies,
+including parallelization and multiple dependencies. However, describing
+such logic in procedural programming languages quickly becomes unwieldy
+and hard to maintain. To address this challenge, **domain-specific
+workflow description languages (DSLs)** have been developed.
 
-Descriptive workflow languages focus on explicit definition of the pipeline
-topology and insulation of the topology, inputs, requirements and outputs from
-the actual processing algorithms. Developed primarily by bioinformatics
-communities and mostly used by bioinformatics projects they expect the inputs to
-be in a few well-defined formats and orchestrate the work of a limited set of
-known tools. In other areas, for example, in population health research, the
-data comes from much more diverse sources, in diverse and often incompatible
-formats. Therefore, many steps (nodes in the pipeline topology) will be
-responsible for various data transformation operations. 
-                                                           
-> Some workflows require database connection to perform all steps.
+## Workflow Description Languages
+
+For reproducibility and repeatability, pipelines are commonly specified
+using descriptive workflow DSLs. In bioinformatics and other scientific
+domains, three such languages are widely used. The most prevalent is the
+[Common Workflow Language (CWL)](https://www.commonwl.org/),
+due to its extensive community support,
+number of published workflows, and broad platform compatibility. All
+pipelines published in this documentation use CWL.
+
+Descriptive workflow languages separate the definition of pipeline
+structure (topology, inputs, outputs, requirements) from the
+implementation of processing steps. While these languages were pioneered
+in bioinformatics—often operating on well-defined inputs and known
+tools—they are also applicable to fields with more diverse and less
+standardized data, such as population health research. In these domains,
+many workflow steps may focus on complex data transformation and
+harmonization.
+
+> Some workflows require database connection during the execution.
 > See [](DBConnections) section. for details
 
 ## Running Workflows
-                   
+
 ### Tested runners
 
-CWL is "write once run anywhere" language. If a piepline one has developed
-runs on the developer's laptop it is more or less guaranteed it will run
-in any on-prem cluster or cloud environment, provided a runner supporting
-a given environment is used. One can find the list of currently 
-supported runners in 
+CWL is a "write once, run anywhere" language. A pipeline developed and
+tested in one environment (such as a laptop) will run on clusters and
+cloud platforms using any compliant runner. For the latest list of
+compatible runners, visit the
 [CWL Implementations](https://www.commonwl.org/implementations/) page.
 
-We have used cwltool, CWL-Airflow and Toil in our development
-and production. Toil's output is a little too verbose, but it has
-great features like ability to restart a pipeline from a failed
-step (even after minor corrections) and native support for AWS Batch.
-CWL-Airflow provides a nice graphical user interface.
+We have successfully used **cwltool**, **CWL-Airflow**, and **Toil**:
 
-See [Toil documentation](https://toil.readthedocs.io/en/latest/) 
-for some details of running CWL workflows.
-                                               
+* **Toil**: Highly featured, supports AWS Batch and pipeline resumption
+  after failures. Output can be quite verbose. We recommend it for
+  production and development use.
+* **CWL-Airflow**: Provides a graphical interface for managing and
+  visualizing workflows.
+* **cwltool**: Lightweight reference implementation, ideal for
+  development for those who prefer to avoid Toil.
+
+See the [Toil documentation](https://toil.readthedocs.io/en/latest/)
+for additional details on using Toil for running CWL workflows.
+
 ### Providing parameters to the pipelines
 
-Parameters can be provided either as command line options
-with two dashes `--` or in YaML or JSON file.
+Pipeline parameters are supplied on the command line
+(as double-dash `--` options) or via YAML or JSON files.
 
-Note, that when using a YaML file, files and directories 
-have to be specified in the following way:
+When using YAML to specify files or directories as inputs,
+use this structure:
 
 ```yaml
 my_file:
@@ -83,16 +88,24 @@ my_directory:
 
 ### Using Toil
 
-A few hints if you are using Toil:
+For hands-on examples, refer to the
+[Dorieh Examples Folder](https://github.com/ForomePlatform/dorieh/tree/main/examples)
+on GitHub. There you will find:
 
-1. Install Toil with aws and cwl options:
+* [Instructions for environment setup](https://github.com/ForomePlatform/dorieh/tree/main/examples#running-cwl-examples)
+* [Running workflows that do not require a database backend](Example-climate-workflow.md)
+* [Workflows with PostgreSQL backend](https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres)
+
+#### Quick Start with Toil
+
+1. Install Toil with AWS and CWL support:
 
         pip install toil[aws,cwl]
-2. If you want to be able to restart a pipeline from a failed step you need to 
-    provide `--jobStore` option. To restart - give exactly the same options
-    adding `--restart` 
+2. Enable pipeline resumption:
+   Use the `--jobStore` option when running the pipeline.
+   To resume after a failure, use the same command plus `--restart`.
 
-Here is an example of a command to execute a pipeline:
+**Sample command**:
 
 ```shell
 toil-cwl-runner --retryCount 1 --cleanWorkDir never \ 
@@ -101,21 +114,89 @@ toil-cwl-runner --retryCount 1 --cleanWorkDir never \
   --jobStore /scratch/work/someDir123
   pm25_yearly_download.cwl test_exposure_job.yml 
 ```
-                                                                                
+
+Most Dorieh workflows consist of multiple steps, each producing two log
+files: a progress log (`*.log`) and an error log (`*.err`). On success,
+error logs are usually empty; all logs are collected under the
+`--outdir` directory.
+
+A successful pipeline run typically emits a JSON object in standard
+output or log file, for example:
+
+```json
+{
+  "qc_ev_create_log": {
+    "location": "file:///shared/dorieh-logs/data_loader-2025-03-05-09-48-27.log_2",
+    "basename": "data_loader-2025-03-05-09-48-27.log",
+    "nameroot": "data_loader-2025-03-05-09-48-27",
+    "nameext": ".log",
+    "class": "File",
+    "checksum": "sha1$fa01481303c9030c8095387661a3bdc6851fc1ed",
+    "size": 12060,
+    "path": "/shared/dorieh-logs/data_loader-2025-03-05-09-48-27.log_2"
+  },
+  "registry": {
+    "location": "file:///shared/dorieh-logs/data.yaml",
+    "basename": "data.yaml",
+    "nameroot": "data",
+    "nameext": ".yaml",
+    "class": "File",
+    "checksum": "sha1$73700ade239b3a0c5f755ef694f05aebb4442c68",
+    "size": 140457,
+    "path": "/shared/dorieh-logs/ingestion/2015/outputs/cms.yaml"
+  }
+}
+```
+
+Alternatively, you can confirm successful completion by searching the
+logs for either of: `Finished toil run successfully`  or
+`CWL run complete!`:
+
+```shell
+grep 'Finished toil run successfully' 1_2015prod.log
+grep 'CWL run complete!' 1_2015prod.log
+```
+
+A failed run usually ends with a `PermanentFail` message, although
+abrupt
+system failures may not log this. If a log file remains unmodified for
+several hours, the workflow is likely not running.
+
+> Some workflow steps, especially those involving database
+> transformations, may run for extended periods but produce little log
+> output. Check individual step logs for progress if you suspect issues.
+
+### Troubleshooting Workflows run by Toil
+
+To check for errors across all runs:
+
+```shell
+find /shared/dorieh-logs/ -type f -name "*.err" -size +0c -exec ls -alF {} \;
+```
+
+> No output indicates no errors. Non-empty `.err` files should be
+> examined.
+
+
+For logs from a specific run (e.g., subdirectory per run):
+
+```shell
+find /shared/dorieh-logs/toilwf-c36b795b68935d99be01ed1556c85b1e/ -type f -name "*.err" -size +0c -exec ls -alF {} \;
+```
+
+To see all error logs regardless of whether they are empty or not omit
+the `-size +0c` filter:
+
+```shell
+find /shared/dorieh-logs/toilwf-c36b795b68935d99be01ed1556c85b1e/ -type f -name "*.err" -exec ls -alF {} \;
+```
+
 ## Testing workflows
 
-Pipelines can be tested using included 
+Pipelines can be tested using included
 [DBT Pipeline Testing Framework](DBT)
 
 More detailed document that describes testing is: [](TestingWorkflows).
-
-## Installing Python dependencies
-                                 
-The following requirements.txt file can be used to fetch all 
-Python packages included in the platform. 
-
-
-
 
 ## Published and tested workflows
 
@@ -134,21 +215,22 @@ pipeline/medicaid
 pipeline/census_workflow
 ```
 
-## Developing your own workflows
+## Developing New Workflows
 
 ### Combining included CWL tools into a new workflow
 
-Dorieh includes many packaged CWL tools that can be combined in custom workflows. 
-It also includes a [utility](members/cwl_collect_outputs) 
-to generate CWL code that can be copied abd pasted into a parent
-workflow.
+Dorieh provides multiple pre-packaged CWL tools, which you can mix and
+match into custom workflows. Use
+the [CWL output collection utility](members/cwl_collect_outputs) to help
+generate CWL code snippets for new workflows.
 
 ### Wrapping python modules as CWL tools
 
-You might want to look at [cwl2argparse](https://github.com/hexylena/argparse2tool#cwl-specific-functionality)
-or other [CWL development tools](https://www.commonwl.org/tools/)
+Consider
+using [cwl2argparse](https://github.com/hexylena/argparse2tool#cwl-specific-functionality)
+or browse other [CWL development tools](https://www.commonwl.org/tools/)
+for converting Python modules into CWL tools.
 
-## Example of a workflow
 
-Please see [](Example-climate-workflow)
+
 
