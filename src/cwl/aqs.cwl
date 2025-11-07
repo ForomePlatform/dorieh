@@ -115,6 +115,7 @@ steps:
     run: ingest.cwl
     doc: Uploads data into the database
     in:
+      depends_on: initdb/log
       registry: introspect/model
       domain:
         valueFrom: "epa"
@@ -151,6 +152,7 @@ steps:
   export:
     run: export.cwl
     in:
+      depends_on: ingest/log
       database: database
       connection_name: connection_name
       format:

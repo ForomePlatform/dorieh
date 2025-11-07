@@ -23,6 +23,8 @@ command line arguments over Parquet file(s) using Spark
 #
 import os
 from argparse import ArgumentParser
+from typing import Dict
+
 from pyspark.sql import SparkSession, DataFrame
 
 
@@ -51,35 +53,46 @@ def read_parquet(spark: SparkSession, location: str) -> DataFrame:
     return reader.parquet(path_to_parquet)
 
 
-def start_session():
-    session_builder = SparkSession.builder.appName("Dorieh SparkSQL") \
+def start_session(app_name = None, xmx: str = None, hive = False, config: Dict = None):
+    if app_name is None:
+        app_name = "Dorieh SparkSQL"
+    session_builder = SparkSession.builder.appName(app_name) \
         .config("spark.driver.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED") \
         .config("spark.executor.extraJavaOptions", "--add-exports=java.base/sun.nio.ch=ALL-UNNAMED")
 
-    xmx = os.environ.get("xmx")
+    if xmx is None:
+        xmx = os.environ.get("xmx")
     if xmx:
-        session_builder = session_builder.config("spark.driver.memory", xmx)
+        session_builder = session_builder.config("spark.driver.memory", xmx).config("spark.executor.memory", xmx)
     cores = os.environ.get("xcores")
     if cores:
         session_builder = session_builder.master(f"local[{cores}]")
+    if hive:
+        session_builder = session_builder.enableHiveSupport()
+    if config:
+        for key in config:
+            session_builder = session_builder.config(key, config[key])
+
     session = session_builder.getOrCreate()
     print(session.sparkContext.getConf().getAll())
     return session
 
 
-def execute(args):
+def execute(spark: SparkSession, location: str, sql: str, table: str = None) -> DataFrame:
+    if table is None:
+        table = "parquet_table"
+    df = read_parquet(spark, location)
+    df.createOrReplaceTempView(table)
+    return spark.sql(sql)
+
+
+def execute_and_show(args):
     spark = start_session()
     sql = ' '.join(args.sql)
     print("Executing: " + sql)
     try:
-        df = read_parquet(spark, args.location)
-        if args.table:
-            table = args.table
-        else:
-            table = "parquet_table"
-        df.createOrReplaceTempView(table)
-        result_df = spark.sql(sql)
-        result_df.show()
+        result_df = execute(spark, args.location, sql, args.table)
+        result_df.show(n=args.n, truncate=False)
     finally:
         spark.stop()
 
@@ -92,6 +105,8 @@ def parse_args():
                         required=True)
     parser.add_argument("--table", "-t",
                         help="Optional table name")
+    parser.add_argument("--n", type=int, default=20,
+                        help="Number of rows to output, defaults to 20")
     parser.add_argument(dest="sql",
                         nargs='+',
                         help="SQL statement(s)")
@@ -101,5 +116,5 @@ def parse_args():
 
 if __name__ == '__main__':
     arguments = parse_args()
-    execute(arguments)
+    execute_and_show(arguments)
 

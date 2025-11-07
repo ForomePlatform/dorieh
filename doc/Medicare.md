@@ -1,4 +1,4 @@
-# Medicare Files Handling
+# Medicare: Building a Data Warehouse from ResDac Files
 
 ```{toctree}
 ---
@@ -109,7 +109,9 @@ new columns are being added and column names are sometimes changed.
 To add insult to injury, for years prior to 2011 (1999-2010) we do not 
 have original files, but preprocessed files with patient summary 
 (called denominators) and admissions. They are in SAS 7BDAT format,
-however columns are also different for different years.
+however columns are also different for different years. Please
+refer to [Files for 1999 to 2010](#files-for-1999-to-2010) section
+for details.
 
 ### Storing raw data in the Database
 
@@ -139,36 +141,180 @@ When a table has no natural primary key (admission tables) we add a record
 number column. This column ha sno meaning but allows to trace a record to the 
 original data.
 
-
-
+(files-for-1999-to-2010)=
 ### Files for 1999 to 2010 
 
-These files are in SAS7BDAT format. They have been stored on RCE
-in two directories:
+Between 1999 and 2010, original Medicare ResDAC raw datasets are not available 
+to NSAPH. Instead, only partially preprocessed files provided by external 
+collaborators are available. These have been stored historically on RCE in two
+separate directories:
 
-* denominator
-* inpatient
+* denominator/
+* inpatient/
 
-One file per year. SAS7BDAT format contains metadata with column 
-names and types. We use this metadata to generate appropriate database schema.
+Each directory contains one file per year. These files use the SAS7BDAT
+format, which is a binary data format native to
+SAS analytics software. Each file embeds metadata about its schema 
+(i.e., field names, types, order), but column names
+and formats still vary from year to year.
 
-See the code for handling these files:
+To handle this variation:
 
-* [Metadata and data model](members/mcr_sas2yaml.rst)
-* [Ingesting data](members/mcr_sas2db.rst)
+* Each file is individually introspected using the SAS Introspector. 
+* A YAML schema is automatically generated and stored in a central
+  registry.
+* This schema is then used to create the appropriate database table for
+  ingestion.
+
+For more details on implementation:
+
+* See the [SAS Inrospector](members/mcr_sas2yaml.rst)  for how
+metadata is extracted. 
+* See the class [SAS Data Laoder](members/mcr_sas2db.rst) for how
+these files are ingested into the database.
+
+Because of schema variability:
+
+* Special heuristics are used to detect core fields like beneficiary ID (
+  bene_id), year, zip code, and state code, based
+  on a list of possible alternative names.
+* Missing expected columns (e.g., year) are sometimes generated using
+  information inferred from directory or file naming.
+
+Each resulting table includes:
+
+* A standardized structure with additional generated columns (e.g., record
+  ID, file name).
+* Uniform field naming conventions to support unioning across years.
+* Consistent indexing to support later join operations with downstream
+  tables (e.g., beneficiaries and admissions).
+
+> ⚠ Note: Because of the variability and limited provenance of these
+files, this step is distinct from the ResDAC
+ingestion workflow and is not based on FTS metadata.
+
+📚 Related References:
+
+:doc: members/mcr_sas2yaml for introspection logic
+:doc: members/mcr_sas2db for database file loading
+
+```{mermaid}
+graph TD;
+    A[SAS 7BDAT File] --> B[Inspect schema using SAS Introspector]
+    B --> C[Generate YAML metadata]
+    C --> D[Update main metadata registry: used for combining tables for all years]
+    C --> L[Generate DDL]
+    C --> E[Configure SAS Data Loader]
+    E --> F[Create SQL table]
+    L --> F
+    F --> I[Ingest data]
+    A --> I
+    I --> G[Add synthetic keys and indexes]
+```
 
 ### Files for Years 2011 and later
 
+#### Metadata Extraction
+                      
 These files are original files from ResDac. They come in Fixed Width Format
-(FWF). For each file the structure is described in File Transfer 
-Summary (FTS) file. Unfortunately these files are intended for reading by 
-a human and is difficult to parse automatically. A 
-[partial parser](members/fts2yaml.rst) that
-relies on a known file type is implemented in Python. The information 
-extarcted by the parser is used to:
+(FWF) typically using the .dat extension. Each data file 
+delivered by ResDAC is accompanied 
+by a plain-text metadata file known as a File Transfer Summary (FTS), 
+which describes the structure of the corresponding data file—including:
 
-* Generate data model (database schema)
-* Generate metadata for the FWF Reader
+* Column names
+* Data types (e.g., NUM, CHAR, DATE)
+* Column widths and formats
+* Record and file length metadata
+
+These FTS files are designed primarily for human readability 
+and are not machine-friendly. To address this, 
+the Dorieh includes a partial FTS parser:
+
+👉 [fts2yaml module](members/fts2yaml.rst)
+
+This parser performs the following:
+
+* Extracts structured metadata directly from .fts files
+* Converts it to a standardized YAML-based data model. 
+  * The YaML model describes table and column definitions.
+  * The YaML model includes types, column widths, descriptions,
+    and indexing hints
+* Supports both Medicare and Medicaid FTS formats
+
+Once the YAML schema is generated, it is used for:
+
+* Generating SQL DDL scripts to create staging tables
+* Feeding column layout metadata to the FWF reader (FWFReader)
+* Automatically identifying and indexing key fields such as:
+  * BENE_ID (Beneficiary ID)
+  * YEAR
+  * STATE
+  * ZIP
+  
+##### Supported File Types
+
+The parser supports:
+
+* Medicare files: identified based on prefixes like mbsf_abcd_XXXX.fts
+* Medicaid files: using filenames like maxdata_ps_STATE_YEAR.fts
+
+#### Ingestion process
+
+Once metadata extraction is complete, raw data ingestion 
+takes place using:
+
+* [MedicareDataLoader](members/mcr_data_loader) 
+   to parse FWF records row-by-row
+* [MedicareLoader](members/mcr_fts2db) to coordinate:
+  * FTS parsing
+  * Schema registration
+  * Loader selection (DAT or CSV)
+  * Data loading, indexing, and optimization (VACUUM)
+
+The MedicareLoader module orchestrates the end-to-end process, including:
+
+* Scanning input directories recursively for *.fts files
+* Parsing each FTS file to generate a schema
+* Locating the corresponding *.dat (or *.csv.gz) files
+* Triggering the appropriate file loader
+* Writing data to the database
+
+
+```{mermaid}
+graph TD;
+    A[SAS FTS file] --> B[YAML schema via fts2yaml]
+    B --> C[Extract layout for fixed-width reader]
+    B --> E[Generate DDL]
+    S[SAS DAT FILE] --> D 
+    C --> D[Run MedicareLoader calling MedicareDataLoader]
+    E --> D
+    D --> F[Load data to SQL table]
+    F --> G[Apply indexing and VACUUM]
+```
+
+#### Directory Layout Expectation
+
+To function correctly with the NSAPH ingestion pipeline, 
+the directory layout for ResDAC raw files must follow this structure:
+```
+project_root/
+└── medicare/
+    └── 2018/
+        ├── mbsf_abcd_2018.fts
+        ├── mbsf_abcd_2018.dat
+        └── medpar_2018.fts
+```
+
+Specifically:
+
+* Each year must have its own directory
+* Table names are inferred from FTS file name and containing year
+* The FTS filename must match the .dat or .csv.gz data file (just differing in extension)
+
+💡 For a full example of metadata schema outputs, see:
+
+[Generated Medicare data model](members/medicare_yaml)                 
 
 ## Combining raw files into a single view
 
