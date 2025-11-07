@@ -76,10 +76,10 @@ def index_method(c: str) -> (str,None):
     return None
 
 
-integer = re.compile("-?\d+")
-float_number = re.compile("(-?\d*)\.(\d+)([e|E][-|+]?\d+)?")
-exponent = re.compile("(-?\d+)([e|E][-|+]?\d+)")
-date = re.compile("([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))")
+integer = re.compile("-?\\d+")
+float_number = re.compile("(-?\\d*)\\.(\\d+)([e|E][-|+]?\\d+)?")
+exponent = re.compile("(-?\\d+)([e|E][-|+]?\\d+)")
+date = re.compile("([12]\\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\\d|3[01]))")
 
 SET_COLUMN = "UPDATE {table} SET {column} = {expression}"
 

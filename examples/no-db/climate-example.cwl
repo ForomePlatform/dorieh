@@ -59,7 +59,7 @@ inputs:
 
 steps:
   download:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/download.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl
     doc: Downloads NetCDF file with gridMET data from Atmospheric Composition Analysis Group
     in:
       year:
@@ -71,7 +71,7 @@ steps:
       - log
       - errors
   get_shapes:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/get_shapes.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl
     doc: |
       This step downloads Shape files from a given collection (TIGER/Line or GENZ) 
       and a geography (ZCTA or Counties) from the US Census website,
@@ -84,7 +84,7 @@ steps:
       date: date
     out: [shape_files]
   aggregate:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/aggregate_daily.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl
     doc: |
       This step aggregates gridded data from a NetCDF file over polygons from the provided shapefiles
     in:

@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.4.0",
+    version="0.4.2",
     url='https://github.com/NSAPH-Data-Platform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',
@@ -49,6 +49,7 @@ setup(
     },
     python_requires='>=3.12',
     install_requires=[
+        'aiohttp',
         'argcomplete>=1.12.1',
         'boto3',
         'certifi>=2024.7.4',
@@ -56,6 +57,7 @@ setup(
         'cwltool>=3.0.20200710214758',
         'deprecated',
         'fiona>=1.10.1',
+        'fsspec',
         'geopandas',
         'geopy',
         'GitPython',

@@ -581,6 +581,8 @@ class Domain:
 
     def is_populate_on_create(self, table) -> bool:
         definition = self.find(table)
+        if not "create" in definition:
+            return False
         create = definition["create"]
         if "populate" in create and create["populate"] is False:
             return False
