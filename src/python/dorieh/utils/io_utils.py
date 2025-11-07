@@ -60,7 +60,7 @@ from requests.models import Response
 
 
 logger = logging.getLogger(__name__)
-HEADERS = {'User-Agent': 'NSAPH Data warehouse app; https://github.com/NSAPH-Data-Platform'}
+HEADERS = {'User-Agent': 'NSAPH Data warehouse app; https://github.com/ForomePlatform'}
 
 
 def sizeof_fmt(num, suffix="B") -> str:

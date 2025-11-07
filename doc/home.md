@@ -165,7 +165,7 @@ provide direct access to the Dorieh components.
 
 ## Building Platform documentation
 
-The [documentation](https://nsaph-data-platform.github.io/dorieh/)
+The [documentation](https://foromeplatform.github.io/dorieh//)
 contains general documentation pages in 
 [MarkDown](https://www.markdownguide.org/) 
 format and a build script that goes over all other platform 
@@ -177,14 +177,14 @@ To build documentation:
 
 1. Clone Dorieh project:
 
-        git clone https://github.com/NSAPH-Data-Platform/dorieh.git
+        git clone https://github.com/ForomePlatform/dorieh.git
 2. Cd into the prject directory:
 
         cd dorieh
 3. Create virtual environment (e.g., named `.dorieh`):
 
         python -m venv .dorieh
-4. Run [build_documentation](https://github.com/NSAPH-Data-Platform/dorieh/blob/main/build_documentation.sh) shell script:
+4. Run [build_documentation](https://github.com/ForomePlatform/dorieh/blob/main/build_documentation.sh) shell script:
 
         source .dorieh/bin/activate && ./build_documentation.sh
 

@@ -41,7 +41,7 @@ It accepts 1 required and 3 optional input arguments:
 This architecture is reflected in this diagram: ![diagram](climate-example.png)
 
 
-The [source code for the workflow](https://github.com/NSAPH-Data-Platform/dorieh/blob/main/examples/climate-example.cwl)
+The [source code for the workflow](https://github.com/ForomePlatform/dorieh/blob/main/examples/climate-example.cwl)
 is in examples directory. See more details in 
 [CWL Workflow Specifications](https://www.commonwl.org/v1.2/Workflow.html)
 

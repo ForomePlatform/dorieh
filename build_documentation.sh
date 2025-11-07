@@ -1,5 +1,5 @@
 #!/bin/bash 
-namespace="NSAPH-Data-Platform"
+namespace="ForomePlatform"
 doc_source_branch="doc-builder"
 branch="main"
 

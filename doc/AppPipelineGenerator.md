@@ -45,7 +45,7 @@ Alternatively, *instead* of Docker one can set up a
 Once virtual environment is set up, you should install Dorieh packages
 in it with the following command:
 
-    pip install git+https://github.com/NSAPH-Data-Platform/nsaph-core-platform.git@develop
+    pip install git+https://github.com/ForomePlatform/nsaph-core-platform.git@develop
 
 
 ### Setup DBMS Server

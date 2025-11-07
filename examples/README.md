@@ -109,7 +109,7 @@ and look for output like:
 
 ```text
 =========>
-	{"version": "0.4.0", "url": "https://github.com/NSAPH-Data-Platform/dorieh", "commit": null}
+	{"version": "0.4.0", "url": "https://github.com/ForomePlatform/dorieh", "commit": null}
 <=========
 ```
 

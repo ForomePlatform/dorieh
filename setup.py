@@ -7,8 +7,8 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.4.2",
-    url='https://github.com/NSAPH-Data-Platform/dorieh',
+    version="0.4.3",
+    url='https://github.com/ForomePlatform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',
     author_email='mbouzinier@g.harvard.edu',
