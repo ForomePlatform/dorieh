@@ -39,7 +39,7 @@ class DomainDict:
         self.of = of
         self.basedir = os.path.dirname(os.path.abspath(of))
         self.options = options
-        self.link = self.options.get("fmt") in ["svg"]
+        self.link = True # self.options.get("fmt") in ["svg"]
         self.mode = RenderMode(options["mode"])
 
     def add(self, path):
