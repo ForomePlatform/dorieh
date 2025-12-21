@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.4.3",
+    version="0.4.4",
     url='https://github.com/ForomePlatform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',

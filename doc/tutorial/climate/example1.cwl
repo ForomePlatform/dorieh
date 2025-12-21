@@ -22,14 +22,14 @@ inputs:
     type: File
     default:
       class: File
-      location: https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/dev-0.4.x/examples/with-postgres/database.ini
+      location: https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/with-postgres/database.ini
   connection_name:
     type: string
     default: "localhost"
 
 steps:
   extract_year:
-    run: /Users/misha/harvard/projects/github/dorieh/src/cwl/parse_date.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/parse_date.cwl
     in:
       date: date
     out:
@@ -85,7 +85,7 @@ steps:
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/maindoc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -104,7 +104,7 @@ steps:
       registry:
         default:
           class: File
-          location: "/Users/misha/harvard/projects/github/dorieh/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -122,7 +122,7 @@ steps:
       registry:
         default:
           class: File
-          location: "/Users/misha/harvard/projects/github/dorieh/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:

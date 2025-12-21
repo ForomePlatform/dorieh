@@ -6,6 +6,11 @@ local:
 ---
 ```
 
+``{seealso}
+[Tutorial: Building a Bronze–Silver–Gold Climate Pipeline with Dorieh](tutorial/climate/building-climate-pipeline.md)
+```
+
+
 
 ## What the sample workflow is doing: aggregating a climate variable
 
