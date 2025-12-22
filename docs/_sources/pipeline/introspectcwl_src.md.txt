@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# introspect.cwl
+
+```{literalinclude} ../../src/cwl/introspect.cwl
+:linenos:
+:language: yaml
+```
+

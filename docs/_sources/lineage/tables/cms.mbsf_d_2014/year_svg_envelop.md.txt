@@ -1,0 +1,8 @@
+# Column cms.mbsf_d_2014.YEAR Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/cms.mbsf_d_2014/year.svg
+
+```
+
+

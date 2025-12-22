@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# initcoredb.cwl
+
+```{literalinclude} ../../src/cwl/initcoredb.cwl
+:linenos:
+:language: yaml
+```
+

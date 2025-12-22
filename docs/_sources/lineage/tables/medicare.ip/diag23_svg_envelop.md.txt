@@ -1,0 +1,8 @@
+# Column medicare.ip.diag23 Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag23.svg
+
+```
+
+

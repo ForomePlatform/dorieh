@@ -1,0 +1,262 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dorieh Census Pipelines &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="About" href="census_about.html" />
+    <link rel="prev" title="test_airnow.cwl" href="pipeline/test_airnowcwl_src.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="packages.html">Python Packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="utils.html">General purpose utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CoreLibrary.html">Data platform components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gis.html">GIS utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CMSLibrary.html">Health data manipulation tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epa.html">EPA tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasters.html">Raster data tools (climate and exposure)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Census data manipulation tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_about.html">About</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_env_set_up.html">Setting Up Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_quick_start.html">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_yaml.html">Census Variable File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_cached_data.html">Stored Data Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_start_guide.html">Working with the <code class="docutils literal notranslate"><span class="pre">census</span></code> Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemble.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemblecwl_src.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_density.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_densitycwl_src.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1.html">Sub-workflow <em>store</em> from census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1cwl_src.html">CWL sub-workflow for step <u><em>store</em></u> of workflow census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingestcwl_src.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolate.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolatecwl_src.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qc.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qccwl_src.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflow.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflowcwl_src.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_write.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_writecwl_src.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="domains.html">Data Domains</a></li>
+      <li class="breadcrumb-item active">Dorieh Census Pipelines</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/census.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dorieh-census-pipelines">
+<h1>Dorieh Census Pipelines<a class="headerlink" href="#dorieh-census-pipelines" title="Link to this heading"></a></h1>
+<p>The <cite>census</cite> package provides an interface with US Census Data, including the main API, some functionality for working with the TigerWeb API,
+and the FTP site for Tiger Shapefile Downloads. This package also includes a command line interface to enable quick running of standard workflows.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Introduction</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="census_about.html">About</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Researchers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="census_env_set_up.html">Setting Up Environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#setting-up-a-new-environment">Setting up a new environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#updating-an-existing-environment">Updating an existing environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#installing-census">Installing census</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#setting-up-census-api-key">Setting up Census API Key</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#registering-the-conda-kernal">Registering the Conda Kernal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_env_set_up.html#updating-the-environment-recipe">Updating the Environment Recipe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="census_quick_start.html">Quick Start</a></li>
+<li class="toctree-l1"><a class="reference internal" href="census_yaml.html">Census Variable File Structure</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="census_yaml.html#field-definitions">Field Definitions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_yaml.html#examples">Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_yaml.html#skipping-years-for-a-variable">Skipping years for a Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_yaml.html#census-variable-documentation">Census Variable Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="census_cached_data.html">Stored Data Files</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Developers</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="census_modules.html">Modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#query-py">query.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.query.get_census_data"><code class="docutils literal notranslate"><span class="pre">get_census_data()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.query.api_geography"><code class="docutils literal notranslate"><span class="pre">api_geography()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#assemble-data-py">assemble_data.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan"><code class="docutils literal notranslate"><span class="pre">DataPlan</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.assemble_data"><code class="docutils literal notranslate"><span class="pre">DataPlan.assemble_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.get_var_names"><code class="docutils literal notranslate"><span class="pre">DataPlan.get_var_names()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.add_geoid"><code class="docutils literal notranslate"><span class="pre">DataPlan.add_geoid()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.adjust_geo_fields"><code class="docutils literal notranslate"><span class="pre">DataPlan.adjust_geo_fields()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.create_missingness"><code class="docutils literal notranslate"><span class="pre">DataPlan.create_missingness()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.write_data"><code class="docutils literal notranslate"><span class="pre">DataPlan.write_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.calculate_densities"><code class="docutils literal notranslate"><span class="pre">DataPlan.calculate_densities()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.interpolate"><code class="docutils literal notranslate"><span class="pre">DataPlan.interpolate()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.quality_check"><code class="docutils literal notranslate"><span class="pre">DataPlan.quality_check()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.DataPlan.write_schema"><code class="docutils literal notranslate"><span class="pre">DataPlan.write_schema()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.VariableDef"><code class="docutils literal notranslate"><span class="pre">VariableDef</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.VariableDef.get_vars"><code class="docutils literal notranslate"><span class="pre">VariableDef.get_vars()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.VariableDef.do_query"><code class="docutils literal notranslate"><span class="pre">VariableDef.do_query()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.assemble_data.VariableDef.calculate_var"><code class="docutils literal notranslate"><span class="pre">VariableDef.calculate_var()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#census-info-py">census_info.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.census_info.get_endpoint"><code class="docutils literal notranslate"><span class="pre">get_endpoint()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.census_info.get_varlist"><code class="docutils literal notranslate"><span class="pre">get_varlist()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.census_info.set_api_key"><code class="docutils literal notranslate"><span class="pre">set_api_key()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.census_info.census_years"><code class="docutils literal notranslate"><span class="pre">census_years()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#tigerweb-py">tigerweb.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.tigerweb.get_area"><code class="docutils literal notranslate"><span class="pre">get_area()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.tigerweb.download_geometry"><code class="docutils literal notranslate"><span class="pre">download_geometry()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#fst2csv-py">fst2csv.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.cli.CensusContext"><code class="docutils literal notranslate"><span class="pre">CensusContext</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html#dorieh.census.cli.CensusContext.validate"><code class="docutils literal notranslate"><span class="pre">CensusContext.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#exceptions-py">exceptions.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.exceptions.CensusException"><code class="docutils literal notranslate"><span class="pre">CensusException</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#utils-py">utils.py</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_modules.html#dorieh.census.utils.show_api_keys"><code class="docutils literal notranslate"><span class="pre">show_api_keys()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="census_glossary.html">Glossary</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Old Doc</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="census_start_guide.html">Working with the <code class="docutils literal notranslate"><span class="pre">census</span></code> Package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="census_start_guide.html#running-the-command-line-interface">Running the Command Line Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_start_guide.html#main-python-workflow">Main Python Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census_start_guide.html#shapefile-downloads">Shapefile Downloads</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<section id="indices-and-tables">
+<h2>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pipeline/test_airnowcwl_src.html" class="btn btn-neutral float-left" title="test_airnow.cwl" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="census_about.html" class="btn btn-neutral float-right" title="About" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

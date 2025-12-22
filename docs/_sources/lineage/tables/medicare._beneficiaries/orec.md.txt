@@ -1,0 +1,39 @@
+# Column medicare._beneficiaries.orec
+
+## Overview of column orec in table medicare._beneficiaries 
+
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [medicare._beneficiaries](../medicare._beneficiaries.md)           |
+| Qualified name                | medicare._beneficiaries.orec  |
+| Datatype                      | string        |
+| Column type | computed |
+
+
+
+## Expressions
+
+```sql
+SELECT MAX(orec)
+```
+
+
+```{toctree}
+---
+maxdepth: 1
+hidden:
+---
+orec_svg_envelop.md
+```
+
+
+```{figure} orec.svg
+:align: center
+:alt: Column medicare._beneficiaries.orec Lineage SVG
+:target: orec_svg_envelop.html
+
+Data lineage for column medicare._beneficiaries.orec
+
+```
+
+

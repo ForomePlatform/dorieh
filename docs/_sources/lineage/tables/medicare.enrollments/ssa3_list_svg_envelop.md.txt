@@ -1,0 +1,8 @@
+# Column medicare.enrollments.ssa3_list Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.enrollments/ssa3_list.svg
+
+```
+
+

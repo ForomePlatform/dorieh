@@ -1,0 +1,1208 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dorieh EPA Package Description &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="EPA Toolkit Usage" href="epa_usage.html" />
+    <link rel="prev" title="Pipeline to ingest Monthly Pollution data downloaded from WashU Box" href="pipeline/wustl.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="packages.html">Python Packages</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="utils.html">General purpose utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CoreLibrary.html">Data platform components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gis.html">GIS utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CMSLibrary.html">Health data manipulation tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">EPA tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#package-contents">Package Contents</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="epa_usage.html">EPA Toolkit Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="epa_python_modules.html">Python modules used by dorieh.epa package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="epa_cwl_tools.html">CWL Tools and Workflows used by EPA pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#querying-data">Querying Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#airnow">AirNow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#aqs">AQS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rasters.html">Raster data tools (climate and exposure)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census data manipulation tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="domains.html">Data Domains</a></li>
+      <li class="breadcrumb-item active">Dorieh EPA Package Description</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/epa.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dorieh-epa-package-description">
+<h1>Dorieh EPA Package Description<a class="headerlink" href="#dorieh-epa-package-description" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="home.html"><span class="doc std std-doc">Documentation Home</span></a></p>
+<p>Toolkit for downloading and preprocessing of data provided by EPA</p>
+<p>Handles the following types of data:</p>
+<ul class="simple">
+<li><p>EPA AQS Data hosted at https://www.epa.gov/aqs and EPA AirNow data
+from https://docs.airnowapi.org/webservices</p>
+<ul>
+<li><p><a class="reference internal" href="pipeline/aqs.html"><span class="doc std std-doc">Pipeline</span></a></p></li>
+</ul>
+</li>
+<li><p>AirNow contains real-time up-to-date pollution data but is less reliable
+than AQS</p>
+<ul>
+<li><p><a class="reference internal" href="pipeline/airnow.html"><span class="doc std std-doc">Pipeline</span></a></p></li>
+</ul>
+</li>
+</ul>
+<section id="package-contents">
+<h2>Package Contents<a class="headerlink" href="#package-contents" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="epa_usage.html">EPA Toolkit Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="epa_usage.html#aqs-usage">AQS Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epa_usage.html#airnow-usage">AirNow Usage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="epa_python_modules.html">Python modules used by dorieh.epa package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="members/aqs.html">Main Class for EPA AQS Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs.html#dorieh.epa.aqs.AQS"><code class="docutils literal notranslate"><span class="pre">AQS</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs.html#dorieh.epa.aqs.AQS.collect_downloads"><code class="docutils literal notranslate"><span class="pre">AQS.collect_downloads()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs.html#dorieh.epa.aqs.AQS.is_downloaded"><code class="docutils literal notranslate"><span class="pre">AQS.is_downloaded()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs.html#dorieh.epa.aqs.AQS.clear"><code class="docutils literal notranslate"><span class="pre">AQS.clear()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs.html#dorieh.epa.aqs.AQS.download"><code class="docutils literal notranslate"><span class="pre">AQS.download()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/aqs_ds_def.html">Configuration Options for EPA AQS Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.NO2"><code class="docutils literal notranslate"><span class="pre">Parameter.NO2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.OZONE"><code class="docutils literal notranslate"><span class="pre">Parameter.OZONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.PM25"><code class="docutils literal notranslate"><span class="pre">Parameter.PM25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.MAX_TEMP"><code class="docutils literal notranslate"><span class="pre">Parameter.MAX_TEMP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.MIN_TEMP"><code class="docutils literal notranslate"><span class="pre">Parameter.MIN_TEMP</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.conjugate"><code class="docutils literal notranslate"><span class="pre">Parameter.conjugate()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.bit_length"><code class="docutils literal notranslate"><span class="pre">Parameter.bit_length()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.bit_count"><code class="docutils literal notranslate"><span class="pre">Parameter.bit_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.to_bytes"><code class="docutils literal notranslate"><span class="pre">Parameter.to_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.from_bytes"><code class="docutils literal notranslate"><span class="pre">Parameter.from_bytes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.as_integer_ratio"><code class="docutils literal notranslate"><span class="pre">Parameter.as_integer_ratio()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.is_integer"><code class="docutils literal notranslate"><span class="pre">Parameter.is_integer()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.real"><code class="docutils literal notranslate"><span class="pre">Parameter.real</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.imag"><code class="docutils literal notranslate"><span class="pre">Parameter.imag</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.numerator"><code class="docutils literal notranslate"><span class="pre">Parameter.numerator</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.denominator"><code class="docutils literal notranslate"><span class="pre">Parameter.denominator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Aggregation"><code class="docutils literal notranslate"><span class="pre">Aggregation</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Aggregation.ANNUAL"><code class="docutils literal notranslate"><span class="pre">Aggregation.ANNUAL</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Aggregation.DAILY"><code class="docutils literal notranslate"><span class="pre">Aggregation.DAILY</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext"><code class="docutils literal notranslate"><span class="pre">AQSContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.enum"><code class="docutils literal notranslate"><span class="pre">AQSContext.enum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.years"><code class="docutils literal notranslate"><span class="pre">AQSContext.years</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.compress"><code class="docutils literal notranslate"><span class="pre">AQSContext.compress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.parameters"><code class="docutils literal notranslate"><span class="pre">AQSContext.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.aggregation"><code class="docutils literal notranslate"><span class="pre">AQSContext.aggregation</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.destination"><code class="docutils literal notranslate"><span class="pre">AQSContext.destination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.merge_years"><code class="docutils literal notranslate"><span class="pre">AQSContext.merge_years</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.validate"><code class="docutils literal notranslate"><span class="pre">AQSContext.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_ds_def.html#classes-used-internally">Classes used Internally</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#abstract-context">Abstract Context</a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#argument">Argument</a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/aqs_ds_def.html#argument-cardinality-enum">Argument Cardinality Enum</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/aqs_expand.html">The aqs_expand Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_expand.html#dorieh.epa.aqs_expand.expand_data"><code class="docutils literal notranslate"><span class="pre">expand_data()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/aqs_tools.html">Internal scripts used for download tasks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.transfer"><code class="docutils literal notranslate"><span class="pre">transfer()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.add_monitor_key"><code class="docutils literal notranslate"><span class="pre">add_monitor_key()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.download_data"><code class="docutils literal notranslate"><span class="pre">download_data()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.destination_path"><code class="docutils literal notranslate"><span class="pre">destination_path()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.collect_annual_downloads"><code class="docutils literal notranslate"><span class="pre">collect_annual_downloads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.collect_daily_downloads"><code class="docutils literal notranslate"><span class="pre">collect_daily_downloads()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.epa.aqs_tools.collect_aqs_download_tasks"><code class="docutils literal notranslate"><span class="pre">collect_aqs_download_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.as_stream"><code class="docutils literal notranslate"><span class="pre">as_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.as_content"><code class="docutils literal notranslate"><span class="pre">as_content()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.as_csv_reader"><code class="docutils literal notranslate"><span class="pre">as_csv_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.file_as_stream"><code class="docutils literal notranslate"><span class="pre">file_as_stream()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.file_as_csv_reader"><code class="docutils literal notranslate"><span class="pre">file_as_csv_reader()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.fopen"><code class="docutils literal notranslate"><span class="pre">fopen()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.check_http_response"><code class="docutils literal notranslate"><span class="pre">check_http_response()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.download"><code class="docutils literal notranslate"><span class="pre">download()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.is_downloaded"><code class="docutils literal notranslate"><span class="pre">is_downloaded()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.write_csv"><code class="docutils literal notranslate"><span class="pre">write_csv()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.Collector"><code class="docutils literal notranslate"><span class="pre">Collector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.CSVWriter"><code class="docutils literal notranslate"><span class="pre">CSVWriter</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.ListCollector"><code class="docutils literal notranslate"><span class="pre">ListCollector</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.basename"><code class="docutils literal notranslate"><span class="pre">basename()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.is_readme"><code class="docutils literal notranslate"><span class="pre">is_readme()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.get_entries"><code class="docutils literal notranslate"><span class="pre">get_entries()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.get_readme"><code class="docutils literal notranslate"><span class="pre">get_readme()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.is_dir"><code class="docutils literal notranslate"><span class="pre">is_dir()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/aqs_tools.html#dorieh.utils.io_utils.CSVFileWrapper"><code class="docutils literal notranslate"><span class="pre">CSVFileWrapper</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/airnow.html">Main Class for EPA AirNow Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow.html#dorieh.epa.airnow.AirNow"><code class="docutils literal notranslate"><span class="pre">AirNow</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/airnow_downloader.html">Downloader for AirNow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader.download"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader.download()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader.dump_csv"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader.dump_csv()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader.write_csv_header"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader.write_csv_header()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader.process"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader.process()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_downloader.html#dorieh.epa.airnow_downloader.AirNowDownloader.download_range"><code class="docutils literal notranslate"><span class="pre">AirNowDownloader.download_range()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/airnow_ds_def.html">Configuration Options for EPA AirNow Package</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter"><code class="docutils literal notranslate"><span class="pre">Parameter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.NO2"><code class="docutils literal notranslate"><span class="pre">Parameter.NO2</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.OZONE"><code class="docutils literal notranslate"><span class="pre">Parameter.OZONE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.PM25"><code class="docutils literal notranslate"><span class="pre">Parameter.PM25</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.PM10"><code class="docutils literal notranslate"><span class="pre">Parameter.PM10</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.CO"><code class="docutils literal notranslate"><span class="pre">Parameter.CO</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.SO2"><code class="docutils literal notranslate"><span class="pre">Parameter.SO2</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext"><code class="docutils literal notranslate"><span class="pre">AirNowContext</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.parameters"><code class="docutils literal notranslate"><span class="pre">AirNowContext.parameters</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.destination"><code class="docutils literal notranslate"><span class="pre">AirNowContext.destination</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.enum"><code class="docutils literal notranslate"><span class="pre">AirNowContext.enum()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.start_date"><code class="docutils literal notranslate"><span class="pre">AirNowContext.start_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.years"><code class="docutils literal notranslate"><span class="pre">AirNowContext.years</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.compress"><code class="docutils literal notranslate"><span class="pre">AirNowContext.compress</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.end_date"><code class="docutils literal notranslate"><span class="pre">AirNowContext.end_date</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.reset"><code class="docutils literal notranslate"><span class="pre">AirNowContext.reset</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.qc"><code class="docutils literal notranslate"><span class="pre">AirNowContext.qc</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.cfg"><code class="docutils literal notranslate"><span class="pre">AirNowContext.cfg</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.shapes"><code class="docutils literal notranslate"><span class="pre">AirNowContext.shapes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.api_key"><code class="docutils literal notranslate"><span class="pre">AirNowContext.api_key</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.proxy"><code class="docutils literal notranslate"><span class="pre">AirNowContext.proxy</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.validate"><code class="docutils literal notranslate"><span class="pre">AirNowContext.validate()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_ds_def.html#classes-used-internally">Classes used Internally</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#abstract-context">Abstract Context</a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/airnow_ds_def.html#argument">Argument</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/airnow_setup.html">The airnow_setup Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_setup.html#dorieh.epa.airnow_setup.setup"><code class="docutils literal notranslate"><span class="pre">setup()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/airnow_shapes.html">The airnow_shapes Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/airnow_shapes.html#dorieh.epa.airnow_shapes.download_shapes"><code class="docutils literal notranslate"><span class="pre">download_shapes()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/epa_registry.html">The EPA Data Dictionary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.EPAConfig"><code class="docutils literal notranslate"><span class="pre">EPAConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.EPAConfig.output"><code class="docutils literal notranslate"><span class="pre">EPAConfig.output</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.EPAConfig.data"><code class="docutils literal notranslate"><span class="pre">EPAConfig.data</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.EPAConfig.table"><code class="docutils literal notranslate"><span class="pre">EPAConfig.table</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.Registry"><code class="docutils literal notranslate"><span class="pre">Registry</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.Registry.update"><code class="docutils literal notranslate"><span class="pre">Registry.update()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.Registry.create_domain_yaml"><code class="docutils literal notranslate"><span class="pre">Registry.create_domain_yaml()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="members/epa_registry.html#dorieh.epa.registry.Registry.create_table_yaml"><code class="docutils literal notranslate"><span class="pre">Registry.create_table_yaml()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="epa_cwl_tools.html">CWL Tools and Workflows used by EPA pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/aqscwl_src.html">aqs.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/download_aqs.html">Downloader of AQS Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_aqs.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_aqs.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_aqs.html#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/download_aqscwl_src.html">download_aqs.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/expand_aqs.html">Downloader of AQS Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/expand_aqs.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/expand_aqs.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/expand_aqs.html#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/expand_aqscwl_src.html">expand_aqs.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/sample_aqs.html">Sample arguments to AQS pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/sample_aqs.html#for-annual-no2-nitrogen-data">For annual NO2 (nitrogen) data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/sample_aqs.html#for-daily-pm25-small-particles-data">For daily PM25 (small particles) data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/test_aqs.html">Test harness for aqs.cwl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_aqs.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_aqs.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_aqs.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/test_aqscwl_src.html">test_aqs.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow_local_shapes.html">Full AirNowProcessing Pipeline (with shapefiles on local file system)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow_local_shapes.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow_local_shapes.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow_local_shapes.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow_local_shapes.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnow_local_shapescwl_src.html">airnow_local_shapes.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/airnowcwl_src.html">airnow.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/download_airnow.html">Downloader of AirNow Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_airnow.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_airnow.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/download_airnow.html#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/download_airnowcwl_src.html">download_airnow.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/sample_airnow.html">Sample arguments to AirNow pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/setup_airnow.html">Prepare environment for AirNow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/setup_airnow.html#description">Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/setup_airnow.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/setup_airnow.html#outputs">Outputs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/setup_airnowcwl_src.html">setup_airnow.cwl</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/test_airnow.html">Test harness for airnow.cwl</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_airnow.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_airnow.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/test_airnow.html#steps">Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipeline/test_airnowcwl_src.html">test_airnow.cwl</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="querying-data">
+<h2>Querying Data<a class="headerlink" href="#querying-data" title="Link to this heading"></a></h2>
+<section id="airnow">
+<h3>AirNow<a class="headerlink" href="#airnow" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Note: Negative values indicate missing data, therefore
+we need to specify a condition (value &gt; 0)</p>
+</div></blockquote>
+<section id="columns">
+<h4>Columns<a class="headerlink" href="#columns" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>COLUMN_NAME</p></th>
+<th class="head"><p>TYPE_NAME</p></th>
+<th class="head"><p>IS_NULLABLE</p></th>
+<th class="head"><p>IS_AUTOINCREMENT</p></th>
+<th class="head"><p>IS_GENERATEDCOLUMN</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>fullaqscode</p></td>
+<td><p>text</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>latitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>longitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>utc</p></td>
+<td><p>timestamp</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>parameter</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>unit</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>value</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>aqi</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>category</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>sitename</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>agencyname</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>intlaqscode</p></td>
+<td><p>text</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>zcta</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>state</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>fips5</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>statefp</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>countyfp</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>county</p></td>
+<td><p>int4</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>stusps</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>record</p></td>
+<td><p>varchar</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>monitor</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="sample-airnow-query-by-date">
+<h4>Sample AirNow query by date<a class="headerlink" href="#sample-airnow-query-by-date" title="Link to this heading"></a></h4>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">utc</span><span class="p">::</span><span class="nb">date</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mean_value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">minimum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">maximum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span>
+<span class="w">    </span><span class="n">epa</span><span class="p">.</span><span class="n">airnow_pm25_2022</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-airnow-query-aggregating-monthly">
+<h4>Sample AirNow query, aggregating monthly<a class="headerlink" href="#sample-airnow-query-aggregating-monthly" title="Link to this heading"></a></h4>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">MONTH</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">utc</span><span class="p">),</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mean_value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">minimum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">maximum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span>
+<span class="w">    </span><span class="n">epa</span><span class="p">.</span><span class="n">airnow_pm25_2022</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="sample-airnow-query-aggregating-by-state">
+<h4>Sample AirNow query, aggregating by State<a class="headerlink" href="#sample-airnow-query-aggregating-by-state" title="Link to this heading"></a></h4>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span>
+<span class="w">    </span><span class="n">stusps</span><span class="p">,</span>
+<span class="w">    </span><span class="k">AVG</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">mean_value</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MIN</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">minimum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">MAX</span><span class="p">(</span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">maximum</span><span class="p">,</span>
+<span class="w">    </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span>
+<span class="w">    </span><span class="n">epa</span><span class="p">.</span><span class="n">airnow_pm25_2022</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="n">value</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w">    </span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">1</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="k">desc</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="aqs">
+<h3>AQS<a class="headerlink" href="#aqs" title="Link to this heading"></a></h3>
+<p>See <a class="reference external" href="https://aqs.epa.gov/aqsweb/documents/AQS_Data_Dictionary.html">AQS Data Dictionary</a>
+for the description of the columns</p>
+<section id="annual-columns">
+<h4>Annual Columns<a class="headerlink" href="#annual-columns" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>COLUMN_NAME</p></th>
+<th class="head"><p>TYPE_NAME</p></th>
+<th class="head"><p>IS_NULLABLE</p></th>
+<th class="head"><p>IS_AUTOINCREMENT</p></th>
+<th class="head"><p>IS_GENERATEDCOLUMN</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>state_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>county_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>site_num</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>parameter_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>poc</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>latitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>longitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>datum</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>parameter_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>sample_duration</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>pollutant_standard</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>metric_used</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>method_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>year</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>units_of_measure</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>event_type</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>observation_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>observation_percent</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>completeness_indicator</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>valid_day_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>required_day_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>exceptional_data_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>null_data_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>primary_exceedance_count</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>secondary_exceedance_count</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>certification_indicator</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>num_obs_below_mdl</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>arithmetic_mean</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>arithmetic_standard_dev</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_1st_max_value</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_1st_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_2nd_max_value</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_2nd_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_3rd_max_value</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_3rd_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_4th_max_value</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_4th_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_1st_max_non_overlapping_value</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_1st_no_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_2nd_max_non_overlapping_value</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_2nd_no_max_datetime</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_99th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_98th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_95th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_90th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_75th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_50th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_10th_percentile</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>local_site_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>address</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>state_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>county_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>city_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>cbsa_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>date_of_last_change</p></td>
+<td><p>date</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>monitor</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>record</p></td>
+<td><p>varchar</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="daily-columns">
+<h4>Daily columns<a class="headerlink" href="#daily-columns" title="Link to this heading"></a></h4>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>COLUMN_NAME</p></th>
+<th class="head"><p>TYPE_NAME</p></th>
+<th class="head"><p>IS_NULLABLE</p></th>
+<th class="head"><p>SCOPE_TABLE</p></th>
+<th class="head"><p>IS_AUTOINCREMENT</p></th>
+<th class="head"><p>IS_GENERATEDCOLUMN</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>state_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>county_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>site_num</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>parameter_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>poc</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>latitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>longitude</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>datum</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>parameter_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>sample_duration</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>pollutant_standard</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>date_local</p></td>
+<td><p>date</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>units_of_measure</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>event_type</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>observation_count</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>observation_percent</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>arithmetic_mean</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>c_1st_max_value</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>c_1st_max_hour</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>aqi</p></td>
+<td><p>numeric</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>method_code</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>method_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>local_site_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>address</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>state_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>county_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>city_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>cbsa_name</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>date_of_last_change</p></td>
+<td><p>date</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-odd"><td><p>monitor</p></td>
+<td><p>varchar</p></td>
+<td><p>YES</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+<tr class="row-even"><td><p>record</p></td>
+<td><p>varchar</p></td>
+<td><p>NO</p></td>
+<td><p>(null)</p></td>
+<td><p>NO</p></td>
+<td><p>NO</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="pipeline/wustl.html" class="btn btn-neutral float-left" title="Pipeline to ingest Monthly Pollution data downloaded from WashU Box" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="epa_usage.html" class="btn btn-neutral float-right" title="EPA Toolkit Usage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dorieh.cms.tools.mcr_fts2db &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+      <li class="breadcrumb-item active">dorieh.cms.tools.mcr_fts2db</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dorieh.cms.tools.mcr_fts2db</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Raw Data Loader for Medicare files provided by ResDac.</span>
+<span class="sd">NSAPH Medicare pipeline uses this module for years 2011 and later.</span>
+
+<span class="sd">This module defines a command-line utility to ingest raw Medicare data</span>
+<span class="sd">delivered in File Transfer Summary (FTS) and fixed-width data (DAT) format,</span>
+<span class="sd">as provided by ResDAC for years 2011 and later.</span>
+
+<span class="sd">Overview:</span>
+
+<span class="sd">Searches recursively for all FTS (*.fts) files under specified input path(s)</span>
+<span class="sd">Parses each FTS file using the :class:~dorieh.cms.fts2yaml.MedicareFTS parser</span>
+<span class="sd">Determines the appropriate database schema and metadata for the associated *.dat or *.csv.gz file</span>
+<span class="sd">Loads data into the database using :class:~dorieh.cms.mcr_data_loader.MedicareDataLoader</span>
+<span class="sd">for .dat files or a generic :class:~dorieh.platform.loader.data_loader.DataLoader for CSV files</span>
+<span class="sd">Applies indexing and VACUUM optimization after insertion</span>
+
+<span class="sd">Usage Notes:</span>
+
+<span class="sd">This loader requires that data be organized into year-based subfolders. For example: my_data/medicare/2018/*.fts</span>
+<span class="sd">The name of the parent directory of the FTS file must be a 4-digit year (e.g., 2011, 2018).</span>
+<span class="sd">This requirement applies to both the data and FTS file location to establish table naming conventions correctly.</span>
+<span class="sd">Key Components:</span>
+
+<span class="sd">:class:MedicareLoader — orchestrates ingestion logic</span>
+<span class="sd">:class:~dorieh.cms.mcr_data_loader.MedicareDataLoader — fixed-width reader-based data loader</span>
+<span class="sd">:class:~dorieh.platform.loader.data_loader.DataLoader — generic CSV reader-based loader</span>
+
+
+<span class="sd">See also:</span>
+
+<span class="sd">:doc:members/fts2yaml — for metadata extraction from FTS</span>
+<span class="sd">:doc:members/mcr_data_loader — for Medicare file reading</span>
+<span class="sd">:doc:members/medicare_yaml — for generated schema definition</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1">#  Copyright (c) 2022. Harvard University</span>
+<span class="c1">#</span>
+<span class="c1">#  Developed by Research Software Engineering,</span>
+<span class="c1">#  Faculty of Arts and Sciences, Research Computing (FAS RC)</span>
+<span class="c1">#  Author: Michael A Bouzinier</span>
+<span class="c1">#</span>
+<span class="c1">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1">#  you may not use this file except in compliance with the License.</span>
+<span class="c1">#  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#         http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#  See the License for the specific language governing permissions and</span>
+<span class="c1">#  limitations under the License.</span>
+<span class="c1">#</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">copy</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">logging</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">List</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform</span><span class="w"> </span><span class="kn">import</span> <span class="n">init_logging</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.loader.index_builder</span><span class="w"> </span><span class="kn">import</span> <span class="n">IndexBuilder</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.cms.mcr_data_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">MedicareDataLoader</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.cms.registry</span><span class="w"> </span><span class="kn">import</span> <span class="n">Registry</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.cms.create_schema_config</span><span class="w"> </span><span class="kn">import</span> <span class="n">CMSSchema</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.cms.fts2yaml</span><span class="w"> </span><span class="kn">import</span> <span class="n">mcr_type</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.loader.data_loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">DataLoader</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.loader</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoaderConfig</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.loader.vacuum</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vacuum</span>
+
+
+<div class="viewcode-block" id="MedicareLoader">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader">[docs]</a>
+<span class="k">class</span><span class="w"> </span><span class="nc">MedicareLoader</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    High-level loader for raw Medicare data files provided by ResDac, using FTS and DAT.</span>
+
+<span class="sd">    The loader walks the input directory to locate all *.fts (File Transfer Summary) files,</span>
+<span class="sd">    and for each one:</span>
+
+<span class="sd">    - Parses its metadata and adds to the schema registry (YAML)</span>
+<span class="sd">    - Identifies corresponding *.dat or *.csv.gz data files</span>
+<span class="sd">    - Uses :class:`~dorieh.cms.mcr_data_loader.MedicareDataLoader` to load FWF files</span>
+<span class="sd">        or :class:`~dorieh.platform.loader.data_loader.DataLoader` for CSV files</span>
+<span class="sd">    - Applies schema-specific indexing and vacuum optimization</span>
+
+<span class="sd">    This loader is compatible with ETL processing of Medicare data for 2011 and later.</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="MedicareLoader.process">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.process">[docs]</a>
+    <span class="nd">@classmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="bp">cls</span><span class="p">):</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">MedicareLoader</span><span class="p">()</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">traverse</span><span class="p">(</span><span class="n">loader</span><span class="o">.</span><span class="n">pattern</span><span class="p">)</span></div>
+
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Initializes MedicareLoader object with default CMS domain context.</span>
+
+<span class="sd">        Sets the input pattern and prepares the LoaderConfig context, including</span>
+<span class="sd">        root directory, flags like incremental/sloppy, and path normalization.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="s2">&quot;**/*.fts&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span> <span class="o">=</span> <span class="n">LoaderConfig</span><span class="p">(</span><span class="vm">__doc__</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">domain</span> <span class="o">=</span> <span class="s2">&quot;cms&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">set_empty_args</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">data</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+            <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">else</span> <span class="n">f</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">data</span>
+        <span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">incremental</span> <span class="ow">and</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">sloppy</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">reset</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">return</span>
+
+<div class="viewcode-block" id="MedicareLoader.traverse">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.traverse">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">traverse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">pattern</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Searches directories recursively using the given pattern to find all FTS files.</span>
+<span class="sd">        For each matching file, initiates schema inference and data ingestion via handle().</span>
+
+<span class="sd">        :param pattern:    pattern (str): Glob pattern to match files (e.g., &quot;**/*.fts&quot;)</span>
+<span class="sd">        :return:</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">,</span> <span class="nb">list</span><span class="p">):</span>
+            <span class="n">dirs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">dirs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">root_dir</span><span class="p">]</span>
+        <span class="n">files</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">dirs</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">files</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">pattern</span><span class="p">),</span> <span class="n">recursive</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">files</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">handle_empty</span><span class="p">()</span>
+        <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">handle</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">x</span><span class="p">:</span>
+                <span class="n">logging</span><span class="o">.</span><span class="n">exception</span><span class="p">(</span><span class="s2">&quot;Error handling </span><span class="si">{}</span><span class="s2">. Ignoring.&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">f</span><span class="p">)))</span>
+        <span class="k">return</span></div>
+
+
+<div class="viewcode-block" id="MedicareLoader.handle_empty">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle_empty">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle_empty</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Handles the case where no FTS files are found.</span>
+
+<span class="sd">        Creates an empty registry file (if not already present) and logs a message.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        
+        <span class="n">init_logging</span><span class="p">()</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;No files to process&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">registry</span><span class="p">):</span>
+            <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">registry</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">r</span><span class="p">:</span>
+                <span class="n">r</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;# Empty</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> </div>
+
+
+<div class="viewcode-block" id="MedicareLoader.handle">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.handle">[docs]</a>
+    <span class="k">def</span><span class="w"> </span><span class="nf">handle</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fts_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Loads a Medicare FTS/DAT or FTS/CSV pair into the database.</span>
+
+<span class="sd">        - Extracts the year based on the immediate parent directory of the FTS file</span>
+<span class="sd">        - Determines the file type from FTS file name</span>
+<span class="sd">        - Updates the schema registry</span>
+<span class="sd">        - Dispatches to the appropriate loader (.dat or .csv.gz)</span>
+
+<span class="sd">        :param fts_path:  Full path to an FTS metadata file.</span>
+
+<span class="sd">        Raises:</span>
+<span class="sd">        ValueError: If year could not be inferred or data file is missing.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">basedir</span><span class="p">,</span> <span class="n">fname</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">fts_path</span><span class="p">)</span>
+        <span class="n">_</span><span class="p">,</span> <span class="n">ydir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">basedir</span><span class="p">)</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ydir</span><span class="p">)</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="s2">&quot;Immediate parent directory &#39;</span><span class="si">{}</span><span class="s2">&#39; of </span><span class="si">{}</span><span class="s2"> was expected to be named&quot;</span>
+                <span class="o">+</span> <span class="s2">&quot; as 4 digit year (YYYY), e.g. 2011 or 2018&quot;</span>
+                <span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ydir</span><span class="p">,</span> <span class="n">fts_path</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="n">f</span><span class="p">,</span> <span class="n">ext</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">fts_path</span><span class="p">)</span>
+        <span class="n">ttype</span> <span class="o">=</span> <span class="n">mcr_type</span><span class="p">(</span><span class="n">fname</span><span class="p">)</span>
+        <span class="n">ctxt</span> <span class="o">=</span> <span class="n">CMSSchema</span><span class="p">(</span><span class="kc">None</span><span class="p">,</span>
+                         <span class="n">path</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">registry</span><span class="p">,</span>
+                         <span class="n">inpt</span><span class="o">=</span><span class="n">fts_path</span><span class="p">,</span>
+                         <span class="n">tp</span><span class="o">=</span> <span class="s2">&quot;medicare&quot;</span><span class="p">,</span>
+                         <span class="n">reset</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="n">reg</span> <span class="o">=</span> <span class="n">Registry</span><span class="p">(</span><span class="n">ctxt</span><span class="p">)</span>
+        <span class="n">reg</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+        <span class="n">context</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">deepcopy</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">context</span><span class="o">.</span><span class="n">table</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{}</span><span class="s2">_</span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">ttype</span><span class="p">,</span> <span class="n">year</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;.csv.gz&quot;</span><span class="p">):</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader_for_csv</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;.csv.gz&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">glob</span><span class="o">.</span><span class="n">glob</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2">*.dat&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">f</span><span class="p">)):</span>  <span class="c1">#os.path.isfile(f + &quot;.dat&quot;):</span>
+            <span class="n">loader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">loader_for_fwf</span><span class="p">(</span><span class="n">context</span><span class="p">,</span> <span class="n">fts_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Data file was not found: &quot;</span> <span class="o">+</span> <span class="n">f</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">context</span><span class="o">.</span><span class="n">dryrun</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dry run: &quot;</span> <span class="o">+</span> <span class="n">fts_path</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">loader</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+            <span class="n">IndexBuilder</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span>
+            <span class="n">Vacuum</span><span class="p">(</span><span class="n">context</span><span class="p">)</span><span class="o">.</span><span class="n">run</span><span class="p">()</span></div>
+
+
+<div class="viewcode-block" id="MedicareLoader.loader_for_csv">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_csv">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loader_for_csv</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">LoaderConfig</span><span class="p">,</span> <span class="n">data_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a generic DataLoader for a delimited CSV (usually .csv.gz) file.</span>
+<span class="sd">        </span>
+<span class="sd">        :param context:   Configuration object with metadata and paths</span>
+<span class="sd">        :param data_path:   Path to the input CSV file</span>
+<span class="sd">        :return:   Configured loader for tab-delimited CSV</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">pattern</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot;**&quot;</span><span class="p">,</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">data_path</span><span class="p">))]</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">DataLoader</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="n">loader</span><span class="o">.</span><span class="n">csv_delimiter</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span>
+        <span class="k">return</span> <span class="n">loader</span></div>
+
+
+<div class="viewcode-block" id="MedicareLoader.loader_for_fwf">
+<a class="viewcode-back" href="../../../../members/mcr_fts2db.html#dorieh.cms.tools.mcr_fts2db.MedicareLoader.loader_for_fwf">[docs]</a>
+    <span class="nd">@staticmethod</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">loader_for_fwf</span><span class="p">(</span><span class="n">context</span><span class="p">:</span> <span class="n">LoaderConfig</span><span class="p">,</span> <span class="n">fts_path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">DataLoader</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Creates a MedicareDataLoader instance for a FTS/DAT file pair.</span>
+
+<span class="sd">        :param context:  Configuration object with metadata and paths</span>
+<span class="sd">        :param fts_path:  Path to the associated FTS metadata file</span>
+<span class="sd">        :return: Loader ready to ingest fixed-width records</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+
+        <span class="n">context</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="n">fts_path</span><span class="p">]</span>
+        <span class="n">loader</span> <span class="o">=</span> <span class="n">MedicareDataLoader</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">loader</span></div>
+</div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">MedicareLoader</span><span class="o">.</span><span class="n">process</span><span class="p">()</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

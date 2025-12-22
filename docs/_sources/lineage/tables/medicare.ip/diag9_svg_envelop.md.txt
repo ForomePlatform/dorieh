@@ -1,0 +1,8 @@
+# Column medicare.ip.diag9 Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/diag9.svg
+
+```
+
+

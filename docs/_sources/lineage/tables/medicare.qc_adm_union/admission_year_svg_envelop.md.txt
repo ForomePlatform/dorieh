@@ -1,0 +1,8 @@
+# Column medicare.qc_adm_union.admission_year Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/admission_year.svg
+
+```
+
+

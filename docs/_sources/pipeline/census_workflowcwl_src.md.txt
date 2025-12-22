@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# census_workflow.cwl
+
+```{literalinclude} ../../src/cwl/census_workflow.cwl
+:linenos:
+:language: yaml
+```
+

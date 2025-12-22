@@ -1,0 +1,8 @@
+# Column medicare.admissions.dschrgcd Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/dschrgcd.svg
+
+```
+
+

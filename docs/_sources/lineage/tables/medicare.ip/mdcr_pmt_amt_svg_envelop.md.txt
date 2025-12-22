@@ -1,0 +1,8 @@
+# Column medicare.ip.mdcr_pmt_amt Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/mdcr_pmt_amt.svg
+
+```
+
+

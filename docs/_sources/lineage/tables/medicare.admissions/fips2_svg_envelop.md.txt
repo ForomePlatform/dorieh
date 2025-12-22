@@ -1,0 +1,8 @@
+# Column medicare.admissions.fips2 Lineage SVG
+
+```{raw} html
+:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/fips2.svg
+
+```
+
+

@@ -1,0 +1,11 @@
+---
+orphan: true
+---
+
+# aggregate_daily.cwl
+
+```{literalinclude} ../../src/cwl/aggregate_daily.cwl
+:linenos:
+:language: yaml
+```
+

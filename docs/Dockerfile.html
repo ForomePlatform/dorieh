@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dockerfile for building image for Intel and AMD CPUs &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dockerfile for building image for Intel and AMD CPUs</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/Dockerfile.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dockerfile-for-building-image-for-intel-and-amd-cpus">
+<h1>Dockerfile for building image for Intel and AMD CPUs<a class="headerlink" href="#dockerfile-for-building-image-for-intel-and-amd-cpus" title="Link to this heading"></a></h1>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1"># Licensed to the Apache Software Foundation (ASF) under one</span>
+<span class="linenos"> 2</span><span class="c1"># or more contributor license agreements.  See the NOTICE file</span>
+<span class="linenos"> 3</span><span class="c1"># distributed with this work for additional information</span>
+<span class="linenos"> 4</span><span class="c1"># regarding copyright ownership.  The ASF licenses this file</span>
+<span class="linenos"> 5</span><span class="c1"># to you under the Apache License, Version 2.0 (the</span>
+<span class="linenos"> 6</span><span class="c1"># &quot;License&quot;); you may not use this file except in compliance</span>
+<span class="linenos"> 7</span><span class="c1"># with the License.  You may obtain a copy of the License at</span>
+<span class="linenos"> 8</span><span class="c1">#</span>
+<span class="linenos"> 9</span><span class="c1">#   http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="linenos">10</span><span class="c1">#</span>
+<span class="linenos">11</span><span class="c1"># Unless required by applicable law or agreed to in writing,</span>
+<span class="linenos">12</span><span class="c1"># software distributed under the License is distributed on an</span>
+<span class="linenos">13</span><span class="c1"># &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY</span>
+<span class="linenos">14</span><span class="c1"># KIND, either express or implied.  See the License for the</span>
+<span class="linenos">15</span><span class="c1"># specific language governing permissions and limitations</span>
+<span class="linenos">16</span><span class="c1"># under the License.</span>
+<span class="linenos">17</span><span class="c1">#</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c1"># DOCKER file for building container  for ARM</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="l l-Scalar l-Scalar-Plain">FROM ubuntu:24.04</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="l l-Scalar l-Scalar-Plain">RUN apt-get update &amp;&amp; apt-get install -y \</span>
+<span class="linenos">24</span><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">postgresql-client nodejs npm g++ \</span>
+<span class="linenos">25</span><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">gdal-bin libgdal-dev libgeos-dev \</span>
+<span class="linenos">26</span><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">python3-pip python3-dev git \</span>
+<span class="linenos">27</span><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">r-base r-base-dev &amp;&amp; \</span>
+<span class="linenos">28</span><span class="w">    </span><span class="l l-Scalar l-Scalar-Plain">apt-get clean &amp;&amp; rm -rf /var/lib/apt/lists/*</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="l l-Scalar l-Scalar-Plain">RUN ln -s /usr/bin/python3 /usr/bin/python</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="l l-Scalar l-Scalar-Plain"># Only run this if you know you need newer versions</span>
+<span class="linenos">33</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install --upgrade pip setuptools wheel --break-system-packages --ignore-installed</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="l l-Scalar l-Scalar-Plain">WORKDIR /opt/local/</span>
+<span class="linenos">36</span><span class="l l-Scalar l-Scalar-Plain">COPY requirements.txt requirements.txt</span>
+<span class="linenos">37</span><span class="l l-Scalar l-Scalar-Plain">RUN pip install -r requirements.txt --break-system-packages</span>
+</pre></div>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
