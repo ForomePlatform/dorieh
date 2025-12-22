@@ -138,8 +138,7 @@ running aggregations. Corresponding tools are:
 The initial workflow skeleton can look like:
 
 :::{toggle} Expand Code Block
-```
-{literalinclude} steps/step1/example1.cwl
+```{literalinclude} steps/step1/example1.cwl
 :linenos:
 :language: yaml
 ```
