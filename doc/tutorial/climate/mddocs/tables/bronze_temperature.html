@@ -1,0 +1,46 @@
+<h1 id="table-bronze_temperature">Table bronze_temperature</h1>
+<h2 id="overview-for-bronze_temperature">Overview for
+bronze_temperature</h2>
+<p>Maximum daily temperature for US Zip Code Tabulation Areas</p>
+<p>Primary Key: zcta, date</p>
+<details>
+<summary>
+SQL/DDL Statement
+</summary>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">TABLE</span>  bronze_temperature (</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    tmmx <span class="dt">FLOAT</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span> <span class="dt">DATE</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    zcta <span class="dt">INT</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">PRIMARY</span> <span class="kw">KEY</span> (zcta, <span class="dt">date</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>);</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMENT</span> <span class="kw">ON</span> <span class="kw">table</span> bronze_temperature <span class="kw">IS</span> <span class="st">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 17:12:48.657861&#39;</span>;</span></code></pre></div>
+</details>
+<hr />
+<h2 id="columns">Columns:</h2>
+<table>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Column Type</th>
+<th>Datatype</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="bronze_temperature/date.html">date</a></td>
+<td></td>
+<td>date</td>
+</tr>
+<tr>
+<td><a href="bronze_temperature/tmmx.html">tmmx</a></td>
+<td></td>
+<td>float</td>
+</tr>
+<tr>
+<td><a href="bronze_temperature/zcta.html">zcta</a></td>
+<td></td>
+<td>int</td>
+</tr>
+</tbody>
+</table>

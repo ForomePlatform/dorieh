@@ -1,0 +1,23 @@
+digraph {
+			"gold_temperature_by_state.date" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>gold_temperature_by_state.date</b></td></tr>
+
+</TABLE>
+>,shape=box,URL="../gold_temperature_by_state/date.html",target=_blank];
+			"silver_temperature.date" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.date</b></td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/date.html",target=_blank];
+			"bronze_temperature.date" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>bronze_temperature.date</b></td></tr>
+
+</TABLE>
+>,shape=box,URL="../bronze_temperature/date.html",target=_blank];
+
+	"silver_temperature.date" -> "gold_temperature_by_state.date" [label="	  Aggregated On us_state, date",penwidth=5,color=blue,labelfloat=True];
+	"bronze_temperature.date" -> "silver_temperature.date" [label=	"  Transformed",penwidth=1,color=black,labelfloat=True];
+}

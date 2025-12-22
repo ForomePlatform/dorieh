@@ -1,0 +1,19 @@
+digraph {
+			"silver_temperature.city" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.city</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Name of a representative city for the<br/>ZIP Code Tabulation Area (ZCTA);  for<br/>ZCTAs spanning multiple cities, this is<br/>the city covering the largest  portion<br/>of the area or population.</td></tr>
+	<tr><td align = "left">public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/city.html",target=_blank];
+			"bronze_temperature.zcta" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>bronze_temperature.zcta</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Zip Code for a Zip Code Tabulation Area</td></tr>
+
+</TABLE>
+>,shape=box,URL="../bronze_temperature/zcta.html",target=_blank];
+
+	"bronze_temperature.zcta" -> "silver_temperature.city" [label=	"  Transformed",penwidth=1,color=black,labelfloat=True];
+}

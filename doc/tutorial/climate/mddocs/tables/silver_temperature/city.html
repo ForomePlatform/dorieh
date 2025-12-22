@@ -1,0 +1,37 @@
+<h1 id="column-silver_temperature.city">Column
+silver_temperature.city</h1>
+<h2 id="overview-of-column-city-in-table-silver_temperature">Overview of
+column city in table silver_temperature</h2>
+<table>
+<colgroup>
+<col style="width: 56%" />
+<col style="width: 43%" />
+</colgroup>
+<tbody>
+<tr>
+<td>Table</td>
+<td><a href="../silver_temperature.html">silver_temperature</a></td>
+</tr>
+<tr>
+<td>Qualified name</td>
+<td>silver_temperature.city</td>
+</tr>
+<tr>
+<td>Datatype</td>
+<td>VARCHAR(128)</td>
+</tr>
+<tr>
+<td>Column type</td>
+<td>computed</td>
+</tr>
+</tbody>
+</table>
+<p>Name of a representative city for the ZIP Code Tabulation Area
+(ZCTA); for ZCTAs spanning multiple cities, this is the city covering
+the largest portion of the area or population.</p>
+<h2 id="expressions">Expressions</h2>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span> <span class="kw">public</span>.zip_to_city(<span class="fu">EXTRACT</span>(<span class="dt">YEAR</span> <span class="kw">FROM</span> <span class="dt">date</span>):<span class="ch">:INT</span>, zcta)</span></code></pre></div>
+<hr />
+<object data="/Users/misha/harvard/projects/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/city.svg" type="image/svg+xml">
+</object>
