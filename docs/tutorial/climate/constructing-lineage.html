@@ -27,7 +27,9 @@
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
-    <link rel="search" title="Search" href="../../search.html" /> 
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Data Platform Internals" href="../../guts.html" />
+    <link rel="prev" title="Tutorial: Documenting a workflow" href="documenting-a-workflow.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,7 +52,7 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../home.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../rationale.html">What is Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
@@ -58,7 +60,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">Dorieh Tutorials</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="building-climate-pipeline.html">Building a data preparation Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="documenting-a-workflow.html">Documenting a Workflow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Constructing data dictionaries and lineage graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-we-can-generate">What we can generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#output-formats-and-modes">Output Formats and Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#running-the-tool">Running the tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exploring-the-artifacts">Exploring the Artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enriching-the-data-dictionary">Enriching the Data Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#lineage-diagram-for-medicare-data">Lineage Diagram for Medicare data</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../adding_data.html">Adding more data</a></li>
@@ -81,6 +96,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../Tutorials.html">Dorieh Tutorials</a></li>
       <li class="breadcrumb-item active">Tutorial: Constructing data dictionaries and lineage graphs</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorial/climate/constructing-lineage.md.txt" rel="nofollow"> View page source</a>
@@ -99,13 +115,213 @@ lineage graph for a climate analysis workflow built in the
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="documenting-a-workflow.html"><span class="std std-doc">Document a workflow</span></a></p>
+<p><a class="reference internal" href="../../members/domain_dictionary.html"><span class="std std-doc">The Data Dictionary Generation tool</span></a></p>
 </div>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#what-we-can-generate" id="id1">What we can generate</a></p></li>
+<li><p><a class="reference internal" href="#output-formats-and-modes" id="id2">Output Formats and Modes</a></p></li>
+<li><p><a class="reference internal" href="#running-the-tool" id="id3">Running the tool</a></p></li>
+<li><p><a class="reference internal" href="#exploring-the-artifacts" id="id4">Exploring the Artifacts</a></p></li>
+<li><p><a class="reference internal" href="#enriching-the-data-dictionary" id="id5">Enriching the Data Dictionary</a></p></li>
+<li><p><a class="reference internal" href="#lineage-diagram-for-medicare-data" id="id6">Lineage Diagram for Medicare data</a></p></li>
+</ul>
+</nav>
+<section id="what-we-can-generate">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">What we can generate</a><a class="headerlink" href="#what-we-can-generate" title="Link to this heading"></a></h2>
+<p>Dorieh provides an integrated dictionary and lineage utility that
+analyzes your workflow and domain definition file (such as
+example1_model.yml) to automatically generate
+a full suite of human-and machine-readable documentation with a comprehensive data
+dictionary along with graphical lineage diagrams — both at the table
+and the column level.</p>
+<p>The content of example1_model.yml</p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="nt">quoting</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unless</span><span class="nv"> </span><span class="s">excluded&quot;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Data</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">transformation</span><span class="nv"> </span><span class="s">tutorial&quot;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="nt">tables</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nt">bronze_temperature</span><span class="p">:</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="no">Maximum daily temperature for US Zip Code Tabulation Areas</span>
+<span class="linenos">10</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tmmx</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">13</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Maximum temperature variable from the TerraClimate dataset in K</span>
+<span class="linenos">14</span><span class="w">            </span><span class="nt">reference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands</span>
+<span class="linenos">15</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">date</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">17</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zcta</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Zip Code for a Zip Code Tabulation Area</span>
+<span class="linenos">19</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="linenos">20</span><span class="w">      </span><span class="nt">primary_key</span><span class="p">:</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zcta</span>
+<span class="linenos">22</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">23</span><span class="w">    </span><span class="nt">silver_temperature</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">25</span><span class="w">        </span><span class="no">Maximum daily temperature for US Zip Code Tabulation Areas, enriched and harmonized</span>
+<span class="linenos">26</span><span class="w">      </span><span class="nt">create</span><span class="p">:</span>
+<span class="linenos">27</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">view</span>
+<span class="linenos">28</span><span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bronze_temperature</span>
+<span class="linenos">29</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
+<span class="linenos">30</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tmmx</span>
+<span class="linenos">31</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">32</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zcta</span>
+<span class="linenos">33</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">temperature_in_C</span><span class="p">:</span>
+<span class="linenos">34</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">35</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature in Celsius</span>
+<span class="linenos">36</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">(tmmx - 273.15)</span>
+<span class="linenos">37</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">temperature_in_F</span><span class="p">:</span>
+<span class="linenos">38</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">39</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature in Fahrenheit</span>
+<span class="linenos">40</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">((tmmx - 273.15)*9/5 + 32)</span>
+<span class="linenos">41</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">us_state</span><span class="p">:</span>
+<span class="linenos">42</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(2)</span>
+<span class="linenos">43</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">US State</span>
+<span class="linenos">44</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_state(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
+<span class="linenos">45</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">city</span><span class="p">:</span>
+<span class="linenos">46</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(128)</span>
+<span class="linenos">47</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="linenos">48</span><span class="w">              </span><span class="no">Name of a representative city for the ZIP Code Tabulation Area (ZCTA); </span>
+<span class="linenos">49</span><span class="w">              </span><span class="no">for ZCTAs spanning multiple cities, this is the city covering the largest </span>
+<span class="linenos">50</span><span class="w">              </span><span class="no">portion of the area or population.</span>
+<span class="linenos">51</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_city(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="nt">gold_temperature_by_state</span><span class="p">:</span>
+<span class="linenos">54</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">55</span><span class="w">        </span><span class="no">Temperature variations by US State</span>
+<span class="linenos">56</span><span class="w">      </span><span class="nt">create</span><span class="p">:</span>
+<span class="linenos">57</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">materialized view</span>
+<span class="linenos">58</span><span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">silver_temperature</span>
+<span class="linenos">59</span><span class="w">        </span><span class="nt">group by</span><span class="p">:</span>
+<span class="linenos">60</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">61</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">62</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
+<span class="linenos">63</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">64</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">65</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_span</span><span class="p">:</span>
+<span class="linenos">66</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">67</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature variation in Celsius</span>
+<span class="linenos">68</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(tmmx) - MIN(tmmx)</span>
+<span class="linenos">69</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_C</span><span class="p">:</span>
+<span class="linenos">70</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">71</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Celsius</span>
+<span class="linenos">72</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_C)</span>
+<span class="linenos">73</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_F</span><span class="p">:</span>
+<span class="linenos">74</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">75</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Fahrenheit</span>
+<span class="linenos">76</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_F)</span>
+<span class="linenos">77</span><span class="w">      </span><span class="nt">primary_key</span><span class="p">:</span>
+<span class="linenos">78</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">79</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+</pre></div>
+</div>
+</div>
+<p>The data dictionary and lineage tools extract and synthesize information from both your workflow and data model to provide:</p>
+<ul class="simple">
+<li><p><strong>A main table-level lineage diagram</strong></p>
+<ul>
+<li><p>Visualizes the sequence of transformations and dependencies among all tables in your pipeline (Bronze, Silver, Gold, etc.)</p></li>
+<li><p>Can use a variety of graphical formats: png, gif, ps2, svg, cmapx, jpeg</p></li>
+<li><p>Interactive SVG format: If SVG is selected, each table node is clickable, linking directly to its detailed documentation</p></li>
+</ul>
+</li>
+<li><p><strong>Table documentation pages</strong></p>
+<ul>
+<li><p>Human-readable descriptions (drawn from YAML comments in your data model)</p></li>
+<li><p>The SQL or DDL used to create the table</p></li>
+<li><p>A summary of columns for the table, each with a link to its own detailed description</p></li>
+</ul>
+</li>
+<li><p><strong>Column documentation pages</strong></p></li>
+<li><p>Human-readable description for the column</p>
+<ul>
+<li><p>A column-level lineage diagram that shows exactly which upstream columns and tables contributed data to the current column</p></li>
+<li><p>Interactive SVG: All elements are clickable, supporting rapid navigation</p></li>
+</ul>
+</li>
+<li><p><strong>An index/glossary of all columns across all tables</strong></p>
+<ul>
+<li><p>Tracks column propagation and transformation through the pipeline—a powerful tool for auditing or code review, especially in complex medallion architectures where columns may be re-used or re-named across layers</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="output-formats-and-modes">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Output Formats and Modes</a><a class="headerlink" href="#output-formats-and-modes" title="Link to this heading"></a></h2>
+<p><strong>Markdown</strong> (.md) is generated by default; these can be browsed
+directly or easily converted to HTML for rich, interactive
+documentation.</p>
+<p>Other export formats such as YAML, Open Biological and Biomedical
+Ontologies (OBO) are supported for interoperability with downstream
+systems.</p>
+<p>The tool supports two modes:</p>
+<ul class="simple">
+<li><p><strong>Standalone</strong>: Produce self-contained HTML (via Pandoc)—ideal for
+documentation, archiving, or sharing with external parties.</p></li>
+<li><p><strong>Sphinx</strong>: Seamless integration into team or lab-wide Sphinx
+documentation systems.</p></li>
+</ul>
+</section>
+<section id="running-the-tool">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Running the tool</a><a class="headerlink" href="#running-the-tool" title="Link to this heading"></a></h2>
+<p>We will be using the
+<a class="reference internal" href="../../members/domain_dictionary.html"><span class="std std-doc">Data Dictionary Generation tool</span></a>.</p>
+<p>Run the following commands to produce draft documentation:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>standalone
+</pre></div>
+</div>
+<p>This command produces both Markdown and standalone HTML files that
+can be easily examined. Open the
+<a class="reference internal" href="mddocs/example1.dot.html"><span class="std std-doc">main documentation file</span></a></p>
+</section>
+<section id="exploring-the-artifacts">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Exploring the Artifacts</a><a class="headerlink" href="#exploring-the-artifacts" title="Link to this heading"></a></h2>
+<p>Start with the high-level lineage DAG (see Figure XX), where each
+node is a table.</p>
+<p>Click a table to view its documentation, including all columns and
+their descriptions.</p>
+<p>Click on a column name to access its detail page—showing a
+column-level lineage diagram for tracing value origins
+across the workflow.</p>
+<p>All navigation is cross-linked for rapid provenance discovery.</p>
+</section>
+<section id="enriching-the-data-dictionary">
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Enriching the Data Dictionary</a><a class="headerlink" href="#enriching-the-data-dictionary" title="Link to this heading"></a></h2>
+<p>As mentioned above, the data dictionary tool automatically extracts
+any code (Python, SQL, DDL) that is used to create tables and columns.
+To make the documentation more comprehensive, the data modeling
+language supports the following keys:</p>
+<ul class="simple">
+<li><p><strong>description</strong>:  Verbose description</p></li>
+<li><p><strong>reference</strong>: URL with external documentation</p></li>
+</ul>
+<p>For the following elements:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../../Datamodels.html#domain"><span class="std std-ref">Domain</span></a></p></li>
+<li><p><a class="reference internal" href="../../Datamodels.html#table"><span class="std std-ref">Table</span></a></p></li>
+<li><p><a class="reference internal" href="../../Datamodels.html#column"><span class="std std-ref">Column</span></a></p></li>
+</ul>
+<p>Additionally, <strong>description</strong> is supported for the
+<a class="reference internal" href="../../Datamodels.html#invalid-record"><span class="std std-ref">Invalid Record</span></a> element.</p>
+</section>
+<section id="lineage-diagram-for-medicare-data">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">Lineage Diagram for Medicare data</a><a class="headerlink" href="#lineage-diagram-for-medicare-data" title="Link to this heading"></a></h2>
+<p>To view the full lineage diagram for the Medicare data,
+see <a class="reference internal" href="../../MedicareLineage.html"><span class="std std-doc">Medicare Data Dictionary</span></a>.</p>
+</section>
 </section>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="documenting-a-workflow.html" class="btn btn-neutral float-left" title="Tutorial: Documenting a workflow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../../guts.html" class="btn btn-neutral float-right" title="Data Platform Internals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 

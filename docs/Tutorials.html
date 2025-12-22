@@ -63,6 +63,7 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dorieh Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
@@ -103,20 +104,50 @@
 <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#introduction">Introduction:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#design-overview">Design overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#design-overview">Design overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#inputs">Inputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#outputs">Outputs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#architecture">Architecture</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#directory-layout">Directory layout</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-1-create-a-minimal-cwl-workflow-skeleton">Step 1. Create a minimal CWL workflow skeleton</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-2-iteratively-defining-steps-and-parameters">Step 2. Iteratively Defining Steps and Parameters</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-3-parameterize-for-a-single-day-toy-run">Step 3. Parameterize for a single day (“toy” run)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#start-or-check-postgresql">Start or check PostgreSQL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#add-postgresql-integration-to-the-workflow">Add PostgreSQL integration to the workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#add-the-database-initialization-step">Add the Database initialization step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#defining-data-model">Defining Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#adding-ingestion-step">Adding Ingestion Step</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-5-building-medallion-layers-bronze-silver-gold">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-6-testing-the-pipeline">Step 6. Testing the Pipeline</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#next-steps">Next Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#workflow-files">Workflow files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#generating-skeleton-documentation">Generating skeleton documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#enhancing-workflow-documentation">Enhancing workflow documentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#adding-workflow-title">Adding Workflow Title</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#documenting-workflow-elements-with-doc-key">Documenting workflow elements with <code class="docutils literal notranslate"><span class="pre">doc</span></code> key</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#what-we-can-generate">What we can generate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#output-formats-and-modes">Output Formats and Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#running-the-tool">Running the tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#exploring-the-artifacts">Exploring the Artifacts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#enriching-the-data-dictionary">Enriching the Data Dictionary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#lineage-diagram-for-medicare-data">Lineage Diagram for Medicare data</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </section>

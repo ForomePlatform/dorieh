@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>View silver_temperature &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">View silver_temperature</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/tutorial/climate/mddocs/tables/silver_temperature.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="view-silver-temperature">
+<h1>View silver_temperature<a class="headerlink" href="#view-silver-temperature" title="Link to this heading"></a></h1>
+<section id="overview-for-silver-temperature">
+<h2>Overview for silver_temperature<a class="headerlink" href="#overview-for-silver-temperature" title="Link to this heading"></a></h2>
+<p>Maximum daily temperature for US Zip Code Tabulation Areas, enriched and harmonized</p>
+<p>Transformed from <a class="reference download internal" download="" href="../../../../_downloads/28afec30a56bc0a7bd06631f47bcae99/bronze_temperature.html"><span class="xref download myst">bronze_temperature</span></a></p>
+<details>
+<summary>SQL/DDL Statement</summary>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">view</span><span class="w">  </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">tmmx</span><span class="p">,</span>
+<span class="w">	</span><span class="nb">date</span><span class="p">,</span>
+<span class="w">	</span><span class="n">zcta</span><span class="p">,</span>
+<span class="w">	</span><span class="p">(</span><span class="n">tmmx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">273</span><span class="p">.</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">temperature_in_C</span><span class="p">,</span>
+<span class="w">	</span><span class="p">((</span><span class="n">tmmx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">273</span><span class="p">.</span><span class="mi">15</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">temperature_in_F</span><span class="p">,</span>
+<span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_state</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">us_state</span><span class="p">,</span>
+<span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_city</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">city</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bronze_temperature</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 17:12:48.792033&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</details>
+</section>
+<hr class="docutils" />
+<section id="columns">
+<h2>Columns:<a class="headerlink" href="#columns" title="Link to this heading"></a></h2>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Column Name</p></th>
+<th class="head"><p>Column Type</p></th>
+<th class="head"><p>Datatype</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/a3ee1ba274da19a58e7ac761d5fb2fbd/city.html"><span class="xref download myst">city</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(128)</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/6dcba31a45a646ff5ef09757a6b5f61c/date.html"><span class="xref download myst">date</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/b0399a2abfda5a704197031c73cbd384/temperature_in_c.html"><span class="xref download myst">temperature_in_c</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/2220384e0e9b524f60b50c6213337654/temperature_in_f.html"><span class="xref download myst">temperature_in_f</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>float</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/a3dca9d5dcf1d0492df677a7902f05fd/tmmx.html"><span class="xref download myst">tmmx</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/4c13d5c1968c8d97924bee75dc6c579b/us_state.html"><span class="xref download myst">us_state</span></a></p></td>
+<td><p>computed</p></td>
+<td><p>VARCHAR(2)</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/739a799b59bef0d5eb07ddd71b253bc0/zcta.html"><span class="xref download myst">zcta</span></a></p></td>
+<td><p></p></td>
+<td><p>string</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

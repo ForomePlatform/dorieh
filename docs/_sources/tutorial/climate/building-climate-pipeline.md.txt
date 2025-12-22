@@ -10,7 +10,7 @@ local:
 [Example: aggregating a climate variable](../../Example-climate-workflow.md)
 ```
             
-## Introduction: 
+## Introduction 
 
 This tutorial walks you through building a small, but complete, 
 Dorieh‑based data processing workflow. It attempts to model a realistic 
@@ -40,7 +40,7 @@ in the chapter named “Sample Application: Building ML‑Ready Datasets”.
 You will need:
 
 * A Unix‑like environment (Linux or macOS).
-* Python 3.9+.
+* Python 3.12+.
 * A CWL runner, e.g.:
   * toil-cwl-runner (used in examples), 
   * or cwltool.
