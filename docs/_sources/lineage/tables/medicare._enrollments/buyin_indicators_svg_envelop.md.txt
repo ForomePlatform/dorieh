@@ -1,8 +1,0 @@
-# Column medicare._enrollments.buyin_indicators Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/buyin_indicators.svg
-
-```
-
-

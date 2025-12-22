@@ -1,8 +1,0 @@
-# Column medicare.ip.los_day_cnt Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/los_day_cnt.svg
-
-```
-
-

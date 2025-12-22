@@ -1,8 +1,0 @@
-# Column medicare._beneficiaries.bene_id Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/bene_id.svg
-
-```
-
-

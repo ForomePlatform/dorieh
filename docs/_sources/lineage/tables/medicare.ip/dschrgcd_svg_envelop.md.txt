@@ -1,8 +1,0 @@
-# Column medicare.ip.dschrgcd Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.ip/dschrgcd.svg
-
-```
-
-

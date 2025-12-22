@@ -1,8 +1,0 @@
-# Column medicare._beneficiaries.discrepancies Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._beneficiaries/discrepancies.svg
-
-```
-
-

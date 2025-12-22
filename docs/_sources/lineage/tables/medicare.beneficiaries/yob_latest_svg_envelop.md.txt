@@ -1,8 +1,0 @@
-# Column medicare.beneficiaries.yob_latest Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/yob_latest.svg
-
-```
-
-
