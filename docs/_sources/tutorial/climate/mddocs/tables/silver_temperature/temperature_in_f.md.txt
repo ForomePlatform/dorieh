@@ -4,7 +4,7 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [silver_temperature](../silver_temperature.html)           |
+| Table                         | [silver_temperature](../silver_temperature.md)           |
 | Qualified name                | silver_temperature.temperature_in_F  |
 | Datatype                      | float        |
 | Column type | computed |

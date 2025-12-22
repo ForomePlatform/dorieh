@@ -271,8 +271,16 @@ documentation systems.</p></li>
 <a class="reference internal" href="../../members/domain_dictionary.html"><span class="std std-doc">Data Dictionary Generation tool</span></a>.</p>
 <p>Run the following commands to produce draft documentation:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
-python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>standalone
+python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>../example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>standalone
 </pre></div>
+</div>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>If you plan to build documentation with Sphinx and MyST, instead run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
+python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>../example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>sphinx
+</pre></div>
+</div>
 </div>
 <p>This command produces both Markdown and standalone HTML files that
 can be easily examined. Open the

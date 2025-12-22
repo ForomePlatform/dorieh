@@ -95,8 +95,10 @@
 <h1>Materialized view gold_temperature_by_state<a class="headerlink" href="#materialized-view-gold-temperature-by-state" title="Link to this heading"></a></h1>
 <section id="overview-for-gold-temperature-by-state">
 <h2>Overview for gold_temperature_by_state<a class="headerlink" href="#overview-for-gold-temperature-by-state" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
 <p>Temperature variations by US State</p>
-<p>Aggregated from <a class="reference download internal" download="" href="../../../../_downloads/5bc2d821c22908d576590f1cc8124553/silver_temperature.html"><span class="xref download myst">silver_temperature</span></a> on On us_state, date</p>
+<p>Aggregated from <a class="reference internal" href="silver_temperature.html"><span class="std std-doc">silver_temperature</span></a> on On us_state, date</p>
 <p>Primary Key: us_state, date</p>
 <details>
 <summary>SQL/DDL Statement</summary>
@@ -112,7 +114,7 @@
 <span class="k">WHERE</span><span class="w"> </span><span class="n">us_state</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="nb">date</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span>
 <span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">us_state</span><span class="p">,</span><span class="nb">date</span><span class="p">;</span>
 
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">gold_temperature_by_state</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 17:12:48.792207&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="n">materialized</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">gold_temperature_by_state</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 18:20:47.235334&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </details>
@@ -128,23 +130,23 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/c07c2815fa94079da7b167f7e348a187/date.html"><span class="xref download myst">date</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="gold_temperature_by_state/date.html"><span class="std std-doc">date</span></a></p></td>
 <td><p>grouping</p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/aa35832e08e4351c52d7840e2f1e522e/t_mean_in_c.html"><span class="xref download myst">t_mean_in_c</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="gold_temperature_by_state/t_mean_in_c.html"><span class="std std-doc">t_mean_in_c</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>float</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/e4555aaa445102fb4da1cf6e6cc1d006/t_mean_in_f.html"><span class="xref download myst">t_mean_in_f</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="gold_temperature_by_state/t_mean_in_f.html"><span class="std std-doc">t_mean_in_f</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>float</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/6e9a2862e548d3eebbb9da60db4cf2eb/t_span.html"><span class="xref download myst">t_span</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="gold_temperature_by_state/t_span.html"><span class="std std-doc">t_span</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>float</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/7a08913870c701c7944561c3f0fdd49d/us_state.html"><span class="xref download myst">us_state</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="gold_temperature_by_state/us_state.html"><span class="std std-doc">us_state</span></a></p></td>
 <td><p>grouping</p></td>
 <td><p>string</p></td>
 </tr>

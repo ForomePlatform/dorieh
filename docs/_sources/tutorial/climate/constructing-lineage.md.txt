@@ -80,8 +80,16 @@ Run the following commands to produce draft documentation:
 
 ```shell
 cd docs
-python -m dorieh.platform.dictionary.domain_dictionary example1_model.yml --fmt svg --lod min -o example1.dot --mode standalone
+python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --fmt svg --lod min -o example1.dot --mode standalone
 ```
+
+:::{important}
+If you plan to build documentation with Sphinx and MyST, instead run:
+```shell
+cd docs
+python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --fmt svg --lod min -o example1.dot --mode sphinx
+```
+:::
 
 This command produces both Markdown and standalone HTML files that 
 can be easily examined. Open the 

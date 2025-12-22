@@ -95,8 +95,10 @@
 <h1>View silver_temperature<a class="headerlink" href="#view-silver-temperature" title="Link to this heading"></a></h1>
 <section id="overview-for-silver-temperature">
 <h2>Overview for silver_temperature<a class="headerlink" href="#overview-for-silver-temperature" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+</div>
 <p>Maximum daily temperature for US Zip Code Tabulation Areas, enriched and harmonized</p>
-<p>Transformed from <a class="reference download internal" download="" href="../../../../_downloads/28afec30a56bc0a7bd06631f47bcae99/bronze_temperature.html"><span class="xref download myst">bronze_temperature</span></a></p>
+<p>Transformed from <a class="reference internal" href="bronze_temperature.html"><span class="std std-doc">bronze_temperature</span></a></p>
 <details>
 <summary>SQL/DDL Statement</summary>
 <div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">view</span><span class="w">  </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">AS</span>
@@ -109,7 +111,7 @@
 <span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_state</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">us_state</span><span class="p">,</span>
 <span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_city</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">city</span>
 <span class="k">FROM</span><span class="w"> </span><span class="n">bronze_temperature</span><span class="p">;</span>
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 17:12:48.792033&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 18:20:47.235163&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </details>
@@ -125,31 +127,31 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/a3ee1ba274da19a58e7ac761d5fb2fbd/city.html"><span class="xref download myst">city</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="silver_temperature/city.html"><span class="std std-doc">city</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>VARCHAR(128)</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/6dcba31a45a646ff5ef09757a6b5f61c/date.html"><span class="xref download myst">date</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="silver_temperature/date.html"><span class="std std-doc">date</span></a></p></td>
 <td><p></p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/b0399a2abfda5a704197031c73cbd384/temperature_in_c.html"><span class="xref download myst">temperature_in_c</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="silver_temperature/temperature_in_c.html"><span class="std std-doc">temperature_in_c</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>float</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/2220384e0e9b524f60b50c6213337654/temperature_in_f.html"><span class="xref download myst">temperature_in_f</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="silver_temperature/temperature_in_f.html"><span class="std std-doc">temperature_in_f</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>float</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/a3dca9d5dcf1d0492df677a7902f05fd/tmmx.html"><span class="xref download myst">tmmx</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="silver_temperature/tmmx.html"><span class="std std-doc">tmmx</span></a></p></td>
 <td><p></p></td>
 <td><p>string</p></td>
 </tr>
-<tr class="row-odd"><td><p><a class="reference download internal" download="" href="../../../../_downloads/4c13d5c1968c8d97924bee75dc6c579b/us_state.html"><span class="xref download myst">us_state</span></a></p></td>
+<tr class="row-odd"><td><p><a class="reference internal" href="silver_temperature/us_state.html"><span class="std std-doc">us_state</span></a></p></td>
 <td><p>computed</p></td>
 <td><p>VARCHAR(2)</p></td>
 </tr>
-<tr class="row-even"><td><p><a class="reference download internal" download="" href="../../../../_downloads/739a799b59bef0d5eb07ddd71b253bc0/zcta.html"><span class="xref download myst">zcta</span></a></p></td>
+<tr class="row-even"><td><p><a class="reference internal" href="silver_temperature/zcta.html"><span class="std std-doc">zcta</span></a></p></td>
 <td><p></p></td>
 <td><p>string</p></td>
 </tr>

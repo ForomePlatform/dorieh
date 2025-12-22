@@ -4,7 +4,7 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [bronze_temperature](../bronze_temperature.html)           |
+| Table                         | [bronze_temperature](../bronze_temperature.md)           |
 | Qualified name                | bronze_temperature.tmmx  |
 | Datatype                      | float        |
 | Reference | [https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands) |

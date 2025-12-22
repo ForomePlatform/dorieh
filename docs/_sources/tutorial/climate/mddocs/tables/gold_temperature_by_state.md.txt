@@ -2,10 +2,24 @@
 
 ## Overview for gold_temperature_by_state
 
+
+```{toctree}
+---
+maxdepth: 1
+hidden:
+---
+gold_temperature_by_state/date.md
+gold_temperature_by_state/t_mean_in_c.md
+gold_temperature_by_state/t_mean_in_f.md
+gold_temperature_by_state/t_span.md
+gold_temperature_by_state/us_state.md
+```
+
+
 Temperature variations by US State
 
 
-Aggregated from [silver_temperature](silver_temperature.html) on On us_state, date
+Aggregated from [silver_temperature](silver_temperature.md) on On us_state, date
 
 Primary Key: us_state, date
 
@@ -28,7 +42,7 @@ FROM silver_temperature
 WHERE us_state IS NOT NULL AND date IS NOT NULL
 GROUP BY us_state,date;
 
-COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.4.4", "url": "file:///Users/misha/harvard/projects/github/dorieh", "commit": null}. Created at 2025-12-22 17:12:48.792207';
+COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.4.4", "url": "file:///Users/misha/harvard/projects/github/dorieh", "commit": null}. Created at 2025-12-22 18:20:47.235334';
 ```
 
 </details>
@@ -38,10 +52,10 @@ COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"
 
 | Column Name | Column Type | Datatype |
 | --- | --- | --- |
-| [date](gold_temperature_by_state/date.html) | grouping | string |
-| [t_mean_in_c](gold_temperature_by_state/t_mean_in_c.html) | computed | float |
-| [t_mean_in_f](gold_temperature_by_state/t_mean_in_f.html) | computed | float |
-| [t_span](gold_temperature_by_state/t_span.html) | computed | float |
-| [us_state](gold_temperature_by_state/us_state.html) | grouping | string |
+| [date](gold_temperature_by_state/date.md) | grouping | string |
+| [t_mean_in_c](gold_temperature_by_state/t_mean_in_c.md) | computed | float |
+| [t_mean_in_f](gold_temperature_by_state/t_mean_in_f.md) | computed | float |
+| [t_span](gold_temperature_by_state/t_span.md) | computed | float |
+| [us_state](gold_temperature_by_state/us_state.md) | grouping | string |
 
 
