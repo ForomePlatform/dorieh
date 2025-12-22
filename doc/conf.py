@@ -76,8 +76,7 @@ html_theme = "sphinx_rtd_theme"
 
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.txt': 'restructuredtext',
-    '.cwl': 'cwl',
+    '.txt': 'restructuredtext'
 }
 
 suppress_warnings = ['autosectionlabel.*']
