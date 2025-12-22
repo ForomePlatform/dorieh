@@ -52,7 +52,7 @@ And as you can see, this variable is
 
     Please note that selecting the correct variables for the research is beyond the scope of this package and this documentation. This package will work the best when you know what you need to download.
 
-After deciding what variables you want to download, you need to create ``census_vars.yml`` file (read more :doc:`census_yaml`). Here is an example:
+After deciding what variables you want to download, you need to create ``census_vars.yml`` file (read more :doc:`census_yaml.rst`). Here is an example:
 
 .. code-block:: console
 
