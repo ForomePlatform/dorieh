@@ -65,7 +65,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
@@ -1428,8 +1428,6 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/epa_registry.html#module-dorieh.epa.registry">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dorieh.gis.annotator
 
@@ -1437,6 +1435,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/annotator.html#module-dorieh.gis.annotator">module</a>, <a href="members/gis_annotator.html#module-dorieh.gis.annotator">[1]</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dorieh.gis.compute_shape
 
@@ -1568,6 +1568,13 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/gen_dbt_cwl.html#module-dorieh.platform.dbt.gen_dbt_cwl">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.platform.dbt.spark_dbt_runner
+
+      <ul>
+        <li><a href="members/spark_dbt_runner.html#module-dorieh.platform.dbt.spark_dbt_runner">module</a>
 </li>
       </ul></li>
       <li>
@@ -1834,6 +1841,13 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/shapes.html#module-dorieh.platform.util.shapes">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.platform.util.spsql
+
+      <ul>
+        <li><a href="members/spsql.html#module-dorieh.platform.util.spsql">module</a>
 </li>
       </ul></li>
       <li>
@@ -2148,6 +2162,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/psql.html#dorieh.platform.util.psql.execute">(in module dorieh.platform.util.psql)</a>
 </li>
+        <li><a href="members/spsql.html#dorieh.platform.util.spsql.execute">(in module dorieh.platform.util.spsql)</a>
+</li>
         <li><a href="members/index_builder.html#dorieh.platform.loader.index_builder.IndexBuilder.execute">(IndexBuilder method)</a>
 </li>
         <li><a href="members/mcr_combine_tables.html#dorieh.cms.tools.mcr_combine_tables.MedicareCombinedView.execute">(MedicareCombinedView method)</a>
@@ -2159,6 +2175,8 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.execute_and_show">execute_and_show() (in module dorieh.platform.util.spsql)</a>
+</li>
       <li><a href="members/zip2zcta.html#dorieh.platform.crosswalks.zip2zcta.Importer.execute_db_update">execute_db_update() (Importer method)</a>
 </li>
       <li><a href="members/launcher.html#dorieh.rasters.launcher.Gridmet.execute_sequentially">execute_sequentially() (Gridmet method)</a>
@@ -3479,6 +3497,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/gen_dbt_cwl.html#module-dorieh.platform.dbt.gen_dbt_cwl">dorieh.platform.dbt.gen_dbt_cwl</a>
 </li>
+        <li><a href="members/spark_dbt_runner.html#module-dorieh.platform.dbt.spark_dbt_runner">dorieh.platform.dbt.spark_dbt_runner</a>
+</li>
         <li><a href="members/columns.html#module-dorieh.platform.dictionary.columns">dorieh.platform.dictionary.columns</a>
 </li>
         <li><a href="members/domain_dictionary.html#module-dorieh.platform.dictionary.domain_dictionary">dorieh.platform.dictionary.domain_dictionary</a>
@@ -3554,6 +3574,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/sas_explorer.html#module-dorieh.platform.util.sas_explorer">dorieh.platform.util.sas_explorer</a>
 </li>
         <li><a href="members/shapes.html#module-dorieh.platform.util.shapes">dorieh.platform.util.shapes</a>
+</li>
+        <li><a href="members/spsql.html#module-dorieh.platform.util.spsql">dorieh.platform.util.spsql</a>
 </li>
         <li><a href="members/aggregator.html#module-dorieh.rasters.aggregator">dorieh.rasters.aggregator</a>
 </li>
@@ -3855,6 +3877,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/psql.html#dorieh.platform.util.psql.parse_args">(in module dorieh.platform.util.psql)</a>
 </li>
+        <li><a href="members/spsql.html#dorieh.platform.util.spsql.parse_args">(in module dorieh.platform.util.spsql)</a>
+</li>
       </ul></li>
       <li><a href="members/columns.html#dorieh.platform.dictionary.columns.Column.parse_expr">parse_expr() (Column method)</a>
 </li>
@@ -3922,10 +3946,10 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.PM10">PM10 (Parameter attribute)</a>
 </li>
-      <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.PM25">PM25 (Parameter attribute)</a>, <a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.PM25">[1]</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.PM25">PM25 (Parameter attribute)</a>, <a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.PM25">[1]</a>
+</li>
       <li><a href="members/config.html#dorieh.rasters.config.Shape.point">point (Shape attribute)</a>, <a href="shapes.html#dorieh.rasters.config.Shape.point">[1]</a>
 </li>
       <li><a href="members/geometry.html#dorieh.gis.geometry.PointInRaster">PointInRaster (class in dorieh.gis.geometry)</a>
@@ -4146,6 +4170,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.read_next">read_next() (FSTReader method)</a>
 </li>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.read_parquet">read_parquet() (in module dorieh.platform.util.spsql)</a>
+</li>
       <li><a href="members/fwf.html#dorieh.utils.fwf.FWFReader.read_record">read_record() (FWFReader method)</a>
 
       <ul>
@@ -4176,8 +4202,6 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/utils.html#dorieh.platform.data_model.utils.regex">regex() (in module dorieh.platform.data_model.utils)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/registry.html#dorieh.cms.registry.Registry">Registry (class in dorieh.cms.registry)</a>
 
       <ul>
@@ -4186,6 +4210,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/climate_registry.html#dorieh.rasters.registry.Registry">(class in dorieh.rasters.registry)</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/common.html#dorieh.platform.loader.common.CommonConfig.registry">registry (CommonConfig attribute)</a>
 
       <ul>
@@ -4265,11 +4291,17 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/project_loader.html#dorieh.platform.loader.project_loader.ProjectLoader.run">(ProjectLoader method)</a>
 </li>
+        <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner.run">(SparkDBTRunner method)</a>
+</li>
         <li><a href="members/vacuum.html#dorieh.platform.loader.vacuum.Vacuum.run">(Vacuum method)</a>
 </li>
       </ul></li>
       <li><a href="members/dbt_runner.html#dorieh.platform.dbt.dbt_runner.PGDBTRunner.run_script">run_script() (PGDBTRunner method)</a>
+
+      <ul>
+        <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner.run_script">(SparkDBTRunner method)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
@@ -4416,6 +4448,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.SO2">SO2 (Parameter attribute)</a>
 </li>
+      <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner">SparkDBTRunner (class in dorieh.platform.dbt.spark_dbt_runner)</a>
+</li>
       <li><a href="members/io_utils.html#dorieh.utils.io_utils.SpecialValues">SpecialValues (class in dorieh.utils.io_utils)</a>
 </li>
       <li><a href="gridmet_bands.html#dorieh.rasters.config.GridmetVariable.sph">sph (GridmetVariable attribute)</a>, <a href="members/config.html#dorieh.rasters.config.GridmetVariable.sph">[1]</a>
@@ -4459,6 +4493,8 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/element.html#dorieh.platform.dictionary.element.start_markdown_table">start_markdown_table() (in module dorieh.platform.dictionary.element)</a>
 </li>
       <li><a href="members/cwl_generator.html#dorieh.platform.util.cwl_generator.CWLGenerator.start_outputs">start_outputs() (CWLGenerator method)</a>
+</li>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.start_session">start_session() (in module dorieh.platform.util.spsql)</a>
 </li>
       <li><a href="members/cwl_generator.html#dorieh.platform.util.cwl_generator.CWLGenerator.start_steps">start_steps() (CWLGenerator method)</a>
 </li>

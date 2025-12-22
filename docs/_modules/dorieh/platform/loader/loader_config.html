@@ -65,7 +65,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html">Tutorial: Building a Data preparation Workflow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorials.html">Dorieh Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a></li>
@@ -141,7 +141,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Parallelization">
-<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.Parallelization">[docs]</a>
+<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.Parallelization">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Parallelization</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="s2">&quot;lines&quot;</span>
     <span class="n">files</span> <span class="o">=</span> <span class="s2">&quot;files&quot;</span>
@@ -150,7 +150,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="DataLoaderAction">
-<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.DataLoaderAction">[docs]</a>
+<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.DataLoaderAction">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DataLoaderAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">drop</span> <span class="o">=</span> <span class="s2">&quot;drop&quot;</span>
     <span class="n">load</span> <span class="o">=</span> <span class="s2">&quot;load&quot;</span>
@@ -170,7 +170,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="LoaderConfig">
-<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig">[docs]</a>
+<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.LoaderConfig">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LoaderConfig</span><span class="p">(</span><span class="n">CommonConfig</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Configurator class for data loader</span>
@@ -320,7 +320,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">LoaderConfig</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LoaderConfig.validate">
-<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig.validate">[docs]</a>
+<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.LoaderConfig.validate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallelization</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>

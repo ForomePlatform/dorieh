@@ -28,8 +28,8 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Data Platform Internals" href="../../guts.html" />
-    <link rel="prev" title="Monitoring database activity" href="../../MonitoringDB.html" /> 
+    <link rel="next" title="Tutorial: Documenting a workflow" href="documenting-a-workflow.html" />
+    <link rel="prev" title="Dorieh Tutorials" href="../../Tutorials.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -60,29 +60,34 @@
 <li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Tutorial: Building a Data preparation Workflow</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#design-overview">Design overview</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#inputs">Inputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#outputs">Outputs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#architecture">Architecture</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">Dorieh Tutorials</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Building a data preparation Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction:</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#design-overview">Design overview</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#inputs">Inputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#outputs">Outputs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#architecture">Architecture</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#directory-layout">Directory layout</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-1-create-a-minimal-cwl-workflow-skeleton">Step 1. Create a minimal CWL workflow skeleton</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-2-iteratively-defining-steps-and-parameters">Step 2. Iteratively Defining Steps and Parameters</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-3-parameterize-for-a-single-day-toy-run">Step 3. Parameterize for a single day (“toy” run)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#start-or-check-postgresql">Start or check PostgreSQL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#add-postgresql-integration-to-the-workflow">Add PostgreSQL integration to the workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#add-the-database-initialization-step">Add the Database initialization step</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#defining-data-model">Defining Data Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#adding-ingestion-step">Adding Ingestion Step</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-layout">Directory layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-minimal-cwl-workflow-skeleton">Step 1. Create a minimal CWL workflow skeleton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-iteratively-defining-steps-and-parameters">Step 2. Iteratively Defining Steps and Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-parameterize-for-a-single-day-toy-run">Step 3. Parameterize for a single day (“toy” run)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-or-check-postgresql">Start or check PostgreSQL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-postgresql-integration-to-the-workflow">Add PostgreSQL integration to the workflow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-database-initialization-step">Add the Database initialization step</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#defining-data-model">Defining Data Model</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-ingestion-step">Adding Ingestion Step</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#step-5-building-medallion-layers-bronze-silver-gold">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#step-6-testing-the-pipeline">Step 6. Testing the Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-building-medallion-layers-bronze-silver-gold">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-6-testing-the-pipeline">Step 6. Testing the Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="documenting-a-workflow.html">Documenting a Workflow</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
@@ -107,6 +112,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../Tutorials.html">Dorieh Tutorials</a></li>
       <li class="breadcrumb-item active">Tutorial: Building a Bronze–Silver–Gold Climate Pipeline with Dorieh</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/tutorial/climate/building-climate-pipeline.md.txt" rel="nofollow"> View page source</a>
@@ -145,6 +151,7 @@
 </li>
 <li><p><a class="reference internal" href="#step-5-building-medallion-layers-bronze-silver-gold" id="id17">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></p></li>
 <li><p><a class="reference internal" href="#step-6-testing-the-pipeline" id="id18">Step 6. Testing the Pipeline</a></p></li>
+<li><p><a class="reference internal" href="#next-steps" id="id19">Next Steps</a></p></li>
 </ul>
 </nav>
 <div class="admonition seealso">
@@ -295,9 +302,30 @@ running aggregations. Corresponding tools are:</p>
 </ul>
 <p>The initial workflow skeleton can look like:</p>
 <div class="toggle docutils container">
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">literalinclude</span><span class="p">}</span> <span class="n">steps</span><span class="o">/</span><span class="n">step1</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">cwl</span>
-<span class="p">:</span><span class="n">linenos</span><span class="p">:</span>
-<span class="p">:</span><span class="n">language</span><span class="p">:</span> <span class="n">yaml</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nt">inputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">19</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">22</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span><span class="nt">outputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
 </pre></div>
 </div>
 </div>
@@ -593,8 +621,9 @@ definition:</p>
 </div>
 <p>At this point, the workflow can aggregate a full year of data, but
 that is slow for development. Next we add a “toy slice” mode.</p>
-<p>If you prefer to test the current workflow and do not afraid to wait
-hours for its completion, you can run it with the following command:</p>
+<p>If you prefer to test the current workflow, and if you do not mind
+waiting hours for its completion, you can run it with the following
+command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner<span class="w"> </span>--retryCount<span class="w"> </span><span class="m">3</span><span class="w"> </span>--cleanWorkDir<span class="w"> </span>never<span class="w"> </span>--outdir<span class="w"> </span>outputs<span class="w"> </span>example1.cwl<span class="w"> </span>--workDir<span class="w"> </span>.<span class="w"> </span>--band<span class="w"> </span>tmmx<span class="w"> </span>--year<span class="w"> </span><span class="m">2019</span><span class="w"> </span>--geography<span class="w"> </span>zcta
 </pre></div>
 </div>
@@ -731,7 +760,7 @@ the date:</p>
 </pre></div>
 </div>
 <p>If successful, you should find a gzipped CSV file under
-t<code class="docutils literal notranslate"><span class="pre">mmx_zcta_polygon_2019.csv.gz</span></code> containing the following columns:</p>
+<code class="docutils literal notranslate"><span class="pre">tmmx_zcta_polygon_2019.csv.gz</span></code> containing the following columns:</p>
 <ul class="simple">
 <li><p>date</p></li>
 <li><p>zcta</p></li>
@@ -1131,7 +1160,10 @@ your workflow scripts.</p>
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_state(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">city</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(128)</span>
-<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">US State</span>
+<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="w">              </span><span class="no">Name of a representative city for the ZIP Code Tabulation Area (ZCTA); </span>
+<span class="w">              </span><span class="no">for ZCTAs spanning multiple cities, this is the city covering the largest </span>
+<span class="w">              </span><span class="no">portion of the area or population.</span>
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_city(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
 </pre></div>
 </div>
@@ -1214,7 +1246,7 @@ just the target table name:</p>
 </div>
 <p>The final version of the workflow is:</p>
 <div class="toggle docutils container">
-<div class="dropdown highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
 <span class="linenos">  2</span>
 <span class="linenos">  3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
 <span class="linenos">  4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
@@ -1408,7 +1440,7 @@ just the target table name:</p>
 </div>
 <p>While the final Medallion data model is:</p>
 <div class="toggle docutils container">
-<div class="dropdown highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
 <span class="linenos"> 2</span><span class="w">  </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos"> 3</span><span class="w">  </span><span class="nt">quoting</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
 <span class="linenos"> 4</span><span class="w">  </span><span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unless</span><span class="nv"> </span><span class="s">excluded&quot;</span>
@@ -1454,36 +1486,39 @@ just the target table name:</p>
 <span class="linenos">44</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_state(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
 <span class="linenos">45</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">city</span><span class="p">:</span>
 <span class="linenos">46</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(128)</span>
-<span class="linenos">47</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">US State</span>
-<span class="linenos">48</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_city(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
-<span class="linenos">49</span>
-<span class="linenos">50</span><span class="w">    </span><span class="nt">gold_temperature_by_state</span><span class="p">:</span>
-<span class="linenos">51</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<span class="linenos">52</span><span class="w">        </span><span class="no">Temperature variations by US State</span>
-<span class="linenos">53</span><span class="w">      </span><span class="nt">create</span><span class="p">:</span>
-<span class="linenos">54</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">materialized view</span>
-<span class="linenos">55</span><span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">silver_temperature</span>
-<span class="linenos">56</span><span class="w">        </span><span class="nt">group by</span><span class="p">:</span>
-<span class="linenos">57</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
-<span class="linenos">58</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
-<span class="linenos">59</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
-<span class="linenos">60</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
-<span class="linenos">61</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
-<span class="linenos">62</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_span</span><span class="p">:</span>
-<span class="linenos">63</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
-<span class="linenos">64</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature variation in Celsius</span>
-<span class="linenos">65</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(tmmx) - MIN(tmmx)</span>
-<span class="linenos">66</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_C</span><span class="p">:</span>
-<span class="linenos">67</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
-<span class="linenos">68</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Celsius</span>
-<span class="linenos">69</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_C)</span>
-<span class="linenos">70</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_F</span><span class="p">:</span>
-<span class="linenos">71</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
-<span class="linenos">72</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Fahrenheit</span>
-<span class="linenos">73</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_F)</span>
-<span class="linenos">74</span><span class="w">      </span><span class="nt">primary_key</span><span class="p">:</span>
-<span class="linenos">75</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
-<span class="linenos">76</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">47</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
+<span class="linenos">48</span><span class="w">              </span><span class="no">Name of a representative city for the ZIP Code Tabulation Area (ZCTA); </span>
+<span class="linenos">49</span><span class="w">              </span><span class="no">for ZCTAs spanning multiple cities, this is the city covering the largest </span>
+<span class="linenos">50</span><span class="w">              </span><span class="no">portion of the area or population.</span>
+<span class="linenos">51</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w">  </span><span class="s">&quot;public.zip_to_city(EXTRACT(YEAR</span><span class="nv"> </span><span class="s">FROM</span><span class="nv"> </span><span class="s">date)::INT,</span><span class="nv"> </span><span class="s">zcta)&quot;</span>
+<span class="linenos">52</span>
+<span class="linenos">53</span><span class="w">    </span><span class="nt">gold_temperature_by_state</span><span class="p">:</span>
+<span class="linenos">54</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos">55</span><span class="w">        </span><span class="no">Temperature variations by US State</span>
+<span class="linenos">56</span><span class="w">      </span><span class="nt">create</span><span class="p">:</span>
+<span class="linenos">57</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">materialized view</span>
+<span class="linenos">58</span><span class="w">        </span><span class="nt">from</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">silver_temperature</span>
+<span class="linenos">59</span><span class="w">        </span><span class="nt">group by</span><span class="p">:</span>
+<span class="linenos">60</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">61</span><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">62</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
+<span class="linenos">63</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">64</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">65</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_span</span><span class="p">:</span>
+<span class="linenos">66</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">67</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Temperature variation in Celsius</span>
+<span class="linenos">68</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(tmmx) - MIN(tmmx)</span>
+<span class="linenos">69</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_C</span><span class="p">:</span>
+<span class="linenos">70</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">71</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Celsius</span>
+<span class="linenos">72</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_C)</span>
+<span class="linenos">73</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">t_mean_in_F</span><span class="p">:</span>
+<span class="linenos">74</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">75</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Mean Temperature in Fahrenheit</span>
+<span class="linenos">76</span><span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AVG(temperature_in_F)</span>
+<span class="linenos">77</span><span class="w">      </span><span class="nt">primary_key</span><span class="p">:</span>
+<span class="linenos">78</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
+<span class="linenos">79</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 </pre></div>
 </div>
 </div>
@@ -1533,14 +1568,22 @@ tables in your PostgreSQL database:</p>
 </pre></div>
 </div>
 </section>
+<section id="next-steps">
+<h2><a class="toc-backref" href="#id19" role="doc-backlink">Next Steps</a><a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<p>In the next steps we should learn how to:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="documenting-a-workflow.html"><span class="std std-doc">Document a workflow</span></a></p></li>
+<li><p><a class="reference internal" href="constructing-lineage.html"><span class="std std-doc">Construct Data dictionaries and lineage graphs</span></a></p></li>
+</ul>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../../MonitoringDB.html" class="btn btn-neutral float-left" title="Monitoring database activity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../../guts.html" class="btn btn-neutral float-right" title="Data Platform Internals" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../Tutorials.html" class="btn btn-neutral float-left" title="Dorieh Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="documenting-a-workflow.html" class="btn btn-neutral float-right" title="Tutorial: Documenting a workflow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

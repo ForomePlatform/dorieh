@@ -12,7 +12,7 @@ pipelines
 Python Packages <packages>
 Datamodels
 examples
-Tutorial: Building a Data preparation Workflow <tutorial/climate/building-climate-pipeline.md>
+Tutorials
 guts
 DBT
 Adding more data <adding_data>
