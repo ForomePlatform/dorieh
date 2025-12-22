@@ -100,6 +100,26 @@ column-level lineage diagram for tracing value origins
 across the workflow.  
 
 All navigation is cross-linked for rapid provenance discovery.
+                       
+## Enriching the Data Dictionary
+                                                
+As mentioned above, the data dictionary tool automatically extracts 
+any code (Python, SQL, DDL) that is used to create tables and columns.
+To make the documentation more comprehensive, the data modeling 
+language supports the following keys: 
+
+* **description**:  Verbose description
+* **reference**: URL with external documentation
+                                                        
+For the following elements:
+
+* [Domain](../../Datamodels.md#domain) 
+* [Table](../../Datamodels.md#table) 
+* [Column](../../Datamodels.md#column)
+
+Additionally, **description** is supported for the
+[Invalid Record](../../Datamodels.md#invalid-record) element.
+
 
 ## Lineage Diagram for Medicare data
 
