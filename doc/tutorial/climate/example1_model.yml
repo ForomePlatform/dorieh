@@ -44,7 +44,10 @@ tutorial:
             source:  "public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta)"
         - city:
             type: VARCHAR(128)
-            description: US State
+            description: >
+              Name of a representative city for the ZIP Code Tabulation Area (ZCTA); 
+              for ZCTAs spanning multiple cities, this is the city covering the largest 
+              portion of the area or population.
             source:  "public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)"
 
     gold_temperature_by_state:

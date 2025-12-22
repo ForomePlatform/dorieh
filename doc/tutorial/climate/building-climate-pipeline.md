@@ -138,8 +138,7 @@ running aggregations. Corresponding tools are:
 The initial workflow skeleton can look like:
 
 :::{toggle} Expand Code Block
-```
-{literalinclude} steps/step1/example1.cwl
+```{literalinclude} steps/step1/example1.cwl
 :linenos:
 :language: yaml
 ```
@@ -268,8 +267,9 @@ definition:
 At this point, the workflow can aggregate a full year of data, but 
 that is slow for development. Next we add a “toy slice” mode. 
 
-If you prefer to test the current workflow and do not afraid to wait 
-hours for its completion, you can run it with the following command:
+If you prefer to test the current workflow, and if you do not mind 
+waiting hours for its completion, you can run it with the following 
+command: 
 
 ```shell
 toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cwl --workDir . --band tmmx --year 2019 --geography zcta
@@ -333,7 +333,7 @@ toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cw
 ```
 
 If successful, you should find a gzipped CSV file under 
-t`mmx_zcta_polygon_2019.csv.gz` containing the following columns:    
+`tmmx_zcta_polygon_2019.csv.gz` containing the following columns:    
 
 * date
 * zcta
@@ -593,7 +593,10 @@ hence, we will add the following table definition to
             source:  "public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta)"
         - city:
             type: VARCHAR(128)
-            description: US State
+            description: >
+              Name of a representative city for the ZIP Code Tabulation Area (ZCTA); 
+              for ZCTAs spanning multiple cities, this is the city covering the largest 
+              portion of the area or population.
             source:  "public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)"
 ```                
 
@@ -684,10 +687,10 @@ just the target table name:
 The final version of the workflow is:
 
 :::{toggle} Expand Code Block
-:::{literalinclude} example1.cwl
-:class: dropdown
+```{literalinclude} example1.cwl
 :linenos:
 :language: yaml
+```
 :::
 
 
@@ -695,7 +698,6 @@ While the final Medallion data model is:
 
 :::{toggle} Expand Code Block
 ```{literalinclude} example1_model.yml
-:class: dropdown 
 :linenos:
 :language: yaml
 ```
@@ -748,4 +750,11 @@ WHERE date = '2019-01-15'
 ORDER BY t_mean_in_C DESC
 LIMIT 10;
 ```
+
+## Next Steps
+
+In the next steps we should learn how to:
+
+* [Document a workflow](documenting-a-workflow.md)
+* [Construct Data dictionaries and lineage graphs](constructing-lineage.md)
 
