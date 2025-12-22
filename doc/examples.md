@@ -9,4 +9,5 @@ A CWL workflow example: aggregating a climate variable    <Example-climate-workf
 How to query the database <SampleQuery>
 Querying Medicaid Data <QueringMedicaid>
 Monitoring database activity using Dorieh tools <MonitoringDB>
+Quering Parquet File with Dorieh Spark Extension <QueryingParquet>
 ```

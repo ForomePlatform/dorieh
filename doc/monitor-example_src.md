@@ -1,6 +1,6 @@
 # Example of using the database mounting tool
 
-```{literalinclude} ../examples/longprocess.py
+```{literalinclude} ../examples/with-postgres/longprocess.py
 :linenos:
 :language: python
 ```

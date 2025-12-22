@@ -1,6 +1,6 @@
 # Dockerfile for building image for ARM CPUs
 
-```{literalinclude} ../docker/Dockerfile.arm64
+```{literalinclude} ../docker/Dockerfile.amzn
 :linenos:
 :language: yaml
 ```
