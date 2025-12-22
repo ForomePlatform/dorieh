@@ -137,7 +137,8 @@ running aggregations. Corresponding tools are:
 
 The initial workflow skeleton can look like:
 
-```{literalinclude} steps/step1/example1.cwl```
+```{literalinclude} steps/step1/example1.cwl
+```
 
 This skeleton is not yet runnable. It defines three steps but no 
 inputs, outputs, or wiring.                
@@ -445,6 +446,8 @@ After adding ingestion to **steps** and the logs it produces to the
 
 ```{literalinclude} steps/step4/example1.cwl
 :class: dropdown 
+:linenos:
+:language: yaml
 ```
                         
 The same command as before can be used to run the workflow:
@@ -640,14 +643,18 @@ just the target table name:
 
 The final version of the workflow is:
 
-```{literalinclude} example1.cwl
-:class: dropdown 
-```
+:::{literalinclude} example1.cwl
+:class: dropdown
+:linenos:
+:language: yaml
+:::
 
-WHile the final Medallion data model is:
+While the final Medallion data model is:
 
 ```{literalinclude} example1_model.yml
 :class: dropdown 
+:linenos:
+:language: yaml
 ```
 
 ## Step 6. Testing the Pipeline
