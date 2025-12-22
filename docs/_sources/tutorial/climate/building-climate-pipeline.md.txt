@@ -137,8 +137,14 @@ running aggregations. Corresponding tools are:
 
 The initial workflow skeleton can look like:
 
-```{literalinclude} steps/step1/example1.cwl
+:::{toggle} Expand Code Block
 ```
+{literalinclude} steps/step1/example1.cwl
+:linenos:
+:language: yaml
+```
+:::
+
 
 This skeleton is not yet runnable. It defines three steps but no 
 inputs, outputs, or wiring.                
@@ -174,7 +180,12 @@ probably do not need a proxy. However, we need to take care of
 After adding these two input parameters to the ‘ inputs ’ section and 
 ‘download’ step, the workflow file will look like:  
 
-```{literalinclude} steps/step2/example1-1.cwl```
+:::{toggle} Expand Code Block
+```{literalinclude} steps/step2/example1-1.cwl
+:linenos:
+:language: yaml
+```
+:::
 
 Though we have now defined the inputs for the first step, the 
 workflow is still not runnable because we have not yet defined the 
@@ -209,7 +220,13 @@ the step and the rest to the “outputs” section. You can exclude the
 outputs you want to ignore. The resulting workflow file should look 
 like:    
 
-```{literalinclude} steps/step2/example1-2.cwl```
+:::{toggle} Expand Code Block
+```{literalinclude} steps/step2/example1-2.cwl
+:linenos:
+:language: yaml
+```
+:::
+
 
 Now we will repeat the process for the `aggregate` step. Looking at the 
 tool we are using 
@@ -229,13 +246,24 @@ existing two:
                         
 Which will bring us to the following workflow definition:
 
-```{literalinclude} steps/step2/example1-3.cwl```
+:::{toggle} Expand Code Block
+```{literalinclude} steps/step2/example1-3.cwl
+:linenos:
+:language: yaml
+```
+:::
+
 
 After repeating the process described above for the remaining two steps 
 (`get_shapes` and `aggregate`) we finally have a runnable workflow 
 definition:
 
-```{literalinclude} steps/step2/example1-4.cwl```
+:::{toggle} Expand Code Block
+```{literalinclude} steps/step2/example1-4.cwl
+:linenos:
+:language: yaml
+```
+:::
 
 At this point, the workflow can aggregate a full year of data, but 
 that is slow for development. Next we add a “toy slice” mode. 
@@ -290,7 +318,13 @@ the date:
 
 With these changes in place, the workflow is now:
 
-```{literalinclude} steps/step3/example1.cwl```
+:::{toggle} Expand Code Block
+```{literalinclude} steps/step3/example1.cwl
+:linenos:
+:language: yaml
+```
+:::
+
 
 It can be run with the following command:
 
@@ -407,9 +441,13 @@ The data model definition language is described in the
 Initially, we 
 will define a simple schema for the Bronze layer:
 
+:::{toggle} Expand Code Block
 ```{literalinclude} steps/step4/example1_model.yml
-:class: dropdown 
+:linenos:
+:language: yaml
 ```
+:::
+
 
 It defines a data domain named “tutorial” and in it a table named 
 “bronze_temperature” with 3 columns: `tmmx`, `date` and `zcta`. We will 
@@ -444,11 +482,13 @@ Dorieh [ingest tool](../../pipeline/ingest.md):
 After adding ingestion to **steps** and the logs it produces to the 
 **outputs**, the resulting workflow file should look like:
 
+:::{toggle} Expand Code Block
 ```{literalinclude} steps/step4/example1.cwl
-:class: dropdown 
 :linenos:
 :language: yaml
 ```
+:::
+
                         
 The same command as before can be used to run the workflow:
 
@@ -643,19 +683,23 @@ just the target table name:
 
 The final version of the workflow is:
 
+:::{toggle} Expand Code Block
 :::{literalinclude} example1.cwl
 :class: dropdown
 :linenos:
 :language: yaml
 :::
 
+
 While the final Medallion data model is:
 
+:::{toggle} Expand Code Block
 ```{literalinclude} example1_model.yml
 :class: dropdown 
 :linenos:
 :language: yaml
 ```
+:::
 
 ## Step 6. Testing the Pipeline
 

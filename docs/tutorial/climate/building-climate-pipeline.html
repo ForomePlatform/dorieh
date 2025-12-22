@@ -10,6 +10,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/dorieh.css?v=a01a0e0e" />
 
@@ -19,6 +20,11 @@
       <script src="../../_static/documentation_options.js?v=d45e8c67"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -288,31 +294,12 @@ running aggregations. Corresponding tools are:</p>
 <li><p><a class="reference internal" href="../../pipeline/aggregate_daily.html"><span class="std std-doc">aggregate.cwl</span></a></p></li>
 </ul>
 <p>The initial workflow skeleton can look like:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env cwl-runner</span>
-
-<span class="n">cwlVersion</span><span class="p">:</span> <span class="n">v1</span><span class="mf">.2</span>
-<span class="n">class</span><span class="p">:</span> <span class="n">Workflow</span>
-
-<span class="n">requirements</span><span class="p">:</span>
-  <span class="n">SubworkflowFeatureRequirement</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="n">StepInputExpressionRequirement</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="n">InlineJavascriptRequirement</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="n">ScatterFeatureRequirement</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="n">MultipleInputFeatureRequirement</span><span class="p">:</span> <span class="p">{}</span>
-  <span class="n">NetworkAccess</span><span class="p">:</span>
-    <span class="n">networkAccess</span><span class="p">:</span> <span class="kc">True</span>
-
-<span class="n">inputs</span><span class="p">:</span> <span class="p">{}</span>
-
-<span class="n">steps</span><span class="p">:</span>
-  <span class="n">download</span><span class="p">:</span>
-    <span class="n">run</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ForomePlatform</span><span class="o">/</span><span class="n">dorieh</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">cwl</span><span class="o">/</span><span class="n">download</span><span class="o">.</span><span class="n">cwl</span>
-
-  <span class="n">aggregate</span><span class="p">:</span>
-    <span class="n">run</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">ForomePlatform</span><span class="o">/</span><span class="n">dorieh</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="n">src</span><span class="o">/</span><span class="n">cwl</span><span class="o">/</span><span class="n">aggregate_daily</span><span class="o">.</span><span class="n">cwl</span>
-
-<span class="n">outputs</span><span class="p">:</span> <span class="p">{}</span>
+<div class="toggle docutils container">
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">literalinclude</span><span class="p">}</span> <span class="n">steps</span><span class="o">/</span><span class="n">step1</span><span class="o">/</span><span class="n">example1</span><span class="o">.</span><span class="n">cwl</span>
+<span class="p">:</span><span class="n">linenos</span><span class="p">:</span>
+<span class="p">:</span><span class="n">language</span><span class="p">:</span> <span class="n">yaml</span>
 </pre></div>
+</div>
 </div>
 <p>This skeleton is not yet runnable. It defines three steps but no
 inputs, outputs, or wiring.</p>
@@ -347,7 +334,41 @@ probably do not need a proxy. However, we need to take care of
 ‘year’ and ‘band’.</p>
 <p>After adding these two input parameters to the ‘ inputs ’ section and
 ‘download’ step, the workflow file will look like:</p>
-<p><code class="docutils literal notranslate"><span class="pre">{literalinclude}</span> <span class="pre">steps/step2/example1-1.cwl</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span><span class="nt">inputs</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">  </span><span class="nt">band</span><span class="p">:</span>
+<span class="linenos">17</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">18</span><span class="w">  </span><span class="nt">year</span><span class="p">:</span>
+<span class="linenos">19</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">22</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">23</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">24</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">25</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">26</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">27</span>
+<span class="linenos">28</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">29</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">30</span>
+<span class="linenos">31</span><span class="nt">Outputs</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</pre></div>
+</div>
+</div>
 <p>Though we have now defined the inputs for the first step, the
 workflow is still not runnable because we have not yet defined the
 outputs. As mentioned, Dorieh’s cwl_collect_outputs utility assists
@@ -376,7 +397,52 @@ with this task. You can run:</p>
 the step and the rest to the “outputs” section. You can exclude the
 outputs you want to ignore. The resulting workflow file should look
 like:</p>
-<p><code class="docutils literal notranslate"><span class="pre">{literalinclude}</span> <span class="pre">steps/step2/example1-2.cwl</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 2</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">12</span><span class="nt">inputs</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nt">band</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">year</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">21</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">22</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">23</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">24</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">25</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">26</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">27</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">30</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="nt">outputs</span><span class="p">:</span>
+<span class="linenos">33</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from download.cwl:</span>
+<span class="linenos">34</span><span class="w">  </span><span class="nt">download_log</span><span class="p">:</span>
+<span class="linenos">35</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">36</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/log</span>
+<span class="linenos">37</span><span class="w">  </span><span class="nt">download_data</span><span class="p">:</span>
+<span class="linenos">38</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">39</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">40</span><span class="w">  </span><span class="nt">download_errors</span><span class="p">:</span>
+<span class="linenos">41</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">42</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/errors</span>
+</pre></div>
+</div>
+</div>
 <p>Now we will repeat the process for the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> step. Looking at the
 tool we are using
 <a class="reference internal" href="../../pipeline/aggregate_daily.html"><span class="std std-doc">aggregate.cwl</span></a>.
@@ -391,11 +457,140 @@ existing two:</p>
 </pre></div>
 </div>
 <p>Which will bring us to the following workflow definition:</p>
-<p><code class="docutils literal notranslate"><span class="pre">{literalinclude}</span> <span class="pre">steps/step2/example1-3.cwl</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 2</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">12</span><span class="nt">inputs</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">  </span><span class="nt">band</span><span class="p">:</span>
+<span class="linenos">14</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">year</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">21</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">22</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">23</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">24</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">25</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">26</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">27</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span><span class="w">  </span><span class="nt">get_shapes</span><span class="p">:</span>
+<span class="linenos">30</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">33</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">34</span>
+<span class="linenos">35</span><span class="nt">outputs</span><span class="p">:</span>
+<span class="linenos">36</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from download.cwl:</span>
+<span class="linenos">37</span><span class="w">  </span><span class="nt">download_log</span><span class="p">:</span>
+<span class="linenos">38</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">39</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/log</span>
+<span class="linenos">40</span><span class="w">  </span><span class="nt">download_data</span><span class="p">:</span>
+<span class="linenos">41</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">42</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">43</span><span class="w">  </span><span class="nt">download_errors</span><span class="p">:</span>
+<span class="linenos">44</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">45</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/errors</span>
+</pre></div>
+</div>
+</div>
 <p>After repeating the process described above for the remaining two steps
 (<code class="docutils literal notranslate"><span class="pre">get_shapes</span></code> and <code class="docutils literal notranslate"><span class="pre">aggregate</span></code>) we finally have a runnable workflow
 definition:</p>
-<p><code class="docutils literal notranslate"><span class="pre">{literalinclude}</span> <span class="pre">steps/step2/example1-4.cwl</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">14</span><span class="nt">inputs</span><span class="p">:</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">band</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">17</span><span class="w">  </span><span class="nt">year</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">geography</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">23</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">25</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">26</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">27</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">28</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">29</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">30</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">31</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">32</span>
+<span class="linenos">33</span><span class="w">  </span><span class="nt">get_shapes</span><span class="p">:</span>
+<span class="linenos">34</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl</span>
+<span class="linenos">35</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">36</span><span class="w">      </span><span class="nt">geo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geography</span>
+<span class="linenos">37</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">38</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">39</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shape_files</span>
+<span class="linenos">40</span>
+<span class="linenos">41</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">42</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">43</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">44</span><span class="w">      </span><span class="nt">geography</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geography</span>
+<span class="linenos">45</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">46</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">47</span><span class="w">      </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">48</span><span class="w">      </span><span class="nt">shape_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_shapes/shape_files</span>
+<span class="linenos">49</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">50</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">51</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">52</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">53</span>
+<span class="linenos">54</span><span class="nt">outputs</span><span class="p">:</span>
+<span class="linenos">55</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from download.cwl:</span>
+<span class="linenos">56</span><span class="w">  </span><span class="nt">download_log</span><span class="p">:</span>
+<span class="linenos">57</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">58</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/log</span>
+<span class="linenos">59</span><span class="w">  </span><span class="nt">download_data</span><span class="p">:</span>
+<span class="linenos">60</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">61</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">62</span><span class="w">  </span><span class="nt">download_errors</span><span class="p">:</span>
+<span class="linenos">63</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">64</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/errors</span>
+<span class="linenos">65</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from get_shapes.cwl:</span>
+<span class="linenos">66</span><span class="w">  </span><span class="nt">get_shapes_shape_files</span><span class="p">:</span>
+<span class="linenos">67</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
+<span class="linenos">68</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_shapes/shape_files</span>
+<span class="linenos">69</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from aggregate_daily.cwl:</span>
+<span class="linenos">70</span><span class="w">  </span><span class="nt">aggregate_log</span><span class="p">:</span>
+<span class="linenos">71</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">72</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/log</span>
+<span class="linenos">73</span><span class="w">  </span><span class="nt">aggregate_data</span><span class="p">:</span>
+<span class="linenos">74</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">75</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/data</span>
+<span class="linenos">76</span><span class="w">  </span><span class="nt">aggregate_errors</span><span class="p">:</span>
+<span class="linenos">77</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">78</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/errors</span>
+</pre></div>
+</div>
+</div>
 <p>At this point, the workflow can aggregate a full year of data, but
 that is slow for development. Next we add a “toy slice” mode.</p>
 <p>If you prefer to test the current workflow and do not afraid to wait
@@ -439,7 +634,98 @@ the date:</p>
 </pre></div>
 </div>
 <p>With these changes in place, the workflow is now:</p>
-<p><code class="docutils literal notranslate"><span class="pre">{literalinclude}</span> <span class="pre">steps/step3/example1.cwl</span></code></p>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<span class="linenos"> 2</span>
+<span class="linenos"> 3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
+<span class="linenos"> 4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="nt">requirements</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">  </span><span class="nt">SubworkflowFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 8</span><span class="w">  </span><span class="nt">StepInputExpressionRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos"> 9</span><span class="w">  </span><span class="nt">InlineJavascriptRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">10</span><span class="w">  </span><span class="nt">ScatterFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">11</span><span class="w">  </span><span class="nt">MultipleInputFeatureRequirement</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<span class="linenos">12</span><span class="w">  </span><span class="nt">NetworkAccess</span><span class="p">:</span>
+<span class="linenos">13</span><span class="w">    </span><span class="nt">networkAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">True</span>
+<span class="linenos">14</span><span class="nt">inputs</span><span class="p">:</span>
+<span class="linenos">15</span><span class="w">  </span><span class="nt">band</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">17</span><span class="w">  </span><span class="nt">date</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">19</span><span class="w">  </span><span class="nt">geography</span><span class="p">:</span>
+<span class="linenos">20</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="linenos">21</span>
+<span class="linenos">22</span><span class="nt">steps</span><span class="p">:</span>
+<span class="linenos">23</span><span class="w">  </span><span class="nt">extract_year</span><span class="p">:</span>
+<span class="linenos">24</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/parse_date.cwl</span>
+<span class="linenos">25</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">26</span><span class="w">      </span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">27</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">28</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">year</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span><span class="w">  </span><span class="nt">download</span><span class="p">:</span>
+<span class="linenos">31</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl</span>
+<span class="linenos">32</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">33</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_year/year</span>
+<span class="linenos">34</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">35</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">36</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">37</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">38</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">39</span>
+<span class="linenos">40</span><span class="w">  </span><span class="nt">get_shapes</span><span class="p">:</span>
+<span class="linenos">41</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl</span>
+<span class="linenos">42</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">43</span><span class="w">      </span><span class="nt">geo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geography</span>
+<span class="linenos">44</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_year/year</span>
+<span class="linenos">45</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">46</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shape_files</span>
+<span class="linenos">47</span>
+<span class="linenos">48</span><span class="w">  </span><span class="nt">aggregate</span><span class="p">:</span>
+<span class="linenos">49</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl</span>
+<span class="linenos">50</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">51</span><span class="w">      </span><span class="nt">geography</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geography</span>
+<span class="linenos">52</span><span class="w">      </span><span class="nt">year</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_year/year</span>
+<span class="linenos">53</span><span class="w">      </span><span class="nt">dates</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">54</span><span class="w">      </span><span class="nt">band</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">band</span>
+<span class="linenos">55</span><span class="w">      </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">56</span><span class="w">      </span><span class="nt">shape_files</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_shapes/shape_files</span>
+<span class="linenos">57</span><span class="w">      </span><span class="nt">strategy</span><span class="p">:</span>
+<span class="linenos">58</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<span class="linenos">59</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span>
+<span class="linenos">60</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">log</span>
+<span class="linenos">61</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">data</span>
+<span class="linenos">62</span><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">errors</span>
+<span class="linenos">63</span>
+<span class="linenos">64</span><span class="nt">outputs</span><span class="p">:</span>
+<span class="linenos">65</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from download.cwl:</span>
+<span class="linenos">66</span><span class="w">  </span><span class="nt">download_log</span><span class="p">:</span>
+<span class="linenos">67</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">68</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/log</span>
+<span class="linenos">69</span><span class="w">  </span><span class="nt">download_data</span><span class="p">:</span>
+<span class="linenos">70</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">71</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/data</span>
+<span class="linenos">72</span><span class="w">  </span><span class="nt">download_errors</span><span class="p">:</span>
+<span class="linenos">73</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">74</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">download/errors</span>
+<span class="linenos">75</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from get_shapes.cwl:</span>
+<span class="linenos">76</span><span class="w">  </span><span class="nt">get_shapes_shape_files</span><span class="p">:</span>
+<span class="linenos">77</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
+<span class="linenos">78</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">get_shapes/shape_files</span>
+<span class="linenos">79</span><span class="w">  </span><span class="c1">## Generated by dorieh.platform.util.cwl_collect_outputs from aggregate_daily.cwl:</span>
+<span class="linenos">80</span><span class="w">  </span><span class="nt">aggregate_log</span><span class="p">:</span>
+<span class="linenos">81</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">82</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/log</span>
+<span class="linenos">83</span><span class="w">  </span><span class="nt">aggregate_data</span><span class="p">:</span>
+<span class="linenos">84</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File?</span>
+<span class="linenos">85</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/data</span>
+<span class="linenos">86</span><span class="w">  </span><span class="nt">aggregate_errors</span><span class="p">:</span>
+<span class="linenos">87</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">88</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aggregate/errors</span>
+</pre></div>
+</div>
+</div>
 <p>It can be run with the following command:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner<span class="w"> </span>--retryCount<span class="w"> </span><span class="m">3</span><span class="w"> </span>--cleanWorkDir<span class="w"> </span>never<span class="w"> </span>--outdir<span class="w"> </span>outputs<span class="w"> </span>example1.cwl<span class="w"> </span>--workDir<span class="w"> </span>.<span class="w"> </span>--band<span class="w"> </span>tmmx<span class="w"> </span>--date<span class="w"> </span><span class="m">2019</span>-01-15<span class="w"> </span>--geography<span class="w"> </span>zcta
 </pre></div>
@@ -542,30 +828,31 @@ with the <a class="reference internal" href="../../DataLoader.html"><span class=
 <a class="reference internal" href="../../Datamodels.html"><span class="std std-doc">Data Model</span></a> documentation.</p>
 <p>Initially, we
 will define a simple schema for the Bronze layer:</p>
-<div class="dropdown highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tutorial</span><span class="p">:</span>
-  <span class="n">header</span><span class="p">:</span> <span class="n">true</span>
-  <span class="n">quoting</span><span class="p">:</span> <span class="mi">3</span>
-  <span class="n">index</span><span class="p">:</span> <span class="s2">&quot;unless excluded&quot;</span>
-  <span class="n">description</span><span class="p">:</span> <span class="s2">&quot;Data model for data transformation tutorial&quot;</span>
-  <span class="n">tables</span><span class="p">:</span>
-    <span class="n">bronze_temperature</span><span class="p">:</span>
-      <span class="n">description</span><span class="p">:</span> <span class="o">|</span>
-        <span class="n">Maximum</span> <span class="n">daily</span> <span class="n">temperature</span> <span class="k">for</span> <span class="n">US</span> <span class="n">Zip</span> <span class="n">Code</span> <span class="n">Tabulation</span> <span class="n">Areas</span>
-      <span class="n">columns</span><span class="p">:</span>
-        <span class="o">-</span> <span class="n">tmmx</span><span class="p">:</span>
-            <span class="nb">type</span><span class="p">:</span> <span class="nb">float</span>
-            <span class="n">description</span><span class="p">:</span> <span class="n">Maximum</span> <span class="n">temperature</span> <span class="n">variable</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">TerraClimate</span> <span class="n">dataset</span> <span class="ow">in</span> <span class="n">K</span>
-            <span class="n">reference</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">developers</span><span class="o">.</span><span class="n">google</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">earth</span><span class="o">-</span><span class="n">engine</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">catalog</span><span class="o">/</span><span class="n">IDAHO_EPSCOR_GRIDMET</span><span class="c1">#bands</span>
-        <span class="o">-</span> <span class="n">date</span><span class="p">:</span>
-            <span class="nb">type</span><span class="p">:</span> <span class="n">date</span>
-        <span class="o">-</span> <span class="n">zcta</span><span class="p">:</span>
-            <span class="n">description</span><span class="p">:</span> <span class="n">Zip</span> <span class="n">Code</span> <span class="k">for</span> <span class="n">a</span> <span class="n">Zip</span> <span class="n">Code</span> <span class="n">Tabulation</span> <span class="n">Area</span>
-            <span class="nb">type</span><span class="p">:</span> <span class="nb">int</span>
-      <span class="n">primary_key</span><span class="p">:</span>
-        <span class="o">-</span> <span class="n">zcta</span>
-        <span class="o">-</span> <span class="n">date</span>
-
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
+<span class="linenos"> 2</span><span class="w">  </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="linenos"> 3</span><span class="w">  </span><span class="nt">quoting</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="linenos"> 4</span><span class="w">  </span><span class="nt">index</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;unless</span><span class="nv"> </span><span class="s">excluded&quot;</span>
+<span class="linenos"> 5</span><span class="w">  </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Data</span><span class="nv"> </span><span class="s">model</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">transformation</span><span class="nv"> </span><span class="s">tutorial&quot;</span>
+<span class="linenos"> 6</span><span class="w">  </span><span class="nt">tables</span><span class="p">:</span>
+<span class="linenos"> 7</span><span class="w">    </span><span class="nt">bronze_temperature</span><span class="p">:</span>
+<span class="linenos"> 8</span><span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="linenos"> 9</span><span class="w">        </span><span class="no">Maximum daily temperature for US Zip Code Tabulation Areas</span>
+<span class="linenos">10</span><span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
+<span class="linenos">11</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">tmmx</span><span class="p">:</span>
+<span class="linenos">12</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">float</span>
+<span class="linenos">13</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Maximum temperature variable from the TerraClimate dataset in K</span>
+<span class="linenos">14</span><span class="w">            </span><span class="nt">reference</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands</span>
+<span class="linenos">15</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">date</span><span class="p">:</span>
+<span class="linenos">16</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+<span class="linenos">17</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">zcta</span><span class="p">:</span>
+<span class="linenos">18</span><span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Zip Code for a Zip Code Tabulation Area</span>
+<span class="linenos">19</span><span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">int</span>
+<span class="linenos">20</span><span class="w">      </span><span class="nt">primary_key</span><span class="p">:</span>
+<span class="linenos">21</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">zcta</span>
+<span class="linenos">22</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 </pre></div>
+</div>
 </div>
 <p>It defines a data domain named “tutorial” and in it a table named
 “bronze_temperature” with 3 columns: <code class="docutils literal notranslate"><span class="pre">tmmx</span></code>, <code class="docutils literal notranslate"><span class="pre">date</span></code> and <code class="docutils literal notranslate"><span class="pre">zcta</span></code>. We will
@@ -597,7 +884,8 @@ Dorieh <a class="reference internal" href="../../pipeline/ingest.html"><span cla
 </div>
 <p>After adding ingestion to <strong>steps</strong> and the logs it produces to the
 <strong>outputs</strong>, the resulting workflow file should look like:</p>
-<div class="dropdown highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
+<div class="toggle docutils container">
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
 <span class="linenos">  2</span>
 <span class="linenos">  3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
 <span class="linenos">  4</span><span class="nt">class</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Workflow</span>
@@ -736,6 +1024,7 @@ Dorieh <a class="reference internal" href="../../pipeline/ingest.html"><span cla
 <span class="linenos">137</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
 <span class="linenos">138</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/errors</span>
 </pre></div>
+</div>
 </div>
 <p>The same command as before can be used to run the workflow:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner<span class="w"> </span>--retryCount<span class="w"> </span><span class="m">3</span><span class="w"> </span>--cleanWorkDir<span class="w"> </span>never<span class="w"> </span>--outdir<span class="w"> </span>outputs<span class="w"> </span>example1.cwl<span class="w"> </span>--workDir<span class="w"> </span>.<span class="w"> </span>--band<span class="w"> </span>tmmx<span class="w"> </span>--date<span class="w"> </span><span class="m">2019</span>-01-15<span class="w"> </span>--geography<span class="w"> </span>zcta
@@ -924,6 +1213,7 @@ just the target table name:</p>
 </pre></div>
 </div>
 <p>The final version of the workflow is:</p>
+<div class="toggle docutils container">
 <div class="dropdown highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos">  1</span><span class="c1">#!/usr/bin/env cwl-runner</span>
 <span class="linenos">  2</span>
 <span class="linenos">  3</span><span class="nt">cwlVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1.2</span>
@@ -1115,7 +1405,9 @@ just the target table name:</p>
 <span class="linenos">189</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build_gold/errors</span>
 </pre></div>
 </div>
+</div>
 <p>While the final Medallion data model is:</p>
+<div class="toggle docutils container">
 <div class="dropdown highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
 <span class="linenos"> 2</span><span class="w">  </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="linenos"> 3</span><span class="w">  </span><span class="nt">quoting</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
@@ -1193,6 +1485,7 @@ just the target table name:</p>
 <span class="linenos">75</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us_state</span>
 <span class="linenos">76</span><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
 </pre></div>
+</div>
 </div>
 </section>
 <section id="step-6-testing-the-pipeline">
