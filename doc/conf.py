@@ -48,6 +48,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.mermaid',
     'myst_parser',
+    'sphinx_togglebutton'
 ]
 myst_heading_anchors = 5
 # Enable MyST extensions
