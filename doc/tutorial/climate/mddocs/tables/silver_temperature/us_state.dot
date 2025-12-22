@@ -1,0 +1,19 @@
+digraph {
+			"silver_temperature.us_state" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.us_state</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">US State</td></tr>
+	<tr><td align = "left">public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/us_state.html",target=_blank];
+			"bronze_temperature.zcta" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>bronze_temperature.zcta</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Zip Code for a Zip Code Tabulation Area</td></tr>
+
+</TABLE>
+>,shape=box,URL="../bronze_temperature/zcta.html",target=_blank];
+
+	"bronze_temperature.zcta" -> "silver_temperature.us_state" [label=	"  Transformed",penwidth=1,color=black,labelfloat=True];
+}

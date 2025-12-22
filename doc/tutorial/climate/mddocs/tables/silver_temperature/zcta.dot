@@ -1,0 +1,17 @@
+digraph {
+			"silver_temperature.zcta" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.zcta</b></td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/zcta.html",target=_blank];
+			"bronze_temperature.zcta" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>bronze_temperature.zcta</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Zip Code for a Zip Code Tabulation Area</td></tr>
+
+</TABLE>
+>,shape=box,URL="../bronze_temperature/zcta.html",target=_blank];
+
+	"bronze_temperature.zcta" -> "silver_temperature.zcta" [label=	"  Transformed",penwidth=1,color=black,labelfloat=True];
+}
