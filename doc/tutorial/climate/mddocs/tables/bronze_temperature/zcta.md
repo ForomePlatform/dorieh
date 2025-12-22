@@ -4,7 +4,7 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [bronze_temperature](../bronze_temperature.html)           |
+| Table                         | [bronze_temperature](../bronze_temperature.md)           |
 | Qualified name                | bronze_temperature.zcta  |
 | Datatype                      | int        |
 

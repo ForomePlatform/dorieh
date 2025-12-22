@@ -4,10 +4,28 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [silver_temperature](../silver_temperature.html)           |
+| Table                         | [silver_temperature](../silver_temperature.md)           |
 | Qualified name                | silver_temperature.zcta  |
 | Datatype                      | string        |
 
 
+
+```{toctree}
 ---
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/zcta.svg" type="image/svg+xml"></object>
+maxdepth: 1
+hidden:
+---
+zcta_svg_envelop.md
+```
+
+
+```{figure} zcta.svg
+:align: center
+:alt: Column silver_temperature.zcta Lineage SVG
+:target: zcta_svg_envelop.html
+
+Data lineage for column silver_temperature.zcta
+
+```
+
+

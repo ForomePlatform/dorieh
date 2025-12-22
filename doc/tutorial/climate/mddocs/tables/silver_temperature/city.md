@@ -4,7 +4,7 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [silver_temperature](../silver_temperature.html)           |
+| Table                         | [silver_temperature](../silver_temperature.md)           |
 | Qualified name                | silver_temperature.city  |
 | Datatype                      | VARCHAR(128)        |
 | Column type | computed |
@@ -22,5 +22,23 @@ Name of a representative city for the ZIP Code Tabulation Area (ZCTA);  for ZCTA
 SELECT public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)
 ```
 
+
+```{toctree}
 ---
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/city.svg" type="image/svg+xml"></object>
+maxdepth: 1
+hidden:
+---
+city_svg_envelop.md
+```
+
+
+```{figure} city.svg
+:align: center
+:alt: Column silver_temperature.city Lineage SVG
+:target: city_svg_envelop.html
+
+Data lineage for column silver_temperature.city
+
+```
+
+

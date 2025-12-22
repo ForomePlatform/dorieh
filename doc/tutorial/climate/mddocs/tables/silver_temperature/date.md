@@ -4,10 +4,28 @@
 
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [silver_temperature](../silver_temperature.html)           |
+| Table                         | [silver_temperature](../silver_temperature.md)           |
 | Qualified name                | silver_temperature.date  |
 | Datatype                      | string        |
 
 
+
+```{toctree}
 ---
-<object data="/Users/misha/harvard/projects/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/date.svg" type="image/svg+xml"></object>
+maxdepth: 1
+hidden:
+---
+date_svg_envelop.md
+```
+
+
+```{figure} date.svg
+:align: center
+:alt: Column silver_temperature.date Lineage SVG
+:target: date_svg_envelop.html
+
+Data lineage for column silver_temperature.date
+
+```
+
+
