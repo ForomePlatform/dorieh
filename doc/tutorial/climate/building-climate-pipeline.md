@@ -223,7 +223,7 @@ existing two:
 
 ```yaml
   get_shapes:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/get_shapes.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl
 ```
                         
 Which will bring us to the following workflow definition:
@@ -247,7 +247,7 @@ toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cw
 
 ```
 
-## Step 3 – Parameterize for a single day (“toy” run)
+## Step 3. Parameterize for a single day (“toy” run)
 
 To speed up development and debugging, we can parameterize the 
 workflow so that it can run on “toy” datasets—for example, filtering 
@@ -255,7 +255,20 @@ a single day (e.g., 2019-01-15) instead of an entire year. Running
 your pipeline on a minimal dataset ensures quick feedback, uncovers 
 errors early, and avoids wasting compute resources.     
 
-Such parametrization often requires additional input transformations 
+First, we need to modify the `inputs` section of the workflow:
+
+```yaml
+inputs:
+  band:
+    type: string
+  date:
+    type: string    # e.g. "2019-01-15"
+  geography:
+    type: string    # "zcta" or "county"
+```
+
+We must keep in mind that such parametrization often requires 
+additional input transformations 
 (e.g., extracting year from a date); hence, we need to insert 
 transformation steps, chaining outputs via CWL’s valueFrom mechanism.       
 
@@ -267,14 +280,14 @@ the date:
                 
 ```yaml
   extract_year:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/parse_date.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/parse_date.cwl
     in:
       date: date
     out:
       - year
 ```
 
-With this step in place, the workflow is now:
+With these changes in place, the workflow is now:
 
 ```{literalinclude} steps/step3/example1.cwl```
 
@@ -282,5 +295,406 @@ It can be run with the following command:
 
 ```shell
 toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cwl --workDir . --band tmmx --date 2019-01-15 --geography zcta
+```
+
+If successful, you should find a gzipped CSV file under 
+t`mmx_zcta_polygon_2019.csv.gz` containing the following columns:    
+
+* date
+* zcta
+* tmmx
+
+This is exactly what we will ingest into the **Bronze layer**.
+
+If the workflow fails, follow the troubleshooting steps described in 
+the 
+[Troubleshooting](../../pipelines.md#troubleshooting-workflows-run-by-toil) 
+documentation.
+         
+## Step 4. Add database integration (PostgreSQL)
+
+### Start or check PostgreSQL
+
+If you already have a PostgreSQL database running, you will need to
+create a `database.ini` file as described in the 
+[Documentation](../../DBConnections.md). 
+
+Otherwise, you can start a PostgreSQL container using Docker:
+
+```shell
+git clone https://github.com/ForomePlatform/dorieh.git
+cd dorieh/docker/pg-hll
+docker compose up -d
+```
+   
+In the latter case use the provided 
+[`database.ini`](https://github.com/ForomePlatform/dorieh/blob/main/examples/with-postgres/database.ini) 
+file.
+
+### Add PostgreSQL integration to the workflow
+
+Back in your tutorial directory (examples/tutorials/climate), add 
+two new workflow inputs to example1.cwl: 
+
+```yaml
+inputs:
+  band:
+    type: string
+  date:
+    type: string
+  geography:
+    type: string
+  database:
+    type: File
+    default:
+      class: File
+      location: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/examples/with-postgres/database.ini
+  connection_name:
+    type: string
+    default: "localhost"
+```
+
+### Add the Database initialization step
+
+Another required action is to ensure that the database contains the 
+latest Dorieh code for PostgreSQL. This is done by adding `init_db` 
+step:  
+
+```yaml
+initdb:
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/initcoredb.cwl
+    in:
+      database: database
+      connection_name: connection_name
+    out:
+      - log
+      - err
+```
+
+Optionally, though we recommended it, add the outputs of the 
+`initdb` to the pipeline outputs:
+            
+```yaml
+outputs:
+  # ... existing outputs ...
+
+  initdb_log:
+    type: File
+    outputSource: initdb/log
+  initdb_err:
+    type: File
+    outputSource: initdb/err
+```
+          
+### Defining Data Model
+
+However, to load the data into a database, we also need to define 
+the database schema. It is possible to automatically infer schema 
+using Dorieh tools like 
+[Project Loader](../../ProjectLoader.md) and 
+[Introspector](../../members/introspector). But for Medallion 
+architecture the schema should be explicitly defined and will use it 
+with the [Data Loader](../../DataLoader.md) tool.
+
+```{seealso}
+[Data modelling vs data introspection](../../adding_data.md#data-modelling-vs-data-introspection)
+```
+
+The data model definition language is described in the 
+[Data Model](../../Datamodels.md) documentation. 
+
+Initially, we 
+will define a simple schema for the Bronze layer:
+
+```{literalinclude} steps/step4/example1_model.yml
+:class: dropdown 
+```
+
+It defines a data domain named “tutorial” and in it a table named 
+“bronze_temperature” with 3 columns: `tmmx`, `date` and `zcta`. We will 
+assume that the file name is `example1_model.yml`.
+
+### Adding Ingestion Step
+                                
+Now we can add the actual ingestion step to the workflow using the 
+Dorieh [ingest tool](../../pipeline/ingest.md):
+
+```yaml
+  ingest:
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/ingest.cwl
+    in:
+      depends_on: initdb/log
+      registry:
+        default:
+          class: File
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+      domain:
+        valueFrom: "tutorial"
+      table:
+        valueFrom: "bronze_temperature"
+      input: aggregate/data
+      database: database
+      connection_name: connection_name
+    out:
+      - log
+      - errors
+```
+
+After adding ingestion to **steps** and the logs it produces to the 
+**outputs**, the resulting workflow file should look like:
+
+```{literalinclude} steps/step4/example1.cwl
+:class: dropdown 
+```
+                        
+The same command as before can be used to run the workflow:
+
+```shell
+toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cwl --workDir . --band tmmx --date 2019-01-15 --geography zcta
+```
+
+If you chose to perform this run, beside the CSV file, you will see the 
+data in the database in the table `bronze_temperature`.
+                                         
+## Step 5. Building Medallion Layers (Bronze, Silver, Gold)
+
+Medallion architecture defines three layers:
+
+* **Bronze Layer**: Load as-is, minimally processed data to database 
+  from pipeline outputs. 
+  * In this climate data example, the “raw” data is not strictly 
+    straight-from-source due to initial aggregation necessary for 
+    technical compatibility as NetCDF data can not be ingested 
+    directly into the majority of DBMSs unless a specialized 
+    extensions are installed. Hence, we need to transform the data 
+    to a more conventional tabular format before ingestion - the 
+    exact operation performed by the aggregation step      
+* **Silver Layer**: Clean, harmonize, and enrich data.
+  * Built from Bronze layer (no external inputs are allowed).
+  * Add derived columns (e.g., Celsius/Fahrenheit conversions, state 
+    & city annotation via ZIP lookup). 
+  * Define as a view on top of the bronze table in your data model YAML.
+* **Gold Layer**: Produce analytic/ML-ready outputs.
+  * Built from Silver Layer.
+  * Perform groupings and summaries (e.g., aggregating by state and 
+    date). 
+  * Use materialized views where performance and reusability are 
+    required. 
+
+Silver layer usually is responsible for normalization, harmonization 
+and cleansing of the data. In our example the data does not require 
+cleansing, as it is already clean, normalized, and does not require 
+harmonization because it is coming from a single source. However, 
+even if source data is already clean, enriching it with derived 
+fields or external metadata (such as regional names) increases 
+analytic utility and facilitates downstream ML feature engineering. 
+Hence, we illustrate enriching the data by adding columns, 
+displaying the temperature in different units and annotating zip 
+codes with the US State abbreviations and the names of the cities 
+for those areas that lie within a city.         
+
+Based on the discussion above, for the silver layer we will add a 
+corresponding step:   
+
+```yaml
+  build_silver:
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/create.cwl
+    in:
+      depends_on: ingest/log
+      registry:
+        default:
+          class: File
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
+      domain:
+        valueFrom: "tutorial"
+      table:
+        valueFrom: "silver_temperature"
+      database: database
+      connection_name: connection_name
+    out:
+      - log
+      - errors
+```
+
+This step builds a table named `silver_temperature`. We also need to 
+describe the table in the data model file. Best Practice is to keep 
+your Silver and Gold layer table/view definitions together in a 
+versioned domain YAML file, checked into source control along with 
+your workflow scripts.    
+
+hence, we will add the following table definition to 
+`example1_model.yml`: 
+
+```yaml
+    silver_temperature:
+      description: |
+        Maximum daily temperature for US Zip Code Tabulation Areas, enriched and harmonized
+      create:
+        type: view
+        from: bronze_temperature
+      columns:
+        - tmmx
+        - date
+        - zcta
+        - temperature_in_C:
+            type: float
+            description: Temperature in Celsius
+            source: (tmmx - 273.15)
+        - temperature_in_F:
+            type: float
+            description: Temperature in Fahrenheit
+            source: ((tmmx - 273.15)*9/5 + 32)
+        - us_state:
+            type: VARCHAR(2)
+            description: US State
+            source:  "public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta)"
+        - city:
+            type: VARCHAR(128)
+            description: US State
+            source:  "public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)"
+```                
+
+This silver table retains all 3 bronze columns and adds 4 new:
+
+* Temperature expressed in degrees Celsius for the benefit of 
+  readers outside of the United States. It is computed by the 
+  trivial formula.   
+* Temperature expressed in degrees Fahrenheit for the benefit of the 
+  United States reader. It is computed by the known conversion 
+  formula.  
+* A code (2 letter abbreviation) for the state, in which the area 
+  lies. It is computed by calling Dorieh built-in function 
+  `zip_to_state`.  
+* A name of the city for the zip code for urban areas, also computed 
+  by calling Dorieh built-in function `zip_to_city`.  
+
+After you made these changes to both files (`example1.cwl` and 
+`example1_model.yml`), you are welcome to run the pipeline again, 
+using the same command as above. It will now 
+build the silver layer. 
+
+Alternatively, we can add the Gold layer before testing.   
+
+In the Gold layer, we will add just one table that computes some 
+data for the whole states and is ready for analysis. The table 
+named `gold_temperature_by_state` is defined by the following block:  
+
+```yaml
+    gold_temperature_by_state:
+      description: |
+        Temperature variations by US State
+      create:
+        type: materialized view
+        from: silver_temperature
+        group by:
+          - us_state
+          - date
+      columns:
+        - us_state
+        - date
+        - t_span:
+            type: float
+            description: Temperature variation in Celsius
+            source: MAX(tmmx) - MIN(tmmx)
+        - t_mean_in_C:
+            type: float
+            description: Mean Temperature in Celsius
+            source: AVG(temperature_in_C)
+        - t_mean_in_F:
+            type: float
+            description: Mean Temperature in Fahrenheit
+            source: AVG(temperature_in_F)
+      primary_key:
+        - us_state
+        - date
+```
+
+The gold table contains mean temperatures on a date for every US state 
+and also the variation in the temperature on the day. The variation 
+is in maximum temperature, so it does not reflect a change during a 
+day, but only the diversity of geography.   
+
+We now need to add a step to build a gold schema to the workflow 
+itself. The step is literally the same as silver, the difference is 
+just the target table name:  
+                             
+```yaml
+  build_gold:
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/create.cwl
+    in:
+      depends_on: build_silver/log
+      registry:
+        default:
+          class: File
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
+      domain:
+        valueFrom: "tutorial"
+      table:
+        valueFrom: "gold_temperature_by_state"
+      database: database
+      connection_name: connection_name
+    out:
+      - log
+      - errors
+```
+
+The final version of the workflow is:
+
+```{literalinclude} example1.cwl
+:class: dropdown 
+```
+
+WHile the final Medallion data model is:
+
+```{literalinclude} example1_model.yml
+:class: dropdown 
+```
+
+## Step 6. Testing the Pipeline
+
+At this point example1.cwl orchestrates:
+
+1. Data download.
+2. Shape download.
+3. Spatial aggregation.
+4. DB initialization.
+5. Bronze ingestion.
+6. Silver view creation.
+7. Gold materialized view creation.
+
+The pipeline is now ready to be tested. You can run it with the 
+same command as before:
+
+```shell
+toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cwl --workDir . --band tmmx --date 2019-01-15 --geography zcta
+```
+
+If everything completes successfully, you should see the following 
+tables in your PostgreSQL database:
+
+* `bronze_temperature`
+* `silver_temperature` (view)
+* `gold_temperature_by_state` (materialized view)
+
+You can also run the following SQL queries to verify the data:
+
+```sql
+-- Inspect Bronze
+SELECT * FROM bronze_temperature
+ORDER BY date, zcta
+LIMIT 10;
+
+-- Inspect Silver
+SELECT date, zcta, temperature_in_C, us_state, city
+FROM silver_temperature
+ORDER BY date, zcta
+LIMIT 10;
+
+-- Inspect Gold: which state was hottest on 2019‑01‑15?
+SELECT us_state, t_mean_in_C, t_span
+FROM gold_temperature_by_state
+WHERE date = '2019-01-15'
+ORDER BY t_mean_in_C DESC
+LIMIT 10;
 ```
 

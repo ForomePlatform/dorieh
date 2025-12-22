@@ -20,12 +20,12 @@ inputs:
 
 steps:
   download:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/download.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl
     in:
       year: year
       band: band
 
   aggregate:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/aggregate_daily.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl
 
 Outputs: {}
