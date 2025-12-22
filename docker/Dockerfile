@@ -16,22 +16,22 @@
 # under the License.
 #
 
+# DOCKER file for building container  for ARM
 
-FROM quay.io/ucsc_cgl/toil:latest  AS dorieh
-USER root
+FROM ubuntu:24.04
 
-RUN mkdir /scratch/
-RUN mkdir /opt/local/
-COPY requirements.txt /opt/local/
-ENV DEBIAN_FRONTEND=noninteractive
-RUN rm /etc/apt/sources.list.d/mesos.list  # Repository has expired GPG key
-RUN add-apt-repository ppa:deadsnakes/ppa
-RUN apt update  
-RUN apt install -y postgresql-client nodejs npm  g++ gdal-bin libgdal-dev libgeos-dev
-RUN apt install -y r-base r-base-dev
-RUN pip install --upgrade pip
-RUN pip install -r  /opt/local/requirements.txt
-RUN pip install cwlref-runner
+RUN apt-get update && apt-get install -y \
+    postgresql-client nodejs npm g++ \
+    gdal-bin libgdal-dev libgeos-dev \
+    python3-pip python3-dev git \
+    r-base r-base-dev && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 
+RUN ln -s /usr/bin/python3 /usr/bin/python
 
+# Only run this if you know you need newer versions
+RUN pip install --upgrade pip setuptools wheel --break-system-packages --ignore-installed
 
+WORKDIR /opt/local/
+COPY requirements.txt requirements.txt
+RUN pip install -r requirements.txt --break-system-packages

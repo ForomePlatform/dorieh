@@ -46,7 +46,7 @@ Install Dorieh (stable version):
 
 If you prefer to install the latest version from GitHub: 
 
-    pip install git+https://github.com/NSAPH-Data-Platform/dorieh
+    pip install git+https://github.com/ForomePlatform/dorieh
 
 If FST support is desired, [R](https://www.r-project.org/) runtime has to be installed and R_HOME environment 
 variable set up. One of the simples ways of installing R is to use 
@@ -55,7 +55,7 @@ Dorieh with either of the  following command:
 
     pip install dorieh[FST]
 
-    pip install "git+https://github.com/NSAPH-Data-Platform/dorieh[FST]"
+    pip install "git+https://github.com/ForomePlatform/dorieh[FST]"
 
 ### Docker Container
 

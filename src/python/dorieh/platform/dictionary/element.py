@@ -135,6 +135,8 @@ class Graph:
 
 
 def fqn(schema: str, name: str) -> str:
+    if schema is None:
+        return name
     return schema + '.' + name
 
 
