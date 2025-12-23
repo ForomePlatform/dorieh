@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
-      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css?v=dd72e65a" />
+      <link rel="stylesheet" type="text/css" href="../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/dorieh.css?v=a01a0e0e" />
 
   
@@ -132,10 +132,13 @@ lineage graph for a climate analysis workflow built in the
 <p>Dorieh provides an integrated dictionary and lineage utility that
 analyzes your workflow and domain definition file (such as
 example1_model.yml) to automatically generate
-a full suite of human-and machine-readable documentation with a comprehensive data
-dictionary along with graphical lineage diagrams — both at the table
-and the column level.</p>
-<p>The content of example1_model.yml</p>
+a full suite of human -and machine-readable artifacts:</p>
+<ul class="simple">
+<li><p>a comprehensive data dictionary, and</p></li>
+<li><p>graphical lineage diagrams at both the table and the column level.</p></li>
+</ul>
+<p>To anchor this tutorial, we remind here the content of the
+example1_model.yml file:</p>
 <div class="toggle docutils container">
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="nt">tutorial</span><span class="p">:</span>
 <span class="linenos"> 2</span><span class="w">  </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
@@ -235,9 +238,9 @@ and the column level.</p>
 <li><p>A summary of columns for the table, each with a link to its own detailed description</p></li>
 </ul>
 </li>
-<li><p><strong>Column documentation pages</strong></p></li>
-<li><p>Human-readable description for the column</p>
+<li><p><strong>Column documentation pages</strong></p>
 <ul>
+<li><p>Human-readable description for the column</p></li>
 <li><p>A column-level lineage diagram that shows exactly which upstream columns and tables contributed data to the current column</p></li>
 <li><p>Interactive SVG: All elements are clickable, supporting rapid navigation</p></li>
 </ul>
@@ -269,6 +272,14 @@ documentation systems.</p></li>
 <h2><a class="toc-backref" href="#id3" role="doc-backlink">Running the tool</a><a class="headerlink" href="#running-the-tool" title="Link to this heading"></a></h2>
 <p>We will be using the
 <a class="reference internal" href="../../members/domain_dictionary.html"><span class="std std-doc">Data Dictionary Generation tool</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Here we assume you are running from a <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory alongside
+<code class="docutils literal notranslate"><span class="pre">example1_model.yml</span></code>. This directory should have been created when
+walking through the
+<a class="reference internal" href="documenting-a-workflow.html#generating-skeleton-documentation"><span class="std std-ref">documentation tutorial</span></a>
+If you used a different layout, adjust the paths accordingly.</p>
+</div>
 <p>Run the following commands to produce draft documentation:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>docs
 python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>../example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>standalone
@@ -283,6 +294,13 @@ can be easily examined.</p>
 python<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.dictionary.domain_dictionary<span class="w"> </span>../example1_model.yml<span class="w"> </span>--fmt<span class="w"> </span>svg<span class="w"> </span>--lod<span class="w"> </span>min<span class="w"> </span>-o<span class="w"> </span>example1.dot<span class="w"> </span>--mode<span class="w"> </span>sphinx
 </pre></div>
 </div>
+</div>
+<div class="admonition hint">
+<p class="admonition-title">Hint</p>
+<p>We use the <code class="docutils literal notranslate"><span class="pre">--lod</span> <span class="pre">min</span></code> option generate lineage for derived columns
+only. See
+<a class="reference internal" href="../../members/domain_dictionary.html#usage"><span class="std std-ref">Data Dictionary Generation tool</span></a>
+for details.</p>
 </div>
 </section>
 <section id="exploring-the-artifacts">
@@ -362,8 +380,10 @@ language supports the following keys:</p>
 </section>
 <section id="lineage-diagram-for-medicare-data">
 <h2><a class="toc-backref" href="#id6" role="doc-backlink">Lineage Diagram for Medicare data</a><a class="headerlink" href="#lineage-diagram-for-medicare-data" title="Link to this heading"></a></h2>
-<p>To view the full lineage diagram for the Medicare data,
-see <a class="reference internal" href="../../MedicareLineage.html"><span class="std std-doc">Medicare Data Dictionary</span></a>.</p>
+<p>This small climate example uses the same tooling as our Medicare
+pipeline. For a large, production-scale use case—including many more
+tables and complex transformations—see the<br />
+<a class="reference internal" href="../../MedicareLineage.html"><span class="std std-doc">Medicare Data Dictionary</span></a>.</p>
 </section>
 </section>
 

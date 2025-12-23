@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
-      <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css?v=dd72e65a" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css?v=a01a0e0e" />
 
   
@@ -172,8 +172,8 @@ multiple tables.</p></li>
 </pre></div>
 </div>
 <p>Positional arguments:</p>
-<table class="docutils align-default" id="id2">
-<caption><span class="caption-text">Positional Arguments</span><a class="headerlink" href="#id2" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id3">
+<caption><span class="caption-text">Positional Arguments</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 20.0%" />
 <col style="width: 80.0%" />
@@ -190,8 +190,8 @@ multiple tables.</p></li>
 </tbody>
 </table>
 <p>Options:</p>
-<table class="docutils align-default" id="id3">
-<caption><span class="caption-text">Options</span><a class="headerlink" href="#id3" title="Link to this table"></a></caption>
+<table class="docutils align-default" id="id4">
+<caption><span class="caption-text">Options</span><a class="headerlink" href="#id4" title="Link to this table"></a></caption>
 <colgroup>
 <col style="width: 25.0%" />
 <col style="width: 25.0%" />
@@ -214,7 +214,7 @@ multiple tables.</p></li>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--lod</span> <span class="pre">{full,none,min}</span></code></p></td>
 <td></td>
-<td><p>Level of details</p></td>
+<td><p>Level of details for column-level lineage documentation <a class="footnote-reference brackets" href="#lodnote" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--mode</span> <span class="pre">{standalone,sphinx}</span></code></p></td>
 <td></td>
@@ -226,6 +226,17 @@ multiple tables.</p></li>
 </tr>
 </tbody>
 </table>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="lodnote" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p><strong>Level of Details for ``–lod``:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">none</span></code>: No column-level lineage documentation or diagrams are generated. Only table-level diagrams and summaries are produced.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min</span></code>: Lineage graphs are generated only for derived columns. For columns that have no predecessors (i.e., is not derived from other columns), a markdown file is created, but no lineage diagram is generated. For columns with predecessors, both diagrams and markdown are generated as in <code class="docutils literal notranslate"><span class="pre">full</span></code> mode.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">full</span></code>: All columns in all tables will have their lineage diagrams and markdown documentation generated, regardless of whether they have predecessors. This is the most comprehensive documentation mode.</p></li>
+</ul>
+</aside>
+</aside>
 </section>
 <section id="module-dorieh.platform.dictionary.domain_dictionary">
 <span id="details"></span><h2>Details<a class="headerlink" href="#module-dorieh.platform.dictionary.domain_dictionary" title="Link to this heading"></a></h2>

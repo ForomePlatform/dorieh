@@ -132,7 +132,7 @@ Tutorial.</p>
 </nav>
 <section id="workflow-files">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Workflow files</a><a class="headerlink" href="#workflow-files" title="Link to this heading"></a></h2>
-<p>In the <a class="reference internal" href="building-climate-pipeline.html"><span class="std std-doc">previous tutorial</span></a> we build a
+<p>In the <a class="reference internal" href="building-climate-pipeline.html"><span class="std std-doc">previous tutorial</span></a> we built a
 workflow represented by two YAML files:</p>
 <ol class="arabic simple">
 <li><p>Workflow topology expressed in CWL: <a class="reference download internal" download="" href="../../_downloads/07956bfd3016da71fd2aa32a248e63f4/example1.cwl"><span class="xref download myst">example1.cwl</span></a></p></li>
@@ -156,8 +156,7 @@ Markdown documentation with a DAG diagram and step descriptions.</p>
 </div>
 <p>The utility produces three files:</p>
 <ul class="simple">
-<li><p><strong>example1.md</strong>: The [principal documentation file]
-(mddocs/example1.md), containing:</p>
+<li><p><strong>example1.md</strong>: The <a class="reference internal" href="mddocs/example1.html"><span class="std std-doc">principal documentation file</span></a>, containing:</p>
 <ul>
 <li><p>A visual representation of the workflow DAG (see Figure 1)</p></li>
 <li><p>Description of all workflow inputs and outputs.</p></li>
@@ -226,6 +225,10 @@ self-explanatory documentation.</p>
 <span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.date.split(&#39;-&#39;)[0])</span>
 <span class="w">      </span><span class="nt">geo</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">geography</span>
 <span class="w">      </span><span class="nt">date</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">date</span>
+</pre></div>
+</div>
+<p>After adding or modifying <code class="docutils literal notranslate"><span class="pre">doc</span></code> entries, simply re-run:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>cwl2md<span class="w"> </span>-i<span class="w"> </span>example1.cwl<span class="w"> </span>-v<span class="w"> </span>-o<span class="w"> </span>docs/
 </pre></div>
 </div>
 <p>All documentation elements you include in your CWL workflow are

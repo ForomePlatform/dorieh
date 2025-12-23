@@ -17,7 +17,7 @@ local:
 
 ## Workflow files
 
-In the [previous tutorial](building-climate-pipeline.md) we build a 
+In the [previous tutorial](building-climate-pipeline.md) we built a 
 workflow represented by two YAML files:
 
 1. Workflow topology expressed in CWL: [example1.cwl](example1.cwl)
@@ -44,8 +44,7 @@ cwl2md -i example1.cwl -v -o docs/
 
 The utility produces three files:
 
-* **example1.md**: The [principal documentation file]
-  (mddocs/example1.md), containing: 
+* **example1.md**: The [principal documentation file](mddocs/example1.md), containing: 
   * A visual representation of the workflow DAG (see Figure 1)
   * Description of all workflow inputs and outputs.
   * Description of all workflow steps. These step-by-step details 
@@ -118,6 +117,12 @@ get_shapes:
         valueFrom: $(inputs.date.split('-')[0])
       geo: geography
       date: date
+```
+
+After adding or modifying `doc` entries, simply re-run:
+
+```shell
+cwl2md -i example1.cwl -v -o docs/
 ```
 
 All documentation elements you include in your CWL workflow are 
