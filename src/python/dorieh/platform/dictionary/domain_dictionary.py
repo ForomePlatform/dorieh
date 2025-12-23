@@ -293,7 +293,7 @@ def parse_args() -> Dict:
                         choices=["none","png","gif","ps2","svg","cmapx","jpeg"],
                         required=False)
     parser.add_argument("--lod",
-                        help="Level of details",
+                        help="Level of details: none (no column lineage), min (derived columns only), full (all columns)",
                         default="none",
                         choices=[s.value for s in LOD])
     parser.add_argument("--mode",

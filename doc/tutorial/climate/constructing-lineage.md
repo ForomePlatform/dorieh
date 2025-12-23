@@ -22,11 +22,14 @@ local:
 Dorieh provides an integrated dictionary and lineage utility that 
 analyzes your workflow and domain definition file (such as 
 example1_model.yml) to automatically generate 
-a full suite of human-and machine-readable documentation with a comprehensive data 
-dictionary along with graphical lineage diagrams — both at the table 
-and the column level.     
+a full suite of human -and machine-readable artifacts:
 
-The content of example1_model.yml
+- a comprehensive data dictionary, and
+- graphical lineage diagrams at both the table and the column level.
+
+
+To anchor this tutorial, we remind here the content of the 
+example1_model.yml file:
 
 :::{toggle} Expand Code Block
 ```{literalinclude} example1_model.yml
@@ -46,7 +49,7 @@ The data dictionary and lineage tools extract and synthesize information from bo
   * The SQL or DDL used to create the table
   * A summary of columns for the table, each with a link to its own detailed description
 * **Column documentation pages**
-* Human-readable description for the column
+  * Human-readable description for the column
   * A column-level lineage diagram that shows exactly which upstream columns and tables contributed data to the current column
   * Interactive SVG: All elements are clickable, supporting rapid navigation
 * **An index/glossary of all columns across all tables**
@@ -75,6 +78,13 @@ The tool supports two modes:
 We will be using the 
 [Data Dictionary Generation tool](../../members/domain_dictionary.rst).
 
+:::{note}
+Here we assume you are running from a `docs/` directory alongside 
+`example1_model.yml`. This directory should have been created when 
+walking through the 
+[documentation tutorial](documenting-a-workflow.md#generating-skeleton-documentation) 
+If you used a different layout, adjust the paths accordingly.
+:::
 
 Run the following commands to produce draft documentation:
 
@@ -92,6 +102,13 @@ If you plan to build documentation with Sphinx and MyST, instead run:
 cd docs
 python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --fmt svg --lod min -o example1.dot --mode sphinx
 ```
+:::
+
+:::{hint}
+We use the `--lod min` option generate lineage for derived columns 
+only. See 
+[Data Dictionary Generation tool](../../members/domain_dictionary.rst#usage)
+for details.
 :::
 
 ## Exploring the Artifacts
@@ -168,8 +185,10 @@ And in the
 
 ## Lineage Diagram for Medicare data
 
-To view the full lineage diagram for the Medicare data, 
-see [Medicare Data Dictionary](../../MedicareLineage.md).
+This small climate example uses the same tooling as our Medicare 
+pipeline. For a large, production-scale use case—including many more 
+tables and complex transformations—see the  
+[Medicare Data Dictionary](../../MedicareLineage.md).
 
 
 
