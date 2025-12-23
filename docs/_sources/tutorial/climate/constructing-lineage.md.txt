@@ -83,6 +83,9 @@ cd docs
 python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --fmt svg --lod min -o example1.dot --mode standalone
 ```
 
+This command produces both Markdown and standalone HTML files that
+can be easily examined.
+
 :::{important}
 If you plan to build documentation with Sphinx and MyST, instead run:
 ```shell
@@ -91,14 +94,12 @@ python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --f
 ```
 :::
 
-This command produces both Markdown and standalone HTML files that 
-can be easily examined. Open the 
-[main documentation file](mddocs/example1.dot.md) 
-
 ## Exploring the Artifacts
 
-Start with the high-level lineage DAG (see Figure XX), where each 
-node is a table. 
+Start with the 
+[high-level lineage DAG](mddocs/example1.dot.md), where each 
+node is a table. If you use Standalone (HTML) mode, open the generated 
+`example1.dot.html` file in a browser. 
 
 Click a table to view its documentation, including all columns and 
 their descriptions.
@@ -113,6 +114,13 @@ All navigation is cross-linked for rapid provenance discovery.
                                                 
 As mentioned above, the data dictionary tool automatically extracts 
 any code (Python, SQL, DDL) that is used to create tables and columns.
+
+For example, you can see **SQL/DDL block** in the generated page for the 
+table [silver_temperature](mddocs/tables/silver_temperature.md) or 
+**compute code** for columns `silver_temperature.temperature_in_F`
+and `gold_temperature_by_state.t_mean_in_F` in the 
+[column lineage diagram](mddocs/tables/gold_temperature_by_state/t_mean_in_f.md)
+
 To make the documentation more comprehensive, the data modeling 
 language supports the following keys: 
 
@@ -127,7 +135,36 @@ For the following elements:
 
 Additionally, **description** is supported for the
 [Invalid Record](../../Datamodels.md#invalid-record) element.
+                                             
+An example of using these keys is shown below:
 
+```yaml
+      columns:
+        - tmmx:
+            type: float
+            description: Maximum temperature variable from the TerraClimate dataset in K
+            reference: https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands
+```
+
+See how this is reflected in the 
+[generated documentation](mddocs/tables/bronze_temperature/tmmx.md):
+
+```{note}
+|                               |                        |
+| ----------------------------- | ---------------------- |
+| Table                         | [bronze_temperature](../bronze_temperature.md)           |
+| Qualified name                | bronze_temperature.tmmx  |
+| Datatype                      | float        |
+| Reference | [https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands) |
+
+
+Maximum temperature variable from the TerraClimate dataset in K
+```
+
+And in the 
+[lineage graph](mddocs/tables/silver_temperature/tmmx.md)
+
+![img.png](tmmx-column.png)
 
 ## Lineage Diagram for Medicare data
 
