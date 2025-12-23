@@ -162,7 +162,7 @@ Maximum temperature variable from the TerraClimate dataset in K
 ```
 
 And in the 
-[lineage graph]()
+[lineage graph](mddocs/tables/silver_temperature/tmmx.md)
 
 ![img.png](tmmx-column.png)
 
