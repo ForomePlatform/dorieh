@@ -21,14 +21,14 @@ inputs:
 
 steps:
   extract_year:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/parse_date.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/parse_date.cwl
     in:
       date: date
     out:
       - year
 
   download:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/download.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/download.cwl
     in:
       year: extract_year/year
       band: band
@@ -38,7 +38,7 @@ steps:
       - errors
 
   get_shapes:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/get_shapes.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/get_shapes.cwl
     in:
       geo: geography
       year: extract_year/year
@@ -46,7 +46,7 @@ steps:
       - shape_files
 
   aggregate:
-    run: https://raw.githubusercontent.com/NSAPH-Data-Platform/dorieh/main/src/cwl/aggregate_daily.cwl
+    run: https://raw.githubusercontent.com/ForomePlatform/dorieh/main/src/cwl/aggregate_daily.cwl
     in:
       geography: geography
       year: extract_year/year

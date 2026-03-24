@@ -85,7 +85,7 @@ steps:
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -104,7 +104,7 @@ steps:
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -122,7 +122,7 @@ steps:
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:

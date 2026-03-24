@@ -15,7 +15,7 @@ For example, in the following code we want to see all available variables for `a
 
 .. code-block:: python3
      
-    from census.census_info import get_varlist
+    from dorieh.census.census_info import get_varlist
 
     varlist = get_varlist(2011, "acs1")
     print(f"{Number of downloaded variables: len(varlist)}")
@@ -52,7 +52,7 @@ And as you can see, this variable is
 
     Please note that selecting the correct variables for the research is beyond the scope of this package and this documentation. This package will work the best when you know what you need to download.
 
-After deciding what variables you want to download, you need to create ``census_vars.yml`` file (read more :doc:`census_yaml`). Here is an example:
+After deciding what variables you want to download, you need to create ``census_vars.yml`` file (read more :doc:`census_yaml.rst`). Here is an example:
 
 .. code-block:: console
 

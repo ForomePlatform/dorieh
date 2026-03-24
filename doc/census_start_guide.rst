@@ -40,7 +40,7 @@ The general workflow is as follows:
 
 On creation, the object creates a plan for a series of API queries to calculate the desired
 variables based on the passed in yaml file. Details on how to structure that yaml file can be found in
-:doc:`census_yaml`.
+:doc:`census_yaml.rst`.
 
 - Make the API calls: ::
 

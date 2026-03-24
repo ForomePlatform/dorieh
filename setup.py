@@ -104,6 +104,7 @@ setup(
         'sphinx_paramlinks',
         'sphinx_rtd_theme',
         'sphinxcontrib-mermaid',
+        'sphinx-togglebutton',
         'sqlparse',
         "tqdm>=4.66.3",
         'typing-extensions',

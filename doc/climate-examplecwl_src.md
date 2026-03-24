@@ -1,6 +1,6 @@
 # climate-example.cwl
 
-```{literalinclude} ../examples/climate-example.cwl
+```{literalinclude} ../examples/no-db/climate-example.cwl
 :linenos:
 :language: yaml
 ```

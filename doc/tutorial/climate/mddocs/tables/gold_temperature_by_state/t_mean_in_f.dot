@@ -1,0 +1,20 @@
+digraph {
+			"gold_temperature_by_state.t_mean_in_F" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>gold_temperature_by_state.t_mean_in_F</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Mean Temperature in Fahrenheit</td></tr>
+	<tr><td align = "left">AVG(temperature_in_F)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../gold_temperature_by_state/t_mean_in_F.html",target=_blank];
+			"silver_temperature.temperature_in_F" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.temperature_in_F</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Temperature in Fahrenheit</td></tr>
+	<tr><td align = "left">((tmmx - 273.15)*9/5 + 32)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/temperature_in_F.html",target=_blank];
+
+	"silver_temperature.temperature_in_F" -> "gold_temperature_by_state.t_mean_in_F" [label="	  Aggregated On us_state, date",penwidth=5,color=blue,labelfloat=True];
+}

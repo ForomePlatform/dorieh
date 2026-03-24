@@ -1,0 +1,17 @@
+digraph {
+			"silver_temperature.tmmx" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.tmmx</b></td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/tmmx.html",target=_blank];
+			"bronze_temperature.tmmx" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>bronze_temperature.tmmx</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Maximum temperature variable from the<br/>TerraClimate dataset in K</td></tr>
+
+</TABLE>
+>,shape=box,URL="../bronze_temperature/tmmx.html",target=_blank];
+
+	"bronze_temperature.tmmx" -> "silver_temperature.tmmx" [label=	"  Transformed",penwidth=1,color=black,labelfloat=True];
+}

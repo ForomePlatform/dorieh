@@ -1,0 +1,20 @@
+digraph {
+			"gold_temperature_by_state.t_mean_in_C" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>gold_temperature_by_state.t_mean_in_C</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Mean Temperature in Celsius</td></tr>
+	<tr><td align = "left">AVG(temperature_in_C)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../gold_temperature_by_state/t_mean_in_C.html",target=_blank];
+			"silver_temperature.temperature_in_C" [label=<
+<TABLE>
+<tr><td align = "center" border = "0"><b>silver_temperature.temperature_in_C</b></td></tr>
+<tr><td align = "left" border = "0" cellpadding="25">Temperature in Celsius</td></tr>
+	<tr><td align = "left">(tmmx - 273.15)</td></tr>
+
+</TABLE>
+>,shape=box,URL="../silver_temperature/temperature_in_C.html",target=_blank];
+
+	"silver_temperature.temperature_in_C" -> "gold_temperature_by_state.t_mean_in_C" [label="	  Aggregated On us_state, date",penwidth=5,color=blue,labelfloat=True];
+}

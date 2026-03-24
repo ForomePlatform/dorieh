@@ -1,0 +1,74 @@
+<h1 id="materialized-view-gold_temperature_by_state">Materialized view
+gold_temperature_by_state</h1>
+<h2 id="overview-for-gold_temperature_by_state">Overview for
+gold_temperature_by_state</h2>
+<p>Temperature variations by US State</p>
+<p>Aggregated from <a
+href="silver_temperature.html">silver_temperature</a> on On us_state,
+date</p>
+<p>Primary Key: us_state, date</p>
+<details>
+<summary>
+SQL/DDL Statement
+</summary>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">CREATE</span> <span class="kw">materialized</span> <span class="kw">view</span>  gold_temperature_by_state <span class="kw">AS</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    us_state,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="dt">date</span>,</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">MAX</span>(tmmx) <span class="op">-</span> <span class="fu">MIN</span>(tmmx) <span class="kw">AS</span> t_span,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(temperature_in_C) <span class="kw">AS</span> t_mean_in_C,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">AVG</span>(temperature_in_F) <span class="kw">AS</span> t_mean_in_F</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span> silver_temperature</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span> us_state <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span> <span class="kw">AND</span> <span class="dt">date</span> <span class="kw">IS</span> <span class="kw">NOT</span> <span class="kw">NULL</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">GROUP</span> <span class="kw">BY</span> us_state,<span class="dt">date</span>;</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="kw">COMMENT</span> <span class="kw">ON</span> <span class="kw">materialized</span> <span class="kw">view</span> gold_temperature_by_state <span class="kw">IS</span> <span class="st">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.4&quot;, &quot;url&quot;: &quot;file:///Users/misha/harvard/projects/github/dorieh&quot;, &quot;commit&quot;: null}. Created at 2025-12-22 17:12:48.792207&#39;</span>;</span></code></pre></div>
+</details>
+<hr />
+<h2 id="columns">Columns:</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Column Name</th>
+<th>Column Type</th>
+<th>Datatype</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="gold_temperature_by_state/date.html">date</a></td>
+<td>grouping</td>
+<td>string</td>
+</tr>
+<tr>
+<td><a
+href="gold_temperature_by_state/t_mean_in_c.html">t_mean_in_c</a></td>
+<td>computed</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a
+href="gold_temperature_by_state/t_mean_in_f.html">t_mean_in_f</a></td>
+<td>computed</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a href="gold_temperature_by_state/t_span.html">t_span</a></td>
+<td>computed</td>
+<td>float</td>
+</tr>
+<tr>
+<td><a href="gold_temperature_by_state/us_state.html">us_state</a></td>
+<td>grouping</td>
+<td>string</td>
+</tr>
+</tbody>
+</table>

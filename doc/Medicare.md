@@ -20,6 +20,13 @@ local:
 ---
 ```
 
+```{seealso}
+[Example: Medicare Processing Pipeline with Synthetic Data](medicare-example.md) —
+a step-by-step guide to running the full pipeline against a **publicly available**
+synthetic dataset (no data use agreement required) and exploring the results in
+a pre-built Apache Superset dashboard.
+```
+
 ## Processing pipeline
                                       
 ### Medicare Pipeline Steps

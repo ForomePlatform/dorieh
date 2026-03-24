@@ -5,6 +5,7 @@ services:
     # container_name: dorieh-postgres
     build:
       context: .
+    shm_size: '4g'  # For larger data, use 256M for smaller
     environment:
       POSTGRES_DB: dorieh
       POSTGRES_USER: dorieh

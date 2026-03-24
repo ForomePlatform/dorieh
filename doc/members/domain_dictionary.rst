@@ -88,13 +88,20 @@ Options:
      - Format of generated image, if 'none', then no image is generated
    * - ``--lod {full,none,min}``
      -
-     - Level of details
+     - Level of details for column-level lineage documentation [#lodnote]_
    * - ``--mode {standalone,sphinx}``
      -
      - Documentation generation mode
    * - ``--output OUTPUT``
      - ``--of OUTPUT, -o OUTPUT``
      - Path to the main output file with Table-level data lineage diagram
+
+.. [#lodnote]
+   **Level of Details for ``--lod``:**
+
+   - ``none``: No column-level lineage documentation or diagrams are generated. Only table-level diagrams and summaries are produced.
+   - ``min``: Lineage graphs are generated only for derived columns. For columns that have no predecessors (i.e., is not derived from other columns), a markdown file is created, but no lineage diagram is generated. For columns with predecessors, both diagrams and markdown are generated as in ``full`` mode.
+   - ``full``: All columns in all tables will have their lineage diagrams and markdown documentation generated, regardless of whether they have predecessors. This is the most comprehensive documentation mode.
 
 Details
 -------

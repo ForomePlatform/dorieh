@@ -48,6 +48,7 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.mermaid',
     'myst_parser',
+    'sphinx_togglebutton'
 ]
 myst_heading_anchors = 5
 # Enable MyST extensions
@@ -77,8 +78,10 @@ html_theme = "sphinx_rtd_theme"
 
 source_suffix = {
     '.rst': 'restructuredtext',
-    '.txt': 'restructuredtext',
-    '.cwl': 'cwl',
+    '.txt': 'restructuredtext'
 }
+
+# ,
+#     '.cwl': 'cwl',
 
 suppress_warnings = ['autosectionlabel.*']
