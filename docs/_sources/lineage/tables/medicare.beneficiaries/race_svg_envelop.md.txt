@@ -1,8 +1,0 @@
-# Column medicare.beneficiaries.race Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.beneficiaries/race.svg
-
-```
-
-

@@ -1,0 +1,437 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Example: Medicare Processing Pipeline (with PostgreSQL) &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="How to query the database" href="SampleQuery.html" />
+    <link rel="prev" title="Example of a workflow: aggregating a climate variable" href="Example-climate-workflow.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="examples.html">Examples</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="Example-climate-workflow.html">A CWL workflow example: aggregating a climate variable</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-download-synthetic-sample-data">Step 1 — Download synthetic sample data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline">Step 2 — Run the Medicare processing pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset">Step 3 (Optional) — Explore results in Apache Superset</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running">3.1 — Stop the simple PostgreSQL container (if running)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-postgresql-superset">3.2 — Start PostgreSQL + Superset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#log-in-to-superset">3.3 — Log in to Superset</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-the-dorieh-database-connection">3.4 — Add the Dorieh database connection</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#import-the-medicare-qc-dashboard">3.5 — Import the Medicare QC dashboard</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#explore-the-dashboard">3.6 — Explore the dashboard</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#what-the-pipeline-produces">What the pipeline produces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity using Dorieh tools</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="examples.html">Examples</a></li>
+      <li class="breadcrumb-item active">Example: Medicare Processing Pipeline (with PostgreSQL)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/medicare-example.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="example-medicare-processing-pipeline-with-postgresql">
+<h1>Example: Medicare Processing Pipeline (with PostgreSQL)<a class="headerlink" href="#example-medicare-processing-pipeline-with-postgresql" title="Link to this heading"></a></h1>
+<nav class="contents local" id="contents">
+<ul class="simple">
+<li><p><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></p></li>
+<li><p><a class="reference internal" href="#step-1-download-synthetic-sample-data" id="id2">Step 1 — Download synthetic sample data</a></p></li>
+<li><p><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline" id="id3">Step 2 — Run the Medicare processing pipeline</a></p></li>
+<li><p><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset" id="id4">Step 3 (Optional) — Explore results in Apache Superset</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running" id="id5">3.1 — Stop the simple PostgreSQL container (if running)</a></p></li>
+<li><p><a class="reference internal" href="#start-postgresql-superset" id="id6">3.2 — Start PostgreSQL + Superset</a></p></li>
+<li><p><a class="reference internal" href="#log-in-to-superset" id="id7">3.3 — Log in to Superset</a></p></li>
+<li><p><a class="reference internal" href="#add-the-dorieh-database-connection" id="id8">3.4 — Add the Dorieh database connection</a></p></li>
+<li><p><a class="reference internal" href="#import-the-medicare-qc-dashboard" id="id9">3.5 — Import the Medicare QC dashboard</a></p></li>
+<li><p><a class="reference internal" href="#explore-the-dashboard" id="id10">3.6 — Explore the dashboard</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#what-the-pipeline-produces" id="id11">What the pipeline produces</a></p></li>
+</ul>
+</nav>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>
+<a class="reference internal" href="UsingHLL.html"><span class="std std-doc">Using HLL for Approximate Count Distinct</span></a>
+<a class="reference external" href="https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres">Using Dorieh with PostgreSQL Backend</a></p>
+</div>
+<p>This example demonstrates a full Dorieh data processing pipeline run against a
+<strong>publicly available synthetic</strong> Medicare-like dataset.  Because the data are
+synthetic and published openly on <a class="reference external" href="https://zenodo.org/records/18915558">Zenodo</a>,
+no institutional data access agreement is required to follow this example.
+It covers:</p>
+<ul class="simple">
+<li><p>Downloading synthetic sample data from Zenodo</p></li>
+<li><p>Running the Medicare CWL workflow with <a class="reference external" href="https://toil.readthedocs.io/en/latest/">Toil</a>
+against a local PostgreSQL instance</p></li>
+<li><p>(Optional) Exploring the results in a pre-built
+<a class="reference external" href="https://superset.apache.org/">Apache Superset</a> dashboard</p></li>
+</ul>
+<p>The source files for this example live in
+<a class="reference external" href="https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres/medicare"><code class="docutils literal notranslate"><span class="pre">examples/with-postgres/medicare/</span></code></a>.</p>
+<hr class="docutils" />
+<section id="prerequisites">
+<h2><a class="toc-backref" href="#id1" role="doc-backlink">Prerequisites</a><a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<p>Before starting, make sure you have:</p>
+<ol class="arabic">
+<li><p><strong>PostgreSQL running</strong> and a <code class="docutils literal notranslate"><span class="pre">database.ini</span></code> ready — follow the steps in
+<a class="reference external" href="https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres">Using Dorieh with PostgreSQL Backend</a>.
+If you want a quick non-production setup, use the bundled Docker Compose file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+</pre></div>
+</div>
+</li>
+<li><p><strong>Toil installed</strong> and tested — see
+<a class="reference external" href="https://foromeplatform.github.io/dorieh/examples.html#installing-dorieh-and-testing-the-installation">Installing Dorieh and testing the installation</a>.</p></li>
+<li><p>The <strong><code class="docutils literal notranslate"><span class="pre">dorieh</span></code> repository cloned</strong> under <code class="docutils literal notranslate"><span class="pre">$WORKDIR</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ForomePlatform/dorieh.git<span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Then move into the Medicare example directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/examples/with-postgres/medicare
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="step-1-download-synthetic-sample-data">
+<h2><a class="toc-backref" href="#id2" role="doc-backlink">Step 1 — Download synthetic sample data</a><a class="headerlink" href="#step-1-download-synthetic-sample-data" title="Link to this heading"></a></h2>
+<p>The synthetic Medicare-like dataset is hosted on
+<a class="reference external" href="https://zenodo.org/records/18915558">Zenodo</a> and is <strong>publicly available</strong> —
+no data use agreement or institutional access is required.  It:</p>
+<ul class="simple">
+<li><p>Mimics the raw fixed-width files (<code class="docutils literal notranslate"><span class="pre">.dat</span></code>) delivered by ResDAC</p></li>
+<li><p>Reproduces the File Transfer Summary (FTS) layout metadata</p></li>
+<li><p>Contains <strong>no real PHI / PII</strong> — it is safe for testing, demonstrations,
+and sharing</p></li>
+</ul>
+<p>Download and unpack it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>data
+<span class="nb">pushd</span><span class="w"> </span>data
+
+curl<span class="w"> </span>-fLo<span class="w"> </span>medicare-synthetic-database.zip<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s1">&#39;https://zenodo.org/records/18915558/files/medicare-synthetic-database-v1.zip?download=1&#39;</span>
+
+unzip<span class="w"> </span>medicare-synthetic-database.zip
+
+<span class="nb">popd</span>
+</pre></div>
+</div>
+<p>The extracted directory tree follows the layout expected by the ingestion
+pipeline — one sub-directory per year, each containing <code class="docutils literal notranslate"><span class="pre">.fts</span></code> metadata files
+and the corresponding <code class="docutils literal notranslate"><span class="pre">.dat</span></code> data files.</p>
+</section>
+<hr class="docutils" />
+<section id="step-2-run-the-medicare-processing-pipeline">
+<h2><a class="toc-backref" href="#id3" role="doc-backlink">Step 2 — Run the Medicare processing pipeline</a><a class="headerlink" href="#step-2-run-the-medicare-processing-pipeline" title="Link to this heading"></a></h2>
+<p>Activate your Toil virtual environment:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span><span class="nv">$TOIL_VENV</span>/bin/activate
+</pre></div>
+</div>
+<p>Run the Medicare CWL workflow:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>toil-cwl-runner<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--jobStore<span class="w"> </span>j1<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--retryCount<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--cleanWorkDir<span class="w"> </span>never<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--outdir<span class="w"> </span>outputs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--workDir<span class="w"> </span>.<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/src/workflows/medicare.cwl<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--input<span class="w"> </span>data/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--database<span class="w"> </span>https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/with-postgres/database.ini<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--connection_name<span class="w"> </span>dorieh
+</pre></div>
+</div>
+<p>After the workflow completes:</p>
+<ul class="simple">
+<li><p>Processed data is stored in your PostgreSQL backend under the <code class="docutils literal notranslate"><span class="pre">medicare</span></code>
+schema (beneficiaries, enrollments, admissions, and QC tables).</p></li>
+<li><p>Any additional output files are written to the <code class="docutils literal notranslate"><span class="pre">outputs/</span></code> directory.</p></li>
+</ul>
+<p>For a detailed description of the pipeline steps, see
+<a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>.</p>
+</section>
+<hr class="docutils" />
+<section id="step-3-optional-explore-results-in-apache-superset">
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Step 3 (Optional) — Explore results in Apache Superset</a><a class="headerlink" href="#step-3-optional-explore-results-in-apache-superset" title="Link to this heading"></a></h2>
+<p>A pre-built <strong>Medicare Quality Control</strong> Superset dashboard is included with
+the example.  The steps below show how to launch PostgreSQL together with
+Superset using Docker Compose and import the dashboard.</p>
+<section id="stop-the-simple-postgresql-container-if-running">
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">3.1 — Stop the simple PostgreSQL container (if running)</a><a class="headerlink" href="#stop-the-simple-postgresql-container-if-running" title="Link to this heading"></a></h3>
+<p>If you started the basic <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> stack earlier, bring it down
+first:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+docker<span class="w"> </span>compose<span class="w"> </span>down
+</pre></div>
+</div>
+</section>
+<section id="start-postgresql-superset">
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">3.2 — Start PostgreSQL + Superset</a><a class="headerlink" href="#start-postgresql-superset" title="Link to this heading"></a></h3>
+<p>From the same directory, start the extended stack:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-superset.yml<span class="w"> </span>up<span class="w"> </span>--build
+<span class="c1"># Or, to run detached:</span>
+<span class="c1"># docker compose -f docker-compose-superset.yml up -d</span>
+</pre></div>
+</div>
+<p>This brings up:</p>
+<ul class="simple">
+<li><p>A PostgreSQL instance (with the HLL extension)</p></li>
+<li><p>The Superset web UI</p></li>
+<li><p>Superset background worker services</p></li>
+</ul>
+</section>
+<section id="log-in-to-superset">
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">3.3 — Log in to Superset</a><a class="headerlink" href="#log-in-to-superset" title="Link to this heading"></a></h3>
+<p>Once the services are running, open <code class="docutils literal notranslate"><span class="pre">http://localhost:8088/</span></code> in your browser.</p>
+<p>Default credentials (defined in <code class="docutils literal notranslate"><span class="pre">docker-compose-superset.yml</span></code>):</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Username</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">admin</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Password</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">admin</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>If initialization did not complete and you cannot log in, create the admin
+user manually:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>superset<span class="w"> </span>superset<span class="w"> </span>fab<span class="w"> </span>create-admin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--username<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--firstname<span class="w"> </span>Admin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--lastname<span class="w"> </span>User<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--email<span class="w"> </span>admin@example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--password<span class="w"> </span>admin
+</pre></div>
+</div>
+</section>
+<section id="add-the-dorieh-database-connection">
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">3.4 — Add the Dorieh database connection</a><a class="headerlink" href="#add-the-dorieh-database-connection" title="Link to this heading"></a></h3>
+<p>In the Superset UI:</p>
+<ol class="arabic simple">
+<li><p>Open <strong>Settings → Database Connections</strong> (under <em>Data</em>).</p></li>
+<li><p>Click <strong>+ DATABASE</strong> and choose <strong>PostgreSQL</strong>.</p></li>
+<li><p>At the bottom of the dialog click
+<strong>“Connect this database with a SQL Alchemy URL string instead”</strong>.</p></li>
+<li><p>Fill in:</p>
+<ul class="simple">
+<li><p><strong>Display Name:</strong> <code class="docutils literal notranslate"><span class="pre">DORIEH</span></code></p></li>
+<li><p><strong>SQLAlchemy URI:</strong> <code class="docutils literal notranslate"><span class="pre">postgresql+psycopg2://dorieh:dorieh_secret&#64;postgres:5432/dorieh</span></code></p></li>
+</ul>
+</li>
+<li><p>Click <strong>TEST CONNECTION</strong> — if it succeeds, click <strong>CONNECT</strong>.</p></li>
+</ol>
+</section>
+<section id="import-the-medicare-qc-dashboard">
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
+<p>Back in your terminal, run the helper script:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+./import_superset_dashboard.sh
+</pre></div>
+</div>
+<p>The script copies the dashboard definition into the Superset container and
+imports it.  Internally it runs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>cp<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>../../examples/with-postgres/medicare/superset/MedicareQCDashboard.json<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>superset:/tmp/MedicareQCDashboard.json
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>superset<span class="w"> </span>superset<span class="w"> </span>import_dashboards<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--path<span class="w"> </span>/tmp/MedicareQCDashboard.json<span class="w"> </span>--username<span class="w"> </span>admin
+docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-superset.yml<span class="w"> </span>restart<span class="w"> </span>superset<span class="w"> </span>superset-worker
+</pre></div>
+</div>
+</section>
+<section id="explore-the-dashboard">
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
+<p>In the Superset UI:</p>
+<ol class="arabic simple">
+<li><p>Click the <strong>Dashboards</strong> tab.</p></li>
+<li><p>Open <strong>“Medicare QC (Clean)”</strong>.</p></li>
+<li><p>Use the available charts and filters to examine data quality across
+enrollments and admissions for the synthetic dataset.</p></li>
+</ol>
+<p>The dashboard surfaces the QC metrics described in
+<a class="reference internal" href="Medicare.html#creating-qc-tables"><span class="std std-ref">Creating QC Tables</span></a>, including:</p>
+<ul class="simple">
+<li><p>Percent of beneficiaries with consistent date-of-birth / date-of-death
+records</p></li>
+<li><p>Percent of valid admission records (passed primary-key, foreign-key, and
+duplicate checks)</p></li>
+<li><p>Approximate distinct-beneficiary counts computed with
+<a class="reference internal" href="UsingHLL.html"><span class="std std-doc">HLL sketches</span></a></p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="what-the-pipeline-produces">
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">What the pipeline produces</a><a class="headerlink" href="#what-the-pipeline-produces" title="Link to this heading"></a></h2>
+<p>After a successful run the following tables and views are available in the
+<code class="docutils literal notranslate"><span class="pre">medicare</span></code> schema of your PostgreSQL database:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Object</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.ps</span></code></p></td>
+<td><p>View</p></td>
+<td><p>Federated patient summary across all raw years</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.beneficiaries</span></code></p></td>
+<td><p>Table</p></td>
+<td><p>One row per unique beneficiary (deduplicated)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.enrollments</span></code></p></td>
+<td><p>Table</p></td>
+<td><p>Yearly enrollment records per beneficiary/state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.admissions</span></code></p></td>
+<td><p>Table</p></td>
+<td><p>Validated inpatient admission records</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">medicare_audit.admissions</span></code></p></td>
+<td><p>Table</p></td>
+<td><p>Records that failed validation (with reason)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.qc_enrollments</span></code></p></td>
+<td><p>Materialized View</p></td>
+<td><p>Aggregate QC dimensions for enrollments</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">medicare.qc_admissions</span></code></p></td>
+<td><p>Materialized View</p></td>
+<td><p>Aggregate QC dimensions for admissions</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Example-climate-workflow.html" class="btn btn-neutral float-left" title="Example of a workflow: aggregating a climate variable" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="SampleQuery.html" class="btn btn-neutral float-right" title="How to query the database" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

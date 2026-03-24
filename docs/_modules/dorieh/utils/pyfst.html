@@ -9,7 +9,7 @@
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=a01a0e0e" />
 
@@ -22,7 +22,7 @@
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../../../_static/togglebutton.js?v=1ae7504c"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -141,18 +141,13 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">EPOCH</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="p">(</span><span class="n">year</span><span class="o">=</span><span class="mi">1970</span><span class="p">,</span> <span class="n">month</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">day</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">toordinal</span><span class="p">()</span>
 
 
-<div class="viewcode-block" id="choose_cran_mirror">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.choose_cran_mirror">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">choose_cran_mirror</span><span class="p">():</span>
         <span class="n">utils</span> <span class="o">=</span> <span class="n">rpackages</span><span class="o">.</span><span class="n">importr</span><span class="p">(</span><span class="s1">&#39;utils&#39;</span><span class="p">)</span>
         <span class="c1">#mirrors = utils.getCRANmirrors()</span>
         <span class="n">utils</span><span class="o">.</span><span class="n">chooseCRANmirror</span><span class="p">(</span><span class="n">ind</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">utils</span></div>
+        <span class="k">return</span> <span class="n">utils</span>
 
 
-
-<div class="viewcode-block" id="ensure_packages">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.ensure_packages">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">ensure_packages</span><span class="p">():</span>
         <span class="n">utils</span> <span class="o">=</span> <span class="n">choose_cran_mirror</span><span class="p">()</span>
         <span class="n">packages</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;fst&quot;</span><span class="p">]</span>
@@ -160,12 +155,9 @@ window.addEventListener("load", () => mermaid.run());
             <span class="k">if</span> <span class="ow">not</span> <span class="n">rpackages</span><span class="o">.</span><span class="n">isinstalled</span><span class="p">(</span><span class="n">p</span><span class="p">):</span>
                 <span class="n">utils</span><span class="o">.</span><span class="n">install_packages</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
             <span class="n">rpackages</span><span class="o">.</span><span class="n">importr</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-        <span class="k">return</span></div>
+        <span class="k">return</span>
 
 
-
-<div class="viewcode-block" id="read_fst">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.read_fst">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">read_fst</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">DataFrame</span><span class="p">,</span> <span class="nb">bool</span><span class="p">):</span>
         <span class="n">ensure_packages</span><span class="p">()</span>
         <span class="n">f</span> <span class="o">=</span> <span class="n">robjects</span><span class="o">.</span><span class="n">r</span><span class="p">[</span><span class="s2">&quot;read_fst&quot;</span><span class="p">]</span>
@@ -180,17 +172,13 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">else</span><span class="p">:</span>
             <span class="n">df</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
             <span class="n">complete</span> <span class="o">=</span> <span class="kc">True</span>
-        <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">complete</span></div>
+        <span class="k">return</span> <span class="n">df</span><span class="p">,</span> <span class="n">complete</span>
 
 
-
-<div class="viewcode-block" id="vector2list">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.vector2list">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">vector2list</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
         <span class="k">if</span> <span class="n">DateVector</span><span class="o">.</span><span class="n">isrinstance</span><span class="p">(</span><span class="n">v</span><span class="p">):</span>
             <span class="k">return</span> <span class="p">[</span><span class="n">datetime</span><span class="o">.</span><span class="n">date</span><span class="o">.</span><span class="n">fromordinal</span><span class="p">(</span><span class="n">EPOCH</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">d</span><span class="p">))</span> <span class="k">if</span> <span class="n">d</span> <span class="o">==</span> <span class="n">d</span> <span class="k">else</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">v</span><span class="p">]</span>
-        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">)</span></div>
-
+        <span class="k">return</span> <span class="nb">list</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
 
 
     <span class="k">class</span><span class="w"> </span><span class="nc">FSTReader</span><span class="p">:</span>
@@ -210,8 +198,6 @@ window.addEventListener("load", () => mermaid.run());
             <span class="bp">self</span><span class="o">.</span><span class="n">complete</span> <span class="o">=</span> <span class="kc">False</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">returns_mapping</span> <span class="o">=</span> <span class="n">returns_mapping</span>
 
-<div class="viewcode-block" id="FSTReader.read_next">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.read_next">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">read_next</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span>
             <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">buffer_size</span> <span class="o">-</span> <span class="mi">1</span>
@@ -219,11 +205,8 @@ window.addEventListener("load", () => mermaid.run());
             <span class="bp">self</span><span class="o">.</span><span class="n">last</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">+</span> <span class="n">df</span><span class="o">.</span><span class="n">nrow</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="n">df</span><span class="o">.</span><span class="n">colnames</span><span class="p">[</span><span class="n">c</span><span class="p">]:</span> <span class="n">vector2list</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">c</span><span class="p">])</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">ncol</span><span class="p">)</span>
-            <span class="p">}</span></div>
+            <span class="p">}</span>
 
-
-<div class="viewcode-block" id="FSTReader.current">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.current">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">current</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]:</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="p">:</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">complete</span><span class="p">:</span>
@@ -231,11 +214,8 @@ window.addEventListener("load", () => mermaid.run());
                 <span class="bp">self</span><span class="o">.</span><span class="n">read_next</span><span class="p">()</span>
                 <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">last</span><span class="p">:</span>
                     <span class="k">return</span> <span class="kc">None</span>
-            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span></div>
+            <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">first</span>
 
-
-<div class="viewcode-block" id="FSTReader.current_row">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.current_row">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">current_row</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">list</span><span class="p">]:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -243,11 +223,8 @@ window.addEventListener("load", () => mermaid.run());
             <span class="n">row</span> <span class="o">=</span> <span class="p">[</span>
                 <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
             <span class="p">]</span>
-            <span class="k">return</span> <span class="n">row</span></div>
+            <span class="k">return</span> <span class="n">row</span>
 
-
-<div class="viewcode-block" id="FSTReader.current_mapping">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.current_mapping">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">current_mapping</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]:</span>
             <span class="n">r</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">current</span><span class="p">()</span>
             <span class="k">if</span> <span class="n">r</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
@@ -255,8 +232,7 @@ window.addEventListener("load", () => mermaid.run());
             <span class="n">row</span> <span class="o">=</span> <span class="p">{</span>
                 <span class="n">column</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">column</span><span class="p">][</span><span class="n">r</span><span class="p">]</span> <span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span>
             <span class="p">}</span>
-            <span class="k">return</span> <span class="n">row</span></div>
-
+            <span class="k">return</span> <span class="n">row</span>
 
         <span class="k">def</span><span class="w"> </span><span class="fm">__next__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">returns_mapping</span><span class="p">:</span>
@@ -268,29 +244,20 @@ window.addEventListener("load", () => mermaid.run());
             <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">+=</span> <span class="mi">1</span>
             <span class="k">return</span> <span class="n">row</span>
 
-<div class="viewcode-block" id="FSTReader.close">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.close">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">close</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="kc">None</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span> <span class="o">=</span> <span class="kc">True</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">complete</span> <span class="o">=</span> <span class="kc">True</span>
 
-
-<div class="viewcode-block" id="FSTReader.rewind">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.rewind">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">rewind</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
                 <span class="k">return</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">pointer</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">read_next</span><span class="p">()</span></div>
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_next</span><span class="p">()</span>
 
-
-<div class="viewcode-block" id="FSTReader.open">
-<a class="viewcode-back" href="../../../members/pyfst.html#dorieh.utils.pyfst.FSTReader.open">[docs]</a>
         <span class="k">def</span><span class="w"> </span><span class="nf">open</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">rewind</span><span class="p">()</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">read_next</span><span class="p">()</span></div>
-
+            <span class="bp">self</span><span class="o">.</span><span class="n">read_next</span><span class="p">()</span>
 
         <span class="k">def</span><span class="w"> </span><span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">open</span><span class="p">()</span>

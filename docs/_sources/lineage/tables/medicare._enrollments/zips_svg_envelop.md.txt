@@ -1,8 +1,0 @@
-# Column medicare._enrollments.zips Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare._enrollments/zips.svg
-
-```
-
-

@@ -1,8 +1,0 @@
-# Column medicare.admissions.adm_day_of_week Lineage SVG
-
-```{raw} html
-:file: /Users/misha/harvard/projects/github/dorieh/doc/lineage/tables/medicare.admissions/adm_day_of_week.svg
-
-```
-
-

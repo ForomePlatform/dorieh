@@ -9,7 +9,7 @@
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=a01a0e0e" />
 
@@ -22,7 +22,7 @@
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
+      <script src="../../../_static/togglebutton.js?v=1ae7504c"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -225,7 +225,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="as_stream">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.as_stream">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.as_stream">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">as_stream</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the content of URL as a stream. In case the content is in zip</span>
@@ -264,7 +264,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="as_content">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.as_content">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.as_content">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">as_content</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">params</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns byte or text block with URL content</span>
@@ -286,7 +286,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="as_csv_reader">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.as_csv_reader">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.as_csv_reader">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">as_csv_reader</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mode</span> <span class="o">=</span> <span class="kc">None</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An utility method to return the CSV content of the URL as CSVReader</span>
@@ -302,7 +302,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="file_as_stream">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.file_as_stream">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.file_as_stream">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">file_as_stream</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">extension</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;.csv&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns the content of file as a stream. In case the content is in zip</span>
@@ -346,7 +346,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="file_as_csv_reader">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.file_as_csv_reader">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.file_as_csv_reader">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">file_as_csv_reader</span><span class="p">(</span><span class="n">filename</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An utility method to return the CSV content of the file as CSVReader</span>
@@ -364,7 +364,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="fopen">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.fopen">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.fopen">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">fopen</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper to open various types of files</span>
@@ -387,7 +387,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="check_http_response">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.check_http_response">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.check_http_response">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">check_http_response</span><span class="p">(</span><span class="n">r</span><span class="p">:</span> <span class="n">Response</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An internal method raises an exception of HTTP response is not OK</span>
@@ -407,7 +407,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="download">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.download">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.download">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">download</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">to</span><span class="p">:</span> <span class="n">IO</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;A utility method to download large binary data to a file-like object&quot;&quot;&quot;</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">stream</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">HEADERS</span><span class="p">)</span>
@@ -421,7 +421,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="is_downloaded">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.is_downloaded">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.is_downloaded">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">is_downloaded</span><span class="p">(</span><span class="n">url</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">target</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">check_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if the same data has already been downloaded</span>
@@ -456,7 +456,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="write_csv">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.write_csv">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.write_csv">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">write_csv</span><span class="p">(</span><span class="n">reader</span><span class="p">:</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">,</span>
               <span class="n">writer</span><span class="p">:</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">,</span>
               <span class="n">transformer</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -499,7 +499,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Collector">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.Collector">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.Collector">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Collector</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">pass</span>
@@ -520,7 +520,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="CSVWriter">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.CSVWriter">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.CSVWriter">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CSVWriter</span><span class="p">(</span><span class="n">Collector</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">out_stream</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -544,7 +544,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ListCollector">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.ListCollector">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.ListCollector">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ListCollector</span><span class="p">(</span><span class="n">Collector</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
@@ -589,7 +589,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="basename">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.basename">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.basename">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">basename</span><span class="p">(</span><span class="n">path</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a name without extension of a file or an</span>
@@ -609,7 +609,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="is_readme">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.is_readme">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.is_readme">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">is_readme</span><span class="p">(</span><span class="n">name</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Checks if a file is a documentation file</span>
@@ -634,7 +634,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="get_entries">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.get_entries">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.get_entries">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_entries</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">List</span><span class="p">,</span><span class="n">Callable</span><span class="p">]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Returns a list of entries in an archive or files in</span>
@@ -680,7 +680,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="get_readme">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.get_readme">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.get_readme">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">get_readme</span><span class="p">(</span><span class="n">path</span><span class="p">:</span><span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Looks for a README file in the specified path</span>
@@ -714,7 +714,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="is_dir">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.is_dir">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.is_dir">[docs]</a>
 <span class="k">def</span><span class="w"> </span><span class="nf">is_dir</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Determine if a certain path specification refers</span>
@@ -753,8 +753,6 @@ window.addEventListener("load", () => mermaid.run());
         <span class="n">NA_Character</span><span class="p">,</span> <span class="n">NA_Complex</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.utils.pyfst</span><span class="w"> </span><span class="kn">import</span> <span class="n">vector2list</span><span class="p">,</span> <span class="n">FSTReader</span>
 
-<div class="viewcode-block" id="fst2csv">
-<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.fst2csv">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">fst2csv</span><span class="p">(</span><span class="n">path</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">buffer_size</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">path</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;.fst&quot;</span><span class="p">):</span>
             <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="s2">&quot;Unknown format of file &quot;</span> <span class="o">+</span> <span class="n">path</span><span class="p">)</span>
@@ -774,12 +772,9 @@ window.addEventListener("load", () => mermaid.run());
                     <span class="n">rate</span> <span class="o">=</span> <span class="n">n</span> <span class="o">/</span> <span class="p">(</span><span class="n">t2</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span><span class="o">.</span><span class="n">seconds</span>
                     <span class="n">logging</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Read </span><span class="si">{}</span><span class="s2">: </span><span class="si">{:d}</span><span class="s2"> x </span><span class="si">{:d}</span><span class="s2">; </span><span class="si">{}</span><span class="s2"> </span><span class="si">{:f}</span><span class="s2"> rows/sec&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t0</span><span class="p">),</span> <span class="n">rate</span><span class="p">))</span>
         <span class="n">logger</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="s2">&quot;Complete. Total read </span><span class="si">{}</span><span class="s2">: </span><span class="si">{:d}</span><span class="s2"> x </span><span class="si">{:d}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">width</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-        <span class="k">return</span></div>
+        <span class="k">return</span>
 
 
-
-<div class="viewcode-block" id="dataframe2csv">
-<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.dataframe2csv">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">dataframe2csv</span><span class="p">(</span><span class="n">df</span><span class="p">:</span> <span class="n">DataFrame</span><span class="p">,</span> <span class="n">dest</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">append</span><span class="p">:</span> <span class="nb">bool</span><span class="p">):</span>
         <span class="n">t0</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="n">columns</span> <span class="o">=</span> <span class="p">{</span>
@@ -802,8 +797,7 @@ window.addEventListener("load", () => mermaid.run());
                 <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
         <span class="n">t2</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="s2"> + </span><span class="si">{}</span><span class="s2"> = </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">t1</span><span class="o">-</span><span class="n">t0</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t1</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">t2</span><span class="o">-</span><span class="n">t0</span><span class="p">)))</span>
-        <span class="k">return</span></div>
-
+        <span class="k">return</span>
 
     <span class="n">R_NA_values</span> <span class="o">=</span> <span class="p">[</span>
         <span class="n">NA_Logical</span><span class="p">,</span>
@@ -856,7 +850,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="CSVFileWrapper">
-<a class="viewcode-back" href="../../../members/aqs_tools.html#dorieh.utils.io_utils.CSVFileWrapper">[docs]</a>
+<a class="viewcode-back" href="../../../members/io_utils.html#dorieh.utils.io_utils.CSVFileWrapper">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">CSVFileWrapper</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper around CSV reader that does:</span>
