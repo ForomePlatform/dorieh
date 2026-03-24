@@ -30,9 +30,9 @@ The same design patterns apply directly to health and claims data
 pipelines; here we use open climate data so anyone can reproduce the 
 example.   
 
-The concepts in this tutorial are used in the "Data Provenance for 
-Secondary Use of Health Data through Dataflow Programming" book 
-in the chapter named “Sample Application: Building ML‑Ready Datasets”.
+The concepts in this tutorial are covered in **Chapter 7**
+(“Sample Application: Building ML‑Ready Datasets”) of the forthcoming book
+*Research Data that Can be Trusted* (Bouzinier et al.).
 
 
 ## Prerequisites
