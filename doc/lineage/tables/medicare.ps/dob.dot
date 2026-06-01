@@ -73,12 +73,12 @@ digraph {
 // End Group: parent_medicare.ps.dob
 
 
-	"cms.mbsf_ab_2011.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_ab_2012.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_ab_2013.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_ab_2014.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_abcd_2015.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_abcd_2016.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_abcd_2017.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
-	"cms.mbsf_abcd_2018.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2,color=chocolate,labelfloat=True];
+	"cms.mbsf_ab_2011.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_ab_2012.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_ab_2013.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_ab_2014.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_abcd_2015.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_abcd_2016.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_abcd_2017.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
+	"cms.mbsf_abcd_2018.BENE_DOB" -> "medicare.ps.dob" [label=	"union",penwidth=2.4,color=chocolate,labelfloat=True];
 }
