@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.4.4",
+    version="0.4.5",
     url='https://github.com/ForomePlatform/dorieh',
     license='Apache 2.0',
     author='Michael A Bouzinier',
@@ -23,7 +23,10 @@ setup(
             'copy_section=dorieh.docutils.copy_section:main',
             'collector=dorieh.docutils.collector:main',
             'dorieh_version=dorieh.version:main',
-            'validate_domain=dorieh.platform.loader.validator:main'
+            'validate_domain=dorieh.platform.loader.validator:main',
+            'export_dashboard=dorieh.platform.superset.export_dashboard:main',
+            'import_dashboard=dorieh.platform.superset.import_dashboard:main',
+            'cleanup_dashboard=dorieh.platform.superset.cleanup_dashboard:main'
         ],
     },
     packages=find_packages(where='./src/python') + [

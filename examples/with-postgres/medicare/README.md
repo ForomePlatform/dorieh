@@ -160,28 +160,43 @@ In the Superset web UI:
    teh dialogue.
 
 
-### 4.5 Import the pre‑built Medicare Quality Control dashboard
+### 4.5 Import the pre‑built Medicare quality‑control dashboard
 
-Back in your terminal (same directory as the Docker Compose files):
-
-```bash
-cd $WORKDIR/dorieh/docker/pg-hll/
-./import_superset_dashboard.sh
-```
-
-This script will:
-
-- Copy `MedicareQCDashboard.json` into the Superset container
-- Import the dashboard
-- Restart Superset services
-
-For reference, it effectively runs:
+The dashboard is committed as a native Superset bundle under
+`examples/with-postgres/medicare/superset/medicare_quality_dashboard/`. Import
+it with the `import_dashboard` command (installed with Dorieh), which resolves
+your `DORIEH` connection by name, re‑points the bundle onto it on the fly, and
+imports it via Superset's REST API (the native importer the UI uses — the legacy
+`superset import-dashboards` CLI silently drops the charts from native bundles):
 
 ```bash
-docker compose cp ../../examples/with-postgres/medicare/superset/MedicareQCDashboard.json superset:/tmp/MedicareQCDashboard.json
-docker compose exec superset superset import_dashboards --path /tmp/MedicareQCDashboard.json --username admin
-docker compose -f docker-compose-superset.yml restart superset superset-worker
+import_dashboard \
+  $WORKDIR/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard \
+  --base-url http://localhost:8088/ --username admin
 ```
+
+You'll be prompted for the admin password (`admin` by default). `import_dashboard`
+uses only the Python standard library — no extra packages beyond Dorieh. (If you
+are running from a source checkout without installing Dorieh, the equivalent is
+`python3 -m dorieh.platform.superset.import_dashboard …`.)
+
+Notes:
+
+- It binds to the connection named `DORIEH` that you created in § 4.4 (override
+  with `--connection-name`). Because each Superset instance assigns its own
+  connection UUID, the command looks the UUID up by name at import time rather
+  than relying on a value baked into the bundle — so the same committed bundle
+  imports on any machine.
+- Re‑running updates the same dashboard in place instead of creating a
+  duplicate (object uuids are preserved, so the import is idempotent — it never
+  multiplies charts or datasets).
+- To stand up a *second* dashboard on a different connection (e.g. a `DORIEH2`
+  comparison while developing), add `--copy`: `--copy --connection-name DORIEH2
+  --dashboard-name "…"`. `--copy` regenerates the object uuids so the dev copy
+  coexists with — rather than overwrites — the canonical one. (Without `--copy`
+  it would update the same objects, just repointed to the other connection.)
+- The companion `export_dashboard <dashboard-id>` command exports a dashboard
+  back to a native bundle (e.g. to refresh this committed one).
 
 
 ### 4.6 Explore the dashboard
@@ -189,7 +204,7 @@ docker compose -f docker-compose-superset.yml restart superset superset-worker
 In the Superset UI:
 
 1. Click on the **Dashboards** tab.
-2. You should see a dashboard named **“Medicare QC (Clean)”**.
+2. You should see a dashboard named **“Medicare Demo Quality Dashboard”**.
 3. Open it and explore the available charts and filters to examine data quality and other aspects of the synthetic Medicare data processed by Dorieh.
 
 
