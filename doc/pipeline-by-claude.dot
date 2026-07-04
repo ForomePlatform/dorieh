@@ -2,13 +2,15 @@ digraph medicare_pipeline {
     // Global graph settings
     rankdir=TB;
     splines=ortho;
-    nodesep=0.7;
-    ranksep=1.2;
+    nodesep=1.0;
+    ranksep=1.6;
     bgcolor="#FAFAFA";
     fontname="Helvetica";
+    fontsize=18;
+    fontsize=36;
 
     // Edge defaults
-    edge [penwidth=2.5, arrowsize=0.8];
+    edge [penwidth=3.0, arrowsize=1.0];
 
     // ========== RAW DATA SOURCES ==========
     subgraph cluster_sources {
@@ -17,11 +19,11 @@ digraph medicare_pipeline {
         color="#B71C1C";
         fillcolor="#FFEBEE";
         penwidth=2;
-        fontsize=16;
+        fontsize=40;
         margin=20;
 
         node [shape=cylinder, style="filled", fillcolor="#EF5350",
-              fontcolor=white, color="#C62828", penwidth=2, height=0.8];
+              fontcolor=white, color="#C62828", penwidth=2.4, height=0.8];
 
         ey1 [label="Enrollments\n2019"];
         ey2 [label="Enrollments\n2020"];
@@ -38,11 +40,11 @@ digraph medicare_pipeline {
         color="#E65100";
         fillcolor="#FFF3E0";
         penwidth=2;
-        fontsize=16;
+        fontsize=40;
         margin=20;
 
         node [shape=box, style="rounded,filled,bold", fillcolor="#FFB74D",
-              color="#F57C00", penwidth=2, fontsize=11];
+              color="#F57C00", penwidth=2.4, fontsize=30];
 
         bronzee1 [label="📥 Ingest"];
         bronzee2 [label="📥 Ingest"];
@@ -59,11 +61,11 @@ digraph medicare_pipeline {
         color="#F57F17";
         fillcolor="#FFFDE7";
         penwidth=2;
-        fontsize=16;
+        fontsize=40;
         margin=20;
 
         node [shape=hexagon, style="filled", fillcolor="#FFF59D",
-              color="#F9A825", penwidth=2, fontsize=11];
+              color="#F9A825", penwidth=2.4, fontsize=30];
 
         harmonizee1 [label="⚙️ Harmonize"];
         harmonizee2 [label="⚙️ Harmonize"];
@@ -75,7 +77,7 @@ digraph medicare_pipeline {
 
     // ========== CONSOLIDATION ==========
     node [shape=diamond, style="filled,bold", fillcolor="#81C784",
-          color="#388E3C", penwidth=3, fontsize=12, width=2, height=1.2];
+          color="#388E3C", penwidth=3, fontsize=32, width=2.4, height=1.5];
 
     consoledatee [label="🔗 Consolidate\nEnrollments"];
     consoledatea [label="🔗 Consolidate\nAdmissions"];
@@ -87,32 +89,32 @@ digraph medicare_pipeline {
         color="#455A64";
         fillcolor="#ECEFF1";
         penwidth=3;
-        fontsize=16;
+        fontsize=40;
         margin=25;
 
         // Normalization nodes
         node [shape=parallelogram, style="filled,bold", fillcolor="#90CAF9",
-              color="#1976D2", penwidth=2, fontsize=11, skew=0.3];
+              color="#1976D2", penwidth=2.4, fontsize=30, skew=0.3];
 
         normalizee [label="📊 Normalize\nEnrollments"];
         normalizea [label="📊 Normalize\nAdmissions"];
 
         // Master index - special node
         node [shape=octagon, style="filled,bold", fillcolor="#CE93D8",
-              color="#7B1FA2", penwidth=3, fontsize=12, width=2.2];
+              color="#7B1FA2", penwidth=3, fontsize=32, width=2.6];
 
         build_master_bene [label="🔑 Master\nBeneficiaries\nIndex"];
 
         // Cleansing nodes
         node [shape=component, style="filled,rounded", fillcolor="#80DEEA",
-              color="#00838F", penwidth=2, fontsize=11];
+              color="#00838F", penwidth=2.4, fontsize=30];
 
         cleanse_enrollments [label="🧹 Cleanse\nEnrollments"];
         cleanse_admissions [label="🧹 Cleanse\nAdmissions"];
 
         // Build nodes
         node [shape=folder, style="filled,rounded,bold", fillcolor="#A5D6A7",
-              color="#2E7D32", penwidth=2, fontsize=11];
+              color="#2E7D32", penwidth=2.4, fontsize=30];
 
         build_enrollments [label="✅ Build\nEnrollments\nTable"];
         build_admissions [label="✅ Build\nAdmissions\nTable"];
@@ -120,12 +122,12 @@ digraph medicare_pipeline {
 
     // ========== GOLD LAYER ==========
     node [shape=star, style="filled,bold", fillcolor="#FFD54F",
-          color="#F57F17", penwidth=4, fontsize=13, width=2.5, height=2.5];
+          color="#F57F17", penwidth=4, fontsize=34, width=3.0, height=3.0];
 
     build_gold1 [label="⭐ Gold:\nAdmissions\nQC Metrics"];
 
     // ========== EDGES: Raw to Bronze ==========
-    edge [color="#E53935", penwidth=2, style=solid, arrowhead=normal];
+    edge [color="#E53935", penwidth=2.4, style=solid, arrowhead=normal];
     ey1 -> bronzee1;
     ey2 -> bronzee2;
     ey3 -> bronzee3;
@@ -134,7 +136,7 @@ digraph medicare_pipeline {
     ay3 -> bronzea3;
 
     // ========== EDGES: Bronze to Harmonize ==========
-    edge [color="#FB8C00", penwidth=2, style=solid, arrowhead=vee];
+    edge [color="#FB8C00", penwidth=2.4, style=solid, arrowhead=vee];
     bronzee1 -> harmonizee1;
     bronzee2 -> harmonizee2;
     bronzee3 -> harmonizee3;
@@ -143,7 +145,7 @@ digraph medicare_pipeline {
     bronzea3 -> harmonizea3;
 
     // ========== EDGES: Harmonize to Consolidate ==========
-    edge [color="#FDD835", penwidth=2.5, style=bold, arrowhead=diamond];
+    edge [color="#FDD835", penwidth=3.0, style=bold, arrowhead=diamond];
     harmonizee1 -> consoledatee;
     harmonizee2 -> consoledatee;
     harmonizee3 -> consoledatee;
@@ -180,10 +182,10 @@ digraph medicare_pipeline {
         color="#757575";
         fillcolor="#FFFFFF";
         penwidth=2;
-        fontsize=12;
+        fontsize=32;
         margin=15;
 
-        node [shape=plaintext, fontsize=10];
+        node [shape=plaintext, fontsize=28];
         legend [label=<<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="4">
             <TR><TD ALIGN="LEFT">🔴 Raw Data Flow</TD></TR>
             <TR><TD ALIGN="LEFT">🟠 Ingestion and Harmonization</TD></TR>
