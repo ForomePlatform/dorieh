@@ -88,3 +88,47 @@ high-performance computing (HPC) cluster on CentOS 7, on various versions of
 Ubuntu and in the RedHat OpenShift cluster on IBM Cloud. At FAS RC, we use
 Puppet to provision specific resources, while on IBM cloud, resource
 provisioning is done with Terraform. 
+
+## What makes Dorieh different
+
+Dorieh pairs a declarative data-modeling language with a standard
+workflow language. Data models — tables, columns, how each column is
+derived, what constitutes a valid record — are written as YAML
+definitions, while the orchestration of downloads, ingestion and
+database steps is expressed in Common Workflow Language (CWL). Because
+both layers are declarative, every transformation the platform performs
+can be read and reviewed directly in the definitions, rather than being
+buried inside ad-hoc scripts. The vocabulary used to describe these
+definitions throughout this documentation is introduced in
+[Concepts: the Dorieh approach](concepts.md).
+
+The same definitions that execute also document themselves. The
+[data dictionary tool](members/domain_dictionary.rst) reads the YAML
+data model and the CWL workflow and generates human-readable
+documentation, data dictionaries and lineage diagrams from them — for
+example, the [Medicare data dictionary](MedicareLineage.md) and the
+lineage pages produced in the
+[climate tutorial](tutorial/climate/constructing-lineage.md). There is
+no separately maintained specification that can drift away from the
+code, because the specification *is* the code.
+
+Validation failures are journaled, not silently dropped. When a record
+fails ingestion — because it violates primary key integrity, breaks
+referential integrity, or duplicates another record — the data model
+can direct the loader to insert it into an audit table together with
+the reason for the failure and a timestamp, instead of discarding it or
+aborting the run. The rejected data remains queryable, so data-quality
+problems can be quantified and investigated after the fact.
+
+Lineage reaches down to the column and the row. Generated lineage
+diagrams trace how each output column is computed from input columns
+across pipeline layers, and the `file` and `record` column types record,
+for every ingested row, the source file it came from and its position
+within that file. Combined, these give cell-level provenance: for any
+value in the warehouse it is possible to establish both the computation
+that produced it and the raw input records it was derived from.
+
+These properties are what the documentation means when it calls the
+resulting data *trustworthy*: the same theme is developed at book
+length in the companion volume — see
+[About the companion book](about-the-book.md).

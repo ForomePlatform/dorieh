@@ -30,9 +30,13 @@ The same design patterns apply directly to health and claims data
 pipelines; here we use open climate data so anyone can reproduce the 
 example.   
 
-The concepts in this tutorial are covered in **Chapter 7**
-(“Sample Application: Building ML‑Ready Datasets”) of the forthcoming book
-*Research Data that Can be Trusted* (Bouzinier et al.).
+```{seealso}
+**Further reading:** Chapter 7 ("Sample Application: Building ML-Ready
+Datasets") of the companion book
+[*Research Data that Can Be Trusted*](../../about-the-book.md) develops the
+ideas behind this page in depth. This documentation is self-contained; the
+book is optional enrichment.
+```
 
 
 ## Prerequisites
@@ -86,8 +90,12 @@ ZIP Code Tabulation Areas (ZCTAs).
   * Silver view: silver_temperature with:
      * temperature_in_C, temperature_in_F
      * us_state, city
-  * Gold materialized view: gold_temperature_by_state with:
-     *mean temperature and temperature span per state/day.
+  * Gold materialized view: gold_temperature_by_state with three
+    computed columns per state/day:
+     * t_mean_in_C (mean temperature in Celsius)
+     * t_mean_in_F (mean temperature in Fahrenheit)
+     * t_span (temperature span, i.e. the spread between the warmest
+       and the coldest ZCTA in the state on that day)
 
 ### Architecture
 We will:
@@ -101,6 +109,56 @@ We will:
   * Workflow documentation (from CWL).
   * Data dictionaries and lineage diagrams (from YAML).
 
+### How this pipeline was designed
+
+The design starts from the data itself. The climate variable comes from
+gridMET, a gridded daily surface meteorological dataset produced by the
+University of Idaho. The workflow downloads it as one NetCDF file per year
+from the Northwest Knowledge Network (the download step in `example1.cwl`
+composes a URL of the form
+`https://www.northwestknowledge.net/metdata/data/<band>_<year>.nc`), and the
+band vocabulary — `tmmx` is the daily maximum temperature, stored in
+Kelvin — follows the gridMET catalog published on
+[Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands).
+
+Next comes the question of who consumes the result and in what form. This
+pipeline serves two kinds of consumers: file-oriented users (for example, ML
+feature engineering scripts) receive a compressed CSV keyed by date and ZCTA,
+while SQL users receive tables in PostgreSQL organized as Medallion layers —
+a Bronze table holding the ingested data as-is, a Silver view that cleans and
+enriches it, and a Gold materialized view, `gold_temperature_by_state`, that
+is directly ready for analysis: one row per state and day, with the mean
+temperature in Celsius and Fahrenheit and the daily temperature span.
+
+Working backward from those outputs tells us which transformations are
+essential. Gridded NetCDF rasters cannot be ingested directly into most
+DBMSs, so the grid must be aggregated over ZCTA polygons *outside* the
+database, before ingestion — this is the aggregation step. That step, in
+turn, surfaces a need that was not obvious at the outset: aggregating over
+ZCTAs requires their boundaries, so the design acquires TIGER/GENZ
+shapefiles from the US Census website as an additional input, discovered
+while examining the aggregation tool's parameters. Everything after
+ingestion is expressed declaratively in the data model: unit conversions
+from Kelvin to Celsius and Fahrenheit, enrichment of ZIP codes with state
+abbreviations and city names through the built-in `zip_to_state` and
+`zip_to_city` functions, and finally the state-level aggregation that
+produces the Gold layer.
+
+Quality control and provenance are designed in rather than bolted on. The
+Bronze table declares a primary key (`zcta`, `date`), so key integrity is
+enforced at the ingestion boundary; each layer is defined only from the
+layer directly below it (Silver from Bronze, Gold from Silver), so the
+model file records the full derivation of every column and Dorieh can
+render it as data dictionaries and lineage diagrams (see
+[Constructing lineage](constructing-lineage.md)). Every step also emits its
+logs as workflow outputs, so each run leaves a record of what was done.
+
+With sources, outputs, and transformations fixed, the topology follows
+almost mechanically: download the year's NetCDF and the year's shapefiles
+(two independent acquisitions), aggregate the grid over ZCTA polygons,
+initialize the database, ingest the CSV into Bronze, build Silver, and
+build Gold. The rest of this tutorial constructs exactly this workflow,
+one step at a time.
 
 ## Directory layout
 
@@ -466,7 +524,7 @@ Dorieh [ingest tool](../../pipeline/ingest.md):
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -568,6 +626,7 @@ your workflow scripts.
 hence, we will add the following table definition to 
 `example1_model.yml`: 
 
+<!-- Kept in sync with doc/tutorial/climate/example1_model.yml — edit the model file first -->
 ```yaml
     silver_temperature:
       description: |
@@ -625,6 +684,7 @@ In the Gold layer, we will add just one table that computes some
 data for the whole states and is ready for analysis. The table 
 named `gold_temperature_by_state` is defined by the following block:  
 
+<!-- Kept in sync with doc/tutorial/climate/example1_model.yml — edit the model file first -->
 ```yaml
     gold_temperature_by_state:
       description: |
@@ -658,7 +718,10 @@ named `gold_temperature_by_state` is defined by the following block:
 The gold table contains mean temperatures on a date for every US state 
 and also the variation in the temperature on the day. The variation 
 is in maximum temperature, so it does not reflect a change during a 
-day, but only the diversity of geography.   
+day, but only the diversity of geography. Note that `t_span` is 
+computed on the raw Kelvin values (`tmmx`); because a temperature 
+*difference* is the same number of degrees in Kelvin and in Celsius, 
+labeling the span in Celsius is correct.   
 
 We now need to add a step to build a gold schema to the workflow 
 itself. The step is literally the same as silver, the difference is 
@@ -749,6 +812,14 @@ FROM gold_temperature_by_state
 WHERE date = '2019-01-15'
 ORDER BY t_mean_in_C DESC
 LIMIT 10;
+```
+
+```{note}
+**Scope and next steps.** This tutorial intentionally does not demonstrate
+scatter/parallelization of workflow steps, nor validation journaling
+(recording records that fail validation in an audit table instead of
+silently dropping them). Both are demonstrated in the
+[Medicare case study](../../Medicare.md).
 ```
 
 ## Next Steps
