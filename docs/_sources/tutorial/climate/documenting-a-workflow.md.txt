@@ -133,3 +133,15 @@ supporting both technical reference and compliance requirements.
 A fully documented workflow is available 
 [in the GitHub example](../../climate-examplecwl_src.md).
 
+```{note}
+The fully documented reference above is deliberately the simpler
+**no-database** climate workflow (see
+[Example: aggregating a climate variable](../../Example-climate-workflow.md)).
+It uses the same tools and the same documentation keys (the `###` title
+header and the `doc` keys) as the workflow built in this tutorial, but has
+fewer moving parts, so the generated documentation is easier to follow.
+The `example1.cwl` in this directory is intentionally left undocumented:
+adding the title header and `doc` keys to it and re-running `cwl2md` is
+left as an exercise for the reader.
+```
+

@@ -50,20 +50,41 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -94,8 +115,25 @@
              
   <section id="dorieh-data-platform">
 <h1>Dorieh Data Platform<a class="headerlink" href="#dorieh-data-platform" title="Link to this heading"></a></h1>
+<p>Dorieh is an open-source data platform for building trustworthy,
+ML-ready datasets for environmental and public health research. The
+documentation is organized as a narrative: it starts with why the
+platform exists and the ideas behind it, walks through the data
+domains and pipelines it supports, teaches the platform with two
+worked examples (a climate pipeline tutorial and a Medicare case
+study), and closes with the data modeling DSL reference, platform
+internals, and operational guides. The documentation is
+self-contained; the companion book is optional enrichment.</p>
+<p><strong>Key pages</strong></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="concepts.html"><span class="std std-doc">The Dorieh approach</span></a></p></li>
+<li><p><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html"><span class="std std-doc">Climate pipeline tutorial</span></a></p></li>
+<li><p><a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare case study</span></a></p></li>
+<li><p><a class="reference internal" href="Datamodels.html"><span class="std std-doc">DSL reference</span></a></p></li>
+<li><p><a class="reference internal" href="about-the-book.html"><span class="std std-doc">About the companion book</span></a></p></li>
+</ul>
 <div class="toctree-wrapper compound">
-<p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="home.html#introduction-to-data-platform">Introduction to Data Platform</a></li>
@@ -106,14 +144,37 @@
 <li class="toctree-l2"><a class="reference internal" href="home.html#building-platform-documentation">Building Platform documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="rationale.html#why-we-need-a-data-platform">Why we need a Data Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rationale.html#architecture">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rationale.html#supported-programming-languages-and-tools">Supported Programming Languages and Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rationale.html#development-mode">Development Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="rationale.html#where-it-can-be-deployed">Where it can be deployed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#what-makes-dorieh-different">What makes Dorieh different</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#two-languages-one-pipeline">Two languages, one pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#medallion-architecture-as-dorieh-implements-it">Medallion architecture as Dorieh implements it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#dataset-operators-and-field-construction-operators">Dataset operators and field construction operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#families-of-field-transformations">Families of field transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#disambiguation-rules">Disambiguation rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#validation-and-journaling">Validation and journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#fine-grained-lineage">Fine-grained lineage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#where-each-concept-lives">Where each concept lives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#bibliographic-information">Bibliographic information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#chapter-to-documentation-map">Chapter-to-documentation map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#using-this-documentation-without-the-book">Using this documentation without the book</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="cms.html">Health</a></li>
 <li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a></li>
@@ -131,16 +192,30 @@
 <li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-new-workflows">Developing New Workflows</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="utils.html">General purpose utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CoreLibrary.html">Data platform components</a></li>
-<li class="toctree-l2"><a class="reference internal" href="gis.html">GIS utilities</a></li>
-<li class="toctree-l2"><a class="reference internal" href="CMSLibrary.html">Health data manipulation tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="epa.html">EPA tools</a></li>
-<li class="toctree-l2"><a class="reference internal" href="rasters.html">Raster data tools (climate and exposure)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="census.html">Census data manipulation tools</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Example-climate-workflow.html">A CWL workflow example: aggregating a climate variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="medicare-example.html">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity using Dorieh tools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
@@ -153,18 +228,19 @@
 <li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="Example-climate-workflow.html">A CWL workflow example: aggregating a climate variable</a></li>
-<li class="toctree-l2"><a class="reference internal" href="medicare-example.html">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
-<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
-<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity using Dorieh tools</a></li>
 </ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a></li>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">General purpose utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CoreLibrary.html">Data platform components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gis.html">GIS utilities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="CMSLibrary.html">Health data manipulation tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="epa.html">EPA tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rasters.html">Raster data tools (climate and exposure)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census data manipulation tools</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a><ul>
@@ -175,6 +251,20 @@
 <li class="toctree-l2"><a class="reference internal" href="ProjectLoader.html">Project (Directory) Loading Utility</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingHLL.html">Approximate distinct counting with HLL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserRequests.html">Handling user requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_request_yaml.html">Example user request</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="adding_data.html#what-data-are-you-adding">What data are you adding?</a></li>
@@ -193,7 +283,16 @@
 <li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#appendix-1-metadata-description">Appendix 1: Metadata description</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html#concepts">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
 </div>

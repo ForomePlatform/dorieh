@@ -1,0 +1,199 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Platform Capabilities &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using HyperLogLog (HLL) hashes for count approximations" href="UsingHLL.html" />
+    <link rel="prev" title="Dorieh Deployment" href="deployment.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Platform capabilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UsingHLL.html">Approximate distinct counting with HLL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserRequests.html">Handling user requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_request_yaml.html">Example user request</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Platform Capabilities</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/capabilities.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="platform-capabilities">
+<h1>Platform Capabilities<a class="headerlink" href="#platform-capabilities" title="Link to this heading"></a></h1>
+<p>This section collects cross-cutting how-to guides for working with a
+deployed Dorieh data platform. Unlike the flagship
+<a class="reference internal" href="tutorial/climate/building-climate-pipeline.html"><span class="std std-doc">climate tutorial</span></a> and the
+<a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare case study</span></a>, which each walk through building one
+pipeline end to end, the pages below apply regardless of which data
+domain you are working with: querying the database, monitoring its
+activity, and describing user requests for research data.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Capabilities</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UsingHLL.html">Approximate distinct counting with HLL</a></li>
+<li class="toctree-l1"><a class="reference internal" href="UserRequests.html">Handling user requests</a></li>
+<li class="toctree-l1"><a class="reference internal" href="example_request_yaml.html">Example user request</a></li>
+</ul>
+</div>
+<p>What each guide covers:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="SampleQuery.html"><span class="std std-doc">How to query the database</span></a> — sample SQL against the
+warehouse, including joins across domains.</p></li>
+<li><p><a class="reference internal" href="QueringMedicaid.html"><span class="std std-doc">Querying Medicaid Data</span></a> — a discussion of
+querying health data specifically, with its privacy caveats.</p></li>
+<li><p><a class="reference internal" href="MonitoringDB.html"><span class="std std-doc">Monitoring database activity</span></a> — Dorieh utilities
+for watching long-running database operations such as indexing.</p></li>
+<li><p><a class="reference internal" href="UsingHLL.html"><span class="std std-doc">Approximate distinct counting with HLL</span></a> — how the QC
+tables use HyperLogLog sketches to count distinct beneficiaries
+cheaply.</p></li>
+<li><p><a class="reference internal" href="UserRequests.html"><span class="std std-doc">Handling user requests</span></a> and the
+<a class="reference internal" href="example_request_yaml.html"><span class="std std-doc">example request</span></a> — describing research
+data requests declaratively in YAML.</p></li>
+</ul>
+<p>Beyond the flagship climate and Medicare examples, Dorieh also
+supports additional data domains: <a class="reference internal" href="exposures.html"><span class="std std-doc">exposure data</span></a> from
+the Atmospheric Composition Analysis Group of Washington University in
+St. Louis, <a class="reference internal" href="epa.html"><span class="std std-doc">Environmental Protection Agency (EPA) data</span></a>, and
+<a class="reference internal" href="census.html"><span class="std std-doc">demographics data from the US Census</span></a>. These and the
+other subject areas are listed on the <a class="reference internal" href="domains.html"><span class="std std-doc">Data Domains</span></a> page.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="deployment.html" class="btn btn-neutral float-left" title="Dorieh Deployment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="UsingHLL.html" class="btn btn-neutral float-right" title="Using HyperLogLog (HLL) hashes for count approximations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

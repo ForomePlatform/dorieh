@@ -28,7 +28,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Examples" href="examples.html" />
+    <link rel="next" title="Python Packages Included in the Platform" href="packages.html" />
     <link rel="prev" title="Data Modelling for Dorieh Data Platform" href="Datamodels.html" /> 
 </head>
 
@@ -51,19 +51,32 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Extensions used for creating federated view of different years</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#combining-multiple-sources-and-optional-columns">Combining multiple sources and optional columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#exclude">Exclude</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#cast">Cast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#validating-consistency-of-data-across-tables">Validating consistency of data across tables</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
@@ -81,8 +94,10 @@
 <li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="guts.html">Data Platform Internals</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="platform.html">Dorieh Core Data Platform</a><ul class="current">
 <li class="toctree-l3 current"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul class="current">
@@ -122,9 +137,16 @@
 <li class="toctree-l2"><a class="reference internal" href="ProjectLoader.html">Project (Directory) Loading Utility</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -156,6 +178,22 @@
              
   <section id="extensions-used-for-creating-federated-view-of-different-years">
 <h1>Extensions used for creating federated view of different years<a class="headerlink" href="#extensions-used-for-creating-federated-view-of-different-years" title="Link to this heading"></a></h1>
+<p>This page is the authoritative reference for the extensions to the
+Dorieh data-modeling DSL. The extensions add directives for building
+federated views over collections of tables that describe the same
+data but differ in column names and types from year to year. The core
+DSL — domains, tables, columns, <code class="docutils literal notranslate"><span class="pre">create</span></code> statements, validation — is
+documented in <a class="reference internal" href="Datamodels.html"><span class="std std-doc">Data Modelling for Dorieh Data
+Platform</span></a>; this page covers only the additional
+directives.</p>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><strong>Further reading:</strong> Appendix B of the companion book
+<a class="reference internal" href="about-the-book.html"><span class="std std-doc"><em>Research Data that Can Be Trusted</em></span></a> covers the
+same DSL extensions. This page is the maintained, authoritative
+reference. This documentation is self-contained; the book is optional
+enrichment.</p>
+</div>
 <section id="general">
 <h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
 <p>See <a class="reference internal" href="Datamodels.html"><span class="std std-doc">General Data Modeling</span></a> for description of the general data modelling syntax.</p>
@@ -180,11 +218,19 @@ an exception will be raised.</p>
 <span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ssa_county</span>
 </pre></div>
 </div>
+<p>The <code class="docutils literal notranslate"><span class="pre">description</span></code> and <code class="docutils literal notranslate"><span class="pre">reference</span></code> keys are documentation metadata:
+they are included in the generated data dictionary but do not cause
+any data to be fetched. The NBER page cited above documents the
+SSA-to-FIPS crosswalk that gives these county codes their meaning;
+the crosswalk itself is loaded into the database by the separate
+<code class="docutils literal notranslate"><span class="pre">dorieh.platform.crosswalks.ssa2fips</span></code> utility (see the “Linking with
+nomenclature” section of
+<a class="reference internal" href="Datamodels.html"><span class="std std-doc">Data Modelling for Dorieh Data Platform</span></a>).</p>
 </section>
 <section id="exclude">
 <h2>Exclude<a class="headerlink" href="#exclude" title="Link to this heading"></a></h2>
-<p>Using <code class="docutils literal notranslate"><span class="pre">exclude</span></code> can exclude certain tables matching patern from teh federated
-view.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">exclude</span></code> key removes specific tables from a federated view even
+when their names match the union’s inclusion patterns.</p>
 <p>The following example creates a view by combining all tables matching either
 <code class="docutils literal notranslate"><span class="pre">cms.mbsf_ab*</span></code> or <code class="docutils literal notranslate"><span class="pre">cms.mcr_bene_*</span></code> pattern, but excluding the table named
 <code class="docutils literal notranslate"><span class="pre">mbsf_ab_2015</span></code>:</p>
@@ -210,7 +256,7 @@ but of different types, it is possible to cast all of them to the same type.</p>
 <span class="w">    </span><span class="nt">cast</span><span class="p">:</span>
 <span class="w">      </span><span class="s">&quot;character</span><span class="nv"> </span><span class="s">varying&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;public.parse_date({column_name})&quot;</span>
 <span class="w">      </span><span class="nt">numeric</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;to_date(to_char({column_name},</span><span class="nv"> </span><span class="s">&#39;00000000&#39;),</span><span class="nv"> </span><span class="s">&#39;YYYYMMDD&#39;)&quot;</span>
-<span class="w">      </span><span class="nt">*</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="nv">column_name</span><span class="p p-Indicator">}</span><span class="l l-Scalar l-Scalar-Plain">::DATE</span>
+<span class="w">      </span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="s">&quot;{column_name}::DATE&quot;</span>
 </pre></div>
 </div>
 <ul>
@@ -225,6 +271,49 @@ but of different types, it is possible to cast all of them to the same type.</p>
 <code class="docutils literal notranslate"><span class="pre">public.parse_date</span></code> will be called to transform the value</p></li>
 <li><p>For all other types a simple PostgreSQL cast will be attempted</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The wildcard key <code class="docutils literal notranslate"><span class="pre">*</span></code> must be quoted (<code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> or <code class="docutils literal notranslate"><span class="pre">'*'</span></code>) to be valid
+YAML: an unquoted asterisk starts a YAML alias and fails to parse.
+Likewise, values beginning with <code class="docutils literal notranslate"><span class="pre">{</span></code>, such as
+<code class="docutils literal notranslate"><span class="pre">&quot;{column_name}::DATE&quot;</span></code>, must be quoted because an unquoted brace
+starts a YAML flow mapping. Inside the cast expression,
+<code class="docutils literal notranslate"><span class="pre">{column_name}</span></code> is substituted with the name of the actual source
+column.</p>
+</div>
+<p>If the type of a source column differs from the declared target
+<code class="docutils literal notranslate"><span class="pre">type</span></code> and the <code class="docutils literal notranslate"><span class="pre">cast</span></code> mapping contains neither an entry for the
+source type nor a <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code> entry, the tool raises an error stating that
+the cast is not defined.</p>
+</section>
+<section id="validating-consistency-of-data-across-tables">
+<h2>Validating consistency of data across tables<a class="headerlink" href="#validating-consistency-of-data-across-tables" title="Link to this heading"></a></h2>
+<p>There is no dedicated “consistency validation” directive in the DSL.
+Validating that data is consistent across the combined tables is
+achieved by composing features documented on this page and in the
+core reference:</p>
+<ul class="simple">
+<li><p>the candidate source lists and <a class="reference internal" href="#cast">casts</a> described above
+harmonize columns that differ in name and type across years into
+single, uniformly typed columns of the federated view;</p></li>
+<li><p><a class="reference internal" href="Datamodels.html"><span class="std std-doc">identifier columns and the <code class="docutils literal notranslate"><span class="pre">{identifiers}</span></code>
+token</span></a> let a grouped view count records that
+disagree on the attributes that define an entity’s identity (see
+the <code class="docutils literal notranslate"><span class="pre">discrepancies</span></code> column of the <code class="docutils literal notranslate"><span class="pre">_beneficiaries</span></code> view in
+<code class="docutils literal notranslate"><span class="pre">medicare.yaml</span></code>);</p></li>
+<li><p>disambiguation columns computed in grouped views surface
+conflicting values instead of silently dropping them: for example,
+in <code class="docutils literal notranslate"><span class="pre">medicare.yaml</span></code> the beneficiary’s <code class="docutils literal notranslate"><span class="pre">dob</span></code> is defined as
+<code class="docutils literal notranslate"><span class="pre">MIN(dob)</span></code> while <code class="docutils literal notranslate"><span class="pre">dob_latest</span></code> is non-null only when the source
+records disagree, and the derived <code class="docutils literal notranslate"><span class="pre">consistent_dob</span></code> flag classifies
+each beneficiary as <code class="docutils literal notranslate"><span class="pre">CONSISTENT</span></code>, <code class="docutils literal notranslate"><span class="pre">AMBIGUOUS</span></code> or <code class="docutils literal notranslate"><span class="pre">MISSING</span></code>;</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">invalid.records</span></code> machinery of the core DSL journals records
+that fail primary key, referential integrity or duplicate checks
+into an audit table (see the “Invalid Record” section of
+<a class="reference internal" href="Datamodels.html"><span class="std std-doc">Data Modelling for Dorieh Data Platform</span></a>).</p></li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">qc_*</span></code> views of <code class="docutils literal notranslate"><span class="pre">medicare.yaml</span></code> show all of these techniques
+working together over a federated view.</p>
 </section>
 </section>
 
@@ -233,7 +322,7 @@ but of different types, it is possible to cast all of them to the same type.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Datamodels.html" class="btn btn-neutral float-left" title="Data Modelling for Dorieh Data Platform" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="examples.html" class="btn btn-neutral float-right" title="Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="packages.html" class="btn btn-neutral float-right" title="Python Packages Included in the Platform" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -1,12 +1,19 @@
 # Example of a workflow: aggregating a climate variable
 
+```{note}
+This page runs the **file-only (no database)** climate workflow, which
+produces a CSV file. For the full Bronze–Silver–Gold pipeline that also
+loads the data into PostgreSQL, see the tutorial
+[Building a Bronze–Silver–Gold Climate Pipeline with Dorieh](tutorial/climate/building-climate-pipeline.md).
+```
+
 ```{contents}
 ---
 local:
 ---
 ```
 
-``{seealso}
+```{seealso}
 [Tutorial: Building a Bronze–Silver–Gold Climate Pipeline with Dorieh](tutorial/climate/building-climate-pipeline.md)
 ```
 
@@ -46,7 +53,7 @@ It accepts 1 required and 3 optional input arguments:
 This architecture is reflected in this diagram: ![diagram](climate-example.png)
 
 
-The [source code for the workflow](https://github.com/ForomePlatform/dorieh/blob/main/examples/climate-example.cwl)
+The [source code for the workflow](https://github.com/ForomePlatform/dorieh/blob/main/examples/no-db/climate-example.cwl)
 is in examples directory. See more details in 
 [CWL Workflow Specifications](https://www.commonwl.org/v1.2/Workflow.html)
 

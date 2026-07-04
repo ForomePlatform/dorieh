@@ -1,22 +1,85 @@
 # Dorieh Data Platform
 
+Dorieh is an open-source data platform for building trustworthy,
+ML-ready datasets for environmental and public health research. The
+documentation is organized as a narrative: it starts with why the
+platform exists and the ideas behind it, walks through the data
+domains and pipelines it supports, teaches the platform with two
+worked examples (a climate pipeline tutorial and a Medicare case
+study), and closes with the data modeling DSL reference, platform
+internals, and operational guides. The documentation is
+self-contained; the companion book is optional enrichment.
+
+**Key pages**
+
+* [The Dorieh approach](concepts.md)
+* [Climate pipeline tutorial](tutorial/climate/building-climate-pipeline.md)
+* [Medicare case study](Medicare.md)
+* [DSL reference](Datamodels.md)
+* [About the companion book](about-the-book.md)
+
 ```{toctree}
 ---
 maxdepth: 2
-caption: Contents
+caption: Overview
 ---
 Introduction <home>
-What is Data Platform <rationale>
+Why a data platform <rationale>
+The Dorieh approach <concepts>
+The companion book <about-the-book>
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Data domains and pipelines
+---
 domains
 pipelines
-Python Packages <packages>
-Datamodels
-examples
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Tutorials and worked examples
+---
 Tutorials
+examples
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Data modeling DSL reference
+---
+Datamodels
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Platform
+---
+Python Packages <packages>
 guts
+Platform capabilities <capabilities>
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Operational guides
+---
 DBT
 Adding more data <adding_data>
 Executing containerized apps <AppPipelineGenerator>
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Reference
+---
 Terms and Acronyms <glossary>
 docindices
 ```

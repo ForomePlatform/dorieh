@@ -49,20 +49,41 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../docindices.html">Indices</a></li>
 </ul>
@@ -176,7 +197,7 @@ aggregated</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.rasters.aggregator.Aggregator.collect_data">
-<span class="sig-name descname"><span class="pre">collect_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="aqs_tools.html#dorieh.utils.io_utils.Collector" title="dorieh.utils.io_utils.Collector"><span class="pre">Collector</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/rasters/aggregator.html#Aggregator.collect_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.rasters.aggregator.Aggregator.collect_data" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">collect_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">collector</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="io_utils.html#dorieh.utils.io_utils.Collector" title="dorieh.utils.io_utils.Collector"><span class="pre">Collector</span></a></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/rasters/aggregator.html#Aggregator.collect_data"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.rasters.aggregator.Aggregator.collect_data" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 <dl class="py method">
@@ -186,7 +207,7 @@ aggregated</p></li>
 
 <dl class="py method">
 <dt class="sig sig-object py" id="dorieh.rasters.aggregator.Aggregator.compute">
-<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="aqs_tools.html#dorieh.utils.io_utils.Collector" title="dorieh.utils.io_utils.Collector"><span class="pre">Collector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/rasters/aggregator.html#Aggregator.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.rasters.aggregator.Aggregator.compute" title="Link to this definition"></a></dt>
+<span class="sig-name descname"><span class="pre">compute</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">writer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="io_utils.html#dorieh.utils.io_utils.Collector" title="dorieh.utils.io_utils.Collector"><span class="pre">Collector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">layers</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/rasters/aggregator.html#Aggregator.compute"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.rasters.aggregator.Aggregator.compute" title="Link to this definition"></a></dt>
 <dd></dd></dl>
 
 </dd></dl>

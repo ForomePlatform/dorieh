@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Tutorial: Building a Bronze–Silver–Gold Climate Pipeline with Dorieh" href="tutorial/climate/building-climate-pipeline.html" />
-    <link rel="prev" title="Monitoring database activity" href="MonitoringDB.html" /> 
+    <link rel="prev" title="Medicare data ingestion and processing pipeline" href="pipeline/medicare.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,25 +51,46 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Dorieh Tutorials</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -110,6 +131,7 @@
 <li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#inputs">Inputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#outputs">Outputs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#architecture">Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#how-this-pipeline-was-designed">How this pipeline was designed</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#directory-layout">Directory layout</a></li>
@@ -155,10 +177,12 @@
 <p>A full tutorial on the <strong>Medicare data warehouse pipeline</strong> — covering the
 FTS → YAML → SQL ingestion pattern, federated views across years,
 validation and journaling, and HLL-based quality control — is covered in
-<strong>Chapter 8</strong> of the book
-<em>Research Data that Can be Trusted</em> (Bouzinier et al., forthcoming).
-Each chapter will be assigned its own DOI.
-In the meantime, see the operational step-by-step guide in
+<strong>Chapter 8</strong> of the companion book
+<a class="reference internal" href="about-the-book.html"><span class="std std-doc"><em>Research Data that Can Be Trusted</em></span></a>
+(Bouzinier et al.).
+The documentation’s landing page for the Medicare case study is
+<a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>.
+For an operational step-by-step guide, see
 <a class="reference internal" href="medicare-example.html"><span class="std std-doc">Example: Medicare Processing Pipeline</span></a>,
 which uses the publicly available synthetic dataset on Zenodo so no data
 use agreement is required to follow along.</p>
@@ -169,7 +193,7 @@ use agreement is required to follow along.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="MonitoringDB.html" class="btn btn-neutral float-left" title="Monitoring database activity" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pipeline/medicare.html" class="btn btn-neutral float-left" title="Medicare data ingestion and processing pipeline" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="tutorial/climate/building-climate-pipeline.html" class="btn btn-neutral float-right" title="Tutorial: Building a Bronze–Silver–Gold Climate Pipeline with Dorieh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

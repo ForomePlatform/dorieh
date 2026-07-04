@@ -11,6 +11,17 @@ local:
 
 ## Introduction to Data Platform
 
+```{note}
+**Using this documentation with (or without) the book.**
+This documentation is a self-contained companion to the book
+*Research Data that Can Be Trusted* (Bouzinier et al., Springer, 2026):
+both describe the same open-source platform, and no page here requires
+the book. See [About the companion book](about-the-book.md) for the
+chapter-to-page map and a suggested reading order, and start with
+[Concepts: the Dorieh approach](concepts.md) for the ideas that
+organize the rest of the documentation.
+```
+
 <!-- section Dorieh overview from README -->
 
 
@@ -128,6 +139,17 @@ They fall into two categories:
 
 <!-- section Documentation utilities overview from dorieh.docutils -->
 
+
+Documentation utilities to simplify creation of consistent
+documentation for Dorieh platform 
+                                                         
+* [cwl2md](members/cwl2md) Generates [Markdown](https://www.markdownguide.org/basic-syntax/) 
+    documentation for a CWL tool or workflow
+* [collector](members/collector) Generates automatic 
+    [reStructuredText](https://docutils.sourceforge.io/rst.html) 
+    templates for all Python modules 
+* [copy_section](members/copy_section)  Copies a specified section from one markdown document
+    to another. This way we can collect summaries in one file<!-- end of section documentation utilities overview from dorieh.docutils -->
 
 Documentation utilities to simplify creation of consistent
 documentation for Dorieh platform 

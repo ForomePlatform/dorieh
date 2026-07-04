@@ -51,7 +51,7 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#introduction-to-data-platform">Introduction to Data Platform</a></li>
@@ -72,17 +72,38 @@
 <li class="toctree-l2"><a class="reference internal" href="#building-platform-documentation">Building Platform documentation</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -139,6 +160,17 @@
 </nav>
 <section id="introduction-to-data-platform">
 <h2><a class="toc-backref" href="#id1" role="doc-backlink">Introduction to Data Platform</a><a class="headerlink" href="#introduction-to-data-platform" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Using this documentation with (or without) the book.</strong>
+This documentation is a self-contained companion to the book
+<em>Research Data that Can Be Trusted</em> (Bouzinier et al., Springer, 2026):
+both describe the same open-source platform, and no page here requires
+the book. See <a class="reference internal" href="about-the-book.html"><span class="std std-doc">About the companion book</span></a> for the
+chapter-to-page map and a suggested reading order, and start with
+<a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts: the Dorieh approach</span></a> for the ideas that
+organize the rest of the documentation.</p>
+</div>
 <!-- section Dorieh overview from README -->
 <p>Dorieh Data Platform is intended for development and deployment of
 ETL/ELT pipelines that includes complex data processing and data
@@ -229,6 +261,17 @@ They fall into two categories:</p>
 <section id="dorieh-documentation-utilities">
 <h3><a class="toc-backref" href="#id6" role="doc-backlink">Dorieh Documentation Utilities</a><a class="headerlink" href="#dorieh-documentation-utilities" title="Link to this heading"></a></h3>
 <!-- section Documentation utilities overview from dorieh.docutils -->
+<p>Documentation utilities to simplify creation of consistent
+documentation for Dorieh platform</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="members/cwl2md.html"><span class="doc std std-doc">cwl2md</span></a> Generates <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">Markdown</a>
+documentation for a CWL tool or workflow</p></li>
+<li><p><a class="reference internal" href="members/collector.html"><span class="doc std std-doc">collector</span></a> Generates automatic
+<a class="reference external" href="https://docutils.sourceforge.io/rst.html">reStructuredText</a>
+templates for all Python modules</p></li>
+<li><p><a class="reference internal" href="members/copy_section.html"><span class="doc std std-doc">copy_section</span></a>  Copies a specified section from one markdown document
+to another. This way we can collect summaries in one file<!-- end of section documentation utilities overview from dorieh.docutils --></p></li>
+</ul>
 <p>Documentation utilities to simplify creation of consistent
 documentation for Dorieh platform</p>
 <ul class="simple">

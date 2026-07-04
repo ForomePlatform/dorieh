@@ -51,10 +51,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Health</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a></li>
@@ -71,14 +76,30 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -115,6 +136,8 @@ command line (CLI) utilities to handle health data
 provided by ResDac and modules that are used in
 ETL pipelines that build Health Data Warehouse
 and Feature Store.</p>
+<p>The canonical landing page for the Medicare case study is
+<a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>.</p>
 <div class="toctree-wrapper compound">
 <p class="caption" role="heading"><span class="caption-text">Health Data Processing</span></p>
 <ul>
@@ -139,6 +162,7 @@ and Feature Store.</p>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html#medallion-architecture-of-the-medicare-warehouse">Medallion architecture of the Medicare warehouse</a></li>
 <li class="toctree-l2"><a class="reference internal" href="Medicare.html#processing-pipeline">Processing pipeline</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="Medicare.html#medicare-pipeline-steps">Medicare Pipeline Steps</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Medicare.html#ingestion-of-raw-data">Ingestion of raw data</a></li>
@@ -166,7 +190,10 @@ and Feature Store.</p>
 <li class="toctree-l4"><a class="reference internal" href="Medicare.html#second-step-mapping-to-county-fips-codes">Second step: Mapping to county FIPS codes</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-beneficiaries-table">Creating Beneficiaries table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-beneficiaries-table">Creating Beneficiaries table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#beneficiary-enrollment-span-columns">Beneficiary enrollment-span columns</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-enrollments-table">Creating Enrollments table</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-overview">Enrollments overview</a></li>
 <li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-primary-key-unique-identifier">Enrollments Primary key (unique identifier)</a></li>
@@ -174,8 +201,12 @@ and Feature Store.</p>
 <li class="toctree-l4"><a class="reference internal" href="Medicare.html#enrollments-columns-definitions">Enrollments columns definitions</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#entitlement-reason-codes-orec-and-curec">Entitlement reason codes: OREC and CUREC</a></li>
 <li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-federated-admissions-view">Creating Federated Admissions view</a></li>
-<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-inpatient-admissions-table">Creating Inpatient Admissions table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-inpatient-admissions-table">Creating Inpatient Admissions table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Medicare.html#additional-admissions-columns">Additional admissions columns</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="Medicare.html#creating-qc-tables">Creating QC Tables</a><ul>

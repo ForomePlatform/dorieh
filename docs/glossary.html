@@ -51,21 +51,46 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Terms and Acronyms</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Terms and Acronyms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#concepts">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#acronyms">Acronyms</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
 
@@ -95,6 +120,58 @@
              
   <section id="terms-and-acronyms-used-in-this-documentation">
 <h1>Terms and acronyms used in this documentation<a class="headerlink" href="#terms-and-acronyms-used-in-this-documentation" title="Link to this heading"></a></h1>
+<section id="concepts">
+<h2>Concepts<a class="headerlink" href="#concepts" title="Link to this heading"></a></h2>
+<p>The following terms form the conceptual vocabulary of this
+documentation. Each is defined at length, with pointers to where
+Dorieh implements it, on the
+<a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts: the Dorieh approach</span></a> page.</p>
+<p><strong>Medallion architecture</strong> — an organization of a data warehouse into
+progressively refined layers, in Dorieh named Bronze, Silver and Gold,
+where each layer is derived only from the layer beneath it. See
+<a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Bronze / Silver / Gold layers</strong> — the three Medallion layers: Bronze
+holds data exactly as ingested from the source files, Silver holds
+validated, deduplicated and cleaned data derived only from Bronze, and
+Gold holds aggregates derived only from Silver for analysis and
+quality control. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Dataset operator</strong> — a node in the dataflow graph of a pipeline that
+consumes one or more datasets and produces a dataset; in Dorieh, the
+tables, views and materialized views declared in a data model, and the
+workflow steps that populate them, are dataset operators. See
+<a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Field construction operator</strong> — the rule by which one output field
+is computed from input fields; in a Dorieh data model this is a
+column’s <code class="docutils literal notranslate"><span class="pre">source</span></code> definition, such as a SQL expression, an aggregate,
+or compute code. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Disambiguation rules</strong> — rules for resolving conflicting values when
+records are aggregated: one value is chosen as canonical (for example,
+the earliest date of birth) and the latest conflicting value is kept
+in a secondary column, with a consistency flag recording that a
+conflict occurred. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Journaling</strong> — recording records that fail validation in an audit
+table, together with the reason for the failure and a timestamp,
+instead of silently dropping them. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Invalid-records policy</strong> — the <code class="docutils literal notranslate"><span class="pre">invalid.records</span></code> directive of a data
+model, which tells the loader what to do with a record that fails
+validation: raise an error (the default), ignore the record, or insert
+it into an audit table (journaling). See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>FILE and RECORD directives</strong> — the <code class="docutils literal notranslate"><span class="pre">file</span></code> and <code class="docutils literal notranslate"><span class="pre">record</span></code> column types,
+which store for every ingested row the name of the source file and the
+row’s sequential index within that file; they are the row-level
+provenance anchors of a Dorieh table. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Fine-grained (cell-level) lineage</strong> — lineage that combines
+column-level tracing (which input columns and transformations produced
+an output column) with row-level tracing (which source records
+produced a row), so that any individual cell can be traced to its
+origin. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+<p><strong>Data dictionary</strong> — generated documentation describing every table
+and column of a data model; Dorieh generates it from the same YAML
+definitions that build the database, so it cannot drift from the
+schema. See <a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts</span></a>.</p>
+</section>
+<section id="acronyms">
+<h2>Acronyms<a class="headerlink" href="#acronyms" title="Link to this heading"></a></h2>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Term</p></th>
@@ -193,6 +270,7 @@
 </tr>
 </tbody>
 </table>
+</section>
 </section>
 
 

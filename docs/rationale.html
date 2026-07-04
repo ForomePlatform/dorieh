@@ -28,7 +28,7 @@
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Data Domains" href="domains.html" />
+    <link rel="next" title="The Dorieh Approach: Declarative Data Modeling, Medallion Layers, and Fine-Grained Lineage" href="concepts.html" />
     <link rel="prev" title="Dorieh Data Platform: Documentation Home" href="home.html" /> 
 </head>
 
@@ -51,27 +51,49 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">What is Data Platform</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Why a data platform</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#why-we-need-a-data-platform">Why we need a Data Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#architecture">Architecture</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#supported-programming-languages-and-tools">Supported Programming Languages and Tools</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#development-mode">Development Mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#where-it-can-be-deployed">Where it can be deployed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-makes-dorieh-different">What makes Dorieh different</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -109,6 +131,7 @@
 <li><p><a class="reference internal" href="#supported-programming-languages-and-tools" id="id3">Supported Programming Languages and Tools</a></p></li>
 <li><p><a class="reference internal" href="#development-mode" id="id4">Development Mode</a></p></li>
 <li><p><a class="reference internal" href="#where-it-can-be-deployed" id="id5">Where it can be deployed</a></p></li>
+<li><p><a class="reference internal" href="#what-makes-dorieh-different" id="id6">What makes Dorieh different</a></p></li>
 </ul>
 </nav>
 <section id="why-we-need-a-data-platform">
@@ -191,6 +214,46 @@ Ubuntu and in the RedHat OpenShift cluster on IBM Cloud. At FAS RC, we use
 Puppet to provision specific resources, while on IBM cloud, resource
 provisioning is done with Terraform.</p>
 </section>
+<section id="what-makes-dorieh-different">
+<h2><a class="toc-backref" href="#id6" role="doc-backlink">What makes Dorieh different</a><a class="headerlink" href="#what-makes-dorieh-different" title="Link to this heading"></a></h2>
+<p>Dorieh pairs a declarative data-modeling language with a standard
+workflow language. Data models — tables, columns, how each column is
+derived, what constitutes a valid record — are written as YAML
+definitions, while the orchestration of downloads, ingestion and
+database steps is expressed in Common Workflow Language (CWL). Because
+both layers are declarative, every transformation the platform performs
+can be read and reviewed directly in the definitions, rather than being
+buried inside ad-hoc scripts. The vocabulary used to describe these
+definitions throughout this documentation is introduced in
+<a class="reference internal" href="concepts.html"><span class="std std-doc">Concepts: the Dorieh approach</span></a>.</p>
+<p>The same definitions that execute also document themselves. The
+<a class="reference internal" href="members/domain_dictionary.html"><span class="std std-doc">data dictionary tool</span></a> reads the YAML
+data model and the CWL workflow and generates human-readable
+documentation, data dictionaries and lineage diagrams from them — for
+example, the <a class="reference internal" href="MedicareLineage.html"><span class="std std-doc">Medicare data dictionary</span></a> and the
+lineage pages produced in the
+<a class="reference internal" href="tutorial/climate/constructing-lineage.html"><span class="std std-doc">climate tutorial</span></a>. There is
+no separately maintained specification that can drift away from the
+code, because the specification <em>is</em> the code.</p>
+<p>Validation failures are journaled, not silently dropped. When a record
+fails ingestion — because it violates primary key integrity, breaks
+referential integrity, or duplicates another record — the data model
+can direct the loader to insert it into an audit table together with
+the reason for the failure and a timestamp, instead of discarding it or
+aborting the run. The rejected data remains queryable, so data-quality
+problems can be quantified and investigated after the fact.</p>
+<p>Lineage reaches down to the column and the row. Generated lineage
+diagrams trace how each output column is computed from input columns
+across pipeline layers, and the <code class="docutils literal notranslate"><span class="pre">file</span></code> and <code class="docutils literal notranslate"><span class="pre">record</span></code> column types record,
+for every ingested row, the source file it came from and its position
+within that file. Combined, these give cell-level provenance: for any
+value in the warehouse it is possible to establish both the computation
+that produced it and the raw input records it was derived from.</p>
+<p>These properties are what the documentation means when it calls the
+resulting data <em>trustworthy</em>: the same theme is developed at book
+length in the companion volume — see
+<a class="reference internal" href="about-the-book.html"><span class="std std-doc">About the companion book</span></a>.</p>
+</section>
 </section>
 
 
@@ -198,7 +261,7 @@ provisioning is done with Terraform.</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="home.html" class="btn btn-neutral float-left" title="Dorieh Data Platform: Documentation Home" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="domains.html" class="btn btn-neutral float-right" title="Data Domains" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="concepts.html" class="btn btn-neutral float-right" title="The Dorieh Approach: Declarative Data Modeling, Medallion Layers, and Fine-Grained Lineage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

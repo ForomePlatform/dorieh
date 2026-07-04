@@ -6,6 +6,9 @@ provided by ResDac and modules that are used in
 ETL pipelines that build Health Data Warehouse
 and Feature Store.
 
+The canonical landing page for the Medicare case study is
+[Medicare: Building a Data Warehouse from ResDac Files](Medicare.md).
+
 ```{toctree}
 ---
 maxdepth: 4

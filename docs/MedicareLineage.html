@@ -51,10 +51,15 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="domains.html">Data Domains</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="cms.html">Health</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a></li>
@@ -74,14 +79,30 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
@@ -122,6 +143,21 @@
 </div>
 <p>The dictionary and the data lineage graphs are generated using the
 <a class="reference internal" href="members/domain_dictionary.html"><span class="doc std std-doc">Dorieh Data Dictionary tool</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The committed lineage diagram sources under <code class="docutils literal notranslate"><span class="pre">doc/lineage/</span></code> are point-in-time
+snapshots that cover only a subset of the tables and columns. The
+column-level diagrams predate the OREC/CUREC redesign of the QC data model,
+so none of them yet illustrate the consistency columns that redesign
+introduced (<code class="docutils literal notranslate"><span class="pre">consistent_orec</span></code> in the <code class="docutils literal notranslate"><span class="pre">qc_enrl_bene</span></code> view and
+<code class="docutils literal notranslate"><span class="pre">consistent_curec</span></code> on the <code class="docutils literal notranslate"><span class="pre">enrollments</span></code> table) or the removal of <code class="docutils literal notranslate"><span class="pre">orec</span></code>
+from <code class="docutils literal notranslate"><span class="pre">enrollments</span></code>. They will be regenerated with the
+<a class="reference internal" href="members/domain_dictionary.html"><span class="doc std std-doc">Dorieh Data Dictionary tool</span></a>. Until then, the
+<a class="reference internal" href="members/medicare_yaml.html"><span class="std std-doc">Medicare data model definition</span></a> is the
+authoritative description of the current tables and columns; see
+<a class="reference internal" href="Medicare.html#entitlement-reason-codes-orec-and-curec"><span class="std std-ref">Entitlement reason codes: OREC and CUREC</span></a>
+for what changed and why.</p>
+</div>
 <p>The general structure of the generated dictionary is:</p>
 <ul class="simple">
 <li><p>Main <a class="reference internal" href="#lineage/medicare.dot.md"><span class="xref myst">table-level data lineage diagram</span></a> showing the order of the

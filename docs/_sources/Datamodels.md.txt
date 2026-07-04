@@ -2,6 +2,21 @@
 
 **How data models are defined and handled**
 
+This page is the authoritative reference for the core Dorieh
+data-modeling DSL: the YAML directives understood by the
+[Domain](members/domain) DDL generator and the Universal Database
+Loader. Additional directives, used to combine heterogeneous
+per-year tables into federated views, are documented separately in
+[Data Modelling Extensions](DataModellingExtensions.md).
+
+```{seealso}
+**Further reading:** Appendix A of the companion book
+[*Research Data that Can Be Trusted*](about-the-book.md) covers the
+same core DSL syntax. This page is the maintained, authoritative
+reference. This documentation is self-contained; the book is optional
+enrichment.
+```
+
 ```{toctree}
 ---
 maxdepth: 4
@@ -58,8 +73,18 @@ See also: [](DBConnections).
 Handling domains is implemented by the
 [Domain](members/domain) class.
 
-For each domain, its data model is defined by a YAML file in
-the `src/yml` directory.
+For each domain, its data model is defined by a YAML file. The model
+files shipped with Dorieh live in the `models` subdirectory of the
+Python package they belong to, under `src/python/dorieh/`. For
+example, the Medicare model is
+[src/python/dorieh/cms/models/medicare.yaml](https://github.com/ForomePlatform/dorieh/blob/main/src/python/dorieh/cms/models/medicare.yaml)
+and the Medicaid model is
+`src/python/dorieh/cms/models/medicaid.yaml`; the model used by the
+climate tutorial is `doc/tutorial/climate/example1_model.yml`. There
+is no requirement to keep model files in any particular directory:
+every tool that consumes a model takes the path to the YAML file as
+an argument, and some tools (such as the Project Loader) can generate
+a starter model file by introspecting the data.
 
 Each model is represented by a "forest": a set of treelike
 structures of tables. It can contain one or several root tables
@@ -70,7 +95,7 @@ Domain should be the first entry in the YAML file:
 my_domain:
 ```
 
-The following parameters can be defined fro domain:
+The following parameters can be defined for a domain:
 
 
 | Parameter    | Required? | Description                                                                                                                                                |
@@ -90,52 +115,210 @@ The following parameters can be defined for a table:
 
 | Parameter          | Required? | Description                                                                                                                                 |
 |--------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| type               | no        | view / table                                                                                                                                |
+| type               | no        | Ignored at the table level; the object kind (table / view / materialized view) is determined by `create.type` (see [Create statement](#create-statement))     |
 | hard_linked        | no        | Denotes that the table is an integral part of parent table rather than a separate table with a many-to-one relationship to the parent table |
-| columns            | yes       | list of column definitions                                                                                                                  |
-| indices or indexes | yes       | dictionary of multi-column indices                                                                                                          |
-| primary_key        | yes       | list of column names included in the table primary key                                                                                      |
+| columns            | yes*      | list of column definitions (may be omitted for tables fully defined by their `create` statement)                                            |
+| indices or indexes | no        | dictionary of multi-column indices                                                                                                          |
+| primary_key        | see below | list of column names included in the table primary key                                                                                      |
 | children           | no        | list of table definitions for child tables of this table                                                                                    |
 | description        | no        | description of this domain to be included in auto-generated documentation                                                                   |
 | reference          | no        | URL with external documentation                                                                                                             |
 | invalid.records    | no        | [action](#invalid-record) to be performed upon encountering an invalid record (corrupted, incomplete, duplicate, etc.)                      |
 | create             | no        | If the table or view should be created from existing database objects, see [detailed description](#create-statement)                        |
 
+`primary_key` is optional in general, but it is required whenever
+Dorieh needs to know the identity of a row:
+
+* for tables ingested from files by the Universal Database Loader
+  (the loader uses the primary key to detect records with missing
+  key values);
+* for tables that have child tables (the parent's primary key becomes
+  the foreign key of every child table);
+* for tables that define [invalid.records](#invalid-record)
+  validation.
+
+For views created with a `group by` clause the primary key is derived
+automatically from the grouping columns (see
+[Create statement](#create-statement)).
+
 ### Create statement
 
 Describes how a table or a view should be created.
 
-| Parameter | Required?             | Description                                                                                                                                                                                                                             |
-|-----------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| type      | no                    | view / table                                                                                                                                                                                                                            |
-| select    | no                    | columns to put in `SELECT` clause of CREATE statement                                                                                                                                                                                   |
-| from      | no                    | What to put into `FROM` clause                                                                                                                                                                                                          |
-| group by  | no                    | What to put into `GROUP BY` clause                                                                                                                                                                                                      |
-| populate  | no, default is `True` | If `False`, then a condition that can never be satisfied will be added as `WHERE` clause, ehnce an empty table will be created that can be populated later. This is mostly used when additional triggers needed for population process. |
+| Parameter         | Required?             | Description                                                                                                                                                                                                                             |
+|-------------------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| type              | no                    | `table` (default) / `view` / `materialized view`                                                                                                                                                                                        |
+| select            | no                    | columns to put in `SELECT` clause of CREATE statement. When `select` is used, `type` must also be given explicitly                                                                                                                       |
+| from              | no                    | What to put into `FROM` clause: a single table or view, two relations combined with the literal keyword `natural join` (see below), or a list of table name patterns for a [federated view](DataModellingExtensions.md)                  |
+| group by          | no                    | List of columns to put into `GROUP BY` clause. Also adds a `NOT NULL` filter for every grouping column and derives the primary key of the view (see below)                                                                              |
+| nullable group by | no                    | List of columns to put into `GROUP BY` clause. Unlike `group by`, keeps records with NULL values in the grouping columns and does not derive a primary key (see below)                                                                  |
+| populate  | no, default is `True` | If `False`, then a condition that can never be satisfied will be added as `WHERE` clause, hence an empty table will be created that can be populated later. This is mostly used when additional triggers needed for population process. |
+
+The value of `type` is inserted verbatim into the generated
+`CREATE ...` statement, hence `materialized view` is fully supported
+alongside `table` and `view`. Both the climate tutorial model
+(`gold_temperature_by_state` in `example1_model.yml`) and the Medicare
+model (`_ps`, `qc_enrollments` and `qc_admissions` in `medicare.yaml`)
+use materialized views.
+
+#### Natural join in `from`
+
+When `create` contains both `select` and `from`, the value of `from`
+may be two relations combined with the literal keyword
+`natural join`. The DDL generator splits the clause on this keyword,
+qualifies each relation with the domain schema, and merges the column
+definitions of both parent relations into the new table or view. Note
+that the whole `from` clause is folded to lower case, so use
+lower-case relation names with this feature. The Medicare model uses
+it to combine beneficiary-level and enrollment-level data for quality
+control:
+
+```yaml
+    qc_enrl_bene:
+      create:
+        type:  view
+        select: '*'
+        from: enrollments natural join beneficiaries
+```
+
+If `from` is a list of table name patterns (or a single pattern
+containing `*`), the core DDL generator skips the table: such
+federated views are built by the
+[Data Modelling Extensions](DataModellingExtensions.md) tooling.
+
+#### Group by and nullable group by
+
+`group by` and `nullable group by` apply to views and materialized
+views whose columns are defined by the `columns` list (that is,
+without a `select` clause in `create`). A plain `group by` has two
+side effects beyond emitting the `GROUP BY` clause:
+
+* a `WHERE` clause is added requiring every grouping column to be
+  `NOT NULL`, so records with missing keys are excluded from the
+  view;
+* the grouping columns are recorded as the primary key of the view in
+  the model (mapped through column `source` definitions when the view
+  renames a column), and this derived primary key is used wherever
+  the primary key is needed — for example, as the foreign key linking
+  child tables.
+
+`nullable group by` emits only the `GROUP BY` clause: records with
+NULL values in the grouping columns are kept (SQL `GROUP BY` places
+them in a common NULL group per key), and no primary key is derived. This is
+used for quality-control aggregates where NULL is a legitimate group,
+e.g. in `qc_enrollments` and `qc_admissions` in `medicare.yaml`.
 
 ### Invalid Record
 
-By default, an exception is raised if an invalid
-record is encountered during data ingestion. However,
-it is possible to override this behaviour by instructing
-the data loader to either ignore such records or put them
-in a special audit table.
+By default, an invalid record encountered during data ingestion
+causes an error: a record violating the primary key raises a database
+error, and a record with a missing primary key value is rejected by
+the loader with a warning. The `invalid.records` directive overrides
+this behaviour by instructing the platform to either silently discard
+such records or journal them in a special audit table.
 
-| Parameter   | Required? | Description                                                               |
-|-------------|-----------|---------------------------------------------------------------------------|
-| action      | yes       | Action to be performed: `INSERT` or `IGNORE`                              |
-| target      | yes/no    | For action INSERT - a target table                                        |
+| Parameter   | Required? | Description                                                                  |
+|-------------|-----------|-------------------------------------------------------------------------------|
+| action      | yes       | Action to be performed: `INSERT` (journal in an audit table) or `IGNORE` (discard). Case-insensitive |
+| target      | yes/no    | For action INSERT - the target audit table, see below                        |
 | description | no        | description of this domain to be included in auto-generated documentation |
 | reference   | no        | URL with external documentation                                           |
+
+The `target` value is a dictionary with two optional keys, `schema`
+and `table`. If `schema` is omitted, the domain schema is used; if
+`table` is omitted, the audit table gets the same name as the table
+being validated. A value starting with `$` is a reference to a
+top-level domain parameter: for example, in `medicare.yaml` the
+`admissions` table declares
+
+```yaml
+              invalid.records:
+                action: "INSERT"
+                target:
+                  schema: $schema.audit
+```
+
+which journals invalid admission records into
+`medicare_audit.admissions` (`schema.audit` is defined as
+`medicare_audit` for the domain, and the table name defaults to
+`admissions`).
+
+#### Validation checks and journaling
+
+The validation machinery is generated for a child table that defines
+its own `primary_key`; the primary key of the parent table serves as
+the implicit foreign key. The DDL generator emits a
+`BEFORE INSERT` trigger (with a PL/pgSQL function named
+`{schema}.validate_{table}()`) that performs three checks on each
+incoming row, in this order:
+
+1. **Primary key integrity**: if any primary-key column of the new
+   row is NULL, the row fails with reason `PRIMARY KEY`;
+2. **Consistency across records (referential integrity)**: if the
+   parent table contains no row matching the new row's foreign-key
+   columns, the row fails with reason `FOREIGN KEY`;
+3. **Elimination of duplicates**: if the table already contains a row
+   with the same primary key values, the new row fails with reason
+   `DUPLICATE`.
+
+A failing row is never inserted into the main table. What happens to
+it depends on `action`:
+
+* with `IGNORE` it is silently discarded;
+* with `INSERT` it is journaled in the audit table.
+
+For action `INSERT`, the audit table is created automatically in the
+target schema. It contains the same data columns as the main table —
+including generated columns, which compute their values in the audit
+table as well — but without the primary key or other constraints, so
+that any failing row can be stored. Three bookkeeping columns are
+added:
+
+| Column      | Type                                | Content                                                                     |
+|-------------|-------------------------------------|------------------------------------------------------------------------------|
+| REASON      | VARCHAR(16)                         | Which check failed: `PRIMARY KEY`, `FOREIGN KEY` or `DUPLICATE`             |
+| REFCTID     | TID                                 | For `DUPLICATE`: the physical row id (`ctid`) of the retained row in the main table that the journaled row collided with |
+| recorded_at | TIMESTAMP DEFAULT CURRENT_TIMESTAMP | When the row was journaled                                                  |
+
+The generator also indexes the audit table: on `REASON`, on
+`REFCTID`, and, for every data column that would be indexed in the
+main table, both a single-column index and a composite
+`(REASON, column)` index.
+
+#### The quality column
+
+The `quality` column is not created automatically. For every populated
+create-from table whose invalid-records action is `INSERT`, Dorieh
+unconditionally generates the back-annotating `UPDATE ... SET quality`
+statement after the table is populated — so any such validated table
+**must** declare a `quality` column, as the `admissions` table in
+`medicare.yaml` does:
+
+```yaml
+                - quality:
+                    type: "VARCHAR(12) DEFAULT 'PASS'"
+```
+
+(Declaring the column satisfies the generated statement; it does not
+gate its generation.) The `UPDATE`
+statement back-annotates the retained rows: every row of the
+main table whose `ctid` is recorded as `REFCTID` in the audit table
+with reason `DUPLICATE` gets `quality = 'DUPLICATE'`, while
+unaffected rows keep the declared default (`'PASS'`). In other words,
+`quality` marks the kept counterpart of every journaled duplicate, so
+that both sides of a collision can be found. This update is emitted
+both when the table is populated on creation and by the generated
+INSERT ... SELECT population statement.
 
 ## Column
 
 | Parameter   | Required? | Description                                                                                                                       |
 |-------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------|
-| type        | yes       | Database type                                                                                                                     |
+| type        | no        | Database type. If omitted, defaults to `VARCHAR`                                                                                  |
 | source      | no        | [source](#source) of the data                                                                                                     |
 | requires    | no        | List of tables and views required to compute this column. Should be used if `source` is a SQL statement referencing other tables. |
 | index       | no        | Override default to build an index based on this column. Possible values: true/false/dictionary. See [index](#index)              |
+| identifier  | no        | Boolean. Marks a column of a view as part of the identity of the modelled entity; see [Identifier columns](#identifier-columns-and-the-identifiers-token) |
 | description | no        | description of this domain to be included in auto-generated documentation                                                         |
 | reference   | no        | URL with external documentation                                                                                                   |
 
@@ -157,15 +340,61 @@ Source must be defined for special columns and for columns
 with the name in the database different from the name
 in the input source.
 
-| Parameter   | Required? | Description                                                    |
-|-------------|-----------|----------------------------------------------------------------|
-| column name | no        | A column name in the incoming tabular data                     |
-| type        | no        | Types: `generated`, `multi_column`, `range`, `compute`, `file` |
-| range       | no        |                                                                |
-| code        | no        | Code for generated and computed columns                        |
-| columns     | no        |                                                                |
-| parameters  | no        |                                                                |
-                   
+The value of `source` can be:
+
+* a string — for tables loaded from files, the name of a column in
+  the incoming tabular data; for views, a SQL expression evaluated
+  over the relation in `create.from` (e.g. `MIN(dob)`);
+* an integer — a zero-based index of a column in the incoming
+  tabular data (useful when the input has unnamed columns);
+* a list of candidate column names — an extension used when building
+  federated views over tables with varying column names, see
+  [Data Modelling Extensions](DataModellingExtensions.md);
+* the literal string `None` — suppresses the column definition in the
+  generated DDL; used when the `create.select` statement already
+  produces the column but it still has to be documented in the model;
+* a dictionary with the keys described below.
+
+| Parameter   | Required?                        | Description                                                              |
+|-------------|----------------------------------|--------------------------------------------------------------------------|
+| type        | no                               | One of: `column`, `multi_column`, `range`, `compute`, `generated`, `file` |
+| column      | for type `column`                | A column name in the incoming tabular data                              |
+| pattern     | for type `multi_column`          | Python format pattern (e.g. `"MONTH_{:d}"`) naming the input column for each value of the accompanying `range` column |
+| values      | for type `range`                 | The list of values over which the record is transposed                  |
+| code        | for types `generated`, `compute` | Code for generated and computed columns                                 |
+| columns     | for type `compute`               | Names of input-file columns referenced by the compute code              |
+| parameters  | for type `compute`               | Names of database columns referenced by the compute code                |
+
+A column with source type `range` transposes the data: for every
+input record, one database record is created per value listed in
+`values`, and the column stores that value. Only one `range` column
+per table is allowed. Columns with source type `multi_column` can
+only be used in a table that has a `range` column: for each value of
+the range, the value of a `multi_column` column is taken from the
+input column whose name is produced by applying `pattern` to that
+value. Together these two source types convert wide records (e.g.
+one column per month) into long ones (one record per month).
+
+#### Joined view columns (`select` / `from` / `where`)
+
+In a view created with a `group by` clause, the `source` of a column
+can also be a dictionary with the keys `select`, `from` and
+(optionally) `where`. Such a column is generated as a correlated
+scalar subquery: `select` supplies the selected expression, `from`
+names another table of the domain, the view's grouping columns are
+equated with the corresponding columns of the joined table (column
+names are mapped through `source` definitions where they differ), and
+the optional `where` condition is ANDed to these join conditions.
+A living example from `medicaid.yaml`:
+
+```yaml
+            - months_eligible:
+                source:
+                  select: "COUNT(distinct month)"
+                  from: monthly
+                  where: "max_elg_cd != '00'"
+```
+
 
 ### Index
 
@@ -177,7 +406,7 @@ of options like *using* or *include*, see
 | Parameter                    | Required? | Description                                                                                                                                                                                             |
 |------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | name                         | no        | A custom index name, if omitted the name will be generated                                                                                                                                              |
-| using                        | no        | The indexing method, the default is BTREE                                                                                                                                                               |
+| using                        | no        | The indexing method; defaults to BTREE, or to GIN for array-typed columns                                                                                                                               |
 | include                      | no        | Additional columns to include with index                                                                                                                                                                |
 | required_before_loading_data | no        | Adding this key tells the generator that this index must be created before the table is populated. Otherwise, to improve performance, indices might be created after a table is popualted with all data |
 
@@ -231,8 +460,9 @@ Here is an example of a computed column:
         code: "datetime.strptime({1}, '%Y%m%d').date()"
 ```
 
-Here in `code` the pattern `{1}` is replaced with the name of the
-first (and only) column in the list: `ADMSN_DT`.
+Here in `code` the pattern `{1}` is replaced with a reference to the
+value of the first (and only) listed column, `ADMSN_DT`, in the
+current input record.
 
 Another example, using database columns:
 
@@ -250,16 +480,92 @@ Here, `{1}` references the value that would be inserted into the
 table column `state` and `{2}` references the value that
 would be inserted into the table column `residence_county`.
 
+#### Execution scope of the compute code
+
+Knowing exactly how the compute code is executed helps writing one:
+
+* The code is a single Python expression, evaluated with `eval()` by
+  the [inserter](members/inserter) module
+  (`dorieh.platform.data_model.inserter`) for every database record
+  produced — once per input record, or once per range value for
+  transposed (range-column) tables.
+* The placeholders `{1}`, `{2}`, ... are substituted before
+  evaluation with references to cells of the raw input record. They
+  refer first to the entries of `parameters` and then to the entries
+  of `columns`, in the order listed; `{0}` is reserved and must not
+  be used.
+* The names available to the expression are the Python builtins plus
+  the names imported by the inserter module. Of these, the ones
+  intended for use in compute code are `datetime` and `timedelta`
+  (the classes from the standard `datetime` module) — as in the
+  `datetime.strptime(...)` example above, which is used in production
+  by `medicaid.yaml`. The raw input record is also visible as `row`.
+* If the expression raises any exception, the value is silently set
+  to `None` and NULL is stored in the database. Test compute columns
+  on sample data: a typo in the expression does not stop the load, it
+  produces empty values.
+
+Note that `fips_dict` (a dictionary mapping US state postal codes to
+state FIPS codes, defined in
+[dorieh.platform.fips](members/fips)) is **not**
+currently imported into the inserter's namespace, so the `fips5`
+example above illustrates the `parameters` referencing syntax rather
+than a configuration that can run unmodified against the current
+loader.
+
 ### File columns
 
-File columns are of type `file`. They store the name of the file,
-from which the data has been ingested.
+File columns are declared with source type `file` (their database
+type is an ordinary character type). They store the base name of the
+file, from which the data has been ingested. When the Project Loader
+introspects the incoming data it appends a `FILE` column
+(`VARCHAR(128)`, with an index created before loading) to every
+table automatically.
 
 ### Record columns
 
-Record columns are of type `record`. They store the sequential
-index of the record (line number) in the file,
-from which the data has been ingested.
+A record column stores the sequential index of the record within the
+data ingested from a file. There is no special `record` source type:
+a record column is an ordinary column declared with a PostgreSQL
+auto-increment type (`SERIAL` or `BIGSERIAL`). The Universal Database
+Loader omits columns of these types from the generated `INSERT`
+statements, so the database itself assigns each row the next value of
+the backing sequence in ingestion order. When the Project Loader
+introspects the incoming data it appends a `RECORD` column
+(`BIGSERIAL`, indexed) automatically, alongside `FILE`, and makes
+`(FILE, RECORD)` the default primary key. Together, the `FILE` and
+`RECORD` columns anchor row-level provenance: every database row can
+be traced back to a source file and a position within it.
+
+### Identifier columns and the `{identifiers}` token
+
+In a view definition, a column can be marked with `identifier: true`
+to declare that it is part of the identity of the modelled entity.
+The `source` expression of any other column of the same view may then
+contain the token `{identifiers}` (in lower case). The DDL generator
+replaces the token with a parenthesized, comma-separated list built
+from all identifier columns: for an identifier column whose source is
+an aggregate expression such as `MIN(dob)`, the underlying column
+name inside the parentheses is used (a `distinct` keyword, if
+present, is stripped); for an identifier column with no `source` at
+all, the column's own name is used. An identifier column must take
+one of these two forms — a source that is a plain, non-parenthesized
+expression is not supported.
+
+The `_beneficiaries` view in `medicare.yaml` marks `dob`, `race` and
+`sex` as identifiers and counts records that disagree on any of them:
+
+```yaml
+        - discrepancies:
+            source: >
+              (
+                COUNT(distinct {identifiers}) - 1 +
+                ...
+              )
+```
+
+Here `COUNT(distinct {identifiers})` expands to
+`COUNT(distinct (dob, race, sex))`.
 
 ### Transposing columns
                                           
@@ -272,8 +578,9 @@ use `unnest` function.
 ### Wildcards
 
 To make it easier to work with similarly named columns, Dorieh supports wildcards.
-Wildcard expression starts with `$` followed by a single letter. Values are provided 
-in square braces that follow a wildcard. 
+Wildcard expression starts with `$` followed by a variable name
+(single letters are the convention used in the shipped models). Values
+are provided in square braces that follow a wildcard. 
 
 Example:
 
@@ -303,7 +610,7 @@ Index definition can also include
 |-----------|-----------|-----------------------------------------------------|
 | columns   | yes       | A list of columns to include in the index           |
 | using     | no        | The indexing method, the default is BTREE           |
-| include   | no        | Additional columns to include with index            |
+| include   | no        | Additional columns to include with index. Currently ignored when `unique` is also specified |
 | unique    | no        | Specifies that the index defines a unique constrain |
                                                       
 Example:
@@ -334,11 +641,21 @@ The main class responsible for the generation of DDL is
 
 ## Indexing policies
 
-* **explicit**. Indices are only created for columns that define an index
-* **all** Indices are only created for all columns
-* **selected** Indices are only created for columns matching certain pattern 
-  (defined in `index_columns` variable of [model](members/model)) module
-* **unless excluded** Indices are only created for all columns not explicitly excluded
+* **explicit**. An index is built only where a column definition
+  carries an `index` key
+* **all** Every column gets an index
+* **selected** Indices are created for columns matching certain patterns
+  (defined in `index_columns` variable of [model](members/model) module)
+  and for columns that define an `index`. This is the default policy,
+  used when the domain does not specify one
+* **unless excluded** An alias for **all**: internally both are mapped
+  to the same policy. Indices are created for all columns except those
+  that explicitly opt out with `index: false`
+
+Regardless of the policy, `index: false` always suppresses the
+single-column index, and columns of type `TEXT`, `HLL` or
+`HLL_HASHVAL` are never indexed automatically. Specifying any other
+policy name raises an error.
 
 ## Linking with nomenclature
 
@@ -348,9 +665,20 @@ Database includes a table with codes for US states. It is taken from:
 
 <https://www.nrcs.usda.gov/wps/portal/nrcs/detail/national/technical/nra/nri/results/?cid=nrcs143_013696>
 
-The data leaves locally in [fips.py](members/fips)
+The data lives locally in [fips.py](members/fips), which contains a
+hard-coded dictionary of two-digit state FIPS codes keyed by state
+postal abbreviation (together with the SQL query that re-derives them
+from the `us_iso` nomenclature table).
 
-County codes:
+### County codes
+
+County FIPS codes are not part of `fips.py`. The Medicare data model
+derives them from Social Security Administration (SSA) county codes
+through the `ssa` crosswalk table, which the
+[ssa2fips](members/ssa2fips) utility
+(`dorieh.platform.crosswalks.ssa2fips`) builds by downloading the
+SSA-to-FIPS state and county crosswalk files published by the
+National Bureau of Economic Research (NBER):
 
 <https://www.nber.org/research/data/ssa-federal-information-processing-series-fips-state-and-county-crosswalk>
 
@@ -360,7 +688,7 @@ The following command ingests data into a table and all hard-linked
 child tables:
 
 ```
-    usage: python -u -m dorieh.platform.data_model.model2 [-h] [--domain DOMAIN]
+    usage: python -u -m dorieh.platform.loader.data_loader [-h] [--domain DOMAIN]
                 [--table TABLE] [--data DATA]
                 [--reset] [--autocommit] [--db DB] [--connection CONNECTION]
                 [--page PAGE] [--log LOG] [--limit LIMIT] [--buffer BUFFER]

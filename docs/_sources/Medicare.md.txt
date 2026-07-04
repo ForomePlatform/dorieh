@@ -27,6 +27,35 @@ synthetic dataset (no data use agreement required) and exploring the results in
 a pre-built Apache Superset dashboard.
 ```
 
+## Medallion architecture of the Medicare warehouse
+
+The Medicare warehouse is organized as a Medallion architecture: data moves
+through Bronze, Silver, and Gold layers, and each layer is derived only from
+the layer beneath it.
+
+* **Bronze**: the raw `cms.*` tables. Every original ResDac file is loaded
+  into its own table, with the data kept as delivered.
+* **Silver**: the cleansed and unified layer. It contains the federated
+  views that combine the per-file Bronze tables (`medicare.ps` and its
+  companion `medicare._ps`, `medicare.mbsf_d`, and the admissions view
+  `medicare.ip`) and the curated tables built from them:
+  `medicare.beneficiaries`, `medicare.enrollments`, and
+  `medicare.admissions`.
+* **Gold**: the QC aggregates — the `medicare.qc_*` materialized views
+  described in [Creating QC Tables](#creating-qc-tables).
+
+Every ingested (Bronze) table carries two provenance columns: `FILE`, the
+name of the original raw file, and `RECORD`, the line number of the record
+within that file (see
+[Storing raw data in the Database](#storing-raw-data-in-the-database)).
+These two columns are what make Dorieh's lineage fine-grained. Column-level
+lineage records how each output column is computed from input columns, while
+`FILE` and `RECORD` add row-level lineage by anchoring every row to the
+exact line of the exact source file it came from. Cell-level lineage is the
+combination of the two: for any single value in a Silver table you can
+recover both the formula that produced it and the raw record it was derived
+from.
+
 ## Processing pipeline
                                       
 ### Medicare Pipeline Steps
@@ -58,7 +87,7 @@ step and will process the raw data that is already in the database.
                                                              
 Ingestion as a part of the data pipeline is only implemented for
 data in the format as it comes from ResDac. Metadata for ingestion
-is taken from [FTS](../../../fts) files that accompany ResDac deliverables. 
+is taken from [FTS](fts.md) files that accompany ResDac deliverables. 
 
 ```{important}
 In case of Medicare data in posession of NSAPH organization, we 
@@ -385,13 +414,13 @@ It also cleanses and conditions data from the following columns:
   SAS numeric form
 * `dod` (date of death): converted to SQL `DATE` type,
   from either character or SAS numeric form
-* `age` as recorded in the raw data. It is the beneficiary's age on the last day of the prior year
+* `age` as recorded in the raw data: the beneficiary's age on January 1
+  of the given year, if provided in the raw data
 * `sex` 
 * `race`
-* `rti_race` Research Triangle Institute race code
+* `race_rti` Research Triangle Institute (RTI) race code
 * `hmo_indicators` Monthly Medicare Advantage (MA) enrollment indicator
 * `hmo_cvg_count` Number of months the beneficiary was enrolled
-* `yob` year of birth calculated with the age variable (year - age)
 * `state`: added a column with text state id
 * `ssa2`: Social Security Administration (SSA) two digit code for state
 * `ssa3`: Social Security Administration (SSA) three digit code for county
@@ -408,12 +437,18 @@ is responsible to perform it.
 
 #### Second step: Mapping to county FIPS codes
 
-At the second step, a view called `medicare._ps` is created.  
-The only difference between  `medicare.ps` and `medicare._ps`
-is that the latter has county FIPS code (`fips3` column)
-inferred either SSA county code (`ssa3` column), if it is
-available or from the zip code (`zip` column)
-if SSA county code is absent. The reason this has to happen
+At the second step, a materialized view called `medicare._ps` is created.
+It adds four computed columns on top of `medicare.ps`:
+
+* `fips3`: county FIPS code, inferred from the SSA county code
+  (`ssa3` column) when it is available, or from the zip code
+  (`zip` column) when the SSA county code is absent
+* `fips3_is_approximated`: flags rows where `fips3` had to be inferred
+  from the zip code
+* `fips3_list`: all county FIPS codes consistent with the source record
+* `yob`: year of birth, calculated from the age variable (`year - age`)
+
+The reason this has to happen
 in a separate second step is that both `ssa3` and `zip` are
 being cleansed in the first step.
 
@@ -441,6 +476,8 @@ discrepancies in the data related to:
 * race
 * race_rti
 * sex
+* orec (the Original Reason for Entitlement Code — see
+  [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec))
 
 If there is any discrepancy for a given `bene_id`, then:
 
@@ -449,22 +486,55 @@ If there is any discrepancy for a given `bene_id`, then:
 * A comma-separated string containing all race codes is used for `race`
 * A comma-separated string containing all race codes is used for `race_rti`
 * comma-separated string containing all sex codes is used for `sex`
+* The OREC value from the earliest enrollment year is selected as `orec`
+  (with ties broken by the smallest code, so the result is deterministic)
 
 The following columns are added:
 
-* `duplciates`: a numeric column showing the number of inconsistent
-  values for this beneficiary. If it is greater than 1, it means
-  there is a discrepancy in the data for this beneficiary
+* `discrepancies`: a numeric column counting the alternative values recorded
+  for this beneficiary. It is computed as the number of distinct
+  `(dob, race, sex)` combinations minus one, plus the number of extra
+  distinct non-null dates of death. A value of `0` means the records are
+  consistent; any value greater than `0` indicates a discrepancy in the raw
+  data for this beneficiary. (Earlier revisions of this page referred to
+  this column as "duplicates"; the physical column name is `discrepancies`.)
 * `dob_latest`: the latest DOB found in the records for this 
   beneficiary. The value of this column is NULL for consistent records
 * `dod_earliest`: the earliest DOD found in the records for this 
   beneficiary. The value of this column is NULL for consistent records
+* `orec_latest`: the latest OREC value, non-null only when OREC varied
+  across the beneficiary's records (see
+  [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec))
 * Beneficiary id HLL hash (`bene` column), to be used for 
   `approximate count distinct` queries. [See more](UsingHLL.md) 
-  
 
 This topic is discussed in more details in the 
 [Medicaid documentation](Medicaid.md#deduplication-and-data-cleansing)
+
+#### Beneficiary enrollment-span columns
+
+The `beneficiaries` table also summarizes each beneficiary's enrollment
+history:
+
+* `first_enrollment_year`: the earliest year in which the beneficiary
+  appears in the patient summary data (`MIN(year)`)
+* `last_enrollment_year`: the latest such year (`MAX(year)`)
+* `all_enrollment_years`: an integer array of all distinct enrollment
+  years, in ascending order
+* `yob`: year of birth, the earliest value of `year - age` computed across
+  the beneficiary's records; `yob_latest` is non-null only when the
+  computed year of birth is not the same in all records
+* `number_of_gap_years`: the number of years inside the enrollment span
+  for which no enrollment record exists. This column is a worked example
+  of a SQL generated column — it is declared in the data model as
+
+  ```sql
+  GENERATED ALWAYS AS (last_enrollment_year - first_enrollment_year + 1
+                       - CARDINALITY(all_enrollment_years)) STORED
+  ```
+
+  so PostgreSQL computes and stores the value automatically from the three
+  enrollment-span columns above.
 
 
 ### Creating Enrollments table
@@ -520,8 +590,9 @@ The policy for all of this columns is the following:
 
 * For corresponding column in the enrollments table, an arbitrary but
   deterministic value is selected
-* An additional column is added, containing the list of all encountered
-  values
+* For most of these columns an additional column is added, containing
+  the list of all encountered values (`fips2`, which is derivable from
+  the state, has no list column)
 
 The additional columns are:
 
@@ -540,8 +611,10 @@ the **Enrollments** tables:
   If true, it means that there was no valid county code in the original
   ResDac record, hence, the county code was inferred from other data
   (in most cases, zip code)
-* `fips3_valdiated`: A boolean column indicating that the value
+* `fips3_valdiated` (sic): A boolean column indicating that the value
   of county code is consistent with the values of state code and zip code.
+  The physical column name in the database is misspelled exactly as shown
+  here (`valdiated`, not `validated`); use this spelling in queries.
 
 #### Enrollments columns definitions
 
@@ -550,7 +623,8 @@ The following columns are created for Enrollments:
 
 * `ssa2`: SSA state code
 * `ssa3`: SSA county code
-* `ssa2_list`: list of all SSA county codes 
+* `ssa2_list`: list of all SSA state codes
+* `ssa3_list`: list of all SSA county codes
 * `state_iso`: ISO code of the state, used for mapping
 * `residence_county`: one of the "latest" residence 
   counties where 
@@ -567,14 +641,35 @@ The following columns are created for Enrollments:
   "latest" zip codes, where a beneficiary was
   registered during the year
 * `state_count`: number of states, where the beneficiary
-  was enrolled in medicaid during the year. Note,
+  was enrolled in Medicare during the year. Note,
   this is also the number of records for this beneficiary and this year
   in the Enrollments` table.
 * `died`: a boolean flag indicating that the beneficiary has 
   died during this year while being registered
-  for medicaid in this state.
-* `hmo_indicators`: the maximum value of all the monthly hmo indicators
+  for Medicare in this state.
+* `hmo_indicators`: the array of 12 monthly HMO indicators; when the
+  group contains multiple source records, the maximum (by array
+  comparison) of the encountered arrays is kept
 * `hmo_cvg_count`: the number of months the beneficiary was enrolled in a Medicare Advantage (MA) 
+* `hmo`: a generated boolean column, true when `hmo_cvg_count` is greater
+  than zero, i.e. when the beneficiary received benefits through a managed
+  care plan for at least one month of the year; NULL when the count is
+  unknown
+* `buyin_indicators`, `buyin_cvg_count`, `buyin` (added after the book's
+  example scope): the Part B premium buy-in family — an array of the
+  monthly buy-in indicator codes, the number of months during the year when
+  the beneficiary's premium was paid by the state, and a generated boolean
+  that is true when that count is greater than zero
+* `dual_indicators`, `dual_cvg_count`, `dual` (added after the book's
+  example scope): the dual-eligibility family, taken from the
+  `medicare.mbsf_d` materialized view (built from the raw `mbsf_*d*`
+  component files) — an array of the monthly dual-status indicator codes,
+  the number of months of dual coverage during the year (NULL when no
+  `mbsf_d` data exists for the beneficiary and year), and a generated
+  boolean that is true when that count is greater than zero
+* `curec`, `curec_latest`, `consistent_curec`: the Current Reason for
+  Entitlement Code and its consistency tracking — see
+  [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec)
 * `fips3_is_approximated`: A boolean column, indicating whether the value 
   was taken from original record as is or approximated. 
   If true, it means that there was no valid county code in the original
@@ -584,6 +679,69 @@ The following columns are created for Enrollments:
   of county code is consistent with the values of state code and zip code.
 * Beneficiary id HLL hash (`bene` column), to be used for 
   `approximate count distinct` queries. [See more](UsingHLL.md) 
+
+### Entitlement reason codes: OREC and CUREC
+
+Medicare records carry two entitlement reason codes:
+
+* **OREC** (Original Reason for Entitlement Code) records why the
+  beneficiary first became entitled to Medicare. It is set at the time of
+  enrollment and, by definition, never changes for the life of the
+  beneficiary. It is therefore a per-beneficiary invariant and is stored on
+  the `beneficiaries` table.
+* **CUREC** (Current Reason for Entitlement Code) records the current
+  reason for entitlement and can legitimately change from year to year. It
+  is therefore a year-varying attribute and is stored on the `enrollments`
+  table.
+
+This split is a rule of the data model, not just tidiness. The QC view
+`qc_enrl_bene` is defined as `enrollments NATURAL JOIN beneficiaries`, and
+in a natural join every column present in both tables becomes part of the
+implicit join key. If a column such as `orec` were kept on both tables,
+every row where the two values disagree would silently drop out of the
+join — no error, no warning, just missing rows and understated counts
+downstream. To keep the natural join keyed only on the true relationship
+(the beneficiary id), per-person invariants must live only on
+`beneficiaries` and year-varying attributes only on `enrollments`.
+
+How the two codes are computed:
+
+* `beneficiaries.orec` takes its canonical value from the earliest
+  enrollment year, with ties broken by the smallest code so that the result
+  is deterministic: `(array_agg(orec ORDER BY year, orec))[1]`. If the raw
+  data nevertheless shows OREC changing over the years,
+  `beneficiaries.orec_latest` is non-null (holding the latest value), and
+  the `consistent_orec` flag in `qc_enrl_bene` reports the discrepancy:
+  `MISSING` when OREC is absent, `AMBIGUOUS` when it varied, and
+  `CONSISTENT` otherwise. This is the same earliest-value-canonical,
+  latest-value-in-a-secondary-column disambiguation pattern used for the
+  date of birth (`dob` / `dob_latest` / `consistent_dob`).
+* `enrollments.curec` is aggregated as `MAX(curec)` within each
+  `(bene_id, year, state)` group. This is a defensive de-duplication: in
+  the synthetic dataset every such group is a single row, but real Medicare
+  data can contain duplicate source rows (for example, from overlapping or
+  reissued MBSF files) that disagree on CUREC. When that happens,
+  `curec_latest` is non-null and the `consistent_curec` flag is
+  `AMBIGUOUS`; otherwise it is `CONSISTENT` (or `MISSING` when CUREC is
+  absent). Because CUREC consistency is a property of a single enrollment
+  year — not of the beneficiary across years — `consistent_curec` is a
+  generated, stored column on the `enrollments` table itself, deliberately
+  not one of the beneficiary-grain flags computed in `qc_enrl_bene`. It
+  still reaches the `qc_enrollments` aggregates through the join.
+
+```{admonition} Design note — evolved after the book
+:class: note
+Earlier revisions of the data model kept a per-year `orec` column on
+`enrollments` in addition to the one on `beneficiaries`. With inconsistent
+raw data this made `orec` an implicit key of the natural join in
+`qc_enrl_bene`, silently dropping every enrollment year where the two
+values disagreed. The current model removes `orec` from `enrollments`,
+computes the canonical value on `beneficiaries` from the earliest
+enrollment year, and surfaces any disagreement explicitly through
+`orec_latest` and the `consistent_orec` QC flag, with `curec_latest` and
+`consistent_curec` doing the same for CUREC. Data-quality problems are now
+reported as QC dimensions instead of silently distorting the join.
+```
 
 ### Creating Federated Admissions view
          
@@ -610,7 +768,9 @@ It also cleanses and conditions data from the following columns:
 * `discharge_date`: converted to SQL `DATE` type,
   from either character or SAS numeric form
 * `adm_day_of_week`: converted to `integer`
-* Diagnoses: separate columns combined into a single `ARRAY` column
+* Diagnoses: the federated view keeps the up to 25 separate diagnosis
+  columns (`diag1` … `diag25`) as-is; they are combined into a single
+  `ARRAY` column later, when the Inpatient Admissions table is created
   (read more about [PostgreSQL Arrays](https://www.postgresql.org/docs/current/arrays.html))
 
 
@@ -630,22 +790,61 @@ During this step the following major operations are performed:
     * Beneficiary id (`bene` column)
     * Primary diagnosis at admission  (`pd_hll_hash`)
     * All diagnoses, used for admission (`icd_hll`)
-* Performed validation of admission data. Records that failed
-  validation are excluded from the resulting `Admissions` table but are stored
-  in a special `medicare_audit.admissions` table, together with the reason
-  for validation failure. We distinguish three reasons for validation failure:
-  * `Primary key`: this indicates missing data, for example:
-    * Missing beneficiary id
-    * Missing admission or discharge date
-    * Missing US State, where the admission happened
-  * `Foreign key`: means that the beneficiary referred in the admission
-    record was not eligible for Medicare in the given year
-  * `Duplicate`: a duplicate record was found. Only one record out of 
-    several duplicates is stored in the `admissions` table, others are
-    copied to `medicare_audit.admissions` table. 
+* Performed validation of admission data. Three named validation checks
+  are applied:
+  1. **Primary key integrity**: every admission must carry a complete set
+     of key attributes. Records with missing data — for example, a missing
+     beneficiary id, a missing admission or discharge date, or a missing
+     US state — fail this check and are journaled with the reason
+     `PRIMARY KEY`.
+  2. **Referential integrity** against enrollments: the beneficiary
+     referred to by the admission record must have an enrollment record
+     for the given year (`admissions` is defined as a child of
+     `enrollments`). Records referring to a beneficiary who was not
+     enrolled are journaled with the reason `FOREIGN KEY`.
+  3. **Duplicate elimination**: when several records describe the same
+     admission (the same primary key values), only one record is kept in
+     the `admissions` table; the others are journaled with the reason
+     `DUPLICATE`. The kept record has its `quality` column set to
+     `DUPLICATE` (the default value is `PASS`), so it remains identifiable.
+
+The invalid-records policy for this table is journaling rather than silent
+deletion: the data model declares `invalid.records` with `action: INSERT`
+targeting the audit schema, so every record that fails a check is excluded
+from `medicare.admissions` but inserted into `medicare_audit.admissions`
+together with the `REASON` code listed above. No record is silently
+dropped, and the [Admissions QC Table](#admissions-qc-table) reports valid
+and journaled records side by side.
 
 See more information about handling records that have failed validation in:
 [Data Modeling](Datamodels.md#invalid-record)
+
+#### Additional admissions columns
+
+Beyond the identifying and date columns, the `admissions` table carries the
+following groups of columns:
+
+* Admission characteristics (added after the book's example scope):
+  `admsn_type_cd` (inpatient admission type code), `src_admsn_cd` (source
+  of admission), `dschrgcd` (discharge status code), and
+  `dschrg_dstntn_cd` (discharge destination code)
+* Length of stay (added after the book's example scope): `los_day_cnt`,
+  the total length of the beneficiary's stay in days
+* DRG and payment amounts (added after the book's example scope):
+  `drg_price_amt`, `drg_outlier_pmt_amt`, `pass_thru_amt`, and
+  `mdcr_pmt_amt`
+* Beneficiary liability amounts (added after the book's example scope):
+  `bene_blood_ddctbl_amt`, `bene_prmry_pyr_amt`, `bene_ip_ddctbl_amt`, and
+  `bene_pta_coinsrnc_amt`
+* Diagnoses: `primary_diagnosis` and the `diagnoses` array, which collects
+  the non-null, whitespace-trimmed diagnosis codes from the up to 25
+  separate diagnosis columns of the raw files (only NULL entries are
+  removed from the array)
+* `quality`: `PASS` by default; set to `DUPLICATE` on a record that was
+  kept while its duplicates were journaled (see above)
+
+All of these columns are defined in the
+[Medicare data model definition](members/medicare_yaml.md).
 
 ## Creating QC Tables
                              
@@ -656,187 +855,142 @@ See more information about handling records that have failed validation in:
 QC tables (materialized views to be precise) are created by
 [Medicare QC Pipeline](pipeline/medicare_qc)
 
-Two tables are created:
+Two aggregate QC tables are created, each backed by a helper view:
 
-* Enrollments QC
-* Admissions QC
+* Enrollments QC: the `qc_enrollments` materialized view, built over the
+  `qc_enrl_bene` join view
+* Admissions QC: the `qc_admissions` materialized view, built over the
+  `qc_adm_union` view
 
-These are aggregate tables, defined in 
-[Medicare data model definition](members/medicare_yaml.md) 
-(qc_enrollments and qc_admissions).
-
-In these tables we define dimensions and measures, including count measures 
-and percent measures.
+These objects form the Gold layer of the warehouse. They are defined in the
+[Medicare data model definition](members/medicare_yaml.md), which is the
+authoritative source for their exact SQL; the sections below describe their
+structure. In these tables we define dimensions and count measures; percent
+measures are computed on top of them by the QC dashboard.
 
 ### Enrollments QC Table
                             
 ####  Enrollments QC Table Definition
 
-Enrollment QC is roughly defined by the following SQL:
+The enrollments QC is built in two steps, both defined in the
+[Medicare data model definition](members/medicare_yaml.md) — refer to it
+for the exact SQL rather than to any copy in this page:
 
-```sql
-SELECT 
-    year,
-    state,
-    zip,
-    fips3,
-    CASE
-        WHEN ( 
-                beneficiaries.dob IS NULL) 
-        THEN 'MISSING'::TEXT
-        WHEN ( 
-                beneficiaries.dob_latest IS NOT NULL) 
-        THEN 'AMBIGUOUS':: TEXT
-        ELSE 'CONSISTENT'::TEXT
-    END AS consistent_dob,
-    CASE
-        WHEN ( 
-                beneficiaries.dod IS NULL) 
-        THEN 'NONE'::TEXT
-        WHEN ( 
-                beneficiaries.dod_earliest IS NOT NULL) 
-        THEN 'AMBIGUOUS':: TEXT
-        ELSE 'CONSISTENT'::TEXT
-    END AS consistent_dod,
-    CASE
-        WHEN ( 
-                beneficiaries.sex ~~ '%,%'::TEXT) 
-        THEN 'AMBIGUOUS':: TEXT
-        ELSE 'CONSISTENT'::TEXT
-    END AS consistent_sex,
-    CASE
-        WHEN ( 
-                beneficiaries.race ~~ '%,%'::TEXT) 
-        THEN 'AMBIGUOUS':: TEXT
-        ELSE 'CONSISTENT'::TEXT
-    END AS consistent_race
-    fips3_is_approximated,
-    fips3_valdiated,
-    state_iso,
-    COUNT(*)                        AS numrecords,
-    ((# hll_add_agg(bene)))::bigint AS numdistinctbeneficaries,
-    hll_add_agg(bene)               AS bene_hll
-FROM 
-    medicare.enrollments natural join medicare.beneficiaries
-GROUP BY 
-    year, 
-    state, 
-    zip, 
-    fips3, 
-    consistent_dob, 
-    consistent_dod, 
-    consistent_sex, 
-    consistent_race, 
-    fips3_is_approximated, 
-    fips3_valdiated;
-```
+1. `medicare.qc_enrl_bene` is a view defined as
+   `enrollments NATURAL JOIN beneficiaries` (see
+   [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec)
+   for the design rule that keeps this natural join safe). On top of the
+   joined columns it computes the beneficiary-grain consistency flags:
+   * `consistent_dob`: `MISSING` when `dob` is null, `AMBIGUOUS` when
+     `dob_latest` is set (the records disagreed), otherwise `CONSISTENT`
+   * `consistent_dod`: `NONE` when no date of death is recorded (which is
+     not an inconsistency — most beneficiaries are alive), `AMBIGUOUS`
+     when `dod_earliest` is set, otherwise `CONSISTENT`
+   * `consistent_sex` and `consistent_race`: `AMBIGUOUS` when the
+     aggregated value contains a comma (more than one distinct code was
+     recorded for the beneficiary), otherwise `CONSISTENT`
+   * `consistent_orec`: `MISSING`, `AMBIGUOUS` or `CONSISTENT`, as
+     described in
+     [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec)
+
+   The `consistent_curec` flag is not computed here: it is a single-year
+   property stored directly on the `enrollments` table, and it reaches the
+   QC view through the join.
+2. `medicare.qc_enrollments` is a materialized view that aggregates
+   `qc_enrl_bene`, grouping by the dimensions and computing the measures
+   listed below.
 
 ####  Enrollments QC Table Dimensions 
 
-Therefore, the following QC dimensions are defined:
+The following QC dimensions are defined:
 
-* year, 
-* state, 
-* zip, 
-* fips3, 
-* consistent_dob, 
-* consistent_dod, 
-* consistent_sex, 
-* consistent_race, 
-* fips3_is_approximated, 
-* fips3_valdiated
+* year
+* state
+* zip
+* fips3
+* orec
+* curec
+* hmo
+* dual
+* buyin
+* consistent_dob
+* consistent_dod
+* consistent_sex
+* consistent_race
+* consistent_orec
+* consistent_curec
+* fips3_is_approximated
+* fips3_valdiated (the physical column name is misspelled; use this
+  spelling in queries)
 
+The grouping treats NULL dimension values as regular values, so records
+with missing attributes are counted rather than excluded.
 
 ####  Enrollments QC Table Measures
 
-In Apache Superset, the following metrics are defined for this table:
+Each combination of the dimensions above carries three measures:
 
-* Number of consistent beneficiaries:
-  ```sql
-  (#(hll_union_agg(bene_hll) FILTER (
-          WHERE consistent_dob = 'CONSISTENT'
-          AND consistent_dod <> 'AMBIGUOUS'
-          AND consistent_race = 'CONSISTENT'
-          AND consistent_sex = 'CONSISTENT'
-          ))
-          ) * 100.0 / (#(hll_union_agg(bene_hll)))
-  ```
-* Number of distinct beneficiaries
-  ```sql
-  (#(hll_union_agg(bene_hll)))::INT
-  ```
-* Number of enrollment records
-  ```sql
-  SUM(numrecords)
-  ```                                     
+* `NumRecords`: the number of enrollment records in the group
+  (`COUNT(*)`)
+* `NumDistinctBeneficaries` (sic — the physical column name is misspelled,
+  `Beneficaries` instead of `Beneficiaries`; use this spelling in
+  queries): the approximate number of distinct beneficiaries in the group,
+  computed from the HLL hashes
+* `bene_hll`: the [HLL sketch](UsingHLL.md) itself. Keeping the sketch as
+  a column allows distinct-beneficiary counts to be re-aggregated over any
+  subset of groups without returning to the detail data.
+
+The percent metrics shown in the QC dashboard (for example, the share of
+beneficiaries with fully consistent records) are defined in Apache Superset
+on top of these measures; see the
+[Medicare example](medicare-example.md) for the committed dashboard bundle.
 
 ### Admissions QC Table
 
 ####  Admissions QC Table Definition
 
-Enrollment QC is roughly defined by the following SQL:
+The admissions QC is also built in two steps, defined in the
+[Medicare data model definition](members/medicare_yaml.md):
 
-```sql
-SELECT 
-    year,
-    state,
-    zip,
-    reason,
-    state_iso,
-    COUNT(*)                        AS numrecords,
-    ((# hll_add_agg(bene)))::bigint AS numdistinctbeneficaries,
-    hll_add_agg(bene)               AS bene_hll
-FROM 
-    medicare.admissions UNION ALL medicare_audit.admissions
-GROUP BY 
-    year, 
-    state, 
-    zip, 
-    reason;
-```
+1. `medicare.qc_adm_union` is a view that unions the journaled records in
+   `medicare_audit.admissions` — each carrying the `REASON` recorded when
+   it failed validation — with the records of `medicare.admissions`,
+   labelled with the literal reason `OK`. This makes valid and rejected
+   records visible side by side, so the QC can report what was filtered
+   out, not only what was kept.
+2. `medicare.qc_admissions` is a materialized view that aggregates
+   `qc_adm_union` by the dimensions below, with the same measures as the
+   enrollments QC.
 
 ####  Admissions QC Table Dimensions 
 
-Therefore, the following QC dimensions are defined:
+The following QC dimensions are defined:
 
-* year, 
-* state, 
-* zip, 
-* reason (reason is either literal 'OK' or a reason why a 
-  record failed validation)
+* year
+* state
+* zip
+* reason — one of:
+  * `OK`: the record passed validation and is in `medicare.admissions`
+  * `PRIMARY KEY`: missing key data (see
+    [Creating Inpatient Admissions table](#creating-inpatient-admissions-table))
+  * `FOREIGN KEY`: no matching enrollment record was found
+  * `DUPLICATE`: a duplicate of a record that was kept
 
 ####  Admissions QC Table Measures
- 
-In Apache Superset, the following metrics are defined for this table:
- 
-Count metrics:
 
-* Number of admission records
-    ```sql  
-    SUM(numrecords)
-    ```
-* Number of distinct beneficiaries
-    ```sql
-    (#(hll_union_agg(bene_hll)))::INT
-    ```
-        
-Percent metrics:
+Each combination of the dimensions above carries the same three measures
+as the enrollments QC: `NumRecords`, `NumDistinctBeneficaries` (sic; see
+the note on the spelling above) and the `bene_hll` sketch.
 
-* Percent of valid records (passed validation)
-    ```sql
-    (SUM(numrecords) FILTER (WHERE reason = 'OK'))*100.0/SUM(numrecords)
-    ```
-* Percent of admission records, for which corresponding enrollment data 
-  was not found (failed validation)
-    ```sql
-    (SUM(numrecords) FILTER (WHERE reason = 'FOREIGN KEY'))*100.0/SUM(numrecords)
-    ```
-* Percent of duplicate records (failed validation, one apparent 
-  admission recorded more than once)
-    ```sql
-    (SUM(numrecords) FILTER (WHERE reason = 'DUPLICATE'))*100.0/SUM(numrecords)
-    ```
-* Percent of valid records with missing data (failed validation)
-    ```sql
-    (SUM(numrecords) FILTER (WHERE reason = 'PRIMARY KEY'))*100.0/SUM(numrecords)
-    ```
+Percent metrics — the share of records that passed validation and the
+shares journaled for each failure reason — are defined in Apache Superset
+on top of these counts; see the [Medicare example](medicare-example.md)
+for the committed dashboard bundle.
+
+```{seealso}
+**Further reading:** Chapter 8 ("Dorieh Medicare Claims Data Pipeline") of
+the companion book
+[*Research Data that Can Be Trusted*](about-the-book.md) develops the ideas
+behind this page in depth. This documentation is self-contained; the book
+is optional enrichment.
+```

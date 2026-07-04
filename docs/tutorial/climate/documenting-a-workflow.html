@@ -51,15 +51,20 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
-<ul class="current">
+              <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../rationale.html">Why a data platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../concepts.html">The Dorieh approach</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../about-the-book.html">The companion book</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../domains.html">Data Domains</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../pipelines.html">Data Processing Pipelines</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
+<ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../Tutorials.html">Dorieh Tutorials</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="building-climate-pipeline.html">Building a data preparation Workflow</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Documenting a Workflow</a><ul>
@@ -75,10 +80,26 @@
 <li class="toctree-l2"><a class="reference internal" href="constructing-lineage.html">Constructing data dictionaries and lineage graphs</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../../examples.html">Examples</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Platform</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../packages.html">Python Packages</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../capabilities.html">Platform capabilities</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../DBT.html">Database Testing Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../adding_data.html">Adding more data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Reference</span></p>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../glossary.html">Terms and Acronyms</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../docindices.html">Indices</a></li>
 </ul>
@@ -237,6 +258,18 @@ both standardized and custom documentation are available together,
 supporting both technical reference and compliance requirements.</p>
 <p>A fully documented workflow is available
 <a class="reference internal" href="../../climate-examplecwl_src.html"><span class="std std-doc">in the GitHub example</span></a>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The fully documented reference above is deliberately the simpler
+<strong>no-database</strong> climate workflow (see
+<a class="reference internal" href="../../Example-climate-workflow.html"><span class="std std-doc">Example: aggregating a climate variable</span></a>).
+It uses the same tools and the same documentation keys (the <code class="docutils literal notranslate"><span class="pre">###</span></code> title
+header and the <code class="docutils literal notranslate"><span class="pre">doc</span></code> keys) as the workflow built in this tutorial, but has
+fewer moving parts, so the generated documentation is easier to follow.
+The <code class="docutils literal notranslate"><span class="pre">example1.cwl</span></code> in this directory is intentionally left undocumented:
+adding the title header and <code class="docutils literal notranslate"><span class="pre">doc</span></code> keys to it and re-running <code class="docutils literal notranslate"><span class="pre">cwl2md</span></code> is
+left as an exercise for the reader.</p>
+</div>
 </section>
 </section>
 </section>
