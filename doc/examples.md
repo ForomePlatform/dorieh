@@ -1,5 +1,10 @@
 # Examples
 
+The climate example has a full guided tutorial in
+[Building a data preparation Workflow](tutorial/climate/building-climate-pipeline.md),
+and the Medicare example has a case-study landing page in
+[Medicare: Building a Data Warehouse from ResDac Files](Medicare.md).
+
 ```{toctree}
 ---
 maxdepth: 1
@@ -10,5 +15,4 @@ Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)
 How to query the database <SampleQuery>
 Querying Medicaid Data <QueringMedicaid>
 Monitoring database activity using Dorieh tools <MonitoringDB>
-Quering Parquet File with Dorieh Spark Extension <QueryingParquet>
 ```

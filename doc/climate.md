@@ -1,5 +1,7 @@
 # Computational Utilities for working with Climate gridMET data
 
+For the guided end-to-end climate pipeline (Bronze/Silver/Gold layers), see the tutorial [Building a Bronze–Silver–Gold Climate Pipeline with Dorieh](tutorial/climate/building-climate-pipeline.md).
+
 <!-- TODO -->
 
 [Documentation Home](home)

@@ -12,6 +12,21 @@ members/domain_dictionary.md
 
 The dictionary and the data lineage graphs are generated using the 
 [Dorieh Data Dictionary tool](members/domain_dictionary).
+
+```{note}
+The committed lineage diagram sources under `doc/lineage/` are point-in-time
+snapshots that cover only a subset of the tables and columns. The
+column-level diagrams predate the OREC/CUREC redesign of the QC data model,
+so none of them yet illustrate the consistency columns that redesign
+introduced (`consistent_orec` in the `qc_enrl_bene` view and
+`consistent_curec` on the `enrollments` table) or the removal of `orec`
+from `enrollments`. They will be regenerated with the
+[Dorieh Data Dictionary tool](members/domain_dictionary). Until then, the
+[Medicare data model definition](members/medicare_yaml.md) is the
+authoritative description of the current tables and columns; see
+[Entitlement reason codes: OREC and CUREC](Medicare.md#entitlement-reason-codes-orec-and-curec)
+for what changed and why.
+```
               
 The general structure of the generated dictionary is:
 

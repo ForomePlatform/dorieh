@@ -1,5 +1,9 @@
 # Running the sample Medicare processing workflow (with PostgreSQL)
 
+> **Note:** The canonical, always-current copy of this guide is
+> [Example: Medicare Processing Pipeline (with PostgreSQL)](https://foromeplatform.github.io/dorieh/medicare-example.html)
+> on the documentation site (source: [`doc/medicare-example.md`](../../../doc/medicare-example.md)).
+
 <!-- toc -->
 
 
@@ -68,6 +72,11 @@ toil-cwl-runner \
   --database https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/with-postgres/database.ini \
   --connection_name dorieh
 ```
+
+> **Note:** `src/workflows/medicare.cwl` (used in the command above) and
+> `src/cwl/medicare.cwl` (cited elsewhere, including in the companion book)
+> are the same workflow — the files are byte-identical except for a single
+> leading blank line — and both paths are kept in the repository.
 
 After completion:
 

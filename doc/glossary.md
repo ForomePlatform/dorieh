@@ -1,5 +1,67 @@
 # Terms and acronyms used in this documentation
 
+## Concepts
+
+The following terms form the conceptual vocabulary of this
+documentation. Each is defined at length, with pointers to where
+Dorieh implements it, on the
+[Concepts: the Dorieh approach](concepts.md) page.
+
+**Medallion architecture** — an organization of a data warehouse into
+progressively refined layers, in Dorieh named Bronze, Silver and Gold,
+where each layer is derived only from the layer beneath it. See
+[Concepts](concepts.md).
+
+**Bronze / Silver / Gold layers** — the three Medallion layers: Bronze
+holds data exactly as ingested from the source files, Silver holds
+validated, deduplicated and cleaned data derived only from Bronze, and
+Gold holds aggregates derived only from Silver for analysis and
+quality control. See [Concepts](concepts.md).
+
+**Dataset operator** — a node in the dataflow graph of a pipeline that
+consumes one or more datasets and produces a dataset; in Dorieh, the
+tables, views and materialized views declared in a data model, and the
+workflow steps that populate them, are dataset operators. See
+[Concepts](concepts.md).
+
+**Field construction operator** — the rule by which one output field
+is computed from input fields; in a Dorieh data model this is a
+column's `source` definition, such as a SQL expression, an aggregate,
+or compute code. See [Concepts](concepts.md).
+
+**Disambiguation rules** — rules for resolving conflicting values when
+records are aggregated: one value is chosen as canonical (for example,
+the earliest date of birth) and the latest conflicting value is kept
+in a secondary column, with a consistency flag recording that a
+conflict occurred. See [Concepts](concepts.md).
+
+**Journaling** — recording records that fail validation in an audit
+table, together with the reason for the failure and a timestamp,
+instead of silently dropping them. See [Concepts](concepts.md).
+
+**Invalid-records policy** — the `invalid.records` directive of a data
+model, which tells the loader what to do with a record that fails
+validation: raise an error (the default), ignore the record, or insert
+it into an audit table (journaling). See [Concepts](concepts.md).
+
+**FILE and RECORD directives** — the `file` and `record` column types,
+which store for every ingested row the name of the source file and the
+row's sequential index within that file; they are the row-level
+provenance anchors of a Dorieh table. See [Concepts](concepts.md).
+
+**Fine-grained (cell-level) lineage** — lineage that combines
+column-level tracing (which input columns and transformations produced
+an output column) with row-level tracing (which source records
+produced a row), so that any individual cell can be traced to its
+origin. See [Concepts](concepts.md).
+
+**Data dictionary** — generated documentation describing every table
+and column of a data model; Dorieh generates it from the same YAML
+definitions that build the database, so it cannot drift from the
+schema. See [Concepts](concepts.md).
+
+## Acronyms
+
 | Term                                                                                                  | Expansion                                                                                                                                                                                        | More Info                                                                                                                                          |
 |-------------------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------|
 | 7BDAT                                                                                                 | Proprietary binary data file format used by SAS software to store datasets (.sas7bdat extension). The file extension is .sas7bdat, but it's often referred to as 7BDAT in development workflows.  SAS uses this format to store structured data tables, including metadata (column names, types, etc.). | [SAS Inrospector](members/mcr_sas2yaml.rst), [SAS Data Laoder](members/mcr_sas2db.rst) |

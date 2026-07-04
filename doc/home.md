@@ -11,6 +11,17 @@ local:
 
 ## Introduction to Data Platform
 
+```{note}
+**Using this documentation with (or without) the book.**
+This documentation is a self-contained companion to the book
+*Research Data that Can Be Trusted* (Bouzinier et al., Springer, 2026):
+both describe the same open-source platform, and no page here requires
+the book. See [About the companion book](about-the-book.md) for the
+chapter-to-page map and a suggested reading order, and start with
+[Concepts: the Dorieh approach](concepts.md) for the ideas that
+organize the rest of the documentation.
+```
+
 <!-- section Dorieh overview from README -->
 
 

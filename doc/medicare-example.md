@@ -113,6 +113,13 @@ toil-cwl-runner \
   --connection_name dorieh
 ```
 
+```{note}
+`src/workflows/medicare.cwl` (used in the command above) and
+`src/cwl/medicare.cwl` (cited elsewhere, including in the companion book)
+are the same workflow — the files are byte-identical except for a single
+leading blank line — and both paths are kept in the repository.
+```
+
 After the workflow completes:
 
 * Processed data is stored in your PostgreSQL backend under the `medicare`
@@ -237,6 +244,9 @@ The dashboard surfaces the QC metrics described in
   duplicate checks)
 * Approximate distinct-beneficiary counts computed with
   [HLL sketches](UsingHLL.md)
+
+Note that all numbers shown are produced from the synthetic dataset and
+differ from any figures computed on real Medicare data.
 
 ---
 
