@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The api Module &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">The api Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/members/api.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dorieh.platform.superset.api">
+<span id="the-api-module"></span><h1>The api Module<a class="headerlink" href="#module-dorieh.platform.superset.api" title="Link to this heading"></a></h1>
+<p>Standard-library-only Apache Superset REST API client.</p>
+<p>No third-party dependencies. Auth: POST /api/v1/security/login returns a JWT;
+the import endpoint also needs the CSRF token (GET /api/v1/security/csrf_token/)
+and a Referer header.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.multipart">
+<span class="sig-name descname"><span class="pre">multipart</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fields</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">files</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#multipart"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.multipart" title="Link to this definition"></a></dt>
+<dd><p>fields: dict[str,str]; files: list[(name, filename, bytes, ctype)].</p>
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">SupersetClient</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">base_url</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient" title="Link to this definition"></a></dt>
+<dd><dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.login">
+<span class="sig-name descname"><span class="pre">login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.login"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.login" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.get_database_uuid">
+<span class="sig-name descname"><span class="pre">get_database_uuid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.get_database_uuid"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.get_database_uuid" title="Link to this definition"></a></dt>
+<dd><p>Resolve a connection NAME to its uuid on THIS Superset instance.</p>
+<p>Each instance assigns its own uuid, so callers must look it up by name
+rather than hard-code it.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.export_dashboard">
+<span class="sig-name descname"><span class="pre">export_dashboard</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dashboard_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.export_dashboard"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.export_dashboard" title="Link to this definition"></a></dt>
+<dd><p>Return the native bundle (zip bytes) for one dashboard id.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.import_dashboard_zip">
+<span class="sig-name descname"><span class="pre">import_dashboard_zip</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">zip_bytes</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">overwrite</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.import_dashboard_zip"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.import_dashboard_zip" title="Link to this definition"></a></dt>
+<dd><p>POST a native bundle to the v1 importer (same code the UI uses; the
+legacy <code class="docutils literal notranslate"><span class="pre">superset</span> <span class="pre">import-dashboards</span></code> CLI silently drops charts from
+native bundles). Returns (http_status, body_text).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.list_all">
+<span class="sig-name descname"><span class="pre">list_all</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.list_all"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.list_all" title="Link to this definition"></a></dt>
+<dd><p>kind in {chart, dataset, dashboard}: return every result dict
+(paginated).</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.dashboard_charts">
+<span class="sig-name descname"><span class="pre">dashboard_charts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">dashboard_id</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.dashboard_charts"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.dashboard_charts" title="Link to this definition"></a></dt>
+<dd><p>Charts that BELONG to a dashboard (m2m relationship), as result
+dicts with ids. Resolves charts precisely per dashboard, so copies of
+a dashboard that share chart names are not confused with each other.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="dorieh.platform.superset.api.SupersetClient.bulk_delete">
+<span class="sig-name descname"><span class="pre">bulk_delete</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">kind</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ids</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/api.html#SupersetClient.bulk_delete"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.api.SupersetClient.bulk_delete" title="Link to this definition"></a></dt>
+<dd><p>Delete many objects of one kind in a single request.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

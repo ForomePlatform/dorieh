@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dorieh.platform.superset.import_dashboard &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../platform.html">dorieh.platform</a></li>
+      <li class="breadcrumb-item active">dorieh.platform.superset.import_dashboard</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dorieh.platform.superset.import_dashboard</h1><div class="highlight"><pre>
+<span></span><span class="c1">#  Copyright (c) 2026. Harvard University</span>
+<span class="c1">#</span>
+<span class="c1">#  Developed by Research Software Engineering,</span>
+<span class="c1">#  Faculty of Arts and Sciences, Research Computing (FAS RC)</span>
+<span class="c1">#  Author: Michael A Bouzinier</span>
+<span class="c1">#</span>
+<span class="c1">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1">#  you may not use this file except in compliance with the License.</span>
+<span class="c1">#  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#         http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#  See the License for the specific language governing permissions and</span>
+<span class="c1">#  limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">Import a native Superset dashboard bundle, re-pointed onto a local connection</span>
+<span class="sd">ON THE FLY (console script: ``import_dashboard``).</span>
+
+<span class="sd">Why on the fly: a native bundle binds its datasets to a connection by ``uuid``,</span>
+<span class="sd">and that uuid is assigned per-instance -- so a committed bundle cannot hard-code</span>
+<span class="sd">it or it would only import on the machine it was exported from. This tool</span>
+<span class="sd">instead resolves the connection BY NAME via the REST API, rewrites the bundle</span>
+<span class="sd">into a throwaway temp zip bound to that uuid, and imports that. The source</span>
+<span class="sd">bundle on disk is never modified.</span>
+
+<span class="sd">By default object uuids are PRESERVED, so the import UPDATES the dashboard the</span>
+<span class="sd">bundle represents (idempotent: re-importing the same bundle, or an</span>
+<span class="sd">export-&gt;edit-&gt;import round-trip, never duplicates charts/datasets). It binds to</span>
+<span class="sd">the ``DORIEH`` connection unless --connection-name says otherwise.</span>
+
+<span class="sd">Use --copy to stand up an INDEPENDENT dashboard on another connection (e.g. a</span>
+<span class="sd">``DORIEH2`` dev comparison) that coexists with the canonical one: object uuids</span>
+<span class="sd">are regenerated deterministically per connection name. Do NOT use --copy for the</span>
+<span class="sd">canonical bundle you export/refresh -- regenerated uuids compound across</span>
+<span class="sd">export-&gt;import cycles and cause duplicates.</span>
+
+<span class="sd">Examples:</span>
+<span class="sd">  import_dashboard path/to/medicare_quality_dashboard</span>
+<span class="sd">  import_dashboard bundle.zip --connection-name DORIEH2 --copy \\</span>
+<span class="sd">      --dashboard-name &quot;Medicare Demo Quality Dashboard (DORIEH2 dev)&quot;</span>
+<span class="sd">  import_dashboard bundle/ --base-url http://localhost:8088/ --username admin</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">argparse</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">getpass</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.superset</span><span class="w"> </span><span class="kn">import</span> <span class="n">bundle</span> <span class="k">as</span> <span class="n">bundle_mod</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.superset.api</span><span class="w"> </span><span class="kn">import</span> <span class="n">SupersetClient</span>
+
+
+<div class="viewcode-block" id="main">
+<a class="viewcode-back" href="../../../../members/import_dashboard.html#dorieh.platform.superset.import_dashboard.main">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="n">argv</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="n">ap</span> <span class="o">=</span> <span class="n">argparse</span><span class="o">.</span><span class="n">ArgumentParser</span><span class="p">(</span>
+        <span class="n">prog</span><span class="o">=</span><span class="s2">&quot;import_dashboard&quot;</span><span class="p">,</span> <span class="n">description</span><span class="o">=</span><span class="vm">__doc__</span><span class="p">,</span>
+        <span class="n">formatter_class</span><span class="o">=</span><span class="n">argparse</span><span class="o">.</span><span class="n">RawDescriptionHelpFormatter</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;bundle&quot;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Native dashboard bundle to import (a directory &quot;</span>
+                         <span class="s2">&quot;containing metadata.yaml, or a .zip).&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--connection-name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;DORIEH&quot;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Target Superset connection name (default: DORIEH).&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--dashboard-name&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Override the dashboard title (default: keep the &quot;</span>
+                         <span class="s2">&quot;title baked in the bundle).&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--copy&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Import as an independent copy (regenerate object &quot;</span>
+                         <span class="s2">&quot;uuids, salted by connection name) that coexists with &quot;</span>
+                         <span class="s2">&quot;the canonical import. Default preserves uuids and &quot;</span>
+                         <span class="s2">&quot;updates the canonical dashboard in place.&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--base-url&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;http://localhost:8088/&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--username&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;admin&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--password&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Omit to be prompted.&quot;</span><span class="p">)</span>
+    <span class="n">ap</span><span class="o">.</span><span class="n">add_argument</span><span class="p">(</span><span class="s2">&quot;--no-overwrite&quot;</span><span class="p">,</span> <span class="n">action</span><span class="o">=</span><span class="s2">&quot;store_true&quot;</span><span class="p">,</span>
+                    <span class="n">help</span><span class="o">=</span><span class="s2">&quot;Do not overwrite an existing dashboard with the same &quot;</span>
+                         <span class="s2">&quot;uuid (default: overwrite, i.e. update in place).&quot;</span><span class="p">)</span>
+    <span class="n">args</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">parse_args</span><span class="p">(</span><span class="n">argv</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">bundle</span><span class="p">):</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="s2">&quot;Bundle not found: </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">bundle</span><span class="p">)</span>
+
+    <span class="n">pw</span> <span class="o">=</span> <span class="n">args</span><span class="o">.</span><span class="n">password</span> <span class="ow">or</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">&quot;Superset password: &quot;</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">SupersetClient</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">base_url</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">username</span><span class="p">,</span> <span class="n">pw</span><span class="p">)</span>
+
+    <span class="n">db_uuid</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get_database_uuid</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Connection </span><span class="si">%r</span><span class="s2"> -&gt; uuid </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span> <span class="n">db_uuid</span><span class="p">))</span>
+
+    <span class="n">files</span> <span class="o">=</span> <span class="n">bundle_mod</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">args</span><span class="o">.</span><span class="n">bundle</span><span class="p">)</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">bundle_mod</span><span class="o">.</span><span class="n">repoint</span><span class="p">(</span>
+        <span class="n">files</span><span class="p">,</span> <span class="n">target_db_uuid</span><span class="o">=</span><span class="n">db_uuid</span><span class="p">,</span> <span class="n">target_db_name</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">dashboard_name</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">connection_name</span><span class="p">,</span>
+        <span class="n">regenerate</span><span class="o">=</span><span class="n">args</span><span class="o">.</span><span class="n">copy</span><span class="p">)</span>
+    <span class="n">zip_bytes</span> <span class="o">=</span> <span class="n">bundle_mod</span><span class="o">.</span><span class="n">to_zip_bytes</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+    <span class="n">code</span><span class="p">,</span> <span class="n">text</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">import_dashboard_zip</span><span class="p">(</span>
+        <span class="n">zip_bytes</span><span class="p">,</span> <span class="n">overwrite</span><span class="o">=</span><span class="ow">not</span> <span class="n">args</span><span class="o">.</span><span class="n">no_overwrite</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;HTTP&quot;</span><span class="p">,</span> <span class="n">code</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">SUCCESS: dashboard imported onto connection </span><span class="si">%r</span><span class="s2">. Open the &quot;</span>
+              <span class="s2">&quot;Dashboards list in Superset to view it.&quot;</span> <span class="o">%</span> <span class="n">args</span><span class="o">.</span><span class="n">connection_name</span><span class="p">)</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Import REJECTED -- the JSON above names the offending file/field.&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="mi">1</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">main</span><span class="p">())</span>
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

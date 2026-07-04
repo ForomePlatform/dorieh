@@ -320,28 +320,33 @@ docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">ex
 </section>
 <section id="import-the-medicare-qc-dashboard">
 <h3><a class="toc-backref" href="#id9" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
-<p>Back in your terminal, run the helper script:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
-./import_superset_dashboard.sh
+<p>The dashboard is committed as a native Superset bundle under
+<code class="docutils literal notranslate"><span class="pre">examples/with-postgres/medicare/superset/medicare_quality_dashboard/</span></code>. Import
+it with the <code class="docutils literal notranslate"><span class="pre">import_dashboard</span></code> command (installed with Dorieh), which resolves
+your <code class="docutils literal notranslate"><span class="pre">DORIEH</span></code> connection by name, re-points the bundle onto it on the fly, and
+imports it through Superset’s REST API (the native importer the UI uses):</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import_dashboard<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="nv">$WORKDIR</span>/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--base-url<span class="w"> </span>http://localhost:8088/<span class="w"> </span>--username<span class="w"> </span>admin
 </pre></div>
 </div>
-<p>The script copies the dashboard definition into the Superset container and
-imports it.  Internally it runs:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span>cp<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>../../examples/with-postgres/medicare/superset/MedicareQCDashboard.json<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>superset:/tmp/MedicareQCDashboard.json
-docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>superset<span class="w"> </span>superset<span class="w"> </span>import_dashboards<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--path<span class="w"> </span>/tmp/MedicareQCDashboard.json<span class="w"> </span>--username<span class="w"> </span>admin
-docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-superset.yml<span class="w"> </span>restart<span class="w"> </span>superset<span class="w"> </span>superset-worker
-</pre></div>
-</div>
+<p>Enter the admin password when prompted (<code class="docutils literal notranslate"><span class="pre">admin</span></code> by default). <code class="docutils literal notranslate"><span class="pre">import_dashboard</span></code>
+is standard-library-only. Because each Superset instance assigns its own
+connection UUID, it looks the UUID up by name at import time rather than relying
+on a value baked into the bundle, so the same committed bundle imports on any
+machine. Re-running updates the dashboard in place (uuids are preserved, so the
+import is idempotent and never multiplies charts or datasets); add <code class="docutils literal notranslate"><span class="pre">--copy</span></code>
+(with <code class="docutils literal notranslate"><span class="pre">--connection-name</span></code> / <code class="docutils literal notranslate"><span class="pre">--dashboard-name</span></code>) to stand up an independent
+coexisting copy on another connection. The companion
+<code class="docutils literal notranslate"><span class="pre">export_dashboard</span> <span class="pre">&lt;dashboard-id&gt;</span></code> command exports a dashboard back to a native
+bundle.</p>
 </section>
 <section id="explore-the-dashboard">
 <h3><a class="toc-backref" href="#id10" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
 <p>In the Superset UI:</p>
 <ol class="arabic simple">
 <li><p>Click the <strong>Dashboards</strong> tab.</p></li>
-<li><p>Open <strong>“Medicare QC (Clean)”</strong>.</p></li>
+<li><p>Open <strong>“Medicare Demo Quality Dashboard”</strong>.</p></li>
 <li><p>Use the available charts and filters to examine data quality across
 enrollments and admissions for the synthetic dataset.</p></li>
 </ol>

@@ -1,0 +1,172 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The bundle Module &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">The bundle Module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/members/bundle.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-dorieh.platform.superset.bundle">
+<span id="the-bundle-module"></span><h1>The bundle Module<a class="headerlink" href="#module-dorieh.platform.superset.bundle" title="Link to this heading"></a></h1>
+<p>Re-point a native Superset dashboard bundle onto a target connection,
+entirely in memory.</p>
+<p>Native bundles bind everything by uuid: charts -&gt; datasets via <code class="docutils literal notranslate"><span class="pre">dataset_uuid</span></code>,
+datasets -&gt; connection via <code class="docutils literal notranslate"><span class="pre">database_uuid</span></code>, and the dashboard’s <code class="docutils literal notranslate"><span class="pre">position</span></code>
+links charts by <code class="docutils literal notranslate"><span class="pre">meta.uuid</span></code>. NOTHING is bound by name. Re-pointing is therefore:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>every <code class="docutils literal notranslate"><span class="pre">database_uuid</span></code> -&gt; the TARGET connection’s uuid (passed in by the
+caller, who looks it up by name on the live instance),</p></li>
+<li><p>every OTHER uuid -&gt; by default PRESERVED, so a re-import (or an
+export-&gt;import round-trip) UPDATES the same objects and never duplicates
+them; with <code class="docutils literal notranslate"><span class="pre">regenerate=True</span></code> they are rewritten to a deterministic uuid5
+salted by <code class="docutils literal notranslate"><span class="pre">salt</span></code> (the connection name), producing an INDEPENDENT copy
+that coexists with the preserved-uuid original – use that only for a fork
+on a second connection, never for the canonical bundle you export/refresh,</p></li>
+<li><p>reconcile each dashboard position <code class="docutils literal notranslate"><span class="pre">meta.uuid</span></code> to the regenerated chart uuid,</p></li>
+<li><p>retitle (optional), relocate the datasets/&lt;db&gt;/ folder, tidy vestigial legacy
+<code class="docutils literal notranslate"><span class="pre">params</span></code>, and re-emit a databases/&lt;name&gt;.yaml repointed to the target
+(matched by uuid on import, so the existing connection is reused, never
+overwritten – the masked credentials in it are not used).</p></li>
+</ul>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">load()</span></code> accepts an unpacked bundle dir (containing metadata.yaml, possibly
+nested one level) or a .zip. <code class="docutils literal notranslate"><span class="pre">to_zip_bytes()</span></code> produces an importable bundle.
+The on-disk source bundle is never modified.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="dorieh.platform.superset.bundle.load">
+<span class="sig-name descname"><span class="pre">load</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">src</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/bundle.html#load"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.bundle.load" title="Link to this definition"></a></dt>
+<dd><p>Return {posix_relpath: text} for the files under a bundle dir or .zip.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dorieh.platform.superset.bundle.repoint">
+<span class="sig-name descname"><span class="pre">repoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_db_uuid</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">target_db_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">salt</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">regenerate</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/bundle.html#repoint"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.bundle.repoint" title="Link to this definition"></a></dt>
+<dd><p>Transform an in-memory bundle (from load()) onto the target connection.</p>
+<p>By default object uuids are PRESERVED (idempotent: re-import updates the
+same objects). Pass regenerate=True to rewrite every non-database uuid to a
+deterministic uuid5 salted by <code class="docutils literal notranslate"><span class="pre">salt</span></code> (default: target_db_name), yielding
+an independent coexisting copy. Returns a new {posix_relpath: text} dict.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="dorieh.platform.superset.bundle.to_zip_bytes">
+<span class="sig-name descname"><span class="pre">to_zip_bytes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">files</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">top</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'bundle'</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="../_modules/dorieh/platform/superset/bundle.html#to_zip_bytes"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#dorieh.platform.superset.bundle.to_zip_bytes" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

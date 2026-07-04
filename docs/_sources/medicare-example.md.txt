@@ -196,31 +196,35 @@ In the Superset UI:
 
 ### 3.5 — Import the Medicare QC dashboard
 
-Back in your terminal, run the helper script:
+The dashboard is committed as a native Superset bundle under
+`examples/with-postgres/medicare/superset/medicare_quality_dashboard/`. Import
+it with the `import_dashboard` command (installed with Dorieh), which resolves
+your `DORIEH` connection by name, re-points the bundle onto it on the fly, and
+imports it through Superset's REST API (the native importer the UI uses):
 
 ```bash
-cd $WORKDIR/dorieh/docker/pg-hll/
-./import_superset_dashboard.sh
+import_dashboard \
+  $WORKDIR/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard \
+  --base-url http://localhost:8088/ --username admin
 ```
 
-The script copies the dashboard definition into the Superset container and
-imports it.  Internally it runs:
-
-```bash
-docker compose cp \
-  ../../examples/with-postgres/medicare/superset/MedicareQCDashboard.json \
-  superset:/tmp/MedicareQCDashboard.json
-docker compose exec superset superset import_dashboards \
-  --path /tmp/MedicareQCDashboard.json --username admin
-docker compose -f docker-compose-superset.yml restart superset superset-worker
-```
+Enter the admin password when prompted (`admin` by default). `import_dashboard`
+is standard-library-only. Because each Superset instance assigns its own
+connection UUID, it looks the UUID up by name at import time rather than relying
+on a value baked into the bundle, so the same committed bundle imports on any
+machine. Re-running updates the dashboard in place (uuids are preserved, so the
+import is idempotent and never multiplies charts or datasets); add `--copy`
+(with `--connection-name` / `--dashboard-name`) to stand up an independent
+coexisting copy on another connection. The companion
+`export_dashboard <dashboard-id>` command exports a dashboard back to a native
+bundle.
 
 ### 3.6 — Explore the dashboard
 
 In the Superset UI:
 
 1. Click the **Dashboards** tab.
-2. Open **"Medicare QC (Clean)"**.
+2. Open **"Medicare Demo Quality Dashboard"**.
 3. Use the available charts and filters to examine data quality across
    enrollments and admissions for the synthetic dataset.
 

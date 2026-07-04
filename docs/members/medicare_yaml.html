@@ -647,7 +647,25 @@
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;string_agg(distinct</span><span class="nv"> </span><span class="s">sex,</span><span class="nv"> </span><span class="s">&#39;,&#39;)&quot;</span>
 <span class="w">            </span><span class="nt">identifier</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">orec</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(orec)</span>
+<span class="w">            </span><span class="nt">reference</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;https://resdac.org/cms-data/variables/original-reason-entitlement-code&quot;</span>
+<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">Original Reason for Entitlement Code (OREC). Set at the time of</span>
+<span class="w">              </span><span class="no">enrollment and invariant for the life of the beneficiary, hence a</span>
+<span class="w">              </span><span class="no">beneficiary-level attribute. The canonical value is taken from the</span>
+<span class="w">              </span><span class="no">earliest enrollment year (ties broken by smallest code, for</span>
+<span class="w">              </span><span class="no">reproducibility). If the raw data is inconsistent across years the</span>
+<span class="w">              </span><span class="no">divergence is surfaced via orec_latest / consistent_orec rather</span>
+<span class="w">              </span><span class="no">than silently affecting joins.</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(array_agg(orec</span><span class="nv"> </span><span class="s">ORDER</span><span class="nv"> </span><span class="s">BY</span><span class="nv"> </span><span class="s">year,</span><span class="nv"> </span><span class="s">orec))[1]&quot;</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">orec_latest</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">Non-null only when OREC was not consistent across the</span>
+<span class="w">              </span><span class="no">beneficiary&#39;s records (i.e. it changed over the years). Drives</span>
+<span class="w">              </span><span class="no">consistent_orec, analogously to dob_latest -&gt; consistent_dob.</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">CASE</span>
+<span class="w">                </span><span class="no">WHEN MIN(orec) &lt;&gt; MAX(orec) THEN MAX(orec)</span>
+<span class="w">              </span><span class="no">END</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">discrepancies</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">&gt;</span>
 <span class="w">              </span><span class="no">(</span>
@@ -696,10 +714,26 @@
 <span class="w">              </span><span class="no">CASE</span>
 <span class="w">                </span><span class="no">WHEN MIN(age) &lt;&gt; MAX(age) THEN MIN(age)</span>
 <span class="w">              </span><span class="no">END</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">orec</span><span class="p">:</span>
-<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(orec)</span>
+<span class="w">        </span><span class="c1"># OREC (Original Reason for Entitlement) is invariant per beneficiary</span>
+<span class="w">        </span><span class="c1"># and is therefore a beneficiary-level attribute (see the `beneficiaries`</span>
+<span class="w">        </span><span class="c1"># table). It is intentionally NOT kept here: as a per-year MAX it would</span>
+<span class="w">        </span><span class="c1"># become an implicit NATURAL JOIN key in qc_enrl_bene and silently drop</span>
+<span class="w">        </span><span class="c1"># every enrollment-year where it differs from the beneficiary value.</span>
+<span class="w">        </span><span class="c1"># `curec` (Current Reason) legitimately varies by year and stays.</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">curec</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MAX(curec)</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">curec_latest</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">Non-null only when duplicate source records disagree on CUREC</span>
+<span class="w">              </span><span class="no">within a (bene_id, year, state) group. Drives consistent_curec.</span>
+<span class="w">              </span><span class="no">Defensive / future-proofing: this multiplicity does not occur in</span>
+<span class="w">              </span><span class="no">the synthetic dataset (every group is a single row) but can arise</span>
+<span class="w">              </span><span class="no">in real Medicare data from overlapping or reissued MBSF files,</span>
+<span class="w">              </span><span class="no">where MAX(curec) would otherwise silently pick one value.</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">CASE</span>
+<span class="w">                </span><span class="no">WHEN MIN(curec) &lt;&gt; MAX(curec) THEN MAX(curec)</span>
+<span class="w">              </span><span class="no">END</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">state_iso</span><span class="p">:</span>
 <span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;char(5)&quot;</span>
 <span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;(&#39;US-&#39;</span><span class="nv"> </span><span class="s">||</span><span class="nv"> </span><span class="s">state)</span><span class="nv"> </span><span class="s">&quot;</span>
@@ -829,6 +863,21 @@
 <span class="w">                </span><span class="nt">source</span><span class="p">:</span>
 <span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generated</span>
 <span class="w">                  </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GENERATED</span><span class="nv"> </span><span class="s">ALWAYS</span><span class="nv"> </span><span class="s">AS</span><span class="nv"> </span><span class="s">(CASE</span><span class="nv"> </span><span class="s">WHEN</span><span class="nv"> </span><span class="s">dual_cvg_count</span><span class="nv"> </span><span class="s">IS</span><span class="nv"> </span><span class="s">NULL</span><span class="nv"> </span><span class="s">THEN</span><span class="nv"> </span><span class="s">NULL</span><span class="nv"> </span><span class="s">WHEN</span><span class="nv"> </span><span class="s">dual_cvg_count</span><span class="nv"> </span><span class="s">&gt;</span><span class="nv"> </span><span class="s">0</span><span class="nv"> </span><span class="s">THEN</span><span class="nv"> </span><span class="s">TRUE</span><span class="nv"> </span><span class="s">ELSE</span><span class="nv"> </span><span class="s">FALSE</span><span class="nv"> </span><span class="s">END)</span><span class="nv"> </span><span class="s">STORED&quot;</span>
+<span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">consistent_curec</span><span class="p">:</span>
+<span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(12)</span>
+<span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">                  </span><span class="no">QC flag for CUREC (Current Reason for Entitlement) consistency</span>
+<span class="w">                  </span><span class="no">within this single enrollment record (bene_id, year, state).</span>
+<span class="w">                  </span><span class="no">CUREC legitimately varies across years, so this is a per-year</span>
+<span class="w">                  </span><span class="no">property of the enrollment and lives on this table, not on the</span>
+<span class="w">                  </span><span class="no">beneficiary-grain qc_enrl_bene. AMBIGUOUS means duplicate source</span>
+<span class="w">                  </span><span class="no">records disagreed on CUREC within the year and MAX(curec) picked</span>
+<span class="w">                  </span><span class="no">one. Defensive: expected CONSISTENT on the synthetic dataset</span>
+<span class="w">                  </span><span class="no">(every group is a single row); meaningful on real data with</span>
+<span class="w">                  </span><span class="no">overlapping or reissued MBSF files.</span>
+<span class="w">                </span><span class="nt">source</span><span class="p">:</span>
+<span class="w">                  </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">generated</span>
+<span class="w">                  </span><span class="nt">code</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;GENERATED</span><span class="nv"> </span><span class="s">ALWAYS</span><span class="nv"> </span><span class="s">AS</span><span class="nv"> </span><span class="s">(CASE</span><span class="nv"> </span><span class="s">WHEN</span><span class="nv"> </span><span class="s">curec</span><span class="nv"> </span><span class="s">IS</span><span class="nv"> </span><span class="s">NULL</span><span class="nv"> </span><span class="s">THEN</span><span class="nv"> </span><span class="s">&#39;MISSING&#39;</span><span class="nv"> </span><span class="s">WHEN</span><span class="nv"> </span><span class="s">curec_latest</span><span class="nv"> </span><span class="s">IS</span><span class="nv"> </span><span class="s">NOT</span><span class="nv"> </span><span class="s">NULL</span><span class="nv"> </span><span class="s">THEN</span><span class="nv"> </span><span class="s">&#39;AMBIGUOUS&#39;</span><span class="nv"> </span><span class="s">ELSE</span><span class="nv"> </span><span class="s">&#39;CONSISTENT&#39;</span><span class="nv"> </span><span class="s">END)</span><span class="nv"> </span><span class="s">STORED&quot;</span>
 <span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">bene</span><span class="p">:</span>
 <span class="w">                </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HLL_HASHVAL</span>
 <span class="w">                </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
@@ -1047,6 +1096,20 @@
 <span class="w">                </span><span class="no">WHEN race LIKE &#39;%,%&#39; THEN &#39;AMBIGUOUS&#39;</span>
 <span class="w">                </span><span class="no">ELSE &#39;CONSISTENT&#39;</span>
 <span class="w">              </span><span class="no">END)</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">consistent_orec</span><span class="p">:</span>
+<span class="w">            </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">VARCHAR(12)</span>
+<span class="w">            </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">QC flag for OREC (Original Reason for Entitlement) consistency</span>
+<span class="w">              </span><span class="no">across the beneficiary&#39;s records. AMBIGUOUS means OREC changed</span>
+<span class="w">              </span><span class="no">over the years, which should not happen for a genuine &quot;original&quot;</span>
+<span class="w">              </span><span class="no">code and indicates a data-quality issue. Mirrors consistent_dob /</span>
+<span class="w">              </span><span class="no">consistent_dod.</span>
+<span class="w">            </span><span class="nt">source</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">              </span><span class="no">(CASE</span>
+<span class="w">                </span><span class="no">WHEN orec IS NULL THEN &#39;MISSING&#39;</span>
+<span class="w">                </span><span class="no">WHEN orec_latest IS NOT NULL THEN &#39;AMBIGUOUS&#39;</span>
+<span class="w">                </span><span class="no">ELSE &#39;CONSISTENT&#39;</span>
+<span class="w">              </span><span class="no">END)</span>
 <span class="w">    </span><span class="nt">qc_enrollments</span><span class="p">:</span>
 <span class="w">      </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
 <span class="w">        </span><span class="no">Aggregate data for beneficiaries and enrollments</span>
@@ -1067,6 +1130,8 @@
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_dod</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_sex</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_race</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_orec</span>
+<span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_curec</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fips3_is_approximated</span>
 <span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fips3_valdiated</span>
 <span class="w">      </span><span class="nt">columns</span><span class="p">:</span>
@@ -1083,6 +1148,8 @@
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_dod</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_sex</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_race</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_orec</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">consistent_curec</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fips3_is_approximated</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fips3_valdiated</span>
 <span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">state_iso</span><span class="p">:</span>

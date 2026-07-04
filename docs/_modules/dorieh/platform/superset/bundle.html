@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../../../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>dorieh.platform.superset.bundle &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css?v=a01a0e0e" />
+
+  
+      <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script>let toggleHintShow = 'Click to show';</script>
+      <script>let toggleHintHide = 'Click to hide';</script>
+      <script>let toggleOpenOnPrint = 'true';</script>
+      <script src="../../../../_static/togglebutton.js?v=1ae7504c"></script>
+      <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+      <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+      <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+      <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+      <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
+    <script src="../../../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../../../index.html" class="icon icon-home">
+            Dorieh Data Platform
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../home.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../rationale.html">What is Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../packages.html">Python Packages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Tutorials.html">Dorieh Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../DBT.html">Database Testing Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../docindices.html">Indices</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Dorieh Data Platform</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../../../index.html">Module code</a></li>
+          <li class="breadcrumb-item"><a href="../../platform.html">dorieh.platform</a></li>
+      <li class="breadcrumb-item active">dorieh.platform.superset.bundle</li>
+      <li class="wy-breadcrumbs-aside">
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <h1>Source code for dorieh.platform.superset.bundle</h1><div class="highlight"><pre>
+<span></span><span class="c1">#  Copyright (c) 2026. Harvard University</span>
+<span class="c1">#</span>
+<span class="c1">#  Developed by Research Software Engineering,</span>
+<span class="c1">#  Faculty of Arts and Sciences, Research Computing (FAS RC)</span>
+<span class="c1">#  Author: Michael A Bouzinier</span>
+<span class="c1">#</span>
+<span class="c1">#  Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);</span>
+<span class="c1">#  you may not use this file except in compliance with the License.</span>
+<span class="c1">#  You may obtain a copy of the License at</span>
+<span class="c1">#</span>
+<span class="c1">#         http://www.apache.org/licenses/LICENSE-2.0</span>
+<span class="c1">#</span>
+<span class="c1">#  Unless required by applicable law or agreed to in writing, software</span>
+<span class="c1">#  distributed under the License is distributed on an &quot;AS IS&quot; BASIS,</span>
+<span class="c1">#  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.</span>
+<span class="c1">#  See the License for the specific language governing permissions and</span>
+<span class="c1">#  limitations under the License.</span>
+
+<span class="sd">&quot;&quot;&quot;Re-point a native Superset dashboard bundle onto a target connection,</span>
+<span class="sd">entirely in memory.</span>
+
+<span class="sd">Native bundles bind everything by uuid: charts -&gt; datasets via ``dataset_uuid``,</span>
+<span class="sd">datasets -&gt; connection via ``database_uuid``, and the dashboard&#39;s ``position``</span>
+<span class="sd">links charts by ``meta.uuid``. NOTHING is bound by name. Re-pointing is therefore:</span>
+
+<span class="sd">  - every ``database_uuid`` -&gt; the TARGET connection&#39;s uuid (passed in by the</span>
+<span class="sd">    caller, who looks it up by name on the live instance),</span>
+<span class="sd">  - every OTHER uuid -&gt; by default PRESERVED, so a re-import (or an</span>
+<span class="sd">    export-&gt;import round-trip) UPDATES the same objects and never duplicates</span>
+<span class="sd">    them; with ``regenerate=True`` they are rewritten to a deterministic uuid5</span>
+<span class="sd">    salted by ``salt`` (the connection name), producing an INDEPENDENT copy</span>
+<span class="sd">    that coexists with the preserved-uuid original -- use that only for a fork</span>
+<span class="sd">    on a second connection, never for the canonical bundle you export/refresh,</span>
+<span class="sd">  - reconcile each dashboard position ``meta.uuid`` to the regenerated chart uuid,</span>
+<span class="sd">  - retitle (optional), relocate the datasets/&lt;db&gt;/ folder, tidy vestigial legacy</span>
+<span class="sd">    ``params``, and re-emit a databases/&lt;name&gt;.yaml repointed to the target</span>
+<span class="sd">    (matched by uuid on import, so the existing connection is reused, never</span>
+<span class="sd">    overwritten -- the masked credentials in it are not used).</span>
+
+<span class="sd">``load()`` accepts an unpacked bundle dir (containing metadata.yaml, possibly</span>
+<span class="sd">nested one level) or a .zip. ``to_zip_bytes()`` produces an importable bundle.</span>
+<span class="sd">The on-disk source bundle is never modified.</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">io</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">uuid</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">zipfile</span>
+
+<span class="n">UUID_RE</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;[0-9a-f]</span><span class="si">{8}</span><span class="s2">-[0-9a-f]</span><span class="si">{4}</span><span class="s2">-[0-9a-f]</span><span class="si">{4}</span><span class="s2">-&quot;</span>
+                     <span class="sa">r</span><span class="s2">&quot;[0-9a-f]</span><span class="si">{4}</span><span class="s2">-[0-9a-f]</span><span class="si">{12}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">NS</span> <span class="o">=</span> <span class="n">uuid</span><span class="o">.</span><span class="n">UUID</span><span class="p">(</span><span class="s2">&quot;6f1a0c4e-0d2b-5e7a-9c3d-000000000000&quot;</span><span class="p">)</span>  <span class="c1"># fixed private namespace</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_new_uuid</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="n">uuid</span><span class="o">.</span><span class="n">uuid5</span><span class="p">(</span><span class="n">NS</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">tag</span><span class="p">,</span> <span class="n">old</span><span class="p">)))</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_find_root_dir</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="s2">&quot;metadata.yaml&quot;</span><span class="p">)):</span>
+        <span class="k">return</span> <span class="n">src</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="n">src</span><span class="p">)):</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="ow">and</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="s2">&quot;metadata.yaml&quot;</span><span class="p">)):</span>
+            <span class="k">return</span> <span class="n">p</span>
+    <span class="k">return</span> <span class="n">src</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_zip_root</span><span class="p">(</span><span class="n">names</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;metadata.yaml&quot;</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">n</span><span class="p">[:</span><span class="o">-</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;metadata.yaml&quot;</span><span class="p">)]</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span>
+
+
+<div class="viewcode-block" id="load">
+<a class="viewcode-back" href="../../../../members/bundle.html#dorieh.platform.superset.bundle.load">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">load</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return {posix_relpath: text} for the files under a bundle dir or .zip.&quot;&quot;&quot;</span>
+    <span class="n">files</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isdir</span><span class="p">(</span><span class="n">src</span><span class="p">):</span>
+        <span class="n">root</span> <span class="o">=</span> <span class="n">_find_root_dir</span><span class="p">(</span><span class="n">src</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">dp</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">fs</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">root</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">fs</span><span class="p">:</span>
+                <span class="n">p</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dp</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+                <span class="n">rel</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">relpath</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">root</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">sep</span><span class="p">,</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span>
+                <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fh</span><span class="p">:</span>
+                    <span class="n">files</span><span class="p">[</span><span class="n">rel</span><span class="p">]</span> <span class="o">=</span> <span class="n">fh</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">src</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
+            <span class="n">names</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">namelist</span><span class="p">()</span>
+            <span class="n">top</span> <span class="o">=</span> <span class="n">_zip_root</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>
+            <span class="n">prefix</span> <span class="o">=</span> <span class="p">(</span><span class="n">top</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="k">if</span> <span class="n">top</span> <span class="k">else</span> <span class="s2">&quot;&quot;</span>
+            <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">n</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">n</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">prefix</span><span class="p">):</span>
+                    <span class="k">continue</span>
+                <span class="n">files</span><span class="p">[</span><span class="n">n</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">prefix</span><span class="p">):]]</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">files</span></div>
+
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">_tidy_params</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">new_db_name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Drop vestigial legacy params (remote_id/import_time) and fix the</span>
+<span class="sd">    cosmetic database_name in chart ``params:`` blocks. Binding is uuid-based,</span>
+<span class="sd">    so this is purely so the imported files read coherently.&quot;&quot;&quot;</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">ln</span> <span class="ow">in</span> <span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">(</span><span class="n">keepends</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">ln</span><span class="o">.</span><span class="n">rstrip</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;  remote_id: .*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span> <span class="ow">or</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;  import_time: .*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">fullmatch</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(  database_name: ).*&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">new_db_name</span> <span class="o">+</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="k">continue</span>
+        <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ln</span><span class="p">)</span>
+    <span class="k">return</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">out</span><span class="p">)</span>
+
+
+<div class="viewcode-block" id="repoint">
+<a class="viewcode-back" href="../../../../members/bundle.html#dorieh.platform.superset.bundle.repoint">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">repoint</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">target_db_uuid</span><span class="p">,</span> <span class="n">target_db_name</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">salt</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+            <span class="n">regenerate</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Transform an in-memory bundle (from load()) onto the target connection.</span>
+
+<span class="sd">    By default object uuids are PRESERVED (idempotent: re-import updates the</span>
+<span class="sd">    same objects). Pass regenerate=True to rewrite every non-database uuid to a</span>
+<span class="sd">    deterministic uuid5 salted by ``salt`` (default: target_db_name), yielding</span>
+<span class="sd">    an independent coexisting copy. Returns a new {posix_relpath: text} dict.&quot;&quot;&quot;</span>
+    <span class="n">salt</span> <span class="o">=</span> <span class="n">salt</span> <span class="ow">or</span> <span class="n">target_db_name</span>
+
+    <span class="n">src_db_uuids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">rel</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;databases/&quot;</span><span class="p">):</span>
+            <span class="n">src_db_uuids</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">UUID_RE</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+    <span class="n">obj_prefixes</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;charts/&quot;</span><span class="p">,</span> <span class="s2">&quot;datasets/&quot;</span><span class="p">,</span> <span class="s2">&quot;dashboards/&quot;</span><span class="p">)</span>
+    <span class="n">all_uuids</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">rel</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">obj_prefixes</span><span class="p">):</span>
+            <span class="n">all_uuids</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">UUID_RE</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+
+    <span class="c1"># database uuid always repointed; other uuids preserved unless regenerating</span>
+    <span class="n">subs</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">all_uuids</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">src_db_uuids</span><span class="p">:</span>
+            <span class="n">subs</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_db_uuid</span>
+        <span class="k">elif</span> <span class="n">regenerate</span><span class="p">:</span>
+            <span class="n">subs</span><span class="p">[</span><span class="n">u</span><span class="p">]</span> <span class="o">=</span> <span class="n">_new_uuid</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">salt</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">apply_subs</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">old</span><span class="p">,</span> <span class="n">new</span> <span class="ow">in</span> <span class="n">subs</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">old</span><span class="p">,</span> <span class="n">new</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">text</span>
+
+    <span class="c1"># chartId -&gt; regenerated chart uuid, to fix the dashboard position layout</span>
+    <span class="n">chartid_to_newuuid</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">rel</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;charts/&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">fname</span> <span class="o">=</span> <span class="n">rel</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">cid</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">fname</span><span class="o">.</span><span class="n">rsplit</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;.&quot;</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">except</span> <span class="p">(</span><span class="ne">IndexError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">m</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^uuid:\s*(\S+)&quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">m</span><span class="p">:</span>
+            <span class="n">chartid_to_newuuid</span><span class="p">[</span><span class="n">cid</span><span class="p">]</span> <span class="o">=</span> <span class="n">subs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="n">m</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">fix_positions</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+        <span class="k">def</span><span class="w"> </span><span class="nf">repl</span><span class="p">(</span><span class="n">mo</span><span class="p">):</span>
+            <span class="n">block</span> <span class="o">=</span> <span class="n">mo</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+            <span class="n">cid</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;chartId:\s*(\d+)&quot;</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">cid</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">block</span>
+            <span class="n">nid</span> <span class="o">=</span> <span class="n">chartid_to_newuuid</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">cid</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="mi">1</span><span class="p">)))</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">nid</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">block</span>
+            <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;(uuid:\s*)\S+&quot;</span><span class="p">,</span> <span class="sa">r</span><span class="s2">&quot;\g&lt;1&gt;&quot;</span> <span class="o">+</span> <span class="n">nid</span><span class="p">,</span> <span class="n">block</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;    meta:\n(?:      .*\n)+&quot;</span><span class="p">,</span> <span class="n">repl</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
+
+    <span class="n">out</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">rel</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">rel</span> <span class="o">==</span> <span class="s2">&quot;metadata.yaml&quot;</span><span class="p">:</span>
+            <span class="n">out</span><span class="p">[</span><span class="n">rel</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;databases/&quot;</span><span class="p">):</span>
+            <span class="k">continue</span>  <span class="c1"># re-emitted below</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">_tidy_params</span><span class="p">(</span><span class="n">apply_subs</span><span class="p">(</span><span class="n">text</span><span class="p">),</span> <span class="n">target_db_name</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;dashboards/&quot;</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">title</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^dashboard_title: .*$&quot;</span><span class="p">,</span>
+                              <span class="s2">&quot;dashboard_title: &quot;</span> <span class="o">+</span> <span class="n">title</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span>
+                              <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+            <span class="n">text</span> <span class="o">=</span> <span class="n">fix_positions</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;datasets/&quot;</span><span class="p">):</span>
+            <span class="n">parts</span> <span class="o">=</span> <span class="n">rel</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">3</span><span class="p">:</span>                  <span class="c1"># datasets/&lt;db&gt;/file.yaml</span>
+                <span class="n">parts</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">target_db_name</span>
+                <span class="n">rel</span> <span class="o">=</span> <span class="s2">&quot;/&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parts</span><span class="p">)</span>
+        <span class="n">out</span><span class="p">[</span><span class="n">rel</span><span class="p">]</span> <span class="o">=</span> <span class="n">text</span>
+
+    <span class="k">for</span> <span class="n">rel</span><span class="p">,</span> <span class="n">text</span> <span class="ow">in</span> <span class="n">files</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>              <span class="c1"># re-emit one databases/ file</span>
+        <span class="k">if</span> <span class="n">rel</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s2">&quot;databases/&quot;</span><span class="p">):</span>
+            <span class="n">dbtext</span> <span class="o">=</span> <span class="n">text</span>
+            <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">src_db_uuids</span><span class="p">:</span>
+                <span class="n">dbtext</span> <span class="o">=</span> <span class="n">dbtext</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">target_db_uuid</span><span class="p">)</span>
+            <span class="n">dbtext</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="sa">r</span><span class="s2">&quot;^database_name: .*$&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;database_name: &quot;</span> <span class="o">+</span> <span class="n">target_db_name</span><span class="p">,</span> <span class="n">dbtext</span><span class="p">,</span>
+                            <span class="n">count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">flags</span><span class="o">=</span><span class="n">re</span><span class="o">.</span><span class="n">M</span><span class="p">)</span>
+            <span class="n">out</span><span class="p">[</span><span class="s2">&quot;databases/</span><span class="si">%s</span><span class="s2">.yaml&quot;</span> <span class="o">%</span> <span class="n">target_db_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">dbtext</span>
+            <span class="k">break</span>
+    <span class="k">return</span> <span class="n">out</span></div>
+
+
+
+<div class="viewcode-block" id="to_zip_bytes">
+<a class="viewcode-back" href="../../../../members/bundle.html#dorieh.platform.superset.bundle.to_zip_bytes">[docs]</a>
+<span class="k">def</span><span class="w"> </span><span class="nf">to_zip_bytes</span><span class="p">(</span><span class="n">files</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="s2">&quot;bundle&quot;</span><span class="p">):</span>
+    <span class="n">buf</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">BytesIO</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">buf</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZIP_DEFLATED</span><span class="p">)</span> <span class="k">as</span> <span class="n">z</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">rel</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">files</span><span class="p">):</span>
+            <span class="n">z</span><span class="o">.</span><span class="n">writestr</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">top</span><span class="p">,</span> <span class="n">rel</span><span class="p">),</span> <span class="n">files</span><span class="p">[</span><span class="n">rel</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">buf</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span></div>
+
+</pre></div>
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
