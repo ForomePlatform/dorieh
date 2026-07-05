@@ -7,8 +7,14 @@ platform exists and the ideas behind it, walks through the data
 domains and pipelines it supports, teaches the platform with two
 worked examples (a climate pipeline tutorial and a Medicare case
 study), and closes with the data modeling DSL reference, platform
-internals, and operational guides. The documentation is
-self-contained; the companion book is optional enrichment.
+internals, and operational guides.
+
+The concepts behind the platform are developed in depth in the book
+[*Research Data that Can Be Trusted*](https://tidd.ly/4y1ClDH)
+(Bouzinier et al., Springer, 2026), written by the Dorieh authors; see
+[About the companion book](about-the-book.md) for how its chapters map
+to these pages. The documentation is self-contained — the book is
+optional enrichment.
 
 **Key pages**
 

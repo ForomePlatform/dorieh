@@ -232,7 +232,9 @@ Instead, a disambiguation rule has three parts:
    most beneficiaries in any given year are alive — the flag uses
    `NONE` instead of `MISSING`. The Medicare QC view `qc_enrl_bene`
    defines `consistent_dob`, `consistent_dod`, `consistent_sex`,
-   `consistent_race` and `consistent_orec` this way.
+   `consistent_race` and `consistent_orec` this way (the sex and race
+   flags, which classify aggregated string lists, take only
+   `AMBIGUOUS` or `CONSISTENT`).
 
 Because the primary value is deterministic, the resulting tables are
 reproducible; because the secondary column and the flag are preserved, a

@@ -76,6 +76,14 @@ html_css_files = [
 #html_theme = 'alabaster'
 html_theme = "sphinx_rtd_theme"
 
+# Render nested toctree entries in the sidebar on every page (by default the
+# RTD theme collapses branches until the reader navigates into them, which
+# hides e.g. the list of data domains from the main pages).
+html_theme_options = {
+    "collapse_navigation": False,
+    "navigation_depth": 3,
+}
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.txt': 'restructuredtext'

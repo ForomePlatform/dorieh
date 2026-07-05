@@ -1,6 +1,8 @@
 # Dorieh Data Platform for population and environmental health
                                                           
-Read the [book about Dorieh](https://tidd.ly/4xE5Zyy), published by Springer.
+Read the [book about Dorieh](https://tidd.ly/4y1ClDH), published by Springer.
+
+<a href="https://tidd.ly/4y1ClDH"><img src="doc/img/awin_qrcode.png" alt="QR code linking to the book about Dorieh" width="120"></a>
 
 Detailed documentation: [Dorieh Documentation](https://foromeplatform.github.io/dorieh/)
 

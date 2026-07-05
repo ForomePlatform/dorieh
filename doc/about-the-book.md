@@ -17,7 +17,17 @@ prerequisite for anything in this documentation.
 * Authors: Bouzinier et al.
 * Series: SpringerBriefs in Computer Science
 * Publisher: Springer, 2026
-* Link: <https://tidd.ly/4xE5Zyy>
+* Link: <https://tidd.ly/4y1ClDH>
+
+```{image} img/awin_qrcode.png
+---
+alt: QR code linking to the book Research Data that Can Be Trusted
+target: https://tidd.ly/4y1ClDH
+width: 160px
+---
+```
+
+Scan the QR code (or follow the link above) to get the book.
 
 ## Chapter-to-documentation map
 
@@ -29,7 +39,7 @@ documentation:
 | Ch. 5, "Language Design"                                    | [Concepts: the Dorieh approach](concepts.md)                                           |
 | Ch. 6, "Proof of Concept Implementation"                    | [Concepts: the Dorieh approach](concepts.md)                                           |
 | Ch. 7, "Sample Application: Building ML-Ready Datasets"     | [Building a Bronze–Silver–Gold climate pipeline](tutorial/climate/building-climate-pipeline.md) |
-| Ch. 8, "Dorieh Medicare Claims Data Pipeline"               | [Medicare case study](Medicare.md)                                                     |
+| Ch. 8, "Dorieh Medicare Claims Data Pipeline"               | [Medicare case study](Medicare.md) and the [Medicare pipeline tutorial](tutorial/medicare/building-medicare-pipeline.md) |
 | Appendix A (core YAML DSL syntax)                           | [Data modelling reference](Datamodels.md)                                              |
 | Appendix B (DSL extensions)                                 | [Data modelling extensions](DataModellingExtensions.md)                                |
 
