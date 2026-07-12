@@ -33,6 +33,11 @@ The Medicare warehouse is organized as a Medallion architecture: data moves
 through Bronze, Silver, and Gold layers, and each layer is derived only from
 the layer beneath it.
 
+The tutorial
+[Building the Medicare Claims Pipeline](tutorial/medicare/building-medicare-pipeline.md)
+offers a guided path through this page, from the raw ResDAC files to the QC
+aggregates.
+
 * **Bronze**: the raw `cms.*` tables. Every original ResDac file is loaded
   into its own table, with the data kept as delivered.
 * **Silver**: the cleansed and unified layer. It contains the federated
@@ -60,15 +65,21 @@ from.
                                       
 ### Medicare Pipeline Steps
 
-Current pipeline consists of 5 steps, each represented as a sub-workflow:
+Current pipeline ([medicare.cwl](pipeline/medicare)) consists of 5
+steps, most of them represented as sub-workflows:
 
-1. [Ingest raw data](pipeline/load_raw_medicare)
-2. [Process beneficiaries and their enrollment in Medicare](pipeline/medicare_beneficiaries)
-3. [Process Admissions](pipeline/medicare_admissions)
-4. [Create QC Tables](pipeline/medicare_qc)
-5. [Grant `SELECT`](pipeline/grant) 
-   privileges (i.e., read access) to all newly created tables
-   (this step is actually a command line tool, not a workflow)
+1. `initdb`: update the Dorieh utilities in the database
+   (see [initdb](pipeline/initdb))
+2. [Ingest raw data](pipeline/load_raw_medicare) (`load_raw_data`)
+3. [Process beneficiaries and their enrollment in Medicare](pipeline/medicare_beneficiaries)
+   (`enrollments`)
+4. [Process Admissions](pipeline/medicare_admissions) (`admissions`)
+5. [Create QC Tables](pipeline/medicare_qc) (`qc`)
+
+Granting `SELECT` privileges (i.e., read access) to newly created
+tables is done separately with the standalone
+[grant](pipeline/grant) command line tool; it is not a step of
+`medicare.cwl`.
                                    
 ### Ingestion of raw data
 

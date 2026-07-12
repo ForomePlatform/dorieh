@@ -39,9 +39,11 @@ SAFETY
   deleted unless you pass --execute.
 * Deletes in dependency-safe order: dashboards -> charts -> datasets.
 
-Examples (dry run -- always do this first):
+Examples (dry run -- always do this first)::
+
   cleanup_dashboard --title "Medicare Demo Quality Dashboard (DORIEH2 dev)"
   cleanup_dashboard --title "…" --bundle path/to/bundle --dataset-connection DORIEH2
+
 Then, once the printed list looks correct, append --execute.
 """
 import argparse

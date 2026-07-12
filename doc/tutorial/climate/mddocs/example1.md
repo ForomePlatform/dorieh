@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # example1.cwl
 
 
@@ -56,4 +60,3 @@ local:
 | ingest       | [ingest.cwl](https://foromeplatform.github.io/dorieh/pipeline/ingest.html)                   |             | 
 | build_silver | [create.cwl](https://foromeplatform.github.io/dorieh/pipeline/create.html)                   |             | 
 | build_gold   | [create.cwl](https://foromeplatform.github.io/dorieh/pipeline/create.html)                   |             | 
-

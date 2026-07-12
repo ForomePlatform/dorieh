@@ -107,7 +107,7 @@ python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --f
 :::{hint}
 We use the `--lod min` option generate lineage for derived columns 
 only. See 
-[Data Dictionary Generation tool](../../members/domain_dictionary.rst#usage)
+[Data Dictionary Generation tool](../../members/domain_dictionary.rst)
 for details.
 :::
 
@@ -169,7 +169,7 @@ See how this is reflected in the
 ```{note}
 |                               |                        |
 | ----------------------------- | ---------------------- |
-| Table                         | [bronze_temperature](../bronze_temperature.md)           |
+| Table                         | [bronze_temperature](mddocs/tables/bronze_temperature.md)           |
 | Qualified name                | bronze_temperature.tmmx  |
 | Datatype                      | float        |
 | Reference | [https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands) |
