@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Building Docker Image
 
 Provided are two Dockerfiles:

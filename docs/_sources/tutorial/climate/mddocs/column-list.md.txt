@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Alphabetic list of all columns in all tables
 
 
@@ -13,4 +17,3 @@
 | tmmx     | [bronze_temperature](tables/bronze_temperature/tmmx.md) <br/>[silver_temperature](tables/silver_temperature/tmmx.md)
 | us_state     | [gold_temperature_by_state](tables/gold_temperature_by_state/us_state.md) <br/>[silver_temperature](tables/silver_temperature/us_state.md)
 | zcta     | [bronze_temperature](tables/bronze_temperature/zcta.md) <br/>[silver_temperature](tables/silver_temperature/zcta.md)
-

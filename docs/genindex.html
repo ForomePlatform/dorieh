@@ -58,40 +58,521 @@ window.addEventListener("load", () => mermaid.run());
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a></li>
-<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a></li>
-<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a></li>
+<li class="toctree-l1"><a class="reference internal" href="home.html">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="home.html#introduction-to-data-platform">Introduction to Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#building-blocks">Building Blocks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="home.html#dorieh-utilities">Dorieh Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="home.html#core-platform">Core Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="home.html#dorieh-gis-utilities">Dorieh GIS Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="home.html#dorieh-documentation-utilities">Dorieh Documentation Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="home.html#data-processing-and-loading-pipelines">Data Processing and Loading Pipelines</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#working-with-nsaph-containerized-apps">Working with NSAPH containerized apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#deployment">Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="home.html#using-the-database">Using the Database</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#terms-and-acronyms">Terms and Acronyms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="home.html#building-platform-documentation">Building Platform documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="rationale.html">Why a data platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#why-we-need-a-data-platform">Why we need a Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#architecture">Architecture</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#supported-programming-languages-and-tools">Supported Programming Languages and Tools</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#development-mode">Development Mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#where-it-can-be-deployed">Where it can be deployed</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rationale.html#what-makes-dorieh-different">What makes Dorieh different</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="concepts.html">The Dorieh approach</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#two-languages-one-pipeline">Two languages, one pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#medallion-architecture-as-dorieh-implements-it">Medallion architecture as Dorieh implements it</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#dataset-operators-and-field-construction-operators">Dataset operators and field construction operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#families-of-field-transformations">Families of field transformations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#disambiguation-rules">Disambiguation rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#validation-and-journaling">Validation and journaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#fine-grained-lineage">Fine-grained lineage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="concepts.html#where-each-concept-lives">Where each concept lives</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="about-the-book.html">The companion book</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#bibliographic-information">Bibliographic information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#chapter-to-documentation-map">Chapter-to-documentation map</a></li>
+<li class="toctree-l2"><a class="reference internal" href="about-the-book.html#using-this-documentation-without-the-book">Using this documentation without the book</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a></li>
-<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="domains.html">Data Domains</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="cms.html">Health</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="climate.html">Climate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="climate.html#what-is-gridmet">What is gridMET?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate.html#using-command-line-gridmet-utility">Using command line gridMET utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate.html#example">Example</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate.html#python-modules">Python modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="climate.html#cwl-pipelines-and-tools">CWL pipelines and tools</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="exposures.html#exposure-data-by-atmospheric-composition-analysis-group">Exposure data by Atmospheric Composition Analysis Group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exposures.html#python-packages">Python packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="exposures.html#cwl-workflows">CWL Workflows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="epa.html">Environmental Protection Agency (EPA) data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="epa.html#package-contents">Package Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="epa.html#querying-data">Querying Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Demographics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_about.html">About</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_env_set_up.html">Setting Up Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_quick_start.html">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_yaml.html">Census Variable File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_cached_data.html">Stored Data Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_start_guide.html">Working with the <code class="docutils literal notranslate"><span class="pre">census</span></code> Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemble.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemblecwl_src.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_density.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_densitycwl_src.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1.html">Sub-workflow <em>store</em> from census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1cwl_src.html">CWL sub-workflow for step <u><em>store</em></u> of workflow census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingestcwl_src.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolate.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolatecwl_src.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qc.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qccwl_src.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflow.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflowcwl_src.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_write.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_writecwl_src.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pipelines.html">Data Processing Pipelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#workflow-description-languages">Workflow Description Languages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#running-workflows">Running Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#tested-runners">Tested runners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#providing-parameters-to-the-pipelines">Providing parameters to the pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#using-toil">Using Toil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#troubleshooting-workflows-run-by-toil">Troubleshooting Workflows run by Toil</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#testing-workflows">Testing workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#published-and-tested-workflows">Published and tested workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/wustl.html">Pipeline to ingest Monthly Pollution data downloaded from WashU Box</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/aqs.html">Full EPA AQS Processing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/airnow.html">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/medicare.html">Medicare data ingestion and processing pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/medicaid.html">Full Medicaid Processing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflow.html">census_workflow.cwl</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining included CWL tools into a new workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping python modules as CWL tools</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a></li>
-<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials.html">Dorieh Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#design-overview">Design overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#directory-layout">Directory layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-1-create-a-minimal-cwl-workflow-skeleton">Step 1. Create a minimal CWL workflow skeleton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-2-iteratively-defining-steps-and-parameters">Step 2. Iteratively Defining Steps and Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-3-parameterize-for-a-single-day-toy-run">Step 3. Parameterize for a single day (“toy” run)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-5-building-medallion-layers-bronze-silver-gold">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#step-6-testing-the-pipeline">Step 6. Testing the Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/building-climate-pipeline.html#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#workflow-files">Workflow files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#generating-skeleton-documentation">Generating skeleton documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/documenting-a-workflow.html#enhancing-workflow-documentation">Enhancing workflow documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#what-we-can-generate">What we can generate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#output-formats-and-modes">Output Formats and Modes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#running-the-tool">Running the tool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#exploring-the-artifacts">Exploring the Artifacts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#enriching-the-data-dictionary">Enriching the Data Dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/climate/constructing-lineage.html#lineage-diagram-for-medicare-data">Lineage Diagram for Medicare data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html">Building the Medicare Claims Pipeline</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#designing-the-pipeline">Designing the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#from-fts-documents-to-machine-readable-schemas">From FTS documents to machine-readable schemas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#bronze-one-table-per-source-file">Bronze: one table per source file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#silver-harmonize-disambiguate-validate">Silver: harmonize, disambiguate, validate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#gold-the-qc-aggregates">Gold: the QC aggregates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#orchestration-five-steps-in-medicare-cwl">Orchestration: five steps in medicare.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#documentation-and-lineage">Documentation and lineage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="tutorial/medicare/building-medicare-pipeline.html#running-it-yourself">Running it yourself</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Example-climate-workflow.html">A CWL workflow example: aggregating a climate variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Example-climate-workflow.html#what-the-sample-workflow-is-doing-aggregating-a-climate-variable">What the sample workflow is doing: aggregating a climate variable</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example-climate-workflow.html#prepare-to-run-a-workflow">Prepare to run a workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example-climate-workflow.html#running-the-workflow-in-python-virtual-environment">Running the workflow in Python virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Example-climate-workflow.html#running-the-workflow-using-docker">Running the workflow using Docker</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="medicare-example.html">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="medicare-example.html#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="medicare-example.html#step-1-download-synthetic-sample-data">Step 1 — Download synthetic sample data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="medicare-example.html#step-2-run-the-medicare-processing-pipeline">Step 2 — Run the Medicare processing pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="medicare-example.html#step-3-optional-explore-results-in-apache-superset">Step 3 (Optional) — Explore results in Apache Superset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="medicare-example.html#what-the-pipeline-produces">What the pipeline produces</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#create-connection-definition-file">Create connection definition file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#executing-the-query">Executing the query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#using-explain-to-optimize-queries">Using EXPLAIN to optimize queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html#querying-diagnoses">Querying diagnoses</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity using Dorieh tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#module-monitor">Module monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#cli-usage-for-monitor">CLI Usage for monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#using-as-api">Using as API</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="DataModellingExtensions.html">Extensions used for creating federated view of different years</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="DataModellingExtensions.html#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DataModellingExtensions.html#combining-multiple-sources-and-optional-columns">Combining multiple sources and optional columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DataModellingExtensions.html#exclude">Exclude</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DataModellingExtensions.html#cast">Cast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DataModellingExtensions.html#validating-consistency-of-data-across-tables">Validating consistency of data across tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#generating-data-dictionary">Generating data dictionary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#domain-dictionary-output">Domain Dictionary Output</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html#module-dorieh.platform.dictionary.domain_dictionary">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/medicare_yaml.html">Medicare.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#medallion-architecture-of-the-medicare-warehouse">Medallion architecture of the Medicare warehouse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#processing-pipeline">Processing pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/parse_fts.html">FTS Parser</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/create_schema_config.html">The create_schema_config Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/medicaid_yaml.html">Medicaid.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/ingest.html">Universal uploader of the tabular data to the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/medicaid.html">Full Medicaid Processing Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#importing-raw-data">Importing raw data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#processing-data">Processing data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#data-model">Data Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#pipeline">Pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Medicaid.html#sample-user-request">Sample user request:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#domain">Domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#table">Table</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#create-statement">Create statement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#invalid-record">Invalid Record</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#column">Column</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#source">Source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#index">Index</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#generated-columns">Generated columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#computed-columns">Computed columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#file-columns">File columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#record-columns">Record columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#identifier-columns-and-the-identifiers-token">Identifier columns and the <code class="docutils literal notranslate"><span class="pre">{identifiers}</span></code> token</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#transposing-columns">Transposing columns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#wildcards">Wildcards</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#multi-column-indices">Multi-column indices</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#generation-of-the-database-schema-ddl">Generation of the database schema (DDL)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#indexing-policies">Indexing policies</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#linking-with-nomenclature">Linking with nomenclature</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#us-states">US States</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html#county-codes">County codes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Datamodels.html#ingesting-data">Ingesting data</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Platform</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="packages.html">Python Packages</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="utils.html">General purpose utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#overview-of-utilities">Overview of Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#current-development">Current Development</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#todo">TODO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="utils.html#documentation-indices">Documentation Indices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CoreLibrary.html">Data platform components</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CoreLibrary.html#package-dorieh-platform">Package dorieh.platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CoreLibrary.html#package-dorieh-platform-data-model">Package dorieh.platform.data_model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CoreLibrary.html#package-dorieh-platform-loader">Package dorieh.platform.loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CoreLibrary.html#package-dorieh-platform-requests">Package dorieh.platform.requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CoreLibrary.html#package-dorieh-platform-utils">Package dorieh.platform.utils</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gis.html">GIS utilities</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gis.html#gis-library-overview">GIS Library Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="gis.html#shape-files-downloader">Shape files Downloader</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="CMSLibrary.html">Health data manipulation tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="CMSLibrary.html#package-cms">Package cms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CMSLibrary.html#package-dorieh-cms-tools">Package dorieh.cms.tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="CMSLibrary.html#additional-details">Additional details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="epa.html">EPA tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="epa.html#package-contents">Package Contents</a></li>
+<li class="toctree-l3"><a class="reference internal" href="epa.html#querying-data">Querying Data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="rasters.html">Raster data tools (climate and exposure)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="rasters.html#general-tools-for-raster-files">General tools for raster files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rasters.html#specialized-tools-for-working-with-climate-data">Specialized tools for working with climate data</a></li>
+<li class="toctree-l3"><a class="reference internal" href="rasters.html#specialized-tools-for-working-with-exposure-data">Specialized tools for working with exposure data</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="census.html">Census data manipulation tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="census_about.html">About</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_env_set_up.html">Setting Up Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_quick_start.html">Quick Start</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_yaml.html">Census Variable File Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_cached_data.html">Stored Data Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_modules.html">Modules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_glossary.html">Glossary</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census_start_guide.html">Working with the <code class="docutils literal notranslate"><span class="pre">census</span></code> Package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemble.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_assemblecwl_src.html">census_assemble.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_density.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_densitycwl_src.html">census_density.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1.html">Sub-workflow <em>store</em> from census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingest_1cwl_src.html">CWL sub-workflow for step <u><em>store</em></u> of workflow census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_ingestcwl_src.html">census_ingest.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolate.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_interpolatecwl_src.html">census_interpolate.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qc.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_qccwl_src.html">census_qc.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflow.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_workflowcwl_src.html">census_workflow.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_write.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipeline/census_writecwl_src.html">census_write.cwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="census.html#indices-and-tables">Indices and tables</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="guts.html">Data Platform Internals</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="platform.html">Dorieh Core Data Platform</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DBConnections.html">Managing database connections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DataLoader.html">Dorieh Data Loader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html">Project (Directory) Loading Utility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TerritorialCodes.html">Mapping between different territorial codes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html">How to query the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserRequests.html">Preliminary Considerations for Handling User Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SQLDocumentation.html">SQL Documentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html#core-platform-overview">Core platform overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html#tool-examples">Tool Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html#project-structure">Project Structure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html#territorial-codes-mappings">Territorial Codes Mappings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="platform.html#documentation-indices">Documentation Indices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment.html">Dorieh Deployment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#using-docker">Using Docker</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#using-python-virtual-environment">Using Python Virtual Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#using-conda-package-manager">Using Conda Package Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html#using-toil-with-docker-requirement">Using Toil with Docker requirement</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="DBConnections.html">Managing database connections</a></li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#module-monitor">Module monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#cli-usage-for-monitor">CLI Usage for monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#using-as-api">Using as API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="ProjectLoader.html">Project (Directory) Loading Utility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#configuration-options">Configuration options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#usage-from-command-line">Usage from command line</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#sample-command">Sample command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#dry-runs-introspect-only">Dry runs (introspect only)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html#api-usage">API Usage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="capabilities.html">Platform capabilities</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="SampleQuery.html">How to query the database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#create-connection-definition-file">Create connection definition file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#executing-the-query">Executing the query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="SampleQuery.html#using-explain-to-optimize-queries">Using EXPLAIN to optimize queries</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="QueringMedicaid.html">Querying Medicaid Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="QueringMedicaid.html#querying-diagnoses">Querying diagnoses</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#module-monitor">Module monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#cli-usage-for-monitor">CLI Usage for monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html#using-as-api">Using as API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="UsingHLL.html">Approximate distinct counting with HLL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="UserRequests.html">Handling user requests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="UserRequests.html#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="UserRequests.html#structure">Structure</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_request_yaml.html">Example user request</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Operational guides</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="DBT.html">Database Testing Framework</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="members/create_test.html">Utility to generate test queries</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/dbt_runner.html">Test runner: Utility to run generated tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/gen_dbt_cwl.html">The gen_dbt_cwl Module</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/create_test.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/create_test.html#module-dorieh.platform.dbt.create_test">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/dbt_runner.html">Test runner: Utility to run generated tests</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/dbt_runner.html#usage">Usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="members/dbt_runner.html#module-dorieh.platform.dbt.dbt_runner">Details</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="members/gen_dbt_cwl.html">The gen_dbt_cwl Module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="members/gen_dbt_cwl.html#dorieh.platform.dbt.gen_dbt_cwl.CWLTestGenerator"><code class="docutils literal notranslate"><span class="pre">CWLTestGenerator</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="TestingWorkflows.html">Testing bundled workflows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#introduction-to-testing-and-prerequisites">Introduction to testing and prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#before-running-any-test">Before running any test</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-aqs-workflow">Testing AQS workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="guts.html">Data Platform Internals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="platform.html">Dorieh Core Data Platform</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deployment.html">Dorieh Deployment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="DBConnections.html">Managing database connections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="MonitoringDB.html">Monitoring database activity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ProjectLoader.html">Project (Directory) Loading Utility</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="adding_data.html">Adding more data</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#what-data-are-you-adding">What data are you adding?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#data-modelling-vs-data-introspection">Data modelling vs data introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#adding-new-data-domain">Adding new data domain</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#adding-data-to-existing-table">Adding data to existing table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#creating-new-single-table">Creating new single table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="adding_data.html#automatically-ingesting-multiple-files-from-a-file-system">Automatically ingesting multiple files from a file system</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="AppPipelineGenerator.html">Executing containerized apps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#prerequisites">Prerequisites</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#docker-or-python-virtual-environment">Docker or Python virtual environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#setup-dbms-server">Setup DBMS Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#define-connection">Define connection</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#using-pipeline-generator">Using pipeline generator</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#generate-pipeline-and-metadata">Generate pipeline and metadata</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#execute-generated-pipeline">Execute generated pipeline</a></li>
+<li class="toctree-l2"><a class="reference internal" href="AppPipelineGenerator.html#appendix-1-metadata-description">Appendix 1: Metadata description</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#file-app-config-yaml">File app.config.yaml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#file-metadata-yml">File metadata.yml</a></li>
+<li class="toctree-l3"><a class="reference internal" href="AppPipelineGenerator.html#file-dorieh-metadata-yaml">File dorieh-metadata.yaml</a></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Terms and Acronyms</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html#concepts">Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html#acronyms">Acronyms</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="docindices.html">Indices</a></li>
 </ul>
 
@@ -349,6 +830,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.ColumnAttribute.arg">arg() (ColumnAttribute method)</a>, <a href="members/mcr_file.html#dorieh.cms.tools.mcr_file.ColumnAttribute.arg">[1]</a>
 </li>
+      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.args">args (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>
+</li>
       <li><a href="members/duplicates.html#dorieh.cms.duplicates.args">args() (in module dorieh.cms.duplicates)</a>
 
       <ul>
@@ -428,17 +911,25 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/inserter.html#dorieh.platform.data_model.inserter.Inserter.Batch">Batch() (Inserter method)</a>
 </li>
       <li><a href="members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqSingleQuery.batch">batch() (PgPqSingleQuery method)</a>
+
+      <ul>
+        <li><a href="members/memtest.html#dorieh.platform.util.memtest.PyArrowTest.batch">(PyArrowTest method)</a>
 </li>
+      </ul></li>
       <li><a href="members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqSingleQuery.batches">batches() (PgPqSingleQuery method)</a>
+
+      <ul>
+        <li><a href="members/memtest.html#dorieh.platform.util.memtest.PyArrowTest.batches">(PyArrowTest method)</a>
 </li>
+      </ul></li>
       <li><a href="gridmet_bands.html#dorieh.rasters.config.GridmetVariable.bi">bi (GridmetVariable attribute)</a>, <a href="members/config.html#dorieh.rasters.config.GridmetVariable.bi">[1]</a>
 </li>
       <li><a href="members/geometry.html#dorieh.gis.geometry.PointInRaster.bilinear">bilinear() (PointInRaster method)</a>
 </li>
-      <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.bit_count">bit_count() (Parameter method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.bit_count">bit_count() (Parameter method)</a>
+</li>
       <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.bit_length">bit_length() (Parameter method)</a>
 </li>
       <li><a href="members/task.html#dorieh.rasters.task.DownloadGridmetTask.BLOCK_SIZE">BLOCK_SIZE (DownloadGridmetTask attribute)</a>
@@ -517,6 +1008,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/aqs_tools.html#dorieh.utils.io_utils.is_downloaded.params.check_size">check_size (dorieh.utils.io_utils.is_downloaded parameter)</a>, <a href="members/io_utils.html#dorieh.utils.io_utils.is_downloaded.params.check_size">[1]</a>
 </li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.choose_cran_mirror">choose_cran_mirror() (in module dorieh.utils.pyfst)</a>
+</li>
       <li><a href="members/introspector.html#dorieh.platform.loader.introspector.Introspector.classify">classify() (Introspector class method)</a>
 </li>
       <li><a href="members/aqs.html#dorieh.epa.aqs.AQS.clear">clear() (AQS method)</a>
@@ -534,6 +1027,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/data_loader.html#dorieh.platform.loader.data_loader.DataLoader.close">(DataLoader method)</a>
 </li>
+        <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.close">(FSTReader method)</a>
+</li>
         <li><a href="members/fwf.html#dorieh.utils.fwf.FWFReader.close">(FWFReader method)</a>
 </li>
         <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.close">(NetCDFDataset method)</a>
@@ -543,8 +1038,6 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.enum.params.cls">(dorieh.epa.aqs_ds_def.AQSContext.enum parameter)</a>
-</li>
-        <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.enum.params.cls">(dorieh.rasters.config.GridContext.enum parameter)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.enum.params.cls">(dorieh.rasters.config.GridMETContext.enum parameter)</a>
 </li>
@@ -670,8 +1163,6 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/context.html#dorieh.utils.context.Context.compress">(Context attribute)</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Context.compress">[1]</a>
 </li>
-        <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.compress">(GridContext attribute)</a>
-</li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.compress">(GridMETContext attribute)</a>
 </li>
       </ul></li>
@@ -770,7 +1261,7 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/task.html#dorieh.rasters.task.ComputePointsTask.params.coordinates">coordinates (dorieh.rasters.task.ComputePointsTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.ComputePointsTask.params.coordinates">[1]</a>
 
       <ul>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.coordinates">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.coordinates">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.coordinates">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.coordinates">(GridMETContext attribute)</a>
 </li>
@@ -869,6 +1360,12 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
       <li><a href="members/create_test.html#dorieh.platform.dbt.create_test.CType">CType (class in dorieh.platform.dbt.create_test)</a>
 </li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.current">current() (FSTReader method)</a>
+</li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.current_mapping">current_mapping() (FSTReader method)</a>
+</li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.current_row">current_row() (FSTReader method)</a>
+</li>
       <li><a href="members/model.html#dorieh.platform.data_model.model.Table.make_iso_column.params.cursor">cursor (dorieh.platform.data_model.model.Table.make_iso_column parameter)</a>
 </li>
       <li><a href="members/constants.html#dorieh.gis.constants.Geography.custom">custom (Geography attribute)</a>
@@ -923,6 +1420,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/app_run_generator.html#dorieh.platform.apprunner.app_run_generator.Inputs.database">database (Inputs attribute)</a>
 </li>
+      <li><a href="members/io_utils.html#dorieh.utils.io_utils.dataframe2csv">dataframe2csv() (in module dorieh.utils.io_utils)</a>
+</li>
       <li><a href="members/data_loader.html#dorieh.platform.loader.data_loader.DataLoader">DataLoader (class in dorieh.platform.loader.data_loader)</a>
 </li>
       <li><a href="members/loader_config.html#dorieh.platform.loader.loader_config.DataLoaderAction">DataLoaderAction (class in dorieh.platform.loader.loader_config)</a>
@@ -961,7 +1460,7 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
       <li><a href="members/config.html#dorieh.rasters.config.DateFilter">DateFilter (class in dorieh.rasters.config)</a>
 </li>
-      <li><a href="members/config.html#dorieh.rasters.config.GridContext.dates">dates (GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.dates">[1]</a>
+      <li><a href="members/config.html#dorieh.rasters.config.GridContext.dates">dates (GridContext attribute)</a>
 
       <ul>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.dates">(GridMETContext attribute)</a>
@@ -1076,7 +1575,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/airnow_ds_def.html#dorieh.utils.context.Context.params.description">(dorieh.utils.context.Context parameter)</a>, <a href="members/aqs_ds_def.html#dorieh.utils.context.Context.params.description">[1]</a>, <a href="members/context.html#dorieh.utils.context.Context.params.description">[2]</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Context.params.description">[3]</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.description">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.description">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.description">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.description">(GridMETContext attribute)</a>
 </li>
@@ -1096,7 +1595,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/task.html#dorieh.rasters.task.DownloadGridmetTask.params.destination">(dorieh.rasters.task.DownloadGridmetTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.DownloadGridmetTask.params.destination">[1]</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.destination">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.destination">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.destination">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.destination">(GridMETContext attribute)</a>
 </li>
@@ -1122,7 +1621,7 @@ window.addEventListener("load", () => mermaid.run());
       <ul>
         <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.params.doc">(dorieh.epa.aqs_ds_def.AQSContext parameter)</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.params.doc">(dorieh.rasters.config.GridContext parameter)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.params.doc">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.params.doc">(dorieh.rasters.config.GridContext parameter)</a>
 </li>
         <li><a href="members/config.html#dorieh.rasters.config.GridMETContext.params.doc">(dorieh.rasters.config.GridMETContext parameter)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.params.doc">[1]</a>
 </li>
@@ -1167,7 +1666,7 @@ window.addEventListener("load", () => mermaid.run());
     dorieh.census.data.load_data
 
       <ul>
-        <li><a href="members/load_data.html#module-dorieh.census.data.load_data">module</a>
+        <li><a href="census_modules.html#module-dorieh.census.data.load_data">module</a>, <a href="members/load_data.html#module-dorieh.census.data.load_data">[1]</a>
 </li>
       </ul></li>
       <li>
@@ -1457,8 +1956,6 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/compute_shape.html#module-dorieh.gis.compute_shape">module</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dorieh.gis.constants
 
@@ -1473,6 +1970,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/shapes_downloader.html#module-dorieh.gis.shapes_downloader">module</a>
 </li>
       </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li>
     dorieh.platform
 
@@ -1583,6 +2082,13 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/gen_dbt_cwl.html#module-dorieh.platform.dbt.gen_dbt_cwl">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.platform.dbt.spark_dbt_runner
+
+      <ul>
+        <li><a href="members/spark_dbt_runner.html#module-dorieh.platform.dbt.spark_dbt_runner">module</a>
 </li>
       </ul></li>
       <li>
@@ -1796,10 +2302,24 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       </ul></li>
       <li>
+    dorieh.platform.util.import_hive
+
+      <ul>
+        <li><a href="members/import_hive.html#module-dorieh.platform.util.import_hive">module</a>
+</li>
+      </ul></li>
+      <li>
     dorieh.platform.util.init_core_db
 
       <ul>
         <li><a href="members/init_core_db.html#module-dorieh.platform.util.init_core_db">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.platform.util.memtest
+
+      <ul>
+        <li><a href="members/memtest.html#module-dorieh.platform.util.memtest">module</a>
 </li>
       </ul></li>
       <li>
@@ -1884,6 +2404,13 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/shapes.html#module-dorieh.platform.util.shapes">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.platform.util.spsql
+
+      <ul>
+        <li><a href="members/spsql.html#module-dorieh.platform.util.spsql">module</a>
 </li>
       </ul></li>
       <li>
@@ -1982,6 +2509,13 @@ window.addEventListener("load", () => mermaid.run());
 
       <ul>
         <li><a href="members/context.html#module-dorieh.utils.context">module</a>
+</li>
+      </ul></li>
+      <li>
+    dorieh.utils.fst2csv
+
+      <ul>
+        <li><a href="members/fst2csv.html#module-dorieh.utils.fst2csv">module</a>
 </li>
       </ul></li>
       <li>
@@ -2144,6 +2678,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/zip2zcta.html#dorieh.platform.crosswalks.zip2zcta.XReader.ensure_join_type">ensure_join_type() (XReader static method)</a>
 </li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.ensure_packages">ensure_packages() (in module dorieh.utils.pyfst)</a>
+</li>
       <li><a href="members/utils.html#dorieh.platform.data_model.utils.entry_to_path.params.entry">entry (dorieh.platform.data_model.utils.entry_to_path parameter)</a>
 </li>
       <li><a href="members/utils.html#dorieh.platform.data_model.utils.entry_to_path">entry_to_path() (in module dorieh.platform.data_model.utils)</a>
@@ -2154,8 +2690,6 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.enum">(AQSContext class method)</a>
 </li>
         <li><a href="members/context.html#dorieh.utils.context.Context.enum">(Context class method)</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Context.enum">[1]</a>
-</li>
-        <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.enum">(GridContext class method)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.enum">(GridMETContext class method)</a>
 </li>
@@ -2189,6 +2723,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/psql.html#dorieh.platform.util.psql.execute">(in module dorieh.platform.util.psql)</a>
 </li>
+        <li><a href="members/spsql.html#dorieh.platform.util.spsql.execute">(in module dorieh.platform.util.spsql)</a>
+</li>
         <li><a href="members/index_builder.html#dorieh.platform.loader.index_builder.IndexBuilder.execute">(IndexBuilder method)</a>
 </li>
         <li><a href="members/mcr_combine_tables.html#dorieh.cms.tools.mcr_combine_tables.MedicareCombinedView.execute">(MedicareCombinedView method)</a>
@@ -2198,6 +2734,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/query.html#dorieh.platform.requests.query.Query.execute">(Query method)</a>
 </li>
       </ul></li>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.execute_and_show">execute_and_show() (in module dorieh.platform.util.spsql)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/zip2zcta.html#dorieh.platform.crosswalks.zip2zcta.Importer.execute_db_update">execute_db_update() (Importer method)</a>
@@ -2241,6 +2779,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.PgPqSingleQuery.export">(PgPqSingleQuery method)</a>
 </li>
+        <li><a href="members/memtest.html#dorieh.platform.util.memtest.PyArrowTest.export">(PyArrowTest method)</a>
+</li>
       </ul></li>
       <li><a href="members/api.html#dorieh.platform.superset.api.SupersetClient.export_dashboard">export_dashboard() (SupersetClient method)</a>
 </li>
@@ -2269,7 +2809,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/aggregator.html#dorieh.rasters.aggregator.NetCDFAggregator.params.extra_columns">(dorieh.rasters.aggregator.NetCDFAggregator parameter)</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.extra_columns">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.extra_columns">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.extra_columns">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.extra_columns">(GridMETContext attribute)</a>
 </li>
@@ -2406,6 +2946,8 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
       <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.from_bytes">from_bytes() (Parameter class method)</a>
 </li>
+      <li><a href="members/io_utils.html#dorieh.utils.io_utils.fst2csv">fst2csv() (in module dorieh.utils.io_utils)</a>
+</li>
       <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader">FSTReader (class in dorieh.utils.pyfst)</a>
 </li>
       <li><a href="members/mcr_data_loader.html#dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts.params.fts_path">fts_path (dorieh.cms.mcr_data_loader.MedicareDataLoader.dat4fts parameter)</a>
@@ -2505,7 +3047,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/task.html#dorieh.rasters.task.ComputeShapesTask.params.geography">(dorieh.rasters.task.ComputeShapesTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.ComputeShapesTask.params.geography">[1]</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.geography">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.geography">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.geography">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.geography">(GridMETContext attribute)</a>
 </li>
@@ -2782,7 +3324,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/tester.html#dorieh.utils.qc.tester.Condition.greater_than">greater_than (Condition attribute)</a>
 </li>
-      <li><a href="members/config.html#dorieh.rasters.config.GridContext">GridContext (class in dorieh.rasters.config)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext">[1]</a>
+      <li><a href="members/config.html#dorieh.rasters.config.GridContext">GridContext (class in dorieh.rasters.config)</a>
 </li>
       <li><a href="members/launcher.html#dorieh.rasters.launcher.Gridmet">Gridmet (class in dorieh.rasters.launcher)</a>
 </li>
@@ -2830,15 +3372,17 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/data_loader.html#dorieh.platform.loader.data_loader.DataLoader.has_been_ingested">has_been_ingested() (DataLoader method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/domain.html#dorieh.platform.data_model.domain.Domain.has_column_spec">has_column_spec() (Domain static method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/domain.html#dorieh.platform.data_model.domain.Domain.has_hard_linked_children">has_hard_linked_children() (Domain method)</a>
 </li>
       <li><a href="members/aqs_tools.html#dorieh.epa.aqs_tools.transfer.params.header">header (dorieh.epa.aqs_tools.transfer parameter)</a>
 </li>
       <li><a href="members/airnow_ds_def.html#dorieh.utils.context.Argument.params.help">help (dorieh.utils.context.Argument parameter)</a>, <a href="members/aqs_ds_def.html#dorieh.utils.context.Argument.params.help">[1]</a>, <a href="members/context.html#dorieh.utils.context.Argument.params.help">[2]</a>, <a href="rasters_ds_def.html#dorieh.utils.context.Argument.params.help">[3]</a>
+</li>
+      <li><a href="members/import_hive.html#dorieh.platform.util.import_hive.HiveImporter">HiveImporter (class in dorieh.platform.util.import_hive)</a>
 </li>
       <li><a href="members/db.html#dorieh.platform.db.Connection.host_name">host_name() (Connection static method)</a>
 </li>
@@ -2882,8 +3426,12 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/inserter.html#dorieh.platform.data_model.inserter.Inserter.import_file">import_file() (Inserter method)</a>
 </li>
-      <li><a href="members/pg_json_dump.html#dorieh.platform.util.pg_json_dump.import_table">import_table() (in module dorieh.platform.util.pg_json_dump)</a>
+      <li><a href="members/import_hive.html#dorieh.platform.util.import_hive.HiveImporter.import_table">import_table() (HiveImporter method)</a>
+
+      <ul>
+        <li><a href="members/pg_json_dump.html#dorieh.platform.util.pg_json_dump.import_table">(in module dorieh.platform.util.pg_json_dump)</a>
 </li>
+      </ul></li>
       <li><a href="members/zip2zcta.html#dorieh.platform.crosswalks.zip2zcta.Importer">Importer (class in dorieh.platform.crosswalks.zip2zcta)</a>
 </li>
       <li><a href="members/model.html#dorieh.platform.data_model.model.Table.make_iso_column.params.include">include (dorieh.platform.data_model.model.Table.make_iso_column parameter)</a>
@@ -3000,9 +3548,11 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/interface.html#dorieh.utils.interpolation.interface.interpolate.params.interpolate_vars">interpolate_vars (dorieh.utils.interpolation.interface.interpolate parameter)</a>
 </li>
-      <li><a href="members/introspector.html#dorieh.platform.loader.introspector.Introspector.introspect">introspect() (Introspector method)</a>
+      <li><a href="members/import_hive.html#dorieh.platform.util.import_hive.HiveImporter.introspect">introspect() (HiveImporter method)</a>
 
       <ul>
+        <li><a href="members/introspector.html#dorieh.platform.loader.introspector.Introspector.introspect">(Introspector method)</a>
+</li>
         <li><a href="members/project_loader.html#dorieh.platform.loader.project_loader.ProjectLoader.introspect">(ProjectLoader method)</a>
 </li>
       </ul></li>
@@ -3090,6 +3640,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="census_modules.html#dorieh.census.query.get_census_data.params.key">(dorieh.census.query.get_census_data parameter)</a>
 </li>
       </ul></li>
+      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.kwargs">kwargs (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -3168,7 +3720,7 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/bundle.html#dorieh.platform.superset.bundle.load">(in module dorieh.platform.superset.bundle)</a>
 </li>
       </ul></li>
-      <li><a href="members/load_data.html#dorieh.census.data.load_data.load_county_codes">load_county_codes() (in module dorieh.census.data.load_data)</a>
+      <li><a href="census_modules.html#dorieh.census.data.load_data.load_county_codes">load_county_codes() (in module dorieh.census.data.load_data)</a>, <a href="members/load_data.html#dorieh.census.data.load_data.load_county_codes">[1]</a>
 </li>
       <li><a href="members/introspector.html#dorieh.platform.loader.introspector.Introspector.load_csv">load_csv() (Introspector method)</a>
 </li>
@@ -3186,7 +3738,7 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
       <li><a href="members/introspector.html#dorieh.platform.loader.introspector.Introspector.load_sas">load_sas() (Introspector method)</a>
 </li>
-      <li><a href="members/load_data.html#dorieh.census.data.load_data.load_state_codes">load_state_codes() (in module dorieh.census.data.load_data)</a>
+      <li><a href="census_modules.html#dorieh.census.data.load_data.load_state_codes">load_state_codes() (in module dorieh.census.data.load_data)</a>, <a href="members/load_data.html#dorieh.census.data.load_data.load_state_codes">[1]</a>
 </li>
       <li><a href="members/tester.html#dorieh.utils.qc.tester.Tester.load_yaml">load_yaml() (Tester method)</a>
 </li>
@@ -3255,6 +3807,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/import_dashboard.html#dorieh.platform.superset.import_dashboard.main">(in module dorieh.platform.superset.import_dashboard)</a>
 </li>
+        <li><a href="members/memtest.html#dorieh.platform.util.memtest.main">(in module dorieh.platform.util.memtest)</a>
+</li>
         <li><a href="members/pgpass.html#dorieh.platform.util.pgpass.main">(in module dorieh.platform.util.pgpass)</a>
 </li>
         <li><a href="members/launcher.html#dorieh.rasters.launcher.main">(in module dorieh.rasters.launcher)</a>
@@ -3306,7 +3860,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/compute_shape.html#dorieh.gis.compute_shape.StatsCounter.max_mem_used">max_mem_used (StatsCounter attribute)</a>
 </li>
-      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.max_queue_size">max_queue_size (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>
+      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.max_queue_size">max_queue_size (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>, <a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.max_queue_size">[1]</a>
 </li>
       <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.Parameter.MAX_TEMP">MAX_TEMP (Parameter attribute)</a>
 </li>
@@ -3319,6 +3873,10 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.mcr_type">mcr_type() (in module dorieh.cms.fts2yaml)</a>
 </li>
       <li><a href="members/md_creator.html#dorieh.docutils.md_creator.MDCreator">MDCreator (class in dorieh.docutils.md_creator)</a>
+</li>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.me_prof">me_prof() (in module dorieh.platform.util.memtest)</a>
+</li>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.PyArrowTest.me_track">me_track() (PyArrowTest method)</a>
 </li>
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.MedicaidFTS.medicaid_indices">medicaid_indices (MedicaidFTS attribute)</a>
 </li>
@@ -3365,7 +3923,7 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/task.html#dorieh.rasters.task.ComputePointsTask.params.metadata">metadata (dorieh.rasters.task.ComputePointsTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.ComputePointsTask.params.metadata">[1]</a>
 
       <ul>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.metadata">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.metadata">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.metadata">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.metadata">(GridMETContext attribute)</a>
 </li>
@@ -3416,7 +3974,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="census_modules.html#module-dorieh.census.cli">dorieh.census.cli</a>, <a href="members/cli.html#module-dorieh.census.cli">[1]</a>
 </li>
-        <li><a href="members/load_data.html#module-dorieh.census.data.load_data">dorieh.census.data.load_data</a>
+        <li><a href="census_modules.html#module-dorieh.census.data.load_data">dorieh.census.data.load_data</a>, <a href="members/load_data.html#module-dorieh.census.data.load_data">[1]</a>
 </li>
         <li><a href="members/do_qc.html#module-dorieh.census.do_qc">dorieh.census.do_qc</a>
 </li>
@@ -3536,6 +4094,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/gen_dbt_cwl.html#module-dorieh.platform.dbt.gen_dbt_cwl">dorieh.platform.dbt.gen_dbt_cwl</a>
 </li>
+        <li><a href="members/spark_dbt_runner.html#module-dorieh.platform.dbt.spark_dbt_runner">dorieh.platform.dbt.spark_dbt_runner</a>
+</li>
         <li><a href="members/columns.html#module-dorieh.platform.dictionary.columns">dorieh.platform.dictionary.columns</a>
 </li>
         <li><a href="members/domain_dictionary.html#module-dorieh.platform.dictionary.domain_dictionary">dorieh.platform.dictionary.domain_dictionary</a>
@@ -3596,7 +4156,11 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/export_args.html#module-dorieh.platform.util.export_args">dorieh.platform.util.export_args</a>
 </li>
+        <li><a href="members/import_hive.html#module-dorieh.platform.util.import_hive">dorieh.platform.util.import_hive</a>
+</li>
         <li><a href="members/init_core_db.html#module-dorieh.platform.util.init_core_db">dorieh.platform.util.init_core_db</a>
+</li>
+        <li><a href="members/memtest.html#module-dorieh.platform.util.memtest">dorieh.platform.util.memtest</a>
 </li>
         <li><a href="members/net.html#module-dorieh.platform.util.net">dorieh.platform.util.net</a>
 </li>
@@ -3621,6 +4185,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/sas_explorer.html#module-dorieh.platform.util.sas_explorer">dorieh.platform.util.sas_explorer</a>
 </li>
         <li><a href="members/shapes.html#module-dorieh.platform.util.shapes">dorieh.platform.util.shapes</a>
+</li>
+        <li><a href="members/spsql.html#module-dorieh.platform.util.spsql">dorieh.platform.util.spsql</a>
 </li>
         <li><a href="members/aggregator.html#module-dorieh.rasters.aggregator">dorieh.rasters.aggregator</a>
 </li>
@@ -3649,6 +4215,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/add_docker_requirement.html#module-dorieh.utils.add_docker_requirement">dorieh.utils.add_docker_requirement</a>
 </li>
         <li><a href="members/context.html#module-dorieh.utils.context">dorieh.utils.context</a>
+</li>
+        <li><a href="members/fst2csv.html#module-dorieh.utils.fst2csv">dorieh.utils.fst2csv</a>
 </li>
         <li><a href="members/fwf.html#module-dorieh.utils.fwf">dorieh.utils.fwf</a>
 </li>
@@ -3806,6 +4374,8 @@ window.addEventListener("load", () => mermaid.run());
       <ul>
         <li><a href="members/utils.html#dorieh.platform.data_model.utils.CSVLikeJsonReader.open">(CSVLikeJsonReader method)</a>
 </li>
+        <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.open">(FSTReader method)</a>
+</li>
         <li><a href="members/fwf.html#dorieh.utils.fwf.FWFReader.open">(FWFReader method)</a>
 </li>
         <li><a href="members/aggregator.html#dorieh.rasters.aggregator.GeoTiffAggregator.open">(GeoTiffAggregator method)</a>
@@ -3856,7 +4426,7 @@ window.addEventListener("load", () => mermaid.run());
       <ul>
         <li><a href="members/epa_registry.html#dorieh.epa.registry.EPAConfig.output">(EPAConfig attribute)</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.output">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.output">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.output">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.output">(GridMETContext attribute)</a>
 </li>
@@ -3919,6 +4489,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/init_core_db.html#dorieh.platform.util.init_core_db.parse_args">(in module dorieh.platform.util.init_core_db)</a>
 </li>
         <li><a href="members/psql.html#dorieh.platform.util.psql.parse_args">(in module dorieh.platform.util.psql)</a>
+</li>
+        <li><a href="members/spsql.html#dorieh.platform.util.spsql.parse_args">(in module dorieh.platform.util.spsql)</a>
 </li>
       </ul></li>
       <li><a href="members/columns.html#dorieh.platform.dictionary.columns.Column.parse_expr">parse_expr() (Column method)</a>
@@ -3995,7 +4567,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/geometry.html#dorieh.gis.geometry.PointInRaster">PointInRaster (class in dorieh.gis.geometry)</a>
 </li>
-      <li><a href="members/config.html#dorieh.rasters.config.GridContext.points">points (GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.points">[1]</a>
+      <li><a href="members/config.html#dorieh.rasters.config.GridContext.points">points (GridContext attribute)</a>
 
       <ul>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.points">(GridMETContext attribute)</a>
@@ -4107,6 +4679,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/inserter.html#dorieh.platform.data_model.inserter.Inserter.push">push() (Inserter method)</a>
 </li>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.PyArrowTest">PyArrowTest (class in dorieh.platform.util.memtest)</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -4166,7 +4740,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/task.html#dorieh.rasters.task.ComputeShapesTask.params.ram">(dorieh.rasters.task.ComputeShapesTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.ComputeShapesTask.params.ram">[1]</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.ram">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.ram">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.ram">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.ram">(GridMETContext attribute)</a>
 </li>
@@ -4181,7 +4755,7 @@ window.addEventListener("load", () => mermaid.run());
       </ul></li>
       <li><a href="members/constants.html#dorieh.gis.constants.RasterizationStrategy">RasterizationStrategy (class in dorieh.gis.constants)</a>, <a href="strategy.html#dorieh.gis.constants.RasterizationStrategy">[1]</a>
 </li>
-      <li><a href="members/config.html#dorieh.rasters.config.GridContext.raw_downloads">raw_downloads (GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.raw_downloads">[1]</a>
+      <li><a href="members/config.html#dorieh.rasters.config.GridContext.raw_downloads">raw_downloads (GridContext attribute)</a>
 
       <ul>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.raw_downloads">(GridMETContext attribute)</a>
@@ -4206,6 +4780,12 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/db.html#dorieh.platform.db.Connection.read_config">read_config() (Connection class method)</a>
 </li>
       <li><a href="members/fts2yaml.html#dorieh.cms.fts2yaml.CMSFTS.read_file">read_file() (CMSFTS method)</a>
+</li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.read_fst">read_fst() (in module dorieh.utils.pyfst)</a>
+</li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.read_next">read_next() (FSTReader method)</a>
+</li>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.read_parquet">read_parquet() (in module dorieh.platform.util.spsql)</a>
 </li>
       <li><a href="members/fwf.html#dorieh.utils.fwf.FWFReader.read_record">read_record() (FWFReader method)</a>
 
@@ -4285,15 +4865,19 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/db.html#dorieh.platform.db.Connection.resolve_host">resolve_host() (Connection class method)</a>
 </li>
-      <li><a href="members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.result_set">result_set() (in module dorieh.platform.util.pg_export_parquet)</a>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.result_set">result_set() (in module dorieh.platform.util.memtest)</a>
 
       <ul>
+        <li><a href="members/pg_export_parquet.html#dorieh.platform.util.pg_export_parquet.result_set">(in module dorieh.platform.util.pg_export_parquet)</a>
+</li>
         <li><a href="members/pg_json_dump.html#dorieh.platform.util.pg_json_dump.result_set">(in module dorieh.platform.util.pg_json_dump)</a>
 </li>
       </ul></li>
       <li><a href="members/db.html#dorieh.platform.db.ResultSetDeprecated">ResultSetDeprecated (class in dorieh.platform.db)</a>
 </li>
       <li><a href="members/fwf.html#dorieh.utils.fwf.FWFReader.params.ret_dict">ret_dict (dorieh.utils.fwf.FWFReader parameter)</a>
+</li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.FSTReader.rewind">rewind() (FSTReader method)</a>
 </li>
       <li><a href="members/netCDF_components_consolidator.html#dorieh.rasters.netCDF_components_consolidator.NetCDFDataset.rio_dataset">rio_dataset (NetCDFDataset attribute)</a>
 </li>
@@ -4326,10 +4910,20 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/project_loader.html#dorieh.platform.loader.project_loader.ProjectLoader.run">(ProjectLoader method)</a>
 </li>
+        <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner.run">(SparkDBTRunner method)</a>
+</li>
         <li><a href="members/vacuum.html#dorieh.platform.loader.vacuum.Vacuum.run">(Vacuum method)</a>
 </li>
       </ul></li>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.run_query">run_query() (in module dorieh.platform.util.memtest)</a>
+</li>
       <li><a href="members/dbt_runner.html#dorieh.platform.dbt.dbt_runner.PGDBTRunner.run_script">run_script() (PGDBTRunner method)</a>
+
+      <ul>
+        <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner.run_script">(SparkDBTRunner method)</a>
+</li>
+      </ul></li>
+      <li><a href="members/memtest.html#dorieh.platform.util.memtest.run_write">run_write() (in module dorieh.platform.util.memtest)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -4343,8 +4937,6 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.enum.params.s">(dorieh.epa.airnow_ds_def.AirNowContext.enum parameter)</a>
 </li>
         <li><a href="members/aqs_ds_def.html#dorieh.epa.aqs_ds_def.AQSContext.enum.params.s">(dorieh.epa.aqs_ds_def.AQSContext.enum parameter)</a>
-</li>
-        <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.enum.params.s">(dorieh.rasters.config.GridContext.enum parameter)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.enum.params.s">(dorieh.rasters.config.GridMETContext.enum parameter)</a>
 </li>
@@ -4434,7 +5026,7 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.AirNowContext.shapes">shapes (AirNowContext attribute)</a>
 
       <ul>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.shapes">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.shapes">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.shapes">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.shapes">(GridMETContext attribute)</a>
 </li>
@@ -4442,7 +5034,7 @@ window.addEventListener("load", () => mermaid.run());
       <li><a href="members/gridmet_tools.html#dorieh.rasters.gridmet_tools.find_shape_file.params.shapes_dir">shapes_dir (dorieh.rasters.gridmet_tools.find_shape_file parameter)</a>, <a href="rasters_tools.html#dorieh.rasters.gridmet_tools.find_shape_file.params.shapes_dir">[1]</a>
 
       <ul>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.shapes_dir">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.shapes_dir">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.shapes_dir">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.shapes_dir">(GridMETContext attribute)</a>
 </li>
@@ -4477,14 +5069,16 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Parameter.SO2">SO2 (Parameter attribute)</a>
 </li>
+      <li><a href="members/spark_dbt_runner.html#dorieh.platform.dbt.spark_dbt_runner.SparkDBTRunner">SparkDBTRunner (class in dorieh.platform.dbt.spark_dbt_runner)</a>
+</li>
       <li><a href="members/io_utils.html#dorieh.utils.io_utils.SpecialValues">SpecialValues (class in dorieh.utils.io_utils)</a>
 </li>
       <li><a href="gridmet_bands.html#dorieh.rasters.config.GridmetVariable.sph">sph (GridmetVariable attribute)</a>, <a href="members/config.html#dorieh.rasters.config.GridmetVariable.sph">[1]</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/domain.html#dorieh.platform.data_model.domain.Domain.spillover_table">spillover_table() (Domain method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="members/utils.html#dorieh.platform.data_model.utils.split">split() (in module dorieh.platform.data_model.utils)</a>
 
       <ul>
@@ -4521,6 +5115,8 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/cwl_generator.html#dorieh.platform.util.cwl_generator.CWLGenerator.start_outputs">start_outputs() (CWLGenerator method)</a>
 </li>
+      <li><a href="members/spsql.html#dorieh.platform.util.spsql.start_session">start_session() (in module dorieh.platform.util.spsql)</a>
+</li>
       <li><a href="members/cwl_generator.html#dorieh.platform.util.cwl_generator.CWLGenerator.start_steps">start_steps() (CWLGenerator method)</a>
 </li>
       <li><a href="members/element.html#dorieh.platform.dictionary.element.start_table">start_table() (in module dorieh.platform.dictionary.element)</a>
@@ -4537,7 +5133,7 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="census_modules.html#dorieh.census.query.get_census_data.params.state">(dorieh.census.query.get_census_data parameter)</a>
 </li>
       </ul></li>
-      <li><a href="members/config.html#dorieh.rasters.config.GridContext.statistics">statistics (GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.statistics">[1]</a>
+      <li><a href="members/config.html#dorieh.rasters.config.GridContext.statistics">statistics (GridContext attribute)</a>
 
       <ul>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.statistics">(GridMETContext attribute)</a>
@@ -4578,7 +5174,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/task.html#dorieh.rasters.task.ComputeShapesTask.params.strategy">(dorieh.rasters.task.ComputeShapesTask parameter)</a>, <a href="rasters_task.html#dorieh.rasters.task.ComputeShapesTask.params.strategy">[1]</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.strategy">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.strategy">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.strategy">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.strategy">(GridMETContext attribute)</a>
 </li>
@@ -4658,7 +5254,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
         <li><a href="members/epa_registry.html#dorieh.epa.registry.EPAConfig.table">(EPAConfig attribute)</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.table">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.table">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.table">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.table">(GridMETContext attribute)</a>
 </li>
@@ -4727,7 +5323,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
       <li><a href="members/downloader.html#dorieh.gis.downloader.CensusShapeCollection.tiger">tiger (CensusShapeCollection attribute)</a>
 </li>
-      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.timeout">timeout (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>
+      <li><a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.timeout">timeout (dorieh.platform.util.executors.BlockingThreadPoolExecutor parameter)</a>, <a href="members/executors.html#dorieh.platform.util.executors.BlockingThreadPoolExecutor.params.timeout">[1]</a>
 </li>
       <li><a href="members/inserter.html#dorieh.platform.data_model.inserter.Inserter.timer">timer() (Inserter method)</a>
 </li>
@@ -4960,7 +5556,7 @@ window.addEventListener("load", () => mermaid.run());
       <ul>
         <li><a href="census_modules.html#dorieh.census.query.get_census_data.params.variables">(dorieh.census.query.get_census_data parameter)</a>
 </li>
-        <li><a href="members/config.html#dorieh.rasters.config.GridContext.variables">(GridContext attribute)</a>, <a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.variables">[1]</a>
+        <li><a href="members/config.html#dorieh.rasters.config.GridContext.variables">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.variables">(GridMETContext attribute)</a>
 </li>
@@ -4971,6 +5567,8 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="members/interpolate_ma.html#dorieh.utils.interpolation.interpolate_ma.get_indices.params.vec">(dorieh.utils.interpolation.interpolate_ma.get_indices parameter)</a>
 </li>
       </ul></li>
+      <li><a href="members/pyfst.html#dorieh.utils.pyfst.vector2list">vector2list() (in module dorieh.utils.pyfst)</a>
+</li>
       <li><a href="members/common.html#dorieh.platform.loader.common.DBConnectionConfig.verbose">verbose (DBConnectionConfig attribute)</a>
 </li>
       <li><a href="members/aggregates.html#dorieh.cms.aggregates.Aggregator.verify">verify() (Aggregator method)</a>
@@ -5153,8 +5751,6 @@ window.addEventListener("load", () => mermaid.run());
         <li><a href="census_modules.html#dorieh.census.assemble_data.DataPlan.params.years">(dorieh.census.assemble_data.DataPlan parameter)</a>, <a href="members/assemble_data.html#dorieh.census.assemble_data.DataPlan.params.years">[1]</a>
 </li>
         <li><a href="members/aqs_tools.html#dorieh.epa.aqs_tools.collect_aqs_download_tasks.params.years">(dorieh.epa.aqs_tools.collect_aqs_download_tasks parameter)</a>
-</li>
-        <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridContext.years">(GridContext attribute)</a>
 </li>
         <li><a href="rasters_ds_def.html#dorieh.rasters.config.GridMETContext.years">(GridMETContext attribute)</a>
 </li>

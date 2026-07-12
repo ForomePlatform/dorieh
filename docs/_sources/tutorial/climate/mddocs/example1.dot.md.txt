@@ -1,3 +1,7 @@
+---
+orphan: true
+---
+
 # Table Lineage Diagram
 
 
@@ -23,5 +27,3 @@ tables/silver_temperature.md
 Diagram illustrating data flow during transformations
 
 ```
-
-
