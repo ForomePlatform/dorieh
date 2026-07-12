@@ -113,6 +113,7 @@ class AirNowDownloader:
             In practice because of AirNow API limitations, if more than
             one parameter is specified, a runtime error will occur.
             Possible values:
+
                 - Ozone (O3, ozone)
                 - PM2.5 (pm25)
                 - PM10 (pm10)

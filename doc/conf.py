@@ -84,6 +84,19 @@ html_theme_options = {
     "navigation_depth": 3,
 }
 
+# Mock optional/heavy dependencies during autodoc imports, so API pages build
+# in any environment: rpy2 (FST support, requires a matching R installation),
+# pyspark/pyhive (the [spark] extra) and memory_profiler (used by memtest).
+# Without this, a missing — or broken, e.g. linked against an uninstalled R —
+# dependency leaves the affected module pages empty and spams the build log.
+autodoc_mock_imports = [
+    "rpy2",
+    "pyspark",
+    "pyhive",
+    "memory_profiler",
+    "pympler",
+]
+
 source_suffix = {
     '.rst': 'restructuredtext',
     '.txt': 'restructuredtext'
