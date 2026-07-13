@@ -39,6 +39,3 @@ docker manifest annotate forome/dorieh:latest  forome/dorieh:amd64-${dorieh_vers
 docker manifest annotate forome/dorieh:latest  forome/dorieh:arm64-${dorieh_version} --arch arm64
 docker manifest push forome/dorieh:latest
 ```
-
-
-
