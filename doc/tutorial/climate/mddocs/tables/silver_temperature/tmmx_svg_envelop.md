@@ -1,6 +1,8 @@
-# Column Lineage SVG Diagram
+# Column silver_temperature.tmmx Lineage SVG
 
 ```{raw} html
-:file: tmmx.svg
+:file: /Users/misha/harvard/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/tmmx.svg
 
 ```
+
+

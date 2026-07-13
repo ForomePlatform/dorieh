@@ -37,11 +37,12 @@ tools written in widely used languages such as Python, C/C++ and Java, it also
 supports tools written in R and PL/pgSQL, making it, to the best of our
 knowledge, one of the first deployment-ready platforms appropriate for ETL/ELT
 pipelines. Dorieh workflows run on any open-source production-ready CWL
-implementation, such as Toil, cwltool or CWL-Airflow. For the full containerized
-platform we selected CWL-Airflow to take advantage of its user interface, which
-allows interactive control of the execution process; for running individual
-workflows from a Python environment we recommend Toil (see
-[Deployment](home.md#deployment) for the current recommendation). The data is eventually
+implementation, such as Toil, cwltool or CWL-Airflow. We initially adopted
+CWL-Airflow for its graphical user interface, but in practice it proved
+insufficiently stable and feature-complete, and its UI added only marginal
+value; the platform has since moved to Toil, which — although it has no UI —
+is fully functional and is the recommended runner (see
+[Deployment](home.md#deployment)). The data is eventually
 stored in a PostgreSQL DBMS; many processing steps are being run inside the
 database itself. The data platform is deployed as a set of Docker containers
 orchestrated by Docker-Compose. Conda (package manager) environment files and
