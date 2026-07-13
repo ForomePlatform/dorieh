@@ -36,6 +36,7 @@ from pathlib import Path
 from typing import List, Tuple, Optional, Dict
 
 import yaml
+from psycopg2 import errors
 
 from dorieh.platform import init_logging
 from dorieh.platform.data_model.domain import Domain
@@ -81,13 +82,32 @@ class MedicareCombinedView:
         logging.info(self.sql)
         # print(self.sql)
 
+    def ensure_schema(self):
+        """
+        Creates the target schema in its own transaction, tolerating a
+        concurrent workflow branch creating it at the same time:
+        CREATE SCHEMA IF NOT EXISTS is not concurrency-safe in PostgreSQL
+        and can fail with a unique constraint violation on pg_namespace.
+        """
+        with Connection(self.context.db,
+                        self.context.connection) as cnxn:
+            try:
+                with cnxn.cursor() as cursor:
+                    cursor.execute(
+                        "CREATE SCHEMA IF NOT EXISTS {}".format(self.schema)
+                    )
+                cnxn.commit()
+            except (errors.UniqueViolation, errors.DuplicateSchema):
+                pass
+
     def execute(self):
         if self.context.dryrun:
             print("Dry run: nothing is done")
             return
         if not self.sql:
             self.generate_sql()
-            
+        self.ensure_schema()
+
         with Connection(self.context.db,
                         self.context.connection) as cnxn:
             with cnxn.cursor() as cursor:

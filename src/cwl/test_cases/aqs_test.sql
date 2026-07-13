@@ -13,7 +13,7 @@ SELECT
 	'epa.pm25_annual.address' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(address::varchar, '' order by address)) FROM epa.pm25_annual) = 'b8ec4941d98cc68ed3be4e73e84dec34' 
+		WHEN (SELECT MD5(string_agg(address::varchar, '' order by address)) FROM epa.pm25_annual) = '017c78a765d50cc191bf7d42749ba95f' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -63,7 +63,7 @@ SELECT
 	'epa.pm25_annual.c_10th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_10th_percentile) FROM epa.pm25_annual) BETWEEN 4.214776471116298 AND 4.2999234705327884 
+		WHEN (SELECT AVG(c_10th_percentile) FROM epa.pm25_annual) BETWEEN 4.216696126397056 AND 4.301881906728309 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -73,7 +73,7 @@ SELECT
 	'epa.pm25_annual.c_10th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_10th_percentile) FROM epa.pm25_annual) BETWEEN 2.9870818746231578 AND 3.047426962999383 
+		WHEN (SELECT VARIANCE(c_10th_percentile) FROM epa.pm25_annual) BETWEEN 3.0000401825407184 AND 3.0606470549152784 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -323,7 +323,7 @@ SELECT
 	'epa.pm25_annual.c_50th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_50th_percentile) FROM epa.pm25_annual) BETWEEN 8.43221065342815 AND 8.602558343396396 
+		WHEN (SELECT AVG(c_50th_percentile) FROM epa.pm25_annual) BETWEEN 8.432494029249966 AND 8.602847443982288 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -333,7 +333,7 @@ SELECT
 	'epa.pm25_annual.c_50th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_50th_percentile) FROM epa.pm25_annual) BETWEEN 6.9942279058508126 AND 7.135525439302344 
+		WHEN (SELECT VARIANCE(c_50th_percentile) FROM epa.pm25_annual) BETWEEN 6.991554119735367 AND 7.132797637305778 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -343,7 +343,7 @@ SELECT
 	'epa.pm25_annual.c_75th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_75th_percentile) FROM epa.pm25_annual) BETWEEN 12.100373406681873 AND 12.344825394695649 
+		WHEN (SELECT AVG(c_75th_percentile) FROM epa.pm25_annual) BETWEEN 12.100833892392325 AND 12.345295183147725 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -353,7 +353,7 @@ SELECT
 	'epa.pm25_annual.c_75th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_75th_percentile) FROM epa.pm25_annual) BETWEEN 13.716797174058666 AND 13.993904187676012 
+		WHEN (SELECT VARIANCE(c_75th_percentile) FROM epa.pm25_annual) BETWEEN 13.711827473910603 AND 13.988834089545161 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -363,7 +363,7 @@ SELECT
 	'epa.pm25_annual.c_90th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_90th_percentile) FROM epa.pm25_annual) BETWEEN 16.797433919227156 AND 17.136776018605484 
+		WHEN (SELECT AVG(c_90th_percentile) FROM epa.pm25_annual) BETWEEN 16.798532000536696 AND 17.137896283375824 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -373,7 +373,7 @@ SELECT
 	'epa.pm25_annual.c_90th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_90th_percentile) FROM epa.pm25_annual) BETWEEN 29.31917969172518 AND 29.911486352164072 
+		WHEN (SELECT VARIANCE(c_90th_percentile) FROM epa.pm25_annual) BETWEEN 29.318276571821336 AND 29.910564987413686 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -383,7 +383,7 @@ SELECT
 	'epa.pm25_annual.c_95th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_95th_percentile) FROM epa.pm25_annual) BETWEEN 20.343191600697708 AND 20.754165168388568 
+		WHEN (SELECT AVG(c_95th_percentile) FROM epa.pm25_annual) BETWEEN 20.34372293036361 AND 20.75470723198712 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -393,7 +393,7 @@ SELECT
 	'epa.pm25_annual.c_95th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_95th_percentile) FROM epa.pm25_annual) BETWEEN 51.71126708389841 AND 52.75593914619939 
+		WHEN (SELECT VARIANCE(c_95th_percentile) FROM epa.pm25_annual) BETWEEN 51.70482819963449 AND 52.74937018346549 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -403,7 +403,7 @@ SELECT
 	'epa.pm25_annual.c_98th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_98th_percentile) FROM epa.pm25_annual) BETWEEN 24.47118918556286 AND 24.96555664385706 
+		WHEN (SELECT AVG(c_98th_percentile) FROM epa.pm25_annual) BETWEEN 24.471933047095128 AND 24.96631553289503 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -413,7 +413,7 @@ SELECT
 	'epa.pm25_annual.c_98th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_98th_percentile) FROM epa.pm25_annual) BETWEEN 101.30361781387292 AND 103.35015554748652 
+		WHEN (SELECT VARIANCE(c_98th_percentile) FROM epa.pm25_annual) BETWEEN 101.29877585781654 AND 103.34521577413605 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -423,7 +423,7 @@ SELECT
 	'epa.pm25_annual.c_99th_percentile' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(c_99th_percentile) FROM epa.pm25_annual) BETWEEN 27.462943955700442 AND 28.017750904300453 
+		WHEN (SELECT AVG(c_99th_percentile) FROM epa.pm25_annual) BETWEEN 27.464853838253024 AND 28.019699370338945 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -433,7 +433,7 @@ SELECT
 	'epa.pm25_annual.c_99th_percentile' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(c_99th_percentile) FROM epa.pm25_annual) BETWEEN 140.6019653419089 AND 143.4424090861899 
+		WHEN (SELECT VARIANCE(c_99th_percentile) FROM epa.pm25_annual) BETWEEN 140.58937151979842 AND 143.4295608434307 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -453,7 +453,7 @@ SELECT
 	'epa.pm25_annual.cbsa_name' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(cbsa_name::varchar, '' order by cbsa_name)) FROM epa.pm25_annual) = '435e06257feb510077b4cb00579de15c' 
+		WHEN (SELECT MD5(string_agg(cbsa_name::varchar, '' order by cbsa_name)) FROM epa.pm25_annual) = 'cee6d8c0da6a96806a709992b94e463e' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -493,7 +493,7 @@ SELECT
 	'epa.pm25_annual.city_name' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(city_name::varchar, '' order by city_name)) FROM epa.pm25_annual) = '9e5b315a03079f29487dc96ca5c71e9f' 
+		WHEN (SELECT MD5(string_agg(city_name::varchar, '' order by city_name)) FROM epa.pm25_annual) = '992a4a707e432c23c9b78023ed6f6317' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -513,7 +513,7 @@ SELECT
 	'epa.pm25_annual.completeness_indicator' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(completeness_indicator::varchar, '' order by completeness_indicator)) FROM epa.pm25_annual) = '539dd1484c25c4e94179a87fdbdc1797' 
+		WHEN (SELECT MD5(string_agg(completeness_indicator::varchar, '' order by completeness_indicator)) FROM epa.pm25_annual) = '5461c5d506ebdf6066c67bef4336b812' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -553,7 +553,7 @@ SELECT
 	'epa.pm25_annual.county_name' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(county_name::varchar, '' order by county_name)) FROM epa.pm25_annual) = '93535ce373a28952de173338fab7f64a' 
+		WHEN (SELECT MD5(string_agg(county_name::varchar, '' order by county_name)) FROM epa.pm25_annual) = '1cf0357a36e6f5ae6b4217a93a7dfb5a' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -563,7 +563,7 @@ SELECT
 	'epa.pm25_annual.date_of_last_change' As table_column,
 	'count distinct' As Testing,
 	CASE 
-		WHEN (SELECT COUNT(DISTINCT date_of_last_change) FROM epa.pm25_annual) = '68' 
+		WHEN (SELECT COUNT(DISTINCT date_of_last_change) FROM epa.pm25_annual) = '94' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -583,7 +583,7 @@ SELECT
 	'epa.pm25_annual.datum' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(datum::varchar, '' order by datum)) FROM epa.pm25_annual) = '0013c6d2e81e5d29e4c7a105701e06fa' 
+		WHEN (SELECT MD5(string_agg(datum::varchar, '' order by datum)) FROM epa.pm25_annual) = '82da8e6a639adbb94f90ddedc77d2907' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -633,7 +633,7 @@ SELECT
 	'epa.pm25_annual.latitude' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(latitude) FROM epa.pm25_annual) BETWEEN 37.87440706480886 AND 38.63954660147166 
+		WHEN (SELECT AVG(latitude) FROM epa.pm25_annual) BETWEEN 37.87440607745544 AND 38.639545594171715 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -643,7 +643,7 @@ SELECT
 	'epa.pm25_annual.latitude' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(latitude) FROM epa.pm25_annual) BETWEEN 40.95304480806424 AND 41.780379046610996 
+		WHEN (SELECT VARIANCE(latitude) FROM epa.pm25_annual) BETWEEN 40.952942559216886 AND 41.78027473213036 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -653,7 +653,7 @@ SELECT
 	'epa.pm25_annual.local_site_name' As table_column,
 	'count distinct' As Testing,
 	CASE 
-		WHEN (SELECT COUNT(DISTINCT local_site_name) FROM epa.pm25_annual) = '987' 
+		WHEN (SELECT COUNT(DISTINCT local_site_name) FROM epa.pm25_annual) = '990' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -663,7 +663,7 @@ SELECT
 	'epa.pm25_annual.local_site_name' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(local_site_name::varchar, '' order by local_site_name)) FROM epa.pm25_annual) = '2363dbd02bdea3f5a92c72132002d50f' 
+		WHEN (SELECT MD5(string_agg(local_site_name::varchar, '' order by local_site_name)) FROM epa.pm25_annual) = 'f9cdae2b6e6501d4c77c2498040139ea' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -673,7 +673,7 @@ SELECT
 	'epa.pm25_annual.longitude' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(longitude) FROM epa.pm25_annual) BETWEEN -97.02862377917171 AND -95.10726489245545 
+		WHEN (SELECT AVG(longitude) FROM epa.pm25_annual) BETWEEN -97.02861895458119 AND -95.10726016340135 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -683,7 +683,7 @@ SELECT
 	'epa.pm25_annual.longitude' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(longitude) FROM epa.pm25_annual) BETWEEN 367.72995074407123 AND 375.1588386378908 
+		WHEN (SELECT VARIANCE(longitude) FROM epa.pm25_annual) BETWEEN 367.7300079645992 AND 375.1588970143891 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -813,7 +813,7 @@ SELECT
 	'epa.pm25_annual.observation_percent' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(observation_percent) FROM epa.pm25_annual) BETWEEN 85.05879388700765 AND 86.77715335947246 
+		WHEN (SELECT AVG(observation_percent) FROM epa.pm25_annual) BETWEEN 85.01927152022813 AND 86.73683256104081 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -823,7 +823,7 @@ SELECT
 	'epa.pm25_annual.observation_percent' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(observation_percent) FROM epa.pm25_annual) BETWEEN 425.121429824265 AND 433.7097415378866 
+		WHEN (SELECT VARIANCE(observation_percent) FROM epa.pm25_annual) BETWEEN 426.9307720069003 AND 435.55563608784786 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -913,7 +913,7 @@ SELECT
 	'epa.pm25_annual.primary_exceedance_count' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(primary_exceedance_count) FROM epa.pm25_annual) BETWEEN 11.910249382161313 AND 12.150860480790834 
+		WHEN (SELECT AVG(primary_exceedance_count) FROM epa.pm25_annual) BETWEEN 11.697833446174679 AND 11.934153313774166 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -923,7 +923,7 @@ SELECT
 	'epa.pm25_annual.primary_exceedance_count' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(primary_exceedance_count) FROM epa.pm25_annual) BETWEEN 1023.1723800368542 AND 1043.8425291285077 
+		WHEN (SELECT VARIANCE(primary_exceedance_count) FROM epa.pm25_annual) BETWEEN 1008.0772510238747 AND 1028.4424480142561 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -943,7 +943,7 @@ SELECT
 	'epa.pm25_annual.record' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(record::varchar, '' order by record)) FROM epa.pm25_annual) = '8decb2ac4b6cf4b5c072f55fac567034' 
+		WHEN (SELECT MD5(string_agg(record::varchar, '' order by record)) FROM epa.pm25_annual) = 'd7834daafcaab498c0f60e05b029e9f3' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -953,7 +953,7 @@ SELECT
 	'epa.pm25_annual.required_day_count' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(required_day_count) FROM epa.pm25_annual) BETWEEN 179.93364685439317 AND 183.56867002316878 
+		WHEN (SELECT AVG(required_day_count) FROM epa.pm25_annual) BETWEEN 179.95446667260737 AND 183.58991044377117 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -963,7 +963,7 @@ SELECT
 	'epa.pm25_annual.required_day_count' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(required_day_count) FROM epa.pm25_annual) BETWEEN 15344.579315941797 AND 15654.570817273956 
+		WHEN (SELECT VARIANCE(required_day_count) FROM epa.pm25_annual) BETWEEN 15338.915763404939 AND 15648.792849534331 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -993,7 +993,7 @@ SELECT
 	'epa.pm25_annual.secondary_exceedance_count' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(secondary_exceedance_count) FROM epa.pm25_annual) BETWEEN 5.492042237699394 AND 5.602992585935745 
+		WHEN (SELECT AVG(secondary_exceedance_count) FROM epa.pm25_annual) BETWEEN 5.414129993229519 AND 5.523506356729106 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -1003,7 +1003,7 @@ SELECT
 	'epa.pm25_annual.secondary_exceedance_count' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(secondary_exceedance_count) FROM epa.pm25_annual) BETWEEN 250.943208448186 AND 256.01276821481605 
+		WHEN (SELECT VARIANCE(secondary_exceedance_count) FROM epa.pm25_annual) BETWEEN 248.4209059496083 AND 253.43951011020647 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -1063,7 +1063,7 @@ SELECT
 	'epa.pm25_annual.state_name' As table_column,
 	'MD5 value' As Testing,
 	CASE 
-		WHEN (SELECT MD5(string_agg(state_name::varchar, '' order by state_name)) FROM epa.pm25_annual) = '60aba94c47b8dd8e0b9c1b58838bd450' 
+		WHEN (SELECT MD5(string_agg(state_name::varchar, '' order by state_name)) FROM epa.pm25_annual) = 'd5fcf4c5dcc391f4ea2ba5b1f3c96ac9' 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -1093,7 +1093,7 @@ SELECT
 	'epa.pm25_annual.valid_day_count' As table_column,
 	'Mean value' As Testing,
 	CASE 
-		WHEN (SELECT AVG(valid_day_count) FROM epa.pm25_annual) BETWEEN 150.58524594546427 AND 153.62737212618075 
+		WHEN (SELECT AVG(valid_day_count) FROM epa.pm25_annual) BETWEEN 150.5556041703796 AND 153.597131527357 
 		THEN true ELSE false END AS passed
 
 -- Test case end
@@ -1103,7 +1103,7 @@ SELECT
 	'epa.pm25_annual.valid_day_count' As table_column,
 	'Variance' As Testing,
 	CASE 
-		WHEN (SELECT VARIANCE(valid_day_count) FROM epa.pm25_annual) BETWEEN 12110.537283035874 AND 12355.194601885085 
+		WHEN (SELECT VARIANCE(valid_day_count) FROM epa.pm25_annual) BETWEEN 12113.513359820523 AND 12358.230801433057 
 		THEN true ELSE false END AS passed
 
 -- Test case end

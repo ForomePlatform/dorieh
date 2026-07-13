@@ -116,10 +116,21 @@ steps:
         valueFrom: epa.yaml
     out: [log, model]
 
+  initdb:
+    run: initcoredb.cwl
+    doc: Ensure that database utilities are at their latest version
+    in:
+      database: database
+      connection_name: connection_name
+    out:
+      - log
+      - err
+
   ingest:
     run: ingest.cwl
     doc: Uploads data into the database
     in:
+      depends_on: initdb/log
       registry: introspect/model
       domain:
         valueFrom: "epa"
