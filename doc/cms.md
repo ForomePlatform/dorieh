@@ -7,7 +7,10 @@ ETL pipelines that build Health Data Warehouse
 and Feature Store.
 
 The canonical landing page for the Medicare case study is
-[Medicare: Building a Data Warehouse from ResDac Files](Medicare.md).
+[Medicare: Building a Data Warehouse from ResDac Files](Medicare.md);
+the generated
+[data dictionary and lineage](MedicareLineage.md) documents every table
+and column of the Medicare warehouse.
 
 ```{toctree}
 ---
@@ -18,11 +21,10 @@ caption: Health Data Processing
 health_data_overview.md
 Medicare.md
 Medicaid.md
+See also <health_seealso>
 ```
 
 Related pages that live in other sections of this documentation:
 
-* [Data dictionary and lineage for Medicare processing](MedicareLineage.md) —
-  under the Medicare case study
 * [Querying Medicaid Data](QueringMedicaid.md) — under Platform Capabilities
 
