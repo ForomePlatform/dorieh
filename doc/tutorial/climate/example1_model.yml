@@ -10,7 +10,7 @@ tutorial:
       columns:
         - tmmx:
             type: float
-            description: Maximum temperature variable from the TerraClimate dataset in K
+            description: Maximum daily temperature from the gridMET dataset, in K
             reference: https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands
         - date:
             type: date

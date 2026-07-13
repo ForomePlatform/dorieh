@@ -7,19 +7,28 @@ local:
 ```
 
 ```{seealso}
-[Medicare: Building a Data Warehouse from ResDac Files](../../Medicare.md) — the reference this tutorial walks through.
-[Example: Medicare Processing Pipeline with Synthetic Data](../../medicare-example.md) — the guide to running the pipeline yourself.
+* [Medicare: Building a Data Warehouse from ResDac Files](../../Medicare.md) — the reference this tutorial walks through.
+* [Example: Medicare Processing Pipeline with Synthetic Data](../../medicare-example.md) — the guide to running the pipeline yourself.
 ```
 
 ## Introduction
 
 This tutorial plays the same role for the Medicare case study that the
-[climate tutorial](../climate/building-climate-pipeline.md) plays for the
-climate example — with one important difference. The climate tutorial builds
-a small pipeline from scratch; the Medicare pipeline already exists in the
-repository as a production-scale artifact. Instead of writing files, you
-will read them, retracing the design decisions behind them and following
-the data from raw claims files to a quality-control dashboard.
+[climate tutorial](../climate/index.md) plays for the climate example —
+with one important difference. The climate tutorial builds a small pipeline
+from scratch; the Medicare pipeline already exists in the repository as a
+production-scale artifact. Instead of writing files, you will read them,
+retracing the design decisions behind them and following the data from raw
+claims files to a quality-control dashboard.
+
+The two tutorials are meant to be read as a matched pair. The
+[design section](#designing-the-pipeline) below follows the same five
+design steps that shaped the climate pipeline (see
+[how that pipeline was designed](../climate/building-climate-pipeline.md#how-this-pipeline-was-designed)):
+identify the sources, specify the consumers, map the dataflow, lay out the
+topology, plan documentation and provenance. What each step settles in a
+sentence for open climate data takes a real decision for restricted,
+drifting claims data — so here the steps are named and taken one at a time.
 
 Two artifacts define the entire pipeline:
 
@@ -41,30 +50,38 @@ the [concepts page](../../concepts.md) first.
 ## Designing the pipeline
 
 Before opening the model file, it is worth reconstructing how this pipeline
-was designed — starting, as in the climate tutorial, from the data itself.
+was designed. Each step below records a design decision; the walkthrough
+that follows shows it written down in `medicare.yaml` and `medicare.cwl`.
 
-### Start from the sources
+### Step 1. Identify data sources and producers
 
-The inputs are administrative claims files distributed by ResDAC, the
-research distributor of CMS Medicare data. For each year the pipeline
-expects at least two deliverables: a beneficiary summary file (MBSF, also
-called the patient summary or denominator) and an inpatient admissions file
-(MEDPAR); in some years the beneficiary summary arrives split into
-components (the `mbsf_d` files carry the monthly dual-eligibility
-indicators). The data files are fixed-width text (`.dat`), each accompanied
-by a File Transfer Summary ([FTS](../../fts.md)) document — a plain-text,
-human-readable layout of column names, types, widths and positions.
+The inputs are administrative claims files produced by CMS and distributed
+to researchers by ResDAC. For each year the pipeline expects at least two
+deliverables: a beneficiary summary file (MBSF, also called the patient
+summary or denominator) and an inpatient admissions file (MEDPAR); in some
+years the beneficiary summary arrives split into components (the `mbsf_d`
+files carry the monthly dual-eligibility indicators). The data files are
+fixed-width text (`.dat`), each accompanied by a File Transfer Summary
+([FTS](../../fts.md)) document — a plain-text, human-readable layout of
+column names, types, widths and positions.
 
-Two properties of these sources drive the whole design. First, the schemas
-drift: column names, types and even the set of files change from year to
-year — see
-[the overview of ingesting raw Medicare files](../../Medicare.md#ingesting-raw-files).
-Second, access to the real files is restricted by data use agreements; the
-repository instead ships a
-[synthetic look-alike dataset](../../medicare-example.md) reproducing the
-file formats with no real person's data.
+Three properties of these sources drive the whole design:
 
-### Know your consumers
+* **The schemas drift.** Column names, types and even the set of files
+  change from year to year — see
+  [the overview of ingesting raw Medicare files](../../Medicare.md#ingesting-raw-files).
+  No hand-written schema would survive; the layouts must come from the FTS
+  documents themselves.
+* **Access is restricted.** The real files may only be used within
+  environments covered by a data use agreement; the repository instead
+  ships a [synthetic look-alike dataset](../../medicare-example.md)
+  reproducing the file formats with no real person's data.
+* **The data grows by whole years.** A new deliverable adds a year's worth
+  of files rather than revising the years already loaded, so ingestion
+  should be able to add a year without redoing the rest — a requirement
+  Step 4 returns to.
+
+### Step 2. Specify data consumers and target outputs
 
 On the output side sit two kinds of consumers. Researchers query the
 warehouse in PostgreSQL and expect curated, indexed tables at the grains
@@ -75,11 +92,19 @@ and expect every number to be explainable: where a value came from, how
 many records were rejected and why. Both expect reproducibility and
 documented provenance.
 
-### Work out the essential transformations
+Those expectations fix the target outputs: three curated tables —
+`beneficiaries`, `enrollments`, `admissions` — and the QC aggregates
+behind the dashboard, `qc_enrollments` and `qc_admissions`, in which the
+share of rejected records is an ordinary queryable measure.
+
+### Step 3. Map the logical dataflow
 
 Working backward from those outputs, a small set of transformations is
 unavoidable:
 
+* **Schemas from FTS documents** — before anything is loaded, each year's
+  layout must be turned into a machine-readable schema, since Step 1 ruled
+  out maintaining one by hand.
 * **Schema harmonization across years** — uniting the heterogeneous yearly
   files into single views with uniform column names and types.
 * **Normalization of dates and identifiers** — dates arrive as character
@@ -92,8 +117,10 @@ unavoidable:
   birth, but the yearly files may disagree; conflicts are resolved by
   deterministic [disambiguation rules](../../concepts.md#disambiguation-rules)
   that keep the discarded alternative and flag the discrepancy.
-* **Quality-control checkpoints** — failed records are journaled, never
-  silently dropped; the share of rejected data is itself queryable.
+* **Quality-control checkpoints** — each admission must pass three
+  validation checks (primary-key integrity, referential integrity against
+  enrollments, elimination of duplicates); failed records are journaled,
+  never silently dropped, so the share of rejected data is itself queryable.
 
 These transformations arrange themselves into the
 [Medallion layers](../../concepts.md#medallion-architecture-as-dorieh-implements-it):
@@ -101,28 +128,53 @@ Bronze holds the files exactly as ingested; Silver harmonizes, disambiguates
 and validates; Gold aggregates for quality control. Each layer is derived
 only from the layer beneath it.
 
-### Fix the topology
+### Step 4. Lay out the workflow topology
 
-With sources, outputs and transformations settled, the topology follows:
+With sources, outputs and dataflow settled, the topology follows:
 initialize the database, ingest the raw files, build the beneficiary and
 enrollment objects, build the admissions objects (validated against
 enrollments, so they come after), then build the QC aggregates.
-`medicare.cwl` expresses exactly this linear chain — see
-[Orchestration](#orchestration-five-steps-in-medicarecwl) below.
+`medicare.cwl` expresses exactly this chain of five steps, ordered by data
+dependencies — see [Orchestration](#orchestration-five-steps-in-medicarecwl)
+below — with the division of labor stated in the introduction: CWL declares
+the topology; what each node does to the data lives in the data-model DSL.
 
-### Plan documentation and provenance from the start
+This is also where Step 1's growth pattern is served. Ingestion is
+incremental: tables already in the database are kept and only those whose
+files appear in the input are replaced, so a new year's deliverables can be
+added without reloading previous years — with an empty input directory the
+step is skipped and later steps rebuild from what the database holds.
+Parallelism lives inside this step, too: the loader writes to the database
+over several concurrent threads (the `threads` parameter of
+[load_raw_medicare](../../pipeline/load_raw_medicare.md), four by default),
+while the in-database steps stay deliberately sequential — each Medallion
+layer is built from the one beneath it.
+
+### Step 5. Plan documentation and provenance
 
 Finally, provenance is designed in rather than reconstructed later: `FILE`
 and `RECORD` columns anchor every Bronze row to the exact line of its source
 file; the model records the derivation of every column, so data dictionaries
 and lineage diagrams can be generated from it; and the invalid-records
-policy journals every rejected record with a reason code (see
+policy journals every rejected record with a reason code, turning failures
+into auditable evidence rather than silent losses (see
 [Documentation and lineage](#documentation-and-lineage) below).
+
+### The design at a glance
+
+| Design step | Decision for Medicare | Dorieh feature used |
+|-------------|-----------------------|---------------------|
+| 1. Sources and producers | Ingest yearly ResDAC deliverables (MBSF, MEDPAR) despite schema drift; develop against a synthetic look-alike | FTS-driven schema generation |
+| 2. Consumers and outputs | Curated tables at three grains, plus QC aggregates behind a Superset dashboard | Data-modeling DSL; HLL distinct counts |
+| 3. Logical dataflow | Harmonize, disambiguate, validate — layered as Bronze/Silver/Gold | Federated views, disambiguation rules, invalid-records policy |
+| 4. Workflow topology | Five steps chained by data dependencies; incremental, multi-threaded ingestion | CWL sub-workflows wired with `depends_on` |
+| 5. Documentation and provenance | Generate the dictionary and lineage from the model; anchor every row to its source line | Generated docs, `FILE`/`RECORD` columns, audit journal |
 
 ## From FTS documents to machine-readable schemas
 
-The pipeline cannot hand-maintain a schema for every year, so it derives
-schemas from the FTS documents themselves. The
+The walkthrough begins where Step 3's dataflow does. The pipeline cannot
+hand-maintain a schema for every year, so it derives schemas from the FTS
+documents themselves. The
 [fts2yaml module](../../members/fts2yaml.rst) parses each `.fts` file into a
 YAML data model — column names, types, widths and indexing hints — which is
 then used to create the staging table and to configure the fixed-width
@@ -147,13 +199,15 @@ plus only what makes the tables joinable and traceable:
   downstream object needs — `bene_id`, `year`, `state` and `zip` — each
   hiding a year-specific original column name.
 
-This is the entire Bronze layer: minimal standardization, no cleansing, no
-filtering — see
+This is the entire Bronze layer planned in Step 3: minimal standardization,
+no cleansing, no filtering — see
 [Storing raw data in the Database](../../Medicare.md#storing-raw-data-in-the-database).
 
 ## Silver: harmonize, disambiguate, validate
 
-The Silver layer is where the model file earns its keep. It is built by the
+The Silver layer is where the model file earns its keep — the
+harmonization, disambiguation and validation mapped out in Step 3 become
+concrete declarations here. It is built by the
 [medicare_beneficiaries](../../pipeline/medicare_beneficiaries.md) and
 [medicare_admissions](../../pipeline/medicare_admissions.md) steps; every
 object in it is declared in `medicare.yaml`.
@@ -289,7 +343,8 @@ and [Validation and journaling](../../concepts.md#validation-and-journaling).
 ## Gold: the QC aggregates
 
 The Gold layer, built by the [medicare_qc](../../pipeline/medicare_qc.md)
-step, is two materialized views, each backed by a helper view.
+step, delivers the QC aggregates promised to Step 2's dashboard consumers:
+two materialized views, each backed by a helper view.
 
 For enrollments, the helper view `qc_enrl_bene` joins `enrollments` with
 `beneficiaries` (the natural join whose safety the OREC rule guarantees) and
@@ -332,14 +387,17 @@ check is thus an ordinary query — and a chart on the
 
 ## Orchestration: five steps in medicare.cwl
 
-The workflow [`medicare.cwl`](../../pipeline/medicare.md) ties the layers
-together as five steps, each a sub-workflow (or tool) of its own:
+The workflow [`medicare.cwl`](../../pipeline/medicare.md) is Step 4's
+topology made concrete: it ties the layers together as five steps, each a
+sub-workflow (or tool) of its own:
 
 1. [`initdb`](../../pipeline/initdb.md) — updates the database utilities;
 2. [`load_raw_data`](../../pipeline/load_raw_medicare.md) — the FTS-driven
    ingestion that builds the Bronze layer;
 3. [`enrollments`](../../pipeline/medicare_beneficiaries.md) — builds
-   `mbsf_d`, `ps`, `_ps`, `beneficiaries` and `enrollments`;
+   `mbsf_d` (the view uniting the split dual-eligibility component files),
+   `ps`, `_ps`, the intermediate grouping views `_beneficiaries` and
+   `_enrollments`, and the `beneficiaries` and `enrollments` tables;
 4. [`admissions`](../../pipeline/medicare_admissions.md) — builds `ip` and
    the validated `admissions` table;
 5. [`qc`](../../pipeline/medicare_qc.md) — builds the Gold QC objects.
@@ -365,8 +423,9 @@ step's logs are workflow outputs, so every run leaves a record of itself.
 
 ## Documentation and lineage
 
-Because the model file records the derivation of every column, the
-documentation of the warehouse is generated, not written: a table-level
+Here Step 5's plan pays off. Because the model file records the derivation
+of every column, the documentation of the warehouse is generated, not
+written: a table-level
 lineage diagram, a page per table, a page per column with its column-level
 lineage diagram, and an index of columns — published as the
 [Medicare data dictionary and lineage](../../MedicareLineage.md). The same

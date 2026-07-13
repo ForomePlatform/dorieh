@@ -1,4 +1,4 @@
-# Data Modelling for Dorieh Data Platform
+# Data Modeling for Dorieh Data Platform
 
 **How data models are defined and handled**
 
@@ -7,15 +7,7 @@ data-modeling DSL: the YAML directives understood by the
 [Domain](members/domain) DDL generator and the Universal Database
 Loader. Additional directives, used to combine heterogeneous
 per-year tables into federated views, are documented separately in
-[Data Modelling Extensions](DataModellingExtensions.md).
-
-```{seealso}
-**Further reading:** Appendix A of the companion book
-[*Research Data that Can Be Trusted*](about-the-book.md) covers the
-same core DSL syntax. This page is the maintained, authoritative
-reference. This documentation is self-contained; the book is optional
-enrichment.
-```
+[Data Modeling Extensions](DataModellingExtensions.md).
 
 ```{toctree}
 ---
@@ -23,11 +15,14 @@ maxdepth: 4
 hidden: 
 ---
 DataModellingExtensions
-members/domain_dictionary
-Medicare
-MedicareLineage
-Medicaid
 ```
+
+The DSL in use — worked models and tooling documented elsewhere:
+
+* [Medicare: Building a Data Warehouse from ResDac Files](Medicare.md) and
+  [Medicaid](Medicaid.md) — production-scale models written in this DSL
+* [Data dictionary and lineage for Medicare processing](MedicareLineage.md)
+* [The Data Dictionary Generation tool](members/domain_dictionary.rst)
 
 
 ```{contents}
@@ -36,7 +31,7 @@ local:
 ---
 ```
 
-## Introduction to data modelling for Dorieh Data Platform
+## Introduction to data modeling for Dorieh Data Platform
 
 Data models consist of database tables, relations between them
 (e.g. foreign keys), indices and conventions that govern things
@@ -47,8 +42,7 @@ Between domains, data can be linked based on the naming conventions
 for columns. For instance, a column named `zipcode` means the US zip
 code in any domain and thus can be used for linkages and aggregations.
 
-Currently, we are in the process of defining data models for the
-following domains
+Dorieh ships data models for the following domains:
 
 * Medicaid
 * Medicare
@@ -58,13 +52,15 @@ following domains
 * Exposure (Air pollution data)
 
 Extended functionality for data transformations is provided by
-[Data Modelling Extensions](DataModellingExtensions) that are used by 
+[Data Modeling Extensions](DataModellingExtensions) that are used by 
 [Medicare processing workflow](Medicare)  and 
 [Medicaid processing workflow](Medicaid). These functionalities include:
 
 * Combining data from different tables (approximate **union** operation)
 * Casting data types
-* Validating consistency of data across tables
+* Composing checks that validate consistency of data across tables
+  (there is no single directive; see
+  [the extensions page](DataModellingExtensions.md#validating-consistency-of-data-across-tables))
 
 See also: [](DBConnections).
 
@@ -87,7 +83,7 @@ an argument, and some tools (such as the Project Loader) can generate
 a starter model file by introspecting the data.
 
 Each model is represented by a "forest": a set of treelike
-structures of tables. It can contain one or several root tables
+structures of tables. It can contain one or several root tables.
 
 Domain should be the first entry in the YAML file:
 
@@ -102,7 +98,7 @@ The following parameters can be defined for a domain:
 |--------------|-----------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | schema       | yes       | Database schema, in which all tables are generated                                                                                                         |
 | schema.audit | no        | Database schema for tables containing audit logs of data ingestion, including corrupted, duplicate and inconsistent records                                |
-| index        | no        | Default indexing policy for this domain. This policy is used for tables that do not define their own indexing policy                                       |
+| index        | no        | Default [indexing policy](#indexing-policies) for this domain. This policy is used for tables that do not define their own indexing policy                                       |
 | tables       | yes       | list of table definitions                                                                                                                                  |
 | description  | no        | description of this domain to be included in auto-generated documentation                                                                                  |
 | reference    | no        | URL with external documentation                                                                                                                            |
@@ -121,7 +117,7 @@ The following parameters can be defined for a table:
 | indices or indexes | no        | dictionary of multi-column indices                                                                                                          |
 | primary_key        | see below | list of column names included in the table primary key                                                                                      |
 | children           | no        | list of table definitions for child tables of this table                                                                                    |
-| description        | no        | description of this domain to be included in auto-generated documentation                                                                   |
+| description        | no        | description of this table to be included in auto-generated documentation                                                                   |
 | reference          | no        | URL with external documentation                                                                                                             |
 | invalid.records    | no        | [action](#invalid-record) to be performed upon encountering an invalid record (corrupted, incomplete, duplicate, etc.)                      |
 | create             | no        | If the table or view should be created from existing database objects, see [detailed description](#create-statement)                        |
@@ -143,7 +139,10 @@ automatically from the grouping columns (see
 
 ### Create statement
 
-Describes how a table or a view should be created.
+Describes how a table or a view should be created. In the vocabulary
+of
+[The Dorieh approach](concepts.md#dataset-operators-and-field-construction-operators),
+every table or view with a `create` clause is a dataset operator.
 
 | Parameter         | Required?             | Description                                                                                                                                                                                                                             |
 |-------------------|-----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -152,7 +151,7 @@ Describes how a table or a view should be created.
 | from              | no                    | What to put into `FROM` clause: a single table or view, two relations combined with the literal keyword `natural join` (see below), or a list of table name patterns for a [federated view](DataModellingExtensions.md)                  |
 | group by          | no                    | List of columns to put into `GROUP BY` clause. Also adds a `NOT NULL` filter for every grouping column and derives the primary key of the view (see below)                                                                              |
 | nullable group by | no                    | List of columns to put into `GROUP BY` clause. Unlike `group by`, keeps records with NULL values in the grouping columns and does not derive a primary key (see below)                                                                  |
-| populate  | no, default is `True` | If `False`, then a condition that can never be satisfied will be added as `WHERE` clause, hence an empty table will be created that can be populated later. This is mostly used when additional triggers needed for population process. |
+| populate  | no, default is `True` | If `False`, then a condition that can never be satisfied will be added as `WHERE` clause, hence an empty table will be created that can be populated later. This is mostly used when additional triggers are needed for the population process. |
 
 The value of `type` is inserted verbatim into the generated
 `CREATE ...` statement, hence `materialized view` is fully supported
@@ -184,7 +183,7 @@ control:
 If `from` is a list of table name patterns (or a single pattern
 containing `*`), the core DDL generator skips the table: such
 federated views are built by the
-[Data Modelling Extensions](DataModellingExtensions.md) tooling.
+[Data Modeling Extensions](DataModellingExtensions.md) tooling.
 
 #### Group by and nullable group by
 
@@ -221,7 +220,7 @@ such records or journal them in a special audit table.
 |-------------|-----------|-------------------------------------------------------------------------------|
 | action      | yes       | Action to be performed: `INSERT` (journal in an audit table) or `IGNORE` (discard). Case-insensitive |
 | target      | yes/no    | For action INSERT - the target audit table, see below                        |
-| description | no        | description of this domain to be included in auto-generated documentation |
+| description | no        | description of this action to be included in auto-generated documentation |
 | reference   | no        | URL with external documentation                                           |
 
 The `target` value is a dictionary with two optional keys, `schema`
@@ -287,20 +286,21 @@ main table, both a single-column index and a composite
 
 #### The quality column
 
-The `quality` column is not created automatically. For every populated
-create-from table whose invalid-records action is `INSERT`, Dorieh
-unconditionally generates the back-annotating `UPDATE ... SET quality`
-statement after the table is populated — so any such validated table
-**must** declare a `quality` column, as the `admissions` table in
-`medicare.yaml` does:
+The `quality` column is not created automatically. For every table
+that is populated from another relation (a `create` statement with
+`select`/`from` and `populate` not set to `False`) and whose
+`invalid.records` action is `INSERT`, Dorieh generates an
+`UPDATE ... SET quality` statement after the table is populated. Such
+a table must therefore declare a `quality` column, as the
+`admissions` table in `medicare.yaml` does:
 
 ```yaml
                 - quality:
                     type: "VARCHAR(12) DEFAULT 'PASS'"
 ```
 
-(Declaring the column satisfies the generated statement; it does not
-gate its generation.) The `UPDATE`
+Declaring the column satisfies the generated statement; it does not
+gate its generation. The `UPDATE`
 statement back-annotates the retained rows: every row of the
 main table whose `ctid` is recorded as `REFCTID` in the audit table
 with reason `DUPLICATE` gets `quality = 'DUPLICATE'`, while
@@ -312,14 +312,19 @@ INSERT ... SELECT population statement.
 
 ## Column
 
+In the vocabulary of
+[The Dorieh approach](concepts.md#dataset-operators-and-field-construction-operators),
+every column definition with a `source` is a field construction
+operator.
+
 | Parameter   | Required? | Description                                                                                                                       |
 |-------------|-----------|-----------------------------------------------------------------------------------------------------------------------------------|
 | type        | no        | Database type. If omitted, defaults to `VARCHAR`                                                                                  |
 | source      | no        | [source](#source) of the data                                                                                                     |
 | requires    | no        | List of tables and views required to compute this column. Should be used if `source` is a SQL statement referencing other tables. |
 | index       | no        | Override default to build an index based on this column. Possible values: true/false/dictionary. See [index](#index)              |
-| identifier  | no        | Boolean. Marks a column of a view as part of the identity of the modelled entity; see [Identifier columns](#identifier-columns-and-the-identifiers-token) |
-| description | no        | description of this domain to be included in auto-generated documentation                                                         |
+| identifier  | no        | Boolean. Marks a column of a view as part of the identity of the modeled entity; see [Identifier columns](#identifier-columns-and-the-identifiers-token) |
+| description | no        | description of this column to be included in auto-generated documentation                                                         |
 | reference   | no        | URL with external documentation                                                                                                   |
 
 Beside "normal" columns, when the value is
@@ -336,10 +341,6 @@ database, such column also must define `source`.
 
 ### Source
 
-Source must be defined for special columns and for columns
-with the name in the database different from the name
-in the input source.
-
 The value of `source` can be:
 
 * a string — for tables loaded from files, the name of a column in
@@ -349,7 +350,7 @@ The value of `source` can be:
   tabular data (useful when the input has unnamed columns);
 * a list of candidate column names — an extension used when building
   federated views over tables with varying column names, see
-  [Data Modelling Extensions](DataModellingExtensions.md);
+  [Data Modeling Extensions](DataModellingExtensions.md);
 * the literal string `None` — suppresses the column definition in the
   generated DDL; used when the `create.select` statement already
   produces the column but it still has to be documented in the model;
@@ -408,7 +409,7 @@ of options like *using* or *include*, see
 | name                         | no        | A custom index name, if omitted the name will be generated                                                                                                                                              |
 | using                        | no        | The indexing method; defaults to BTREE, or to GIN for array-typed columns                                                                                                                               |
 | include                      | no        | Additional columns to include with index                                                                                                                                                                |
-| required_before_loading_data | no        | Adding this key tells the generator that this index must be created before the table is populated. Otherwise, to improve performance, indices might be created after a table is popualted with all data |
+| required_before_loading_data | no        | Adding this key tells the generator that this index must be created before the table is populated. Otherwise, to improve performance, indices might be created after a table is populated with all data |
 
 
 ### Generated columns
@@ -441,11 +442,11 @@ using provided Python code by the Universal Database Loader.
 They use the values of other columns in the same record and can call
 out to standard Python functions.
 
-The columns used for computation are listed in either `columns`
-or `parameters` sections. Column names are names of the original
-columns in the data file. To reference columns in the
-database use parameters.
-Referenced them by a number in curly brackets in the compute code.
+The columns used for computation are listed under either `columns`
+or `parameters`. Names under `columns` are the original column names
+in the data file; to reference database columns, use `parameters`.
+Reference either kind by its number in curly brackets in the compute
+code.
 
 
 Here is an example of a computed column:
@@ -479,10 +480,14 @@ Another example, using database columns:
 Here, `{1}` references the value that would be inserted into the
 table column `state` and `{2}` references the value that
 would be inserted into the table column `residence_county`.
+(This example illustrates the `parameters` syntax; see the note at
+the end of this section — it does not run unmodified against the
+current loader.)
 
 #### Execution scope of the compute code
 
-Knowing exactly how the compute code is executed helps writing one:
+Knowing exactly how the compute code is executed helps when writing
+it:
 
 * The code is a single Python expression, evaluated with `eval()` by
   the [inserter](members/inserter) module
@@ -540,7 +545,7 @@ be traced back to a source file and a position within it.
 ### Identifier columns and the `{identifiers}` token
 
 In a view definition, a column can be marked with `identifier: true`
-to declare that it is part of the identity of the modelled entity.
+to declare that it is part of the identity of the modeled entity.
 The `source` expression of any other column of the same view may then
 contain the token `{identifiers}` (in lower case). The DDL generator
 replaces the token with a parenthesized, comma-separated list built
@@ -569,18 +574,25 @@ Here `COUNT(distinct {identifiers})` expands to
 
 ### Transposing columns
                                           
-Columns can be unnested (aka exploded) or collapsed. 
+Columns can be unnested (also known as exploded) or collapsed.
+Exploding is useful when, for example, there is a separate column for
+every month. Dorieh supports two mechanisms:
 
-Exploding might be for example, useful if there is a separate column for every month. 
-The easiest way to do it is to combine these monthly columns into an array and then 
-use `unnest` function.
+* **Wide-to-long at load time.** A column with source type `range`,
+  together with `multi_column` source columns, converts wide records
+  (one column per month) into long ones (one record per month) while
+  the data is ingested; see [Source](#source).
+* **In-database collapse and unnesting.** Repeated columns of one
+  record can be collapsed into a single array column, and an array
+  can be unnested with the SQL `unnest()` function so that each
+  element becomes its own record, as in the Medicaid `monthly` view.
 
 ### Wildcards
 
 To make it easier to work with similarly named columns, Dorieh supports wildcards.
 Wildcard expression starts with `$` followed by a variable name
 (single letters are the convention used in the shipped models). Values
-are provided in square braces that follow a wildcard. 
+are provided in square brackets that follow the wildcard. 
 
 Example:
 
@@ -592,7 +604,7 @@ Example:
         - dgnscd$n
 ```
 
-Will be expanded to 25 columns named `diag1`, `diag2`, `diag25`.
+Will be expanded to 25 columns named `diag1`, `diag2`, ..., `diag25`.
 
 ## Multi-column indices
 
@@ -611,7 +623,7 @@ Index definition can also include
 | columns   | yes       | A list of columns to include in the index           |
 | using     | no        | The indexing method, the default is BTREE           |
 | include   | no        | Additional columns to include with index. Currently ignored when `unique` is also specified |
-| unique    | no        | Specifies that the index defines a unique constrain |
+| unique    | no        | Specifies that the index defines a unique constraint |
                                                       
 Example:
 
@@ -630,14 +642,6 @@ Example:
 ```
 
 
-
-## Generation of the database schema (DDL)
-
-From a domain YAML file, the database schema is
-generated in the form of PostgreSQL dialect of DDL.
-
-The main class responsible for the generation of DDL is
-[Domain](members/domain)
 
 ## Indexing policies
 
@@ -715,4 +719,23 @@ child tables:
     --limit LIMIT           Load at most specified number of records
     --buffer BUFFER         Buffer size for converting fst files
     --threads THREADS       Number of threads writing into the database
+```
+
+## Where to go next
+
+* The federated-view directives — combining heterogeneous per-year
+  tables into a single view — continue in
+  [Data Modeling Extensions](DataModellingExtensions.md).
+* To see the DSL at production scale, follow the
+  [Medicare claims pipeline tutorial](tutorial/medicare/building-medicare-pipeline.md)
+  — a guided path — with the
+  [Medicare case study](Medicare.md) as its reference; both are built
+  around `src/python/dorieh/cms/models/medicare.yaml`.
+
+```{seealso}
+**Further reading:** Appendix A of the companion book
+[*Research Data that Can Be Trusted*](about-the-book.md) covers the
+same core DSL syntax. This page is the maintained, authoritative
+reference. This documentation is self-contained; the book is optional
+enrichment.
 ```

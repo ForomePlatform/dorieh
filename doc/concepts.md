@@ -70,7 +70,11 @@ of the medallion architecture:
   are normalized and invalid records are filtered out and journaled.
 * **Gold** — analytic and quality-control (QC) aggregates, built *only*
   from Silver objects. Gold datasets are typically materialized views
-  grouped by the dimensions users actually query.
+  grouped by the dimensions users actually query. Audit journals
+  produced during Silver validation (such as
+  `medicare_audit.admissions`) are Silver-layer byproducts, so a Gold
+  object such as `qc_adm_union`, which unions them with the accepted
+  records, still satisfies this rule.
 
 Two worked references are used throughout the documentation:
 
@@ -81,7 +85,7 @@ Two worked references are used throughout the documentation:
 | Gold   | `gold_temperature_by_state` materialized view                 | `medicare.qc_*` QC aggregates                                                           |
 
 The climate layers are built step by step in the
-[Bronze–Silver–Gold climate tutorial](tutorial/climate/building-climate-pipeline.md)
+[Bronze–Silver–Gold climate tutorial](tutorial/climate/index.md)
 from the model file
 [`doc/tutorial/climate/example1_model.yml`](tutorial/climate/example1_model.yml).
 The Medicare layers are described in the
@@ -209,8 +213,8 @@ Instead, a disambiguation rule has three parts:
 1. **Pick a deterministic primary value.** A fixed, documented rule
    selects the canonical value — for example, the earliest date of
    birth (`MIN(dob)`), the latest date of death (`MAX(dod)`), or for
-   OREC the value from the earliest enrollment year with ties broken by
-   the smallest code.
+   OREC (Original Reason for Entitlement Code) the value from the
+   earliest enrollment year with ties broken by the smallest code.
 2. **Keep the divergent value in a secondary column.** The discarded
    alternative is preserved next to the primary: `dob_latest` is
    non-null only when the records disagreed on the date of birth
@@ -242,16 +246,15 @@ project curator can still choose their own inclusion rule (for example,
 exclude all ambiguous records, or only those where the dates of birth
 differ by more than a threshold).
 
-Disambiguation also determines *where* an attribute may live. An
-attribute defined as a per-person invariant belongs on the person-level
-table only. OREC (Original Reason for Entitlement Code) is set at
+Disambiguation also determines *where* an attribute may live: an
+attribute belongs at the grain where it is invariant. OREC is set at
 enrollment and is invariant for the life of the beneficiary, so it is a
-column of `beneficiaries`, not of `enrollments`; keeping a per-year copy
-in `enrollments` would turn a data-quality problem into silently lost
-rows when the two tables are naturally joined. Attributes that
-legitimately vary by year — such as CUREC, the *current* reason for
-entitlement — stay on the enrollment-level table, and their consistency
-flags (`consistent_curec`) live there too.
+column of `beneficiaries`; CUREC, the *current* reason for entitlement,
+legitimately varies by year, so it stays on `enrollments`, together
+with its consistency flag (`consistent_curec`). The full story —
+including the natural-join failure mode that motivated this rule — is
+told in
+[Entitlement reason codes: OREC and CUREC](Medicare.md#entitlement-reason-codes-orec-and-curec).
 
 ## Validation and journaling
 
@@ -334,7 +337,7 @@ production-scale example.
 | Workflow language (CWL), DAG topology  | [Data processing pipelines](pipelines.md)                                          | `src/cwl/*.cwl`                                                                |
 | Data-modeling DSL (core syntax)        | [Data modeling reference](Datamodels.md)                                           | `dorieh.platform.data_model.domain`                                            |
 | DSL extensions (federation, casts)     | [Data modeling extensions](DataModellingExtensions.md)                             | `ps` view in `src/python/dorieh/cms/models/medicare.yaml`                      |
-| Medallion layers (teaching example)    | [Climate tutorial](tutorial/climate/building-climate-pipeline.md)                  | `doc/tutorial/climate/example1_model.yml`                                      |
+| Medallion layers (teaching example)    | [Climate tutorial](tutorial/climate/index.md)                  | `doc/tutorial/climate/example1_model.yml`                                      |
 | Medallion layers (case study)          | [Medicare pipeline](Medicare.md)                                                   | `src/python/dorieh/cms/models/medicare.yaml`                                   |
 | Disambiguation rules                   | This page; applied in [Medicaid](Medicaid.md) and [Medicare](Medicare.md)          | `_beneficiaries` and `qc_enrl_bene` in `medicare.yaml`                         |
 | Validation and journaling              | This page; [invalid-records reference](Datamodels.md#invalid-record)               | validation trigger generator in `dorieh.platform.data_model.domain`            |
