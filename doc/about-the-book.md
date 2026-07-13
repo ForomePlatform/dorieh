@@ -4,8 +4,9 @@ This documentation and the book *Research Data that Can Be Trusted*
 describe the same open-source platform and are written by the same
 authors. The two are designed to complement each other: the
 documentation is self-contained and free — every page can be read,
-and every example can be run, using only the code, configuration and
-synthetic data in this repository — while the book offers an extended
+and every example can be run, using only the code and configuration in
+this repository together with openly available data (synthetic where the
+real data would require a data use agreement) — while the book offers an extended
 conceptual treatment of the ideas behind the platform, including data
 provenance, the regulatory context for health data, and a taxonomy of
 data transformations. The book is optional enrichment; it is never a

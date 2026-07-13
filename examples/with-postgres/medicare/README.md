@@ -49,6 +49,14 @@ unzip medicare-synthetic-database.zip
 popd
 ```
 
+> **Note:** This pins **version 1** of the dataset (about 770 MB, roughly
+> 600,000 synthetic beneficiaries) so the results are reproducible. Newer,
+> larger versions — including v0.2.0 with five million beneficiaries (about
+> 9 GB compressed) — are published under the same concept DOI
+> <https://doi.org/10.5281/zenodo.18915557>. Any version runs through the
+> same pipeline commands; only the download URL, size, run time, and
+> resulting counts differ.
+
 
 ### 3. Run the Medicare processing pipeline
 

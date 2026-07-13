@@ -20,7 +20,7 @@ local:
 This example demonstrates a full Dorieh data processing pipeline running
 against a local PostgreSQL database, using a **publicly available synthetic**
 Medicare-like dataset.  Because the data are
-synthetic and published openly on [Zenodo](https://zenodo.org/records/18915558),
+synthetic and published openly on [Zenodo](https://doi.org/10.5281/zenodo.18915557),
 no institutional data access agreement is required to follow this example.
 It covers:
 
@@ -76,7 +76,7 @@ no data use agreement or institutional access is required.  It:
 * Contains **no real PHI / PII** — it is safe for testing, demonstrations,
   and sharing
 
-Download and unpack it:
+Download and unpack it (about a 770 MB download):
 
 ```bash
 mkdir -p data
@@ -88,6 +88,17 @@ curl -fLo medicare-synthetic-database.zip \
 unzip medicare-synthetic-database.zip
 
 popd
+```
+
+```{note}
+This example pins **version 1** of the dataset (about 770 MB, roughly 600,000
+synthetic beneficiaries) so that the numbers in this walkthrough — and the
+golden test values shipped with Dorieh — are reproducible. Newer, larger
+versions, including v0.2.0 with five million beneficiaries (about 9 GB
+compressed), are published under the same concept DOI:
+<https://doi.org/10.5281/zenodo.18915557>. Any version runs through the same
+pipeline commands; only the download URL, size, run time, and resulting
+counts differ.
 ```
 
 The extracted directory tree follows the layout expected by the ingestion

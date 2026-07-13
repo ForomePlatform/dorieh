@@ -32,6 +32,12 @@ doc: |
   servers, introspects it to infer the database schema
   and ingests the data into the database
 
+  Starting with version 0.5.0, the workflow initializes the database
+  (via initcoredb.cwl) before ingesting the data, hence it can be run
+  against a pristine, empty database. Earlier versions required the
+  database to be initialized beforehand (e.g., by running another
+  pipeline first).
+
 inputs:
   proxy:
     type: string?
