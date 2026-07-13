@@ -18,6 +18,8 @@ autoclass_content = 'both'
 autodoc_member_order = 'bysource'
 sys.path.insert(0, os.path.abspath('../src/python'))
 sys.path.insert(0, os.path.abspath('src/python'))
+# local documentation-build extensions (doc/_ext)
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '/_ext')
 sys.setrecursionlimit(2500)
 
 
@@ -48,7 +50,10 @@ extensions = [
     'sphinx.ext.graphviz',
     'sphinxcontrib.mermaid',
     'myst_parser',
-    'sphinx_togglebutton'
+    'sphinx_togglebutton',
+    # local shim: guarantees <outdir>/_static exists before build-finished
+    # handlers run (sphinx_paramlinks crashes on Sphinx 8.2 without it)
+    'ensure_static',
 ]
 myst_heading_anchors = 5
 # Enable MyST extensions
@@ -105,4 +110,10 @@ source_suffix = {
 # ,
 #     '.cwl': 'cwl',
 
-suppress_warnings = ['autosectionlabel.*']
+suppress_warnings = [
+    'autosectionlabel.*',
+    # Pygments cannot lex the {identifiers} placeholders and plpgsql $body$
+    # blocks embedded in generated lineage pages; it retries in relaxed mode
+    # and renders correctly, so these warnings are purely cosmetic.
+    'misc.highlighting_failure',
+]
