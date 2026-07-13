@@ -50,7 +50,7 @@ ALTER table medicare.beneficiaries ADD COLUMN number_of_gap_years INT GENERATED 
 ALTER table medicare.beneficiaries ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS (hll_hash_text(bene_id)) STORED;
 ALTER table medicare.beneficiaries ADD PRIMARY KEY (bene_id);
 
-COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.4.5", "url": "file:///Users/misha/harvard/github/dorieh", "commit": null}. Created at 2026-07-13 01:59:50.673999';
+COMMENT ON table medicare.beneficiaries IS 'CREATED BY Dorieh: {"version": "0.4.5", "url": "file:///Users/misha/harvard/github/dorieh", "commit": null}. Created at 2026-07-13 02:36:23.487115';
 ```
 
 </details>

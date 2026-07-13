@@ -67,6 +67,14 @@ examples
 ```{toctree}
 ---
 maxdepth: 2
+caption: Data dictionaries
+---
+dictionaries
+```
+
+```{toctree}
+---
+maxdepth: 2
 caption: Data modeling DSL reference
 ---
 Datamodels

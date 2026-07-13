@@ -12,229 +12,229 @@
 <g id="node1" class="node">
 <title>medicare.qc_enrl_bene.fips5</title>
 <g id="a_node1"><a xlink:href="../medicare.qc_enrl_bene/fips5.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1311.62,-59 1119.12,-59 1119.12,0 1311.62,0 1311.62,-59"/>
-<text xml:space="preserve" text-anchor="start" x="1132.12" y="-37.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.qc_enrl_bene.fips5</text>
-<polygon fill="none" stroke="black" points="1130.12,-7 1130.12,-29.5 1300.62,-29.5 1300.62,-7 1130.12,-7"/>
-<text xml:space="preserve" text-anchor="start" x="1133.12" y="-13.75" font-family="Times,serif" font-size="14.00">(MAX(fips2) || MAX(fips3))</text>
-<polygon fill="none" stroke="black" points="1127.12,-4 1127.12,-55 1303.62,-55 1303.62,-4 1127.12,-4"/>
+<polygon fill="none" stroke="black" points="2293.75,-59 2101.25,-59 2101.25,0 2293.75,0 2293.75,-59"/>
+<text xml:space="preserve" text-anchor="start" x="2114.25" y="-37.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.qc_enrl_bene.fips5</text>
+<polygon fill="none" stroke="black" points="2112.25,-7 2112.25,-29.5 2282.75,-29.5 2282.75,-7 2112.25,-7"/>
+<text xml:space="preserve" text-anchor="start" x="2115.25" y="-13.75" font-family="Times,serif" font-size="14.00">(MAX(fips2) || MAX(fips3))</text>
+<polygon fill="none" stroke="black" points="2109.25,-4 2109.25,-55 2285.75,-55 2285.75,-4 2109.25,-4"/>
 </a>
 </g>
-</g>
-<!-- medicare.enrollments.fips2 -->
-<g id="node2" class="node">
-<title>medicare.enrollments.fips2</title>
-<g id="a_node2"><a xlink:href="../medicare.enrollments/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1206.5,-155 1022.25,-155 1022.25,-96 1206.5,-96 1206.5,-155"/>
-<text xml:space="preserve" text-anchor="start" x="1035.25" y="-133.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.enrollments.fips2</text>
-<polygon fill="none" stroke="black" points="1033.25,-103 1033.25,-125.5 1195.5,-125.5 1195.5,-103 1033.25,-103"/>
-<text xml:space="preserve" text-anchor="start" x="1036.25" y="-109.75" font-family="Times,serif" font-size="14.00">MAX(fips2)</text>
-<polygon fill="none" stroke="black" points="1030.25,-100 1030.25,-151 1198.5,-151 1198.5,-100 1030.25,-100"/>
-</a>
-</g>
-</g>
-<!-- medicare.enrollments.fips2&#45;&gt;medicare.qc_enrl_bene.fips5 -->
-<g id="edge1" class="edge">
-<title>medicare.enrollments.fips2&#45;&gt;medicare.qc_enrl_bene.fips5</title>
-<path fill="none" stroke="black" d="M1145.5,-95.53C1155.19,-86.51 1166.01,-76.45 1176.17,-66.98"/>
-<polygon fill="black" stroke="black" points="1178.48,-69.62 1183.42,-60.24 1173.71,-64.49 1178.48,-69.62"/>
-<text xml:space="preserve" text-anchor="middle" x="1211" y="-72.45" font-family="Times,serif" font-size="14.00">	join natural</text>
-</g>
-<!-- medicare._enrollments.fips2 -->
-<g id="node3" class="node">
-<title>medicare._enrollments.fips2</title>
-<g id="a_node3"><a xlink:href="../medicare._enrollments/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1204.88,-251 1013.88,-251 1013.88,-192 1204.88,-192 1204.88,-251"/>
-<text xml:space="preserve" text-anchor="start" x="1026.88" y="-229.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._enrollments.fips2</text>
-<polygon fill="none" stroke="black" points="1024.88,-199 1024.88,-221.5 1193.88,-221.5 1193.88,-199 1024.88,-199"/>
-<text xml:space="preserve" text-anchor="start" x="1027.88" y="-205.75" font-family="Times,serif" font-size="14.00">MAX(fips2)</text>
-<polygon fill="none" stroke="black" points="1021.88,-196 1021.88,-247 1196.88,-247 1196.88,-196 1021.88,-196"/>
-</a>
-</g>
-</g>
-<!-- medicare._enrollments.fips2&#45;&gt;medicare.enrollments.fips2 -->
-<g id="edge2" class="edge">
-<title>medicare._enrollments.fips2&#45;&gt;medicare.enrollments.fips2</title>
-<path fill="none" stroke="black" d="M1110.92,-191.53C1111.33,-183.68 1111.79,-175.05 1112.24,-166.7"/>
-<polygon fill="black" stroke="black" points="1115.73,-166.9 1112.77,-156.72 1108.74,-166.52 1115.73,-166.9"/>
-<text xml:space="preserve" text-anchor="middle" x="1131.38" y="-168.45" font-family="Times,serif" font-size="14.00">Copied</text>
-</g>
-<!-- medicare._ps.fips2 -->
-<g id="node4" class="node">
-<title>medicare._ps.fips2</title>
-<g id="a_node4"><a xlink:href="../medicare._ps/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="412.75,-448.5 0,-448.5 0,-288 412.75,-288 412.75,-448.5"/>
-<text xml:space="preserve" text-anchor="start" x="152" y="-427.2" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._ps.fips2</text>
-<text xml:space="preserve" text-anchor="start" x="47.62" y="-381.25" font-family="Times,serif" font-size="14.00">2 digit state FIPS, see https://en.wikip</text>
-<text xml:space="preserve" text-anchor="start" x="36" y="-364.75" font-family="Times,serif" font-size="14.00">edia.org/wiki/Federal_Information_Proces</text>
-<text xml:space="preserve" text-anchor="start" x="81" y="-348.25" font-family="Times,serif" font-size="14.00">sing_Standard_state_code</text>
-<polygon fill="none" stroke="black" points="11,-295 11,-317.5 401.75,-317.5 401.75,-295 11,-295"/>
-<text xml:space="preserve" text-anchor="start" x="14" y="-301.75" font-family="Times,serif" font-size="14.00">(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = &quot;state&quot;)</text>
-<polygon fill="none" stroke="black" points="8,-292 8,-444.5 404.75,-444.5 404.75,-292 8,-292"/>
-</a>
-</g>
-</g>
-<!-- medicare._ps.fips2&#45;&gt;medicare._enrollments.fips2 -->
-<g id="edge3" class="edge">
-<title>medicare._ps.fips2&#45;&gt;medicare._enrollments.fips2</title>
-<path fill="none" stroke="blue" stroke-width="5" d="M413.2,-289.93C415.93,-289.26 418.66,-288.62 421.38,-288 621.12,-242.49 860.46,-228.55 997.73,-224.31"/>
-<polygon fill="blue" stroke="blue" stroke-width="5" points="997.45,-228.7 1007.31,-224.03 997.19,-219.95 997.45,-228.7"/>
-<text xml:space="preserve" text-anchor="middle" x="627.79" y="-264.45" font-family="Times,serif" font-size="14.00">	 &#160;Aggregated On bene_id, year, state</text>
-</g>
-<!-- medicare.ps.fips2 -->
-<g id="node5" class="node">
-<title>medicare.ps.fips2</title>
-<g id="a_node5"><a xlink:href="../medicare.ps/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1028.75,-646 616,-646 616,-485.5 1028.75,-485.5 1028.75,-646"/>
-<text xml:space="preserve" text-anchor="start" x="771.38" y="-624.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.fips2</text>
-<text xml:space="preserve" text-anchor="start" x="663.62" y="-578.75" font-family="Times,serif" font-size="14.00">2 digit state FIPS, see https://en.wikip</text>
-<text xml:space="preserve" text-anchor="start" x="652" y="-562.25" font-family="Times,serif" font-size="14.00">edia.org/wiki/Federal_Information_Proces</text>
-<text xml:space="preserve" text-anchor="start" x="697" y="-545.75" font-family="Times,serif" font-size="14.00">sing_Standard_state_code</text>
-<polygon fill="none" stroke="black" points="627,-492.5 627,-515 1017.75,-515 1017.75,-492.5 627,-492.5"/>
-<text xml:space="preserve" text-anchor="start" x="630" y="-499.25" font-family="Times,serif" font-size="14.00">(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = &quot;state&quot;)</text>
-<polygon fill="none" stroke="black" points="624,-489.5 624,-642 1020.75,-642 1020.75,-489.5 624,-489.5"/>
-</a>
-</g>
-</g>
-<!-- medicare.ps.fips2&#45;&gt;medicare._ps.fips2 -->
-<g id="edge4" class="edge">
-<title>medicare.ps.fips2&#45;&gt;medicare._ps.fips2</title>
-<path fill="none" stroke="black" d="M615.71,-507.87C556.19,-490.72 491.1,-471.22 423.91,-449.3"/>
-<polygon fill="black" stroke="black" points="425.14,-446.02 414.55,-446.23 422.96,-452.67 425.14,-446.02"/>
-<text xml:space="preserve" text-anchor="middle" x="497.69" y="-461.95" font-family="Times,serif" font-size="14.00">Copied</text>
-</g>
-<!-- medicare._ps.fips3 -->
-<g id="node8" class="node">
-<title>medicare._ps.fips3</title>
-<g id="a_node8"><a xlink:href="../medicare._ps/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="2807.88,-397.75 430.88,-397.75 430.88,-338.75 2807.88,-338.75 2807.88,-397.75"/>
-<text xml:space="preserve" text-anchor="start" x="1565" y="-376.45" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._ps.fips3</text>
-<polygon fill="none" stroke="black" points="441.88,-345.75 441.88,-368.25 2796.88,-368.25 2796.88,-345.75 441.88,-345.75"/>
-<text xml:space="preserve" text-anchor="start" x="444.88" y="-352.5" font-family="Times,serif" font-size="14.00">CASE WHEN ssa3 is NOT NULL THEN &#160;CASE WHEN year &gt; 2010 THEN &#160;&#160;&#160;&#160;&#160;(SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1) &#160;&#160;&#160;ELSE &#160;&#160;&#160;&#160;&#160;(SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1) &#160;ENDELSE &#160;(SELECT public.zip_to_fips3(year, zip))END AS fips3</text>
-<polygon fill="none" stroke="black" points="438.88,-342.75 438.88,-393.75 2799.88,-393.75 2799.88,-342.75 438.88,-342.75"/>
-</a>
-</g>
-</g>
-<!-- medicare.ps.fips2&#45;&gt;medicare._ps.fips3 -->
-<g id="edge12" class="edge">
-<title>medicare.ps.fips2&#45;&gt;medicare._ps.fips3</title>
-<path fill="none" stroke="black" d="M1029.18,-514.02C1174.91,-478.28 1365.54,-431.51 1490.16,-400.95"/>
-<polygon fill="black" stroke="black" points="1490.91,-404.37 1499.79,-398.58 1489.24,-397.57 1490.91,-404.37"/>
-<text xml:space="preserve" text-anchor="middle" x="1259.5" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
 </g>
 <!-- medicare.enrollments.fips3 -->
-<g id="node6" class="node">
+<g id="node2" class="node">
 <title>medicare.enrollments.fips3</title>
-<g id="a_node6"><a xlink:href="../medicare.enrollments/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1484.5,-155 1300.25,-155 1300.25,-96 1484.5,-96 1484.5,-155"/>
-<text xml:space="preserve" text-anchor="start" x="1313.25" y="-133.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.enrollments.fips3</text>
-<polygon fill="none" stroke="black" points="1311.25,-103 1311.25,-125.5 1473.5,-125.5 1473.5,-103 1311.25,-103"/>
-<text xml:space="preserve" text-anchor="start" x="1314.25" y="-109.75" font-family="Times,serif" font-size="14.00">MAX(fips3)</text>
-<polygon fill="none" stroke="black" points="1308.25,-100 1308.25,-151 1476.5,-151 1476.5,-100 1308.25,-100"/>
+<g id="a_node2"><a xlink:href="../medicare.enrollments/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2188.62,-155 2004.38,-155 2004.38,-96 2188.62,-96 2188.62,-155"/>
+<text xml:space="preserve" text-anchor="start" x="2017.38" y="-133.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.enrollments.fips3</text>
+<polygon fill="none" stroke="black" points="2015.38,-103 2015.38,-125.5 2177.62,-125.5 2177.62,-103 2015.38,-103"/>
+<text xml:space="preserve" text-anchor="start" x="2018.38" y="-109.75" font-family="Times,serif" font-size="14.00">MAX(fips3)</text>
+<polygon fill="none" stroke="black" points="2012.38,-100 2012.38,-151 2180.62,-151 2180.62,-100 2012.38,-100"/>
 </a>
 </g>
 </g>
 <!-- medicare.enrollments.fips3&#45;&gt;medicare.qc_enrl_bene.fips5 -->
-<g id="edge5" class="edge">
+<g id="edge1" class="edge">
 <title>medicare.enrollments.fips3&#45;&gt;medicare.qc_enrl_bene.fips5</title>
-<path fill="none" stroke="black" d="M1337.82,-95.53C1319.49,-85.79 1298.85,-74.83 1279.83,-64.73"/>
-<polygon fill="black" stroke="black" points="1281.56,-61.68 1271.08,-60.08 1278.27,-67.87 1281.56,-61.68"/>
-<text xml:space="preserve" text-anchor="middle" x="1350" y="-72.45" font-family="Times,serif" font-size="14.00">	join natural</text>
+<path fill="none" stroke="black" d="M2127.63,-95.53C2137.32,-86.51 2148.13,-76.45 2158.3,-66.98"/>
+<polygon fill="black" stroke="black" points="2160.61,-69.62 2165.54,-60.24 2155.84,-64.49 2160.61,-69.62"/>
+<text xml:space="preserve" text-anchor="middle" x="2193.12" y="-72.45" font-family="Times,serif" font-size="14.00">	join natural</text>
 </g>
 <!-- medicare._enrollments.fips3 -->
-<g id="node7" class="node">
+<g id="node3" class="node">
 <title>medicare._enrollments.fips3</title>
-<g id="a_node7"><a xlink:href="../medicare._enrollments/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1563.88,-251 1372.88,-251 1372.88,-192 1563.88,-192 1563.88,-251"/>
-<text xml:space="preserve" text-anchor="start" x="1385.88" y="-229.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._enrollments.fips3</text>
-<polygon fill="none" stroke="black" points="1383.88,-199 1383.88,-221.5 1552.88,-221.5 1552.88,-199 1383.88,-199"/>
-<text xml:space="preserve" text-anchor="start" x="1386.88" y="-205.75" font-family="Times,serif" font-size="14.00">MAX(fips3)</text>
-<polygon fill="none" stroke="black" points="1380.88,-196 1380.88,-247 1555.88,-247 1555.88,-196 1380.88,-196"/>
+<g id="a_node3"><a xlink:href="../medicare._enrollments/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2187,-251 1996,-251 1996,-192 2187,-192 2187,-251"/>
+<text xml:space="preserve" text-anchor="start" x="2009" y="-229.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._enrollments.fips3</text>
+<polygon fill="none" stroke="black" points="2007,-199 2007,-221.5 2176,-221.5 2176,-199 2007,-199"/>
+<text xml:space="preserve" text-anchor="start" x="2010" y="-205.75" font-family="Times,serif" font-size="14.00">MAX(fips3)</text>
+<polygon fill="none" stroke="black" points="2004,-196 2004,-247 2179,-247 2179,-196 2004,-196"/>
 </a>
 </g>
 </g>
 <!-- medicare._enrollments.fips3&#45;&gt;medicare.enrollments.fips3 -->
-<g id="edge6" class="edge">
+<g id="edge2" class="edge">
 <title>medicare._enrollments.fips3&#45;&gt;medicare.enrollments.fips3</title>
-<path fill="none" stroke="black" d="M1444.95,-191.53C1437.95,-182.87 1430.17,-173.25 1422.79,-164.12"/>
-<polygon fill="black" stroke="black" points="1425.55,-161.97 1416.54,-156.39 1420.11,-166.37 1425.55,-161.97"/>
-<text xml:space="preserve" text-anchor="middle" x="1449.88" y="-168.45" font-family="Times,serif" font-size="14.00">Copied</text>
+<path fill="none" stroke="black" d="M2093.04,-191.53C2093.46,-183.68 2093.92,-175.05 2094.36,-166.7"/>
+<polygon fill="black" stroke="black" points="2097.86,-166.9 2094.89,-156.72 2090.87,-166.52 2097.86,-166.9"/>
+<text xml:space="preserve" text-anchor="middle" x="2113.5" y="-168.45" font-family="Times,serif" font-size="14.00">Copied</text>
+</g>
+<!-- medicare._ps.fips3 -->
+<g id="node4" class="node">
+<title>medicare._ps.fips3</title>
+<g id="a_node4"><a xlink:href="../medicare._ps/fips3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2377,-397.75 0,-397.75 0,-338.75 2377,-338.75 2377,-397.75"/>
+<text xml:space="preserve" text-anchor="start" x="1134.12" y="-376.45" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._ps.fips3</text>
+<polygon fill="none" stroke="black" points="11,-345.75 11,-368.25 2366,-368.25 2366,-345.75 11,-345.75"/>
+<text xml:space="preserve" text-anchor="start" x="14" y="-352.5" font-family="Times,serif" font-size="14.00">CASE WHEN ssa3 is NOT NULL THEN &#160;CASE WHEN year &gt; 2010 THEN &#160;&#160;&#160;&#160;&#160;(SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and ps.year = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1) &#160;&#160;&#160;ELSE &#160;&#160;&#160;&#160;&#160;(SELECT fips3 from public.ssa as s where ps.ssa3 = s.ssa3 and 2003 = s.year and ps.fips2 = s.fips2 ORDER BY 1 DESC LIMIT 1) &#160;ENDELSE &#160;(SELECT public.zip_to_fips3(year, zip))END AS fips3</text>
+<polygon fill="none" stroke="black" points="8,-342.75 8,-393.75 2369,-393.75 2369,-342.75 8,-342.75"/>
+</a>
+</g>
 </g>
 <!-- medicare._ps.fips3&#45;&gt;medicare._enrollments.fips3 -->
-<g id="edge7" class="edge">
+<g id="edge3" class="edge">
 <title>medicare._ps.fips3&#45;&gt;medicare._enrollments.fips3</title>
-<path fill="none" stroke="blue" stroke-width="5" d="M1589.18,-338.31C1566.45,-316.51 1535.01,-286.38 1509.91,-262.31"/>
-<polygon fill="blue" stroke="blue" stroke-width="5" points="1513.27,-259.47 1503.02,-255.71 1507.21,-265.79 1513.27,-259.47"/>
-<text xml:space="preserve" text-anchor="middle" x="1631.59" y="-264.45" font-family="Times,serif" font-size="14.00">	 &#160;Aggregated On bene_id, year, state</text>
-</g>
-<!-- medicare.ps.ssa3 -->
-<g id="node9" class="node">
-<title>medicare.ps.ssa3</title>
-<g id="a_node9"><a xlink:href="../medicare.ps/ssa3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="1580.12,-625.5 1302.62,-625.5 1302.62,-506 1580.12,-506 1580.12,-625.5"/>
-<text xml:space="preserve" text-anchor="start" x="1392.25" y="-604.2" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.ssa3</text>
-<text xml:space="preserve" text-anchor="start" x="1338.62" y="-558.25" font-family="Times,serif" font-size="14.00">Social Security Administration (SSA)</text>
-<text xml:space="preserve" text-anchor="start" x="1369" y="-541.75" font-family="Times,serif" font-size="14.00">three digit code for county</text>
-<polygon fill="none" stroke="black" points="1310.62,-510 1310.62,-621.5 1572.12,-621.5 1572.12,-510 1310.62,-510"/>
-</a>
-</g>
-</g>
-<!-- medicare.ps.ssa3&#45;&gt;medicare._ps.fips3 -->
-<g id="edge8" class="edge">
-<title>medicare.ps.ssa3&#45;&gt;medicare._ps.fips3</title>
-<path fill="none" stroke="black" d="M1495.26,-505.56C1524.66,-473.28 1560.14,-434.31 1585.63,-406.32"/>
-<polygon fill="black" stroke="black" points="1588.03,-408.87 1592.18,-399.12 1582.86,-404.16 1588.03,-408.87"/>
-<text xml:space="preserve" text-anchor="middle" x="1569" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
-</g>
-<!-- medicare.ps.ssa3_parent -->
-<g id="node10" class="node">
-<title>medicare.ps.ssa3_parent</title>
-<g id="a_node10"><a xlink:href="../medicare.ps/ssa3.html" xlink:title="8 incoming links (columns)" target="_blank">
-<path fill="yellow" stroke="black" d="M1549.38,-781.18C1549.38,-786.6 1500.97,-791 1441.38,-791 1381.78,-791 1333.38,-786.6 1333.38,-781.18 1333.38,-781.18 1333.38,-692.82 1333.38,-692.82 1333.38,-687.4 1381.78,-683 1441.38,-683 1500.97,-683 1549.38,-687.4 1549.38,-692.82 1549.38,-692.82 1549.38,-781.18 1549.38,-781.18"/>
-<path fill="none" stroke="black" d="M1549.38,-781.18C1549.38,-775.76 1500.97,-771.36 1441.38,-771.36 1381.78,-771.36 1333.38,-775.76 1333.38,-781.18"/>
-<text xml:space="preserve" text-anchor="middle" x="1441.38" y="-731.95" font-family="Times,serif" font-size="14.00">8 incoming links (columns)</text>
-</a>
-</g>
-</g>
-<!-- medicare.ps.ssa3_parent&#45;&gt;medicare.ps.ssa3 -->
-<g id="edge9" class="edge">
-<title>medicare.ps.ssa3_parent&#45;&gt;medicare.ps.ssa3</title>
-<path fill="none" stroke="goldenrod" stroke-width="6" d="M1441.38,-682.91C1441.38,-669.88 1441.38,-655.69 1441.38,-641.84"/>
-<polygon fill="goldenrod" stroke="goldenrod" stroke-width="6" points="1446.63,-642.29 1441.38,-632.29 1436.13,-642.29 1446.63,-642.29"/>
+<path fill="none" stroke="blue" stroke-width="5" d="M1369.34,-338.26C1551.67,-309.03 1827.36,-264.84 1979.97,-240.38"/>
+<polygon fill="blue" stroke="blue" stroke-width="5" points="1980.36,-244.75 1989.54,-238.84 1978.97,-236.11 1980.36,-244.75"/>
+<text xml:space="preserve" text-anchor="middle" x="1913.79" y="-264.45" font-family="Times,serif" font-size="14.00">	 &#160;Aggregated On bene_id, year, state</text>
 </g>
 <!-- medicare.ps.year -->
-<g id="node11" class="node">
+<g id="node5" class="node">
 <title>medicare.ps.year</title>
-<g id="a_node11"><a xlink:href="../medicare.ps/year.html" xlink:title="&lt;TABLE&gt;" target="_blank">
-<polygon fill="none" stroke="black" points="2714.12,-595.25 1598.62,-595.25 1598.62,-536.25 2714.12,-536.25 2714.12,-595.25"/>
-<text xml:space="preserve" text-anchor="start" x="2106.5" y="-573.95" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.year</text>
-<polygon fill="none" stroke="black" points="1609.62,-543.25 1609.62,-565.75 2703.12,-565.75 2703.12,-543.25 1609.62,-543.25"/>
-<text xml:space="preserve" text-anchor="start" x="1612.62" y="-550" font-family="Times,serif" font-size="14.00">(CASE WHEN &quot;year&quot;::int &lt; 20 THEN (2000 + &quot;year&quot;::int) WHEN (20 &lt; &quot;year&quot;::int AND &quot;year&quot;::int &lt; 100) THEN (1900 + &quot;year&quot;::int) WHEN &quot;year&quot; IS NULL THEN 2000 ELSE &quot;year&quot;::int END)</text>
-<polygon fill="none" stroke="black" points="1606.62,-540.25 1606.62,-591.25 2706.12,-591.25 2706.12,-540.25 1606.62,-540.25"/>
+<g id="a_node5"><a xlink:href="../medicare.ps/year.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="1561.25,-595.25 445.75,-595.25 445.75,-536.25 1561.25,-536.25 1561.25,-595.25"/>
+<text xml:space="preserve" text-anchor="start" x="953.62" y="-573.95" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.year</text>
+<polygon fill="none" stroke="black" points="456.75,-543.25 456.75,-565.75 1550.25,-565.75 1550.25,-543.25 456.75,-543.25"/>
+<text xml:space="preserve" text-anchor="start" x="459.75" y="-550" font-family="Times,serif" font-size="14.00">(CASE WHEN &quot;year&quot;::int &lt; 20 THEN (2000 + &quot;year&quot;::int) WHEN (20 &lt; &quot;year&quot;::int AND &quot;year&quot;::int &lt; 100) THEN (1900 + &quot;year&quot;::int) WHEN &quot;year&quot; IS NULL THEN 2000 ELSE &quot;year&quot;::int END)</text>
+<polygon fill="none" stroke="black" points="453.75,-540.25 453.75,-591.25 1553.25,-591.25 1553.25,-540.25 453.75,-540.25"/>
 </a>
 </g>
 </g>
 <!-- medicare.ps.year&#45;&gt;medicare._ps.fips3 -->
-<g id="edge10" class="edge">
+<g id="edge4" class="edge">
 <title>medicare.ps.year&#45;&gt;medicare._ps.fips3</title>
-<path fill="none" stroke="black" d="M2076.85,-535.8C1978.72,-500.07 1812.28,-439.48 1709.51,-402.06"/>
-<polygon fill="black" stroke="black" points="1710.86,-398.83 1700.27,-398.7 1708.47,-405.41 1710.86,-398.83"/>
-<text xml:space="preserve" text-anchor="middle" x="1926.5" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
+<path fill="none" stroke="black" d="M1030.8,-535.9C1063.32,-501.54 1117.71,-444.06 1153.34,-406.4"/>
+<polygon fill="black" stroke="black" points="1155.72,-408.98 1160.05,-399.31 1150.63,-404.17 1155.72,-408.98"/>
+<text xml:space="preserve" text-anchor="middle" x="1134.62" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
 </g>
 <!-- medicare.ps.year_parent -->
-<g id="node12" class="node">
+<g id="node6" class="node">
 <title>medicare.ps.year_parent</title>
-<g id="a_node12"><a xlink:href="../medicare.ps/year.html" xlink:title="8 incoming links (columns)" target="_blank">
-<path fill="yellow" stroke="black" d="M2264.38,-781.18C2264.38,-786.6 2215.97,-791 2156.38,-791 2096.78,-791 2048.38,-786.6 2048.38,-781.18 2048.38,-781.18 2048.38,-692.82 2048.38,-692.82 2048.38,-687.4 2096.78,-683 2156.38,-683 2215.97,-683 2264.38,-687.4 2264.38,-692.82 2264.38,-692.82 2264.38,-781.18 2264.38,-781.18"/>
-<path fill="none" stroke="black" d="M2264.38,-781.18C2264.38,-775.76 2215.97,-771.36 2156.38,-771.36 2096.78,-771.36 2048.38,-775.76 2048.38,-781.18"/>
-<text xml:space="preserve" text-anchor="middle" x="2156.38" y="-731.95" font-family="Times,serif" font-size="14.00">8 incoming links (columns)</text>
+<g id="a_node6"><a xlink:href="../medicare.ps/year.html" xlink:title="8 incoming links (columns)" target="_blank">
+<path fill="yellow" stroke="black" d="M1111.5,-781.18C1111.5,-786.6 1063.09,-791 1003.5,-791 943.91,-791 895.5,-786.6 895.5,-781.18 895.5,-781.18 895.5,-692.82 895.5,-692.82 895.5,-687.4 943.91,-683 1003.5,-683 1063.09,-683 1111.5,-687.4 1111.5,-692.82 1111.5,-692.82 1111.5,-781.18 1111.5,-781.18"/>
+<path fill="none" stroke="black" d="M1111.5,-781.18C1111.5,-775.76 1063.09,-771.36 1003.5,-771.36 943.91,-771.36 895.5,-775.76 895.5,-781.18"/>
+<text xml:space="preserve" text-anchor="middle" x="1003.5" y="-731.95" font-family="Times,serif" font-size="14.00">8 incoming links (columns)</text>
 </a>
 </g>
 </g>
 <!-- medicare.ps.year_parent&#45;&gt;medicare.ps.year -->
-<g id="edge11" class="edge">
+<g id="edge5" class="edge">
 <title>medicare.ps.year_parent&#45;&gt;medicare.ps.year</title>
-<path fill="none" stroke="goldenrod" stroke-width="6" d="M2156.38,-682.91C2156.38,-660.12 2156.38,-633.76 2156.38,-611.92"/>
-<polygon fill="goldenrod" stroke="goldenrod" stroke-width="6" points="2161.63,-611.98 2156.38,-601.98 2151.13,-611.98 2161.63,-611.98"/>
+<path fill="none" stroke="goldenrod" stroke-width="6" d="M1003.5,-682.91C1003.5,-660.12 1003.5,-633.76 1003.5,-611.92"/>
+<polygon fill="goldenrod" stroke="goldenrod" stroke-width="6" points="1008.75,-611.98 1003.5,-601.98 998.25,-611.98 1008.75,-611.98"/>
+</g>
+<!-- medicare.ps.ssa3 -->
+<g id="node7" class="node">
+<title>medicare.ps.ssa3</title>
+<g id="a_node7"><a xlink:href="../medicare.ps/ssa3.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="1857.25,-625.5 1579.75,-625.5 1579.75,-506 1857.25,-506 1857.25,-625.5"/>
+<text xml:space="preserve" text-anchor="start" x="1669.38" y="-604.2" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.ssa3</text>
+<text xml:space="preserve" text-anchor="start" x="1615.75" y="-558.25" font-family="Times,serif" font-size="14.00">Social Security Administration (SSA)</text>
+<text xml:space="preserve" text-anchor="start" x="1646.12" y="-541.75" font-family="Times,serif" font-size="14.00">three digit code for county</text>
+<polygon fill="none" stroke="black" points="1587.75,-510 1587.75,-621.5 1849.25,-621.5 1849.25,-510 1587.75,-510"/>
+</a>
+</g>
+</g>
+<!-- medicare.ps.ssa3&#45;&gt;medicare._ps.fips3 -->
+<g id="edge6" class="edge">
+<title>medicare.ps.ssa3&#45;&gt;medicare._ps.fips3</title>
+<path fill="none" stroke="black" d="M1614.22,-505.66C1599.75,-498.42 1584.9,-491.48 1570.5,-485.5 1487.66,-451.11 1390.98,-421.78 1315.61,-401.19"/>
+<polygon fill="black" stroke="black" points="1316.67,-397.86 1306.11,-398.61 1314.84,-404.61 1316.67,-397.86"/>
+<text xml:space="preserve" text-anchor="middle" x="1561.18" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
+</g>
+<!-- medicare.ps.ssa3_parent -->
+<g id="node8" class="node">
+<title>medicare.ps.ssa3_parent</title>
+<g id="a_node8"><a xlink:href="../medicare.ps/ssa3.html" xlink:title="8 incoming links (columns)" target="_blank">
+<path fill="yellow" stroke="black" d="M1826.5,-781.18C1826.5,-786.6 1778.09,-791 1718.5,-791 1658.91,-791 1610.5,-786.6 1610.5,-781.18 1610.5,-781.18 1610.5,-692.82 1610.5,-692.82 1610.5,-687.4 1658.91,-683 1718.5,-683 1778.09,-683 1826.5,-687.4 1826.5,-692.82 1826.5,-692.82 1826.5,-781.18 1826.5,-781.18"/>
+<path fill="none" stroke="black" d="M1826.5,-781.18C1826.5,-775.76 1778.09,-771.36 1718.5,-771.36 1658.91,-771.36 1610.5,-775.76 1610.5,-781.18"/>
+<text xml:space="preserve" text-anchor="middle" x="1718.5" y="-731.95" font-family="Times,serif" font-size="14.00">8 incoming links (columns)</text>
+</a>
+</g>
+</g>
+<!-- medicare.ps.ssa3_parent&#45;&gt;medicare.ps.ssa3 -->
+<g id="edge7" class="edge">
+<title>medicare.ps.ssa3_parent&#45;&gt;medicare.ps.ssa3</title>
+<path fill="none" stroke="goldenrod" stroke-width="6" d="M1718.5,-682.91C1718.5,-669.88 1718.5,-655.69 1718.5,-641.84"/>
+<polygon fill="goldenrod" stroke="goldenrod" stroke-width="6" points="1723.75,-642.29 1718.5,-632.29 1713.25,-642.29 1723.75,-642.29"/>
+</g>
+<!-- medicare.ps.fips2 -->
+<g id="node9" class="node">
+<title>medicare.ps.fips2</title>
+<g id="a_node9"><a xlink:href="../medicare.ps/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2633.88,-646 2221.12,-646 2221.12,-485.5 2633.88,-485.5 2633.88,-646"/>
+<text xml:space="preserve" text-anchor="start" x="2376.5" y="-624.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.ps.fips2</text>
+<text xml:space="preserve" text-anchor="start" x="2268.75" y="-578.75" font-family="Times,serif" font-size="14.00">2 digit state FIPS, see https://en.wikip</text>
+<text xml:space="preserve" text-anchor="start" x="2257.12" y="-562.25" font-family="Times,serif" font-size="14.00">edia.org/wiki/Federal_Information_Proces</text>
+<text xml:space="preserve" text-anchor="start" x="2302.12" y="-545.75" font-family="Times,serif" font-size="14.00">sing_Standard_state_code</text>
+<polygon fill="none" stroke="black" points="2232.12,-492.5 2232.12,-515 2622.88,-515 2622.88,-492.5 2232.12,-492.5"/>
+<text xml:space="preserve" text-anchor="start" x="2235.12" y="-499.25" font-family="Times,serif" font-size="14.00">(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = &quot;state&quot;)</text>
+<polygon fill="none" stroke="black" points="2229.12,-489.5 2229.12,-642 2625.88,-642 2625.88,-489.5 2229.12,-489.5"/>
+</a>
+</g>
+</g>
+<!-- medicare.ps.fips2&#45;&gt;medicare._ps.fips3 -->
+<g id="edge8" class="edge">
+<title>medicare.ps.fips2&#45;&gt;medicare._ps.fips3</title>
+<path fill="none" stroke="black" d="M2220.82,-532.14C1987.62,-495.34 1611.19,-435.95 1383.09,-399.95"/>
+<polygon fill="black" stroke="black" points="1383.92,-396.54 1373.5,-398.44 1382.83,-403.46 1383.92,-396.54"/>
+<text xml:space="preserve" text-anchor="middle" x="1846.62" y="-461.95" font-family="Times,serif" font-size="14.00"> &#160;Transformed</text>
+</g>
+<!-- medicare._ps.fips2 -->
+<g id="node12" class="node">
+<title>medicare._ps.fips2</title>
+<g id="a_node12"><a xlink:href="../medicare._ps/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2807.88,-448.5 2395.12,-448.5 2395.12,-288 2807.88,-288 2807.88,-448.5"/>
+<text xml:space="preserve" text-anchor="start" x="2547.12" y="-427.2" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._ps.fips2</text>
+<text xml:space="preserve" text-anchor="start" x="2442.75" y="-381.25" font-family="Times,serif" font-size="14.00">2 digit state FIPS, see https://en.wikip</text>
+<text xml:space="preserve" text-anchor="start" x="2431.12" y="-364.75" font-family="Times,serif" font-size="14.00">edia.org/wiki/Federal_Information_Proces</text>
+<text xml:space="preserve" text-anchor="start" x="2476.12" y="-348.25" font-family="Times,serif" font-size="14.00">sing_Standard_state_code</text>
+<polygon fill="none" stroke="black" points="2406.12,-295 2406.12,-317.5 2796.88,-317.5 2796.88,-295 2406.12,-295"/>
+<text xml:space="preserve" text-anchor="start" x="2409.12" y="-301.75" font-family="Times,serif" font-size="14.00">(SELECT fips2 FROM public.us_states as s WHERE s.ssa2 = &quot;state&quot;)</text>
+<polygon fill="none" stroke="black" points="2403.12,-292 2403.12,-444.5 2799.88,-444.5 2799.88,-292 2403.12,-292"/>
+</a>
+</g>
+</g>
+<!-- medicare.ps.fips2&#45;&gt;medicare._ps.fips2 -->
+<g id="edge12" class="edge">
+<title>medicare.ps.fips2&#45;&gt;medicare._ps.fips2</title>
+<path fill="none" stroke="black" d="M2498.27,-485.23C2506.48,-476.01 2514.9,-466.55 2523.2,-457.22"/>
+<polygon fill="black" stroke="black" points="2525.75,-459.62 2529.78,-449.83 2520.52,-454.97 2525.75,-459.62"/>
+<text xml:space="preserve" text-anchor="middle" x="2534" y="-461.95" font-family="Times,serif" font-size="14.00">Copied</text>
+</g>
+<!-- medicare.enrollments.fips2 -->
+<g id="node10" class="node">
+<title>medicare.enrollments.fips2</title>
+<g id="a_node10"><a xlink:href="../medicare.enrollments/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2466.62,-155 2282.38,-155 2282.38,-96 2466.62,-96 2466.62,-155"/>
+<text xml:space="preserve" text-anchor="start" x="2295.38" y="-133.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare.enrollments.fips2</text>
+<polygon fill="none" stroke="black" points="2293.38,-103 2293.38,-125.5 2455.62,-125.5 2455.62,-103 2293.38,-103"/>
+<text xml:space="preserve" text-anchor="start" x="2296.38" y="-109.75" font-family="Times,serif" font-size="14.00">MAX(fips2)</text>
+<polygon fill="none" stroke="black" points="2290.38,-100 2290.38,-151 2458.62,-151 2458.62,-100 2290.38,-100"/>
+</a>
+</g>
+</g>
+<!-- medicare.enrollments.fips2&#45;&gt;medicare.qc_enrl_bene.fips5 -->
+<g id="edge9" class="edge">
+<title>medicare.enrollments.fips2&#45;&gt;medicare.qc_enrl_bene.fips5</title>
+<path fill="none" stroke="black" d="M2319.95,-95.53C2301.61,-85.79 2280.98,-74.83 2261.95,-64.73"/>
+<polygon fill="black" stroke="black" points="2263.68,-61.68 2253.21,-60.08 2260.4,-67.87 2263.68,-61.68"/>
+<text xml:space="preserve" text-anchor="middle" x="2332.12" y="-72.45" font-family="Times,serif" font-size="14.00">	join natural</text>
+</g>
+<!-- medicare._enrollments.fips2 -->
+<g id="node11" class="node">
+<title>medicare._enrollments.fips2</title>
+<g id="a_node11"><a xlink:href="../medicare._enrollments/fips2.html" xlink:title="&lt;TABLE&gt;" target="_blank">
+<polygon fill="none" stroke="black" points="2546,-251 2355,-251 2355,-192 2546,-192 2546,-251"/>
+<text xml:space="preserve" text-anchor="start" x="2368" y="-229.7" font-family="Times,serif" font-weight="bold" font-size="14.00">medicare._enrollments.fips2</text>
+<polygon fill="none" stroke="black" points="2366,-199 2366,-221.5 2535,-221.5 2535,-199 2366,-199"/>
+<text xml:space="preserve" text-anchor="start" x="2369" y="-205.75" font-family="Times,serif" font-size="14.00">MAX(fips2)</text>
+<polygon fill="none" stroke="black" points="2363,-196 2363,-247 2538,-247 2538,-196 2363,-196"/>
+</a>
+</g>
+</g>
+<!-- medicare._enrollments.fips2&#45;&gt;medicare.enrollments.fips2 -->
+<g id="edge10" class="edge">
+<title>medicare._enrollments.fips2&#45;&gt;medicare.enrollments.fips2</title>
+<path fill="none" stroke="black" d="M2427.08,-191.53C2420.08,-182.87 2412.3,-173.25 2404.92,-164.12"/>
+<polygon fill="black" stroke="black" points="2407.68,-161.97 2398.67,-156.39 2402.23,-166.37 2407.68,-161.97"/>
+<text xml:space="preserve" text-anchor="middle" x="2432" y="-168.45" font-family="Times,serif" font-size="14.00">Copied</text>
+</g>
+<!-- medicare._ps.fips2&#45;&gt;medicare._enrollments.fips2 -->
+<g id="edge11" class="edge">
+<title>medicare._ps.fips2&#45;&gt;medicare._enrollments.fips2</title>
+<path fill="none" stroke="blue" stroke-width="5" d="M2518.49,-287.68C2509.37,-278.94 2500.4,-270.34 2492.12,-262.4"/>
+<polygon fill="blue" stroke="blue" stroke-width="5" points="2495.29,-259.37 2485.04,-255.61 2489.23,-265.69 2495.29,-259.37"/>
+<text xml:space="preserve" text-anchor="middle" x="2613.72" y="-264.45" font-family="Times,serif" font-size="14.00">	 &#160;Aggregated On bene_id, year, state</text>
 </g>
 </g>
 </svg>
