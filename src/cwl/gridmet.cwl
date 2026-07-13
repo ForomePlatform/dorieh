@@ -189,6 +189,9 @@ steps:
     run:
       class: Workflow
       inputs:
+        depends_on:
+          type: Any?
+          doc: a special field used to enforce dependencies and execution order
         registry:
           type: File
         table:
@@ -235,6 +238,7 @@ steps:
           type: File
           outputSource: index/errors
     in:
+      depends_on: initdb/log
       registry:  make_registry/model
       database: database
       connection_name: connection_name
