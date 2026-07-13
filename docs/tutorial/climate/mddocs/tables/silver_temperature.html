@@ -505,19 +505,19 @@
 <p>Transformed from <a class="reference internal" href="bronze_temperature.html"><span class="std std-doc">bronze_temperature</span></a></p>
 <details>
 <summary>SQL/DDL Statement</summary>
-```sql
-CREATE view  silver_temperature AS
-SELECT
-    tmmx,
-	date,
-	zcta,
-	(tmmx - 273.15) AS temperature_in_C,
-	((tmmx - 273.15)*9/5 + 32) AS temperature_in_F,
-	public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta) AS us_state,
-	public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta) AS city
-FROM bronze_temperature;
-COMMENT ON view silver_temperature IS 'CREATED BY Dorieh: {"version": "0.4.3", "url": "https://github.com/ForomePlatform/dorieh", "commit": "d5d46ee8f87cba7c46356cc5105c37d98eb99086"}. Created at 2026-07-12 23:59:23.778934';
-```
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span><span class="w"> </span><span class="k">view</span><span class="w">  </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">AS</span>
+<span class="k">SELECT</span>
+<span class="w">    </span><span class="n">tmmx</span><span class="p">,</span>
+<span class="w">	</span><span class="nb">date</span><span class="p">,</span>
+<span class="w">	</span><span class="n">zcta</span><span class="p">,</span>
+<span class="w">	</span><span class="p">(</span><span class="n">tmmx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">273</span><span class="p">.</span><span class="mi">15</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">temperature_in_C</span><span class="p">,</span>
+<span class="w">	</span><span class="p">((</span><span class="n">tmmx</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">273</span><span class="p">.</span><span class="mi">15</span><span class="p">)</span><span class="o">*</span><span class="mi">9</span><span class="o">/</span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">32</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">temperature_in_F</span><span class="p">,</span>
+<span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_state</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">us_state</span><span class="p">,</span>
+<span class="w">	</span><span class="k">public</span><span class="p">.</span><span class="n">zip_to_city</span><span class="p">(</span><span class="k">EXTRACT</span><span class="p">(</span><span class="k">YEAR</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="nb">date</span><span class="p">)::</span><span class="nb">INT</span><span class="p">,</span><span class="w"> </span><span class="n">zcta</span><span class="p">)</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="n">city</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">bronze_temperature</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">view</span><span class="w"> </span><span class="n">silver_temperature</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.4.3&quot;, &quot;url&quot;: &quot;https://github.com/ForomePlatform/dorieh&quot;, &quot;commit&quot;: &quot;d5d46ee8f87cba7c46356cc5105c37d98eb99086&quot;}. Created at 2026-07-12 23:59:23.778934&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
 </details>
 </section>
 <hr class="docutils" />
