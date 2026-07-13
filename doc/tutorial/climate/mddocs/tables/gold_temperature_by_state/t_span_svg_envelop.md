@@ -1,6 +1,8 @@
-# Column Lineage SVG Diagram
+# Column gold_temperature_by_state.t_span Lineage SVG
 
 ```{raw} html
-:file: t_span.svg
+:file: /Users/misha/harvard/github/dorieh/doc/tutorial/climate/mddocs/tables/gold_temperature_by_state/t_span.svg
 
 ```
+
+

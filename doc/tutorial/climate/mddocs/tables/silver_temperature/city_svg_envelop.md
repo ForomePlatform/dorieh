@@ -1,6 +1,8 @@
-# Column Lineage SVG Diagram
+# Column silver_temperature.city Lineage SVG
 
 ```{raw} html
-:file: city.svg
+:file: /Users/misha/harvard/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/city.svg
 
 ```
+
+

@@ -1,6 +1,8 @@
-# Column Lineage SVG Diagram
+# Column silver_temperature.zcta Lineage SVG
 
 ```{raw} html
-:file: zcta.svg
+:file: /Users/misha/harvard/github/dorieh/doc/tutorial/climate/mddocs/tables/silver_temperature/zcta.svg
 
 ```
+
+
