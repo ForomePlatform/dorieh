@@ -91,7 +91,13 @@ touch docs/.nojekyll
 echo "Build finished"
 
 git add docs
-git commit -a -m "Updating documentation"
+# doc-builder is read-only for sources: discard the build-time mutations of
+# tracked source files (copy_section injections into doc/home.md, the
+# regenerated doc/docker_readme.md and doc/lineage artifacts), so that only
+# the built site under docs/ is committed and merges from the dev branches
+# can never conflict on generated content.
+git checkout -- doc/
+git commit -m "Updating documentation"
 echo "Changes committed"
 
 echo Staging: "$staging"
