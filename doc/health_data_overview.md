@@ -1,5 +1,12 @@
 # Health Data in Dorieh (Medicare and Medicaid)
 
+```{seealso}
+* [Data dictionary and lineage for Medicare processing](MedicareLineage.md) —
+  every table and column of the warehouse, with lineage diagrams.
+* [Health Data: See Also](health_seealso.md) — related pages in other
+  sections.
+```
+
 ```{contents}
 ---
 local:

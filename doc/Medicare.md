@@ -9,7 +9,6 @@ members/mcr_sas2yaml.rst
 members/mcr_sas2db.rst
 members/fts2yaml.rst
 members/medicare_yaml.md
-MedicareLineage.md
 ```
 
 See also the sibling case study:
@@ -32,10 +31,13 @@ aggregates, start with the tutorial
 for a hands-on run against synthetic data, see the example below.
 
 ```{seealso}
-[Example: Medicare Processing Pipeline with Synthetic Data](medicare-example.md) —
-a step-by-step guide to running the full pipeline against a **publicly available**
-synthetic dataset (no data use agreement required) and exploring the results in
-a pre-built Apache Superset dashboard.
+* [Example: Medicare Processing Pipeline with Synthetic Data](medicare-example.md) —
+  a step-by-step guide to running the full pipeline against a **publicly
+  available** synthetic dataset (no data use agreement required) and exploring
+  the results in a pre-built Apache Superset dashboard.
+* [Data dictionary and lineage for Medicare processing](MedicareLineage.md) —
+  the generated reference for every table and column described on this page,
+  with clickable table- and column-level lineage diagrams.
 ```
 
 ## Medallion architecture of the Medicare warehouse

@@ -36,6 +36,12 @@ What each guide covers:
   [example request](example_request_yaml.md) — describing research
   data requests declaratively in YAML.
 
+```{seealso}
+The generated [Data Dictionaries](dictionaries.md) — a page for every
+table and column, with lineage diagrams — are the companion reference
+for all the querying guides above.
+```
+
 The guides above apply to every data domain Dorieh supports — not
 only the flagship climate and Medicare examples but also
 [exposure data](exposures.md), [EPA data](epa.md) and
