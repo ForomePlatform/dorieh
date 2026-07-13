@@ -19,8 +19,11 @@ optional enrichment.
 **Key pages**
 
 * [The Dorieh approach](concepts.md)
-* [Climate pipeline tutorial](tutorial/climate/building-climate-pipeline.md)
-* [Medicare case study](Medicare.md)
+* [Learning paths](paths/index.md) — guided routes for researchers,
+  developers, operators, book readers and auditors
+* [Climate pipeline tutorial](tutorial/climate/index.md)
+* [Medicare tutorial](tutorial/medicare/building-medicare-pipeline.md)
+  with [Medicare.md](Medicare.md) as its reference
 * [DSL reference](Datamodels.md)
 * [About the companion book](about-the-book.md)
 
@@ -33,6 +36,14 @@ Introduction <home>
 Why a data platform <rationale>
 The Dorieh approach <concepts>
 The companion book <about-the-book>
+```
+
+```{toctree}
+---
+maxdepth: 2
+caption: Learning paths
+---
+Choose your path <paths/index>
 ```
 
 ```{toctree}
@@ -89,8 +100,3 @@ caption: Reference
 Terms and Acronyms <glossary>
 docindices
 ```
-
-## Documentation Indices
-
-* [General Index](genindex)
-* [Python Module Index](modindex)

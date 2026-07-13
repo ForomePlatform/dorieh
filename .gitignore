@@ -158,3 +158,14 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
+
+# Generated Medicare data dictionary and lineage pages.
+# Built at documentation-build time by build_documentation.sh; regeneration
+# recipe is documented in doc/MedicareLineage.md. Only the *.eps exports
+# (book figure sources) and the tracked snapshot .dot files are committed.
+doc/lineage/*.md
+doc/lineage/*.svg
+doc/lineage/tables/**/*.md
+doc/lineage/tables/**/*.svg
+doc/lineage/tables/**/*.dot
+doc/lineage/tables/*.md

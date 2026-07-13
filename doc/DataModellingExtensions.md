@@ -1,13 +1,14 @@
-# Extensions used for creating federated view of different years
+# Data Modeling Extensions: Federated Views Across Years
 
 This page is the authoritative reference for the extensions to the
 Dorieh data-modeling DSL. The extensions add directives for building
 federated views over collections of tables that describe the same
 data but differ in column names and types from year to year. The core
 DSL — domains, tables, columns, `create` statements, validation — is
-documented in [Data Modelling for Dorieh Data
+documented in [Data Modeling for Dorieh Data
 Platform](Datamodels.md); this page covers only the additional
-directives.
+directives. Extensions described here are used by
+[](members/mcr_combine_tables).
 
 ```{seealso}
 **Further reading:** Appendix B of the companion book
@@ -17,19 +18,13 @@ reference. This documentation is self-contained; the book is optional
 enrichment.
 ```
 
-## General
-
-See [General Data Modeling](Datamodels.md) for description of the general data modelling syntax. 
-
-Extensions described here are used by [](members/mcr_combine_tables)
-
 ## Combining multiple sources and optional columns
 
 Source can be an array of columns rather than one column.
 
 The following block will define a column named `ssa3`. The tool
 will look for columns named either `cnty_cd`, or `bene_county_cd`, or
-`ssa_county` to map to the new `ssa3` column. If neither of these three columns 
+`ssa_county` to map to the new `ssa3` column. If none of these three columns 
 is found, a new column will be created and filled with NULL values.
 
 Without `optional: true`, if an appropriate source column is not found,
@@ -53,7 +48,7 @@ SSA-to-FIPS crosswalk that gives these county codes their meaning;
 the crosswalk itself is loaded into the database by the separate
 `dorieh.platform.crosswalks.ssa2fips` utility (see the "Linking with
 nomenclature" section of
-[Data Modelling for Dorieh Data Platform](Datamodels.md)).
+[Data Modeling for Dorieh Data Platform](Datamodels.md)).
 
 
 ## Exclude
@@ -130,11 +125,14 @@ core reference:
   harmonize columns that differ in name and type across years into
   single, uniformly typed columns of the federated view;
 * [identifier columns and the `{identifiers}`
-  token](Datamodels.md) let a grouped view count records that
+  token](Datamodels.md#identifier-columns-and-the-identifiers-token)
+  let a grouped view count records that
   disagree on the attributes that define an entity's identity (see
   the `discrepancies` column of the `_beneficiaries` view in
   `medicare.yaml`);
-* disambiguation columns computed in grouped views surface
+* disambiguation rules
+  ([defined in The Dorieh approach](concepts.md#disambiguation-rules))
+  computed in grouped views surface
   conflicting values instead of silently dropping them: for example,
   in `medicare.yaml` the beneficiary's `dob` is defined as
   `MIN(dob)` while `dob_latest` is non-null only when the source
@@ -143,7 +141,7 @@ core reference:
 * the `invalid.records` machinery of the core DSL journals records
   that fail primary key, referential integrity or duplicate checks
   into an audit table (see the "Invalid Record" section of
-  [Data Modelling for Dorieh Data Platform](Datamodels.md)).
+  [Data Modeling for Dorieh Data Platform](Datamodels.md)).
 
 The `qc_*` views of `medicare.yaml` show all of these techniques
 working together over a federated view.

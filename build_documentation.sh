@@ -59,6 +59,17 @@ collector  src/python doc/members
 # prepare markdown templates for CWL files
 cwl2md -i src/cwl -o doc/pipeline
 
+# generate the Medicare data dictionary and lineage pages (see doc/MedicareLineage.md).
+# Must run from doc/lineage (the table/column lists are written to the CWD) and
+# include both domain files, raw schemas first, so cross-domain lineage resolves.
+(
+  cd doc/lineage && \
+  python -m dorieh.platform.dictionary.domain_dictionary \
+      --fmt svg --lod min --mode sphinx -o medicare.dot \
+      ../../src/python/dorieh/cms/models/medicare_cms.yaml \
+      ../../src/python/dorieh/cms/models/medicare.yaml
+) || { echo "Medicare lineage generation FAILED - refusing to build docs without it"; exit 1; }
+
 # make python sources available for autodoc
 abs_path=`realpath src/python`
 export PATH="$abs_path:$PATH"

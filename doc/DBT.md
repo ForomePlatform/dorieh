@@ -10,8 +10,9 @@ members/create_test
 members/dbt_runner
 members/gen_dbt_cwl
 TestingWorkflows.md
-guts.md
 ```
+
+See also [Data Platform Internals](guts.md).
 
 The testing framework allows to test a pipeline produces
 exactly the same data in subsequent pipeline runs. The data is

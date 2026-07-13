@@ -13,19 +13,35 @@ members/domain_dictionary.md
 The dictionary and the data lineage graphs are generated using the 
 [Dorieh Data Dictionary tool](members/domain_dictionary).
 
+The dictionary under `doc/lineage/` covers both the raw `cms.*` tables
+(MBSF and MEDPAR files, the Bronze layer) and the derived `medicare.*`
+tables, and reflects the current data model including the OREC/CUREC
+redesign of the QC layer (`consistent_orec` in the `qc_enrl_bene` view,
+`consistent_curec` on the `enrollments` table); see
+[Entitlement reason codes: OREC and CUREC](Medicare.md#entitlement-reason-codes-orec-and-curec).
+The [Medicare data model definition](members/medicare_yaml.md) remains
+the authoritative source from which these pages are generated.
+
 ```{note}
-The committed lineage diagram sources under `doc/lineage/` are point-in-time
-snapshots that cover only a subset of the tables and columns. The
-column-level diagrams predate the OREC/CUREC redesign of the QC data model,
-so none of them yet illustrate the consistency columns that redesign
-introduced (`consistent_orec` in the `qc_enrl_bene` view and
-`consistent_curec` on the `enrollments` table) or the removal of `orec`
-from `enrollments`. They will be regenerated with the
-[Dorieh Data Dictionary tool](members/domain_dictionary). Until then, the
-[Medicare data model definition](members/medicare_yaml.md) is the
-authoritative description of the current tables and columns; see
-[Entitlement reason codes: OREC and CUREC](Medicare.md#entitlement-reason-codes-orec-and-curec)
-for what changed and why.
+**These pages are generated at build time.** The dictionary and lineage
+pages under `doc/lineage/` are derived entirely from the domain
+definitions and are *not* committed to the repository;
+`build_documentation.sh` regenerates them on every documentation build
+(and refuses to build the site if generation fails). To generate them
+locally — for example, to preview the documentation with a plain
+`sphinx-build` — run the tool *from the `doc/lineage/` directory* (the
+table and column lists are written to the current working directory)
+and pass **both** domain files, the raw schemas first, so that
+cross-domain lineage resolves:
+
+    cd doc/lineage
+    python -m dorieh.platform.dictionary.domain_dictionary \
+        --fmt svg --lod min --mode sphinx -o medicare.dot \
+        ../../src/python/dorieh/cms/models/medicare_cms.yaml \
+        ../../src/python/dorieh/cms/models/medicare.yaml
+
+The `*.eps` files in this directory are point-in-time exports used as
+figure sources for the companion book; the tool does not modify them.
 ```
               
 The general structure of the generated dictionary is:

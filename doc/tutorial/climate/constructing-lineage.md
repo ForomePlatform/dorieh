@@ -1,14 +1,14 @@
 # Tutorial: Constructing data dictionaries and lineage graphs
 
 This tutorial demonstrates how to construct a data dictionary and 
-lineage graph for a climate analysis workflow built in the 
-[Building a workflow](building-climate-pipeline.md) Tutorial.
+lineage graph for the climate analysis workflow built in 
+[Part 1, Building the pipeline](building-climate-pipeline.md).
 
 ```{seealso}
-[Document a workflow](documenting-a-workflow.md)
-
-
-[The Data Dictionary Generation tool](../../members/domain_dictionary.rst)
+* [Document a workflow](documenting-a-workflow.md) — the previous part
+  of this tutorial
+* [The Data Dictionary Generation tool](../../members/domain_dictionary.rst) —
+  reference documentation for the tool used in this part
 ```
 
 ```{contents}
@@ -22,14 +22,13 @@ local:
 Dorieh provides an integrated dictionary and lineage utility that 
 analyzes your workflow and domain definition file (such as 
 example1_model.yml) to automatically generate 
-a full suite of human -and machine-readable artifacts:
+a full suite of human- and machine-readable artifacts:
 
 - a comprehensive data dictionary, and
 - graphical lineage diagrams at both the table and the column level.
 
 
-To anchor this tutorial, we remind here the content of the 
-example1_model.yml file:
+For reference, here is the final `example1_model.yml` from Part 1:
 
 :::{toggle} Expand Code Block
 ```{literalinclude} example1_model.yml
@@ -82,7 +81,7 @@ We will be using the
 Here we assume you are running from a `docs/` directory alongside 
 `example1_model.yml`. This directory should have been created when 
 walking through the 
-[documentation tutorial](documenting-a-workflow.md#generating-skeleton-documentation) 
+[documentation tutorial](documenting-a-workflow.md#generating-skeleton-documentation). 
 If you used a different layout, adjust the paths accordingly.
 :::
 
@@ -105,7 +104,7 @@ python -m dorieh.platform.dictionary.domain_dictionary ../example1_model.yml --f
 :::
 
 :::{hint}
-We use the `--lod min` option generate lineage for derived columns 
+We use the `--lod min` option to generate lineage for derived columns 
 only. See 
 [Data Dictionary Generation tool](../../members/domain_dictionary.rst)
 for details.
@@ -159,7 +158,7 @@ An example of using these keys is shown below:
       columns:
         - tmmx:
             type: float
-            description: Maximum temperature variable from the TerraClimate dataset in K
+            description: Maximum daily temperature from the gridMET dataset, in K
             reference: https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands
 ```
 
@@ -175,7 +174,7 @@ See how this is reflected in the
 | Reference | [https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands) |
 
 
-Maximum temperature variable from the TerraClimate dataset in K
+Maximum daily temperature from the gridMET dataset, in K
 ```
 
 And in the 
@@ -189,6 +188,9 @@ This small climate example uses the same tooling as our Medicare
 pipeline. For a large, production-scale use case—including many more 
 tables and complex transformations—see the  
 [Medicare Data Dictionary](../../MedicareLineage.md).
+To retrace how that pipeline was designed and built, continue with the 
+[Medicare claims pipeline tutorial](../medicare/building-medicare-pipeline.md), 
+which applies the method of this tutorial at production scale.
 
 
 

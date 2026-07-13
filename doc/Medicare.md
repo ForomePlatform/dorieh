@@ -10,8 +10,10 @@ members/mcr_sas2db.rst
 members/fts2yaml.rst
 members/medicare_yaml.md
 MedicareLineage.md
-Medicaid.md
 ```
+
+See also the sibling case study:
+[Medicaid: Building a Data Warehouse from ResDac Files](Medicaid.md).
 
 
 ```{contents}
@@ -19,6 +21,15 @@ Medicaid.md
 local:
 ---
 ```
+
+This page is the reference documentation for the Medicare data warehouse
+that Dorieh builds from raw ResDAC files. It walks through the pipeline
+layer by layer: ingestion of the raw files (Bronze), the cleansed and
+unified tables and views (Silver), and the QC aggregates (Gold). For a
+guided path through this page, from the raw ResDAC files to the QC
+aggregates, start with the tutorial
+[Building the Medicare Claims Pipeline](tutorial/medicare/building-medicare-pipeline.md);
+for a hands-on run against synthetic data, see the example below.
 
 ```{seealso}
 [Example: Medicare Processing Pipeline with Synthetic Data](medicare-example.md) —
@@ -32,11 +43,6 @@ a pre-built Apache Superset dashboard.
 The Medicare warehouse is organized as a Medallion architecture: data moves
 through Bronze, Silver, and Gold layers, and each layer is derived only from
 the layer beneath it.
-
-The tutorial
-[Building the Medicare Claims Pipeline](tutorial/medicare/building-medicare-pipeline.md)
-offers a guided path through this page, from the raw ResDAC files to the QC
-aggregates.
 
 * **Bronze**: the raw `cms.*` tables. Every original ResDac file is loaded
   into its own table, with the data kept as delivered.
@@ -83,12 +89,11 @@ tables is done separately with the standalone
                                    
 ### Ingestion of raw data
 
-Ingestion of raw data is incremental, i.e. tables that are already in 
-the database
-will not be dropped (deleted). However, any table with the name found
-in input path will be replaced. Please note, that every raw record
-is identified by the tuple consisting of the original file name and
-the line number in that file.
+Ingestion is incremental: tables already in the database are kept, but
+any table whose source file is present in the input path is re-created
+from that file. Every raw record is identified by the tuple
+(original file name, line number) — the `FILE` and `RECORD` provenance
+columns described above.
                                    
 ```{note}
 If no raw data is given or `--input` parameters points
@@ -101,10 +106,12 @@ data in the format as it comes from ResDac. Metadata for ingestion
 is taken from [FTS](fts.md) files that accompany ResDac deliverables. 
 
 ```{important}
-In case of Medicare data in posession of NSAPH organization, we 
-only have original ResDac data for years 2011-2014 and 2016-2018. 
-Therefore, the pipeline is unable to ingest the data for other years
-(1999-2010 and 2015).
+For example, in the NSAPH deployment, original ResDAC files in the
+organization's possession exist only for the years 2011-2014 and
+2016-2018, so in that deployment the pipeline is unable to ingest the
+data for the other years (1999-2010 and 2015). Readers without access to ResDAC data
+can run the pipeline against the synthetic dataset described in
+[Example: Medicare Processing Pipeline with Synthetic Data](medicare-example.md).
 ```
 See [](#files-for-1999-to-2010) for more information.
 
@@ -116,7 +123,7 @@ During in-database processing all tables, views and materialized views
 are completely replaced. Old tables are dropped and new ones are created
 from scratch.
 
-See [](#combining-raw-files-into-a-single-view) for processing details.
+See [](#combining-raw-files-into-unified-views) for processing details.
                       
 ### Medicare Pipeline References
 
@@ -153,7 +160,7 @@ Inpatient admissions files always follow `medpar_all_file` pattern.
 Columns vary from year to year even for similarly named files, 
 new columns are being added and column names are sometimes changed.
 
-To add insult to injury, for years prior to 2011 (1999-2010) we do not 
+A further complication is that for years prior to 2011 (1999-2010) we do not 
 have original files, but preprocessed files with patient summary 
 (called denominators) and admissions. They are in SAS 7BDAT format,
 however columns are also different for different years. Please
@@ -172,29 +179,27 @@ for every file. However, to make it easier to join these tables we:
   * Bene_Id 
   * Zip code
 
-Originally, these data is stored in columns with the following possible names:
+In the original files, these data are stored in columns with the
+following possible names:
 
-    "bene_id":  (None, ["bene_id", "intbid", "qid", "bid_5333*"]),
-    "state":  (None, ["state", "ssa_state", "state_code",
-                      "bene_rsdnc_ssa_state_cd", "state_cd",
-                      "medpar_bene_rsdnc_ssa_state_cd"]),
-    "zip": (None, ["zip", "zipcode", "bene_zip_cd", "bene_zip",
-                   "bene_mlg_cntct_zip_cd",
-                   "medpar_bene_mlg_cntct_zip_cd"]),
-    "year": (None, ["year", "enrolyr", "bene_enrollmt_ref_yr",
-                    "rfrnc_yr"])
-    
+| Uniform column | Possible source column names                                                                              |
+|----------------|-----------------------------------------------------------------------------------------------------------|
+| `bene_id`      | `bene_id`, `intbid`, `qid`, `bid_5333*`                                                                     |
+| `state`        | `state`, `ssa_state`, `state_code`, `bene_rsdnc_ssa_state_cd`, `state_cd`, `medpar_bene_rsdnc_ssa_state_cd` |
+| `zip`          | `zip`, `zipcode`, `bene_zip_cd`, `bene_zip`, `bene_mlg_cntct_zip_cd`, `medpar_bene_mlg_cntct_zip_cd`        |
+| `year`         | `year`, `enrolyr`, `bene_enrollmt_ref_yr`, `rfrnc_yr`                                                       |
+
 When a table has no natural primary key (admission tables) we add a record 
-number column. This column ha sno meaning but allows to trace a record to the 
-original data.
+number column. This column has no meaning but makes it possible to trace a
+record to the original data.
 
 (files-for-1999-to-2010)=
 ### Files for 1999 to 2010 
 
-Between 1999 and 2010, original Medicare ResDAC raw datasets are not available 
-to NSAPH. Instead, only partially preprocessed files provided by external 
-collaborators are available. These have been stored historically on RCE in two
-separate directories:
+In the NSAPH deployment, for example, original Medicare ResDAC raw datasets
+for 1999 to 2010 are not available. Instead, only partially preprocessed
+files provided by external collaborators exist. These have been stored
+historically in two separate directories:
 
 * denominator/
 * inpatient/
@@ -215,9 +220,9 @@ To handle this variation:
 
 For more details on implementation:
 
-* See the [SAS Inrospector](members/mcr_sas2yaml.rst)  for how
+* See the [SAS Introspector](members/mcr_sas2yaml.rst) for how
 metadata is extracted. 
-* See the class [SAS Data Laoder](members/mcr_sas2db.rst) for how
+* See the class [SAS Data Loader](members/mcr_sas2db.rst) for how
 these files are ingested into the database.
 
 Because of schema variability:
@@ -236,14 +241,11 @@ Each resulting table includes:
 * Consistent indexing to support later join operations with downstream
   tables (e.g., beneficiaries and admissions).
 
-> ⚠ Note: Because of the variability and limited provenance of these
+```{note}
+Because of the variability and limited provenance of these
 files, this step is distinct from the ResDAC
 ingestion workflow and is not based on FTS metadata.
-
-📚 Related References:
-
-:doc: members/mcr_sas2yaml for introspection logic
-:doc: members/mcr_sas2db for database file loading
+```
 
 ```{mermaid}
 graph TD;
@@ -276,9 +278,8 @@ which describes the structure of the corresponding data file—including:
 
 These FTS files are designed primarily for human readability 
 and are not machine-friendly. To address this, 
-the Dorieh includes a partial FTS parser:
-
-👉 [fts2yaml module](members/fts2yaml.rst)
+Dorieh includes a partial FTS parser:
+the [fts2yaml module](members/fts2yaml.rst).
 
 This parser performs the following:
 
@@ -342,7 +343,7 @@ graph TD;
 
 #### Directory Layout Expectation
 
-To function correctly with the NSAPH ingestion pipeline, 
+To function correctly with the Dorieh ingestion pipeline, 
 the directory layout for ResDAC raw files must follow this structure:
 ```
 project_root/
@@ -359,21 +360,27 @@ Specifically:
 * Table names are inferred from FTS file name and containing year
 * The FTS filename must match the .dat or .csv.gz data file (just differing in extension)
 
-💡 For a full example of metadata schema outputs, see:
+For a full example of metadata schema outputs, see the
+[Generated Medicare data model](members/medicare_yaml).
 
-[Generated Medicare data model](members/medicare_yaml)                 
-
-## Combining raw files into a single view
+(combining-raw-files-into-a-single-view)=
+## Combining raw files into unified views
 
 [Pipeline](pipeline/medicare_beneficiaries)
 
 ### Eventual database schema
 
-Once all raw files are ingested into the database they are combined 
-into two views:
+Once all raw files are ingested into the database they are combined
+into the unified objects that form the Silver layer of the warehouse:
 
-1. Patient summary (aka MBSF, aka Beneficiary summary)
-2. Inpatient Admissions (aka hospitalizations, aka medpar)
+1. Patient summary (aka MBSF, aka Beneficiary summary): the
+   `medicare.ps` view, its companion materialized view `medicare._ps`,
+   and the `medicare.mbsf_d` materialized view uniting the split
+   dual-eligibility component files
+2. Inpatient Admissions (aka hospitalizations, aka medpar): the
+   `medicare.ip` view
+3. The curated tables built from them: `medicare.beneficiaries`,
+   `medicare.enrollments`, and `medicare.admissions`
 
 The figure below visualizes the database schema. 
 
@@ -389,20 +396,22 @@ uses [](DataModellingExtensions.md).
                                                 
 ### CWL workflows
 
-The 
-[full pipeline](pipeline/medicare) consists of two steps:
+The in-database processing part of the five-step
+[pipeline](pipeline/medicare) consists of two sub-workflows:
 
-1. Creating [beneficiary federated summary and enrollments table](pipeline/medicare_beneficiaries)
-2. Creating [inpatient admissions table](pipeline/medicare_admissions)
-  
+1. Creating the [beneficiary federated summary and enrollments table](pipeline/medicare_beneficiaries)
+2. Creating the [inpatient admissions table](pipeline/medicare_admissions)
+
+The QC step is described in [Creating QC Tables](#creating-qc-tables).
+
 
 ### Creating Federated Patient Summary
 
-The federated patient summary view is created in two steps, though the division 
-into steps is purely technical. The reasons are
-given some limitations of readability in SQL.
+The federated patient summary view is created in two steps for purely
+technical reasons: the second step depends on columns (`ssa3`, `zip`)
+that are cleansed in the first, and splitting the SQL keeps it readable.
 
-This step uses data modelling extensions described in
+This step uses data modeling extensions described in
 [](DataModellingExtensions.md).
                                                
 These steps are part of
@@ -467,6 +476,17 @@ The second step is performed by a general loader utility
 based on the 
 [Medicare data model definition](members/medicare_yaml.md).
 
+### Creating the mbsf_d dual-eligibility view
+
+The same sub-workflow ([](pipeline/medicare_beneficiaries)) also creates
+`medicare.mbsf_d`, a materialized view that unites the raw `cms.mbsf_*d*`
+component tables — the split files that carry the monthly dual-eligibility
+data for the years in which it is delivered separately. The view keeps the
+beneficiary id, the year, the number of months of dual coverage
+(`dual_mo`) and the array of 12 monthly dual-status indicators
+(`dual_indicators`), and it feeds the `dual_*` column family of the
+[Enrollments table](#enrollments-columns-definitions).
+
 ### Creating Beneficiaries table
                
 This is also part of 
@@ -495,8 +515,8 @@ If there is any discrepancy for a given `bene_id`, then:
 * The earliest _**DOB**_ is selected as `dob`
 * The latest _**DOD**_ (date of death) is selected  as `dod`
 * A comma-separated string containing all race codes is used for `race`
-* A comma-separated string containing all race codes is used for `race_rti`
-* comma-separated string containing all sex codes is used for `sex`
+* A comma-separated string containing all RTI race codes is used for `race_rti`
+* A comma-separated string containing all sex codes is used for `sex`
 * The OREC value from the earliest enrollment year is selected as `orec`
   (with ties broken by the smallest code, so the result is deterministic)
 
@@ -519,8 +539,10 @@ The following columns are added:
 * Beneficiary id HLL hash (`bene` column), to be used for 
   `approximate count distinct` queries. [See more](UsingHLL.md) 
 
-This topic is discussed in more details in the 
-[Medicaid documentation](Medicaid.md#deduplication-and-data-cleansing)
+The general pattern is defined in
+[Disambiguation rules](concepts.md#disambiguation-rules); the
+[Medicaid page](Medicaid.md#deduplication-and-data-cleansing) shows an
+earlier variant of the same approach.
 
 #### Beneficiary enrollment-span columns
 
@@ -579,7 +601,7 @@ more efficient.
 - state
 
 In other words, a record in the table describes a given beneficiary
-leaving in a given state during a given year. If beneficiary has moved
+living in a given state during a given year. If beneficiary has moved
 from one state to another during the year, more than one record for such
 a beneficiary will be created in the table. This is consistent with 
 [Medicaid Enrollments](Medicaid.md#enrollments), though, arguably,
@@ -597,35 +619,19 @@ multiple values. These columns are:
 * `ssa3`: SSA county code
 * `zip`: beneficiary address zip code
 
-The policy for all of this columns is the following:
+The policy for all of these columns is the following:
 
-* For corresponding column in the enrollments table, an arbitrary but
+* For the corresponding column in the enrollments table, an arbitrary but
   deterministic value is selected
-* For most of these columns an additional column is added, containing
-  the list of all encountered values (`fips2`, which is derivable from
-  the state, has no list column)
+* For most of these columns an additional companion column is added,
+  containing the list of all encountered values (`fips2`, which is
+  derivable from the state, has no list column)
 
-The additional columns are:
-
-* `ssa2_list`
-* `ssa3_list`
-* `residence_counties`
-* `zips`
-
-Additional columns reflecting data quality and cleansing are added to
-the **Enrollments** tables:
-
-* `state_count`: Number of states associated with the given beneficiary
-  in a given year
-* `fips3_is_approximated`: A boolean column, indicating whether the value 
-  was taken from original record as is or approximated. 
-  If true, it means that there was no valid county code in the original
-  ResDac record, hence, the county code was inferred from other data
-  (in most cases, zip code)
-* `fips3_valdiated` (sic): A boolean column indicating that the value
-  of county code is consistent with the values of state code and zip code.
-  The physical column name in the database is misspelled exactly as shown
-  here (`valdiated`, not `validated`); use this spelling in queries.
+Additional columns reflecting data quality and cleansing
+(`state_count`, `fips3_is_approximated`, `fips3_valdiated`) are also
+added to the **Enrollments** table. All of these columns are described
+in [Enrollments columns definitions](#enrollments-columns-definitions)
+below.
 
 #### Enrollments columns definitions
 
@@ -654,25 +660,25 @@ The following columns are created for Enrollments:
 * `state_count`: number of states, where the beneficiary
   was enrolled in Medicare during the year. Note,
   this is also the number of records for this beneficiary and this year
-  in the Enrollments` table.
+  in the `Enrollments` table.
 * `died`: a boolean flag indicating that the beneficiary has 
   died during this year while being registered
   for Medicare in this state.
 * `hmo_indicators`: the array of 12 monthly HMO indicators; when the
   group contains multiple source records, the maximum (by array
   comparison) of the encountered arrays is kept
-* `hmo_cvg_count`: the number of months the beneficiary was enrolled in a Medicare Advantage (MA) 
+* `hmo_cvg_count`: the number of months the beneficiary was enrolled in a Medicare Advantage (MA) plan
 * `hmo`: a generated boolean column, true when `hmo_cvg_count` is greater
   than zero, i.e. when the beneficiary received benefits through a managed
   care plan for at least one month of the year; NULL when the count is
   unknown
-* `buyin_indicators`, `buyin_cvg_count`, `buyin` (added after the book's
-  example scope): the Part B premium buy-in family — an array of the
+* `buyin_indicators`, `buyin_cvg_count`, `buyin` (added in a later
+  revision of the data model): the Part B premium buy-in family — an array of the
   monthly buy-in indicator codes, the number of months during the year when
   the beneficiary's premium was paid by the state, and a generated boolean
   that is true when that count is greater than zero
-* `dual_indicators`, `dual_cvg_count`, `dual` (added after the book's
-  example scope): the dual-eligibility family, taken from the
+* `dual_indicators`, `dual_cvg_count`, `dual` (added in a later
+  revision of the data model): the dual-eligibility family, taken from the
   `medicare.mbsf_d` materialized view (built from the raw `mbsf_*d*`
   component files) — an array of the monthly dual-status indicator codes,
   the number of months of dual coverage during the year (NULL when no
@@ -686,8 +692,10 @@ The following columns are created for Enrollments:
   If true, it means that there was no valid county code in the original
   ResDac record, hence, the county code was inferred from other data
   (in most cases, zip code)
-* `fips3_valdiated`: A boolean column indicating that the value
+* `fips3_valdiated` (sic): A boolean column indicating that the value
   of county code is consistent with the values of state code and zip code.
+  The physical column name in the database is misspelled exactly as shown
+  here (`valdiated`, not `validated`); use this spelling in queries.
 * Beneficiary id HLL hash (`bene` column), to be used for 
   `approximate count distinct` queries. [See more](UsingHLL.md) 
 
@@ -743,15 +751,10 @@ How the two codes are computed:
 ```{admonition} Design note — evolved after the book
 :class: note
 Earlier revisions of the data model kept a per-year `orec` column on
-`enrollments` in addition to the one on `beneficiaries`. With inconsistent
-raw data this made `orec` an implicit key of the natural join in
-`qc_enrl_bene`, silently dropping every enrollment year where the two
-values disagreed. The current model removes `orec` from `enrollments`,
-computes the canonical value on `beneficiaries` from the earliest
-enrollment year, and surfaces any disagreement explicitly through
-`orec_latest` and the `consistent_orec` QC flag, with `curec_latest` and
-`consistent_curec` doing the same for CUREC. Data-quality problems are now
-reported as QC dimensions instead of silently distorting the join.
+`enrollments`, making it an implicit key of the natural join described
+above. The current model removes it and surfaces disagreements through
+`orec_latest` / `consistent_orec`, with `curec_latest` /
+`consistent_curec` doing the same for CUREC.
 ```
 
 ### Creating Federated Admissions view
@@ -760,7 +763,8 @@ This step is part of
 [](pipeline/medicare_admissions)
 
 This step technically combines all `cms.medpar*` and `cms.mcr_ip_*`
-tables into a single view using `CREATE VIEW` SQL statement.
+tables into a single view using `CREATE VIEW` SQL statement. The result
+is the `medicare.ip` view.
 
 It also cleanses and conditions data from the following columns:
 
@@ -835,16 +839,16 @@ See more information about handling records that have failed validation in:
 Beyond the identifying and date columns, the `admissions` table carries the
 following groups of columns:
 
-* Admission characteristics (added after the book's example scope):
+* Admission characteristics (added in a later revision of the data model):
   `admsn_type_cd` (inpatient admission type code), `src_admsn_cd` (source
   of admission), `dschrgcd` (discharge status code), and
   `dschrg_dstntn_cd` (discharge destination code)
-* Length of stay (added after the book's example scope): `los_day_cnt`,
+* Length of stay (added in a later revision of the data model): `los_day_cnt`,
   the total length of the beneficiary's stay in days
-* DRG and payment amounts (added after the book's example scope):
+* DRG and payment amounts (added in a later revision of the data model):
   `drg_price_amt`, `drg_outlier_pmt_amt`, `pass_thru_amt`, and
   `mdcr_pmt_amt`
-* Beneficiary liability amounts (added after the book's example scope):
+* Beneficiary liability amounts (added in a later revision of the data model):
   `bene_blood_ddctbl_amt`, `bene_prmry_pyr_amt`, `bene_ip_ddctbl_amt`, and
   `bene_pta_coinsrnc_amt`
 * Diagnoses: `primary_diagnosis` and the `diagnoses` array, which collects
