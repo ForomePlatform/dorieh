@@ -2,7 +2,7 @@
 
 This section collects cross-cutting how-to guides for working with a
 deployed Dorieh data platform. Unlike the flagship
-[climate tutorial](tutorial/climate/building-climate-pipeline.md) and the
+[climate tutorial](tutorial/climate/index.md) and the
 [Medicare case study](Medicare.md), which each walk through building one
 pipeline end to end, the pages below apply regardless of which data
 domain you are working with: querying the database, monitoring its
@@ -36,9 +36,8 @@ What each guide covers:
   [example request](example_request_yaml.md) — describing research
   data requests declaratively in YAML.
 
-Beyond the flagship climate and Medicare examples, Dorieh also
-supports additional data domains: [exposure data](exposures.md) from
-the Atmospheric Composition Analysis Group of Washington University in
-St. Louis, [Environmental Protection Agency (EPA) data](epa.md), and
-[demographics data from the US Census](census.rst). These and the
-other subject areas are listed on the [Data Domains](domains.md) page.
+The guides above apply to every data domain Dorieh supports — not
+only the flagship climate and Medicare examples but also
+[exposure data](exposures.md), [EPA data](epa.md) and
+[census demographics](census.rst); see the
+[Data Domains](domains.md) page for the full list.

@@ -1,4 +1,4 @@
-# Example: Medicare Processing Pipeline (with PostgreSQL)
+# Example: Medicare Processing Pipeline with Synthetic Data
 
 ```{contents}
 ---
@@ -7,13 +7,19 @@ local:
 ```
 
 ```{seealso}
-[Medicare: Building a Data Warehouse from ResDac Files](Medicare.md)
-[Using HLL for Approximate Count Distinct](UsingHLL.md)
-[Using Dorieh with PostgreSQL Backend](https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres)
+* [Medicare: Building a Data Warehouse from ResDac Files](Medicare.md) —
+  the case-study reference documentation
+* [Building the Medicare Claims Pipeline](tutorial/medicare/building-medicare-pipeline.md) —
+  the guided tutorial
+* [Using HLL for Approximate Count Distinct](UsingHLL.md) — how the QC
+  tables count distinct beneficiaries
+* [Using Dorieh with PostgreSQL Backend](https://github.com/ForomePlatform/dorieh/tree/main/examples/with-postgres) —
+  environment setup for all PostgreSQL examples
 ```
 
-This example demonstrates a full Dorieh data processing pipeline run against a
-**publicly available synthetic** Medicare-like dataset.  Because the data are
+This example demonstrates a full Dorieh data processing pipeline running
+against a local PostgreSQL database, using a **publicly available synthetic**
+Medicare-like dataset.  Because the data are
 synthetic and published openly on [Zenodo](https://zenodo.org/records/18915558),
 no institutional data access agreement is required to follow this example.
 It covers:
@@ -42,8 +48,8 @@ Before starting, make sure you have:
    docker compose up -d
    ```
 
-2. **Toil installed** and tested — see
-   [Installing Dorieh and testing the installation](https://foromeplatform.github.io/dorieh/examples.html#installing-dorieh-and-testing-the-installation).
+2. **Toil installed** and tested — see the [Examples](examples.md) page
+   for installing Dorieh and testing the installation.
 
 3. The **`dorieh` repository cloned** under `$WORKDIR`:
 

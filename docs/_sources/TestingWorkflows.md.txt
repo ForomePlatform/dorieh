@@ -7,8 +7,8 @@ local:
 ```
 
 ```{seealso}
-[Database Testing Framework](DBT)
-[](pipelines)
+* [Database Testing Framework](DBT)
+* [Data Processing Pipelines](pipelines)
 ```
 
 ## Introduction to testing and prerequisites
@@ -169,8 +169,8 @@ The command will be:
 ## Testing Climate workflow
 
 ```{seealso}
-[](Example-climate-workflow)
-[](pipeline/gridmet)
+* [A CWL workflow example: aggregating a climate variable](Example-climate-workflow)
+* [gridMET pipeline](pipeline/gridmet)
 ```
 
 ### Before running the test

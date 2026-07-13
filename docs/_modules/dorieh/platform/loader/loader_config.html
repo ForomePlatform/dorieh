@@ -69,12 +69,11 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../home.html#working-with-nsaph-containerized-apps">Working with NSAPH containerized apps</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../home.html#deployment">Deployment</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../home.html#using-the-database">Using the Database</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../home.html#deployment">Deployment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../home.html#using-the-database">Using the Database</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../home.html#terms-and-acronyms">Terms and Acronyms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../home.html#building-platform-documentation">Building Platform documentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../home.html#next-steps">Next steps</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../rationale.html">Why a data platform</a><ul>
@@ -104,15 +103,44 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 </li>
 </ul>
+<p class="caption" role="heading"><span class="caption-text">Learning paths</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../paths/index.html">Choose your path</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../paths/researcher.html">Researchers and analysts</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/researcher.html#the-path">The path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/researcher.html#going-deeper">Going deeper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../paths/developer.html">Pipeline developers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/developer.html#the-path">The path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/developer.html#going-deeper">Going deeper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../paths/operator.html">Platform operators</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/operator.html#the-path">The path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/operator.html#going-deeper">Going deeper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../paths/book-reader.html">Readers of the book</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/book-reader.html#the-path">The path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/book-reader.html#going-deeper">Going deeper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../paths/auditor.html">Reviewers and auditors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/auditor.html#the-path">The path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../paths/auditor.html#going-deeper">Going deeper</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
 <p class="caption" role="heading"><span class="caption-text">Data domains and pipelines</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../domains.html">Data Domains</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../cms.html">Health</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../health_data_overview.html">Health Data in Dorieh (Medicare and Medicaid)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../QueringMedicaid.html">Querying Medicaid Data</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../climate.html">Climate</a><ul>
@@ -123,8 +151,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../climate.html#cwl-pipelines-and-tools">CWL pipelines and tools</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../exposures.html">Exposure (from Atmospheric Composition Analysis Group of Washington University in St. Louis)</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../exposures.html#exposure-data-by-atmospheric-composition-analysis-group">Exposure data by Atmospheric Composition Analysis Group</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../exposures.html">Exposure (PM2.5, WashU)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../exposures.html#python-packages">Python packages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../exposures.html#cwl-workflows">CWL Workflows</a></li>
 </ul>
@@ -168,14 +195,14 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#introduction">Introduction</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#workflow-description-languages">Workflow Description Languages</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#running-workflows">Running Workflows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#tested-runners">Tested runners</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#providing-parameters-to-the-pipelines">Providing parameters to the pipelines</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#tested-runners">Tested Runners</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#providing-parameters-to-the-pipelines">Providing Parameters to the Pipelines</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#using-toil">Using Toil</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#troubleshooting-workflows-run-by-toil">Troubleshooting Workflows run by Toil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#troubleshooting-workflows-run-by-toil">Troubleshooting Workflows Run by Toil</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#testing-workflows">Testing workflows</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#published-and-tested-workflows">Published and tested workflows</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#testing-workflows">Testing Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#published-and-tested-workflows">Published and Tested Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/gridmet.html">Pipeline to aggregate data from Climatology Lab</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/wustl.html">Pipeline to ingest Monthly Pollution data downloaded from WashU Box</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/pm25_yearly_download.html">Pipeline to aggregate data in NetCDF format over given geographies</a></li>
@@ -187,8 +214,8 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining included CWL tools into a new workflow</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping python modules as CWL tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
 </ul>
@@ -197,36 +224,13 @@ window.addEventListener("load", () => mermaid.run());
 <p class="caption" role="heading"><span class="caption-text">Tutorials and worked examples</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../../Tutorials.html">Dorieh Tutorials</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html">Building a data preparation Workflow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#prerequisites">Prerequisites</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#design-overview">Design overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#directory-layout">Directory layout</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-1-create-a-minimal-cwl-workflow-skeleton">Step 1. Create a minimal CWL workflow skeleton</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-2-iteratively-defining-steps-and-parameters">Step 2. Iteratively Defining Steps and Parameters</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-3-parameterize-for-a-single-day-toy-run">Step 3. Parameterize for a single day (“toy” run)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-4-add-database-integration-postgresql">Step 4. Add database integration (PostgreSQL)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-5-building-medallion-layers-bronze-silver-gold">Step 5. Building Medallion Layers (Bronze, Silver, Gold)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#step-6-testing-the-pipeline">Step 6. Testing the Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html#next-steps">Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/climate/index.html">Climate tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/building-climate-pipeline.html">Part 1. Building the pipeline</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/documenting-a-workflow.html">Part 2. Documenting the workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html">Part 3. Data dictionaries and lineage graphs</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/climate/documenting-a-workflow.html">Documenting a Workflow</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/documenting-a-workflow.html#workflow-files">Workflow files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/documenting-a-workflow.html#generating-skeleton-documentation">Generating skeleton documentation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/documenting-a-workflow.html#enhancing-workflow-documentation">Enhancing workflow documentation</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html">Constructing data dictionaries and lineage graphs</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#what-we-can-generate">What we can generate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#output-formats-and-modes">Output Formats and Modes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#running-the-tool">Running the tool</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#exploring-the-artifacts">Exploring the Artifacts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#enriching-the-data-dictionary">Enriching the Data Dictionary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/climate/constructing-lineage.html#lineage-diagram-for-medicare-data">Lineage Diagram for Medicare data</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/medicare/building-medicare-pipeline.html">Building the Medicare Claims Pipeline</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../tutorial/medicare/building-medicare-pipeline.html">Medicare claims pipeline tutorial</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/medicare/building-medicare-pipeline.html#introduction">Introduction</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/medicare/building-medicare-pipeline.html#designing-the-pipeline">Designing the pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../tutorial/medicare/building-medicare-pipeline.html#from-fts-documents-to-machine-readable-schemas">From FTS documents to machine-readable schemas</a></li>
@@ -256,77 +260,21 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../medicare-example.html#what-the-pipeline-produces">What the pipeline produces</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../SampleQuery.html">How to query the database</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../SampleQuery.html#setup">Setup</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../SampleQuery.html#create-connection-definition-file">Create connection definition file</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../SampleQuery.html#executing-the-query">Executing the query</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../SampleQuery.html#using-explain-to-optimize-queries">Using EXPLAIN to optimize queries</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../QueringMedicaid.html">Querying Medicaid Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../QueringMedicaid.html#querying-diagnoses">Querying diagnoses</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../MonitoringDB.html">Monitoring database activity using Dorieh tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#module-monitor">Module monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#cli-usage-for-monitor">CLI Usage for monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#using-as-api">Using as API</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../examples.html#related-how-to-guides">Related how-to guides</a></li>
 </ul>
 </li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Data modeling DSL reference</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../../../../DataModellingExtensions.html">Extensions used for creating federated view of different years</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../DataModellingExtensions.html#general">General</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Datamodels.html">Data Modeling for Dorieh Data Platform</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../DataModellingExtensions.html">Data Modeling Extensions: Federated Views Across Years</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DataModellingExtensions.html#combining-multiple-sources-and-optional-columns">Combining multiple sources and optional columns</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DataModellingExtensions.html#exclude">Exclude</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DataModellingExtensions.html#cast">Cast</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DataModellingExtensions.html#validating-consistency-of-data-across-tables">Validating consistency of data across tables</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../members/domain_dictionary.html">The Data Dictionary Generation tool</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/domain_dictionary.html#generating-data-dictionary">Generating data dictionary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/domain_dictionary.html#domain-dictionary-output">Domain Dictionary Output</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/domain_dictionary.html#usage">Usage</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/domain_dictionary.html#module-dorieh.platform.dictionary.domain_dictionary">Details</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../Medicare.html">Medicare: Building a Data Warehouse from ResDac Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/mcr_sas2yaml.html">The mcr_sas2yaml Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/mcr_sas2db.html">The mcr_sas2db Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/fts2yaml.html">Parser for FTS files that accompany CMS data from ResDac</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/medicare_yaml.html">Medicare.yaml</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html#medallion-architecture-of-the-medicare-warehouse">Medallion architecture of the Medicare warehouse</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html#processing-pipeline">Processing pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html#ingesting-raw-files">Ingesting Raw Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html#combining-raw-files-into-a-single-view">Combining raw files into a single view</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicare.html#creating-qc-tables">Creating QC Tables</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../MedicareLineage.html">Data dictionary and lineage for Medicare processing</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/domain_dictionary.html">The Data Dictionary Generation tool</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../Medicaid.html">Medicaid: Building a Data Warehouse from ResDac Files</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/parse_fts.html">FTS Parser</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/create_schema_config.html">The create_schema_config Module</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../members/medicaid_yaml.html">Medicaid.yaml</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/ingest.html">Universal uploader of the tabular data to the database</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/medicaid.html">Full Medicaid Processing Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#introduction">Introduction</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#importing-raw-data">Importing raw data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#processing-data">Processing data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#data-model">Data Model</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#pipeline">Pipeline</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Medicaid.html#sample-user-request">Sample user request:</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#introduction-to-data-modelling-for-dorieh-data-platform">Introduction to data modelling for Dorieh Data Platform</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#introduction-to-data-modeling-for-dorieh-data-platform">Introduction to data modeling for Dorieh Data Platform</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#domain">Domain</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#table">Table</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../Datamodels.html#create-statement">Create statement</a></li>
@@ -346,7 +294,6 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#multi-column-indices">Multi-column indices</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#generation-of-the-database-schema-ddl">Generation of the database schema (DDL)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#indexing-policies">Indexing policies</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#linking-with-nomenclature">Linking with nomenclature</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../Datamodels.html#us-states">US States</a></li>
@@ -354,6 +301,7 @@ window.addEventListener("load", () => mermaid.run());
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#ingesting-data">Ingesting data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Datamodels.html#where-to-go-next">Where to go next</a></li>
 </ul>
 </li>
 </ul>
@@ -386,61 +334,24 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../CMSLibrary.html#additional-details">Additional details</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../epa.html">EPA tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../epa.html#package-contents">Package Contents</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../epa.html#querying-data">Querying Data</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../rasters.html">Raster data tools (climate and exposure)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../rasters.html#general-tools-for-raster-files">General tools for raster files</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../rasters.html#specialized-tools-for-working-with-climate-data">Specialized tools for working with climate data</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../rasters.html#specialized-tools-for-working-with-exposure-data">Specialized tools for working with exposure data</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../census.html">Census data manipulation tools</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_about.html">About</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_env_set_up.html">Setting Up Environment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_quick_start.html">Quick Start</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_yaml.html">Census Variable File Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_cached_data.html">Stored Data Files</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_modules.html">Modules</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_glossary.html">Glossary</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census_start_guide.html">Working with the <code class="docutils literal notranslate"><span class="pre">census</span></code> Package</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_assemble.html">census_assemble.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_assemblecwl_src.html">census_assemble.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_density.html">census_density.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_densitycwl_src.html">census_density.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_ingest.html">census_ingest.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_ingest_1.html">Sub-workflow <em>store</em> from census_ingest.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_ingest_1cwl_src.html">CWL sub-workflow for step <u><em>store</em></u> of workflow census_ingest.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_ingestcwl_src.html">census_ingest.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_interpolate.html">census_interpolate.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_interpolatecwl_src.html">census_interpolate.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_qc.html">census_qc.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_qccwl_src.html">census_qc.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_workflow.html">census_workflow.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_workflowcwl_src.html">census_workflow.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_write.html">census_write.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../pipeline/census_writecwl_src.html">census_write.cwl</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../census.html#indices-and-tables">Indices and tables</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../platform.html">Dorieh Core Data Platform</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../Datamodels.html">Data Modelling for Dorieh Data Platform</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DBConnections.html">Managing database connections</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../DataLoader.html">Dorieh Data Loader</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html">Project (Directory) Loading Utility</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../TerritorialCodes.html">Mapping between different territorial codes</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../SampleQuery.html">How to query the database</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../UserRequests.html">Preliminary Considerations for Handling User Requests</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../SQLDocumentation.html">SQL Documentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../platform.html#core-platform-overview">Core platform overview</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../platform.html#tool-examples">Tool Examples</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../platform.html#project-structure">Project Structure</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../platform.html#territorial-codes-mappings">Territorial Codes Mappings</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../platform.html#documentation-indices">Documentation Indices</a></li>
 </ul>
 </li>
@@ -449,22 +360,6 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../deployment.html#using-python-virtual-environment">Using Python Virtual Environment</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../deployment.html#using-conda-package-manager">Using Conda Package Manager</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../deployment.html#using-toil-with-docker-requirement">Using Toil with Docker requirement</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../DBConnections.html">Managing database connections</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../MonitoringDB.html">Monitoring database activity</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#module-monitor">Module monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#cli-usage-for-monitor">CLI Usage for monitor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html#using-as-api">Using as API</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../ProjectLoader.html">Project (Directory) Loading Utility</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#overview">Overview</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#configuration-options">Configuration options</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#usage-from-command-line">Usage from command line</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#sample-command">Sample command</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#dry-runs-introspect-only">Dry runs (introspect only)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html#api-usage">API Usage</a></li>
 </ul>
 </li>
 </ul>
@@ -525,22 +420,15 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../guts.html">Data Platform Internals</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../../../../platform.html">Dorieh Core Data Platform</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../deployment.html">Dorieh Deployment</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../DBConnections.html">Managing database connections</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../MonitoringDB.html">Monitoring database activity</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../../ProjectLoader.html">Project (Directory) Loading Utility</a></li>
-</ul>
-</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../../adding_data.html">Adding more data</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#what-data-are-you-adding">What data are you adding?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#data-modelling-vs-data-introspection">Data modelling vs data introspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#data-modeling-vs-data-introspection">Data modeling vs data introspection</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#adding-new-data-domain">Adding new data domain</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#adding-data-to-existing-table">Adding data to existing table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#creating-new-single-table">Creating new single table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#adding-a-table-from-a-remote-data-source">Adding a table from a remote data source</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#adding-data-to-existing-table">Adding data to existing table</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../adding_data.html#automatically-ingesting-multiple-files-from-a-file-system">Automatically ingesting multiple files from a file system</a></li>
 </ul>
 </li>
@@ -643,7 +531,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Parallelization">
-<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.Parallelization">[docs]</a>
+<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.Parallelization">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Parallelization</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="s2">&quot;lines&quot;</span>
     <span class="n">files</span> <span class="o">=</span> <span class="s2">&quot;files&quot;</span>
@@ -652,7 +540,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="DataLoaderAction">
-<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.DataLoaderAction">[docs]</a>
+<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.DataLoaderAction">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DataLoaderAction</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
     <span class="n">drop</span> <span class="o">=</span> <span class="s2">&quot;drop&quot;</span>
     <span class="n">load</span> <span class="o">=</span> <span class="s2">&quot;load&quot;</span>
@@ -672,7 +560,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="LoaderConfig">
-<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.LoaderConfig">[docs]</a>
+<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">LoaderConfig</span><span class="p">(</span><span class="n">CommonConfig</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Configurator class for data loader</span>
@@ -822,7 +710,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">LoaderConfig</span><span class="p">,</span> <span class="n">doc</span><span class="p">)</span>
 
 <div class="viewcode-block" id="LoaderConfig.validate">
-<a class="viewcode-back" href="../../../../members/data_loader.html#dorieh.platform.loader.loader_config.LoaderConfig.validate">[docs]</a>
+<a class="viewcode-back" href="../../../../members/loader_config.html#dorieh.platform.loader.loader_config.LoaderConfig.validate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
         <span class="n">value</span> <span class="o">=</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">validate</span><span class="p">(</span><span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
         <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="bp">self</span><span class="o">.</span><span class="n">_parallelization</span><span class="o">.</span><span class="n">name</span><span class="p">:</span>

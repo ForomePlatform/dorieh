@@ -1,4 +1,4 @@
-# Why Data Platform and what does it do?
+# Why a data platform
 
 ```{contents}
 ---
@@ -18,12 +18,13 @@ sensitive to the exact computational environment. Differing operating systems
 and/or versions of the tools and libraries might affect the result. Several
 scientific communities proposed various standards to define portable
 reproducible data processing workflows, with Common Workflow Language (CWL) 
-having the widest adoption in both commercial and academic settings. CWL can be
-used to define pipelines in imperative rather than procedural ways.
+having the widest adoption in both commercial and academic settings.
+
+CWL defines pipelines declaratively rather than imperatively.
 Reproducibility challenges are exacerbated when the research involves healthcare
 data that is inherently confidential and cannot be shared publicly to ensure
 reproducibility. A possible solution to this problem is to share infrastructure
-instead, making an option for institutions to reproduce each other's results on
+instead, giving institutions the option to reproduce each other's results on
 their own data in compliance with their own data usage agreements. In this
 setting Infrastructure as Code (IaC) provides a handy way to ensure that the
 infrastructure is identical during data processing.
@@ -31,13 +32,17 @@ infrastructure is identical during data processing.
 ## Architecture                                                 
 
 
-The data platform is based on a combination of an IaC approach and CWL. Besides
+Dorieh is based on a combination of an IaC approach and CWL. Besides
 tools written in widely used languages such as Python, C/C++ and Java, it also
 supports tools written in R and PL/pgSQL, making it, to the best of our
 knowledge, one of the first deployment-ready platforms appropriate for ETL/ELT
-pipelines. Out of the four open-source production-ready CWL implementations, we
-have selected CWL-Airflow to take advantage of the excellent user interface
-allowing for the control of the actual execution process. The data is eventually
+pipelines. Dorieh workflows run on any open-source production-ready CWL
+implementation, such as Toil, cwltool or CWL-Airflow. We initially adopted
+CWL-Airflow for its graphical user interface, but in practice it proved
+insufficiently stable and feature-complete, and its UI added only marginal
+value; the platform has since moved to Toil, which — although it has no UI —
+is fully functional and is the recommended runner (see
+[Deployment](home.md#deployment)). The data is eventually
 stored in a PostgreSQL DBMS; many processing steps are being run inside the
 database itself. The data platform is deployed as a set of Docker containers
 orchestrated by Docker-Compose. Conda (package manager) environment files and
@@ -90,6 +95,10 @@ Puppet to provision specific resources, while on IBM cloud, resource
 provisioning is done with Terraform. 
 
 ## What makes Dorieh different
+
+The sections above describe the infrastructure Dorieh runs on; what
+distinguishes Dorieh from other IaC-plus-workflow stacks is what runs
+on that infrastructure.
 
 Dorieh pairs a declarative data-modeling language with a standard
 workflow language. Data models — tables, columns, how each column is

@@ -17,8 +17,12 @@ caption: Health Data Processing
 ---
 health_data_overview.md
 Medicare.md
-MedicareLineage.md
 Medicaid.md
-QueringMedicaid.md
 ```
+
+Related pages that live in other sections of this documentation:
+
+* [Data dictionary and lineage for Medicare processing](MedicareLineage.md) —
+  under the Medicare case study
+* [Querying Medicaid Data](QueringMedicaid.md) — under Platform Capabilities
 

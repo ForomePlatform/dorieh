@@ -27,7 +27,6 @@ Transformed from [bronze_temperature](bronze_temperature.md)
 <details>
 
 <summary>SQL/DDL Statement</summary>
-
 ```sql
 CREATE view  silver_temperature AS
 SELECT
@@ -39,7 +38,7 @@ SELECT
 	public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta) AS us_state,
 	public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta) AS city
 FROM bronze_temperature;
-COMMENT ON view silver_temperature IS 'CREATED BY Dorieh: {"version": "0.4.4", "url": "file:///Users/misha/harvard/projects/github/dorieh", "commit": null}. Created at 2025-12-22 18:20:47.235163';
+COMMENT ON view silver_temperature IS 'CREATED BY Dorieh: {"version": "0.4.3", "url": "https://github.com/ForomePlatform/dorieh", "commit": "d5d46ee8f87cba7c46356cc5105c37d98eb99086"}. Created at 2026-07-12 23:59:23.778934';
 ```
 
 </details>

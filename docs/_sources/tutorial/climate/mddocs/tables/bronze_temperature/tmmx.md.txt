@@ -10,7 +10,7 @@
 | Reference | [https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands) |
 
 
-Maximum temperature variable from the TerraClimate dataset in K
+Maximum daily temperature from the gridMET dataset, in K
 
 
 

@@ -31,31 +31,39 @@ Scan the QR code (or follow the link above) to get the book.
 
 ## Chapter-to-documentation map
 
-Each book chapter has a single canonical landing page in this
-documentation:
+Each book chapter that describes the platform (Chapters 5–8 and the
+appendices) has a single canonical landing page in this documentation;
+the earlier chapters cover conceptual background (provenance, the
+regulatory context, a taxonomy of transformations) with no direct code
+counterpart:
 
 | Book chapter                                                | Documentation page                                                                     |
 |-------------------------------------------------------------|----------------------------------------------------------------------------------------|
 | Ch. 5, "Language Design"                                    | [Concepts: the Dorieh approach](concepts.md)                                           |
 | Ch. 6, "Proof of Concept Implementation"                    | [Concepts: the Dorieh approach](concepts.md)                                           |
-| Ch. 7, "Sample Application: Building ML-Ready Datasets"     | [Building a Bronze–Silver–Gold climate pipeline](tutorial/climate/building-climate-pipeline.md) |
+| Ch. 7, "Sample Application: Building ML-Ready Datasets"     | [Climate tutorial](tutorial/climate/index.md)                                           |
 | Ch. 8, "Dorieh Medicare Claims Data Pipeline"               | [Medicare case study](Medicare.md) and the [Medicare pipeline tutorial](tutorial/medicare/building-medicare-pipeline.md) |
-| Appendix A (core YAML DSL syntax)                           | [Data modelling reference](Datamodels.md)                                              |
-| Appendix B (DSL extensions)                                 | [Data modelling extensions](DataModellingExtensions.md)                                |
+| Appendix A (core YAML DSL syntax)                           | [Data modeling reference](Datamodels.md)                                               |
+| Appendix B (DSL extensions)                                 | [Data modeling extensions](DataModellingExtensions.md)                                 |
 
 ## Using this documentation without the book
 
 If you do not have the book, the following reading order covers the
 same ground end to end:
 
-1. Start with [Concepts: the Dorieh approach](concepts.md) for the
-   vocabulary and design ideas used throughout the documentation.
+1. Read [Why a data platform](rationale.md) for the motivation behind
+   the platform, then [Concepts: the Dorieh approach](concepts.md) for
+   the vocabulary and design ideas used throughout the documentation.
+   (If you already know the motivation, start directly with Concepts.)
 2. Work through the
-   [climate tutorial](tutorial/climate/building-climate-pipeline.md),
+   [climate tutorial](tutorial/climate/index.md),
    a runnable Bronze–Silver–Gold pipeline built on open data.
-3. Read the [Medicare case study](Medicare.md) to see the same
-   patterns applied to a production-scale health data pipeline
-   (runnable with synthetic data).
-4. Consult the DSL reference — [Data modelling](Datamodels.md) and
-   [Data modelling extensions](DataModellingExtensions.md) — when you
+3. Follow the
+   [Medicare tutorial](tutorial/medicare/building-medicare-pipeline.md),
+   a guided path through the same patterns applied to a
+   production-scale health data pipeline (runnable with synthetic
+   data), with the [Medicare case study](Medicare.md) as its
+   reference.
+4. Consult the DSL reference — [Data modeling](Datamodels.md) and
+   [Data modeling extensions](DataModellingExtensions.md) — when you
    write your own data models.

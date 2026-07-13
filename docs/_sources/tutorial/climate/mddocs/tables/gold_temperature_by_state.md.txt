@@ -27,7 +27,6 @@ Primary Key: us_state, date
 <details>
 
 <summary>SQL/DDL Statement</summary>
-
 ```sql
 
 CREATE materialized view  gold_temperature_by_state AS
@@ -42,7 +41,7 @@ FROM silver_temperature
 WHERE us_state IS NOT NULL AND date IS NOT NULL
 GROUP BY us_state,date;
 
-COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.4.4", "url": "file:///Users/misha/harvard/projects/github/dorieh", "commit": null}. Created at 2025-12-22 18:20:47.235334';
+COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.4.3", "url": "https://github.com/ForomePlatform/dorieh", "commit": "d5d46ee8f87cba7c46356cc5105c37d98eb99086"}. Created at 2026-07-12 23:59:23.778993';
 ```
 
 </details>
