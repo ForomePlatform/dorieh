@@ -27,6 +27,7 @@ Transformed from [bronze_temperature](bronze_temperature.md)
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 CREATE view  silver_temperature AS
 SELECT

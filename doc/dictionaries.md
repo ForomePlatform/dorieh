@@ -1,6 +1,6 @@
 # Data Dictionaries
 
-```{index} data dictionary; lineage; provenance
+```{index} data dictionary, lineage, provenance
 ```
 
 Dorieh generates a data dictionary for every domain directly from its
@@ -25,7 +25,10 @@ A second, smaller dictionary is generated for the climate tutorial's
 Bronze–Silver–Gold model; Part 3 of the tutorial,
 [Constructing data dictionaries and lineage graphs](tutorial/climate/constructing-lineage.md),
 walks through generating it yourself and explores the
-[resulting artifacts](tutorial/climate/mddocs/example1.dot.md).
+[resulting artifacts](tutorial/climate/mddocs/example1.dot.md), including
+the alphabetic
+[table list](tutorial/climate/mddocs/table-list.md) and
+[column list](tutorial/climate/mddocs/column-list.md).
 
 To generate a dictionary for your own domain, see the
 [Data Dictionary Generation tool](members/domain_dictionary.rst) and

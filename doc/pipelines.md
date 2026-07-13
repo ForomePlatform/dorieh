@@ -229,7 +229,9 @@ pipeline/census_workflow
 ### Combining Included CWL Tools into a New Workflow
 
 Dorieh provides multiple pre-packaged CWL tools, which you can mix and
-match into custom workflows. Use
+match into custom workflows; the complete alphabetic index of every
+tool and workflow shipped with the platform is in
+[CWL Tools and Common Workflows](cwl_tools.md). Use
 the [CWL output collection utility](members/cwl_collect_outputs) to help
 generate CWL code snippets for new workflows.
 

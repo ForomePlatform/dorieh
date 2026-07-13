@@ -27,6 +27,7 @@ Primary Key: us_state, date
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 
 CREATE materialized view  gold_temperature_by_state AS

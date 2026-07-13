@@ -1,6 +1,6 @@
 # Health Data: See Also
 
-```{index} Medicare; Medicaid; health data
+```{index} Medicare, Medicaid, health data
 ```
 
 Pages in other sections of this documentation that readers of the

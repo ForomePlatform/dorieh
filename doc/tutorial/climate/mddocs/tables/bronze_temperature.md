@@ -23,6 +23,7 @@ Primary Key: zcta, date
 <details>
 
 <summary>SQL/DDL Statement</summary>
+
 ```sql
 CREATE TABLE  bronze_temperature (
 	tmmx FLOAT,

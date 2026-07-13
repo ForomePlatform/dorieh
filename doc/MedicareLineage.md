@@ -1,6 +1,6 @@
 # Data dictionary and lineage for Medicare processing
 
-```{index} data dictionary; lineage; Medicare
+```{index} data dictionary, lineage, Medicare
 ```
 
 ```{toctree}
