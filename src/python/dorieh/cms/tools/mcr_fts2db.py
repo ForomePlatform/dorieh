@@ -8,30 +8,30 @@ as provided by ResDAC for years 2011 and later.
 
 Overview:
 
-Searches recursively for all FTS (*.fts) files under specified input path(s)
-Parses each FTS file using the :class:~dorieh.cms.fts2yaml.MedicareFTS parser
-Determines the appropriate database schema and metadata for the associated *.dat or *.csv.gz file
-Loads data into the database using :class:~dorieh.cms.mcr_data_loader.MedicareDataLoader
-for .dat files or a generic :class:~dorieh.platform.loader.data_loader.DataLoader for CSV files
+Searches recursively for all FTS (``*.fts``) files under specified input path(s).
+Parses each FTS file using the :class:`~dorieh.cms.fts2yaml.MedicareFTS` parser.
+Determines the appropriate database schema and metadata for the associated ``*.dat`` or ``*.csv.gz`` file.
+Loads data into the database using :class:`~dorieh.cms.mcr_data_loader.MedicareDataLoader`
+for ``.dat`` files or a generic :class:`~dorieh.platform.loader.data_loader.DataLoader` for CSV files.
 Applies indexing and VACUUM optimization after insertion
 
 Usage Notes:
 
-This loader requires that data be organized into year-based subfolders. For example: my_data/medicare/2018/*.fts
+This loader requires that data be organized into year-based subfolders. For example: ``my_data/medicare/2018/*.fts``
 The name of the parent directory of the FTS file must be a 4-digit year (e.g., 2011, 2018).
 This requirement applies to both the data and FTS file location to establish table naming conventions correctly.
 Key Components:
 
-:class:MedicareLoader — orchestrates ingestion logic
-:class:~dorieh.cms.mcr_data_loader.MedicareDataLoader — fixed-width reader-based data loader
-:class:~dorieh.platform.loader.data_loader.DataLoader — generic CSV reader-based loader
+:class:`MedicareLoader` — orchestrates ingestion logic;
+:class:`~dorieh.cms.mcr_data_loader.MedicareDataLoader` — fixed-width reader-based data loader;
+:class:`~dorieh.platform.loader.data_loader.DataLoader` — generic CSV reader-based loader.
 
 
 See also:
 
-:doc:members/fts2yaml — for metadata extraction from FTS
-:doc:members/mcr_data_loader — for Medicare file reading
-:doc:members/medicare_yaml — for generated schema definition
+:doc:`/members/fts2yaml` — for metadata extraction from FTS;
+:doc:`/members/mcr_data_loader` — for Medicare file reading;
+:doc:`/members/medicare_yaml` — for generated schema definition.
 """
 
 #  Copyright (c) 2022. Harvard University
@@ -77,11 +77,11 @@ class MedicareLoader:
     """
     High-level loader for raw Medicare data files provided by ResDac, using FTS and DAT.
 
-    The loader walks the input directory to locate all *.fts (File Transfer Summary) files,
+    The loader walks the input directory to locate all ``*.fts`` (File Transfer Summary) files,
     and for each one:
 
     - Parses its metadata and adds to the schema registry (YAML)
-    - Identifies corresponding *.dat or *.csv.gz data files
+    - Identifies corresponding ``*.dat`` or ``*.csv.gz`` data files
     - Uses :class:`~dorieh.cms.mcr_data_loader.MedicareDataLoader` to load FWF files
         or :class:`~dorieh.platform.loader.data_loader.DataLoader` for CSV files
     - Applies schema-specific indexing and vacuum optimization
@@ -121,7 +121,7 @@ class MedicareLoader:
         Searches directories recursively using the given pattern to find all FTS files.
         For each matching file, initiates schema inference and data ingestion via handle().
 
-        :param pattern:    pattern (str): Glob pattern to match files (e.g., "**/*.fts")
+        :param pattern:    pattern (str): Glob pattern to match files (e.g., ``**/*.fts``)
         :return:
         """
 

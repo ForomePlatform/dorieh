@@ -1,3 +1,5 @@
+:orphan:
+
 The pg_export_parquet Module
 ============================
 
@@ -48,4 +50,3 @@ API
 .. automodule:: dorieh.platform.util.pg_export_parquet
    :members:
    :undoc-members:
-

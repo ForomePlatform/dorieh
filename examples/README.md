@@ -29,6 +29,14 @@ There are three types of examples:
   file [database.ini](with-postgres/database.ini) is included with the
   examples.
 
+  The [with-postgres/climate](with-postgres/climate) example is the
+  runnable Bronze/Silver/Gold (medallion) climate pipeline: it downloads
+  gridded daily temperature data, aggregates it over ZCTA polygons, loads
+  the result into PostgreSQL and builds the Bronze, Silver and Gold layers
+  with the Dorieh data-modeling DSL. Its canonical, narrated version is the
+  tutorial
+  [Building a Bronze–Silver–Gold Climate Pipeline](https://foromeplatform.github.io/dorieh/tutorial/climate/building-climate-pipeline.html).
+
 * Using Dorieh with [Apache Spark](https://spark.apache.
   org/docs/latest/index.html) as a 
   backend. Supporting Spark is a work in progress and only limited

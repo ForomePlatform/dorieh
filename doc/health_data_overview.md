@@ -1,5 +1,12 @@
 # Health Data in Dorieh (Medicare and Medicaid)
 
+```{seealso}
+* [Data dictionary and lineage for Medicare processing](MedicareLineage.md) —
+  every table and column of the warehouse, with lineage diagrams.
+* [Health Data: See Also](health_seealso.md) — related pages in other
+  sections.
+```
+
 ```{contents}
 ---
 local:
@@ -34,20 +41,17 @@ For more details, refer to:
 * Tips on [querying of Medicaid data](QueringMedicaid.md)
 
 Medicare processing workflow includes a
-[pipeline to automatically generate Quality COntrol (QC) Tables](Medicare.md#creating-qc-tables).
+[pipeline to automatically generate Quality Control (QC) Tables](Medicare.md#creating-qc-tables).
 
 These tables can be visualized in the included Apache Superset dashboard. 
 
 ## Project Structure
 
-Top level directories at the repository root are:
+The two directories at the repository root relevant to this section are
+`doc/` (this documentation) and `src/` (CWL workflows and Python code);
+examples and Docker Compose setups live under `examples/` and `docker/`.
 
-    - doc
-    - src
-
-* The `doc/` directory contains this documentation.
-* The `src/` directory contains source code, organized as follows:
-  
+The `src/` directory is organized as follows:
 
     - cwl
     - python
@@ -58,10 +62,10 @@ The `cwl/` folder contains reusable Common Workflow Language (CWL)
 tools and workflows. Each CMS data processing step (
 e.g. ingest, combine, transform) is implemented as a modular CWL tool.
 
-CWL tools are documented individually
+CWL tools are documented individually.
 Tools are combined into full workflows, such as:
 
-* [Medicare Pipeline](pipeline/medicare) files.
+* [Medicare Pipeline](pipeline/medicare)
 * [Medicaid Pipeline](pipeline/medicaid)
 
 
@@ -113,10 +117,9 @@ Main Tables:
 Federated / intermediate SQL Views:
 
 * `medicare.ps` [Union of raw data for patient summaries](Medicare.md#creating-federated-patient-summary)
+* `medicare._ps` [Companion materialized view adding county FIPS codes](Medicare.md#second-step-mapping-to-county-fips-codes)
+* `medicare.mbsf_d` [Union of the split dual-eligibility component files](Medicare.md#creating-the-mbsf_d-dual-eligibility-view)
 * `medicare.ip` [Union of raw data for inpatient admissions](Medicare.md#creating-federated-admissions-view)
-* `medicare._ps`
-* `medicare._beneficiaries`
-* `medicare._enrollments`
 
 
 #### Medicaid Tables

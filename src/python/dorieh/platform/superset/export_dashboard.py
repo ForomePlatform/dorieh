@@ -18,7 +18,7 @@
 
 """
 Export a single Superset dashboard (by id) to a native YAML bundle
-(console script: ``export_dashboard``).
+(console script: ``export_dashboard``). Examples::
 
   export_dashboard 6
   export_dashboard 6 --base-url http://localhost:8088/ --out medicare_6.zip \\

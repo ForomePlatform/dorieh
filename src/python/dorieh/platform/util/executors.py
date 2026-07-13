@@ -63,7 +63,7 @@ class BlockingThreadPoolExecutor(ThreadPoolExecutor):
     :param timeout: The timeout for how long to wait for tasks to complete.
     :type timeout: int or None
 
-    :Example:
+    Example:
 
     .. code-block:: python
 
@@ -74,6 +74,17 @@ class BlockingThreadPoolExecutor(ThreadPoolExecutor):
     """
 
     def __init__(self, max_queue_size:int, timeout=None, *args, **kwargs):
+        """
+        Create the executor.
+
+        :param max_queue_size: the maximum size of the task queue
+        :param timeout: how long to wait for tasks to complete, in
+            seconds, or ``None`` to wait indefinitely
+        :param args: passed through to
+            :class:`concurrent.futures.ThreadPoolExecutor`
+        :param kwargs: passed through to
+            :class:`concurrent.futures.ThreadPoolExecutor`
+        """
         super().__init__(initializer=thread_initializer, *args, **kwargs)
         self.max_queue_size = max_queue_size
         self.tasks = dict()
@@ -81,6 +92,11 @@ class BlockingThreadPoolExecutor(ThreadPoolExecutor):
         self.log_timestamp = datetime.datetime.now()
 
     def submit(self, __fn: Callable, *args: Any, **kwargs: Any):
+        """
+        Submit a callable for execution, blocking while the task queue
+        is at capacity. ``*args`` and ``**kwargs`` are passed through to
+        the callable.
+        """
         self.wait(self.max_queue_size)
         task = super().submit(__fn, *args, **kwargs)
         self.tasks[task] = datetime.datetime.now()

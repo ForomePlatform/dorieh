@@ -30,9 +30,13 @@ The same design patterns apply directly to health and claims data
 pipelines; here we use open climate data so anyone can reproduce the 
 example.   
 
-The concepts in this tutorial are covered in **Chapter 7**
-(“Sample Application: Building ML‑Ready Datasets”) of the forthcoming book
-*Research Data that Can be Trusted* (Bouzinier et al.).
+```{seealso}
+**Further reading:** Chapter 7 ("Sample Application: Building ML-Ready
+Datasets") of the companion book
+[*Research Data that Can Be Trusted*](../../about-the-book.md) develops the
+ideas behind this page in depth. This documentation is self-contained; the
+book is optional enrichment.
+```
 
 
 ## Prerequisites
@@ -86,8 +90,12 @@ ZIP Code Tabulation Areas (ZCTAs).
   * Silver view: silver_temperature with:
      * temperature_in_C, temperature_in_F
      * us_state, city
-  * Gold materialized view: gold_temperature_by_state with:
-     *mean temperature and temperature span per state/day.
+  * Gold materialized view: gold_temperature_by_state with three
+    computed columns per state/day:
+     * t_mean_in_C (mean temperature in Celsius)
+     * t_mean_in_F (mean temperature in Fahrenheit)
+     * t_span (temperature span, i.e. the spread between the warmest
+       and the coldest ZCTA in the state on that day)
 
 ### Architecture
 We will:
@@ -101,6 +109,57 @@ We will:
   * Workflow documentation (from CWL).
   * Data dictionaries and lineage diagrams (from YAML).
 
+### How this pipeline was designed
+
+The design starts from the data itself. The climate variable comes from
+gridMET, a gridded daily surface meteorological dataset produced by the
+University of Idaho. The workflow downloads it as one NetCDF file per year
+from the Northwest Knowledge Network (the download step in `example1.cwl`
+composes a URL of the form
+`https://www.northwestknowledge.net/metdata/data/<band>_<year>.nc`), and the
+band vocabulary — `tmmx` is the daily maximum temperature, stored in
+Kelvin — follows the gridMET catalog published on
+[Google Earth Engine](https://developers.google.com/earth-engine/datasets/catalog/IDAHO_EPSCOR_GRIDMET#bands).
+
+Next comes the question of who consumes the result and in what form. This
+pipeline serves two kinds of consumers: file-oriented users (for example, ML
+feature engineering scripts) receive a compressed CSV keyed by date and ZCTA,
+while SQL users receive tables in PostgreSQL organized as Medallion layers —
+a Bronze table holding the ingested data as-is, a Silver view that cleans and
+enriches it, and a Gold materialized view, `gold_temperature_by_state`, that
+is directly ready for analysis.
+
+Working backward from the outputs listed above tells us which transformations are
+essential. Gridded NetCDF rasters cannot be ingested directly into most
+DBMSs, so the grid must be aggregated over ZCTA polygons *outside* the
+database, before ingestion — this is the aggregation step. That step, in
+turn, surfaces a need that was not obvious at the outset: aggregating over
+ZCTAs requires their boundaries, so the design acquires TIGER/GENZ
+shapefiles from the US Census website as an additional input, discovered
+while examining the aggregation tool's parameters. Everything after
+ingestion is expressed declaratively in the data model: unit conversions
+from Kelvin to Celsius and Fahrenheit, enrichment of ZIP codes with state
+abbreviations and city names through the built-in `zip_to_state` and
+`zip_to_city` functions, and finally the state-level aggregation that
+produces the Gold layer.
+
+With sources, outputs, and transformations fixed, the topology follows
+almost mechanically: two independent acquisitions (the year's NetCDF and
+the year's shapefiles) feed the spatial aggregation, whose output is then
+ingested and refined layer by layer — exactly the chain shown in the
+[Architecture](#architecture) list above.
+
+Quality control and provenance are designed in rather than bolted on. The
+Bronze table declares a primary key (`zcta`, `date`), so key integrity is
+enforced at the ingestion boundary; each layer is defined only from the
+layer directly below it (Silver from Bronze, Gold from Silver), so the
+model file records the full derivation of every column and Dorieh can
+render it as data dictionaries and lineage diagrams (see
+[Constructing lineage](constructing-lineage.md)). Every step also emits its
+logs as workflow outputs, so each run leaves a record of what was done.
+
+The rest of this tutorial constructs exactly this workflow, one step at
+a time.
 
 ## Directory layout
 
@@ -121,7 +180,7 @@ We will place:
 ## Step 1. Create a minimal CWL workflow skeleton
 
 We will start with a minimal CWL workflow definition containing the 
-main steps—data acquisition, shape file retrieval, and aggregation. 
+first two main steps—data acquisition and aggregation. 
 At this stage, placeholders can be used for inputs and outputs; 
 these will be filled in as more details on the required tool 
 parameters are gathered.    
@@ -145,7 +204,7 @@ The initial workflow skeleton can look like:
 :::
 
 
-This skeleton is not yet runnable. It defines three steps but no 
+This skeleton is not yet runnable. It defines two steps but no 
 inputs, outputs, or wiring.                
 
 ## Step 2. Iteratively Defining Steps and Parameters
@@ -332,8 +391,9 @@ It can be run with the following command:
 toil-cwl-runner --retryCount 3 --cleanWorkDir never --outdir outputs example1.cwl --workDir . --band tmmx --date 2019-01-15 --geography zcta
 ```
 
-If successful, you should find a gzipped CSV file under 
-`tmmx_zcta_polygon_2019.csv.gz` containing the following columns:    
+If successful, you should find a gzipped CSV file 
+`tmmx_zcta_polygon_2019.csv.gz` in the `outputs` directory, 
+containing the following columns:    
 
 * date
 * zcta
@@ -368,8 +428,9 @@ file.
 
 ### Add PostgreSQL integration to the workflow
 
-Back in your tutorial directory (examples/tutorials/climate), add 
-two new workflow inputs to example1.cwl: 
+Back in the tutorial directory you created in 
+[Directory layout](#directory-layout) (e.g. `dorieh/tutorials/climate`), 
+add two new workflow inputs to example1.cwl: 
 
 ```yaml
 inputs:
@@ -406,7 +467,7 @@ initdb:
       - err
 ```
 
-Optionally, though we recommended it, add the outputs of the 
+Optionally, though we recommend it, add the outputs of the 
 `initdb` to the pipeline outputs:
             
 ```yaml
@@ -427,12 +488,13 @@ However, to load the data into a database, we also need to define
 the database schema. It is possible to automatically infer schema 
 using Dorieh tools like 
 [Project Loader](../../ProjectLoader.md) and 
-[Introspector](../../members/introspector). But for Medallion 
-architecture the schema should be explicitly defined and will use it 
-with the [Data Loader](../../DataLoader.md) tool.
+[Introspector](../../members/introspector). But for a Medallion 
+architecture the schema should be explicitly defined; we will define it 
+in a data model file and use it with the 
+[Data Loader](../../DataLoader.md) tool.
 
 ```{seealso}
-[Data modelling vs data introspection](../../adding_data.md#data-modelling-vs-data-introspection)
+[Data modeling vs data introspection](../../adding_data.md#data-modeling-vs-data-introspection)
 ```
 
 The data model definition language is described in the 
@@ -466,7 +528,7 @@ Dorieh [ingest tool](../../pipeline/ingest.md):
       registry:
         default:
           class: File
-          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/example1_model.yml"
+          location: "https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/tutorial/climate/example1_model.yml"
       domain:
         valueFrom: "tutorial"
       table:
@@ -478,6 +540,17 @@ Dorieh [ingest tool](../../pipeline/ingest.md):
       - log
       - errors
 ```
+
+Note the `depends_on: initdb/log` line. CWL is a dataflow language: a
+runner starts a step as soon as its inputs are available and may run
+independent steps in parallel — there is no explicit "run after" clause.
+Nothing else connects `ingest` to `initdb`, so without this line `ingest`
+could start before `initdb` has finished preparing the database, and a
+run against a fresh database could fail intermittently. To enforce
+ordering, Dorieh database tools expose an optional `depends_on` input
+that the tool itself ignores: wire it to a log output of the step that
+must complete first. Use this pattern whenever two steps touch the same
+database but do not exchange data.
 
 After adding ingestion to **steps** and the logs it produces to the 
 **outputs**, the resulting workflow file should look like:
@@ -506,12 +579,11 @@ Medallion architecture defines three layers:
 * **Bronze Layer**: Load as-is, minimally processed data to database 
   from pipeline outputs. 
   * In this climate data example, the “raw” data is not strictly 
-    straight-from-source due to initial aggregation necessary for 
-    technical compatibility as NetCDF data can not be ingested 
-    directly into the majority of DBMSs unless a specialized 
-    extensions are installed. Hence, we need to transform the data 
-    to a more conventional tabular format before ingestion - the 
-    exact operation performed by the aggregation step      
+    straight-from-source: as discussed under 
+    [How this pipeline was designed](#how-this-pipeline-was-designed), 
+    NetCDF rasters must be aggregated into a more conventional 
+    tabular format before ingestion — the exact operation performed 
+    by the aggregation step.      
 * **Silver Layer**: Clean, harmonize, and enrich data.
   * Built from Bronze layer (no external inputs are allowed).
   * Add derived columns (e.g., Celsius/Fahrenheit conversions, state 
@@ -559,15 +631,16 @@ corresponding step:
       - errors
 ```
 
-This step builds a table named `silver_temperature`. We also need to 
-describe the table in the data model file. Best Practice is to keep 
+This step builds a view named `silver_temperature`. We also need to 
+describe it in the data model file. Best Practice is to keep 
 your Silver and Gold layer table/view definitions together in a 
 versioned domain YAML file, checked into source control along with 
 your workflow scripts.    
 
-hence, we will add the following table definition to 
+Hence, we will add the following definition to 
 `example1_model.yml`: 
 
+<!-- Kept in sync with doc/tutorial/climate/example1_model.yml — edit the model file first -->
 ```yaml
     silver_temperature:
       description: |
@@ -600,7 +673,7 @@ hence, we will add the following table definition to
             source:  "public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta)"
 ```                
 
-This silver table retains all 3 bronze columns and adds 4 new:
+This silver view retains all 3 bronze columns and adds 4 new:
 
 * Temperature expressed in degrees Celsius for the benefit of 
   readers outside of the United States. It is computed by the 
@@ -625,6 +698,7 @@ In the Gold layer, we will add just one table that computes some
 data for the whole states and is ready for analysis. The table 
 named `gold_temperature_by_state` is defined by the following block:  
 
+<!-- Kept in sync with doc/tutorial/climate/example1_model.yml — edit the model file first -->
 ```yaml
     gold_temperature_by_state:
       description: |
@@ -658,7 +732,10 @@ named `gold_temperature_by_state` is defined by the following block:
 The gold table contains mean temperatures on a date for every US state 
 and also the variation in the temperature on the day. The variation 
 is in maximum temperature, so it does not reflect a change during a 
-day, but only the diversity of geography.   
+day, but only the diversity of geography. Note that `t_span` is 
+computed on the raw Kelvin values (`tmmx`); because a temperature 
+*difference* is the same number of degrees in Kelvin and in Celsius, 
+labeling the span in Celsius is correct.   
 
 We now need to add a step to build a gold schema to the workflow 
 itself. The step is literally the same as silver, the difference is 
@@ -751,10 +828,18 @@ ORDER BY t_mean_in_C DESC
 LIMIT 10;
 ```
 
+```{note}
+**Scope and next steps.** This tutorial intentionally does not demonstrate
+scatter/parallelization of workflow steps, nor validation journaling
+(recording records that fail validation in an audit table instead of
+silently dropping them). Both are demonstrated in the
+[Medicare case study](../../Medicare.md).
+```
+
 ## Next Steps
 
-In the next steps we should learn how to:
+This completes Part 1. The remaining two parts of this tutorial cover:
 
-* [Document a workflow](documenting-a-workflow.md)
-* [Construct Data dictionaries and lineage graphs](constructing-lineage.md)
+* [Part 2. Documenting the workflow](documenting-a-workflow.md)
+* [Part 3. Data dictionaries and lineage graphs](constructing-lineage.md)
 

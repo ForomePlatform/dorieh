@@ -38,7 +38,7 @@ then
   exit 1
 fi
 
-git merge "${branch}"
+git merge "${branch}" -m "merging latest changes" --no-edit
 if [ $? -ne 0 ]
 then
   echo "Failed to merge latest changes into the documentation branch: ${doc_source_branch}"
@@ -59,6 +59,17 @@ collector  src/python doc/members
 # prepare markdown templates for CWL files
 cwl2md -i src/cwl -o doc/pipeline
 
+# generate the Medicare data dictionary and lineage pages (see doc/MedicareLineage.md).
+# Must run from doc/lineage (the table/column lists are written to the CWD) and
+# include both domain files, raw schemas first, so cross-domain lineage resolves.
+(
+  cd doc/lineage && \
+  python -m dorieh.platform.dictionary.domain_dictionary \
+      --fmt svg --lod min --mode sphinx -o medicare.dot \
+      ../../src/python/dorieh/cms/models/medicare_cms.yaml \
+      ../../src/python/dorieh/cms/models/medicare.yaml
+) || { echo "Medicare lineage generation FAILED - refusing to build docs without it"; exit 1; }
+
 # make python sources available for autodoc
 abs_path=`realpath src/python`
 export PATH="$abs_path:$PATH"
@@ -70,7 +81,8 @@ copy_section doc/gis.md doc/home.md dorieh.gis
 copy_section doc/AppPipelineGenerator.md doc/home.md dorieh.apppipelinegenerator
 copy_section README.md doc/home.md readme
 
-cp docker/README.md doc/docker_readme.md
+printf -- '---\norphan: true\n---\n\n' > doc/docker_readme.md
+cat docker/README.md >> doc/docker_readme.md
 
 # build documentation
 sphinx-build -j auto doc docs || exit
@@ -79,7 +91,13 @@ touch docs/.nojekyll
 echo "Build finished"
 
 git add docs
-git commit -a -m "Updating documentation"
+# doc-builder is read-only for sources: discard the build-time mutations of
+# tracked source files (copy_section injections into doc/home.md, the
+# regenerated doc/docker_readme.md and doc/lineage artifacts), so that only
+# the built site under docs/ is committed and merges from the dev branches
+# can never conflict on generated content.
+git checkout -- doc/
+git commit -m "Updating documentation"
 echo "Changes committed"
 
 echo Staging: "$staging"

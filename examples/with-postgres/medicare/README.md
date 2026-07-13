@@ -1,5 +1,9 @@
 # Running the sample Medicare processing workflow (with PostgreSQL)
 
+> **Note:** The canonical, always-current copy of this guide is
+> [Example: Medicare Processing Pipeline (with PostgreSQL)](https://foromeplatform.github.io/dorieh/medicare-example.html)
+> on the documentation site (source: [`doc/medicare-example.md`](../../../doc/medicare-example.md)).
+
 <!-- toc -->
 
 
@@ -45,6 +49,14 @@ unzip medicare-synthetic-database.zip
 popd
 ```
 
+> **Note:** This pins **version 1** of the dataset (about 770 MB, roughly
+> 600,000 synthetic beneficiaries) so the results are reproducible. Newer,
+> larger versions — including v0.2.0 with five million beneficiaries (about
+> 9 GB compressed) — are published under the same concept DOI
+> <https://doi.org/10.5281/zenodo.18915557>. Any version runs through the
+> same pipeline commands; only the download URL, size, run time, and
+> resulting counts differ.
+
 
 ### 3. Run the Medicare processing pipeline
 
@@ -68,6 +80,11 @@ toil-cwl-runner \
   --database https://raw.githubusercontent.com/ForomePlatform/dorieh/refs/heads/main/examples/with-postgres/database.ini \
   --connection_name dorieh
 ```
+
+> **Note:** `src/workflows/medicare.cwl` (used in the command above) and
+> `src/cwl/medicare.cwl` (cited elsewhere, including in the companion book)
+> are the same workflow — the files are byte-identical except for a single
+> leading blank line — and both paths are kept in the repository.
 
 After completion:
 

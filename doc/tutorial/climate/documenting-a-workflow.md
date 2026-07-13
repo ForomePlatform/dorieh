@@ -1,9 +1,8 @@
 # Tutorial: Documenting a workflow
 
-This tutorial walks through the process of documenting a workflow 
-created in the
-[Building a workflow](building-climate-pipeline.md) 
-Tutorial.
+This tutorial walks through the process of documenting the workflow 
+created in
+[Part 1, Building the pipeline](building-climate-pipeline.md).
 
 ```{seealso}
 [Construct Data dictionaries and lineage graphs](constructing-lineage.md)
@@ -69,8 +68,8 @@ documentation is often needed.
                                    
 ### Adding Workflow Title
 
-A top‑level title at the top of example1.cwl using a triple-hash 
-header (###). This follows YAML conventions and provides a clear 
+Add a top‑level title to example1.cwl using a triple-hash (###) 
+comment header. This follows YAML conventions and provides a clear 
 overview in the documentation output.  
 
 ```yaml
@@ -132,4 +131,24 @@ supporting both technical reference and compliance requirements.
 
 A fully documented workflow is available 
 [in the GitHub example](../../climate-examplecwl_src.md).
+
+```{note}
+The fully documented reference above is deliberately the simpler
+**no-database** climate workflow (see
+[Example: aggregating a climate variable](../../Example-climate-workflow.md)).
+It uses the same tools and the same documentation keys (the `###` title
+header and the `doc` keys) as the workflow built in this tutorial, but has
+fewer moving parts, so the generated documentation is easier to follow.
+The copy of `example1.cwl` shipped with the documentation
+(doc/tutorial/climate/example1.cwl) is intentionally left undocumented:
+adding the title header and `doc` keys to your own copy and re-running
+`cwl2md` is left as an exercise for the reader.
+```
+
+## Next steps
+
+Continue with Part 3,
+[Constructing data dictionaries and lineage graphs](constructing-lineage.md),
+which generates the data dictionary and lineage diagrams from
+`example1_model.yml` using the `docs/` directory created here.
 

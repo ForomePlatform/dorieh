@@ -38,7 +38,8 @@ are regenerated deterministically per connection name. Do NOT use --copy for the
 canonical bundle you export/refresh -- regenerated uuids compound across
 export->import cycles and cause duplicates.
 
-Examples:
+Examples::
+
   import_dashboard path/to/medicare_quality_dashboard
   import_dashboard bundle.zip --connection-name DORIEH2 --copy \\
       --dashboard-name "Medicare Demo Quality Dashboard (DORIEH2 dev)"

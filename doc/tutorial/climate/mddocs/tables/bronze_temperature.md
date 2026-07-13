@@ -31,7 +31,7 @@ CREATE TABLE  bronze_temperature (
 	zcta INT,
 	PRIMARY KEY (zcta, date)
 );
-COMMENT ON table bronze_temperature IS 'CREATED BY Dorieh: {"version": "0.4.4", "url": "file:///Users/misha/harvard/projects/github/dorieh", "commit": null}. Created at 2025-12-22 18:20:47.129217';
+COMMENT ON table bronze_temperature IS 'CREATED BY Dorieh: {"version": "0.4.3", "url": "https://github.com/ForomePlatform/dorieh", "commit": "d5d46ee8f87cba7c46356cc5105c37d98eb99086"}. Created at 2026-07-12 23:59:23.738236';
 ```
 
 </details>

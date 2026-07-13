@@ -19,7 +19,7 @@ the data it produces into Dorieh Data warehouse.
 
 The process of data ingestion consists of two steps:
 
-1. Generation of the piepline for data ingestion
+1. Generation of the pipeline for data ingestion
 2. Execution of the pipeline
 
              
