@@ -22,7 +22,6 @@ sys.path.insert(0, os.path.abspath('src/python'))
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)) + '/_ext')
 sys.setrecursionlimit(2500)
 
-
 # -- Project information -----------------------------------------------------
 
 project = 'Dorieh Data Platform'
