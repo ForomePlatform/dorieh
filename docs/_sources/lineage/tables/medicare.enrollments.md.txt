@@ -75,7 +75,7 @@ ALTER table medicare.enrollments ADD COLUMN bene HLL_HASHVAL GENERATED ALWAYS AS
 ALTER table medicare.enrollments ADD PRIMARY KEY (bene_id, year, state);
 ALTER table medicare.enrollments ADD CONSTRAINT enrollments_to_beneficiaries FOREIGN KEY (bene_id) REFERENCES medicare.beneficiaries (bene_id);
 
-COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 14:08:08.975541';
+COMMENT ON table medicare.enrollments IS 'CREATED BY Dorieh: {"version": "0.5.1.post2", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 15:03:07.736584';
 ```
 
 </details>

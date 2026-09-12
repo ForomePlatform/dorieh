@@ -42,7 +42,7 @@ FROM silver_temperature
 WHERE us_state IS NOT NULL AND date IS NOT NULL
 GROUP BY us_state,date;
 
-COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 14:08:55.861203';
+COMMENT ON materialized view gold_temperature_by_state IS 'CREATED BY Dorieh: {"version": "0.5.1.post2", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 15:03:54.874348';
 ```
 
 </details>

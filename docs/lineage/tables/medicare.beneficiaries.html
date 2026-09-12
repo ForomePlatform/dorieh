@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Table medicare.beneficiaries &mdash; Dorieh Data Platform 0.5.1 documentation</title>
+  <title>Table medicare.beneficiaries &mdash; Dorieh Data Platform 0.5.1.post2 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css?v=4ae1632d" />
@@ -17,7 +17,7 @@
   
       <script src="../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=b9afe91b"></script>
+      <script src="../../_static/documentation_options.js?v=ad30b421"></script>
       <script src="../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
@@ -551,7 +551,7 @@ indexed and optimized for efficient queries</p>
 <span class="k">ALTER</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">COLUMN</span><span class="w"> </span><span class="n">bene</span><span class="w"> </span><span class="n">HLL_HASHVAL</span><span class="w"> </span><span class="k">GENERATED</span><span class="w"> </span><span class="n">ALWAYS</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="p">(</span><span class="n">hll_hash_text</span><span class="p">(</span><span class="n">bene_id</span><span class="p">))</span><span class="w"> </span><span class="n">STORED</span><span class="p">;</span>
 <span class="k">ALTER</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">ADD</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="w"> </span><span class="p">(</span><span class="n">bene_id</span><span class="p">);</span>
 
-<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.5.1&quot;, &quot;url&quot;: &quot;file://&lt;local checkout&gt;&quot;, &quot;commit&quot;: null}. Created at 2026-09-12 14:08:08.975097&#39;</span><span class="p">;</span>
+<span class="k">COMMENT</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="k">table</span><span class="w"> </span><span class="n">medicare</span><span class="p">.</span><span class="n">beneficiaries</span><span class="w"> </span><span class="k">IS</span><span class="w"> </span><span class="s1">&#39;CREATED BY Dorieh: {&quot;version&quot;: &quot;0.5.1.post2&quot;, &quot;url&quot;: &quot;file://&lt;local checkout&gt;&quot;, &quot;commit&quot;: null}. Created at 2026-09-12 15:03:07.736144&#39;</span><span class="p">;</span>
 </pre></div>
 </div>
 </details>

@@ -403,7 +403,7 @@ CREATE TABLE  cms.mbsf_abcd_2015 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  mbsf_abcd_2015_FILE_idx ON cms.mbsf_abcd_2015 USING BTREE (FILE) ;
-COMMENT ON table cms.mbsf_abcd_2015 IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 14:08:08.783712';
+COMMENT ON table cms.mbsf_abcd_2015 IS 'CREATED BY Dorieh: {"version": "0.5.1.post2", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 15:03:07.545780';
 ```
 
 </details>
