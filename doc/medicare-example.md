@@ -88,16 +88,18 @@ no data use agreement or institutional access is required.  It:
 Download and unpack it (about a 770 MB download):
 
 ```bash
-mkdir -p data
-pushd data
-
 curl -fLo medicare-synthetic-database.zip \
   'https://zenodo.org/records/18915558/files/medicare-synthetic-database-v1.zip?download=1'
 
 unzip medicare-synthetic-database.zip
-
-popd
 ```
+
+The archive unpacks into `data/<cohort>/<year>/` with the fixed-width `.dat`
+files and, next to each of them, the ResDAC-style FTS layout file the loader
+reads. The layouts ship inside every dataset bundle (their source of truth is
+the synthetic data generator), so nothing else needs to be present under
+`data/` — do not unpack the archive *inside* an existing `data/` directory,
+or the files end up nested one level too deep (`data/data/...`).
 
 ```{note}
 This example pins **version 1** of the dataset (about 770 MB, roughly 600,000
