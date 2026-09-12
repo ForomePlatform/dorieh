@@ -126,6 +126,13 @@ collector  src/python doc/members
 # prepare markdown templates for CWL files
 cwl2md -i src/cwl -o doc/pipeline
 
+# Purge stale generated files (ignored by git) left by earlier runs of the
+# generators: a column or table removed from the model would otherwise leave
+# its old page on disk, and Sphinx would build the orphan into the site
+# (this is how pre-refactoring pages with machine-specific paths once
+# reached the published docs). Everything removed here is regenerated below.
+git clean -qfdX -- doc/lineage doc/tutorial/climate/mddocs
+
 # generate the Medicare data dictionary and lineage pages (see doc/MedicareLineage.md).
 # Must run from doc/lineage (the table/column lists are written to the CWD) and
 # include both domain files, raw schemas first, so cross-domain lineage resolves.
@@ -188,6 +195,9 @@ echo Staging: "$staging"
 if [ "${staging}" = "push" ]; then
   git push
 elif [ "${staging}" != "" ]; then
+  # Replace, never accumulate: a page removed from the site must not
+  # survive from an earlier build in the staging copy.
+  rm -rf "${staging:?}/docs"
   cp -R docs "${staging}"/
 fi
 

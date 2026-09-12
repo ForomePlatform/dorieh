@@ -57,7 +57,11 @@ CONTAINER_ONLY = [
     (re.compile(rb"/tmp/"), "/tmp path outside container context"),
     (re.compile(rb"/usr/local/bin/"), "hardcoded tool location"),
 ]
-CONTAINER_DIRS = ("docker/", "src/cwl/", "src/workflows/", "examples/")
+# docs/ is the BUILT documentation site (doc-builder branch): its pages
+# legitimately render container paths quoted from prose and CWL sources.
+# HARD rules still apply there in full.
+CONTAINER_DIRS = ("docker/", "src/cwl/", "src/workflows/", "examples/",
+                  "docs/")
 PROSE_EXT = (".md", ".rst", ".txt")
 
 # Binary or image formats where a path fragment is noise, not a reference;

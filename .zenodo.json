@@ -35,6 +35,11 @@
             "resource_type": "publication-section"
         },
         {
+            "identifier": "10.1007/978-3-032-21032-6_7",
+            "relation": "isDescribedBy",
+            "resource_type": "publication-section"
+        },
+        {
             "identifier": "10.1007/978-3-032-21032-6_8",
             "relation": "isDescribedBy",
             "resource_type": "publication-section"
