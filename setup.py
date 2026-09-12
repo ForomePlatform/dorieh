@@ -7,8 +7,14 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.5.1",
+    version="0.5.1.post1",
     url='https://github.com/ForomePlatform/dorieh',
+    project_urls={
+        'Documentation': 'https://foromeplatform.github.io/dorieh/',
+        'Cite as (book)': 'https://doi.org/10.1007/978-3-032-21032-6',
+        'Software DOI': 'https://doi.org/10.5281/zenodo.22728722',
+        'How to cite': 'https://foromeplatform.github.io/dorieh/citing.html',
+    },
     license='Apache 2.0',
     author='Michael A Bouzinier',
     author_email='mbouzinier@g.harvard.edu',

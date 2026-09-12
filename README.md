@@ -5,9 +5,23 @@
                                                           
 Read the [book about Dorieh](https://tidd.ly/4y1ClDH), published by Springer.
 
-<a href="https://tidd.ly/4y1ClDH"><img src="doc/img/awin_qrcode.png" alt="QR code linking to the book about Dorieh" width="120"></a>
+<a href="https://tidd.ly/4y1ClDH"><img src="https://raw.githubusercontent.com/ForomePlatform/dorieh/main/doc/img/awin_qrcode.png" alt="QR code linking to the book about Dorieh" width="120"></a>
 
 Detailed documentation: [Dorieh Documentation](https://foromeplatform.github.io/dorieh/)
+
+## Cite as
+
+If you use Dorieh in academic work, please cite the book:
+
+> Bouzinier, M., Etin, D., Khoshnevis, N., Shad, M., Yockel, S. (2026).
+> *Research Data that Can be Trusted.* SpringerBriefs in Computer Science.
+> Springer. <https://doi.org/10.1007/978-3-032-21032-6>
+
+To reference the software itself, use the Zenodo concept DOI
+[10.5281/zenodo.22728722](https://doi.org/10.5281/zenodo.22728722)
+(always resolves to the latest release). See
+[Citing Dorieh](https://foromeplatform.github.io/dorieh/citing.html)
+for chapter DOIs, version DOIs, and BibTeX.
 
 ## Dorieh overview
 
