@@ -1,6 +1,8 @@
 # Citation File Format 1.2.0  —  https://citation-file-format.github.io/
 # GitHub renders a "Cite this repository" button when this file is present;
-# the Zenodo GitHub integration reads it when archiving a release.
+# the Zenodo GitHub integration reads it when archiving a release —
+# unless .zenodo.json exists (it does, at the repo root): Zenodo then
+# uses .zenodo.json exclusively, so keep the two files in sync.
 cff-version: 1.2.0
 title: "dorieh"
 message: >-

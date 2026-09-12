@@ -190,3 +190,9 @@ doc/tutorial/climate/mddocs/tables/
 # remains tracked; a deliberately curated page can be added with git add -f.
 doc/members/
 doc/pipeline/
+
+# The Medicare example's input data (DAT + FTS bundles) is downloaded from
+# Zenodo (see examples/with-postgres/medicare/README.md). FTS layouts are
+# owned by the synthetic-resdac-claims generator and ship inside each
+# dataset bundle; no copy belongs in this repository.
+examples/with-postgres/medicare/data/

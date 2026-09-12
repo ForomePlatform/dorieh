@@ -88,16 +88,18 @@ no data use agreement or institutional access is required.  It:
 Download and unpack it (about a 770 MB download):
 
 ```bash
-mkdir -p data
-pushd data
-
 curl -fLo medicare-synthetic-database.zip \
   'https://zenodo.org/records/18915558/files/medicare-synthetic-database-v1.zip?download=1'
 
 unzip medicare-synthetic-database.zip
-
-popd
 ```
+
+The archive unpacks into `data/<cohort>/<year>/` with the fixed-width `.dat`
+files and, next to each of them, the ResDAC-style FTS layout file the loader
+reads. The layouts ship inside every dataset bundle (their source of truth is
+the synthetic data generator), so nothing else needs to be present under
+`data/` — do not unpack the archive *inside* an existing `data/` directory,
+or the files end up nested one level too deep (`data/data/...`).
 
 ```{note}
 This example pins **version 1** of the dataset (about 770 MB, roughly 600,000
@@ -107,6 +109,30 @@ versions, including v0.2.0 with five million beneficiaries (about 9 GB
 compressed), are published under the same concept DOI:
 <https://doi.org/10.5281/zenodo.18915557>. Any version runs through the same
 pipeline commands; only the download URL, size, run time, and resulting
+counts differ.
+
+### Using the latest dataset version instead
+
+The link above pins a specific version for a reproducible walkthrough.
+The dataset's **concept DOI**,
+<https://doi.org/10.5281/zenodo.18915557>, always resolves to the
+newest version — open it in a browser to see (and download) the latest
+release. To fetch the latest version's archive from the command line,
+resolve it through the Zenodo API:
+
+```bash
+LATEST_ZIP=$(curl -sL https://zenodo.org/api/records/18915557 \
+  | python3 -c "import sys,json; \
+      f=[f for f in json.load(sys.stdin)['files'] if f['key'].endswith('.zip')][0]; \
+      print(f['links']['self'])")
+curl -fLo medicare-synthetic-database.zip "$LATEST_ZIP"
+unzip medicare-synthetic-database.zip
+```
+
+(`https://zenodo.org/api/records/18915557` is the concept record: Zenodo
+redirects it to the latest version, whatever it is at the time.) Newer
+versions are larger — see the disk-space prerequisite above — and run
+through the same pipeline commands; only sizes, run times, and resulting
 counts differ.
 ```
 
