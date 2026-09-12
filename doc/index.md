@@ -36,6 +36,7 @@ Introduction <home>
 Why a data platform <rationale>
 The Dorieh approach <concepts>
 The companion book <about-the-book>
+Citing Dorieh <citing>
 ```
 
 ```{toctree}

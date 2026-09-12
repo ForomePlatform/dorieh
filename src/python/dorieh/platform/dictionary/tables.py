@@ -32,7 +32,7 @@ from dorieh.platform.dictionary import RenderMode
 from dorieh.platform.dictionary.columns import Column
 from dorieh.platform.dictionary.element import HTML, DataModelElement, Graph, fqn, qstr, \
     attrs2string, add_row, start_table, add_html_row, end_table, add_header_row, \
-    hr, start_invisible_row, end_invisible_row
+    hr, start_invisible_row, end_invisible_row, PANDOC
 
 
 class Table(DataModelElement):
@@ -389,6 +389,14 @@ class Table(DataModelElement):
 
         sql = self.domain.ddl_by_table.get(self.qualified_name)
         sql = [l for l in sql if l != f"-- {self.qualified_name} skipped;"]
+        # The provenance COMMENT embeds the URL Dorieh was installed from;
+        # for a local checkout that is a machine-specific file:// path.
+        # It belongs in the database it describes, but not in generated
+        # documentation, hence it is redacted at display time only.
+        sql = [
+            re.sub(r"file:///[^\s\"']+", "file://<local checkout>", l)
+            for l in sql
+        ]
         if sql:
             text += "\n<details>\n\n"
             text += "<summary>SQL/DDL Statement</summary>\n\n"
@@ -451,7 +459,7 @@ class Table(DataModelElement):
             print(block, file=out)
         if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
-            os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
+            os.system(f"{PANDOC} --from markdown  --to html {of} > {fhtml}")
 
 
 class Aggregation:

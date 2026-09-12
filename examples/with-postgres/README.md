@@ -13,6 +13,15 @@ If you have a running instance of PostgreSQL, please create your own
 The following commands assume that you are using the provided 
 lightweight PostgreSQL server.
 
+> **Disk space:** when loading a sizable dataset (for example the
+> [Medicare example](medicare/README.md)), make sure Docker has enough
+> disk allocated. On Docker Desktop the limit that matters is the virtual
+> machine disk (Settings → Resources → Disk usage limit), not the free
+> space on your host. If PostgreSQL runs out of space mid-load it enters a
+> recovery crash loop and refuses connections; the symptom and the recovery
+> steps are described in the Medicare example's
+> [troubleshooting section](medicare/README.md#31-troubleshooting-postgresql-runs-out-of-disk-space).
+
 Start the server (Docker and `git` must be installed; replace $workdir with 
 some actual path on your local file system):
 

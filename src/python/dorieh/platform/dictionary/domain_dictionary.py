@@ -26,7 +26,7 @@ from enum import Enum
 from typing import Dict, List
 
 from dorieh.platform.dictionary import RenderMode
-from dorieh.platform.dictionary.element import HTML, qstr, attrs2string, create_graph_envelop
+from dorieh.platform.dictionary.element import HTML, qstr, attrs2string, create_graph_envelop, PANDOC
 from dorieh.platform.dictionary.tables import Table, Relation
 from dorieh.utils.io_utils import as_dict
 from dorieh.platform.data_model.domain import Domain
@@ -143,7 +143,7 @@ class DomainDict:
             print(content, file=out)
         if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
-            os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
+            os.system(f"{PANDOC} --from markdown  --to html {of} > {fhtml}")
 
     def link_ext(self):
         if self.mode == RenderMode.standalone:
@@ -259,7 +259,11 @@ class DomainDict:
                         of = f"{basename}.{fmt}"
                         os.system(f"dot -T{fmt} -o{of} {f}")
                         if fmt == "svg":
-                             column.markdown(basename + ".md", svg=of)
+                             # pass just the file name: the .svg is a sibling
+                             # of the .md, and document references must stay
+                             # relative (see the table-level case above)
+                             column.markdown(basename + ".md",
+                                             svg=os.path.basename(of))
                         n += 1
                         if (n % 10) == 0:
                             print('*', end='')

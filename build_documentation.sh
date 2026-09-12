@@ -31,6 +31,58 @@ do
     esac
 done
 
+# Remember where we started; whatever happens below, finish there.
+# The EXIT trap also guarantees that a failed merge never leaves the
+# repository with unmerged paths: it is aborted before we leave.
+original_ref="$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)"
+merge_started=0
+
+cleanup() {
+  rc=$?
+  trap - EXIT
+  if [ "${merge_started}" -eq 1 ] && \
+     [ -e "$(git rev-parse --git-dir)/MERGE_HEAD" ]
+  then
+    git merge --abort || true
+  fi
+  current_ref="$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)"
+  if [ "${current_ref}" != "${original_ref}" ]
+  then
+    # We are mid-build on ${doc_source_branch}; anything dirty here is
+    # build debris (the clean-tree guard ensured we started clean), so it
+    # is safe to discard before returning to the original branch.
+    git reset --hard --quiet || true
+    git checkout "${original_ref}" || true
+  fi
+  exit ${rc}
+}
+trap cleanup EXIT
+
+# This script switches branches (${doc_source_branch} and back), so
+# uncommitted changes would travel across branches, and anything staged
+# would be swept into the documentation commit. Untracked files under doc/
+# are how machine-specific generated pages ended up committed on
+# development branches in the past. Refuse to start in either situation
+# (untracked files elsewhere are harmless and are left alone).
+tracked_changes="$(git status --porcelain | grep -v '^?? ')"
+doc_debris="$(git status --porcelain -- doc/ | grep '^?? ')"
+if [ -n "${tracked_changes}" ] || [ -n "${doc_debris}" ]
+then
+  echo "Refusing to build documentation:"
+  if [ -n "${tracked_changes}" ]
+  then
+    echo "- uncommitted changes to tracked files (commit or stash them first):"
+    echo "${tracked_changes}" | head -20
+  fi
+  if [ -n "${doc_debris}" ]
+  then
+    echo "- untracked files under doc/ (remove them, or add them to .gitignore"
+    echo "  if they are generated):"
+    echo "${doc_debris}" | head -20
+  fi
+  exit 1
+fi
+
 git checkout "${doc_source_branch}"
 if [ $? -ne 0 ]
 then
@@ -38,12 +90,27 @@ then
   exit 1
 fi
 
+# A stale local ${doc_source_branch} makes the merge below conflict
+# spuriously; bring it up to date with its remote first.
+if git fetch origin "${doc_source_branch}"
+then
+  if ! git merge --ff-only "origin/${doc_source_branch}"
+  then
+    echo "Local ${doc_source_branch} has diverged from origin/${doc_source_branch}; reconcile them manually."
+    exit 1
+  fi
+else
+  echo "WARNING: cannot fetch origin/${doc_source_branch}; building on the local state."
+fi
+
+merge_started=1
 git merge "${branch}" -m "merging latest changes" --no-edit
 if [ $? -ne 0 ]
 then
-  echo "Failed to merge latest changes into the documentation branch: ${doc_source_branch}"
+  echo "Failed to merge ${branch} into the documentation branch: ${doc_source_branch}"
   exit 1
 fi
+merge_started=0
 
 
 pip install -r doc-requirements.txt
@@ -70,6 +137,19 @@ cwl2md -i src/cwl -o doc/pipeline
       ../../src/python/dorieh/cms/models/medicare.yaml
 ) || { echo "Medicare lineage generation FAILED - refusing to build docs without it"; exit 1; }
 
+# generate the climate tutorial data dictionary (doc/tutorial/climate/mddocs).
+# Same policy as doc/lineage: these pages are generated at build time, not
+# tracked; only the curated pages (example1.md, example1.png,
+# example1cwl_src.md) and the book figure sources (table-lineage.dot, *.eps)
+# are committed. Must run from the mddocs directory (the table/column lists
+# are written to the CWD).
+(
+  cd doc/tutorial/climate/mddocs && \
+  python -m dorieh.platform.dictionary.domain_dictionary \
+      --fmt svg --lod min --mode sphinx -o example1.dot \
+      ../example1_model.yml
+) || { echo "Climate tutorial dictionary generation FAILED - refusing to build docs without it"; exit 1; }
+
 # make python sources available for autodoc
 abs_path=`realpath src/python`
 export PATH="$abs_path:$PATH"
@@ -86,6 +166,9 @@ cat docker/README.md >> doc/docker_readme.md
 
 # build documentation
 sphinx-build -j auto doc docs || exit
+# .doctrees is Sphinx's incremental-build cache: thousands of pickles that
+# embed the builder machine's absolute paths. It must not be published.
+rm -rf docs/.doctrees
 touch docs/.nojekyll
 
 echo "Build finished"
@@ -108,4 +191,4 @@ elif [ "${staging}" != "" ]; then
   cp -R docs "${staging}"/
 fi
 
-git checkout "${branch}"
+# Returning to the original branch is handled by the EXIT trap.

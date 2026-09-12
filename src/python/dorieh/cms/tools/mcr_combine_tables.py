@@ -289,7 +289,17 @@ class MedicareCombinedView:
                             table, c[0], c[1], target_type
                         )
                     )
-                cols.append(cast.format(column_name=c[0]))
+                if c[1] in ("character varying", "character", "text"):
+                    # CMS fixed-width CHAR fields arrive blank-padded
+                    # (left-justified per CMS convention; historical files
+                    # were right-justified). Feed every cast a trimmed,
+                    # NULL-if-empty value so an all-blank (sub)field can
+                    # never reach a numeric or date cast:
+                    # 'zip5     ' -> 'zip5', '         ' -> NULL.
+                    column_expr = "NULLIF(TRIM({}), '')".format(c[0])
+                else:
+                    column_expr = c[0]
+                cols.append(cast.format(column_name=column_expr))
             else:
                 cols.append(c[0])
         return cols
