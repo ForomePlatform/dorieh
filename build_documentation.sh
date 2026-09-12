@@ -31,6 +31,33 @@ do
     esac
 done
 
+# Remember where we started; whatever happens below, finish there.
+# The EXIT trap also guarantees that a failed merge never leaves the
+# repository with unmerged paths: it is aborted before we leave.
+original_ref="$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)"
+merge_started=0
+
+cleanup() {
+  rc=$?
+  trap - EXIT
+  if [ "${merge_started}" -eq 1 ] && \
+     [ -e "$(git rev-parse --git-dir)/MERGE_HEAD" ]
+  then
+    git merge --abort || true
+  fi
+  current_ref="$(git symbolic-ref --quiet --short HEAD || git rev-parse HEAD)"
+  if [ "${current_ref}" != "${original_ref}" ]
+  then
+    # We are mid-build on ${doc_source_branch}; anything dirty here is
+    # build debris (the clean-tree guard ensured we started clean), so it
+    # is safe to discard before returning to the original branch.
+    git reset --hard --quiet || true
+    git checkout "${original_ref}" || true
+  fi
+  exit ${rc}
+}
+trap cleanup EXIT
+
 # This script switches branches (${doc_source_branch} and back), so
 # uncommitted changes would travel across branches, and anything staged
 # would be swept into the documentation commit. Untracked files under doc/
@@ -63,12 +90,27 @@ then
   exit 1
 fi
 
+# A stale local ${doc_source_branch} makes the merge below conflict
+# spuriously; bring it up to date with its remote first.
+if git fetch origin "${doc_source_branch}"
+then
+  if ! git merge --ff-only "origin/${doc_source_branch}"
+  then
+    echo "Local ${doc_source_branch} has diverged from origin/${doc_source_branch}; reconcile them manually."
+    exit 1
+  fi
+else
+  echo "WARNING: cannot fetch origin/${doc_source_branch}; building on the local state."
+fi
+
+merge_started=1
 git merge "${branch}" -m "merging latest changes" --no-edit
 if [ $? -ne 0 ]
 then
-  echo "Failed to merge latest changes into the documentation branch: ${doc_source_branch}"
+  echo "Failed to merge ${branch} into the documentation branch: ${doc_source_branch}"
   exit 1
 fi
+merge_started=0
 
 
 pip install -r doc-requirements.txt
@@ -149,4 +191,4 @@ elif [ "${staging}" != "" ]; then
   cp -R docs "${staging}"/
 fi
 
-git checkout "${branch}"
+# Returning to the original branch is handled by the EXIT trap.
