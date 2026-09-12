@@ -195,6 +195,9 @@ echo Staging: "$staging"
 if [ "${staging}" = "push" ]; then
   git push
 elif [ "${staging}" != "" ]; then
+  # Replace, never accumulate: a page removed from the site must not
+  # survive from an earlier build in the staging copy.
+  rm -rf "${staging:?}/docs"
   cp -R docs "${staging}"/
 fi
 
