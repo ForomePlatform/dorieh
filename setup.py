@@ -7,7 +7,7 @@ with open("README.md", "r") as readme:
 
 setup(
     name='dorieh',
-    version="0.5.1.post1",
+    version="0.5.1.post2",
     url='https://github.com/ForomePlatform/dorieh',
     project_urls={
         'Documentation': 'https://foromeplatform.github.io/dorieh/',
