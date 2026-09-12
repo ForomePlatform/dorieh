@@ -66,6 +66,30 @@ or the files end up nested one level too deep (`data/data/...`).
 > same pipeline commands; only the download URL, size, run time, and
 > resulting counts differ.
 
+### Using the latest dataset version instead
+
+The link above pins a specific version for a reproducible walkthrough.
+The dataset's **concept DOI**,
+<https://doi.org/10.5281/zenodo.18915557>, always resolves to the
+newest version — open it in a browser to see (and download) the latest
+release. To fetch the latest version's archive from the command line,
+resolve it through the Zenodo API:
+
+```bash
+LATEST_ZIP=$(curl -sL https://zenodo.org/api/records/18915557 \
+  | python3 -c "import sys,json; \
+      f=[f for f in json.load(sys.stdin)['files'] if f['key'].endswith('.zip')][0]; \
+      print(f['links']['self'])")
+curl -fLo medicare-synthetic-database.zip "$LATEST_ZIP"
+unzip medicare-synthetic-database.zip
+```
+
+(`https://zenodo.org/api/records/18915557` is the concept record: Zenodo
+redirects it to the latest version, whatever it is at the time.) Newer
+versions are larger — see the disk-space prerequisite above — and run
+through the same pipeline commands; only sizes, run times, and resulting
+counts differ.
+
 
 ### 3. Run the Medicare processing pipeline
 

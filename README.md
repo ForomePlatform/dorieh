@@ -1,4 +1,7 @@
 # Dorieh Data Platform for population and environmental health
+
+[![PyPI](https://img.shields.io/pypi/v/dorieh.svg)](https://pypi.org/project/dorieh/)
+[![DOI](https://zenodo.org/badge/816452278.svg)](https://zenodo.org/badge/latestdoi/816452278)
                                                           
 Read the [book about Dorieh](https://tidd.ly/4y1ClDH), published by Springer.
 
