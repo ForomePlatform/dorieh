@@ -45,7 +45,7 @@ FROM medicare.qc_adm_union
 
 GROUP BY year,state,zip,reason;
 
-COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 13:13:47.846364';
+COMMENT ON materialized view medicare.qc_admissions IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 14:08:08.989832';
 ```
 
 </details>

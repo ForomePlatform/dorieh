@@ -12,7 +12,7 @@
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
-      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
+      <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=1a3f250d" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
@@ -38,6 +38,7 @@
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
 
+
           
           
           <a href="index.html" class="icon icon-home">
@@ -50,6 +51,29 @@
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+<div class="dorieh-citeas">
+  <button type="button" class="dorieh-citeas-btn"
+          onclick="document.getElementById('dorieh-citeas-pop').classList.toggle('open')">
+    &#128214; Cite as
+  </button>
+  <div id="dorieh-citeas-pop" class="dorieh-citeas-pop">
+    <p>Bouzinier,&nbsp;M., Etin,&nbsp;D., Khoshnevis,&nbsp;N.,
+       Shad,&nbsp;M., Yockel,&nbsp;S. (2026).
+       <em>Research Data that Can be Trusted.</em>
+       SpringerBriefs in Computer Science. Springer.
+       <a href="https://doi.org/10.1007/978-3-032-21032-6">doi:10.1007/978-3-032-21032-6</a></p>
+    <button type="button" class="dorieh-citeas-copy"
+            onclick="navigator.clipboard.writeText(
+              'Bouzinier, M., Etin, D., Khoshnevis, N., Shad, M., Yockel, S. (2026). ' +
+              'Research Data that Can be Trusted. SpringerBriefs in Computer Science. ' +
+              'Springer. https://doi.org/10.1007/978-3-032-21032-6'
+            ).then(() => { this.textContent = 'Copied!'; });">
+      Copy citation
+    </button>
+    <a class="dorieh-citeas-more" href="citing.html">More ways to cite &rarr;</a>
+  </div>
+</div>
+
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
@@ -95,6 +119,13 @@
 <li class="toctree-l2"><a class="reference internal" href="about-the-book.html#bibliographic-information">Bibliographic information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about-the-book.html#chapter-to-documentation-map">Chapter-to-documentation map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="about-the-book.html#using-this-documentation-without-the-book">Using this documentation without the book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citing.html">Citing Dorieh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="citing.html#preferred-citation-the-book">Preferred citation: the book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citing.html#citing-the-software-itself">Citing the software itself</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citing.html#citing-the-tutorials">Citing the tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="citing.html#citing-the-synthetic-dataset">Citing the synthetic dataset</a></li>
 </ul>
 </li>
 </ul>
@@ -252,7 +283,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-1-download-synthetic-sample-data">Step 1 — Download synthetic sample data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline">Step 2 — Run the Medicare processing pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset">Step 3 (Optional) — Explore results in Apache Superset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#what-the-pipeline-produces">What the pipeline produces</a></li>
 </ul>
@@ -505,23 +535,22 @@
 <nav class="contents local" id="contents">
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></p></li>
-<li><p><a class="reference internal" href="#step-1-download-synthetic-sample-data" id="id2">Step 1 — Download synthetic sample data</a></p></li>
-<li><p><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline" id="id3">Step 2 — Run the Medicare processing pipeline</a></p>
+<li><p><a class="reference internal" href="#step-1-download-synthetic-sample-data" id="id2">Step 1 — Download synthetic sample data</a></p>
 <ul>
-<li><p><a class="reference internal" href="#troubleshooting-postgresql-runs-out-of-disk-space" id="id4">Troubleshooting: PostgreSQL runs out of disk space</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting-postgresql-runs-out-of-disk-space" id="id3">Troubleshooting: PostgreSQL runs out of disk space</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset" id="id5">Step 3 (Optional) — Explore results in Apache Superset</a></p>
+<li><p><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset" id="id4">Step 3 (Optional) — Explore results in Apache Superset</a></p>
 <ul>
-<li><p><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running" id="id6">3.1 — Stop the simple PostgreSQL container (if running)</a></p></li>
-<li><p><a class="reference internal" href="#start-postgresql-superset" id="id7">3.2 — Start PostgreSQL + Superset</a></p></li>
-<li><p><a class="reference internal" href="#log-in-to-superset" id="id8">3.3 — Log in to Superset</a></p></li>
-<li><p><a class="reference internal" href="#add-the-dorieh-database-connection" id="id9">3.4 — Add the Dorieh database connection</a></p></li>
-<li><p><a class="reference internal" href="#import-the-medicare-qc-dashboard" id="id10">3.5 — Import the Medicare QC dashboard</a></p></li>
-<li><p><a class="reference internal" href="#explore-the-dashboard" id="id11">3.6 — Explore the dashboard</a></p></li>
+<li><p><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running" id="id5">3.1 — Stop the simple PostgreSQL container (if running)</a></p></li>
+<li><p><a class="reference internal" href="#start-postgresql-superset" id="id6">3.2 — Start PostgreSQL + Superset</a></p></li>
+<li><p><a class="reference internal" href="#log-in-to-superset" id="id7">3.3 — Log in to Superset</a></p></li>
+<li><p><a class="reference internal" href="#add-the-dorieh-database-connection" id="id8">3.4 — Add the Dorieh database connection</a></p></li>
+<li><p><a class="reference internal" href="#import-the-medicare-qc-dashboard" id="id9">3.5 — Import the Medicare QC dashboard</a></p></li>
+<li><p><a class="reference internal" href="#explore-the-dashboard" id="id10">3.6 — Explore the dashboard</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#what-the-pipeline-produces" id="id12">What the pipeline produces</a></p></li>
+<li><p><a class="reference internal" href="#what-the-pipeline-produces" id="id11">What the pipeline produces</a></p></li>
 </ul>
 </nav>
 <div class="admonition seealso">
@@ -599,17 +628,18 @@ no data use agreement or institutional access is required.  It:</p>
 and sharing</p></li>
 </ul>
 <p>Download and unpack it (about a 770 MB download):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>data
-<span class="nb">pushd</span><span class="w"> </span>data
-
-curl<span class="w"> </span>-fLo<span class="w"> </span>medicare-synthetic-database.zip<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fLo<span class="w"> </span>medicare-synthetic-database.zip<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="s1">&#39;https://zenodo.org/records/18915558/files/medicare-synthetic-database-v1.zip?download=1&#39;</span>
 
 unzip<span class="w"> </span>medicare-synthetic-database.zip
-
-<span class="nb">popd</span>
 </pre></div>
 </div>
+<p>The archive unpacks into <code class="docutils literal notranslate"><span class="pre">data/&lt;cohort&gt;/&lt;year&gt;/</span></code> with the fixed-width <code class="docutils literal notranslate"><span class="pre">.dat</span></code>
+files and, next to each of them, the ResDAC-style FTS layout file the loader
+reads. The layouts ship inside every dataset bundle (their source of truth is
+the synthetic data generator), so nothing else needs to be present under
+<code class="docutils literal notranslate"><span class="pre">data/</span></code> — do not unpack the archive <em>inside</em> an existing <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory,
+or the files end up nested one level too deep (<code class="docutils literal notranslate"><span class="pre">data/data/...</span></code>).</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This example pins <strong>version 1</strong> of the dataset (about 770 MB, roughly 600,000
@@ -620,16 +650,40 @@ compressed), are published under the same concept DOI:
 <a class="reference external" href="https://doi.org/10.5281/zenodo.18915557">https://doi.org/10.5281/zenodo.18915557</a>. Any version runs through the same
 pipeline commands; only the download URL, size, run time, and resulting
 counts differ.</p>
+<p class="rubric" id="using-the-latest-dataset-version-instead">Using the latest dataset version instead</p>
+<p>The link above pins a specific version for a reproducible walkthrough.
+The dataset’s <strong>concept DOI</strong>,
+<a class="reference external" href="https://doi.org/10.5281/zenodo.18915557">https://doi.org/10.5281/zenodo.18915557</a>, always resolves to the
+newest version — open it in a browser to see (and download) the latest
+release. To fetch the latest version’s archive from the command line,
+resolve it through the Zenodo API:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">LATEST_ZIP</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>https://zenodo.org/api/records/18915557<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import sys,json; \</span>
+<span class="s2">      f=[f for f in json.load(sys.stdin)[&#39;files&#39;] if f[&#39;key&#39;].endswith(&#39;.zip&#39;)][0]; \</span>
+<span class="s2">      print(f[&#39;links&#39;][&#39;self&#39;])&quot;</span><span class="k">)</span>
+curl<span class="w"> </span>-fLo<span class="w"> </span>medicare-synthetic-database.zip<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LATEST_ZIP</span><span class="s2">&quot;</span>
+unzip<span class="w"> </span>medicare-synthetic-database.zip
+</pre></div>
 </div>
-<p>The extracted directory tree follows the layout expected by the ingestion
-pipeline — one sub-directory per year, each containing <code class="docutils literal notranslate"><span class="pre">.fts</span></code> metadata files
-and the corresponding <code class="docutils literal notranslate"><span class="pre">.dat</span></code> data files.</p>
-</section>
-<hr class="docutils" />
-<section id="step-2-run-the-medicare-processing-pipeline">
-<h2><a class="toc-backref" href="#id3" role="doc-backlink">Step 2 — Run the Medicare processing pipeline</a><a class="headerlink" href="#step-2-run-the-medicare-processing-pipeline" title="Link to this heading"></a></h2>
-<p>Activate your Toil virtual environment:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span><span class="nv">$TOIL_VENV</span>/bin/activate
+</div>
+<p>(<code class="docutils literal notranslate"><span class="pre">https://zenodo.org/api/records/18915557</span></code> is the concept record: Zenodo
+redirects it to the latest version, whatever it is at the time.) Newer
+versions are larger — see the disk-space prerequisite above — and run
+through the same pipeline commands; only sizes, run times, and resulting
+counts differ.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+The extracted directory tree follows the layout expected by the ingestion
+pipeline — one sub-directory per year, each containing `.fts` metadata files
+and the corresponding `.dat` data files.
+
+---
+
+## Step 2 — Run the Medicare processing pipeline
+
+Activate your Toil virtual environment:
+
+```bash
+source $TOIL_VENV/bin/activate
 </pre></div>
 </div>
 <p>Run the Medicare CWL workflow:</p>
@@ -661,7 +715,7 @@ schema (beneficiaries, enrollments, admissions, and QC tables).</p></li>
 <p>For a detailed description of the pipeline steps, see
 <a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>.</p>
 <section id="troubleshooting-postgresql-runs-out-of-disk-space">
-<h3><a class="toc-backref" href="#id4" role="doc-backlink">Troubleshooting: PostgreSQL runs out of disk space</a><a class="headerlink" href="#troubleshooting-postgresql-runs-out-of-disk-space" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id3" role="doc-backlink">Troubleshooting: PostgreSQL runs out of disk space</a><a class="headerlink" href="#troubleshooting-postgresql-runs-out-of-disk-space" title="Link to this heading"></a></h3>
 <p>If the ingestion step (<code class="docutils literal notranslate"><span class="pre">load_medicare_data</span></code>) fails with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psycopg2</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">server</span> <span class="o">...</span> <span class="n">failed</span><span class="p">:</span>
 <span class="n">FATAL</span><span class="p">:</span>  <span class="n">the</span> <span class="n">database</span> <span class="n">system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">yet</span> <span class="n">accepting</span> <span class="n">connections</span>
@@ -702,12 +756,12 @@ be reused with <code class="docutils literal notranslate"><span class="pre">--re
 </section>
 <hr class="docutils" />
 <section id="step-3-optional-explore-results-in-apache-superset">
-<h2><a class="toc-backref" href="#id5" role="doc-backlink">Step 3 (Optional) — Explore results in Apache Superset</a><a class="headerlink" href="#step-3-optional-explore-results-in-apache-superset" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id4" role="doc-backlink">Step 3 (Optional) — Explore results in Apache Superset</a><a class="headerlink" href="#step-3-optional-explore-results-in-apache-superset" title="Link to this heading"></a></h2>
 <p>A pre-built <strong>Medicare Quality Control</strong> Superset dashboard is included with
 the example.  The steps below show how to launch PostgreSQL together with
 Superset using Docker Compose and import the dashboard.</p>
 <section id="stop-the-simple-postgresql-container-if-running">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">3.1 — Stop the simple PostgreSQL container (if running)</a><a class="headerlink" href="#stop-the-simple-postgresql-container-if-running" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id5" role="doc-backlink">3.1 — Stop the simple PostgreSQL container (if running)</a><a class="headerlink" href="#stop-the-simple-postgresql-container-if-running" title="Link to this heading"></a></h3>
 <p>If you started the basic <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> stack earlier, bring it down
 first:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
@@ -716,7 +770,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>down
 </div>
 </section>
 <section id="start-postgresql-superset">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">3.2 — Start PostgreSQL + Superset</a><a class="headerlink" href="#start-postgresql-superset" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">3.2 — Start PostgreSQL + Superset</a><a class="headerlink" href="#start-postgresql-superset" title="Link to this heading"></a></h3>
 <p>From the same directory, first create the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file that the Superset
 stack requires. <code class="docutils literal notranslate"><span class="pre">SUPERSET_SECRET_KEY</span></code> has no default and Compose will refuse
 to start without it:</p>
@@ -753,7 +807,7 @@ is missing and Superset fails with <code class="docutils literal notranslate"><s
 </ul>
 </section>
 <section id="log-in-to-superset">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">3.3 — Log in to Superset</a><a class="headerlink" href="#log-in-to-superset" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">3.3 — Log in to Superset</a><a class="headerlink" href="#log-in-to-superset" title="Link to this heading"></a></h3>
 <p>Once the services are running, open <code class="docutils literal notranslate"><span class="pre">http://localhost:8088/</span></code> in your browser.</p>
 <p>Default credentials (defined in <code class="docutils literal notranslate"><span class="pre">docker-compose-superset.yml</span></code>):</p>
 <table class="docutils align-default">
@@ -784,7 +838,7 @@ docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">ex
 </div>
 </section>
 <section id="add-the-dorieh-database-connection">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">3.4 — Add the Dorieh database connection</a><a class="headerlink" href="#add-the-dorieh-database-connection" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">3.4 — Add the Dorieh database connection</a><a class="headerlink" href="#add-the-dorieh-database-connection" title="Link to this heading"></a></h3>
 <p>In the Superset UI:</p>
 <ol class="arabic simple">
 <li><p>Open <strong>Settings → Database Connections</strong> (under <em>Data</em>).</p></li>
@@ -801,7 +855,7 @@ docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">ex
 </ol>
 </section>
 <section id="import-the-medicare-qc-dashboard">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
 <p>The dashboard is committed as a native Superset bundle under
 <code class="docutils literal notranslate"><span class="pre">examples/with-postgres/medicare/superset/medicare_quality_dashboard/</span></code>. Import
 it by running the <code class="docutils literal notranslate"><span class="pre">dorieh.platform.superset.import_dashboard</span></code> module, which resolves
@@ -824,7 +878,7 @@ coexisting copy on another connection. The companion
 bundle.</p>
 </section>
 <section id="explore-the-dashboard">
-<h3><a class="toc-backref" href="#id11" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
 <p>In the Superset UI:</p>
 <ol class="arabic simple">
 <li><p>Click the <strong>Dashboards</strong> tab.</p></li>
@@ -848,7 +902,7 @@ differ from any figures computed on real Medicare data.</p>
 </section>
 <hr class="docutils" />
 <section id="what-the-pipeline-produces">
-<h2><a class="toc-backref" href="#id12" role="doc-backlink">What the pipeline produces</a><a class="headerlink" href="#what-the-pipeline-produces" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id11" role="doc-backlink">What the pipeline produces</a><a class="headerlink" href="#what-the-pipeline-produces" title="Link to this heading"></a></h2>
 <p>After a successful run the following tables and views are available in the
 <code class="docutils literal notranslate"><span class="pre">medicare</span></code> schema of your PostgreSQL database:</p>
 <table class="docutils align-default">

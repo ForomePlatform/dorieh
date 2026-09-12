@@ -39,7 +39,7 @@ SELECT
 	public.zip_to_state(EXTRACT(YEAR FROM date)::INT, zcta) AS us_state,
 	public.zip_to_city(EXTRACT(YEAR FROM date)::INT, zcta) AS city
 FROM bronze_temperature;
-COMMENT ON view silver_temperature IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 13:14:37.139671';
+COMMENT ON view silver_temperature IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 14:08:55.861101';
 ```
 
 </details>

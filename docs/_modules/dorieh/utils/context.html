@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
       <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=a01a0e0e" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=1a3f250d" />
 
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
@@ -43,6 +43,7 @@ window.addEventListener("load", () => mermaid.run());
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
 
+
           
           
           <a href="../../../index.html" class="icon icon-home">
@@ -55,6 +56,29 @@ window.addEventListener("load", () => mermaid.run());
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+<div class="dorieh-citeas">
+  <button type="button" class="dorieh-citeas-btn"
+          onclick="document.getElementById('dorieh-citeas-pop').classList.toggle('open')">
+    &#128214; Cite as
+  </button>
+  <div id="dorieh-citeas-pop" class="dorieh-citeas-pop">
+    <p>Bouzinier,&nbsp;M., Etin,&nbsp;D., Khoshnevis,&nbsp;N.,
+       Shad,&nbsp;M., Yockel,&nbsp;S. (2026).
+       <em>Research Data that Can be Trusted.</em>
+       SpringerBriefs in Computer Science. Springer.
+       <a href="https://doi.org/10.1007/978-3-032-21032-6">doi:10.1007/978-3-032-21032-6</a></p>
+    <button type="button" class="dorieh-citeas-copy"
+            onclick="navigator.clipboard.writeText(
+              'Bouzinier, M., Etin, D., Khoshnevis, N., Shad, M., Yockel, S. (2026). ' +
+              'Research Data that Can be Trusted. SpringerBriefs in Computer Science. ' +
+              'Springer. https://doi.org/10.1007/978-3-032-21032-6'
+            ).then(() => { this.textContent = 'Copied!'; });">
+      Copy citation
+    </button>
+    <a class="dorieh-citeas-more" href="../../../citing.html">More ways to cite &rarr;</a>
+  </div>
+</div>
+
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Overview</span></p>
 <ul>
@@ -100,6 +124,13 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l2"><a class="reference internal" href="../../../about-the-book.html#bibliographic-information">Bibliographic information</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../about-the-book.html#chapter-to-documentation-map">Chapter-to-documentation map</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../about-the-book.html#using-this-documentation-without-the-book">Using this documentation without the book</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../citing.html">Citing Dorieh</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../citing.html#preferred-citation-the-book">Preferred citation: the book</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../citing.html#citing-the-software-itself">Citing the software itself</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../citing.html#citing-the-tutorials">Citing the tutorials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../citing.html#citing-the-synthetic-dataset">Citing the synthetic dataset</a></li>
 </ul>
 </li>
 </ul>
@@ -257,7 +288,6 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l2"><a class="reference internal" href="../../../medicare-example.html">Medicare pipeline with publicly available synthetic data (PostgreSQL + Superset)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../medicare-example.html#prerequisites">Prerequisites</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../medicare-example.html#step-1-download-synthetic-sample-data">Step 1 — Download synthetic sample data</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../medicare-example.html#step-2-run-the-medicare-processing-pipeline">Step 2 — Run the Medicare processing pipeline</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../medicare-example.html#step-3-optional-explore-results-in-apache-superset">Step 3 (Optional) — Explore results in Apache Superset</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../medicare-example.html#what-the-pipeline-produces">What the pipeline produces</a></li>
 </ul>
@@ -534,7 +564,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Cardinality">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Cardinality">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Cardinality">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Cardinality</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cardinality of a configuration parameter: multiple or singular</span>
@@ -546,7 +576,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument">[docs]</a>
+<a class="viewcode-back" href="../../../members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Argument">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Argument</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper class to describe a command-line arguments</span>
@@ -592,7 +622,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">return</span>
 
 <div class="viewcode-block" id="Argument.get_action">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_action">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Argument.get_action">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">:</span>
@@ -602,7 +632,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.get_nargs">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_nargs">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Argument.get_nargs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_nargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cardinality</span> <span class="o">==</span> <span class="n">Cardinality</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -612,7 +642,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.get_help">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_help">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Argument.get_help">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_required</span><span class="p">():</span>
             <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
@@ -624,13 +654,13 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.is_required">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.is_required">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Argument.is_required">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_required</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_flag</span></div>
 
 
 <div class="viewcode-block" id="Argument.add_to">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.add_to">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Argument.add_to">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span><span class="p">:</span>
@@ -663,7 +693,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Context">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context">[docs]</a>
+<a class="viewcode-back" href="../../../members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Context">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Context</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generic class allowing to build context and configuration objects</span>
@@ -732,14 +762,14 @@ window.addEventListener("load", () => mermaid.run());
             <span class="p">]</span>
 
 <div class="viewcode-block" id="Context.instantiate">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.instantiate">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Context.instantiate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Context.set_empty_args">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.set_empty_args">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Context.set_empty_args">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_empty_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span>
             <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span>
@@ -762,7 +792,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="Context.default">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.default">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.airnow_ds_def.Context.default">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span><span class="p">:</span>
             <span class="n">arg</span><span class="p">:</span> <span class="n">Argument</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span>
@@ -775,7 +805,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="p">])</span>
 
 <div class="viewcode-block" id="Context.validate">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.validate">[docs]</a>
+<a class="viewcode-back" href="../../../members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Context.validate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Subclasses can override this method to implement custom handling</span>
@@ -805,7 +835,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Context.enum">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.enum">[docs]</a>
+<a class="viewcode-back" href="../../../members/airnow_ds_def.html#dorieh.epa.airnow_ds_def.Context.enum">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">enum</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">enum_cls</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
