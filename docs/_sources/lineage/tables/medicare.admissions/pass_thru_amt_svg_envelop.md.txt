@@ -1,7 +1,7 @@
 # Column medicare.admissions.pass_thru_amt Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/pass_thru_amt.svg
+:file: pass_thru_amt.svg
 
 ```
 

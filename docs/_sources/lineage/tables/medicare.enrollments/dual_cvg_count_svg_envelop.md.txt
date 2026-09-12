@@ -1,7 +1,7 @@
 # Column medicare.enrollments.dual_cvg_count Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/dual_cvg_count.svg
+:file: dual_cvg_count.svg
 
 ```
 

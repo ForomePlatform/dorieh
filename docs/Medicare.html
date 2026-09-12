@@ -6,24 +6,24 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Medicare: Building a Data Warehouse from ResDac Files &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>Medicare: Building a Data Warehouse from ResDac Files &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/documentation_options.js?v=b9afe91b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -219,6 +219,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -435,6 +436,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -1112,8 +1114,9 @@ this column as “duplicates”; the physical column name is <code class="docuti
 beneficiary. The value of this column is NULL for consistent records</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dod_earliest</span></code>: the earliest DOD found in the records for this
 beneficiary. The value of this column is NULL for consistent records</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">orec_latest</span></code>: the latest OREC value, non-null only when OREC varied
-across the beneficiary’s records (see
+<li><p><code class="docutils literal notranslate"><span class="pre">orec_latest</span></code>: non-null only when OREC varied across the beneficiary’s
+records; it then holds the alternative value (computed as <code class="docutils literal notranslate"><span class="pre">MAX(orec)</span></code>,
+by analogy with <code class="docutils literal notranslate"><span class="pre">dob_latest</span></code>) (see
 <a class="reference internal" href="#entitlement-reason-codes-orec-and-curec">Entitlement reason codes: OREC and CUREC</a>)</p></li>
 <li><p>Beneficiary id HLL hash (<code class="docutils literal notranslate"><span class="pre">bene</span></code> column), to be used for
 <code class="docutils literal notranslate"><span class="pre">approximate</span> <span class="pre">count</span> <span class="pre">distinct</span></code> queries. <a class="reference internal" href="UsingHLL.html"><span class="std std-doc">See more</span></a></p></li>
@@ -1304,12 +1307,13 @@ downstream. To keep the natural join keyed only on the true relationship
 enrollment year, with ties broken by the smallest code so that the result
 is deterministic: <code class="docutils literal notranslate"><span class="pre">(array_agg(orec</span> <span class="pre">ORDER</span> <span class="pre">BY</span> <span class="pre">year,</span> <span class="pre">orec))[1]</span></code>. If the raw
 data nevertheless shows OREC changing over the years,
-<code class="docutils literal notranslate"><span class="pre">beneficiaries.orec_latest</span></code> is non-null (holding the latest value), and
+<code class="docutils literal notranslate"><span class="pre">beneficiaries.orec_latest</span></code> is non-null (holding the alternative value,
+<code class="docutils literal notranslate"><span class="pre">MAX(orec)</span></code>), and
 the <code class="docutils literal notranslate"><span class="pre">consistent_orec</span></code> flag in <code class="docutils literal notranslate"><span class="pre">qc_enrl_bene</span></code> reports the discrepancy:
 <code class="docutils literal notranslate"><span class="pre">MISSING</span></code> when OREC is absent, <code class="docutils literal notranslate"><span class="pre">AMBIGUOUS</span></code> when it varied, and
 <code class="docutils literal notranslate"><span class="pre">CONSISTENT</span></code> otherwise. This is the same earliest-value-canonical,
-latest-value-in-a-secondary-column disambiguation pattern used for the
-date of birth (<code class="docutils literal notranslate"><span class="pre">dob</span></code> / <code class="docutils literal notranslate"><span class="pre">dob_latest</span></code> / <code class="docutils literal notranslate"><span class="pre">consistent_dob</span></code>).</p></li>
+alternative-value-in-a-secondary-column disambiguation pattern used for
+the date of birth (<code class="docutils literal notranslate"><span class="pre">dob</span></code> / <code class="docutils literal notranslate"><span class="pre">dob_latest</span></code> / <code class="docutils literal notranslate"><span class="pre">consistent_dob</span></code>).</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">enrollments.curec</span></code> is aggregated as <code class="docutils literal notranslate"><span class="pre">MAX(curec)</span></code> within each
 <code class="docutils literal notranslate"><span class="pre">(bene_id,</span> <span class="pre">year,</span> <span class="pre">state)</span></code> group. This is a defensive de-duplication: in
 the synthetic dataset every such group is a single row, but real Medicare
@@ -1614,7 +1618,7 @@ is optional enrichment.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

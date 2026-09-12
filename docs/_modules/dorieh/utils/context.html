@@ -5,24 +5,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dorieh.utils.context &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>dorieh.utils.context &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../_static/documentation_options.js?v=b9afe91b"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../../../_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -216,6 +216,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -432,6 +433,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -532,7 +534,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Cardinality">
-<a class="viewcode-back" href="../../../rasters_ds_def.html#dorieh.rasters.config.Cardinality">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Cardinality">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Cardinality</span><span class="p">(</span><span class="n">Enum</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Cardinality of a configuration parameter: multiple or singular</span>
@@ -544,7 +546,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument">
-<a class="viewcode-back" href="../../../rasters_ds_def.html#dorieh.rasters.config.Argument">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Argument</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    A wrapper class to describe a command-line arguments</span>
@@ -590,7 +592,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">return</span>
 
 <div class="viewcode-block" id="Argument.get_action">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Argument.get_action">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_action">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_action</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="nb">bool</span><span class="p">:</span>
             <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">default</span><span class="p">:</span>
@@ -600,7 +602,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.get_nargs">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Argument.get_nargs">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_nargs">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_nargs</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">cardinality</span> <span class="o">==</span> <span class="n">Cardinality</span><span class="o">.</span><span class="n">single</span><span class="p">:</span>
             <span class="k">return</span> <span class="kc">None</span>
@@ -610,7 +612,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.get_help">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Argument.get_help">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.get_help">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">is_required</span><span class="p">():</span>
             <span class="n">h</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">description</span>
@@ -622,13 +624,13 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Argument.is_required">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Argument.is_required">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.is_required">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">is_required</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">required_flag</span></div>
 
 
 <div class="viewcode-block" id="Argument.add_to">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Argument.add_to">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Argument.add_to">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">add_to</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parser</span><span class="p">):</span>
         <span class="n">args</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;--&quot;</span> <span class="o">+</span> <span class="bp">self</span><span class="o">.</span><span class="n">name</span><span class="p">]</span>
         <span class="k">for</span> <span class="n">alias</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">aliases</span><span class="p">:</span>
@@ -661,7 +663,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Context">
-<a class="viewcode-back" href="../../../rasters_ds_def.html#dorieh.rasters.config.Context">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">Context</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Generic class allowing to build context and configuration objects</span>
@@ -730,14 +732,14 @@ window.addEventListener("load", () => mermaid.run());
             <span class="p">]</span>
 
 <div class="viewcode-block" id="Context.instantiate">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Context.instantiate">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.instantiate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">instantiate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span><span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span><span class="p">]</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_instantiate</span><span class="p">()</span></div>
 
 
 <div class="viewcode-block" id="Context.set_empty_args">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Context.set_empty_args">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.set_empty_args">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">set_empty_args</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">arguments</span> <span class="o">=</span> <span class="p">[</span>
             <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span> <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span>
@@ -760,7 +762,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="k">return</span> <span class="bp">self</span>
 
 <div class="viewcode-block" id="Context.default">
-<a class="viewcode-back" href="../../../members/context.html#dorieh.rasters.config.Context.default">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.default">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">default</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">attr</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_attrs</span><span class="p">:</span>
             <span class="n">arg</span><span class="p">:</span> <span class="n">Argument</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;_&#39;</span><span class="o">+</span><span class="n">attr</span><span class="p">)</span>
@@ -773,7 +775,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="p">])</span>
 
 <div class="viewcode-block" id="Context.validate">
-<a class="viewcode-back" href="../../../rasters_ds_def.html#dorieh.rasters.config.Context.validate">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.validate">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Subclasses can override this method to implement custom handling</span>
@@ -803,7 +805,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="Context.enum">
-<a class="viewcode-back" href="../../../rasters_ds_def.html#dorieh.rasters.config.Context.enum">[docs]</a>
+<a class="viewcode-back" href="../../../members/context.html#dorieh.epa.aqs_ds_def.Context.enum">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">enum</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">enum_cls</span><span class="p">,</span> <span class="n">s</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -827,7 +829,7 @@ window.addEventListener("load", () => mermaid.run());
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

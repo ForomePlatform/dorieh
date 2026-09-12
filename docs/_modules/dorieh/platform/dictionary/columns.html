@@ -5,24 +5,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dorieh.platform.dictionary.columns &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>dorieh.platform.dictionary.columns &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../../../../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../../_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="../../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../../_static/documentation_options.js?v=b9afe91b"></script>
       <script src="../../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../../../../_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="../../../../_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -216,6 +216,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -432,6 +433,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../../TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../../TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -532,7 +534,7 @@ window.addEventListener("load", () => mermaid.run());
 <span class="kn">import</span><span class="w"> </span><span class="nn">html</span>
 
 <span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.dictionary</span><span class="w"> </span><span class="kn">import</span> <span class="n">RenderMode</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.dictionary.element</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">DataModelElement</span><span class="p">,</span> <span class="n">qstr</span><span class="p">,</span> <span class="n">attrs2string</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="n">create_graph_envelop</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.dictionary.element</span><span class="w"> </span><span class="kn">import</span> <span class="n">HTML</span><span class="p">,</span> <span class="n">DataModelElement</span><span class="p">,</span> <span class="n">qstr</span><span class="p">,</span> <span class="n">attrs2string</span><span class="p">,</span> <span class="n">hr</span><span class="p">,</span> <span class="n">create_graph_envelop</span><span class="p">,</span> <span class="n">PANDOC</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.data_model.domain</span><span class="w"> </span><span class="kn">import</span> <span class="n">Domain</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">dorieh.platform.dictionary.resdac_crawler</span><span class="w"> </span><span class="kn">import</span> <span class="n">get_resdac_mapping</span>
 
@@ -882,7 +884,7 @@ window.addEventListener("load", () => mermaid.run());
             <span class="nb">print</span><span class="p">(</span><span class="n">content</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">out</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">mode</span> <span class="o">==</span> <span class="n">RenderMode</span><span class="o">.</span><span class="n">standalone</span><span class="p">:</span>
             <span class="n">fhtml</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">of</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;.html&quot;</span>
-            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;/usr/local/bin/pandoc --from markdown  --to html </span><span class="si">{</span><span class="n">of</span><span class="si">}</span><span class="s2"> &gt; </span><span class="si">{</span><span class="n">fhtml</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
+            <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">PANDOC</span><span class="si">}</span><span class="s2"> --from markdown  --to html </span><span class="si">{</span><span class="n">of</span><span class="si">}</span><span class="s2"> &gt; </span><span class="si">{</span><span class="n">fhtml</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span></div>
 
 
 <div class="viewcode-block" id="Column.to_dot">
@@ -978,7 +980,7 @@ window.addEventListener("load", () => mermaid.run());
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

@@ -1,7 +1,7 @@
 # Column medicare.enrollments.hmo_indicators Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/hmo_indicators.svg
+:file: hmo_indicators.svg
 
 ```
 

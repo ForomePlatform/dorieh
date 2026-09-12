@@ -1,7 +1,7 @@
 # Column medicare._ps.sex Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare._ps/sex.svg
+:file: sex.svg
 
 ```
 

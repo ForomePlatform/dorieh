@@ -1,7 +1,7 @@
 # Column medicare.qc_enrl_bene.record Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/record.svg
+:file: record.svg
 
 ```
 

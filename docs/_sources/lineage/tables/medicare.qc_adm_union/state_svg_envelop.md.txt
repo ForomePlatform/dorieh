@@ -1,7 +1,7 @@
 # Column medicare.qc_adm_union.state Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/state.svg
+:file: state.svg
 
 ```
 

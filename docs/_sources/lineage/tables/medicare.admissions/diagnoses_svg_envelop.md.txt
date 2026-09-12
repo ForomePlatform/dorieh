@@ -1,7 +1,7 @@
 # Column medicare.admissions.diagnoses Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/diagnoses.svg
+:file: diagnoses.svg
 
 ```
 

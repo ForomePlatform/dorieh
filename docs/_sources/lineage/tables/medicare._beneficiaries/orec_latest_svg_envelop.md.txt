@@ -1,7 +1,7 @@
 # Column medicare._beneficiaries.orec_latest Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare._beneficiaries/orec_latest.svg
+:file: orec_latest.svg
 
 ```
 

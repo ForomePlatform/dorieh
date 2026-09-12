@@ -227,7 +227,7 @@ $body$ LANGUAGE plpgsql;
 
 CREATE TRIGGER medicare_admissions_validation BEFORE INSERT ON medicare.admissions
         FOR EACH ROW EXECUTE FUNCTION medicare.validate_admissions();
-COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.4.5", "url": "file:///Users/misha/harvard/github/dorieh", "commit": null}. Created at 2026-07-13 11:20:49.406722';
+COMMENT ON table medicare.admissions IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 13:13:47.842052';
 ```
 
 </details>

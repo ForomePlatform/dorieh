@@ -1,7 +1,7 @@
 # Column medicare.qc_enrl_bene.number_of_gap_years Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/number_of_gap_years.svg
+:file: number_of_gap_years.svg
 
 ```
 

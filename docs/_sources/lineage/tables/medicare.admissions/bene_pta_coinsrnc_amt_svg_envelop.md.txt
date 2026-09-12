@@ -1,7 +1,7 @@
 # Column medicare.admissions.bene_pta_coinsrnc_amt Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/bene_pta_coinsrnc_amt.svg
+:file: bene_pta_coinsrnc_amt.svg
 
 ```
 

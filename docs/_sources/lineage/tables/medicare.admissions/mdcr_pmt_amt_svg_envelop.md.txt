@@ -1,7 +1,7 @@
 # Column medicare.admissions.mdcr_pmt_amt Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/mdcr_pmt_amt.svg
+:file: mdcr_pmt_amt.svg
 
 ```
 

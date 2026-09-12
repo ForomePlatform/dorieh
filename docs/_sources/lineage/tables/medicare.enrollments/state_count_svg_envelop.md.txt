@@ -1,7 +1,7 @@
 # Column medicare.enrollments.state_count Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/state_count.svg
+:file: state_count.svg
 
 ```
 

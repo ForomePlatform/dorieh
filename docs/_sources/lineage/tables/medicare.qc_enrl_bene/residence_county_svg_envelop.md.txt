@@ -1,7 +1,7 @@
 # Column medicare.qc_enrl_bene.residence_county Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/residence_county.svg
+:file: residence_county.svg
 
 ```
 

@@ -1,7 +1,7 @@
 # Column medicare._ps.curec Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare._ps/curec.svg
+:file: curec.svg
 
 ```
 

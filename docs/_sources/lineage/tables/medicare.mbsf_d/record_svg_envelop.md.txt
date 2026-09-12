@@ -1,7 +1,7 @@
 # Column medicare.mbsf_d.record Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.mbsf_d/record.svg
+:file: record.svg
 
 ```
 

@@ -1,7 +1,7 @@
 # Column medicare.ps.dod Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ps/dod.svg
+:file: dod.svg
 
 ```
 

@@ -235,6 +235,22 @@ tool and workflow shipped with the platform is in
 the [CWL output collection utility](members/cwl_collect_outputs) to help
 generate CWL code snippets for new workflows.
 
+### Ordering Database Steps with `depends_on`
+
+CWL has no explicit "run after" clause: runners start every step whose
+data inputs are available, possibly in parallel. Steps that share a
+database must therefore be ordered explicitly through data dependencies.
+Dorieh CWL tools that write to a database expose a `depends_on` input
+for this purpose (declared as `Any?` or `File?`, depending on the tool):
+wire it to a log output of the step that must finish first, for example
+`depends_on: initdb/log`. In particular, every step that writes to the
+database should depend, directly or transitively, on the database
+initialization step (`initdb.cwl` or `initcoredb.cwl`); otherwise the
+workflow may fail on its first run against a fresh database, or fail
+intermittently when parallel branches race to create the same schema or
+metadata tables. For a worked example of chaining steps this way, see
+the [climate tutorial](tutorial/climate/building-climate-pipeline.md).
+
 ### Wrapping Python Modules as CWL Tools
 
 Consider

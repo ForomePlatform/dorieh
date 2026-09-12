@@ -1,7 +1,7 @@
 # Column medicare.ip.diag7 Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ip/diag7.svg
+:file: diag7.svg
 
 ```
 

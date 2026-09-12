@@ -6,24 +6,24 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>pm25_yearly_download.cwl &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>pm25_yearly_download.cwl &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../_static/documentation_options.js?v=b9afe91b"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -209,6 +209,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -425,6 +426,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -701,90 +703,91 @@
 <span class="linenos">202</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.connection_name.toLowerCase() != &#39;none&#39;)</span>
 <span class="linenos">203</span><span class="w">    </span><span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Uploads data into the database</span>
 <span class="linenos">204</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
-<span class="linenos">205</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
-<span class="linenos">206</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
-<span class="linenos">207</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
-<span class="linenos">208</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
-<span class="linenos">209</span><span class="w">      </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_data</span>
-<span class="linenos">210</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
-<span class="linenos">211</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
-<span class="linenos">212</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
-<span class="linenos">213</span>
-<span class="linenos">214</span><span class="w">  </span><span class="nt">index</span><span class="p">:</span>
-<span class="linenos">215</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.cwl</span>
-<span class="linenos">216</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.connection_name.toLowerCase() != &#39;none&#39;)</span>
-<span class="linenos">217</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
-<span class="linenos">218</span><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/log</span>
-<span class="linenos">219</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
-<span class="linenos">220</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
-<span class="linenos">221</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
-<span class="linenos">222</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
-<span class="linenos">223</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
-<span class="linenos">224</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
-<span class="linenos">225</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
-<span class="linenos">226</span>
-<span class="linenos">227</span><span class="w">  </span><span class="nt">vacuum</span><span class="p">:</span>
-<span class="linenos">228</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum.cwl</span>
-<span class="linenos">229</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.connection_name.toLowerCase() != &#39;none&#39;)</span>
-<span class="linenos">230</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
-<span class="linenos">231</span><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/log</span>
-<span class="linenos">232</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
-<span class="linenos">233</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
-<span class="linenos">234</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
-<span class="linenos">235</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
-<span class="linenos">236</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
-<span class="linenos">237</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
-<span class="linenos">238</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
-<span class="linenos">239</span>
+<span class="linenos">205</span><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">initdb/log</span>
+<span class="linenos">206</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
+<span class="linenos">207</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
+<span class="linenos">208</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
+<span class="linenos">209</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
+<span class="linenos">210</span><span class="w">      </span><span class="nt">input</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_data</span>
+<span class="linenos">211</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
+<span class="linenos">212</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
+<span class="linenos">213</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
+<span class="linenos">214</span>
+<span class="linenos">215</span><span class="w">  </span><span class="nt">index</span><span class="p">:</span>
+<span class="linenos">216</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index.cwl</span>
+<span class="linenos">217</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.connection_name.toLowerCase() != &#39;none&#39;)</span>
+<span class="linenos">218</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">219</span><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/log</span>
+<span class="linenos">220</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
+<span class="linenos">221</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
+<span class="linenos">222</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
+<span class="linenos">223</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
+<span class="linenos">224</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
+<span class="linenos">225</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
+<span class="linenos">226</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
+<span class="linenos">227</span>
+<span class="linenos">228</span><span class="w">  </span><span class="nt">vacuum</span><span class="p">:</span>
+<span class="linenos">229</span><span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum.cwl</span>
+<span class="linenos">230</span><span class="w">    </span><span class="nt">when</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">$(inputs.connection_name.toLowerCase() != &#39;none&#39;)</span>
+<span class="linenos">231</span><span class="w">    </span><span class="nt">in</span><span class="p">:</span>
+<span class="linenos">232</span><span class="w">      </span><span class="nt">depends_on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/log</span>
+<span class="linenos">233</span><span class="w">      </span><span class="nt">registry</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
+<span class="linenos">234</span><span class="w">      </span><span class="nt">domain</span><span class="p">:</span>
+<span class="linenos">235</span><span class="w">        </span><span class="nt">valueFrom</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;exposures&quot;</span>
+<span class="linenos">236</span><span class="w">      </span><span class="nt">table</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">table</span>
+<span class="linenos">237</span><span class="w">      </span><span class="nt">database</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">database</span>
+<span class="linenos">238</span><span class="w">      </span><span class="nt">connection_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">connection_name</span>
+<span class="linenos">239</span><span class="w">    </span><span class="nt">out</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">log</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">errors</span><span class="p p-Indicator">]</span>
 <span class="linenos">240</span>
 <span class="linenos">241</span>
-<span class="linenos">242</span><span class="nt">outputs</span><span class="p">:</span>
-<span class="linenos">243</span><span class="w">  </span><span class="nt">aggregate_data</span><span class="p">:</span>
-<span class="linenos">244</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
-<span class="linenos">245</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_data</span>
-<span class="linenos">246</span><span class="w">  </span><span class="nt">data_dictionary</span><span class="p">:</span>
-<span class="linenos">247</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">248</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
-<span class="linenos">249</span><span class="w">    </span><span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data dictionary file, in YaML format, describing output variables</span>
-<span class="linenos">250</span><span class="w">  </span><span class="nt">consolidated_data</span><span class="p">:</span>
-<span class="linenos">251</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
-<span class="linenos">252</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/consolidated_data</span>
-<span class="linenos">253</span><span class="w">  </span><span class="nt">shapes</span><span class="p">:</span>
-<span class="linenos">254</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span>
-<span class="linenos">255</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
-<span class="linenos">256</span><span class="w">      </span><span class="nt">items</span><span class="p">:</span>
-<span class="linenos">257</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
-<span class="linenos">258</span><span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">File</span><span class="p p-Indicator">]</span>
-<span class="linenos">259</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/shapes</span>
-<span class="linenos">260</span>
-<span class="linenos">261</span><span class="w">  </span><span class="nt">aggregate_log</span><span class="p">:</span>
-<span class="linenos">262</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span>
-<span class="linenos">263</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
-<span class="linenos">264</span><span class="w">      </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any</span>
-<span class="linenos">265</span>
-<span class="linenos">266</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_log</span>
-<span class="linenos">267</span><span class="w">  </span><span class="nt">aggregate_err</span><span class="p">:</span>
-<span class="linenos">268</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
-<span class="linenos">269</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_err</span>
-<span class="linenos">270</span>
-<span class="linenos">271</span><span class="w">  </span><span class="nt">ingest_log</span><span class="p">:</span>
-<span class="linenos">272</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">273</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/log</span>
-<span class="linenos">274</span><span class="w">  </span><span class="nt">index_log</span><span class="p">:</span>
-<span class="linenos">275</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">276</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/log</span>
-<span class="linenos">277</span><span class="w">  </span><span class="nt">vacuum_log</span><span class="p">:</span>
-<span class="linenos">278</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">279</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum/log</span>
-<span class="linenos">280</span><span class="w">  </span><span class="nt">ingest_err</span><span class="p">:</span>
-<span class="linenos">281</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">282</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/errors</span>
-<span class="linenos">283</span><span class="w">  </span><span class="nt">index_err</span><span class="p">:</span>
-<span class="linenos">284</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">285</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/errors</span>
-<span class="linenos">286</span><span class="w">  </span><span class="nt">vacuum_err</span><span class="p">:</span>
-<span class="linenos">287</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
-<span class="linenos">288</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum/errors</span>
+<span class="linenos">242</span>
+<span class="linenos">243</span><span class="nt">outputs</span><span class="p">:</span>
+<span class="linenos">244</span><span class="w">  </span><span class="nt">aggregate_data</span><span class="p">:</span>
+<span class="linenos">245</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
+<span class="linenos">246</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_data</span>
+<span class="linenos">247</span><span class="w">  </span><span class="nt">data_dictionary</span><span class="p">:</span>
+<span class="linenos">248</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">249</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">extract_data_dictionary/data_dictionary</span>
+<span class="linenos">250</span><span class="w">    </span><span class="nt">doc</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Data dictionary file, in YaML format, describing output variables</span>
+<span class="linenos">251</span><span class="w">  </span><span class="nt">consolidated_data</span><span class="p">:</span>
+<span class="linenos">252</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
+<span class="linenos">253</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/consolidated_data</span>
+<span class="linenos">254</span><span class="w">  </span><span class="nt">shapes</span><span class="p">:</span>
+<span class="linenos">255</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span>
+<span class="linenos">256</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">257</span><span class="w">      </span><span class="nt">items</span><span class="p">:</span>
+<span class="linenos">258</span><span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">259</span><span class="w">        </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">File</span><span class="p p-Indicator">]</span>
+<span class="linenos">260</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/shapes</span>
+<span class="linenos">261</span>
+<span class="linenos">262</span><span class="w">  </span><span class="nt">aggregate_log</span><span class="p">:</span>
+<span class="linenos">263</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span>
+<span class="linenos">264</span><span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<span class="linenos">265</span><span class="w">      </span><span class="nt">items</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Any</span>
+<span class="linenos">266</span>
+<span class="linenos">267</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_log</span>
+<span class="linenos">268</span><span class="w">  </span><span class="nt">aggregate_err</span><span class="p">:</span>
+<span class="linenos">269</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File[]</span>
+<span class="linenos">270</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">process/aggregate_err</span>
+<span class="linenos">271</span>
+<span class="linenos">272</span><span class="w">  </span><span class="nt">ingest_log</span><span class="p">:</span>
+<span class="linenos">273</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">274</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/log</span>
+<span class="linenos">275</span><span class="w">  </span><span class="nt">index_log</span><span class="p">:</span>
+<span class="linenos">276</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">277</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/log</span>
+<span class="linenos">278</span><span class="w">  </span><span class="nt">vacuum_log</span><span class="p">:</span>
+<span class="linenos">279</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">280</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum/log</span>
+<span class="linenos">281</span><span class="w">  </span><span class="nt">ingest_err</span><span class="p">:</span>
+<span class="linenos">282</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">283</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ingest/errors</span>
+<span class="linenos">284</span><span class="w">  </span><span class="nt">index_err</span><span class="p">:</span>
+<span class="linenos">285</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">286</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">index/errors</span>
+<span class="linenos">287</span><span class="w">  </span><span class="nt">vacuum_err</span><span class="p">:</span>
+<span class="linenos">288</span><span class="w">    </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<span class="linenos">289</span><span class="w">    </span><span class="nt">outputSource</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vacuum/errors</span>
 </pre></div>
 </div>
 </section>
@@ -797,7 +800,7 @@
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

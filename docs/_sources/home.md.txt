@@ -157,9 +157,10 @@ See [dedicated Pipelines page](pipelines) for additional details.
 Fully tested and supported pipelines are listed in the
 [Pipelines](pipelines) page. At this moment, we have published processing
 pipelines for all [Data Domains](domains) except Demographics. Health
-data pipelines are developed against restricted data, but the repository
-includes synthetic Medicare data, so the Medicare pipeline can be run
-and tested end to end; see the
+data pipelines are developed against restricted data, but a fully
+synthetic Medicare-like dataset is openly published, so the Medicare
+pipeline can be run and tested end to end; see the
+[Medicare example](medicare-example.md), the
 [Medicare tutorial](tutorial/medicare/building-medicare-pipeline.md)
 and its reference, the [Medicare case study](Medicare.md).
 

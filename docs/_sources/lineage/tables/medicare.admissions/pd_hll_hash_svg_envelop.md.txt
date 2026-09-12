@@ -1,7 +1,7 @@
 # Column medicare.admissions.pd_hll_hash Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/pd_hll_hash.svg
+:file: pd_hll_hash.svg
 
 ```
 

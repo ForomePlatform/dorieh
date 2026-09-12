@@ -1,7 +1,7 @@
 # Column medicare.enrollments.fips3_is_approximated Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/fips3_is_approximated.svg
+:file: fips3_is_approximated.svg
 
 ```
 

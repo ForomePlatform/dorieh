@@ -1,7 +1,7 @@
 # Column cms.mbsf_abcd_2015.YEAR Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2015/year.svg
+:file: year.svg
 
 ```
 

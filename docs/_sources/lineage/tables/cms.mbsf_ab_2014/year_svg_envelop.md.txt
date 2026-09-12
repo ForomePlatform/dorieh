@@ -1,7 +1,7 @@
 # Column cms.mbsf_ab_2014.YEAR Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/cms.mbsf_ab_2014/year.svg
+:file: year.svg
 
 ```
 

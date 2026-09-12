@@ -6,24 +6,24 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Testing bundled workflows &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>Testing bundled workflows &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/documentation_options.js?v=b9afe91b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -211,6 +211,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -427,6 +428,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -531,6 +533,7 @@
 <li><p><a class="reference internal" href="#id6" id="id23">Testing local installation</a></p></li>
 </ul>
 </li>
+<li><p><a class="reference internal" href="#testing-medicare-workflow" id="id24">Testing Medicare workflow</a></p></li>
 </ul>
 </nav>
 <div class="admonition seealso">
@@ -640,6 +643,13 @@ local host. If your PostgreSQL is running locally, you need to update your datab
 <div class="admonition seealso">
 <p class="admonition-title">See also</p>
 <p><a class="reference internal" href="pipeline/airnow.html"><span class="doc std std-doc">Full EPA AirNow Processing Pipeline (including downloading shapefiles)</span></a></p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of Dorieh 0.5.0 the AirNow workflow initializes the database itself,
+so this test can be run against a brand-new (empty) database. With
+earlier versions the AirNow test failed on a pristine database unless
+another workflow (for example AQS) had been run first.</p>
 </div>
 <section id="id1">
 <h3><a class="toc-backref" href="#id14" role="doc-backlink">Before running the test</a><a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
@@ -767,6 +777,38 @@ to automatically retry failed downloads.</p>
 </div>
 </section>
 </section>
+<section id="testing-medicare-workflow">
+<h2><a class="toc-backref" href="#id24" role="doc-backlink">Testing Medicare workflow</a><a class="headerlink" href="#testing-medicare-workflow" title="Link to this heading"></a></h2>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="medicare-example.html"><span class="std std-doc">Example: Medicare Processing Pipeline with Synthetic Data</span></a> —
+how to run the pipeline that produces the tables these tests verify.</p></li>
+<li><p><a class="reference internal" href="pipeline/medicare.html"><span class="doc std std-doc">Medicare data ingestion and processing pipeline</span></a> — the pipeline reference.</p></li>
+</ul>
+</div>
+<p>Unlike the other tests on this page, there is no combined
+pipeline-plus-test wrapper for Medicare yet. Testing is a two-step
+process: first run the Medicare pipeline on the synthetic dataset as
+described in <a class="reference internal" href="medicare-example.html"><span class="std std-doc">the Medicare example</span></a>, then execute
+the golden verification scripts committed under <code class="docutils literal notranslate"><span class="pre">src/cwl/test_cases/</span></code>.
+The expected values in these scripts are pinned to <strong>version 1</strong> of the
+openly published synthetic dataset, so — unlike the AQS and AirNow tests,
+whose upstream sources occasionally revise historical data — they are
+fully deterministic.</p>
+<p>With a local Dorieh installation, run all four scripts from a checkout
+of the repository:</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>python -m dorieh.platform.dbt.dbt_runner \
+    --db ${dbini} --connection ${connection} \
+    -s src/cwl/test_cases/medicare_synthetic_beneficiaries.sql \
+       src/cwl/test_cases/medicare_synthetic_enrollments.sql \
+       src/cwl/test_cases/medicare_synthetic_admissions.sql \
+       src/cwl/test_cases/medicare_synthetic_admissions_audit.sql
+</pre></div>
+</div>
+<p>Every assertion should report <code class="docutils literal notranslate"><span class="pre">passed</span></code>; the runner prints a summary and
+exits with a non-zero status if any test fails.</p>
+</section>
 </section>
 
 
@@ -780,7 +822,7 @@ to automatically retry failed downloads.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

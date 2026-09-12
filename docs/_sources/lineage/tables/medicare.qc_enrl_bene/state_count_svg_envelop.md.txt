@@ -1,7 +1,7 @@
 # Column medicare.qc_enrl_bene.state_count Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_enrl_bene/state_count.svg
+:file: state_count.svg
 
 ```
 

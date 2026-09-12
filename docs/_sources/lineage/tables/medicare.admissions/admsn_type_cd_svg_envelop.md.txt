@@ -1,7 +1,7 @@
 # Column medicare.admissions.admsn_type_cd Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/admsn_type_cd.svg
+:file: admsn_type_cd.svg
 
 ```
 

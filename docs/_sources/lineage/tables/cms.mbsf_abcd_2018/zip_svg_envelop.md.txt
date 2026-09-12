@@ -1,7 +1,7 @@
 # Column cms.mbsf_abcd_2018.ZIP Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/cms.mbsf_abcd_2018/zip.svg
+:file: zip.svg
 
 ```
 

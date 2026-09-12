@@ -1,7 +1,7 @@
 # Column medicare.admissions.icd_hll Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/icd_hll.svg
+:file: icd_hll.svg
 
 ```
 

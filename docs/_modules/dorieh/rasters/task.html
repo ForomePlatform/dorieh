@@ -5,24 +5,24 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>dorieh.rasters.task &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>dorieh.rasters.task &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../../../_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="../../../_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="../../../_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="../../../_static/jquery.js?v=5d32c60e"></script>
       <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../../_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="../../../_static/documentation_options.js?v=b9afe91b"></script>
       <script src="../../../_static/doctools.js?v=9bcbadda"></script>
       <script src="../../../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="../../../_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="../../../_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
       <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
@@ -216,6 +216,7 @@ window.addEventListener("load", () => mermaid.run());
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -432,6 +433,7 @@ window.addEventListener("load", () => mermaid.run());
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -645,7 +647,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputeGridmetTask">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputeGridmetTask">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputeGridmetTask">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ComputeGridmetTask</span><span class="p">(</span><span class="n">ABC</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    An abstract class for a computational task that processes data in</span>
@@ -734,7 +736,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputeGridmetTask.execute">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputeGridmetTask.execute">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputeGridmetTask.execute">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;wt&quot;</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes computational task</span>
@@ -771,7 +773,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputeGridmetTask.compute_one_day">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputeGridmetTask.compute_one_day">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputeGridmetTask.compute_one_day">[docs]</a>
     <span class="nd">@abstractmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_one_day</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">:</span> <span class="n">Collector</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -797,7 +799,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputeShapesTask">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputeShapesTask">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputeShapesTask">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ComputeShapesTask</span><span class="p">(</span><span class="n">ComputeGridmetTask</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class describes a compute task to aggregate data over geography shapes</span>
@@ -844,7 +846,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputeShapesTask.compute_one_day">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputeShapesTask.compute_one_day">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputeShapesTask.compute_one_day">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_one_day</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">:</span> <span class="n">Collector</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
         <span class="n">dt</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">to_date</span><span class="p">(</span><span class="n">day</span><span class="p">)</span>
 
@@ -897,7 +899,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputePointsTask">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputePointsTask">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputePointsTask">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">ComputePointsTask</span><span class="p">(</span><span class="n">ComputeGridmetTask</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Class describes a compute task to assign data to a collection of points</span>
@@ -961,7 +963,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputePointsTask.execute">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputePointsTask.execute">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputePointsTask.execute">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">mode</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
         <span class="n">days</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">prepare</span><span class="p">()</span>
 
@@ -997,7 +999,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="ComputePointsTask.compute_one_day">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.ComputePointsTask.compute_one_day">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.ComputePointsTask.compute_one_day">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">compute_one_day</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">writer</span><span class="p">:</span> <span class="n">Collector</span><span class="p">,</span> <span class="n">day</span><span class="p">,</span> <span class="n">layer</span><span class="p">):</span>
         <span class="k">pass</span></div>
 </div>
@@ -1005,7 +1007,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="DownloadGridmetTask">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.DownloadGridmetTask">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.DownloadGridmetTask">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">DownloadGridmetTask</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Task to download source file in NCDF4 format</span>
@@ -1014,7 +1016,7 @@ window.addEventListener("load", () => mermaid.run());
     <span class="n">BLOCK_SIZE</span> <span class="o">=</span> <span class="mi">65536</span>
 
 <div class="viewcode-block" id="DownloadGridmetTask.get_url">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.DownloadGridmetTask.get_url">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.DownloadGridmetTask.get_url">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">get_url</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span><span class="nb">int</span><span class="p">,</span> <span class="n">variable</span><span class="p">:</span> <span class="n">GridmetVariable</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1045,7 +1047,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="c1">#self.max_mem_used = 0</span>
 
 <div class="viewcode-block" id="DownloadGridmetTask.target">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.DownloadGridmetTask.target">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.DownloadGridmetTask.target">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">target</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        :return: File path for downloaded data</span>
@@ -1054,7 +1056,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="DownloadGridmetTask.execute">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.DownloadGridmetTask.execute">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.DownloadGridmetTask.execute">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes the task</span>
@@ -1086,7 +1088,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="GridmetTask">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.GridmetTask">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.GridmetTask">[docs]</a>
 <span class="k">class</span><span class="w"> </span><span class="nc">GridmetTask</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Defines a task to download and process data for a single year and variable</span>
@@ -1094,7 +1096,7 @@ window.addEventListener("load", () => mermaid.run());
 <span class="sd">    &quot;&quot;&quot;</span>
 
 <div class="viewcode-block" id="GridmetTask.destination_file_name">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.GridmetTask.destination_file_name">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.GridmetTask.destination_file_name">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">destination_file_name</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">GridMETContext</span><span class="p">,</span>
                               <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1116,7 +1118,7 @@ window.addEventListener("load", () => mermaid.run());
 
 
 <div class="viewcode-block" id="GridmetTask.find_shape_file">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.GridmetTask.find_shape_file">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.GridmetTask.find_shape_file">[docs]</a>
     <span class="nd">@classmethod</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">find_shape_file</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">context</span><span class="p">:</span> <span class="n">GridMETContext</span><span class="p">,</span> <span class="n">year</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">shape</span><span class="p">:</span> <span class="n">Shape</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
@@ -1196,7 +1198,7 @@ window.addEventListener("load", () => mermaid.run());
         <span class="bp">self</span><span class="o">.</span><span class="n">perf</span> <span class="o">=</span> <span class="n">ProfilingData</span><span class="p">()</span>
 
 <div class="viewcode-block" id="GridmetTask.execute">
-<a class="viewcode-back" href="../../../rasters_task.html#dorieh.rasters.task.GridmetTask.execute">[docs]</a>
+<a class="viewcode-back" href="../../../members/task.html#dorieh.rasters.task.GridmetTask.execute">[docs]</a>
     <span class="k">def</span><span class="w"> </span><span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Executes the task. First the download subtask is executed unless</span>
@@ -1223,7 +1225,7 @@ window.addEventListener("load", () => mermaid.run());
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

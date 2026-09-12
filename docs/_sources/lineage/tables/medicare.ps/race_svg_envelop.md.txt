@@ -1,7 +1,7 @@
 # Column medicare.ps.race Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ps/race.svg
+:file: race.svg
 
 ```
 

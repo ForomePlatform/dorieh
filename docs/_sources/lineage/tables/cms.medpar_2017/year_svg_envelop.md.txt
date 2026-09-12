@@ -1,7 +1,7 @@
 # Column cms.medpar_2017.YEAR Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/cms.medpar_2017/year.svg
+:file: year.svg
 
 ```
 

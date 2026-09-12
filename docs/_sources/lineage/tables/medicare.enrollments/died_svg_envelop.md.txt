@@ -1,7 +1,7 @@
 # Column medicare.enrollments.died Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/died.svg
+:file: died.svg
 
 ```
 

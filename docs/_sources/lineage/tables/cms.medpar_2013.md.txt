@@ -773,7 +773,7 @@ CREATE TABLE  cms.medpar_2013 (
 	PRIMARY KEY (FILE, RECORD)
 );
 CREATE INDEX  medpar_2013_FILE_idx ON cms.medpar_2013 USING BTREE (FILE) ;
-COMMENT ON table cms.medpar_2013 IS 'CREATED BY Dorieh: {"version": "0.4.5", "url": "file:///Users/misha/harvard/github/dorieh", "commit": null}. Created at 2026-07-13 11:20:49.330587';
+COMMENT ON table cms.medpar_2013 IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 13:13:47.646993';
 ```
 
 </details>

@@ -1,7 +1,7 @@
 # Column cms.medpar_2014.ZIP Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/cms.medpar_2014/zip.svg
+:file: zip.svg
 
 ```
 

@@ -6,24 +6,24 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Processing Pipelines &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>Data Processing Pipelines &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/documentation_options.js?v=b9afe91b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -211,6 +211,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -427,6 +428,7 @@
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -523,7 +525,8 @@ with Toil.</p>
 <li><p><a class="reference internal" href="#developing-new-workflows" id="id11">Developing New Workflows</a></p>
 <ul>
 <li><p><a class="reference internal" href="#combining-included-cwl-tools-into-a-new-workflow" id="id12">Combining Included CWL Tools into a New Workflow</a></p></li>
-<li><p><a class="reference internal" href="#wrapping-python-modules-as-cwl-tools" id="id13">Wrapping Python Modules as CWL Tools</a></p></li>
+<li><p><a class="reference internal" href="#ordering-database-steps-with-depends-on" id="id13">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></p></li>
+<li><p><a class="reference internal" href="#wrapping-python-modules-as-cwl-tools" id="id14">Wrapping Python Modules as CWL Tools</a></p></li>
 </ul>
 </li>
 </ul>
@@ -787,8 +790,24 @@ tool and workflow shipped with the platform is in
 the <a class="reference internal" href="members/cwl_collect_outputs.html"><span class="doc std std-doc">CWL output collection utility</span></a> to help
 generate CWL code snippets for new workflows.</p>
 </section>
+<section id="ordering-database-steps-with-depends-on">
+<h3><a class="toc-backref" href="#id13" role="doc-backlink">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a><a class="headerlink" href="#ordering-database-steps-with-depends-on" title="Link to this heading"></a></h3>
+<p>CWL has no explicit “run after” clause: runners start every step whose
+data inputs are available, possibly in parallel. Steps that share a
+database must therefore be ordered explicitly through data dependencies.
+Dorieh CWL tools that write to a database expose a <code class="docutils literal notranslate"><span class="pre">depends_on</span></code> input
+for this purpose (declared as <code class="docutils literal notranslate"><span class="pre">Any?</span></code> or <code class="docutils literal notranslate"><span class="pre">File?</span></code>, depending on the tool):
+wire it to a log output of the step that must finish first, for example
+<code class="docutils literal notranslate"><span class="pre">depends_on:</span> <span class="pre">initdb/log</span></code>. In particular, every step that writes to the
+database should depend, directly or transitively, on the database
+initialization step (<code class="docutils literal notranslate"><span class="pre">initdb.cwl</span></code> or <code class="docutils literal notranslate"><span class="pre">initcoredb.cwl</span></code>); otherwise the
+workflow may fail on its first run against a fresh database, or fail
+intermittently when parallel branches race to create the same schema or
+metadata tables. For a worked example of chaining steps this way, see
+the <a class="reference internal" href="tutorial/climate/building-climate-pipeline.html"><span class="std std-doc">climate tutorial</span></a>.</p>
+</section>
 <section id="wrapping-python-modules-as-cwl-tools">
-<h3><a class="toc-backref" href="#id13" role="doc-backlink">Wrapping Python Modules as CWL Tools</a><a class="headerlink" href="#wrapping-python-modules-as-cwl-tools" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id14" role="doc-backlink">Wrapping Python Modules as CWL Tools</a><a class="headerlink" href="#wrapping-python-modules-as-cwl-tools" title="Link to this heading"></a></h3>
 <p>Consider
 using <a class="reference external" href="https://github.com/hexylena/argparse2tool#cwl-specific-functionality">cwl2argparse</a>
 or browse other <a class="reference external" href="https://www.commonwl.org/tools/">CWL development tools</a>
@@ -808,7 +827,7 @@ for converting Python modules into CWL tools.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

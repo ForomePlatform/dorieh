@@ -1,7 +1,7 @@
 # Column medicare.ip.discharge_date_raw Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ip/discharge_date_raw.svg
+:file: discharge_date_raw.svg
 
 ```
 

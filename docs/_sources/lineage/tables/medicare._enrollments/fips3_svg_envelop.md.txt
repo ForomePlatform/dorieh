@@ -1,7 +1,7 @@
 # Column medicare._enrollments.fips3 Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare._enrollments/fips3.svg
+:file: fips3.svg
 
 ```
 

@@ -6,24 +6,24 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Example: Medicare Processing Pipeline with Synthetic Data &mdash; Dorieh Data Platform 0.0.1 documentation</title>
+  <title>Example: Medicare Processing Pipeline with Synthetic Data &mdash; Dorieh Data Platform 0.5.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="_static/graphviz.css?v=4ae1632d" />
-      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=9c3e77be" />
+      <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
       <link rel="stylesheet" type="text/css" href="_static/sphinx_paramlinks.css" />
       <link rel="stylesheet" type="text/css" href="_static/css/dorieh.css?v=a01a0e0e" />
 
   
       <script src="_static/jquery.js?v=5d32c60e"></script>
       <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="_static/documentation_options.js?v=d45e8c67"></script>
+      <script src="_static/documentation_options.js?v=b9afe91b"></script>
       <script src="_static/doctools.js?v=9bcbadda"></script>
       <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
       <script>let toggleHintShow = 'Click to show';</script>
       <script>let toggleHintHide = 'Click to hide';</script>
       <script>let toggleOpenOnPrint = 'true';</script>
-      <script src="_static/togglebutton.js?v=1ae7504c"></script>
+      <script src="_static/togglebutton.js?v=4a39c7ea"></script>
       <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
@@ -211,6 +211,7 @@
 </li>
 <li class="toctree-l2"><a class="reference internal" href="pipelines.html#developing-new-workflows">Developing New Workflows</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#combining-included-cwl-tools-into-a-new-workflow">Combining Included CWL Tools into a New Workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="pipelines.html#ordering-database-steps-with-depends-on">Ordering Database Steps with <code class="docutils literal notranslate"><span class="pre">depends_on</span></code></a></li>
 <li class="toctree-l3"><a class="reference internal" href="pipelines.html#wrapping-python-modules-as-cwl-tools">Wrapping Python Modules as CWL Tools</a></li>
 </ul>
 </li>
@@ -427,6 +428,7 @@
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-airnow-workflow">Testing Airnow workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-climate-workflow">Testing Climate workflow</a></li>
 <li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-exposure-workflow">Testing Exposure workflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="TestingWorkflows.html#testing-medicare-workflow">Testing Medicare workflow</a></li>
 </ul>
 </li>
 </ul>
@@ -504,18 +506,22 @@
 <ul class="simple">
 <li><p><a class="reference internal" href="#prerequisites" id="id1">Prerequisites</a></p></li>
 <li><p><a class="reference internal" href="#step-1-download-synthetic-sample-data" id="id2">Step 1 — Download synthetic sample data</a></p></li>
-<li><p><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline" id="id3">Step 2 — Run the Medicare processing pipeline</a></p></li>
-<li><p><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset" id="id4">Step 3 (Optional) — Explore results in Apache Superset</a></p>
+<li><p><a class="reference internal" href="#step-2-run-the-medicare-processing-pipeline" id="id3">Step 2 — Run the Medicare processing pipeline</a></p>
 <ul>
-<li><p><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running" id="id5">3.1 — Stop the simple PostgreSQL container (if running)</a></p></li>
-<li><p><a class="reference internal" href="#start-postgresql-superset" id="id6">3.2 — Start PostgreSQL + Superset</a></p></li>
-<li><p><a class="reference internal" href="#log-in-to-superset" id="id7">3.3 — Log in to Superset</a></p></li>
-<li><p><a class="reference internal" href="#add-the-dorieh-database-connection" id="id8">3.4 — Add the Dorieh database connection</a></p></li>
-<li><p><a class="reference internal" href="#import-the-medicare-qc-dashboard" id="id9">3.5 — Import the Medicare QC dashboard</a></p></li>
-<li><p><a class="reference internal" href="#explore-the-dashboard" id="id10">3.6 — Explore the dashboard</a></p></li>
+<li><p><a class="reference internal" href="#troubleshooting-postgresql-runs-out-of-disk-space" id="id4">Troubleshooting: PostgreSQL runs out of disk space</a></p></li>
 </ul>
 </li>
-<li><p><a class="reference internal" href="#what-the-pipeline-produces" id="id11">What the pipeline produces</a></p></li>
+<li><p><a class="reference internal" href="#step-3-optional-explore-results-in-apache-superset" id="id5">Step 3 (Optional) — Explore results in Apache Superset</a></p>
+<ul>
+<li><p><a class="reference internal" href="#stop-the-simple-postgresql-container-if-running" id="id6">3.1 — Stop the simple PostgreSQL container (if running)</a></p></li>
+<li><p><a class="reference internal" href="#start-postgresql-superset" id="id7">3.2 — Start PostgreSQL + Superset</a></p></li>
+<li><p><a class="reference internal" href="#log-in-to-superset" id="id8">3.3 — Log in to Superset</a></p></li>
+<li><p><a class="reference internal" href="#add-the-dorieh-database-connection" id="id9">3.4 — Add the Dorieh database connection</a></p></li>
+<li><p><a class="reference internal" href="#import-the-medicare-qc-dashboard" id="id10">3.5 — Import the Medicare QC dashboard</a></p></li>
+<li><p><a class="reference internal" href="#explore-the-dashboard" id="id11">3.6 — Explore the dashboard</a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#what-the-pipeline-produces" id="id12">What the pipeline produces</a></p></li>
 </ul>
 </nav>
 <div class="admonition seealso">
@@ -534,7 +540,7 @@ environment setup for all PostgreSQL examples</p></li>
 <p>This example demonstrates a full Dorieh data processing pipeline running
 against a local PostgreSQL database, using a <strong>publicly available synthetic</strong>
 Medicare-like dataset.  Because the data are
-synthetic and published openly on <a class="reference external" href="https://zenodo.org/records/18915558">Zenodo</a>,
+synthetic and published openly on <a class="reference external" href="https://doi.org/10.5281/zenodo.18915557">Zenodo</a>,
 no institutional data access agreement is required to follow this example.
 It covers:</p>
 <ul class="simple">
@@ -566,6 +572,14 @@ for installing Dorieh and testing the installation.</p></li>
 </pre></div>
 </div>
 </li>
+<li><p><strong>Enough disk space allocated to Docker.</strong> The synthetic 5M-beneficiary
+dataset grows the PostgreSQL data volume past 20 GB during ingestion,
+plus WAL. On Docker Desktop the limit that matters is the <em>virtual
+machine</em> disk (Settings → Resources → Disk usage limit), not the free
+space on your host: allocate at least 100 GB before running this example.
+The failure mode when space runs out is described in
+<a class="reference internal" href="#troubleshooting-postgresql-runs-out-of-disk-space">Troubleshooting</a>
+below.</p></li>
 </ol>
 <p>Then move into the Medicare example directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/examples/with-postgres/medicare
@@ -584,7 +598,7 @@ no data use agreement or institutional access is required.  It:</p>
 <li><p>Contains <strong>no real PHI / PII</strong> — it is safe for testing, demonstrations,
 and sharing</p></li>
 </ul>
-<p>Download and unpack it:</p>
+<p>Download and unpack it (about a 770 MB download):</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>-p<span class="w"> </span>data
 <span class="nb">pushd</span><span class="w"> </span>data
 
@@ -595,6 +609,17 @@ unzip<span class="w"> </span>medicare-synthetic-database.zip
 
 <span class="nb">popd</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This example pins <strong>version 1</strong> of the dataset (about 770 MB, roughly 600,000
+synthetic beneficiaries) so that the numbers in this walkthrough — and the
+golden test values shipped with Dorieh — are reproducible. Newer, larger
+versions, including v0.2.0 with five million beneficiaries (about 9 GB
+compressed), are published under the same concept DOI:
+<a class="reference external" href="https://doi.org/10.5281/zenodo.18915557">https://doi.org/10.5281/zenodo.18915557</a>. Any version runs through the same
+pipeline commands; only the download URL, size, run time, and resulting
+counts differ.</p>
 </div>
 <p>The extracted directory tree follows the layout expected by the ingestion
 pipeline — one sub-directory per year, each containing <code class="docutils literal notranslate"><span class="pre">.fts</span></code> metadata files
@@ -635,15 +660,54 @@ schema (beneficiaries, enrollments, admissions, and QC tables).</p></li>
 </ul>
 <p>For a detailed description of the pipeline steps, see
 <a class="reference internal" href="Medicare.html"><span class="std std-doc">Medicare: Building a Data Warehouse from ResDac Files</span></a>.</p>
+<section id="troubleshooting-postgresql-runs-out-of-disk-space">
+<h3><a class="toc-backref" href="#id4" role="doc-backlink">Troubleshooting: PostgreSQL runs out of disk space</a><a class="headerlink" href="#troubleshooting-postgresql-runs-out-of-disk-space" title="Link to this heading"></a></h3>
+<p>If the ingestion step (<code class="docutils literal notranslate"><span class="pre">load_medicare_data</span></code>) fails with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psycopg2</span><span class="o">.</span><span class="n">OperationalError</span><span class="p">:</span> <span class="n">connection</span> <span class="n">to</span> <span class="n">server</span> <span class="o">...</span> <span class="n">failed</span><span class="p">:</span>
+<span class="n">FATAL</span><span class="p">:</span>  <span class="n">the</span> <span class="n">database</span> <span class="n">system</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">yet</span> <span class="n">accepting</span> <span class="n">connections</span>
+<span class="n">DETAIL</span><span class="p">:</span>  <span class="n">Consistent</span> <span class="n">recovery</span> <span class="n">state</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">been</span> <span class="n">yet</span> <span class="n">reached</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>the PostgreSQL container has almost certainly filled its disk. Confirm with
+<code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">logs</span> <span class="pre">&lt;postgres</span> <span class="pre">container&gt;</span></code> — the telltale sign is a <em>crash loop</em>:
+recovery completes, then the end-of-recovery checkpoint dies, repeatedly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PANIC</span><span class="p">:</span>  <span class="n">could</span> <span class="ow">not</span> <span class="n">write</span> <span class="n">to</span> <span class="n">file</span> <span class="s2">&quot;pg_logical/replorigin_checkpoint.tmp&quot;</span><span class="p">:</span> <span class="n">No</span> <span class="n">space</span> <span class="n">left</span> <span class="n">on</span> <span class="n">device</span>
+<span class="n">LOG</span><span class="p">:</span>  <span class="n">checkpointer</span> <span class="n">process</span> <span class="o">...</span> <span class="n">was</span> <span class="n">terminated</span> <span class="n">by</span> <span class="n">signal</span> <span class="mi">6</span><span class="p">:</span> <span class="n">Aborted</span>
+<span class="n">LOG</span><span class="p">:</span>  <span class="n">database</span> <span class="n">system</span> <span class="n">was</span> <span class="ow">not</span> <span class="n">properly</span> <span class="n">shut</span> <span class="n">down</span><span class="p">;</span> <span class="n">automatic</span> <span class="n">recovery</span> <span class="ow">in</span> <span class="n">progress</span>
+</pre></div>
+</div>
+<p>On Docker Desktop this means the <em>Docker VM</em> disk is full even when the host
+has plenty of space; check with:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>system<span class="w"> </span>df<span class="w">                       </span><span class="c1"># what is using the space</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>alpine<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/<span class="w">        </span><span class="c1"># free space inside the Docker VM</span>
+</pre></div>
+</div>
+<p>To recover:</p>
+<ol class="arabic">
+<li><p>Free any amount of space — PostgreSQL recovers by itself as soon as the
+checkpoint can be written; no data committed before the failure is lost.
+Safe reclaims that touch no data volumes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>buildx<span class="w"> </span>prune<span class="w"> </span>-a<span class="w">    </span><span class="c1"># build cache</span>
+docker<span class="w"> </span>image<span class="w"> </span>prune<span class="w">        </span><span class="c1"># dangling images</span>
+</pre></div>
+</div>
+</li>
+<li><p>Raise the Docker Desktop disk limit (Settings → Resources → Disk usage
+limit) before restarting the workflow, or the ingestion will fill the
+disk again.</p></li>
+<li><p>Restart the failed workflow (the Toil job store from the failed run can
+be reused with <code class="docutils literal notranslate"><span class="pre">--restart</span></code>).</p></li>
+</ol>
+</section>
 </section>
 <hr class="docutils" />
 <section id="step-3-optional-explore-results-in-apache-superset">
-<h2><a class="toc-backref" href="#id4" role="doc-backlink">Step 3 (Optional) — Explore results in Apache Superset</a><a class="headerlink" href="#step-3-optional-explore-results-in-apache-superset" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id5" role="doc-backlink">Step 3 (Optional) — Explore results in Apache Superset</a><a class="headerlink" href="#step-3-optional-explore-results-in-apache-superset" title="Link to this heading"></a></h2>
 <p>A pre-built <strong>Medicare Quality Control</strong> Superset dashboard is included with
 the example.  The steps below show how to launch PostgreSQL together with
 Superset using Docker Compose and import the dashboard.</p>
 <section id="stop-the-simple-postgresql-container-if-running">
-<h3><a class="toc-backref" href="#id5" role="doc-backlink">3.1 — Stop the simple PostgreSQL container (if running)</a><a class="headerlink" href="#stop-the-simple-postgresql-container-if-running" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id6" role="doc-backlink">3.1 — Stop the simple PostgreSQL container (if running)</a><a class="headerlink" href="#stop-the-simple-postgresql-container-if-running" title="Link to this heading"></a></h3>
 <p>If you started the basic <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> stack earlier, bring it down
 first:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
@@ -652,12 +716,33 @@ docker<span class="w"> </span>compose<span class="w"> </span>down
 </div>
 </section>
 <section id="start-postgresql-superset">
-<h3><a class="toc-backref" href="#id6" role="doc-backlink">3.2 — Start PostgreSQL + Superset</a><a class="headerlink" href="#start-postgresql-superset" title="Link to this heading"></a></h3>
-<p>From the same directory, start the extended stack:</p>
+<h3><a class="toc-backref" href="#id7" role="doc-backlink">3.2 — Start PostgreSQL + Superset</a><a class="headerlink" href="#start-postgresql-superset" title="Link to this heading"></a></h3>
+<p>From the same directory, first create the <code class="docutils literal notranslate"><span class="pre">.env</span></code> file that the Superset
+stack requires. <code class="docutils literal notranslate"><span class="pre">SUPERSET_SECRET_KEY</span></code> has no default and Compose will refuse
+to start without it:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
+cp<span class="w"> </span>.env.template<span class="w"> </span>.env
+<span class="c1"># Generate a secret key and write it into .env:</span>
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import secrets; print(secrets.token_hex(42))&quot;</span>
+<span class="c1"># then edit .env and replace the ???? placeholder on the SUPERSET_SECRET_KEY line</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.env</span></code> is deliberately excluded from version control, so this step is
+required on every fresh clone. Every other variable in <code class="docutils literal notranslate"><span class="pre">.env.template</span></code>
+(ports, Superset version, admin credentials) already has a working default.</p>
+<p>Then start the extended stack:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span><span class="nv">$WORKDIR</span>/dorieh/docker/pg-hll/
 docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>docker-compose-superset.yml<span class="w"> </span>up<span class="w"> </span>--build
 <span class="c1"># Or, to run detached:</span>
 <span class="c1"># docker compose -f docker-compose-superset.yml up -d</span>
+</pre></div>
+</div>
+<p><strong>If PostgreSQL was ever started in this directory before</strong> (either compose
+stack), the <code class="docutils literal notranslate"><span class="pre">pgdata</span></code> volume already exists and PostgreSQL will <em>not</em> re-run
+the <code class="docutils literal notranslate"><span class="pre">init-db/</span></code> scripts — they execute only when the data directory is
+initialized for the first time. In that case the <code class="docutils literal notranslate"><span class="pre">superset</span></code> metadata database
+is missing and Superset fails with <code class="docutils literal notranslate"><span class="pre">FATAL:</span> <span class="pre">database</span> <span class="pre">&quot;superset&quot;</span> <span class="pre">does</span> <span class="pre">not</span> <span class="pre">exist</span></code>. Create it manually in the running <code class="docutils literal notranslate"><span class="pre">postgres</span></code> container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>postgres<span class="w"> </span>psql<span class="w"> </span>-U<span class="w"> </span>dorieh<span class="w"> </span>-d<span class="w"> </span>dorieh<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;CREATE DATABASE superset WITH OWNER dorieh;&#39;</span>
 </pre></div>
 </div>
 <p>This brings up:</p>
@@ -668,7 +753,7 @@ docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> 
 </ul>
 </section>
 <section id="log-in-to-superset">
-<h3><a class="toc-backref" href="#id7" role="doc-backlink">3.3 — Log in to Superset</a><a class="headerlink" href="#log-in-to-superset" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id8" role="doc-backlink">3.3 — Log in to Superset</a><a class="headerlink" href="#log-in-to-superset" title="Link to this heading"></a></h3>
 <p>Once the services are running, open <code class="docutils literal notranslate"><span class="pre">http://localhost:8088/</span></code> in your browser.</p>
 <p>Default credentials (defined in <code class="docutils literal notranslate"><span class="pre">docker-compose-superset.yml</span></code>):</p>
 <table class="docutils align-default">
@@ -699,7 +784,7 @@ docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">ex
 </div>
 </section>
 <section id="add-the-dorieh-database-connection">
-<h3><a class="toc-backref" href="#id8" role="doc-backlink">3.4 — Add the Dorieh database connection</a><a class="headerlink" href="#add-the-dorieh-database-connection" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id9" role="doc-backlink">3.4 — Add the Dorieh database connection</a><a class="headerlink" href="#add-the-dorieh-database-connection" title="Link to this heading"></a></h3>
 <p>In the Superset UI:</p>
 <ol class="arabic simple">
 <li><p>Open <strong>Settings → Database Connections</strong> (under <em>Data</em>).</p></li>
@@ -716,18 +801,18 @@ docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">ex
 </ol>
 </section>
 <section id="import-the-medicare-qc-dashboard">
-<h3><a class="toc-backref" href="#id9" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id10" role="doc-backlink">3.5 — Import the Medicare QC dashboard</a><a class="headerlink" href="#import-the-medicare-qc-dashboard" title="Link to this heading"></a></h3>
 <p>The dashboard is committed as a native Superset bundle under
 <code class="docutils literal notranslate"><span class="pre">examples/with-postgres/medicare/superset/medicare_quality_dashboard/</span></code>. Import
-it with the <code class="docutils literal notranslate"><span class="pre">import_dashboard</span></code> command (installed with Dorieh), which resolves
+it by running the <code class="docutils literal notranslate"><span class="pre">dorieh.platform.superset.import_dashboard</span></code> module, which resolves
 your <code class="docutils literal notranslate"><span class="pre">DORIEH</span></code> connection by name, re-points the bundle onto it on the fly, and
 imports it through Superset’s REST API (the native importer the UI uses):</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>import_dashboard<span class="w"> </span><span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python3<span class="w"> </span>-m<span class="w"> </span>dorieh.platform.superset.import_dashboard<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span><span class="nv">$WORKDIR</span>/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard<span class="w"> </span><span class="se">\</span>
 <span class="w">  </span>--base-url<span class="w"> </span>http://localhost:8088/<span class="w"> </span>--username<span class="w"> </span>admin
 </pre></div>
 </div>
-<p>Enter the admin password when prompted (<code class="docutils literal notranslate"><span class="pre">admin</span></code> by default). <code class="docutils literal notranslate"><span class="pre">import_dashboard</span></code>
+<p>Enter the admin password when prompted (<code class="docutils literal notranslate"><span class="pre">admin</span></code> by default). The importer
 is standard-library-only. Because each Superset instance assigns its own
 connection UUID, it looks the UUID up by name at import time rather than relying
 on a value baked into the bundle, so the same committed bundle imports on any
@@ -739,7 +824,7 @@ coexisting copy on another connection. The companion
 bundle.</p>
 </section>
 <section id="explore-the-dashboard">
-<h3><a class="toc-backref" href="#id10" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
+<h3><a class="toc-backref" href="#id11" role="doc-backlink">3.6 — Explore the dashboard</a><a class="headerlink" href="#explore-the-dashboard" title="Link to this heading"></a></h3>
 <p>In the Superset UI:</p>
 <ol class="arabic simple">
 <li><p>Click the <strong>Dashboards</strong> tab.</p></li>
@@ -763,7 +848,7 @@ differ from any figures computed on real Medicare data.</p>
 </section>
 <hr class="docutils" />
 <section id="what-the-pipeline-produces">
-<h2><a class="toc-backref" href="#id11" role="doc-backlink">What the pipeline produces</a><a class="headerlink" href="#what-the-pipeline-produces" title="Link to this heading"></a></h2>
+<h2><a class="toc-backref" href="#id12" role="doc-backlink">What the pipeline produces</a><a class="headerlink" href="#what-the-pipeline-produces" title="Link to this heading"></a></h2>
 <p>After a successful run the following tables and views are available in the
 <code class="docutils literal notranslate"><span class="pre">medicare</span></code> schema of your PostgreSQL database:</p>
 <table class="docutils align-default">
@@ -818,7 +903,7 @@ differ from any figures computed on real Medicare data.</p>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2021-2024, Harvard University.</p>
+    <p>&#169; Copyright 2021-2026, Harvard University.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

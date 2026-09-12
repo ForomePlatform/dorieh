@@ -1,7 +1,7 @@
 # Column medicare.enrollments.curec_latest Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.enrollments/curec_latest.svg
+:file: curec_latest.svg
 
 ```
 

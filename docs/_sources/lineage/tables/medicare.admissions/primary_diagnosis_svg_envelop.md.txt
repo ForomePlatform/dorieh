@@ -1,7 +1,7 @@
 # Column medicare.admissions.primary_diagnosis Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/primary_diagnosis.svg
+:file: primary_diagnosis.svg
 
 ```
 

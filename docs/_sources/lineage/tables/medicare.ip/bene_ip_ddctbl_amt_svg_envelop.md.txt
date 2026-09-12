@@ -1,7 +1,7 @@
 # Column medicare.ip.bene_ip_ddctbl_amt Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ip/bene_ip_ddctbl_amt.svg
+:file: bene_ip_ddctbl_amt.svg
 
 ```
 

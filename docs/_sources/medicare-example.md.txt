@@ -20,7 +20,7 @@ local:
 This example demonstrates a full Dorieh data processing pipeline running
 against a local PostgreSQL database, using a **publicly available synthetic**
 Medicare-like dataset.  Because the data are
-synthetic and published openly on [Zenodo](https://zenodo.org/records/18915558),
+synthetic and published openly on [Zenodo](https://doi.org/10.5281/zenodo.18915557),
 no institutional data access agreement is required to follow this example.
 It covers:
 
@@ -57,6 +57,15 @@ Before starting, make sure you have:
    git clone https://github.com/ForomePlatform/dorieh.git $WORKDIR/dorieh
    ```
 
+4. **Enough disk space allocated to Docker.** The synthetic 5M-beneficiary
+   dataset grows the PostgreSQL data volume past 20 GB during ingestion,
+   plus WAL. On Docker Desktop the limit that matters is the *virtual
+   machine* disk (Settings → Resources → Disk usage limit), not the free
+   space on your host: allocate at least 100 GB before running this example.
+   The failure mode when space runs out is described in
+   [Troubleshooting](#troubleshooting-postgresql-runs-out-of-disk-space)
+   below.
+
 Then move into the Medicare example directory:
 
 ```bash
@@ -76,7 +85,7 @@ no data use agreement or institutional access is required.  It:
 * Contains **no real PHI / PII** — it is safe for testing, demonstrations,
   and sharing
 
-Download and unpack it:
+Download and unpack it (about a 770 MB download):
 
 ```bash
 mkdir -p data
@@ -88,6 +97,17 @@ curl -fLo medicare-synthetic-database.zip \
 unzip medicare-synthetic-database.zip
 
 popd
+```
+
+```{note}
+This example pins **version 1** of the dataset (about 770 MB, roughly 600,000
+synthetic beneficiaries) so that the numbers in this walkthrough — and the
+golden test values shipped with Dorieh — are reproducible. Newer, larger
+versions, including v0.2.0 with five million beneficiaries (about 9 GB
+compressed), are published under the same concept DOI:
+<https://doi.org/10.5281/zenodo.18915557>. Any version runs through the same
+pipeline commands; only the download URL, size, run time, and resulting
+counts differ.
 ```
 
 The extracted directory tree follows the layout expected by the ingestion
@@ -135,6 +155,53 @@ After the workflow completes:
 For a detailed description of the pipeline steps, see
 [Medicare: Building a Data Warehouse from ResDac Files](Medicare.md).
 
+
+### Troubleshooting: PostgreSQL runs out of disk space
+
+If the ingestion step (`load_medicare_data`) fails with:
+
+```
+psycopg2.OperationalError: connection to server ... failed:
+FATAL:  the database system is not yet accepting connections
+DETAIL:  Consistent recovery state has not been yet reached.
+```
+
+the PostgreSQL container has almost certainly filled its disk. Confirm with
+`docker logs <postgres container>` — the telltale sign is a *crash loop*:
+recovery completes, then the end-of-recovery checkpoint dies, repeatedly:
+
+```
+PANIC:  could not write to file "pg_logical/replorigin_checkpoint.tmp": No space left on device
+LOG:  checkpointer process ... was terminated by signal 6: Aborted
+LOG:  database system was not properly shut down; automatic recovery in progress
+```
+
+On Docker Desktop this means the *Docker VM* disk is full even when the host
+has plenty of space; check with:
+
+```bash
+docker system df                       # what is using the space
+docker run --rm alpine df -h /        # free space inside the Docker VM
+```
+
+To recover:
+
+1. Free any amount of space — PostgreSQL recovers by itself as soon as the
+   checkpoint can be written; no data committed before the failure is lost.
+   Safe reclaims that touch no data volumes:
+
+   ```bash
+   docker buildx prune -a    # build cache
+   docker image prune        # dangling images
+   ```
+
+2. Raise the Docker Desktop disk limit (Settings → Resources → Disk usage
+   limit) before restarting the workflow, or the ingestion will fill the
+   disk again.
+
+3. Restart the failed workflow (the Toil job store from the failed run can
+   be reused with `--restart`).
+
 ---
 
 ## Step 3 (Optional) — Explore results in Apache Superset
@@ -155,13 +222,41 @@ docker compose down
 
 ### 3.2 — Start PostgreSQL + Superset
 
-From the same directory, start the extended stack:
+From the same directory, first create the `.env` file that the Superset
+stack requires. `SUPERSET_SECRET_KEY` has no default and Compose will refuse
+to start without it:
+
+```bash
+cd $WORKDIR/dorieh/docker/pg-hll/
+cp .env.template .env
+# Generate a secret key and write it into .env:
+python -c "import secrets; print(secrets.token_hex(42))"
+# then edit .env and replace the ???? placeholder on the SUPERSET_SECRET_KEY line
+```
+
+`.env` is deliberately excluded from version control, so this step is
+required on every fresh clone. Every other variable in `.env.template`
+(ports, Superset version, admin credentials) already has a working default.
+
+Then start the extended stack:
 
 ```bash
 cd $WORKDIR/dorieh/docker/pg-hll/
 docker compose -f docker-compose-superset.yml up --build
 # Or, to run detached:
 # docker compose -f docker-compose-superset.yml up -d
+```
+
+
+**If PostgreSQL was ever started in this directory before** (either compose
+stack), the `pgdata` volume already exists and PostgreSQL will *not* re-run
+the `init-db/` scripts — they execute only when the data directory is
+initialized for the first time. In that case the `superset` metadata database
+is missing and Superset fails with `FATAL: database "superset" does not
+exist`. Create it manually in the running `postgres` container:
+
+```bash
+docker compose exec postgres psql -U dorieh -d dorieh -c 'CREATE DATABASE superset WITH OWNER dorieh;'
 ```
 
 This brings up:
@@ -211,17 +306,17 @@ In the Superset UI:
 
 The dashboard is committed as a native Superset bundle under
 `examples/with-postgres/medicare/superset/medicare_quality_dashboard/`. Import
-it with the `import_dashboard` command (installed with Dorieh), which resolves
+it by running the `dorieh.platform.superset.import_dashboard` module, which resolves
 your `DORIEH` connection by name, re-points the bundle onto it on the fly, and
 imports it through Superset's REST API (the native importer the UI uses):
 
 ```bash
-import_dashboard \
+python3 -m dorieh.platform.superset.import_dashboard \
   $WORKDIR/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard \
   --base-url http://localhost:8088/ --username admin
 ```
 
-Enter the admin password when prompted (`admin` by default). `import_dashboard`
+Enter the admin password when prompted (`admin` by default). The importer
 is standard-library-only. Because each Superset instance assigns its own
 connection UUID, it looks the UUID up by name at import time rather than relying
 on a value baked into the bundle, so the same committed bundle imports on any

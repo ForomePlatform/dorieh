@@ -1,7 +1,7 @@
 # Column medicare.admissions.discharge_date Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.admissions/discharge_date.svg
+:file: discharge_date.svg
 
 ```
 

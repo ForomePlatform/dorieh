@@ -71,7 +71,7 @@ FROM medicare.qc_enrl_bene
 
 GROUP BY year,state,zip,fips3,orec,curec,hmo,dual,buyin,consistent_dob,consistent_dod,consistent_sex,consistent_race,consistent_orec,consistent_curec,fips3_is_approximated,fips3_valdiated;
 
-COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.4.5", "url": "file:///Users/misha/harvard/github/dorieh", "commit": null}. Created at 2026-07-13 11:20:49.406973';
+COMMENT ON materialized view medicare.qc_enrollments IS 'CREATED BY Dorieh: {"version": "0.5.1", "url": "file://<local checkout>", "commit": null}. Created at 2026-09-12 13:13:47.842658';
 ```
 
 </details>

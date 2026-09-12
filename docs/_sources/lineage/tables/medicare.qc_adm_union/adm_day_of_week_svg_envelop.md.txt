@@ -1,7 +1,7 @@
 # Column medicare.qc_adm_union.adm_day_of_week Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.qc_adm_union/adm_day_of_week.svg
+:file: adm_day_of_week.svg
 
 ```
 

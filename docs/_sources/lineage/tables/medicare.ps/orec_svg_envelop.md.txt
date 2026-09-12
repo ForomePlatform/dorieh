@@ -1,7 +1,7 @@
 # Column medicare.ps.orec Lineage SVG
 
 ```{raw} html
-:file: /Users/misha/harvard/github/dorieh/doc/lineage/tables/medicare.ps/orec.svg
+:file: orec.svg
 
 ```
 
