@@ -19,6 +19,13 @@ Before starting, make sure you have:
    (PostgreSQL running,   `database.ini` available).
 2. Installed Toil and tested it as in [Examples of using Dorieh](../../README.md)
 3. Cloned the `dorieh` repository under `$WORKDIR`.
+4. **Enough disk space allocated to Docker.** The synthetic 5M-beneficiary
+   dataset grows the PostgreSQL data volume past 20 GB during ingestion,
+   plus WAL. On Docker Desktop the limit that matters is the *virtual
+   machine* disk (Settings → Resources → Disk usage limit), not the free
+   space on your host: allocate at least 100 GB before running this
+   example. See [Troubleshooting](#31-troubleshooting-postgresql-runs-out-of-disk-space)
+   below for what the failure looks like.
 
 Then go to the Medicare example directory:
 
@@ -48,6 +55,14 @@ unzip medicare-synthetic-database.zip
 
 popd
 ```
+
+> **Note:** This pins **version 1** of the dataset (about 770 MB, roughly
+> 600,000 synthetic beneficiaries) so the results are reproducible. Newer,
+> larger versions — including v0.2.0 with five million beneficiaries (about
+> 9 GB compressed) — are published under the same concept DOI
+> <https://doi.org/10.5281/zenodo.18915557>. Any version runs through the
+> same pipeline commands; only the download URL, size, run time, and
+> resulting counts differ.
 
 
 ### 3. Run the Medicare processing pipeline
@@ -84,6 +99,53 @@ After completion:
 - Additional outputs may be written to the `outputs/` directory, depending on the workflow definition.
 
 
+
+### 3.1 Troubleshooting: PostgreSQL runs out of disk space
+
+If the ingestion step (`load_medicare_data`) fails with:
+
+```
+psycopg2.OperationalError: connection to server ... failed:
+FATAL:  the database system is not yet accepting connections
+DETAIL:  Consistent recovery state has not been yet reached.
+```
+
+the PostgreSQL container has almost certainly filled its disk. Confirm with
+`docker logs <postgres container>` — the telltale sign is a *crash loop*:
+recovery completes, then the end-of-recovery checkpoint dies, repeatedly:
+
+```
+PANIC:  could not write to file "pg_logical/replorigin_checkpoint.tmp": No space left on device
+LOG:  checkpointer process ... was terminated by signal 6: Aborted
+LOG:  database system was not properly shut down; automatic recovery in progress
+```
+
+On Docker Desktop this means the *Docker VM* disk is full even when the host
+has plenty of space; check with:
+
+```bash
+docker system df                       # what is using the space
+docker run --rm alpine df -h /        # free space inside the Docker VM
+```
+
+To recover:
+
+1. Free any amount of space — PostgreSQL recovers by itself as soon as the
+   checkpoint can be written; no data committed before the failure is lost.
+   Safe reclaims that touch no data volumes:
+
+   ```bash
+   docker buildx prune -a    # build cache
+   docker image prune        # dangling images
+   ```
+
+2. Raise the Docker Desktop disk limit (Settings → Resources → Disk usage
+   limit) before restarting the workflow, or the ingestion will fill the
+   disk again.
+
+3. Restart the failed workflow (the Toil job store from the failed run can
+   be reused with `--restart`).
+
 ## 4. (Optional) Explore the Medicare data in Superset
 
 You can visually explore the processed Medicare data using a pre‑built 
@@ -103,13 +165,41 @@ You will now start a more complete stack: PostgreSQL orchestrated together with 
 
 ### 4.2 Start PostgreSQL + Superset via Docker Compose
 
-From the same directory:
+From the same directory, first create the `.env` file that the Superset
+stack requires. `SUPERSET_SECRET_KEY` has no default and Compose will refuse
+to start without it:
+
+```bash
+cd $WORKDIR/dorieh/docker/pg-hll/
+cp .env.template .env
+# Generate a secret key and write it into .env:
+python -c "import secrets; print(secrets.token_hex(42))"
+# then edit .env and replace the ???? placeholder on the SUPERSET_SECRET_KEY line
+```
+
+`.env` is deliberately excluded from version control, so this step is
+required on every fresh clone. Every other variable in `.env.template`
+(ports, Superset version, admin credentials) already has a working default.
+
+Then:
 
 ```bash
 cd $WORKDIR/dorieh/docker/pg-hll/
 docker compose -f docker-compose-superset.yml up --build
 # Or, to run detached:
 # docker compose -f docker-compose-superset.yml up -d
+```
+
+
+**If PostgreSQL was ever started in this directory before** (either compose
+stack), the `pgdata` volume already exists and PostgreSQL will *not* re-run
+the `init-db/` scripts — they execute only when the data directory is
+initialized for the first time. In that case the `superset` metadata database
+is missing and Superset fails with `FATAL: database "superset" does not
+exist`. Create it manually in the running `postgres` container:
+
+```bash
+docker compose exec postgres psql -U dorieh -d dorieh -c 'CREATE DATABASE superset WITH OWNER dorieh;'
 ```
 
 This brings up:
@@ -166,28 +256,26 @@ In the Superset web UI:
 
 6. Click **TEST CONNECTION**.  
    If the test succeeds, click **CONNECT** in the bottom right corner of 
-   teh dialogue.
+   the dialogue.
 
 
 ### 4.5 Import the pre‑built Medicare quality‑control dashboard
 
 The dashboard is committed as a native Superset bundle under
 `examples/with-postgres/medicare/superset/medicare_quality_dashboard/`. Import
-it with the `import_dashboard` command (installed with Dorieh), which resolves
+it by running the `dorieh.platform.superset.import_dashboard` module, which resolves
 your `DORIEH` connection by name, re‑points the bundle onto it on the fly, and
 imports it via Superset's REST API (the native importer the UI uses — the legacy
 `superset import-dashboards` CLI silently drops the charts from native bundles):
 
 ```bash
-import_dashboard \
+python3 -m dorieh.platform.superset.import_dashboard \
   $WORKDIR/dorieh/examples/with-postgres/medicare/superset/medicare_quality_dashboard \
   --base-url http://localhost:8088/ --username admin
 ```
 
-You'll be prompted for the admin password (`admin` by default). `import_dashboard`
-uses only the Python standard library — no extra packages beyond Dorieh. (If you
-are running from a source checkout without installing Dorieh, the equivalent is
-`python3 -m dorieh.platform.superset.import_dashboard …`.)
+You'll be prompted for the admin password (`admin` by default). The importer
+uses only the Python standard library — no extra packages beyond Dorieh.
 
 Notes:
 

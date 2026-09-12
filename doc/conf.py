@@ -25,11 +25,22 @@ sys.setrecursionlimit(2500)
 # -- Project information -----------------------------------------------------
 
 project = 'Dorieh Data Platform'
-copyright = '2021-2024, Harvard University'
+copyright = '2021-2026, Harvard University'
 author = 'Michael A Bouzinier'
 
-# The full version, including alpha/beta/rc tags
-release = '0.0.1'
+# The full version, including alpha/beta/rc tags.
+# The documentation is built from this checkout, so the version is parsed
+# from ../setup.py; if that fails (e.g. docs built outside a full source
+# tree), fall back to the installed package metadata.
+try:
+    import re as _re
+    with open(os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                           '..', 'setup.py')) as _f:
+        release = _re.search(r'version\s*=\s*["\']([^"\']+)["\']',
+                             _f.read()).group(1)
+except Exception:
+    from importlib.metadata import version as _pkg_version
+    release = _pkg_version('dorieh')
 
 
 # -- General configuration ---------------------------------------------------

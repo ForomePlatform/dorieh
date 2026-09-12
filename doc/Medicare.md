@@ -535,8 +535,9 @@ The following columns are added:
   beneficiary. The value of this column is NULL for consistent records
 * `dod_earliest`: the earliest DOD found in the records for this 
   beneficiary. The value of this column is NULL for consistent records
-* `orec_latest`: the latest OREC value, non-null only when OREC varied
-  across the beneficiary's records (see
+* `orec_latest`: non-null only when OREC varied across the beneficiary's
+  records; it then holds the alternative value (computed as `MAX(orec)`,
+  by analogy with `dob_latest`) (see
   [Entitlement reason codes: OREC and CUREC](#entitlement-reason-codes-orec-and-curec))
 * Beneficiary id HLL hash (`bene` column), to be used for 
   `approximate count distinct` queries. [See more](UsingHLL.md) 
@@ -731,12 +732,13 @@ How the two codes are computed:
   enrollment year, with ties broken by the smallest code so that the result
   is deterministic: `(array_agg(orec ORDER BY year, orec))[1]`. If the raw
   data nevertheless shows OREC changing over the years,
-  `beneficiaries.orec_latest` is non-null (holding the latest value), and
+  `beneficiaries.orec_latest` is non-null (holding the alternative value,
+  `MAX(orec)`), and
   the `consistent_orec` flag in `qc_enrl_bene` reports the discrepancy:
   `MISSING` when OREC is absent, `AMBIGUOUS` when it varied, and
   `CONSISTENT` otherwise. This is the same earliest-value-canonical,
-  latest-value-in-a-secondary-column disambiguation pattern used for the
-  date of birth (`dob` / `dob_latest` / `consistent_dob`).
+  alternative-value-in-a-secondary-column disambiguation pattern used for
+  the date of birth (`dob` / `dob_latest` / `consistent_dob`).
 * `enrollments.curec` is aggregated as `MAX(curec)` within each
   `(bene_id, year, state)` group. This is a defensive de-duplication: in
   the synthetic dataset every such group is a single row, but real Medicare

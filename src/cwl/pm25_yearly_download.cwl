@@ -202,6 +202,7 @@ steps:
     when: $(inputs.connection_name.toLowerCase() != 'none')
     doc: Uploads data into the database
     in:
+      depends_on: initdb/log
       registry: extract_data_dictionary/data_dictionary
       domain:
         valueFrom: "exposures"

@@ -20,7 +20,13 @@
 #
 import math
 import os
+import shutil
 from typing import Dict, Optional, List
+
+#: Location of the pandoc executable, resolved from PATH rather than
+#: hardcoded, so that generated commands work regardless of platform
+#: and of how pandoc was installed (Homebrew, MacPorts, distro package).
+PANDOC = shutil.which("pandoc") or "pandoc"
 
 HTML = """
 <!DOCTYPE html>
@@ -237,6 +243,14 @@ def end_invisible_row(format: str = 'html') -> str:
 def create_graph_envelop(of: str, title: str, svg: str):
     pp = os.path.splitext(of)
     fmd2 = pp[0] + "_svg_envelop" + pp[1]
+    # ``:file:`` in a ``{raw} html`` directive is resolved against the
+    # directory of the document containing it, hence the reference must be
+    # relative to the envelop file being written. An absolute path would
+    # leak the local checkout location into generated (and potentially
+    # committed) documentation and break the build anywhere else.
+    if os.path.dirname(svg):
+        svg = os.path.relpath(os.path.abspath(svg),
+                              os.path.dirname(os.path.abspath(fmd2)))
     content = f"# {title}\n\n"
     content += "```{raw} html\n"
     content += f":file: {svg}\n\n"

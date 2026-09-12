@@ -541,6 +541,17 @@ Dorieh [ingest tool](../../pipeline/ingest.md):
       - errors
 ```
 
+Note the `depends_on: initdb/log` line. CWL is a dataflow language: a
+runner starts a step as soon as its inputs are available and may run
+independent steps in parallel — there is no explicit "run after" clause.
+Nothing else connects `ingest` to `initdb`, so without this line `ingest`
+could start before `initdb` has finished preparing the database, and a
+run against a fresh database could fail intermittently. To enforce
+ordering, Dorieh database tools expose an optional `depends_on` input
+that the tool itself ignores: wire it to a log output of the step that
+must complete first. Use this pattern whenever two steps touch the same
+database but do not exchange data.
+
 After adding ingestion to **steps** and the logs it produces to the 
 **outputs**, the resulting workflow file should look like:
 
