@@ -16,6 +16,14 @@ authors:
     email: michael.bouzinier@forome.org
     affiliation: Harvard University
     orcid: "https://orcid.org/0000-0002-3161-5601"
+doi: 10.5281/zenodo.22728722
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.22728722
+    description: "Concept DOI: always resolves to the latest archived release"
+  - type: doi
+    value: 10.5281/zenodo.22728723
+    description: "Version DOI of release 0.5.1"
 repository-code: "https://github.com/ForomePlatform/dorieh"
 url: "https://foromeplatform.github.io/dorieh/"
 license: Apache-2.0
