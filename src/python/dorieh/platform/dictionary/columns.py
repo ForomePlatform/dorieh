@@ -26,7 +26,7 @@ from sqlparse.sql import IdentifierList, Parenthesis, Function, Identifier
 import html
 
 from dorieh.platform.dictionary import RenderMode
-from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr, create_graph_envelop
+from dorieh.platform.dictionary.element import HTML, DataModelElement, qstr, attrs2string, hr, create_graph_envelop, PANDOC
 from dorieh.platform.data_model.domain import Domain
 from dorieh.platform.dictionary.resdac_crawler import get_resdac_mapping
 
@@ -336,7 +336,7 @@ class Column(DataModelElement):
             print(content, file=out)
         if self.mode == RenderMode.standalone:
             fhtml = os.path.splitext(of)[0] + ".html"
-            os.system(f"/usr/local/bin/pandoc --from markdown  --to html {of} > {fhtml}")
+            os.system(f"{PANDOC} --from markdown  --to html {of} > {fhtml}")
 
     def to_dot(self, node_id=None, node_label=None, attributes = None):
         if node_id is None:

@@ -31,6 +31,31 @@ do
     esac
 done
 
+# This script switches branches (${doc_source_branch} and back), so
+# uncommitted changes would travel across branches, and anything staged
+# would be swept into the documentation commit. Untracked files under doc/
+# are how machine-specific generated pages ended up committed on
+# development branches in the past. Refuse to start in either situation
+# (untracked files elsewhere are harmless and are left alone).
+tracked_changes="$(git status --porcelain | grep -v '^?? ')"
+doc_debris="$(git status --porcelain -- doc/ | grep '^?? ')"
+if [ -n "${tracked_changes}" ] || [ -n "${doc_debris}" ]
+then
+  echo "Refusing to build documentation:"
+  if [ -n "${tracked_changes}" ]
+  then
+    echo "- uncommitted changes to tracked files (commit or stash them first):"
+    echo "${tracked_changes}" | head -20
+  fi
+  if [ -n "${doc_debris}" ]
+  then
+    echo "- untracked files under doc/ (remove them, or add them to .gitignore"
+    echo "  if they are generated):"
+    echo "${doc_debris}" | head -20
+  fi
+  exit 1
+fi
+
 git checkout "${doc_source_branch}"
 if [ $? -ne 0 ]
 then
@@ -69,6 +94,19 @@ cwl2md -i src/cwl -o doc/pipeline
       ../../src/python/dorieh/cms/models/medicare_cms.yaml \
       ../../src/python/dorieh/cms/models/medicare.yaml
 ) || { echo "Medicare lineage generation FAILED - refusing to build docs without it"; exit 1; }
+
+# generate the climate tutorial data dictionary (doc/tutorial/climate/mddocs).
+# Same policy as doc/lineage: these pages are generated at build time, not
+# tracked; only the curated pages (example1.md, example1.png,
+# example1cwl_src.md) and the book figure sources (table-lineage.dot, *.eps)
+# are committed. Must run from the mddocs directory (the table/column lists
+# are written to the CWD).
+(
+  cd doc/tutorial/climate/mddocs && \
+  python -m dorieh.platform.dictionary.domain_dictionary \
+      --fmt svg --lod min --mode sphinx -o example1.dot \
+      ../example1_model.yml
+) || { echo "Climate tutorial dictionary generation FAILED - refusing to build docs without it"; exit 1; }
 
 # make python sources available for autodoc
 abs_path=`realpath src/python`
