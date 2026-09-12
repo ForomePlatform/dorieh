@@ -124,6 +124,9 @@ cat docker/README.md >> doc/docker_readme.md
 
 # build documentation
 sphinx-build -j auto doc docs || exit
+# .doctrees is Sphinx's incremental-build cache: thousands of pickles that
+# embed the builder machine's absolute paths. It must not be published.
+rm -rf docs/.doctrees
 touch docs/.nojekyll
 
 echo "Build finished"
