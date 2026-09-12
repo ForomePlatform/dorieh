@@ -41,14 +41,17 @@ chapters map to the pages of this documentation.
 
 To reference a specific release of the code (for example, to state
 exactly which version produced a result), use the software archive on
-Zenodo. Every GitHub release of Dorieh is archived there: the
-*concept DOI* always resolves to the latest release, and each release
-also has its own *version DOI*.
+Zenodo. Every GitHub release of Dorieh is archived there.
 
-* Cite the **version DOI** when the exact code matters
-  (reproducibility of a specific analysis).
-* Cite the **concept DOI** when referring to Dorieh as an evolving
-  project.
+* **Concept DOI** (always resolves to the latest archived release —
+  cite it when referring to Dorieh as an evolving project):
+  [10.5281/zenodo.22728722](https://doi.org/10.5281/zenodo.22728722)
+* **Version DOI** (one per release — cite it when the exact code
+  matters, e.g. reproducibility of a specific analysis); for release
+  0.5.1 it is
+  [10.5281/zenodo.22728723](https://doi.org/10.5281/zenodo.22728723),
+  and the DOI for any other release is listed on the concept DOI's
+  landing page.
 
 The DOI badge in the repository
 [README](https://github.com/ForomePlatform/dorieh#readme) always
